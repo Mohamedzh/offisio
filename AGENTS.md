@@ -7,3 +7,87 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+
+# AGENTS.md — Offisio
+
+Instructions for coding agents working in this repository. The Next.js block above is tooling-generated; everything below is project rules and wins on product/stack decisions.
+
+## Project
+
+Offisio — office listing and booking agent for the Meta Global AI Developer Hackathon (Indie track, solo). An owner uploads a short video of an office; the app produces specs, a bilingual Arabic/English listing, and restaged photos (furniture removed, then restyled). Renters book by chatting in Egyptian Arabic.
+
+Read [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) before structural changes, then [docs/DESIGN.md](docs/DESIGN.md). If a change contradicts either, update the doc in the same commit and say why.
+
+## Hard rules (no exceptions)
+
+1. **Meta models only in the product's AI.** Every model call in the app goes to the Meta Model API (`https://api.meta.ai/v1`). Never add another AI provider or SDK to a request path.
+2. **New work only.** Do not copy code, data or assets from other projects. Generate everything fresh in this repo.
+3. **Only licensed assets.** No stock images, furniture photos or fonts we don't have rights to. Use our own footage in `/public/demo` or generated images.
+4. **No secrets in the repo.** API keys live in environment variables only (`META_API_KEY`, `DATABASE_URL`, `BLOB_READ_WRITE_TOKEN`). The repo is public.
+5. **Small commits.** One logical change per commit, with a clear message. The history is our evidence of work done during the hackathon.
+
+## Model routing and PII (read before touching any AI handler)
+
+| Data class | Examples | Allowed model | Why |
+|---|---|---|---|
+| Public / synthetic | Test prompts, fake units, demo footage we shot, style prompts | `muse-spark-1.3` or `muse-spark-1.3-contributor` | Contributor is cheaper for iteration; content may train Meta models, so nothing private may ever go here |
+| Product data, no PII | Keyframes of empty/furnished rooms, specs JSON, listing copy, style prompts | `muse-spark-1.3`, `muse-image-1.0`, `sam-3.1` | Normal product path |
+| PII | Renter name, phone, chat transcripts, voice notes, owner contact details | `muse-spark-1.3` only. **Never** `muse-spark-1.3-contributor` | Contributor content may be used for training; PII must never be routed there |
+
+Enforcement, not convention:
+
+- Model IDs and prompts live only in `lib/meta/`. The client exposes `meta.public` (may use contributor) and `meta.product` (never contributor). No other code picks a model ID.
+- Any handler that receives chat text, a phone number, a name, or audio must use `meta.product`. When in doubt, treat data as PII.
+- Any model output that feeds code must be structured (JSON schema) and validated before use.
+- If unsure whether an API supports something (masks on edits, video segmentation parameters), write a minimal test in `scripts/` and run it before building on it. See the unknown-capability list in [docs/DESIGN.md](docs/DESIGN.md).
+
+## Scope
+
+In scope: the demo loop (upload → specs → listing → removal/restaging → chat booking).
+Out of scope: payments, real auth, reviews, map search, host analytics, mobile apps. Don't build these, even partially.
+
+When a task grows, propose the smallest version that still demos well instead of expanding it.
+
+## Stack and conventions
+
+- Next.js 16 (App Router), TypeScript strict, Tailwind 4, pnpm. Postgres on Neon, Vercel Blob for media, deployed on Vercel.
+- Server work in route handlers under `app/api`; pipeline steps in `lib/pipeline`, each one independently re-runnable; booking agent in `lib/agent`; DB in `lib/db`.
+- Bilingual UI: Arabic (RTL) is the default, English (LTR) toggle. Test both `dir="rtl"` and `dir="ltr"` layouts. Use logical CSS properties (`ms-`, `me-`, `ps-`, `pe-`, `start-`, `end-`) so layouts mirror correctly.
+- Keep functions small; no new dependencies without a reason in the commit message. Ask before adding a dependency, changing the stack, or adding scope.
+
+## Agent team and cost discipline
+
+One frontier-model architect (this session) plans; cheaper agents implement. Do not burn frontier tokens on bulk code writing.
+
+| Role | Model class | Gets | Must return |
+|---|---|---|---|
+| Architect (main session) | Frontier (Muse Wonder) | Goal, docs, checkpoints | Segment brief: exact files, interfaces, acceptance tests, stop conditions |
+| Implementor | Muse Spark class subagent | One segment brief, named files only | Diff + commands run + failures, no scope expansion |
+| Test writer | Muse Spark class subagent | Segment brief + acceptance list | Jest/Vitest tests that fail before and pass after, run output |
+| Reviewer | Muse Spark class subagent | Diff + brief | Findings by severity; approves or sends back, never rewrites silently |
+| Integration / UI tester | Muse Spark class subagent | Running app URL + scripted flows | Pass/fail per flow with evidence (status, screenshot/DOM note) |
+
+Rules: briefs are self-contained (a fresh agent with no session history must succeed from the brief + linked docs alone). One segment per subagent. The architect reviews diffs, never re-derives them from memory. Full detail: [docs/plan/README.md](docs/plan/README.md).
+
+## Working in segments (avoid long sessions)
+
+Work is split into segment files under [docs/plan/](docs/plan/README.md), indexed by [docs/PLAN.md](docs/PLAN.md). Start a fresh chat session per segment; long sessions burn tokens and lose detail.
+
+At every session start: read this file, [docs/PLAN.md](docs/PLAN.md), and the active segment file — nothing else unless the segment names it. At every session end: update the segment file (status, decisions, next step) and [docs/PLAN.md](docs/PLAN.md) in the same commit. If a session is growing past one segment, stop, write the handoff into the segment file, and start fresh.
+
+## Commands
+
+```bash
+pnpm dev         # local dev server
+pnpm lint        # lint
+pnpm typecheck   # tsc --noEmit (add at scaffold if missing)
+pnpm seed        # seed demo units (add at scaffold)
+```
+
+Run lint and typecheck before each commit.
+
+## Done means
+
+- It works in the browser on the deployed preview, not just locally.
+- The demo path still works end to end.
+- README "Built during the hackathon" section is updated if a feature was added.
