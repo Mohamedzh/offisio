@@ -54,7 +54,7 @@ create table if not exists payments (
   id uuid primary key default gen_random_uuid(),
   booking_id uuid not null references bookings(id),
   provider text not null default 'paymob',
-  paymob_order_id text, amount_cents int not null,
+  paymob_order_id text, paymob_intention_id text, amount_cents int not null,
   status text not null default 'pending', -- pending|success|failed (webhook-driven)
   raw jsonb not null default '{}', created_at timestamptz not null default now()
 );
@@ -65,6 +65,7 @@ create table if not exists chat_sessions (
   messages jsonb not null default '[]', tool_calls jsonb not null default '[]',
   created_at timestamptz not null default now(), updated_at timestamptz not null default now()
 );
+alter table payments add column if not exists paymob_intention_id text;
 create index if not exists idx_media_unit_kind on media(unit_id, kind);
 create index if not exists idx_avail_open on availability(unit_id, starts_at) where not is_booked;
 create index if not exists idx_units_status on units(status);

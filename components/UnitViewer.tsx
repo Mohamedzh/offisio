@@ -1,14 +1,16 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import { getT, type Locale } from "@/lib/i18n";
 
-export default function UnitViewer({ images, en }: { images: { real: string; empty: string | null; fits: Record<string, string> }; en: boolean }) {
+export default function UnitViewer({ images, locale }: { images: { real: string; empty: string | null; fits: Record<string, string> }; locale: Locale }) {
+  const t = getT(locale);
   const views = [
-    { key: "real", label: en ? "Real today" : "الحقيقي دلوقتي", src: images.real },
-    ...(images.empty ? [{ key: "empty", label: en ? "Emptied by AI" : "فاضي بالذكاء الاصطناعي", src: images.empty }] : []),
-    { key: "startup", label: en ? "Fit: Startup" : "تجهيز: ستارت أب", src: images.fits.startup },
-    { key: "clinic", label: en ? "Fit: Clinic" : "تجهيز: عيادة", src: images.fits.clinic },
-    { key: "training", label: en ? "Fit: Training" : "تجهيز: تدريب", src: images.fits.training },
+    { key: "real", label: t("viewer.real"), src: images.real },
+    ...(images.empty ? [{ key: "empty", label: t("viewer.empty"), src: images.empty }] : []),
+    { key: "startup", label: t("viewer.fitStartup"), src: images.fits.startup },
+    { key: "clinic", label: t("viewer.fitClinic"), src: images.fits.clinic },
+    { key: "training", label: t("viewer.fitTraining"), src: images.fits.training },
   ];
   const [active, setActive] = useState(views[0]);
   return (
@@ -22,7 +24,7 @@ export default function UnitViewer({ images, en }: { images: { real: string; emp
           <button key={v.key} onClick={() => setActive(v)} className={`rounded-full px-3 py-1.5 text-sm border ${active.key === v.key ? "bg-zinc-900 text-white dark:bg-white dark:text-zinc-900" : "bg-white dark:bg-zinc-900"}`}>{v.label}</button>
         ))}
       </div>
-      <p className="mt-2 text-xs text-zinc-500">{en ? "Fit renders are AI concepts from the real room — not the current state." : "صور التجهيز تصور بالذكاء الاصطناعي من الغرفة الحقيقية — مش الحالة الحالية."}</p>
+      <p className="mt-2 text-xs text-zinc-500">{t("viewer.fitNote")}</p>
     </div>
   );
 }
