@@ -18,13 +18,15 @@ Done 2026-10-27 (evidence in [plan/05-demo-polish.md](plan/05-demo-polish.md)):
 - `[lang]` i18n: `app/[lang]/` routes, `proxy.ts` default, dictionaries + helpers in `lib/i18n/`, default locale `en`.
 - `.env.example` tracked (`!.env.example` in `.gitignore`); stale `PAYMOB_API_KEY` in `.env.local` is unused, can be deleted.
 
+Done 2026-10-27 (upload slice, uncommitted): owner upload UI + live ingest at `/[lang]/upload` (browser keyframes → S3 specs + S4 listing via `lib/pipeline/`), specs owner-edit form, runtime frame serving via `app/uploads/[slug]/[file]/route.ts`. Live-verified end to end; smoke data cleaned. Auth deferred by owner decision. Detail: [plan/05-demo-polish.md](plan/05-demo-polish.md).
+
 Open items for Segment 5 / next session (in order):
-1. Commit the staged 2026-10-27 work (suggested split: env-tracking, Paymob Unified, `[lang]` i18n).
-2. Owner upload UI + live ingest (Segment 2 remainder) at `/[lang]/upload`; specs owner-edit form. Core app is still a skeleton: only `/[lang]`, `/[lang]/units/[slug]`, `/[lang]/chat`, `/[lang]/booking/[id]` exist.
+1. Commit the upload slice.
+2. Restage on upload (S5 empty + S6 fits as re-runnable step) + before/after slider polish.
 3. Add real `CAFE_WHATSAPP_NUMBER` + set `NEXT_PUBLIC_APP_URL` (needed for Paymob notification/redirection URLs in deployed env).
 4. 10 scripted Egyptian-Arabic chat conversations (incl. slot-taken, no-results) — Segment 4 acceptance not yet fully run.
-5. Single-style restage re-run in `scripts/run-unit.ts`; replace any drifted demo asset; before/after slider polish.
-6. Deploy preview (Vercel) + Neon/Paymob env there, cold full-demo run; demo video by Nov 3.
+5. Single-style restage re-run in `scripts/run-unit.ts`; replace any drifted demo asset.
+6. Deploy preview (Vercel) + Neon/Paymob/Blob env there, cold full-demo run; demo video by Nov 3.
 
 Env contract (`.env.local`, never committed; template `.env.example` is tracked): `META_API_KEY`, `DATABASE_URL` (direct, migrations), `DATABASE_URL_POOLED` (app), `PAYMOB_SECRET_KEY`, `NEXT_PUBLIC_PAYMOB_PUBLIC_KEY`, `PAYMOB_HMAC_SECRET`, `PAYMOB_INTEGRATION_ID`, `NEXT_PUBLIC_APP_URL`, `CAFE_WHATSAPP_NUMBER`.
 

@@ -11,7 +11,7 @@ export default function UnitViewer({ images, locale }: { images: { real: string;
     { key: "startup", label: t("viewer.fitStartup"), src: images.fits.startup },
     { key: "clinic", label: t("viewer.fitClinic"), src: images.fits.clinic },
     { key: "training", label: t("viewer.fitTraining"), src: images.fits.training },
-  ];
+  ].filter((v) => v.src);
   const [active, setActive] = useState(views[0]);
   return (
     <div>

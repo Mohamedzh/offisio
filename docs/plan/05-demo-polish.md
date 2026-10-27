@@ -23,13 +23,18 @@ Acceptance: full demo path run cold on preview by someone other than the builder
 - Default locale `en` (overrides DESIGN's Arabic-default wording; Arabic remains a full RTL variant).
 - No i18n library dependency; DB content stays `*_ar`/`*_en` columns; API routes stay unprefixed.
 
+## Progress (2026-10-27, upload slice — uncommitted, owner reviews diff)
+
+- **Owner upload UI + live ingest (done, live-verified):** `/[lang]/upload` owner form (district, rent, daily rent, floor, available-from, kind) + browser keyframe extraction (`components/UploadForm.tsx`, `<video>`+canvas, 6–10 JPEGs, hero pick). `POST /api/units/upload` validates, writes frames to `public/uploads/<slug>/`, runs specs (S3) + listing (S4) via `lib/pipeline/specs-listing.ts` (`meta.product`, validated, one retry), seeds 7 days × 10:00–17:00 availability, marks unit `ready`. Specs owner-edit at `/[lang]/units/[slug]/edit` + `POST /api/units/specs` (sets `owner_edited=true`). Runtime-written `public/` files are served by `app/uploads/[slug]/[file]/route.ts` (Next prod does not serve them statically); `public/uploads/` is gitignored. Verified on `pnpm start`: `/en|/ar/upload` 200 (RTL ok), empty upload 400, specs unknown slug 404, live ingest with a real frame 201 → unit page 200 → image 200 `image/jpeg` → specs edit persisted. Smoke unit + files deleted after (Neon back to 3 seeded units). Gates: lint/typecheck/build pass.
+- Decisions: no auth (deferred by owner); no new dependency — local-disk frame storage for now, **Vercel Blob is required at deploy step** (`BLOB_READ_WRITE_TOKEN` unset); restage/empty renders NOT run on upload yet (next slice, re-runnable step).
+
 ## Next steps (in order)
 
-1. Commit staged work (split: env tracking / Paymob Unified / `[lang]` i18n), clear messages per AGENTS.md.
-2. Owner upload UI + live ingest (Segment 2 remainder): `/[lang]/upload` per DESIGN §8, then specs owner-edit form. This is the biggest remaining gap — the core app is still a skeleton.
+1. Commit this upload slice (one logical commit), clear message per AGENTS.md.
+2. Restage on upload: run S5 empty + S6 fits for the hero frame as a separate re-runnable step (button/API), so uploaded units get the before/after + fit views; before/after slider polish.
 3. Set real `CAFE_WHATSAPP_NUMBER` and `NEXT_PUBLIC_APP_URL` in `.env.local` (and later Vercel) so deployed Paymob webhooks/redirection work.
 4. Run the 10 scripted Egyptian-Arabic chat conversations (Segment 4 acceptance).
-5. Restage re-run + asset drift check; before/after slider polish (DESIGN centrepiece).
-6. Deploy preview (Vercel + Neon/Paymob env), cold end-to-end demo run, README update, demo video by Nov 3.
+5. Restage re-run + asset drift check on seeded units.
+6. Deploy preview (Vercel + Neon/Paymob env + Blob for uploads), cold end-to-end demo run, README update, demo video by Nov 3.
 
 Handoff: fresh session reads `AGENTS.md`, `docs/PLAN.md`, this file only. Run `pnpm dev` (or `pnpm build && pnpm start`); DB already migrated/seeded — do not re-seed unless on a new Neon project.

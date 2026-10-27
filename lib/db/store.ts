@@ -28,7 +28,7 @@ interface UnitRow {
   floor_text: string; available_from: string; rent_periods: RentPeriod[];
   title_ar: string; title_en: string; summary_ar: string; summary_en: string;
   highlights_ar: string[]; highlights_en: string[]; specs: Record<string, unknown> | null;
-  media: { kind: string; style: string | null; url: string }[] | null;
+  media: { kind: string; style: string | null; url: string; meta?: Record<string, unknown> }[] | null;
 }
 
 function rowToUnit(r: UnitRow): Unit {
@@ -41,7 +41,7 @@ function rowToUnit(r: UnitRow): Unit {
     title_ar: r.title_ar ?? "", title_en: r.title_en ?? "", summary_ar: r.summary_ar ?? "", summary_en: r.summary_en ?? "",
     highlights_ar: r.highlights_ar ?? [], highlights_en: r.highlights_en ?? [], specs: r.specs ?? {},
     images: {
-      real: byKind("keyframe") ?? "",
+      real: media.find((m) => m.kind === "keyframe" && m.meta?.hero === true)?.url ?? byKind("keyframe") ?? "",
       empty: byKind("staged", "empty"),
       fits: { startup: byKind("staged", "startup") ?? "", clinic: byKind("staged", "clinic") ?? "", training: byKind("staged", "training") ?? "" },
     },
@@ -52,12 +52,55 @@ const UNIT_SQL = `
   select u.slug, u.kind, u.district, u.rent_egp, u.daily_egp, u.floor_text, u.available_from,
          u.rent_periods, u.title_ar, u.title_en, u.summary_ar, u.summary_en, u.highlights_ar, u.highlights_en,
          s.data as specs,
-         coalesce((select json_agg(json_build_object('kind', m.kind, 'style', m.style, 'url', m.url)) from media m where m.unit_id = u.id and m.is_current), '[]') as media
+         coalesce((select json_agg(json_build_object('kind', m.kind, 'style', m.style, 'url', m.url, 'meta', m.meta)) from media m where m.unit_id = u.id and m.is_current), '[]') as media
   from units u left join specs s on s.unit_id = u.id`;
 
 export async function listUnits(): Promise<Unit[]> {
-  const { rows } = await pool().query<UnitRow>(`${UNIT_SQL} order by u.created_at`);
+  const { rows } = await pool().query<UnitRow>(`${UNIT_SQL} where u.status = 'ready' order by u.created_at`);
   return rows.map(rowToUnit);
+}
+
+export interface CreateUploadedUnitInput {
+  slug: string; kind: Unit["kind"]; district: string; rent_egp: number; daily_egp: number | null;
+  floor_text: string; available_from: string; rent_periods: RentPeriod[];
+}
+export async function createUploadedUnit(input: CreateUploadedUnitInput): Promise<string> {
+  const { rows } = await pool().query<{ id: string }>(
+    `insert into units (slug, kind, status, district, rent_egp, daily_egp, floor_text, available_from, rent_periods)
+     values ($1,$2,'processing',$3,$4,$5,$6,$7,$8) returning id`,
+    [input.slug, input.kind, input.district, input.rent_egp, input.daily_egp, input.floor_text, input.available_from, input.rent_periods]);
+  return rows[0].id;
+}
+export async function addMedia(unitId: string, kind: string, url: string, style: string | null = null, meta: Record<string, unknown> = {}): Promise<void> {
+  await pool().query(`insert into media (unit_id, kind, style, url, meta) values ($1,$2,$3,$4,$5)`, [unitId, kind, style, url, JSON.stringify(meta)]);
+}
+export async function setUnitStatus(slug: string, status: "processing" | "ready" | "failed"): Promise<void> {
+  await pool().query(`update units set status = $2 where slug = $1`, [slug, status]);
+}
+export interface GeneratedListing { title_ar: string; title_en: string; summary_ar: string; summary_en: string; highlights_ar: string[]; highlights_en: string[] }
+export async function saveGenerated(unitId: string, specs: Record<string, unknown>, listing: GeneratedListing): Promise<void> {
+  await pool().query(`insert into specs (unit_id, data, model) values ($1,$2,'muse-spark-1.3') on conflict (unit_id) do update set data = excluded.data, model = excluded.model`, [unitId, JSON.stringify(specs)]);
+  await pool().query(
+    `update units set title_ar = $2, title_en = $3, summary_ar = $4, summary_en = $5, highlights_ar = $6, highlights_en = $7 where id = $1`,
+    [unitId, listing.title_ar, listing.title_en, listing.summary_ar, listing.summary_en, JSON.stringify(listing.highlights_ar), JSON.stringify(listing.highlights_en)]);
+}
+export async function generateAvailability(unitId: string, availableFrom: string): Promise<void> {
+  const todayCairo = new Intl.DateTimeFormat("en-CA", { timeZone: "Africa/Cairo", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+  const start = availableFrom >= todayCairo ? availableFrom : todayCairo;
+  const [y, m, d] = start.split("-").map(Number);
+  for (let day = 0; day < 7; day++) {
+    const date = new Date(Date.UTC(y, m - 1, d + day)).toISOString().slice(0, 10);
+    for (let h = 10; h <= 16; h++)
+      await pool().query(
+        `insert into availability (unit_id, starts_at, ends_at) values ($1, ($2::date + $3::int * interval '1 hour') at time zone 'Africa/Cairo', ($2::date + ($3::int + 1) * interval '1 hour') at time zone 'Africa/Cairo') on conflict (unit_id, starts_at) do nothing`,
+        [unitId, date, h]);
+  }
+}
+export async function mergeUnitSpecs(slug: string, patch: Record<string, unknown>): Promise<boolean> {
+  const { rowCount } = await pool().query(
+    `update specs s set data = s.data || $2::jsonb || '{"owner_edited":true}'::jsonb from units u where s.unit_id = u.id and u.slug = $1`,
+    [slug, JSON.stringify(patch)]);
+  return (rowCount ?? 0) > 0;
 }
 export async function getUnit(slug: string): Promise<Unit | null> {
   const { rows } = await pool().query<UnitRow>(`${UNIT_SQL} where u.slug = $1`, [slug]);

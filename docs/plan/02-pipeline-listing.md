@@ -11,8 +11,9 @@ Done:
 - DB now Neon Postgres: `lib/db/schema.sql` (8 tables), `lib/db/pg.ts` pooled app / direct migrations, `scripts/migrate.ts` + `scripts/seed.ts` run (3 units, 147 hourly slots). JSON store removed.
 
 Not done / next:
-- Owner upload UI + live ingest (S0/S1 in browser) — demo uses precomputed units. Next segment if time.
-- Specs owner-edit form.
+- ~~Owner upload UI + live ingest (S0/S1 in browser)~~ — done 2026-10-27 in Segment 5 upload slice: `/[lang]/upload` + `POST /api/units/upload` (browser keyframes, live S3 specs + S4 listing). See [05-demo-polish.md](05-demo-polish.md).
+- ~~Specs owner-edit form~~ — done: `/[lang]/units/[slug]/edit`.
+- Restage (S5/S6) on uploaded units — pending (Segment 5 next slice).
 
 Decisions: hero-frame-only staging; per-unit owner in `lib/meta/prompts.ts` (`kind` authoritative — bare units never called furnished).
 Handoff: start a fresh session from `docs/PLAN.md`; env needs `DATABASE_URL` (direct) + `DATABASE_URL_POOLED`.

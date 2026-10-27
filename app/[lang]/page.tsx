@@ -21,6 +21,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           <p className="text-zinc-500">{t("home.tagline")}</p>
         </div>
         <div className="flex gap-2 text-sm">
+          <Link href={localeHref("/upload", locale)} className="rounded-full border px-4 py-2">{t("nav.listOffice")}</Link>
           <Link href={localeHref("/chat", locale)} className="rounded-full bg-zinc-900 text-white px-4 py-2 dark:bg-white dark:text-zinc-900">{t("nav.chatToBook")}</Link>
           <LangToggle locale={locale} />
         </div>
