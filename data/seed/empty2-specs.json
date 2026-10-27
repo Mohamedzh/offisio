@@ -1,0 +1,27 @@
+{
+  "owner": {
+    "district": "Cairo",
+    "rent_egp": 10000,
+    "floor_text": "1st to 7th",
+    "available_from": "2026-10-27",
+    "video": "public/demo/full.mp4",
+    "kind": "furnished"
+  },
+  "specs": {
+    "area_m2_estimate": 12,
+    "windows_count": 2,
+    "window_orientation_hint": "street",
+    "has_ac": null,
+    "ac_units_visible": null,
+    "desk_capacity": null,
+    "condition": "needs_work",
+    "flooring": "tile",
+    "natural_light": "bright",
+    "notes_ar": "مكتب تحت التشطيب، سقف خرساني مكشوف وأرضية سيراميك عليها مخلفات، إضاءة طبيعية قوية من واجهة زجاجية تطل على شارع رئيسي، يحتاج استكمال التشطيب والتنظيف",
+    "confidence": {
+      "area_m2_estimate": 0.35,
+      "desk_capacity": 0.1,
+      "condition": 0.85
+    }
+  }
+}

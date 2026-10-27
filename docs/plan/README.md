@@ -23,13 +23,19 @@ Every segment file has: Goal (one line) · Depends on · Scope / Not in scope ·
 
 ## Agent roles (cost discipline)
 
-| Role | Model class | Rule |
+Spawnable definitions: [docs/agents/](../agents/README.md) — spawn from those files verbatim.
+
+| Role | Model | Rule |
 |---|---|---|
-| Architect (main session) | Frontier | Plans segments, writes briefs, reviews diffs, runs checkpoints. Does not write bulk code |
-| Implementor | Muse Spark subagent | One segment brief, named files only, returns diff + test output |
-| Test writer | Muse Spark subagent | Jest/Vitest per acceptance list; must show failing-then-passing run |
-| Reviewer | Muse Spark subagent | Reviews diff against brief + `AGENTS.md` hard rules; findings only, no silent rewrites |
-| Integration / UI tester | Muse Spark subagent | Scripted flows against the running app (AR RTL + EN LTR), reports pass/fail with evidence |
+| Architect / planner (main session) | `muse-wonder-1.0` | Plans segments, writes briefs, reviews diffs, runs checkpoints. Does not write bulk code |
+| Implementor | `muse-spark-1.3-contributor` | One segment brief, named files only, returns diff + test output |
+| Test writer & runner | `muse-spark-1.3-contributor` | Jest/Vitest per acceptance list; must show failing-then-passing run |
+| Reviewer | `muse-spark-1.3-contributor` | Reviews diff against brief + `AGENTS.md` hard rules; findings only, no silent rewrites |
+| QA integrity | `muse-spark-1.3-contributor` | Pipeline/API/schema checks on synthetic data; evidence per check |
+| QA UI | `muse-spark-1.3-contributor` | Scripted flows against the running app (AR RTL + EN LTR), pass/fail with evidence |
+| QA head reviewer | `muse-wonder-1.0` | Manual call only, or very large/complex features; never by default |
+
+Contributor agents never touch real PII — escalate to `muse-spark-1.3` or Wonder (see [docs/agents/README.md](../agents/README.md)).
 
 A brief is complete only if a cold agent can finish from it + linked docs: exact files, interfaces from `DESIGN.md`, acceptance commands, stop conditions ("if the API shape differs from the guess, stop and report — do not improvise a second provider or a workaround that changes the design").
 

@@ -1,14 +1,14 @@
-# Segment 1 — Capability tests
+# Segment 1 — Capability tests (SAM 3.1, Muse Image)
 
-Status: stub · Depends on: Segment 0 (`lib/meta` client)
+Status: **done** (2026-10-27). Depends on: 0.
 
-Goal: Answer U1, U2, U3, U6, U7 from [DESIGN.md §7](../DESIGN.md) with runnable scripts before any staging code is built.
+Goal: Smallest tests before building on unknown Meta API shapes (DESIGN §7).
 
-Scope: `scripts/test-sam-segment.ts` (prompts desk/chair/window/floor, masks saved), `scripts/test-image-remove.ts` (furniture removal with mask if accepted). Key from `META_API_KEY`. Print timing + frames/images per call.
-Not in scope: pipeline integration, UI.
+Results:
+- U2 SAM 3.1: **dropped for now (future consideration).** `sam-3.1` is listed by `GET /v1/models`, but no callable segmentation endpoint exists in the OpenAI-shaped API. Prompt-guided `muse-image-1.0` removal passed on furnished + 2 bare units, 0 retries, so masks fix no observed failure. Revisit only if removal warps walls / leaves furniture, or a hosted SAM endpoint ships. Segmentation was never a Wonder cost — specs use `muse-spark-1.3`, renders `muse-image-1.0`.
+- U1/U3 image edits: `/v1/images/edits` (multipart, `muse-image-1.0`) works prompt-guided; empty + 3 restyles on the hero frame keep walls/floor consistent. Minor crop drift on one startup restyle, noted honestly.
+- U4 Spark structured JSON: specs + listing JSON validated on 3 units, honest nulls/confidence. Egyptian Arabic quality good.
+- U6 timings: chat 9–23s, image edits 11–74s.
 
-Tasks: _detailed at Checkpoint 2._
-Acceptance: both scripts run on the owned 3-desk-office footage; findings written into this file and, if removal quality or mask support changes the design, a DESIGN.md change proposed **before** Segment 3 starts.
-
-Decisions: —
-Handoff: —
+Decisions: pipeline is `scripts/run-unit.ts` (TS, `UNIT=full|empty1|empty2 STEP=probe|specs|listing|empty|restage pnpm pipeline`).
+Handoff: no SAM code anywhere; `MODELS.sam` kept in `lib/meta/client.ts` only as a documented placeholder.

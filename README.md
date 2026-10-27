@@ -64,3 +64,12 @@ BLOB_READ_WRITE_TOKEN=...
 ## Built during the hackathon
 
 Entries will be added here as features land. One logical change per commit; the git history is the record of work done during the hackathon.
+
+## Built during the hackathon
+
+- Video pipeline (scripts/run-unit.ts): keyframes -> specs -> bilingual listing -> AI empty -> 3 fit renders (startup/clinic/training) on 3 real units. SAM 3.1 dropped (no callable endpoint; prompt-guided edits passed) � future consideration.
+- 3-track catalog: furnished=daily+monthly (800 EGP/day demo), semifinished=long-term only.
+- Booking: daily day-slots (hourly underneath), atomic double-book protection, Egyptian-Arabic chat agent with cafe add-ons.
+- Option A add-ons: curated cafe menu (public Elmenus prices), order sent to the cafe WhatsApp line (CAFE_WHATSAPP_NUMBER).
+- Paymob test mode: real checkout + HMAC-verified webhook; booking confirms only on webhook. Set PAYMOB_* in .env.local.
+- Run: pnpm dev (or pnpm build && pnpm start). Data: Neon Postgres (DATABASE_URL_POOLED for app, DATABASE_URL direct for migrations; pnpm migrate && pnpm seed on a new project).

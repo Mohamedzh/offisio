@@ -1,69 +1,41 @@
+import Link from "next/link";
 import Image from "next/image";
+import { connection } from "next/server";
+import { listUnits } from "@/lib/db/store";
 
-export default function Home() {
+
+export const instant = false;
+
+export default async function Home({ searchParams }: { searchParams: Promise<{ lang?: string }> }) {
+  await connection();
+  const en = (await searchParams).lang === "en";
+  const units = await listUnits();
+  const tracksAr: Record<string, string> = { daily: "يومي", monthly: "شهري", long_term: "طويل الأجل" };
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="mx-auto w-full max-w-5xl px-4 py-8" dir={en ? "ltr" : "rtl"}>
+      <header className="flex items-center justify-between mb-6">
+        <div>
+          <h1 className="text-3xl font-bold">{en ? "Offisio" : "أوفيسيو"}</h1>
+          <p className="text-zinc-500">{en ? "Book a real office. See how it could fit you." : "احجز مكتب حقيقي، وشوف ممكن يتجهز إزاي ليك."}</p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="flex gap-2 text-sm">
+          <Link href="/chat" className="rounded-full bg-zinc-900 text-white px-4 py-2 dark:bg-white dark:text-zinc-900">{en ? "Chat to book" : "احجز بالمحادثة"}</Link>
+          <Link href={en ? "/" : "/?lang=en"} className="rounded-full border px-4 py-2">{en ? "عربي" : "English"}</Link>
         </div>
-      </main>
-    </div>
+      </header>
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {units.map((u) => (
+          <Link key={u.slug} href={`/units/${u.slug}${en ? "?lang=en" : ""}`} className="overflow-hidden rounded-2xl border bg-white dark:bg-zinc-900 hover:shadow-lg transition">
+            <div className="relative aspect-16/10"><Image src={u.images.real} alt="" fill className="object-cover" sizes="33vw" /></div>
+            <div className="p-4">
+              <h2 className="font-semibold leading-snug">{en ? u.title_en : u.title_ar}</h2>
+              <p className="text-sm text-zinc-500 mt-1">{u.district} · EGP {u.rent_egp.toLocaleString()}/mo{u.daily_egp ? ` · EGP ${u.daily_egp}/day` : ""}</p>
+              <p className="text-xs mt-2 flex gap-1 flex-wrap">{u.rent_periods.map((r) => <span key={r} className="rounded-full bg-zinc-100 dark:bg-zinc-800 px-2 py-0.5">{en ? r.replace("_", " ") : tracksAr[r]}</span>)}</p>
+              <p className="text-xs mt-2 text-zinc-500">{u.kind === "furnished" ? (en ? "Furnished" : "مفروش") : (en ? "Semifinished — your fit-out" : "نصف تشطيب — تجهيزك")}</p>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </main>
   );
 }

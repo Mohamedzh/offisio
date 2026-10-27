@@ -59,15 +59,19 @@ When a task grows, propose the smallest version that still demos well instead of
 
 One frontier-model architect (this session) plans; cheaper agents implement. Do not burn frontier tokens on bulk code writing.
 
-| Role | Model class | Gets | Must return |
-|---|---|---|---|
-| Architect (main session) | Frontier (Muse Wonder) | Goal, docs, checkpoints | Segment brief: exact files, interfaces, acceptance tests, stop conditions |
-| Implementor | Muse Spark class subagent | One segment brief, named files only | Diff + commands run + failures, no scope expansion |
-| Test writer | Muse Spark class subagent | Segment brief + acceptance list | Jest/Vitest tests that fail before and pass after, run output |
-| Reviewer | Muse Spark class subagent | Diff + brief | Findings by severity; approves or sends back, never rewrites silently |
-| Integration / UI tester | Muse Spark class subagent | Running app URL + scripted flows | Pass/fail per flow with evidence (status, screenshot/DOM note) |
+Role definitions live in [docs/agents/](docs/agents/README.md); spawn from those files verbatim.
 
-Rules: briefs are self-contained (a fresh agent with no session history must succeed from the brief + linked docs alone). One segment per subagent. The architect reviews diffs, never re-derives them from memory. Full detail: [docs/plan/README.md](docs/plan/README.md).
+| Role | Model | Gets | Must return |
+|---|---|---|---|
+| Architect / planner (main session) | `muse-wonder-1.0` | Goal, docs, checkpoints | Segment brief: exact files, interfaces, acceptance tests, stop conditions |
+| Implementor | `muse-spark-1.3-contributor` | One segment brief, named files only | Diff + commands run + failures, no scope expansion |
+| Test writer & runner | `muse-spark-1.3-contributor` | Segment brief + acceptance list | Jest/Vitest tests that fail before and pass after, run output |
+| Reviewer | `muse-spark-1.3-contributor` | Diff + brief | Findings by severity; approves or sends back, never rewrites silently |
+| QA integrity | `muse-spark-1.3-contributor` | Pipeline/API surface + synthetic fixtures | Pass/fail per check with evidence; gaps named |
+| QA UI | `muse-spark-1.3-contributor` | Running app URL + scripted flows | Pass/fail per flow (AR RTL + EN LTR) with evidence |
+| QA head reviewer | `muse-wonder-1.0` | Full diff + all QA evidence | Ship / fix-first verdict; manual call or very large/complex features only |
+
+Rules: briefs are self-contained (a fresh agent with no session history must succeed from the brief + linked docs alone). One segment per subagent. The architect reviews diffs, never re-derives them from memory. Contributor agents never touch real PII (names, phones, transcripts, voice notes) — escalate those tasks to `muse-spark-1.3` or Wonder. Full detail: [docs/plan/README.md](docs/plan/README.md).
 
 ## Working in segments (avoid long sessions)
 

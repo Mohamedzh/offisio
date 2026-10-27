@@ -1,0 +1,27 @@
+{
+  "owner": {
+    "district": "Cairo",
+    "rent_egp": 10000,
+    "floor_text": "1st to 7th",
+    "available_from": "2026-10-27",
+    "video": "public/demo/full.mp4",
+    "kind": "furnished"
+  },
+  "specs": {
+    "area_m2_estimate": 14,
+    "windows_count": 1,
+    "window_orientation_hint": "unknown",
+    "has_ac": null,
+    "ac_units_visible": null,
+    "desk_capacity": 4,
+    "condition": "good",
+    "flooring": "carpet",
+    "natural_light": "dim",
+    "notes_ar": "مكتب صغير مفروش أرضيته سجاد رمادي ويضم 3-4 مكاتب بيضاء مع كراسي، الجدران بيضاء بحالة جيدة، توجد نافذة عليها ستارة ولا يظهر تكييف في الصور.",
+    "confidence": {
+      "area_m2_estimate": 0.4,
+      "desk_capacity": 0.6,
+      "condition": 0.7
+    }
+  }
+}
