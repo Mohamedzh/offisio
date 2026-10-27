@@ -66,25 +66,26 @@ export default function UploadForm({ locale }: { locale: Locale }) {
     } catch (e) { setMsg((e as Error).message); setBusy(false); }
   }
 
-  const inputCls = "mt-1 w-full rounded-lg border p-2 bg-transparent";
+  const inputCls = "mt-1 w-full rounded-none border border-ink bg-sheet p-2 focus:outline-none focus:ring-2 focus:ring-chalk focus:ring-offset-1";
   return (
     <div className="space-y-4">
       <div>
         <label className="block text-sm">{t("upload.video")}
           <input ref={inputRef} type="file" accept="video/*" onChange={(e) => onVideo(e.target.files?.[0])} className="mt-1 block w-full text-sm" />
         </label>
-        <p className="text-xs text-zinc-500 mt-1">{t("upload.videoHint")}</p>
+        <p className="text-xs text-ink/75 mt-1">{t("upload.videoHint")}</p>
       </div>
-      {extracting && <p className="text-sm text-zinc-500">{t("upload.extracting")}</p>}
+      {extracting && <p className="inline-block bg-ink text-sheet text-[11px] uppercase tracking-wide px-2 py-0.5">{t("upload.extracting")}</p>}
+      {busy && <p className="inline-block bg-ink text-sheet text-[11px] uppercase tracking-wide px-2 py-0.5">{t("upload.processing")}</p>}
       {frames.length > 0 && (
         <div>
           <p className="text-sm font-medium">{t("upload.pickHero")} · {t("upload.framesReady", { count: frames.length })}</p>
           <div className="mt-2 grid grid-cols-3 gap-2">
             {frames.map((f, i) => (
-              <button key={f.url} type="button" onClick={() => setHero(i)} className={`relative overflow-hidden rounded-xl border ${i === hero ? "ring-2 ring-zinc-900 dark:ring-white" : ""}`}>
+              <button key={f.url} type="button" onClick={() => setHero(i)} className={`relative overflow-hidden rounded-none border border-ink bg-sheet p-1 ${i === hero ? "outline-2 outline-ink outline-offset-1" : "opacity-80"}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={f.url} alt="" className="aspect-video w-full object-cover" />
-                {i === hero && <span className="absolute bottom-1 start-1 rounded-full bg-black/70 px-2 py-0.5 text-xs text-white">{t("upload.hero")}</span>}
+                {i === hero && <span className="absolute bottom-2 inset-s-2 bg-ink text-sheet px-2 py-0.5 text-[11px] uppercase tracking-wide">{t("upload.hero")}</span>}
               </button>
             ))}
           </div>
@@ -102,8 +103,8 @@ export default function UploadForm({ locale }: { locale: Locale }) {
           <option value="furnished">{t("upload.furnished")}</option>
           <option value="semifinished">{t("upload.semifinished")}</option>
         </select></label>
-      {msg && <p className="text-sm text-red-600">{msg}</p>}
-      <button disabled={busy || extracting || frames.length < 3 || !district || !rent || !floor || !availableFrom} onClick={submit} className="w-full rounded-full bg-zinc-900 text-white py-2.5 disabled:opacity-40 dark:bg-white dark:text-zinc-900">{busy ? t("upload.processing") : t("upload.submit")}</button>
+      {msg && <p className="text-sm font-bold text-brick">{msg}</p>}
+      <button disabled={busy || extracting || frames.length < 3 || !district || !rent || !floor || !availableFrom} onClick={submit} className="w-full bg-brick text-white font-bold uppercase py-2.5 disabled:bg-sheet disabled:text-ink/50 disabled:border disabled:border-ink/40">{busy ? t("upload.processing") : t("upload.submit")}</button>
     </div>
   );
 }

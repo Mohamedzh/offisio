@@ -31,26 +31,26 @@ export default function BookingForm({ slug, dailyEgp, locale }: { slug: string; 
   }
 
   return (
-    <div className="rounded-2xl border bg-white dark:bg-zinc-900 p-4 space-y-3">
-      <h3 className="font-semibold">{t("booking.bookDay")} — {formatEgp(locale, dailyEgp ?? 0)}{t("unit.perDay")}</h3>
+    <div className="border border-ink bg-sheet p-5 space-y-3 ink-offset-sm">
+      <h3 className="font-display font-black text-lg">{t("booking.bookDay")} — <span className="tnum">{formatEgp(locale, dailyEgp ?? 0)}{t("unit.perDay")}</span></h3>
       <label className="block text-sm">{t("booking.date")}
-        <select value={date} onChange={(e) => setDate(e.target.value)} className="mt-1 w-full rounded-lg border p-2 bg-transparent">
+        <select value={date} onChange={(e) => setDate(e.target.value)} className="mt-1 w-full rounded-none border border-ink bg-sheet p-2 focus:outline-none focus:ring-2 focus:ring-chalk focus:ring-offset-1">
           {days.map((d) => <option key={d.date} value={d.date} disabled={!d.day_free}>{d.date}{d.day_free ? "" : t("booking.booked")}</option>)}
         </select></label>
-      <input value={name} onChange={(e) => setName(e.target.value)} placeholder={t("booking.name")} className="w-full rounded-lg border p-2 bg-transparent" />
-      <input value={phone} onChange={(e) => setPhone(e.target.value)} placeholder={t("booking.phone")} className="w-full rounded-lg border p-2 bg-transparent" dir="ltr" />
+      <input value={name} onChange={(e) => setName(e.target.value)} placeholder={t("booking.name")} className="w-full rounded-none border border-ink bg-sheet p-2 focus:outline-none focus:ring-2 focus:ring-chalk focus:ring-offset-1" />
+      <input value={phone} onChange={(e) => setPhone(e.target.value)} placeholder={t("booking.phone")} className="w-full rounded-none border border-ink bg-sheet p-2 focus:outline-none focus:ring-2 focus:ring-chalk focus:ring-offset-1" dir="ltr" />
       <div>
-        <p className="text-sm font-medium mb-1">{t("booking.addons")}</p>
+        <p className="text-sm font-bold mb-1">{t("booking.addons")}</p>
         {addons.map((a) => (
-          <label key={a.id} className="flex items-center justify-between gap-2 py-1 text-sm">
+          <label key={a.id} className="tnum flex items-center justify-between gap-2 border-b border-ink/25 py-2 text-sm">
             <span>{locale === "en" ? a.name_en : a.name_ar} — {formatEgp(locale, a.price_egp)}</span>
-            <input type="number" min={0} max={10} value={picked[a.id] ?? 0} onChange={(e) => setPicked({ ...picked, [a.id]: Number(e.target.value) })} className="w-16 rounded border p-1 bg-transparent" />
+            <input type="number" min={0} max={10} value={picked[a.id] ?? 0} onChange={(e) => setPicked({ ...picked, [a.id]: Number(e.target.value) })} className="w-16 rounded-none border border-ink bg-sheet p-1 focus:outline-none focus:ring-2 focus:ring-chalk" />
           </label>
         ))}
       </div>
-      <p className="font-semibold">{t("booking.total")}: {formatEgp(locale, total)}</p>
-      {msg && <p className="text-sm text-red-600">{msg}</p>}
-      <button disabled={busy || !date || !name || !phone} onClick={book} className="w-full rounded-full bg-zinc-900 text-white py-2.5 disabled:opacity-40 dark:bg-white dark:text-zinc-900">{busy ? "..." : t("booking.confirmPay")}</button>
+      <p className="tnum bg-ink text-sheet px-3 py-2 font-display font-black flex justify-between"><span>{t("booking.total")}</span><span>{formatEgp(locale, total)}</span></p>
+      {msg && <p className="text-sm font-bold text-brick">{msg}</p>}
+      <button disabled={busy || !date || !name || !phone} onClick={book} className="w-full bg-brick text-white font-bold uppercase py-2.5 disabled:opacity-40">{busy ? "..." : t("booking.confirmPay")}</button>
     </div>
   );
 }

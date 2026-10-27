@@ -9,5 +9,5 @@ export default function LangToggle({ locale }: { locale: Locale }) {
     document.cookie = `${LOCALE_COOKIE}=${next}; path=/; max-age=31536000; samesite=lax`;
     router.push(switchLocalePath(pathname, next));
   }
-  return <button onClick={switchTo} className="rounded-full border px-4 py-2 text-sm">{t("nav.switchLocale")}</button>;
+  return <button onClick={switchTo} className="border border-ink bg-sheet px-4 py-2 text-sm font-bold">{t("nav.switchLocale")}</button>;
 }

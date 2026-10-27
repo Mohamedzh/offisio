@@ -35,7 +35,7 @@ export default function SpecsEditForm({ slug, specs, locale }: { slug: string; s
     } catch (e) { setMsg((e as Error).message); } finally { setBusy(false); }
   }
 
-  const inputCls = "mt-1 w-full rounded-lg border p-2 bg-transparent";
+  const inputCls = "mt-1 w-full rounded-none border border-ink bg-sheet p-2 focus:outline-none focus:ring-2 focus:ring-chalk focus:ring-offset-1";
   return (
     <div className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-2">
@@ -58,9 +58,9 @@ export default function SpecsEditForm({ slug, specs, locale }: { slug: string; s
         <label className="flex items-center gap-2 text-sm pt-6"><input type="checkbox" checked={hasAc} onChange={(e) => setHasAc(e.target.checked)} />{t("spec.hasAc")}</label>
       </div>
       <label className="block text-sm">{t("spec.notes")}<input value={notes} onChange={(e) => setNotes(e.target.value)} className={inputCls} /></label>
-      <p className="text-xs text-zinc-500">{t("edit.note")}</p>
-      {msg && <p className="text-sm text-zinc-600 dark:text-zinc-300">{msg}</p>}
-      <button disabled={busy} onClick={save} className="rounded-full bg-zinc-900 text-white px-5 py-2.5 disabled:opacity-40 dark:bg-white dark:text-zinc-900">{t("edit.save")}</button>
+      <p className="text-xs text-ink/75">{t("edit.note")}</p>
+      {msg && <p className="text-sm font-bold text-ink">{msg}</p>}
+      <button disabled={busy} onClick={save} className="bg-brick text-white font-bold uppercase px-5 py-2.5 disabled:opacity-40">{t("edit.save")}</button>
     </div>
   );
 }

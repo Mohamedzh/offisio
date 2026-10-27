@@ -1,25 +1,70 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+@theme {
+  --color-board: #D8D3C6;
+  --color-sheet: #EFEAE0;
+  --color-torn: #F3EDDD;
+  --color-ink: #211D17;
+  --color-chalk: #2F5468;
+  --color-brick: #A63A2A;
+  --color-mustard: #C99A3C;
+  --font-display: "Cairo", "Segoe UI", Tahoma, Arial, sans-serif;
   --font-sans: "Segoe UI", Tahoma, Arial, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body {
+  overflow-x: clip;
+  background-color: var(--color-board);
+  background-image: radial-gradient(rgba(33, 29, 23, 0.07) 1px, transparent 1.1px), radial-gradient(rgba(33, 29, 23, 0.045) 1px, transparent 1.1px);
+  background-size: 22px 22px, 34px 34px;
+  background-position: 0 0, 9px 13px;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+::selection { background: var(--color-mustard); color: var(--color-ink); }
+:focus-visible { outline: 2px solid var(--color-chalk); outline-offset: 2px; }
+.tnum { font-variant-numeric: tabular-nums; }
+
+/* Soft offset sheet shadow (torn sheets on the board) */
+.ink-offset { box-shadow: 8px 12px 28px rgba(33, 29, 23, 0.22); }
+.ink-offset-sm { box-shadow: 5px 7px 18px rgba(33, 29, 23, 0.18); }
+
+/* Torn edge strips: fibrous raster mask (public/torn-edge.jpg, generated) */
+.torn-b, .torn-t {
+  height: 18px;
+  background: var(--color-torn);
+  flex: none;
+  -webkit-mask-image: url("/torn-edge.jpg");
+  mask-image: url("/torn-edge.jpg");
+  -webkit-mask-size: 560px 100%;
+  mask-size: 560px 100%;
+  -webkit-mask-repeat: repeat-x;
+  mask-repeat: repeat-x;
+}
+.tear-seam {
+  height: 26px;
+  background: var(--color-torn);
+  -webkit-mask-image: url("/torn-edge.jpg");
+  mask-image: url("/torn-edge.jpg");
+  -webkit-mask-size: 560px 100%;
+  mask-size: 560px 100%;
+  -webkit-mask-repeat: repeat-x;
+  mask-repeat: repeat-x;
+  transform: scaleY(-1);
+}
+.torn-t { transform: scaleY(-1); }
+
+/* UnitViewer tear reveal: top layer clipped, jagged edge at bottom 18% */
+.tear-layer {
+  clip-path: polygon(0 0, 100% 0, 100% 92%, 96% 96%, 93% 90%, 88% 97%, 84% 93%, 76% 98%, 71% 91%, 64% 96%, 58% 92%, 50% 97%, 44% 90%, 37% 95%, 31% 92%, 24% 97%, 18% 91%, 12% 96%, 7% 93%, 3% 97%, 0 92%);
+  animation: tear-in 500ms ease-out;
+}
+@keyframes tear-in {
+  from { clip-path: polygon(0 0, 100% 0, 100% 100%, 96% 100%, 93% 100%, 88% 100%, 84% 100%, 76% 100%, 71% 100%, 64% 100%, 58% 100%, 50% 100%, 44% 100%, 37% 100%, 31% 100%, 24% 100%, 18% 100%, 12% 100%, 7% 100%, 3% 100%, 0 100%); }
+  to { clip-path: polygon(0 0, 100% 0, 100% 92%, 96% 96%, 93% 90%, 88% 97%, 84% 93%, 76% 98%, 71% 91%, 64% 96%, 58% 92%, 50% 97%, 44% 90%, 37% 95%, 31% 92%, 24% 97%, 18% 91%, 12% 96%, 7% 93%, 3% 97%, 0 92%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tear-layer { animation: none; transition: none; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; }
 }

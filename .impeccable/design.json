@@ -1,0 +1,21 @@
+{
+  "name": "Offisio Torn Layers",
+  "direction": "design-canon-decollage-torn-billboard",
+  "seed": "seed:61aa4d49ce200241",
+  "colors": {
+    "board": "#D8D3C6",
+    "sheet": "#EFEAE0",
+    "torn": "#F3EDDD",
+    "ink": "#211D17",
+    "chalk": "#2F5468",
+    "brick": "#A63A2A",
+    "mustard": "#C99A3C"
+  },
+  "fonts": {
+    "display": "Cairo (800/900, next/font/google, OFL, arabic+latin)",
+    "body": "system sans"
+  },
+  "assets": {
+    "tornEdgeMask": "public/torn-edge.jpg"
+  }
+}

@@ -13,12 +13,17 @@ export default async function BookingPage({ params }: PageProps<"/[lang]/booking
   return (
     <main className="mx-auto w-full max-w-2xl px-4 py-8">
       <div className="flex items-center justify-between">
-        <Link href={localeHref("/", locale)} className="text-sm text-zinc-500">← {t("nav.allOffices")}</Link>
+        <Link href={localeHref("/", locale)} className="text-sm font-bold text-ink">← {t("nav.allOffices")}</Link>
         <LangToggle locale={locale} />
       </div>
-      <h1 className="text-2xl font-bold mt-2 mb-4">{t("bookingPage.title")}</h1>
-      <BookingActions id={id} locale={locale} />
-      <p className="text-xs text-zinc-500 mt-4">{t("bookingPage.note")}</p>
+      <div className="mt-4 border border-ink bg-sheet ink-offset">
+        <div className="torn-b" aria-hidden />
+        <div className="p-5">
+          <h1 className="font-display text-3xl font-black tracking-[-0.02em] mb-4">{t("bookingPage.title")}</h1>
+          <BookingActions id={id} locale={locale} />
+          <p className="text-xs text-ink/75 mt-4">{t("bookingPage.note")}</p>
+        </div>
+      </div>
     </main>
   );
 }

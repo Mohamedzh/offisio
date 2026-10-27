@@ -22,18 +22,18 @@ export default function BookingActions({ id, locale }: { id: string; locale: Loc
 
   return (
     <div className="space-y-4">
-      <div className="border p-5 bg-white dark:bg-zinc-900">
-        <p className="text-sm text-zinc-500">{t("bookingCard.booking")} {b.id} · {t("bookingCard.unit")} {b.unit_slug}</p>
-        <p className="text-2xl font-bold mt-1">{formatEgp(locale, b.total_egp)}</p>
-        <p className="mt-1">{t("bookingCard.status")}: <strong>{b.status}</strong></p>
-        {b.addons.length > 0 && <ul className="text-sm mt-2 space-y-1">{b.addons.map((a, i) => <li key={i}>{a.qty} × {a.name_en} — {formatEgp(locale, a.qty * a.unit_price_egp)}</li>)}</ul>}
+      <div className="border border-ink p-5 bg-sheet">
+        <p className="text-[11px] uppercase tracking-wide text-ink/75">{t("bookingCard.booking")} {b.id} · {t("bookingCard.unit")} {b.unit_slug}</p>
+        <div className="flex justify-between border-b border-ink/25 py-2 text-sm"><span>{t("bookingCard.status")}</span><strong>{b.status}</strong></div>
+        {b.addons.length > 0 && <ul className="text-sm">{b.addons.map((a, i) => <li key={i} className="tnum flex justify-between border-b border-ink/25 py-2"><span>{a.qty} × {a.name_en}</span><span>{formatEgp(locale, a.qty * a.unit_price_egp)}</span></li>)}</ul>}
+        <p className="tnum mt-3 bg-ink text-sheet font-display text-2xl font-black px-3 py-2 flex justify-between"><span>{formatEgp(locale, b.total_egp)}</span></p>
       </div>
-      {msg && <p className="text-sm text-amber-700 bg-amber-50 border border-amber-200 p-3">{msg}</p>}
-      {b.status === "awaiting_payment" && <button disabled={busy} onClick={pay} className="w-full bg-zinc-900 text-white py-3 disabled:opacity-40 dark:bg-white dark:text-zinc-900">{t("bookingCard.pay")}</button>}
+      {msg && <p className="text-sm font-bold text-ink bg-mustard/40 border border-ink p-3">{msg}</p>}
+      {b.status === "awaiting_payment" && <button disabled={busy} onClick={pay} className="w-full bg-brick text-white font-bold uppercase py-3 disabled:opacity-40">{t("bookingCard.pay")}</button>}
       {b.status === "confirmed" && b.cafe_whatsapp_url && (
-        <a href={b.cafe_whatsapp_url} target="_blank" rel="noreferrer" className="block text-center w-full bg-emerald-700 text-white py-3">{t("bookingCard.whatsapp")}</a>
+        <a href={b.cafe_whatsapp_url} target="_blank" rel="noreferrer" className="block text-center w-full bg-chalk text-white font-bold uppercase py-3">{t("bookingCard.whatsapp")}</a>
       )}
-      {b.status === "confirmed" && !b.cafe_whatsapp_url && <p className="text-sm text-zinc-500">{t("bookingCard.cafeNotConfigured")}</p>}
+      {b.status === "confirmed" && !b.cafe_whatsapp_url && <p className="text-sm text-ink/75">{t("bookingCard.cafeNotConfigured")}</p>}
       <button onClick={load} className="text-sm underline">{t("bookingCard.refresh")}</button>
     </div>
   );

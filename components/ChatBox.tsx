@@ -27,17 +27,17 @@ export default function ChatBox({ locale }: { locale: Locale }) {
   }
 
   return (
-    <div className="flex flex-col border bg-white dark:bg-zinc-900 h-[70vh]">
+    <div className="flex flex-col border border-ink bg-board/40 h-[70vh]">
       <div className="flex-1 overflow-y-auto p-4 space-y-3">
         {msgs.map((m, i) => (
-          <div key={i} className={`max-w-[85%] px-3 py-2 text-sm leading-relaxed ${m.role === "user" ? "ms-auto bg-zinc-900 text-white dark:bg-white dark:text-zinc-900" : "me-auto bg-zinc-100 dark:bg-zinc-800"}`}>{m.content}</div>
+          <div key={i} className={`max-w-[85%] px-3 py-2 text-sm leading-relaxed ${m.role === "user" ? "ms-auto bg-chalk text-white" : "me-auto bg-sheet border border-ink text-ink"}`}>{m.content}</div>
         ))}
-        {busy && <p className="text-xs text-zinc-500">{t("chat.typing")}</p>}
+        {busy && <p className="text-xs text-ink/75">{t("chat.typing")}</p>}
       </div>
-      {bookingId && <Link href={localeHref(`/booking/${bookingId}`, locale)} className="mx-4 mb-2 text-center bg-emerald-700 text-white py-2 text-sm">{t("chat.completePayment")}</Link>}
-      <div className="flex gap-2 p-3 border-t">
-        <input value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => e.key === "Enter" && send()} placeholder={t("chat.placeholder")} className="flex-1 border p-2 bg-transparent" />
-        <button onClick={send} disabled={busy} className="bg-zinc-900 text-white px-4 disabled:opacity-40 dark:bg-white dark:text-zinc-900">{t("chat.send")}</button>
+      {bookingId && <Link href={localeHref(`/booking/${bookingId}`, locale)} className="mx-4 mb-2 text-center bg-chalk text-white font-bold py-2 text-sm">{t("chat.completePayment")}</Link>}
+      <div className="flex gap-2 p-3 border-t border-ink bg-sheet">
+        <input value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => e.key === "Enter" && send()} placeholder={t("chat.placeholder")} className="flex-1 rounded-none border border-ink bg-sheet p-2 focus:outline-none focus:ring-2 focus:ring-chalk focus:ring-offset-1" />
+        <button onClick={send} disabled={busy} className="bg-brick text-white font-bold uppercase px-4 disabled:opacity-40">{t("chat.send")}</button>
       </div>
     </div>
   );

@@ -48,3 +48,8 @@ next-env.d.ts
 
 public/demo
 /public/uploads/
+
+# local design tooling (not shipped, not committed)
+/.agents/skills/impeccable/
+/.impeccable/review/
+/.impeccable/mocks/

@@ -13,18 +13,23 @@ export default function UnitViewer({ images, locale }: { images: { real: string;
     { key: "training", label: t("viewer.fitTraining"), src: images.fits.training },
   ].filter((v) => v.src);
   const [active, setActive] = useState(views[0]);
+  const [prev, setPrev] = useState(() => views.find((v) => v.key === "empty") ?? views[0]);
+  function pick(v: (typeof views)[number]) { setPrev(active); setActive(v); }
   return (
     <div>
-      <div className="relative aspect-[4/5] sm:aspect-[16/10] overflow-hidden rounded-2xl bg-zinc-200">
-        <Image src={active.src} alt={active.label} fill className="object-cover" sizes="100vw" priority />
-        <span className="absolute bottom-3 start-3 rounded-full bg-black/70 px-3 py-1 text-xs text-white">{active.label}</span>
+      <div className="relative aspect-[4/5] sm:aspect-[16/10] overflow-hidden border border-ink bg-torn">
+        {prev && prev.key !== active.key && <Image src={prev.src} alt="" fill className="object-cover" sizes="100vw" />}
+        <Image key={active.key} src={active.src} alt={active.label} fill className="object-cover tear-layer" sizes="100vw" priority />
+        <div className="tear-seam absolute inset-x-0 bottom-[5%] pointer-events-none" aria-hidden />
+        <span className="absolute bottom-3 start-3 bg-ink text-sheet px-2 py-0.5 text-[11px] uppercase tracking-wide">{active.label}</span>
       </div>
+      <div className="torn-b" aria-hidden />
       <div className="mt-3 flex flex-wrap gap-2">
         {views.map((v) => (
-          <button key={v.key} onClick={() => setActive(v)} className={`rounded-full px-3 py-1.5 text-sm border ${active.key === v.key ? "bg-zinc-900 text-white dark:bg-white dark:text-zinc-900" : "bg-white dark:bg-zinc-900"}`}>{v.label}</button>
+          <button key={v.key} onClick={() => pick(v)} className={`px-3 py-1.5 text-sm border border-ink font-bold ${active.key === v.key ? "bg-ink text-sheet" : "bg-sheet text-ink"}`}>{v.label}</button>
         ))}
       </div>
-      <p className="mt-2 text-xs text-zinc-500">{t("viewer.fitNote")}</p>
+      <p className="mt-2 text-xs text-ink/75">{t("viewer.fitNote")}</p>
     </div>
   );
 }

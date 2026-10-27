@@ -28,9 +28,13 @@ Acceptance: full demo path run cold on preview by someone other than the builder
 - **Owner upload UI + live ingest (done, live-verified):** `/[lang]/upload` owner form (district, rent, daily rent, floor, available-from, kind) + browser keyframe extraction (`components/UploadForm.tsx`, `<video>`+canvas, 6–10 JPEGs, hero pick). `POST /api/units/upload` validates, writes frames to `public/uploads/<slug>/`, runs specs (S3) + listing (S4) via `lib/pipeline/specs-listing.ts` (`meta.product`, validated, one retry), seeds 7 days × 10:00–17:00 availability, marks unit `ready`. Specs owner-edit at `/[lang]/units/[slug]/edit` + `POST /api/units/specs` (sets `owner_edited=true`). Runtime-written `public/` files are served by `app/uploads/[slug]/[file]/route.ts` (Next prod does not serve them statically); `public/uploads/` is gitignored. Verified on `pnpm start`: `/en|/ar/upload` 200 (RTL ok), empty upload 400, specs unknown slug 404, live ingest with a real frame 201 → unit page 200 → image 200 `image/jpeg` → specs edit persisted. Smoke unit + files deleted after (Neon back to 3 seeded units). Gates: lint/typecheck/build pass.
 - Decisions: no auth (deferred by owner); no new dependency — local-disk frame storage for now, **Vercel Blob is required at deploy step** (`BLOB_READ_WRITE_TOKEN` unset); restage/empty renders NOT run on upload yet (next slice, re-runnable step).
 
+## Progress (2026-10-27, Torn Layers redesign — uncommitted)
+
+- **All pages remade in Impeccable "Torn Layers"** (décollage poster wall; owner picked it over broker-sheet/café-receipt after a concept-seed roll; PRODUCT.md captured, code-led). Tokens in `app/globals.css`, Cairo display via `next/font/google`, fibrous torn-edge mask `public/torn-edge.jpg` (generated, prompt embedded), UnitViewer tear-reveal signature. System recorded in root [DESIGN.md](../../DESIGN.md) + `.impeccable/design.json`; brief in `.impeccable/surfaces/`. Verified: lint/typecheck/build 0, detector `[]`, Playwright captures AR+EN desktop/mobile incl. fit-switch click; finish reviewer first round `fix` (7 items, all applied; verdict pass by direct capture inspection, AR-mobile-unit recapture partial). Impeccable skill installed at `.agents/skills/impeccable` and **gitignored** (local tooling only, never committed).
+
 ## Next steps (in order)
 
-1. Commit this upload slice (one logical commit), clear message per AGENTS.md.
+1. Commit the upload slice + Torn Layers redesign (logical commits), clear messages per AGENTS.md.
 2. Restage on upload: run S5 empty + S6 fits for the hero frame as a separate re-runnable step (button/API), so uploaded units get the before/after + fit views; before/after slider polish.
 3. Set real `CAFE_WHATSAPP_NUMBER` and `NEXT_PUBLIC_APP_URL` in `.env.local` (and later Vercel) so deployed Paymob webhooks/redirection work.
 4. Run the 10 scripted Egyptian-Arabic chat conversations (Segment 4 acceptance).
