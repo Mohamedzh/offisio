@@ -1,6 +1,6 @@
 # Offisio — Implementation Plan (index)
 
-Status: **Segments 1–4 done for demo scope; Paymob Unified + `[lang]` i18n done & live-verified (2026-10-27).** Next session: start here, then [plan/05-demo-polish.md](plan/05-demo-polish.md) — nothing else unless named. **All 2026-10-27 work below is staged in git, NOT committed** (`git status` shows it; commit it first, small commits per AGENTS.md).
+Status: **Segments 1–5 in progress; Blob storage + new homepage committed & deployed, live-checked 2026-10-28 at https://offisio.vercel.app/en (all pages 200, 16/16 Blob media 200, critique 15/28 in [plan/05-demo-polish.md](plan/05-demo-polish.md)).** Next session: start here, then [plan/05-demo-polish.md](plan/05-demo-polish.md) — nothing else unless named.
 
 Work is split into segments so each runs in a fresh chat session with a small context. Protocol: [plan/README.md](plan/README.md).
 
@@ -21,12 +21,12 @@ Done 2026-10-27 (evidence in [plan/05-demo-polish.md](plan/05-demo-polish.md)):
 Done 2026-10-27 (upload slice, uncommitted): owner upload UI + live ingest at `/[lang]/upload` (browser keyframes → S3 specs + S4 listing via `lib/pipeline/`), specs owner-edit form, runtime frame serving via `app/uploads/[slug]/[file]/route.ts`. Live-verified end to end; smoke data cleaned. Auth deferred by owner decision. Detail: [plan/05-demo-polish.md](plan/05-demo-polish.md).
 
 Open items for Segment 5 / next session (in order):
-1. Commit the upload slice.
+1. Homepage critique fixes (2026-10-28 snapshot): varied seed districts/prices; spec line on listing cards; single renter CTA above fold; Real/Emptied labels + factual alt on featured card; mobile headline/header polish.
 2. Restage on upload (S5 empty + S6 fits as re-runnable step) + before/after slider polish.
 3. Add real `CAFE_WHATSAPP_NUMBER` + set `NEXT_PUBLIC_APP_URL` (needed for Paymob notification/redirection URLs in deployed env).
 4. 10 scripted Egyptian-Arabic chat conversations (incl. slot-taken, no-results) — Segment 4 acceptance not yet fully run.
 5. Single-style restage re-run in `scripts/run-unit.ts`; replace any drifted demo asset.
-6. Deploy preview (Vercel) + Neon/Paymob/Blob env there, cold full-demo run; demo video by Nov 3.
+6. Cold full-demo run on the deployed site by someone other than the builder; demo video by Nov 3.
 
 Env contract (`.env.local`, never committed; template `.env.example` is tracked): `META_API_KEY`, `DATABASE_URL` (direct, migrations), `DATABASE_URL_POOLED` (app), `PAYMOB_SECRET_KEY`, `NEXT_PUBLIC_PAYMOB_PUBLIC_KEY`, `PAYMOB_HMAC_SECRET`, `PAYMOB_INTEGRATION_ID`, `NEXT_PUBLIC_APP_URL`, `CAFE_WHATSAPP_NUMBER`.
 

@@ -20,6 +20,15 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
   const units = await listUnits();
   const featured = units.find((u) => u.images.empty) ?? units[0];
   const rest = units.filter((u) => u !== featured);
+  // One comparable spec line per card: area · desks · floor (from specs JSON).
+  const specLine = (u: (typeof units)[number]): string => {
+    const s = u.specs as { area_m2_estimate?: unknown; desk_capacity?: unknown };
+    const parts: string[] = [];
+    if (typeof s.area_m2_estimate === "number") parts.push(`~${s.area_m2_estimate} m²`);
+    if (typeof s.desk_capacity === "number") parts.push(t("home.desks", { count: s.desk_capacity }));
+    if (u.floor_text) parts.push(`${t("unit.floors")} ${u.floor_text}`);
+    return parts.join(" · ");
+  };
   const steps: [string, string][] = [
     [t("home.step1Title"), t("home.step1Body")],
     [t("home.step2Title"), t("home.step2Body")],
@@ -30,7 +39,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       <header className="flex flex-wrap items-center justify-between gap-3 border border-ink bg-sheet px-4 py-3 ink-offset-sm mb-8">
         <span className="font-display text-2xl font-black tracking-[-0.02em]">{t("brand")}</span>
         <div className="flex flex-wrap gap-2 text-sm items-center">
-          <Link href={localeHref("/upload", locale)} className="border border-ink bg-sheet px-4 py-2 font-bold">{t("nav.listOffice")}</Link>
+          <Link href={localeHref("/upload", locale)} className="px-2 py-2 font-bold underline underline-offset-4">{t("nav.listOffice")}</Link>
           <Link href={localeHref("/chat", locale)} className="bg-brick text-white px-4 py-2 font-bold uppercase">{t("nav.chatToBook")}</Link>
           <LangToggle locale={locale} />
         </div>
@@ -42,13 +51,13 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           {(() => { const tag = t("home.tagline"); const m = tag.match(/^(.+?[.،])\s*(.*)$/); return (
             <h1 className="font-display font-black tracking-[-0.02em] leading-[1.05] text-4xl sm:text-5xl"><span className="text-ink">{m ? m[1] : tag}</span>{m?.[2] && <span className="text-chalk"> {m[2]}</span>}</h1> ); })()}
           <p className="mt-4 leading-relaxed text-ink/85">{t("home.sub")}</p>
-          <div className="mt-6 flex flex-wrap gap-3">
+          <div className="mt-6 flex flex-wrap items-center gap-4">
             <a href="#real-offices" className="bg-brick text-white font-bold uppercase px-5 py-3 ink-offset-sm">{t("home.browse")}</a>
-            <Link href={localeHref("/chat", locale)} className="border border-ink bg-sheet font-bold px-5 py-3">{t("nav.chatToBook")}</Link>
+            <Link href={localeHref("/chat", locale)} className="font-bold underline underline-offset-4">{t("nav.chatToBook")}</Link>
           </div>
         </div>
-        <figure className="md:col-span-7 -rotate-[0.7deg]">
-          <div className="relative aspect-[3/2] overflow-hidden border border-ink bg-sheet ink-offset">
+        <figure className="md:col-span-7 rotate-[-0.7deg]">
+          <div className="relative aspect-3/2 overflow-hidden border border-ink bg-sheet ink-offset">
             <Image src="/home/hero-office.jpg" alt="" fill className="object-cover" sizes="(min-width: 768px) 58vw, 100vw" priority />
             <span className={decorativeBadge}>{t("home.decorative")}</span>
           </div>
@@ -90,6 +99,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
               <div>
                 <h3 className="font-display text-2xl sm:text-3xl font-black tracking-[-0.02em] leading-snug">{locale === "en" ? featured.title_en : featured.title_ar}</h3>
                 <p className="text-sm text-ink/75 mt-1">{featured.district}</p>
+                {specLine(featured) && <p className="tnum text-sm font-bold mt-1">{specLine(featured)}</p>}
                 <p className="text-xs mt-2 flex gap-1 flex-wrap"><span className={chip}>{featured.kind === "furnished" ? t("unit.furnished") : t("unit.semifinished")}</span>{featured.rent_periods.map((r) => <span key={r} className={chip}>{t(`track.${r}` as "track.daily")}</span>)}</p>
               </div>
               <span className="tnum bg-brick text-white font-display font-black text-xl px-3 py-1.5 ink-offset-sm">{formatEgp(locale, featured.rent_egp)}{t("unit.perMonth")}</span>
@@ -99,13 +109,14 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-8">
           {rest.map((u, i) => (
-            <Link key={u.slug} href={localeHref(`/units/${u.slug}`, locale)} className={`block border border-ink bg-sheet ink-offset-sm transition-transform hover:rotate-0 ${i % 2 === 0 ? "-rotate-[0.6deg]" : "rotate-[0.5deg]"}`}>
+            <Link key={u.slug} href={localeHref(`/units/${u.slug}`, locale)} className={`block border border-ink bg-sheet ink-offset-sm transition-transform hover:rotate-0 ${i % 2 === 0 ? "rotate-[-0.6deg]" : "rotate-[0.5deg]"}`}>
               <div className="relative aspect-16/10"><Image src={u.images.real} alt="" fill className="object-cover" sizes="33vw" /></div>
               <div className="torn-b" aria-hidden />
               <div className="p-4">
                 <h3 className="font-display font-extrabold text-lg leading-snug tracking-[-0.02em]">{locale === "en" ? u.title_en : u.title_ar}</h3>
                 <p className="tnum mt-2 inline-block bg-brick text-white px-2 py-1 text-sm font-bold">{formatEgp(locale, u.rent_egp)}{t("unit.perMonth")}{u.daily_egp ? ` · ${formatEgp(locale, u.daily_egp)}${t("unit.perDay")}` : ""}</p>
                 <p className="text-sm text-ink/75 mt-2">{u.district}</p>
+                {specLine(u) && <p className="tnum text-sm font-bold mt-1">{specLine(u)}</p>}
                 <p className="text-xs mt-2 flex gap-1 flex-wrap"><span className={chip}>{u.kind === "furnished" ? t("unit.furnished") : t("unit.semifinished")}</span>{u.rent_periods.map((r) => <span key={r} className={chip}>{t(`track.${r}` as "track.daily")}</span>)}</p>
               </div>
             </Link>
@@ -116,7 +127,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       {/* Fit concepts explainer with the second decorative illustration. */}
       <section className="mt-14 grid gap-8 md:grid-cols-12 md:items-center">
         <figure className="md:col-span-7 rotate-[0.6deg]">
-          <div className="relative aspect-[3/2] overflow-hidden border border-ink bg-sheet ink-offset">
+          <div className="relative aspect-3/2 overflow-hidden border border-ink bg-sheet ink-offset">
             <Image src="/home/fit-concept.jpg" alt="" fill className="object-cover" sizes="(min-width: 768px) 58vw, 100vw" />
             <span className={decorativeBadge}>{t("home.decorative")}</span>
           </div>
@@ -127,6 +138,15 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           <p className="mt-3 leading-relaxed text-ink/85">{t("home.fitBody")}</p>
           <Link href={localeHref("/upload", locale)} className="mt-5 inline-block bg-ink text-sheet font-bold uppercase px-5 py-3">{t("home.fitCta")}</Link>
         </div>
+      </section>
+
+      {/* Owner block: the owner path lives here, not above the fold. */}
+      <section className="mt-14 border border-ink bg-sheet ink-offset-sm p-5 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h2 className="font-display font-black text-2xl tracking-[-0.02em]">{t("home.ownerTitle")}</h2>
+          <p className="text-sm leading-relaxed text-ink/80 mt-1 max-w-[52ch]">{t("home.ownerBody")}</p>
+        </div>
+        <Link href={localeHref("/upload", locale)} className="bg-ink text-sheet font-bold uppercase px-5 py-3">{t("home.fitCta")}</Link>
       </section>
 
       <footer className="mt-14 border-t-2 border-ink pt-4 flex flex-wrap justify-between gap-2 text-sm text-ink/75">

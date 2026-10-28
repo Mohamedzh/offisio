@@ -6,9 +6,9 @@ import { pool } from "../lib/db/pg";
 
 interface Listing { title_ar: string; title_en: string; summary_ar: string; summary_en: string; highlights_ar: string[]; highlights_en: string[] }
 const UNITS = [
-  { slug: "full", kind: "furnished", periods: ["daily", "monthly"], daily: 800 },
-  { slug: "empty1", kind: "semifinished", periods: ["long_term"], daily: null },
-  { slug: "empty2", kind: "semifinished", periods: ["long_term"], daily: null },
+  { slug: "full", kind: "furnished", periods: ["daily", "monthly"], daily: 800, district: "Maadi, Cairo", rent: 14500, floor: "2nd" },
+  { slug: "empty1", kind: "semifinished", periods: ["long_term"], daily: null, district: "Nasr City, Cairo", rent: 8500, floor: "Ground" },
+  { slug: "empty2", kind: "semifinished", periods: ["long_term"], daily: null, district: "New Cairo", rent: 11000, floor: "5th" },
 ] as const;
 
 async function main() {
@@ -30,11 +30,12 @@ async function main() {
     const l = JSON.parse(readFileSync(join("data/seed", `${u.slug}-listing.json`), "utf8")) as Listing;
     const ins = await p.query<{ id: string }>(
       `insert into units (slug, kind, district, rent_egp, daily_egp, floor_text, available_from, rent_periods, title_ar, title_en, summary_ar, summary_en, highlights_ar, highlights_en)
-       values ($1,$2,'Cairo',10000,$3,'1st to 7th','2026-10-27',$4,$5,$6,$7,$8,$9,$10)
-       on conflict (slug) do update set title_ar = excluded.title_ar, title_en = excluded.title_en, summary_ar = excluded.summary_ar, summary_en = excluded.summary_en,
+       values ($1,$2,$3,$4,$5,$6,'2026-10-27',$7,$8,$9,$10,$11,$12,$13)
+       on conflict (slug) do update set district = excluded.district, rent_egp = excluded.rent_egp, floor_text = excluded.floor_text,
+         title_ar = excluded.title_ar, title_en = excluded.title_en, summary_ar = excluded.summary_ar, summary_en = excluded.summary_en,
          highlights_ar = excluded.highlights_ar, highlights_en = excluded.highlights_en, rent_periods = excluded.rent_periods, daily_egp = excluded.daily_egp
        returning id`,
-      [u.slug, u.kind, u.daily, u.periods, l.title_ar, l.title_en, l.summary_ar, l.summary_en, JSON.stringify(l.highlights_ar), JSON.stringify(l.highlights_en)]);
+      [u.slug, u.kind, u.district, u.rent, u.daily, u.floor, u.periods, l.title_ar, l.title_en, l.summary_ar, l.summary_en, JSON.stringify(l.highlights_ar), JSON.stringify(l.highlights_en)]);
     const unitId = ins.rows[0].id;
     await p.query(`insert into specs (unit_id, data, model) values ($1,$2,'muse-spark-1.3') on conflict (unit_id) do update set data = excluded.data`, [unitId, JSON.stringify(specs)]);
     const media: [string, string | null, string][] = [
