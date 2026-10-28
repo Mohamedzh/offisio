@@ -20,13 +20,16 @@ Done 2026-10-27 (evidence in [plan/05-demo-polish.md](plan/05-demo-polish.md)):
 
 Done 2026-10-27 (upload slice, uncommitted): owner upload UI + live ingest at `/[lang]/upload` (browser keyframes → S3 specs + S4 listing via `lib/pipeline/`), specs owner-edit form, runtime frame serving via `app/uploads/[slug]/[file]/route.ts`. Live-verified end to end; smoke data cleaned. Auth deferred by owner decision. Detail: [plan/05-demo-polish.md](plan/05-demo-polish.md).
 
-Open items for Segment 5 / next session (in order):
-1. Homepage critique fixes (2026-10-28 snapshot): varied seed districts/prices; spec line on listing cards; single renter CTA above fold; Real/Emptied labels + factual alt on featured card; mobile headline/header polish.
-2. Restage on upload (S5 empty + S6 fits as re-runnable step) + before/after slider polish.
-3. Add real `CAFE_WHATSAPP_NUMBER` + set `NEXT_PUBLIC_APP_URL` (needed for Paymob notification/redirection URLs in deployed env).
-4. 10 scripted Egyptian-Arabic chat conversations (incl. slot-taken, no-results) — Segment 4 acceptance not yet fully run.
-5. Single-style restage re-run in `scripts/run-unit.ts`; replace any drifted demo asset.
-6. Cold full-demo run on the deployed site by someone other than the builder; demo video by Nov 3.
+Open items — **final consolidated plan** (2026-10-28, main plan + expansion merged; full detail in [plan/05-demo-polish.md](plan/05-demo-polish.md) "Final consolidated plan"):
+1. Commit + deploy current work (P2 homepage fixes + docs); verify deployed homepage.
+2. Generated listings batch: 5–7 synthetic units (generated frames → slideshow mp4 → real pipeline) across Greater Cairo + Alexandria (Chatby/Louran, near Bibliotheca Alexandrina).
+3. Paymob test-card run (success + declined) on a daily-bookable unit.
+4. Location pin + nearby cafes: maps link per unit, Overpass cafes with curated fallback/menu, chat add-ons per unit.
+5. QStash simulated cafe order status (needs owner approval for Upstash; in-app fallback). Set `CAFE_WHATSAPP_NUMBER` + `NEXT_PUBLIC_APP_URL` in Vercel env.
+6. Restage on upload (S5/S6 re-runnable step) + seeded-unit restage/drift check.
+7. 10 scripted Egyptian-Arabic chat conversations (Segment 4 acceptance, not yet fully run).
+8. Cold deployed demo run by someone else, README, demo video by Nov 3.
+Deferred: WhatsApp location capture, photo-geolocation, computer-use ordering (assessed in 05 "Expansion notes" — do not build before Nov 4).
 
 Env contract (`.env.local`, never committed; template `.env.example` is tracked): `META_API_KEY`, `DATABASE_URL` (direct, migrations), `DATABASE_URL_POOLED` (app), `PAYMOB_SECRET_KEY`, `NEXT_PUBLIC_PAYMOB_PUBLIC_KEY`, `PAYMOB_HMAC_SECRET`, `PAYMOB_INTEGRATION_ID`, `NEXT_PUBLIC_APP_URL`, `CAFE_WHATSAPP_NUMBER`.
 
