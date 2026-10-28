@@ -1,7 +1,15 @@
 "use client";
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { upload } from "@vercel/blob/client";
 import { getT, localeHref, type Locale } from "@/lib/i18n";
+
+function newSlug(): string {
+  const bytes = crypto.getRandomValues(new Uint8Array(12));
+  let bin = "";
+  bytes.forEach((b) => { bin += String.fromCharCode(b); });
+  return btoa(bin).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+}
 
 interface Frame { blob: Blob; url: string }
 const MAX_BYTES = 100 * 1024 * 1024;
@@ -40,10 +48,11 @@ export default function UploadForm({ locale }: { locale: Locale }) {
   const [district, setDistrict] = useState(""); const [rent, setRent] = useState(""); const [daily, setDaily] = useState("");
   const [floor, setFloor] = useState(""); const [availableFrom, setAvailableFrom] = useState(""); const [kind, setKind] = useState("furnished");
   const [msg, setMsg] = useState(""); const [extracting, setExtracting] = useState(false); const [busy, setBusy] = useState(false);
+  const [videoFile, setVideoFile] = useState<File | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   async function onVideo(file: File | undefined) {
-    setMsg(""); setFrames([]); setHero(0);
+    setMsg(""); setFrames([]); setHero(0); setVideoFile(file ?? null);
     if (!file) return;
     if (!file.type.startsWith("video/")) { setMsg(t("upload.failed")); return; }
     if (file.size > MAX_BYTES) { setMsg(t("upload.failed")); return; }
@@ -54,12 +63,31 @@ export default function UploadForm({ locale }: { locale: Locale }) {
   async function submit() {
     setBusy(true); setMsg("");
     try {
-      const form = new FormData();
-      form.set("district", district); form.set("rent_egp", rent); form.set("daily_egp", daily);
-      form.set("floor_text", floor); form.set("available_from", availableFrom); form.set("kind", kind);
-      form.set("heroIndex", String(hero));
-      frames.forEach((f, i) => form.set(`frame${i}`, f.blob, `frame-${i}.jpg`));
-      const res = await fetch("/api/units/upload", { method: "POST", body: form });
+      const slug = newSlug();
+      // Browser -> Blob directly; only URLs go to our API (no 4.5 MB limit).
+      const frameUrls: string[] = [];
+      for (let i = 0; i < frames.length; i++) {
+        const blob = await upload(`uploads/${slug}/frame-${i}.jpg`, frames[i].blob, {
+          access: "public", handleUploadUrl: "/api/blob/upload", contentType: "image/jpeg",
+        });
+        frameUrls.push(blob.url);
+      }
+      let videoUrl: string | null = null;
+      if (videoFile) {
+        const ext = videoFile.type === "video/quicktime" ? "mov" : videoFile.type === "video/webm" ? "webm" : "mp4";
+        const v = await upload(`uploads/${slug}/source.${ext}`, videoFile, {
+          access: "public", handleUploadUrl: "/api/blob/upload", contentType: videoFile.type, multipart: true,
+        });
+        videoUrl = v.url;
+      }
+      const res = await fetch("/api/units/upload", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          slug, district, rent_egp: rent, daily_egp: daily || null,
+          floor_text: floor, available_from: availableFrom, kind, heroIndex: hero, frameUrls, videoUrl,
+        }),
+      });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error ?? t("upload.failed"));
       router.push(localeHref(`/units/${data.slug}/edit`, locale));

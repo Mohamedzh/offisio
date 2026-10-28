@@ -1,0 +1,26 @@
+{
+  "full": {
+    "empty.jpg": "https://tadysmzbjdkmgzem.public.blob.vercel-storage.com/demo/full/empty.jpg",
+    "fit-clinic.jpg": "https://tadysmzbjdkmgzem.public.blob.vercel-storage.com/demo/full/fit-clinic.jpg",
+    "fit-startup.jpg": "https://tadysmzbjdkmgzem.public.blob.vercel-storage.com/demo/full/fit-startup.jpg",
+    "fit-training.jpg": "https://tadysmzbjdkmgzem.public.blob.vercel-storage.com/demo/full/fit-training.jpg",
+    "real.jpg": "https://tadysmzbjdkmgzem.public.blob.vercel-storage.com/demo/full/real.jpg",
+    "walkthrough.mp4": "https://tadysmzbjdkmgzem.public.blob.vercel-storage.com/demo/full/walkthrough.mp4"
+  },
+  "empty1": {
+    "empty.jpg": "https://tadysmzbjdkmgzem.public.blob.vercel-storage.com/demo/empty1/empty.jpg",
+    "fit-clinic.jpg": "https://tadysmzbjdkmgzem.public.blob.vercel-storage.com/demo/empty1/fit-clinic.jpg",
+    "fit-startup.jpg": "https://tadysmzbjdkmgzem.public.blob.vercel-storage.com/demo/empty1/fit-startup.jpg",
+    "fit-training.jpg": "https://tadysmzbjdkmgzem.public.blob.vercel-storage.com/demo/empty1/fit-training.jpg",
+    "real.jpg": "https://tadysmzbjdkmgzem.public.blob.vercel-storage.com/demo/empty1/real.jpg",
+    "walkthrough.mp4": "https://tadysmzbjdkmgzem.public.blob.vercel-storage.com/demo/empty1/walkthrough.mp4"
+  },
+  "empty2": {
+    "empty.jpg": "https://tadysmzbjdkmgzem.public.blob.vercel-storage.com/demo/empty2/empty.jpg",
+    "fit-clinic.jpg": "https://tadysmzbjdkmgzem.public.blob.vercel-storage.com/demo/empty2/fit-clinic.jpg",
+    "fit-startup.jpg": "https://tadysmzbjdkmgzem.public.blob.vercel-storage.com/demo/empty2/fit-startup.jpg",
+    "fit-training.jpg": "https://tadysmzbjdkmgzem.public.blob.vercel-storage.com/demo/empty2/fit-training.jpg",
+    "real.jpg": "https://tadysmzbjdkmgzem.public.blob.vercel-storage.com/demo/empty2/real.jpg",
+    "walkthrough.mp4": "https://tadysmzbjdkmgzem.public.blob.vercel-storage.com/demo/empty2/walkthrough.mp4"
+  }
+}

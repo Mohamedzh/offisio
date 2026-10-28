@@ -1,7 +1,8 @@
 // Per-unit pipeline: probe -> specs -> listing -> empty -> restage.
 // Usage: UNIT=full|empty1|empty2 STEP=all|probe|specs|listing|empty|restage pnpm pipeline
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "node:fs";
-import { meta, requireKey } from "../lib/meta/client";
+import { meta, requireKey, loadEnvLocal } from "../lib/meta/client";
+import { putPublic } from "../lib/blob";
 import { OWNERS, SPECS_PROMPT_V1, LISTING_PROMPT_V1, EMPTY_PROMPT_V1, STYLE_PROMPTS_V1 } from "../lib/meta/prompts";
 
 const UNIT = process.env.UNIT ?? "full";
@@ -39,10 +40,24 @@ async function chatJson<T>(messages: Msg[]): Promise<T> {
 async function saveImage(result: { data?: { b64_json?: string; url?: string }[] }, name: string) {
   const d = result.data?.[0];
   if (!d) throw new Error("no image in response: " + JSON.stringify(result).slice(0, 400));
-  if (d.b64_json) writeFileSync(`${OUT}/${name}`, Buffer.from(d.b64_json, "base64"));
-  else if (d.url) writeFileSync(`${OUT}/${name}`, Buffer.from(await (await fetch(d.url)).arrayBuffer()));
+  let bytes: Buffer;
+  if (d.b64_json) bytes = Buffer.from(d.b64_json, "base64");
+  else if (d.url) bytes = Buffer.from(await (await fetch(d.url)).arrayBuffer());
   else throw new Error("image response has neither b64_json nor url");
-  console.log("saved", name);
+  // Keep the local copy (restage uses it as input) and upload to Blob;
+  // the Blob URL is the stored/served URL, recorded in blob-urls.json.
+  writeFileSync(`${OUT}/${name}`, bytes);
+  loadEnvLocal();
+  if (process.env.BLOB_READ_WRITE_TOKEN) {
+    const url = await putPublic(`pipeline/${UNIT}/${name}`, bytes, "image/jpeg");
+    const manifestPath = `${OUT}/blob-urls.json`;
+    const manifest = existsSync(manifestPath) ? (JSON.parse(readFileSync(manifestPath, "utf8")) as Record<string, string>) : {};
+    manifest[name] = url;
+    writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + "\n");
+    console.log("saved", name, url);
+  } else {
+    console.log("saved", name, "(BLOB_READ_WRITE_TOKEN not set, Blob upload skipped)");
+  }
 }
 
 const steps: Record<string, () => Promise<unknown>> = {

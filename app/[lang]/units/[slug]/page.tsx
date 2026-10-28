@@ -34,6 +34,11 @@ export default async function UnitPage({ params }: PageProps<"/[lang]/units/[slu
       <h1 className="font-display text-4xl sm:text-5xl font-black mt-4 leading-[1.02] tracking-[-0.02em]">{locale === "en" ? unit.title_en : unit.title_ar}</h1>
       <p className="mt-3 flex flex-wrap items-center gap-2 text-ink/75"><span className="w-full sm:w-auto">{unit.district} · {t("unit.floors")} {unit.floor_text}</span><span className="tnum bg-brick text-white font-display font-black px-3 py-1 ink-offset-sm">{formatEgp(locale, unit.rent_egp)}{t("unit.perMonth")}</span></p>
       <div className="mt-5 border border-ink bg-sheet p-3 ink-offset"><UnitViewer images={unit.images} locale={locale} /></div>
+      {unit.video && (
+        <div className="mt-5 border border-ink bg-sheet p-3 ink-offset">
+          <video controls playsInline preload="metadata" poster={unit.images.real || undefined} src={unit.video} className="w-full aspect-video bg-ink" />
+        </div>
+      )}
       <div className="grid gap-6 md:grid-cols-3 mt-8">
         <section className="md:col-span-2">
           <div className="border border-ink bg-sheet ink-offset-sm">

@@ -10,9 +10,11 @@
     "typecheck": "tsc --noEmit",
     "pipeline": "tsx scripts/run-unit.ts",
     "migrate": "tsx scripts/migrate.ts",
-    "seed": "tsx scripts/seed.ts"
+    "seed": "tsx scripts/seed.ts",
+    "upload-demo": "tsx scripts/upload-demo.ts"
   },
   "dependencies": {
+    "@vercel/blob": "^2.8.2",
     "next": "16.4.3",
     "pg": "^8.23.1",
     "react": "19.3.0",

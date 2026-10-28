@@ -71,11 +71,20 @@ export const meta = {
   models: () => call<{ data?: { id: string }[] }>("/models", { method: "GET" }),
   imageEdit: async ({ imagePath, prompt, maskPath }: ImageEditOpts) => {
     const { readFile } = await import("node:fs/promises");
+    // imagePath may be a Blob/remote URL (Vercel) or a local disk path.
+    const load = async (p: string): Promise<Blob> => {
+      if (p.startsWith("http://") || p.startsWith("https://")) {
+        const r = await fetch(p);
+        if (!r.ok) throw new Error(`fetch image ${p} failed: ${r.status}`);
+        return await r.blob();
+      }
+      return new Blob([await readFile(p)]);
+    };
     const form = new FormData();
     form.append("model", MODELS.image);
     form.append("prompt", prompt);
-    form.append("image", new Blob([await readFile(imagePath)]), "hero.jpg");
-    if (maskPath) form.append("mask", new Blob([await readFile(maskPath)]), "mask.png");
+    form.append("image", await load(imagePath), "hero.jpg");
+    if (maskPath) form.append("mask", await load(maskPath), "mask.png");
     return call<{ data?: { b64_json?: string; url?: string }[] }>("/images/edits", { method: "POST", body: form });
   },
 };

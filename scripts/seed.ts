@@ -13,6 +13,18 @@ const UNITS = [
 
 async function main() {
   const p = pool();
+  // Blob URLs from `pnpm upload-demo` (data/seed/blob-urls.json).
+  let blobUrls: Record<string, Record<string, string>>;
+  try {
+    blobUrls = JSON.parse(readFileSync(join("data/seed", "blob-urls.json"), "utf8")) as Record<string, Record<string, string>>;
+  } catch {
+    throw new Error("data/seed/blob-urls.json missing: run `pnpm upload-demo` first (needs BLOB_READ_WRITE_TOKEN)");
+  }
+  const blob = (slug: string, file: string): string => {
+    const url = blobUrls[slug]?.[file];
+    if (!url) throw new Error(`blob-urls.json missing ${slug}/${file}: re-run pnpm upload-demo`);
+    return url;
+  };
   for (const u of UNITS) {
     const specs = (JSON.parse(readFileSync(join("data/seed", `${u.slug}-specs.json`), "utf8")) as { specs: Record<string, unknown> }).specs;
     const l = JSON.parse(readFileSync(join("data/seed", `${u.slug}-listing.json`), "utf8")) as Listing;
@@ -26,11 +38,12 @@ async function main() {
     const unitId = ins.rows[0].id;
     await p.query(`insert into specs (unit_id, data, model) values ($1,$2,'muse-spark-1.3') on conflict (unit_id) do update set data = excluded.data`, [unitId, JSON.stringify(specs)]);
     const media: [string, string | null, string][] = [
-      ["keyframe", null, `/demo/${u.slug}/real.jpg`],
-      ...(u.slug === "full" ? ([["staged", "empty", `/demo/${u.slug}/empty.jpg`]] as [string, string, string][]) : []),
-      ["staged", "startup", `/demo/${u.slug}/fit-startup.jpg`],
-      ["staged", "clinic", `/demo/${u.slug}/fit-clinic.jpg`],
-      ["staged", "training", `/demo/${u.slug}/fit-training.jpg`],
+      ["keyframe", null, blob(u.slug, "real.jpg")],
+      ...(u.slug === "full" ? ([["staged", "empty", blob(u.slug, "empty.jpg")]] as [string, string, string][]) : []),
+      ["staged", "startup", blob(u.slug, "fit-startup.jpg")],
+      ["staged", "clinic", blob(u.slug, "fit-clinic.jpg")],
+      ["staged", "training", blob(u.slug, "fit-training.jpg")],
+      ...(blobUrls[u.slug]?.["walkthrough.mp4"] ? ([["video", null, blob(u.slug, "walkthrough.mp4")]] as [string, string | null, string][]) : []),
     ];
     for (const [kind, style, url] of media)
       await p.query(`insert into media (unit_id, kind, style, url) select $1,$2,$3,$4 where not exists (select 1 from media where unit_id = $1 and kind = $2 and style is not distinct from $3 and url = $4)`, [unitId, kind, style, url]);
