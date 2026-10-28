@@ -11,7 +11,8 @@
     "pipeline": "tsx scripts/run-unit.ts",
     "migrate": "tsx scripts/migrate.ts",
     "seed": "tsx scripts/seed.ts",
-    "upload-demo": "tsx scripts/upload-demo.ts"
+    "upload-demo": "tsx scripts/upload-demo.ts",
+    "generate-home-art": "tsx scripts/generate-home-art.ts"
   },
   "dependencies": {
     "@vercel/blob": "^2.8.2",

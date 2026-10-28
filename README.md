@@ -73,3 +73,5 @@ Entries will be added here as features land. One logical change per commit; the 
 - Option A add-ons: curated cafe menu (public Elmenus prices), order sent to the cafe WhatsApp line (CAFE_WHATSAPP_NUMBER).
 - Paymob test mode: real checkout + HMAC-verified webhook; booking confirms only on webhook. Set PAYMOB_* in .env.local.
 - Run: pnpm dev (or pnpm build && pnpm start). Data: Neon Postgres (DATABASE_URL_POOLED for app, DATABASE_URL direct for migrations; pnpm migrate && pnpm seed on a new project).
+- Media on Vercel Blob: demo assets via `pnpm upload-demo`, browser-direct uploads via `/api/blob/upload`, listing photos served from the `media` table (Blob URLs only).
+- Homepage: decorative muse-image-1.0 paper-collage illustrations (`pnpm generate-home-art`, in `public/home/`, always labelled decorative) kept separate from real listing photos.

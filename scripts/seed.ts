@@ -45,8 +45,16 @@ async function main() {
       ["staged", "training", blob(u.slug, "fit-training.jpg")],
       ...(blobUrls[u.slug]?.["walkthrough.mp4"] ? ([["video", null, blob(u.slug, "walkthrough.mp4")]] as [string, string | null, string][]) : []),
     ];
-    for (const [kind, style, url] of media)
-      await p.query(`insert into media (unit_id, kind, style, url) select $1,$2,$3,$4 where not exists (select 1 from media where unit_id = $1 and kind = $2 and style is not distinct from $3 and url = $4)`, [unitId, kind, style, url]);
+    // Retire legacy local-path rows (/demo/..., /uploads/...) so they are
+    // never served again, then upsert one current Blob row per kind/style.
+    await p.query(`update media set is_current = false where unit_id = $1 and url not like 'https://%'`, [unitId]);
+    for (const [kind, style, url] of media) {
+      const upd = await p.query(
+        `update media set url = $4, is_current = true where unit_id = $1 and kind = $2 and style is not distinct from $3 and url like 'https://%'`,
+        [unitId, kind, style, url]);
+      if ((upd.rowCount ?? 0) === 0)
+        await p.query(`insert into media (unit_id, kind, style, url) values ($1,$2,$3,$4)`, [unitId, kind, style, url]);
+    }
     for (let d = 0; d < 7; d++) {
       const date = new Date(Date.UTC(2026, 9, 27 + d)).toISOString().slice(0, 10);
       for (let h = 10; h < 17; h++)

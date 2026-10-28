@@ -34,7 +34,12 @@ interface UnitRow {
 
 function rowToUnit(r: UnitRow): Unit {
   const media = r.media ?? [];
-  const byKind = (kind: string, style?: string) => media.find((m) => m.kind === kind && (style === undefined || m.style === style))?.url ?? null;
+  // Legacy rows may still hold local /demo/... or /uploads/... paths next to
+  // Blob rows for the same kind/style. Always prefer an https (Blob) URL.
+  const pick = (list: UnitRow["media"]) =>
+    list?.find((m) => m.url.startsWith("https://"))?.url ?? list?.find((m) => !m.url.startsWith("/"))?.url ?? list?.[0]?.url ?? null;
+  const byKind = (kind: string, style?: string) =>
+    pick(media.filter((m) => m.kind === kind && (style === undefined || m.style === style)));
   return {
     slug: r.slug, kind: r.kind, district: r.district, rent_egp: r.rent_egp, floor_text: r.floor_text ?? "",
     available_from: r.available_from ? new Date(r.available_from).toISOString().slice(0, 10) : "",
@@ -42,7 +47,7 @@ function rowToUnit(r: UnitRow): Unit {
     title_ar: r.title_ar ?? "", title_en: r.title_en ?? "", summary_ar: r.summary_ar ?? "", summary_en: r.summary_en ?? "",
     highlights_ar: r.highlights_ar ?? [], highlights_en: r.highlights_en ?? [], specs: r.specs ?? {},
     images: {
-      real: media.find((m) => m.kind === "keyframe" && m.meta?.hero === true)?.url ?? byKind("keyframe") ?? "",
+      real: pick(media.filter((m) => m.kind === "keyframe" && m.meta?.hero === true)) ?? byKind("keyframe") ?? "",
       empty: byKind("staged", "empty"),
       fits: { startup: byKind("staged", "startup") ?? "", clinic: byKind("staged", "clinic") ?? "", training: byKind("staged", "training") ?? "" },
     },
@@ -54,7 +59,7 @@ const UNIT_SQL = `
   select u.slug, u.kind, u.district, u.rent_egp, u.daily_egp, u.floor_text, u.available_from,
          u.rent_periods, u.title_ar, u.title_en, u.summary_ar, u.summary_en, u.highlights_ar, u.highlights_en,
          s.data as specs,
-         coalesce((select json_agg(json_build_object('kind', m.kind, 'style', m.style, 'url', m.url, 'meta', m.meta)) from media m where m.unit_id = u.id and m.is_current), '[]') as media
+         coalesce((select json_agg(json_build_object('kind', m.kind, 'style', m.style, 'url', m.url, 'meta', m.meta) order by (m.url like 'https://%') desc, m.created_at desc) from media m where m.unit_id = u.id and m.is_current), '[]') as media
   from units u left join specs s on s.unit_id = u.id`;
 
 export async function listUnits(): Promise<Unit[]> {
