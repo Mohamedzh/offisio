@@ -36,11 +36,11 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
   ];
   return (
     <main className="mx-auto w-full max-w-5xl px-4 py-8">
-      <header className="flex flex-wrap items-center justify-between gap-3 border border-ink bg-sheet px-4 py-3 ink-offset-sm mb-8">
-        <span className="font-display text-2xl font-black tracking-[-0.02em]">{t("brand")}</span>
-        <div className="flex flex-wrap gap-2 text-sm items-center">
-          <Link href={localeHref("/upload", locale)} className="px-2 py-2 font-bold underline underline-offset-4">{t("nav.listOffice")}</Link>
-          <Link href={localeHref("/chat", locale)} className="bg-brick text-white px-4 py-2 font-bold uppercase">{t("nav.chatToBook")}</Link>
+      <header className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2 border border-ink bg-sheet px-3 py-2.5 sm:px-4 sm:py-3 ink-offset-sm mb-8">
+        <span className="font-display text-xl sm:text-2xl font-black tracking-[-0.02em]">{t("brand")}</span>
+        <div className="flex flex-wrap gap-1.5 sm:gap-2 text-[13px] sm:text-sm items-center">
+          <Link href={localeHref("/upload", locale)} className="px-1.5 py-2 font-bold underline underline-offset-4">{t("nav.listOffice")}</Link>
+          <Link href={localeHref("/chat", locale)} className="bg-brick text-white px-3 py-2 sm:px-4 font-bold uppercase">{t("nav.chatToBook")}</Link>
           <LangToggle locale={locale} />
         </div>
       </header>
@@ -49,7 +49,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       <section className="grid gap-8 md:grid-cols-12 md:items-center">
         <div className="md:col-span-5">
           {(() => { const tag = t("home.tagline"); const m = tag.match(/^(.+?[.،])\s*(.*)$/); return (
-            <h1 className="font-display font-black tracking-[-0.02em] leading-[1.05] text-4xl sm:text-5xl"><span className="text-ink">{m ? m[1] : tag}</span>{m?.[2] && <span className="text-chalk"> {m[2]}</span>}</h1> ); })()}
+            <h1 className="font-display font-black tracking-[-0.02em] leading-[1.08] text-4xl sm:text-5xl text-balance"><span className="text-ink">{m ? m[1] : tag}</span>{m?.[2] && <span className="text-chalk"> {m[2]}</span>}</h1> ); })()}
           <p className="mt-4 leading-relaxed text-ink/85">{t("home.sub")}</p>
           <div className="mt-6 flex flex-wrap items-center gap-4">
             <a href="#real-offices" className="bg-brick text-white font-bold uppercase px-5 py-3 ink-offset-sm">{t("home.browse")}</a>
@@ -84,15 +84,17 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       <section id="real-offices" className="mt-14 scroll-mt-8">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <h2 className="font-display font-black text-3xl sm:text-4xl tracking-[-0.02em]">{t("home.realTitle")}</h2>
-          <span className="bg-chalk text-sheet text-[11px] font-bold uppercase tracking-wide px-2 py-1">{t("home.realNote")}</span>
+          <span className="bg-chalk text-sheet text-xs font-bold px-2.5 py-1.5 max-w-[46ch] leading-snug">{t("home.realNote")}</span>
         </div>
 
         {featured && (
           <Link href={localeHref(`/units/${featured.slug}`, locale)} className="block mt-6 border border-ink bg-sheet ink-offset hover:rotate-0 transition-transform">
             <div className="relative aspect-16/10 overflow-hidden">
-              {featured.images.empty && <Image src={featured.images.empty} alt="" fill className="object-cover" sizes="100vw" />}
-              <Image src={featured.images.real} alt="" fill className={`object-cover ${featured.images.empty ? "tear-layer" : ""}`} sizes="100vw" priority />
+              {featured.images.empty && <Image src={featured.images.empty} alt={`${locale === "en" ? featured.title_en : featured.title_ar} — ${t("viewer.empty")}`} fill className="object-cover" sizes="100vw" />}
+              <Image src={featured.images.real} alt={`${locale === "en" ? featured.title_en : featured.title_ar} — ${t("viewer.real")}`} fill className={`object-cover ${featured.images.empty ? "tear-layer" : ""}`} sizes="100vw" />
               {featured.images.empty && <div className="tear-seam absolute inset-x-0 bottom-[5%] pointer-events-none" aria-hidden />}
+              <span className="absolute top-3 inset-s-3 bg-ink text-sheet px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide">{t("viewer.real")}</span>
+              {featured.images.empty && <span className="absolute bottom-3 inset-e-3 bg-mustard text-ink border border-ink px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide">{t("viewer.empty")}</span>}
             </div>
             <div className="torn-b" aria-hidden />
             <div className="p-5 flex flex-wrap items-start justify-between gap-3">
@@ -110,7 +112,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-8">
           {rest.map((u, i) => (
             <Link key={u.slug} href={localeHref(`/units/${u.slug}`, locale)} className={`block border border-ink bg-sheet ink-offset-sm transition-transform hover:rotate-0 ${i % 2 === 0 ? "rotate-[-0.6deg]" : "rotate-[0.5deg]"}`}>
-              <div className="relative aspect-16/10"><Image src={u.images.real} alt="" fill className="object-cover" sizes="33vw" /></div>
+              <div className="relative aspect-16/10"><Image src={u.images.real} alt={`${locale === "en" ? u.title_en : u.title_ar} — ${t("viewer.real")}`} fill className="object-cover" sizes="33vw" /></div>
               <div className="torn-b" aria-hidden />
               <div className="p-4">
                 <h3 className="font-display font-extrabold text-lg leading-snug tracking-[-0.02em]">{locale === "en" ? u.title_en : u.title_ar}</h3>
