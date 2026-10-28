@@ -1,6 +1,6 @@
 # Offisio — Implementation Plan (index)
 
-Status: **Segments 1–5 in progress; Blob storage + homepage + critique fixes committed & deployed (live-checked 2026-10-28). Final consolidated plan (with expansion) is in [plan/05-demo-polish.md](plan/05-demo-polish.md); QStash approved + env vars added 2026-10-28; `units.lat/lng` migration APPROVED 2026-10-28 (implementation applies + verifies it).** Next session: start here, then [plan/05-demo-polish.md](plan/05-demo-polish.md), beginning at consolidated step 2 — nothing else unless named.
+Status: **Segments 1–5 in progress; consolidated step 2 (generated listings batch) done 2026-10-28 — 6 synthetic `gen-*` units live in Neon/Blob, badge code committed with this update. Final consolidated plan (with expansion) is in [plan/05-demo-polish.md](plan/05-demo-polish.md); QStash approved + env vars added 2026-10-28; `units.lat/lng` migration APPROVED 2026-10-28 (implementation applies + verifies it).** Next session: start here, then [plan/05-demo-polish.md](plan/05-demo-polish.md), beginning at consolidated step 3 (Paymob test-card run, owner runs the dashboard test card) — nothing else unless named.
 
 Work is split into segments so each runs in a fresh chat session with a small context. Protocol: [plan/README.md](plan/README.md).
 
@@ -22,7 +22,7 @@ Done 2026-10-27 (upload slice, uncommitted): owner upload UI + live ingest at `/
 
 Open items — **final consolidated plan** (2026-10-28, main plan + expansion merged; full detail in [plan/05-demo-polish.md](plan/05-demo-polish.md) "Final consolidated plan"):
 1. ~~Commit + deploy current work~~ **Done 2026-10-28** (`01ea137` + `c397046`, pushed by owner).
-2. Generated listings batch: 5–7 synthetic units (generated frames → slideshow mp4 → real pipeline) across Greater Cairo + Alexandria (Chatby/Louran, near Bibliotheca Alexandrina). **← next session starts here**
+2. ~~Generated listings batch~~ **Done 2026-10-28** (6 units `gen-zamalek`, `gen-heliopolis`, `gen-new-cairo`, `gen-nasr-city`, `gen-alex-chatby`, `gen-alex-louran`; synthetic-labelled, titles/prices correct, all pages + 36 Blob URLs 200 — see 05). **← next session starts at step 3**
 3. Paymob test-card run (success + declined) on a daily-bookable unit.
 4. Location pin + nearby cafes: maps link per unit, Overpass cafes with curated fallback/menu, chat add-ons per unit. **Migration APPROVED (2026-10-28):** implementation adds `units.lat/lng`, runs `pnpm migrate`, verifies (see 05).
 5. QStash simulated cafe order status — **APPROVED 2026-10-28**; `QSTASH_URL`, `QSTASH_TOKEN`, `QSTASH_CURRENT_SIGNING_KEY`, `QSTASH_NEXT_SIGNING_KEY` added to `.env.local` + `.env.example` (example edit uncommitted — commit it; also set in Vercel env). Set `CAFE_WHATSAPP_NUMBER` + `NEXT_PUBLIC_APP_URL` in Vercel env too.

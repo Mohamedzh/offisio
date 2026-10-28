@@ -12,6 +12,7 @@ export interface Unit {
   specs: Record<string, unknown>;
   images: { real: string; empty: string | null; fits: Record<string, string> };
   video: string | null;
+  synthetic: boolean;
 }
 export interface Slot { id: string; unit_slug: string; date: string; starts_at: string; ends_at: string; is_booked: boolean }
 export interface AddonItem { id: string; booking_id: string; item_id: string; name_en: string; name_ar: string; qty: number; unit_price_egp: number; deliver_at: string | null; status: "pending_cafe" | "sent_to_cafe" }
@@ -52,6 +53,7 @@ function rowToUnit(r: UnitRow): Unit {
       fits: { startup: byKind("staged", "startup") ?? "", clinic: byKind("staged", "clinic") ?? "", training: byKind("staged", "training") ?? "" },
     },
     video: byKind("video"),
+    synthetic: media.some((m) => m.meta?.synthetic === true),
   };
 }
 

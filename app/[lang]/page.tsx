@@ -102,7 +102,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                 <h3 className="font-display text-2xl sm:text-3xl font-black tracking-[-0.02em] leading-snug">{locale === "en" ? featured.title_en : featured.title_ar}</h3>
                 <p className="text-sm text-ink/75 mt-1">{featured.district}</p>
                 {specLine(featured) && <p className="tnum text-sm font-bold mt-1">{specLine(featured)}</p>}
-                <p className="text-xs mt-2 flex gap-1 flex-wrap"><span className={chip}>{featured.kind === "furnished" ? t("unit.furnished") : t("unit.semifinished")}</span>{featured.rent_periods.map((r) => <span key={r} className={chip}>{t(`track.${r}` as "track.daily")}</span>)}</p>
+                <p className="text-xs mt-2 flex gap-1 flex-wrap"><span className={chip}>{featured.kind === "furnished" ? t("unit.furnished") : t("unit.semifinished")}</span>{featured.rent_periods.map((r) => <span key={r} className={chip}>{t(`track.${r}` as "track.daily")}</span>)}{featured.synthetic && <span className="bg-mustard text-ink border border-ink text-[11px] font-bold px-2 py-0.5">{t("unit.synthetic")}</span>}</p>
               </div>
               <span className="tnum bg-brick text-white font-display font-black text-xl px-3 py-1.5 ink-offset-sm">{formatEgp(locale, featured.rent_egp)}{t("unit.perMonth")}</span>
             </div>
@@ -119,7 +119,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                 <p className="tnum mt-2 inline-block bg-brick text-white px-2 py-1 text-sm font-bold">{formatEgp(locale, u.rent_egp)}{t("unit.perMonth")}{u.daily_egp ? ` · ${formatEgp(locale, u.daily_egp)}${t("unit.perDay")}` : ""}</p>
                 <p className="text-sm text-ink/75 mt-2">{u.district}</p>
                 {specLine(u) && <p className="tnum text-sm font-bold mt-1">{specLine(u)}</p>}
-                <p className="text-xs mt-2 flex gap-1 flex-wrap"><span className={chip}>{u.kind === "furnished" ? t("unit.furnished") : t("unit.semifinished")}</span>{u.rent_periods.map((r) => <span key={r} className={chip}>{t(`track.${r}` as "track.daily")}</span>)}</p>
+                <p className="text-xs mt-2 flex gap-1 flex-wrap"><span className={chip}>{u.kind === "furnished" ? t("unit.furnished") : t("unit.semifinished")}</span>{u.rent_periods.map((r) => <span key={r} className={chip}>{t(`track.${r}` as "track.daily")}</span>)}{u.synthetic && <span className="bg-mustard text-ink border border-ink text-[11px] font-bold px-2 py-0.5">{t("unit.synthetic")}</span>}</p>
               </div>
             </Link>
           ))}
