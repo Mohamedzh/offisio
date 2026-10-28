@@ -1,6 +1,6 @@
 # Offisio — Implementation Plan (index)
 
-Status: **Segments 1–5 in progress; Blob storage + new homepage committed & deployed, live-checked 2026-10-28 at https://offisio.vercel.app/en (all pages 200, 16/16 Blob media 200, critique 15/28 in [plan/05-demo-polish.md](plan/05-demo-polish.md)).** Next session: start here, then [plan/05-demo-polish.md](plan/05-demo-polish.md) — nothing else unless named.
+Status: **Segments 1–5 in progress; Blob storage + homepage + critique fixes committed & deployed (live-checked 2026-10-28). Final consolidated plan (with expansion) is in [plan/05-demo-polish.md](plan/05-demo-polish.md); QStash approved + env vars added 2026-10-28; `units.lat/lng` migration APPROVED 2026-10-28 (implementation applies + verifies it).** Next session: start here, then [plan/05-demo-polish.md](plan/05-demo-polish.md), beginning at consolidated step 2 — nothing else unless named.
 
 Work is split into segments so each runs in a fresh chat session with a small context. Protocol: [plan/README.md](plan/README.md).
 
@@ -21,11 +21,11 @@ Done 2026-10-27 (evidence in [plan/05-demo-polish.md](plan/05-demo-polish.md)):
 Done 2026-10-27 (upload slice, uncommitted): owner upload UI + live ingest at `/[lang]/upload` (browser keyframes → S3 specs + S4 listing via `lib/pipeline/`), specs owner-edit form, runtime frame serving via `app/uploads/[slug]/[file]/route.ts`. Live-verified end to end; smoke data cleaned. Auth deferred by owner decision. Detail: [plan/05-demo-polish.md](plan/05-demo-polish.md).
 
 Open items — **final consolidated plan** (2026-10-28, main plan + expansion merged; full detail in [plan/05-demo-polish.md](plan/05-demo-polish.md) "Final consolidated plan"):
-1. Commit + deploy current work (P2 homepage fixes + docs); verify deployed homepage.
-2. Generated listings batch: 5–7 synthetic units (generated frames → slideshow mp4 → real pipeline) across Greater Cairo + Alexandria (Chatby/Louran, near Bibliotheca Alexandrina).
+1. ~~Commit + deploy current work~~ **Done 2026-10-28** (`01ea137` + `c397046`, pushed by owner).
+2. Generated listings batch: 5–7 synthetic units (generated frames → slideshow mp4 → real pipeline) across Greater Cairo + Alexandria (Chatby/Louran, near Bibliotheca Alexandrina). **← next session starts here**
 3. Paymob test-card run (success + declined) on a daily-bookable unit.
-4. Location pin + nearby cafes: maps link per unit, Overpass cafes with curated fallback/menu, chat add-ons per unit.
-5. QStash simulated cafe order status (needs owner approval for Upstash; in-app fallback). Set `CAFE_WHATSAPP_NUMBER` + `NEXT_PUBLIC_APP_URL` in Vercel env.
+4. Location pin + nearby cafes: maps link per unit, Overpass cafes with curated fallback/menu, chat add-ons per unit. **Migration APPROVED (2026-10-28):** implementation adds `units.lat/lng`, runs `pnpm migrate`, verifies (see 05).
+5. QStash simulated cafe order status — **APPROVED 2026-10-28**; `QSTASH_URL`, `QSTASH_TOKEN`, `QSTASH_CURRENT_SIGNING_KEY`, `QSTASH_NEXT_SIGNING_KEY` added to `.env.local` + `.env.example` (example edit uncommitted — commit it; also set in Vercel env). Set `CAFE_WHATSAPP_NUMBER` + `NEXT_PUBLIC_APP_URL` in Vercel env too.
 6. Restage on upload (S5/S6 re-runnable step) + seeded-unit restage/drift check.
 7. 10 scripted Egyptian-Arabic chat conversations (Segment 4 acceptance, not yet fully run).
 8. Cold deployed demo run by someone else, README, demo video by Nov 3.
