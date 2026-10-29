@@ -52,4 +52,7 @@ public/demo
 # local design tooling (not shipped, not committed)
 /.agents/skills/impeccable/
 /.impeccable/review/
-/.impeccable/mocks/
+/.impeccable/mocks/# third-party agent skills (local tooling, not hackathon work)
+/.agents/skills/neon/
+/.agents/skills/neon-postgres/
+/skills-lock.json

@@ -1,6 +1,6 @@
 # Offisio — Implementation Plan (index)
 
-Status: **Segments 1–5 in progress; consolidated step 2 (generated listings batch) done 2026-10-28 — 6 synthetic `gen-*` units live in Neon/Blob, badge code committed with this update. Final consolidated plan (with expansion) is in [plan/05-demo-polish.md](plan/05-demo-polish.md); QStash approved + env vars added 2026-10-28; `units.lat/lng` migration APPROVED 2026-10-28 (implementation applies + verifies it).** Next session: start here, then [plan/05-demo-polish.md](plan/05-demo-polish.md). Consolidated step 3 (payment test-card run) is DONE 2026-10-29: live success auto-confirmed via webhook, live declined stayed unconfirmed, test data cleaned (see 05). Next is step 4 (location pin + nearby cafes, units.lat/lng migration approved) begins. Nothing else unless named.
+Status: **Segment 6 (judge-ready) planned 2026-10-29 from the post-audit review — next session starts at [plan/06-judge-ready.md](plan/06-judge-ready.md) step 6.1.** Segment 5 steps 1–3 are done (generated listings, live XPay card run); its steps 4–8 are superseded by Segment 6.
 
 Work is split into segments so each runs in a fresh chat session with a small context. Protocol: [plan/README.md](plan/README.md).
 
@@ -11,7 +11,8 @@ Work is split into segments so each runs in a fresh chat session with a small co
 | 2. Pipeline: specs + listing + unit page | [plan/02-pipeline-listing.md](plan/02-pipeline-listing.md) | **done** (demo scope; upload UI next) | 1 |
 | 3. Staging: removal + restyle | [plan/03-staging.md](plan/03-staging.md) | **done** | 1 |
 | 4. Booking agent + chat (+ payments, add-ons) | [plan/04-booking-agent.md](plan/04-booking-agent.md) | **done** (demo scope) | 2 |
-| 5. Seed, polish, demo, submit | [plan/05-demo-polish.md](plan/05-demo-polish.md) | **next** | 2–4 |
+| 5. Seed, polish, demo, submit | [plan/05-demo-polish.md](plan/05-demo-polish.md) | steps 1–3 done; rest superseded by 6 | 2–4 |
+| 6. Judge-ready: demo data, staging, agent, guardrails, ship | [plan/06-judge-ready.md](plan/06-judge-ready.md) | **next** (open points resolved; start at 6.1) | 2–5 |
 
 Done 2026-10-27 (evidence in [plan/05-demo-polish.md](plan/05-demo-polish.md)):
 - Hosted payment checkout: `lib/xpay.ts` (Checkout Sessions API, test key), session id stored on payments (migrated on Neon 2026-10-29). Booking confirms only on signature-verified payment webhook. Locally verified: paid -> confirmed, failed -> payment_failed + slots released, bad/stale signature 401.
@@ -20,7 +21,7 @@ Done 2026-10-27 (evidence in [plan/05-demo-polish.md](plan/05-demo-polish.md)):
 
 Done 2026-10-27 (upload slice, uncommitted): owner upload UI + live ingest at `/[lang]/upload` (browser keyframes → S3 specs + S4 listing via `lib/pipeline/`), specs owner-edit form, runtime frame serving via `app/uploads/[slug]/[file]/route.ts`. Live-verified end to end; smoke data cleaned. Auth deferred by owner decision. Detail: [plan/05-demo-polish.md](plan/05-demo-polish.md).
 
-Open items — **final consolidated plan** (2026-10-28, main plan + expansion merged; full detail in [plan/05-demo-polish.md](plan/05-demo-polish.md) "Final consolidated plan"):
+Open items — **superseded 2026-10-29 by [plan/06-judge-ready.md](plan/06-judge-ready.md)** (kept for history). Former list, the **final consolidated plan** (2026-10-28, main plan + expansion merged; full detail in [plan/05-demo-polish.md](plan/05-demo-polish.md) "Final consolidated plan"):
 1. ~~Commit + deploy current work~~ **Done 2026-10-28** (`01ea137` + `c397046`, pushed by owner).
 2. ~~Generated listings batch~~ **Done 2026-10-28** (6 units `gen-zamalek`, `gen-heliopolis`, `gen-new-cairo`, `gen-nasr-city`, `gen-alex-chatby`, `gen-alex-louran`; synthetic-labelled, titles/prices correct, all pages + 36 Blob URLs 200 — see 05). **← next session starts at step 3**
 3. ~~Payment test-card run (success + declined) on a daily-bookable unit~~ **Done 2026-10-29** - live on the deployed site: approved card auto-confirmed via signature-verified webhook, declined card stayed unconfirmed, test data cleaned (detail in 05). The previous gateway was removed from code, schema, env, and docs after its test integration proved unusable.

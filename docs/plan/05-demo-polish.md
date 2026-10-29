@@ -101,6 +101,8 @@ Out of scope for this expansion: photo-based geolocation, real browser/computer-
 
 ## Final consolidated plan (2026-10-28 — main plan + expansion, one sequence)
 
+> **Superseded 2026-10-29:** steps 4–8 below continue in [06-judge-ready.md](06-judge-ready.md) (post-audit plan). Steps 1–3 are done.
+
 This list supersedes all earlier "Next steps" lists. Deadline Nov 4, 9:00 PM ET; demo video by Nov 3.
 
 1. ~~**Commit + deploy current work**~~ **Done 2026-10-28** (P2 fixes `01ea137`, plan consolidation `c397046`, committed & pushed by owner; deployed homepage verified live).
