@@ -1,6 +1,6 @@
 # Offisio — Implementation Plan (index)
 
-Status: **Segments 1–5 in progress; consolidated step 2 (generated listings batch) done 2026-10-28 — 6 synthetic `gen-*` units live in Neon/Blob, badge code committed with this update. Final consolidated plan (with expansion) is in [plan/05-demo-polish.md](plan/05-demo-polish.md); QStash approved + env vars added 2026-10-28; `units.lat/lng` migration APPROVED 2026-10-28 (implementation applies + verifies it).** Next session: start here, then [plan/05-demo-polish.md](plan/05-demo-polish.md). Consolidated step 3 (payment test-card run): payment checkout integration built and locally verified (switched provider by owner decision 2026-10-29); live test-card run waits on owner adding payment keys + webhook endpoint in Vercel env and deploying. Then step 4 (location pin + nearby cafes, units.lat/lng migration approved) begins. Nothing else unless named.
+Status: **Segments 1–5 in progress; consolidated step 2 (generated listings batch) done 2026-10-28 — 6 synthetic `gen-*` units live in Neon/Blob, badge code committed with this update. Final consolidated plan (with expansion) is in [plan/05-demo-polish.md](plan/05-demo-polish.md); QStash approved + env vars added 2026-10-28; `units.lat/lng` migration APPROVED 2026-10-28 (implementation applies + verifies it).** Next session: start here, then [plan/05-demo-polish.md](plan/05-demo-polish.md). Consolidated step 3 (payment test-card run) is DONE 2026-10-29: live success auto-confirmed via webhook, live declined stayed unconfirmed, test data cleaned (see 05). Next is step 4 (location pin + nearby cafes, units.lat/lng migration approved) begins. Nothing else unless named.
 
 Work is split into segments so each runs in a fresh chat session with a small context. Protocol: [plan/README.md](plan/README.md).
 
@@ -23,12 +23,12 @@ Done 2026-10-27 (upload slice, uncommitted): owner upload UI + live ingest at `/
 Open items — **final consolidated plan** (2026-10-28, main plan + expansion merged; full detail in [plan/05-demo-polish.md](plan/05-demo-polish.md) "Final consolidated plan"):
 1. ~~Commit + deploy current work~~ **Done 2026-10-28** (`01ea137` + `c397046`, pushed by owner).
 2. ~~Generated listings batch~~ **Done 2026-10-28** (6 units `gen-zamalek`, `gen-heliopolis`, `gen-new-cairo`, `gen-nasr-city`, `gen-alex-chatby`, `gen-alex-louran`; synthetic-labelled, titles/prices correct, all pages + 36 Blob URLs 200 — see 05). **← next session starts at step 3**
-3. Payment test-card run (success + declined) on a daily-bookable unit - integration done and locally verified 2026-10-29; live run pending owner keys/webhook/deploy (detail in 05). The previous gateway was removed from code, schema, env, and docs after its test integration proved unusable.
+3. ~~Payment test-card run (success + declined) on a daily-bookable unit~~ **Done 2026-10-29** - live on the deployed site: approved card auto-confirmed via signature-verified webhook, declined card stayed unconfirmed, test data cleaned (detail in 05). The previous gateway was removed from code, schema, env, and docs after its test integration proved unusable.
 4. Location pin + nearby cafes: maps link per unit, Overpass cafes with curated fallback/menu, chat add-ons per unit. **Migration APPROVED (2026-10-28):** implementation adds `units.lat/lng`, runs `pnpm migrate`, verifies (see 05).
 5. QStash simulated cafe order status — **APPROVED 2026-10-28**; `QSTASH_URL`, `QSTASH_TOKEN`, `QSTASH_CURRENT_SIGNING_KEY`, `QSTASH_NEXT_SIGNING_KEY` added to `.env.local` + `.env.example` (example edit uncommitted — commit it; also set in Vercel env). Set `CAFE_WHATSAPP_NUMBER` + `NEXT_PUBLIC_APP_URL` in Vercel env too.
 6. Restage on upload (S5/S6 re-runnable step) + seeded-unit restage/drift check.
 7. 10 scripted Egyptian-Arabic chat conversations (Segment 4 acceptance, not yet fully run).
-8. Cold deployed demo run by someone else, README, demo video by Nov 3.
+8. Cold deployed demo run by someone else, README, demo video by Nov 3. (README "Testing (for judges)" section with the test card + guided flows added 2026-10-29; final cold run + video still pending.)
 Deferred: WhatsApp location capture, photo-geolocation, computer-use ordering (assessed in 05 "Expansion notes" — do not build before Nov 4).
 
 Env contract (`.env.local`, never committed; template `.env.example` is tracked): `META_API_KEY`, `DATABASE_URL` (direct, migrations), `DATABASE_URL_POOLED` (app), `XPAY_SECRET_KEY`, `XPAY_WEBHOOK_SECRET`, `NEXT_PUBLIC_APP_URL`, `CAFE_WHATSAPP_NUMBER`.
