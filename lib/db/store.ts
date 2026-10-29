@@ -23,7 +23,7 @@ export interface Booking {
   addons: AddonItem[]; total_egp: number; status: BookingStatus;
   payment_id: string | null; cafe_whatsapp_url: string | null; created_at: string;
 }
-export interface Payment { id: string; booking_id: string; provider: "paymob"; paymob_order_id: string | null; amount_cents: number; status: "pending" | "success" | "failed"; created_at: string }
+export interface Payment { id: string; booking_id: string; provider: "xpay"; xpay_session_id: string | null; amount_cents: number; status: "pending" | "success" | "failed"; created_at: string }
 
 interface UnitRow {
   slug: string; kind: Unit["kind"]; district: string; rent_egp: number; daily_egp: number | null;

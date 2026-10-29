@@ -67,7 +67,7 @@ export function attachCafeUrl(b: Booking): Booking {
       `New Offisio add-on order — booking ${b.id}`,
       `Unit: ${b.unit_slug} | Renter: ${b.renter_name} (${b.renter_phone})`,
       ...cafeItems.map((a) => `- ${a.qty} x ${a.name_en} @ EGP ${a.unit_price_egp}${a.deliver_at ? ` at ${a.deliver_at}` : ""}`),
-      `Total add-ons: EGP ${cafeItems.reduce((s, a) => s + a.qty * a.unit_price_egp, 0)} (paid via Offisio/Paymob)`,
+      `Total add-ons: EGP ${cafeItems.reduce((s, a) => s + a.qty * a.unit_price_egp, 0)} (paid via Offisio)`,
       "Please confirm prep time. Thank you!",
     ]);
   }
