@@ -21,9 +21,14 @@ async function loadHistory(sessionKey: string): Promise<{ role: string; content:
 }
 async function saveHistory(sessionKey: string, messages: { role: string; content: string }[]) {
   await pool().query(
-    `insert into chat_sessions (session_key, messages) values ($1, $2)
-     on conflict (session_key) do update set messages = excluded.messages, updated_at = now()`,
+    `insert into chat_sessions (session_key, messages, turns) values ($1, $2, 1)
+     on conflict (session_key) do update set messages = excluded.messages, turns = chat_sessions.turns + 1, updated_at = now()`,
     [sessionKey, JSON.stringify(messages.slice(-20))]);
+}
+// Renter turns in this session so far (capped in the chat route).
+export async function sessionTurns(sessionKey: string): Promise<number> {
+  const { rows } = await pool().query<{ turns: number }>("select turns from chat_sessions where session_key = $1", [sessionKey]);
+  return rows[0]?.turns ?? 0;
 }
 
 export async function chatTurn(sessionId: string, message: string): Promise<{ reply: string; booking_id?: string; total_egp?: number }> {

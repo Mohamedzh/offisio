@@ -21,22 +21,22 @@ Out of scope: real auth, reviews, map search, host analytics, mobile apps. Payme
 All product model calls go to the Meta Model API (`https://api.meta.ai/v1`) only. No other AI provider or SDK is used in any request path.
 
 - Public / synthetic content (test prompts, demo footage we shot, style prompts): `muse-spark-1.3` or `muse-spark-1.3-contributor`
-- Product data without PII (keyframes, specs JSON, listing copy): `muse-spark-1.3`, `muse-image-1.0`, `sam-3.1`
+- Product data without PII (keyframes, specs JSON, listing copy): `muse-spark-1.3`, `muse-image-1.0` (`sam-3.1` was evaluated and dropped: no callable segmentation endpoint, and prompt-guided edits passed)
 - PII (names, phones, chat transcripts, voice notes): `muse-spark-1.3` only — never the contributor model
 
 Model IDs and prompts live only in `lib/meta/`. See [AGENTS.md](AGENTS.md).
 
-### Muse models in development
+### How it was built: Muse models and Claude
 
-Offisio was also *built* with Muse models, not just powered by them:
+Offisio was *built* with Muse models, not just powered by them. Development was split roughly  between the Muse workflow below and Claude models, which the owner used alongside it:
 
 - **Architecture & planning** — the main session runs on `muse-wonder-1.0`: it writes the segment briefs under [docs/plan/](docs/plan/), reviews every diff, and makes the final ship/fix calls.
 - **Implementation, tests & review** — cheaper `muse-spark-1.3-contributor` agents implement one brief at a time, write and run the tests, and review diffs against the project rules. Contributor agents only ever touch synthetic data.
 - **In the product** — listing specs and copy, restaged imagery, and the booking chat run on `muse-spark-1.3` and `muse-image-1.0` via the Meta Model API. Anything resembling PII (names, phones, chat transcripts) is routed to `muse-spark-1.3` only, never the contributor model, because contributor content may be used for training.
 
-Role definitions and the full agent-team rules live in [docs/agents/](docs/agents/README.md) and [AGENTS.md](AGENTS.md). Every step of this workflow — brief, diff, test output, verdict — is recorded in the segment files, so the git history shows which model did what.
+Role definitions and the full agent-team rules live in [docs/agents/](docs/agents/README.md) and [AGENTS.md](AGENTS.md). Segment briefs, verification evidence and decisions are recorded in the segment files under [docs/plan/](docs/plan/).
 
-The project was also co-developed with Claude models, used by the owner alongside the workflow above. All AI *in the product* — every model call a user triggers — runs on Muse models via the Meta Model API only.
+Claude models (via Claude Code) did the other half: audits, planning passes, and implementation. They are a development tool only: all AI *in the product*, meaning every model call a user triggers, runs on Muse models via the Meta Model API.
 
 ## Stack
 
@@ -113,19 +113,17 @@ pnpm build       # production build
 - [docs/PLAN.md](docs/PLAN.md) — build plan and segment index
 - [AGENTS.md](AGENTS.md) — contributor and agent rules
 
-## Built during the hackathon
+## What we built
 
-Entries will be added here as features land. One logical change per commit; the git history is the record of work done during the hackathon.
+Everything in this repository was written during the hackathon (Oct 26 – Nov 4, 2026), starting from an empty `create-next-app` scaffold. No prior code, data or assets were reused. The git history is the record.
 
-## Built during the hackathon
-
-- Video pipeline (scripts/run-unit.ts): keyframes -> specs -> bilingual listing -> AI empty -> 3 fit renders (startup/clinic/training) on 3 real units. SAM 3.1 dropped (no callable endpoint; prompt-guided edits passed) � future consideration.
+- Video pipeline (scripts/run-unit.ts): keyframes -> specs -> bilingual listing -> AI empty -> 3 fit renders (startup/clinic/training) on 3 real units. SAM 3.1 dropped (no callable endpoint; prompt-guided edits passed) — future consideration.
 - 3-track catalog: furnished=daily+monthly (800 EGP/day demo), semifinished=long-term only.
 - Booking: daily day-slots (hourly underneath), atomic double-book protection, Egyptian-Arabic chat agent with cafe add-ons.
 - Option A add-ons: curated cafe menu (public Elmenus prices), order sent to the cafe WhatsApp line (CAFE_WHATSAPP_NUMBER).
 - Payments (test mode): hosted checkout + signature-verified webhook; booking confirms only on webhook. Set the payment keys in .env.local (see .env.example).
 - Live payment run verified 2026-10-29: approved test card auto-confirmed a booking via webhook, declined card stayed unconfirmed; judge instructions + test card in [Testing (for judges)](#testing-for-judges).
-- Built with Muse models end to end: `muse-wonder-1.0` architect, `muse-spark-1.3-contributor` implementors/testers/reviewers on synthetic data only, `muse-spark-1.3` + `muse-image-1.0` in the product — see [Muse models in development](#muse-models-in-development).
+- Built with Muse models and Claude, about 50/50: `muse-wonder-1.0` planning, `muse-spark-1.3-contributor` implementors/testers/reviewers on synthetic data only, Claude models alongside; `muse-spark-1.3` + `muse-image-1.0` in the product. See [How it was built](#how-it-was-built-muse-models-and-claude).
 - Run: pnpm dev (or pnpm build && pnpm start). Data: Neon Postgres (DATABASE_URL_POOLED for app, DATABASE_URL direct for migrations; pnpm migrate && pnpm seed on a new project).
 - Media on Vercel Blob: demo assets via `pnpm upload-demo`, browser-direct uploads via `/api/blob/upload`, listing photos served from the `media` table (Blob URLs only).
 - Homepage: decorative muse-image-1.0 paper-collage illustrations (`pnpm generate-home-art`, in `public/home/`, always labelled decorative) kept separate from real listing photos.

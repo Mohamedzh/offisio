@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { formatEgp, getT, localeHref, type Locale } from "@/lib/i18n";
+import { errorText, formatEgp, getT, localeHref, type Locale } from "@/lib/i18n";
 
 interface Day { date: string; day_free: boolean }
 interface Addon { id: string; name_ar: string; name_en: string; price_egp: number; source: string }
@@ -27,7 +27,7 @@ export default function BookingForm({ slug, dailyEgp, locale }: { slug: string; 
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
       router.push(localeHref(`/booking/${data.booking.id}`, locale));
-    } catch (e) { setMsg((e as Error).message); setBusy(false); }
+    } catch (e) { setMsg(errorText(t, (e as Error).message)); setBusy(false); }
   }
 
   return (

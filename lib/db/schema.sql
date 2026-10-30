@@ -69,6 +69,17 @@ alter table payments add column if not exists xpay_session_id text;
 alter table payments drop column if exists paymob_order_id;
 alter table payments drop column if exists paymob_intention_id;
 alter table payments alter column provider set default 'xpay';
+-- Guardrails (docs/plan/06 6.3): daily usage counters (key = 'global' or a
+-- hashed IP, never a raw address) and a content-hash cache for model results.
+create table if not exists usage_counters (
+  day date not null, kind text not null, key text not null, n bigint not null default 0,
+  primary key (day, kind, key)
+);
+create table if not exists ai_cache (
+  key text primary key, kind text not null, model text not null, prompt_version text not null,
+  result jsonb not null, created_at timestamptz not null default now()
+);
+alter table chat_sessions add column if not exists turns int not null default 0;
 create index if not exists idx_media_unit_kind on media(unit_id, kind);
 create index if not exists idx_avail_open on availability(unit_id, starts_at) where not is_booked;
 create index if not exists idx_units_status on units(status);

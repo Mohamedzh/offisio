@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { formatEgp, getT, type Locale } from "@/lib/i18n";
+import { errorText, formatEgp, getT, type Locale } from "@/lib/i18n";
 
 interface Booking { id: string; status: string; total_egp: number; rent_egp_total: number; cafe_whatsapp_url: string | null; unit_slug: string; addons: { name_en: string; qty: number; unit_price_egp: number }[] }
 
@@ -13,10 +13,10 @@ export default function BookingActions({ id, locale }: { id: string; locale: Loc
 
   async function pay() {
     setBusy(true); setMsg("");
-    const res = await fetch("/api/payments/checkout", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ booking_id: id }) });
+    const res = await fetch("/api/payments/checkout", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ booking_id: id, locale }) });
     const data = await res.json();
     if (res.status === 503) { setMsg(data.setup); setBusy(false); return; }
-    if (!res.ok) { setMsg(data.error ?? t("bookingCard.checkoutFailed")); setBusy(false); return; }
+    if (!res.ok) { setMsg(data.error ? errorText(t, data.error) : t("bookingCard.checkoutFailed")); setBusy(false); return; }
     window.location.assign(data.checkout_url);
   }
 

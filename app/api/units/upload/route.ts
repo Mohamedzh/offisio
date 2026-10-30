@@ -2,6 +2,7 @@ import { addMedia, createUploadedUnit, generateAvailability, saveGenerated, setU
 import { isBlobUrl } from "@/lib/blob";
 import { generateListing, generateSpecs, type UploadOwner } from "@/lib/pipeline/specs-listing";
 import type { UnitKind } from "@/lib/meta/prompts";
+import { deny, limit, spendBlocked } from "@/lib/guard";
 
 export const maxDuration = 300;
 
@@ -20,6 +21,9 @@ function isUploadsUrl(url: string, slug: string): boolean {
 export async function POST(req: Request) {
   let body: Record<string, unknown>;
   try { body = (await req.json()) as Record<string, unknown>; } catch { return bad("expected JSON body"); }
+  if (await spendBlocked()) return deny("DEMO_QUOTA");
+  const allowed = await limit("upload", req);
+  if (!allowed.ok) return deny(allowed.code);
 
   const slug = String(body.slug ?? "");
   const district = String(body.district ?? "").trim();

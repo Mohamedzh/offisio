@@ -1,8 +1,9 @@
 // Seed the 3 demo units (specs/listing from the video pipeline), media,
-// and 7 days x 10:00-17:00 hourly availability. Run after migrate: pnpm seed
+// and rolling 10:00-17:00 hourly availability (today through AVAILABILITY_UNTIL). Run after migrate: pnpm seed
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { pool } from "../lib/db/pg";
+import { generateAvailability } from "../lib/db/store";
 
 interface Listing { title_ar: string; title_en: string; summary_ar: string; summary_en: string; highlights_ar: string[]; highlights_en: string[] }
 const UNITS = [
@@ -56,11 +57,7 @@ async function main() {
       if ((upd.rowCount ?? 0) === 0)
         await p.query(`insert into media (unit_id, kind, style, url) values ($1,$2,$3,$4)`, [unitId, kind, style, url]);
     }
-    for (let d = 0; d < 7; d++) {
-      const date = new Date(Date.UTC(2026, 9, 27 + d)).toISOString().slice(0, 10);
-      for (let h = 10; h < 17; h++)
-        await p.query(`insert into availability (unit_id, starts_at, ends_at) values ($1, ($2::date + $3::int * interval '1 hour') at time zone 'Africa/Cairo', ($2::date + ($3::int + 1) * interval '1 hour') at time zone 'Africa/Cairo') on conflict (unit_id, starts_at) do nothing`, [unitId, date, h]);
-    }
+    await generateAvailability(unitId, "2026-10-27"); // today → AVAILABILITY_UNTIL, idempotent
     console.log("seeded", u.slug);
   }
   const c = await p.query<{ units: string; slots: string }>("select (select count(*) from units)::text as units, (select count(*) from availability)::text as slots");

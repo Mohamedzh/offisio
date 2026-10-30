@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { getT, localeHref, type Locale } from "@/lib/i18n";
+import { errorText, getT, localeHref, type Locale } from "@/lib/i18n";
 
 interface Msg { role: "user" | "assistant"; content: string }
 
@@ -22,7 +22,7 @@ export default function ChatBox({ locale }: { locale: Locale }) {
       setSession(data.session_id);
       setMsgs((m) => [...m, { role: "assistant", content: data.reply }]);
       if (data.booking_id) setBookingId(data.booking_id);
-    } catch (e) { setMsgs((m) => [...m, { role: "assistant", content: `${t("chat.errorPrefix")}${(e as Error).message}` }]); }
+    } catch (e) { setMsgs((m) => [...m, { role: "assistant", content: `${t("chat.errorPrefix")}${errorText(t, (e as Error).message)}` }]); }
     setBusy(false);
   }
 

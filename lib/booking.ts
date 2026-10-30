@@ -1,5 +1,5 @@
 import { pool } from "./db/pg";
-import { getUnit, unitId, getBooking, type Booking, type RentPeriod } from "./db/store";
+import { getUnit, unitId, getBooking, releaseStaleHolds, todayCairo, type Booking, type RentPeriod } from "./db/store";
 import { ADDON_CATALOG, cafeWhatsAppUrl } from "./addons/catalog";
 
 export interface AddonRequest { item_id: string; qty: number; deliver_at?: string }
@@ -11,6 +11,9 @@ export interface CreateBookingInput {
 export async function createBooking(input: CreateBookingInput): Promise<Booking> {
   if (!/^01[0125]\d{8}$/.test(input.renter_phone)) throw new Error("INVALID_PHONE"); // Egyptian mobile
   if (!input.renter_name?.trim()) throw new Error("NAME_REQUIRED");
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(input.date ?? "")) throw new Error("INVALID_DATE");
+  if (input.date < todayCairo()) throw new Error("DATE_IN_PAST");
+  await releaseStaleHolds();
   const unit = await getUnit(input.unit_slug);
   if (!unit) throw new Error("UNIT_NOT_FOUND");
   const track: RentPeriod = input.track ?? unit.rent_periods[0];
@@ -74,9 +77,31 @@ export function attachCafeUrl(b: Booking): Booking {
   return b;
 }
 
+// Paid webhook. A booking that expired (or failed) before the payment landed
+// re-claims its slots atomically; if someone else took them meanwhile it is
+// marked paid_conflict for a manual refund instead of double-booking.
 export async function confirmBooking(bookingId: string): Promise<Booking | null> {
-  await pool().query("update bookings set status = 'confirmed' where id = $1 and status <> 'confirmed'", [bookingId]);
-  await pool().query(
+  const client = await pool().connect();
+  let next = "";
+  try {
+    await client.query("begin");
+    const cur = await client.query<{ status: string; availability_ids: string[] }>("select status, availability_ids from bookings where id = $1 for update", [bookingId]);
+    const row = cur.rows[0];
+    if (!row) { await client.query("rollback"); return null; }
+    next = row.status;
+    if (row.status === "awaiting_payment") next = "confirmed";
+    else if (row.status === "expired" || row.status === "payment_failed") {
+      const ids = row.availability_ids ?? [];
+      await client.query("savepoint reclaim");
+      const claimed = await client.query("update availability set is_booked = true where id = any($1::uuid[]) and not is_booked", [ids]);
+      if ((claimed.rowCount ?? 0) === ids.length) next = "confirmed";
+      else { await client.query("rollback to savepoint reclaim"); next = "paid_conflict"; }
+    }
+    if (next !== row.status) await client.query("update bookings set status = $2 where id = $1", [bookingId, next]);
+    await client.query("commit");
+  } catch (e) { try { await client.query("rollback"); } catch { /* noop */ } throw e; }
+  finally { client.release(); }
+  if (next === "confirmed") await pool().query(
     `update booking_addons set cafe_status = 'sent_to_cafe' where booking_id = $1 and item_id in (select id from (values ('cappuccino'),('espresso'),('tea'),('croissant')) as v(id))`,
     [bookingId]);
   const b = await getBooking(bookingId);
@@ -89,7 +114,9 @@ export async function failBooking(bookingId: string): Promise<Booking | null> {
     await client.query("begin");
     const cur = await client.query<{ status: string; availability_ids: string[] }>("select status, availability_ids from bookings where id = $1 for update", [bookingId]);
     if (!cur.rows.length) { await client.query("rollback"); return null; }
-    if (cur.rows[0].status !== "confirmed") {
+    // Only an unpaid booking still holds its slots; never release an expired
+    // booking's days again (they may already belong to someone else).
+    if (cur.rows[0].status === "awaiting_payment") {
       await client.query("update bookings set status = 'payment_failed' where id = $1", [bookingId]);
       await client.query("update availability set is_booked = false where id = any($1::uuid[])", [cur.rows[0].availability_ids]);
     }

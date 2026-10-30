@@ -5,7 +5,7 @@ Scripted browser flows against the running app.
 ## Does
 
 - Runs the segment's user flows end to end (upload → specs → listing → restage → chat booking, as applicable).
-- Tests both layouts: Arabic `dir="rtl"` (default) and English `dir="ltr"`; layout must mirror with logical properties, no overlap or clipped text.
+- Tests both layouts: English `dir="ltr"` (default locale) and Arabic `dir="rtl"` under `/ar`; layout must mirror with logical properties, no overlap or clipped text.
 - Exercises at least the documented controls for the flow under test — a page load alone is not a pass.
 
 ## Returns

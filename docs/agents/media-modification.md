@@ -4,7 +4,7 @@ Model under test: `muse-image-1.0` edits (product calls only via `lib/meta/`).
 
 ## Input
 
-Keyframes from the segmentation agent (with masks, if the API accepts them) + a restyle brief.
+Hero keyframe (no masks: segmentation retired 2026-10-27) + a restyle brief. Note: `muse-image-1.0` returns WebP; declare the real MIME type when re-feeding an output.
 
 ## Does
 

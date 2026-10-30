@@ -34,7 +34,16 @@ export function requireKey(): string {
 type ChatBody = Record<string, unknown>;
 export interface ImageEditOpts { imagePath: string; prompt: string; maskPath?: string }
 
-async function call<T = Record<string, unknown>>(path: string, init: RequestInit, tries = 3): Promise<T> {
+// Usage feeds the spend breaker (lib/guard.ts). Imported lazily to keep this
+// module free of DB imports at load time; a failed write never fails the call.
+async function track(model: string, json: unknown): Promise<void> {
+  try {
+    const usage = (json as { usage?: Record<string, number> } | null)?.usage;
+    if (usage) await (await import("../guard")).recordUsage(model, usage);
+  } catch (e) { console.warn("[meta] usage not recorded:", (e as Error).message); }
+}
+
+async function call<T = Record<string, unknown>>(path: string, init: RequestInit, model: string, tries = 3): Promise<T> {
   const key = requireKey();
   let last: Error = new Error("unknown");
   for (let i = 0; i < tries; i++) {
@@ -49,7 +58,9 @@ async function call<T = Record<string, unknown>>(path: string, init: RequestInit
         continue;
       }
       if (!res.ok) throw new Error(`Meta ${path} ${res.status}: ${text.slice(0, 800)}`);
-      return (text ? JSON.parse(text) : {}) as T;
+      const json = (text ? JSON.parse(text) : {}) as T;
+      await track(model, json);
+      return json;
     } catch (e) {
       last = e as Error;
       if (i < tries - 1) await new Promise((r) => setTimeout(r, 2000));
@@ -58,33 +69,49 @@ async function call<T = Record<string, unknown>>(path: string, init: RequestInit
   throw last;
 }
 
+const chat = (model: string) => (body: ChatBody) =>
+  call("/chat/completions", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ model, ...body }) }, model);
+
+// Dev switch (AGENTS.md): local runs on our own/synthetic footage may send
+// NON-PII calls to the contributor model. Ignored on Vercel, so production
+// always uses muse-spark-1.3. Never used for chat or any PII.
+export function nonPiiModel(): string {
+  return process.env.OFFISIO_DEV_MODELS === "contributor" && !process.env.VERCEL ? MODELS.sparkContributor : MODELS.spark;
+}
+
+// Real MIME type from magic bytes: muse-image-1.0 returns WebP, and edits
+// reject a declared type that doesn't match the bytes.
+function sniffImage(buf: Uint8Array): { type: string; ext: string } {
+  const ascii = (a: number, b: number) => String.fromCharCode(...buf.subarray(a, b));
+  if (ascii(8, 12) === "WEBP") return { type: "image/webp", ext: "webp" };
+  if (buf[0] === 0x89 && ascii(1, 4) === "PNG") return { type: "image/png", ext: "png" };
+  return { type: "image/jpeg", ext: "jpg" };
+}
+
 export const meta = {
   // PII-safe path: never contributor (AGENTS.md routing table).
-  product: {
-    chat: (body: ChatBody) =>
-      call("/chat/completions", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ model: MODELS.spark, ...body }) }),
-  },
-  public: {
-    chat: (body: ChatBody) =>
-      call("/chat/completions", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ model: MODELS.sparkContributor, ...body }) }),
-  },
-  models: () => call<{ data?: { id: string }[] }>("/models", { method: "GET" }),
+  product: { chat: chat(MODELS.spark) },
+  // Non-PII product data (specs, listing): spark, or contributor in local dev.
+  nonPii: { chat: (body: ChatBody) => chat(nonPiiModel())(body) },
+  public: { chat: chat(MODELS.sparkContributor) },
+  models: () => call<{ data?: { id: string }[] }>("/models", { method: "GET" }, "none"),
   imageEdit: async ({ imagePath, prompt, maskPath }: ImageEditOpts) => {
     const { readFile } = await import("node:fs/promises");
     // imagePath may be a Blob/remote URL (Vercel) or a local disk path.
-    const load = async (p: string): Promise<Blob> => {
+    const load = async (p: string): Promise<Uint8Array<ArrayBuffer>> => {
       if (p.startsWith("http://") || p.startsWith("https://")) {
         const r = await fetch(p);
         if (!r.ok) throw new Error(`fetch image ${p} failed: ${r.status}`);
-        return await r.blob();
+        return new Uint8Array(await r.arrayBuffer());
       }
-      return new Blob([await readFile(p)]);
+      return new Uint8Array(await readFile(p)) as Uint8Array<ArrayBuffer>;
     };
     const form = new FormData();
     form.append("model", MODELS.image);
     form.append("prompt", prompt);
-    form.append("image", await load(imagePath), "hero.jpg");
-    if (maskPath) form.append("mask", await load(maskPath), "mask.png");
-    return call<{ data?: { b64_json?: string; url?: string }[] }>("/images/edits", { method: "POST", body: form });
+    const img = await load(imagePath); const kind = sniffImage(img);
+    form.append("image", new Blob([img], { type: kind.type }), `hero.${kind.ext}`);
+    if (maskPath) form.append("mask", new Blob([await load(maskPath)], { type: "image/png" }), "mask.png");
+    return call<{ data?: { b64_json?: string; url?: string }[] }>("/images/edits", { method: "POST", body: form }, MODELS.image);
   },
 };

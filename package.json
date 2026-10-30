@@ -13,7 +13,8 @@
     "seed": "tsx scripts/seed.ts",
     "upload-demo": "tsx scripts/upload-demo.ts",
     "generate-home-art": "tsx scripts/generate-home-art.ts",
-    "generate-units": "tsx scripts/generate-units.ts"
+    "generate-units": "tsx scripts/generate-units.ts",
+    "topup-availability": "tsx scripts/topup-availability.ts"
   },
   "dependencies": {
     "@vercel/blob": "^2.8.2",

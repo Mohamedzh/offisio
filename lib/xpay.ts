@@ -15,7 +15,7 @@ export function xpayWebhookSecret(): string {
 }
 
 export async function createCheckoutSession(opts: {
-  amountEgp: number; bookingId: string;
+  amountEgp: number; bookingId: string; locale?: "ar" | "en";
 }): Promise<{ checkoutUrl: string; sessionId: string }> {
   const cfg = xpayConfig();
   if (!cfg) throw new Error("XPAY_NOT_CONFIGURED");
@@ -33,7 +33,7 @@ export async function createCheckoutSession(opts: {
     submitType: "BOOK",
   };
   if (appUrl) {
-    body.afterCompletion = { type: "redirect", redirect: { url: `${appUrl}/en/booking/${opts.bookingId}` } };
+    body.afterCompletion = { type: "redirect", redirect: { url: `${appUrl}/${opts.locale ?? "en"}/booking/${opts.bookingId}` } };
   }
   const res = await fetch(`${BASE}/checkout/sessions`, {
     method: "POST",

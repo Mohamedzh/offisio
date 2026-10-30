@@ -2,7 +2,7 @@
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { upload } from "@vercel/blob/client";
-import { getT, localeHref, type Locale } from "@/lib/i18n";
+import { errorText, getT, localeHref, type Locale } from "@/lib/i18n";
 
 function newSlug(): string {
   const bytes = crypto.getRandomValues(new Uint8Array(12));
@@ -12,7 +12,9 @@ function newSlug(): string {
 }
 
 interface Frame { blob: Blob; url: string }
-const MAX_BYTES = 100 * 1024 * 1024;
+// Mirrors CAPS in lib/guard.ts (server enforces the byte cap via the Blob token).
+const MAX_BYTES = 80 * 1024 * 1024;
+const MAX_SECONDS = 45;
 
 async function extractFrames(file: File): Promise<Frame[]> {
   const objectUrl = URL.createObjectURL(file);
@@ -22,10 +24,11 @@ async function extractFrames(file: File): Promise<Frame[]> {
     await new Promise<void>((resolve, reject) => { video.onloadedmetadata = () => resolve(); video.onerror = () => reject(new Error("video load failed")); });
     const duration = video.duration;
     if (!Number.isFinite(duration) || duration <= 0) throw new Error("video has no duration");
+    if (duration > MAX_SECONDS) throw new Error("VIDEO_TOO_LONG");
     const count = Math.min(10, Math.max(6, Math.round(duration / 3) || 6));
-    const scale = Math.min(1, 1280 / (video.videoWidth || 1280));
+    const scale = Math.min(1, 1024 / (video.videoWidth || 1024));
     const canvas = document.createElement("canvas");
-    canvas.width = Math.round((video.videoWidth || 1280) * scale);
+    canvas.width = Math.round((video.videoWidth || 1024) * scale);
     canvas.height = Math.round((video.videoHeight || 720) * scale);
     const ctx = canvas.getContext("2d");
     if (!ctx) throw new Error("canvas unavailable");
@@ -55,9 +58,11 @@ export default function UploadForm({ locale }: { locale: Locale }) {
     setMsg(""); setFrames([]); setHero(0); setVideoFile(file ?? null);
     if (!file) return;
     if (!file.type.startsWith("video/")) { setMsg(t("upload.failed")); return; }
-    if (file.size > MAX_BYTES) { setMsg(t("upload.failed")); return; }
+    if (file.size > MAX_BYTES) { setMsg(errorText(t, "VIDEO_TOO_BIG")); return; }
     setExtracting(true);
-    try { setFrames(await extractFrames(file)); } catch { setMsg(t("upload.failed")); } finally { setExtracting(false); }
+    try { setFrames(await extractFrames(file)); }
+    catch (e) { setMsg((e as Error).message === "VIDEO_TOO_LONG" ? errorText(t, "VIDEO_TOO_LONG") : t("upload.failed")); }
+    finally { setExtracting(false); }
   }
 
   async function submit() {
@@ -91,7 +96,7 @@ export default function UploadForm({ locale }: { locale: Locale }) {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error ?? t("upload.failed"));
       router.push(localeHref(`/units/${data.slug}/edit`, locale));
-    } catch (e) { setMsg((e as Error).message); setBusy(false); }
+    } catch (e) { setMsg(errorText(t, (e as Error).message)); setBusy(false); }
   }
 
   const inputCls = "mt-1 w-full rounded-none border border-ink bg-sheet p-2 focus:outline-none focus:ring-2 focus:ring-chalk focus:ring-offset-1";

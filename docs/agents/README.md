@@ -28,7 +28,7 @@ Spawned for Segment 1 capability tests and later pipeline work. Each writes a mi
 
 | Agent | Model under test | Call when |
 |---|---|---|
-| [Video segmentation](video-segmentation.md) | `sam-3.1` | Segmenting objects in owned demo footage |
+| [Video segmentation](video-segmentation.md) | `sam-3.1` | **Retired 2026-10-27** (SAM dropped, no callable endpoint; see [plan/01](../plan/01-capability-tests.md)). Do not spawn unless SAM is re-approved |
 | [Media modification](media-modification.md) | `muse-image-1.0` edits | Furniture removal / restyle on keyframes |
 | [Image generation](image-generation.md) | `muse-image-1.0` generation | Listing or restyle imagery from prompts |
 

@@ -33,7 +33,7 @@
   "upload.furnished": "Furnished",
   "upload.semifinished": "Semifinished",
   "upload.video": "Office video",
-  "upload.videoHint": "Pick a short walkthrough video (max 100 MB). Frames are extracted in your browser.",
+  "upload.videoHint": "Pick a short walkthrough video (max 45 seconds, 80 MB). Frames are extracted in your browser.",
   "upload.extracting": "Extracting frames…",
   "upload.pickHero": "Pick the main photo",
   "upload.hero": "Main",
@@ -102,5 +102,15 @@
   "bookingCard.cafeNotConfigured": "Cafe line not configured (set CAFE_WHATSAPP_NUMBER) or no cafe items.",
   "bookingCard.refresh": "Refresh status",
   "bookingCard.checkoutFailed": "checkout failed",
-  "money.egp": "EGP {amount}"
+  "money.egp": "EGP {amount}",
+  "error.RATE_LIMITED": "You've reached today's demo limit for this from your device. Try again tomorrow, or browse the ready listings.",
+  "error.DEMO_QUOTA": "Demo quota reached for today for this feature. Browsing, booking and payment keep working.",
+  "error.MESSAGE_TOO_LONG": "That message is too long. Please keep it under 800 characters.",
+  "error.SESSION_FULL": "This chat has reached its length limit. Reload the page to start a new one.",
+  "error.VIDEO_TOO_LONG": "The video is longer than 45 seconds. Please use a shorter walkthrough.",
+  "error.VIDEO_TOO_BIG": "The video is larger than 80 MB.",
+  "error.DATE_IN_PAST": "That day has passed. Pick an upcoming one.",
+  "error.SLOT_TAKEN": "That day was just booked. Pick another one.",
+  "error.INVALID_PHONE": "Use an Egyptian mobile number: 11 digits starting with 01.",
+  "error.BOOKING_NOT_PAYABLE": "This booking can no longer be paid (its 30-minute hold expired). Please book again."
 }

@@ -48,6 +48,13 @@ export function getT(locale: Locale): T {
   };
 }
 
+// API error code -> localized text ("error.<CODE>" keys), else the raw code.
+export function errorText(t: T, code: string): string {
+  const key = `error.${code}`;
+  const s = t(key as TranslationKey);
+  return s === key ? code : s;
+}
+
 export function formatEgp(locale: Locale, amount: number): string {
   return getT(locale)("money.egp", { amount: amount.toLocaleString(locale === "ar" ? "ar-EG" : "en-US") });
 }

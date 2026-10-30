@@ -30,13 +30,13 @@ The fit-visualization is the mechanism a neighboring listing site cannot copy: b
 - Solo developer, hackathon deadline Nov 4, 9:00 PM ET; demo video recorded by Nov 3.
 - Demo loop is the product: upload, unit page (before/after + fit switcher is the centrepiece), chat booking, booking/payment status.
 - Bilingual UI: Arabic (RTL) and English (LTR) variants of every page; rental copy in Egyptian Arabic dialect, not formal MSA.
-- Seeded demo units live in `public/demo`; specs/listing JSON seeds in `data/seed`.
+- Demo media (owner-shot footage, pipeline renders, generated frames) lives on Vercel Blob; local copies of the filmed units sit in the gitignored `public/demo`. Specs/listing JSON seeds are in `data/seed`.
 
 ## Capabilities and Constraints
 
 - Next.js 16 App Router, TypeScript strict, Tailwind 4, Postgres on Neon, deployed on Vercel.
 - Every model call goes to the Meta Model API via `lib/meta/` only (`muse-spark-1.3` for product/PII, `muse-image-1.0` for renders). No other AI provider.
-- Out of scope by decision: real auth (deferred), reviews, map search, host analytics, mobile apps, payments beyond test mode.
+- Out of scope by decision: accounts beyond owner sign-in (Clerk, planned), reviews, map search UI (a per-unit pin is planned), host analytics, mobile apps, payments beyond XPay test mode. Parked: QStash order status, Overpass nearby cafes.
 - Only owned or generated assets; no stock imagery or unlicensed fonts.
 - Unit pages must work with partial media (uploaded units may initially have keyframes only, no staged renders).
 
@@ -48,7 +48,7 @@ The fit-visualization is the mechanism a neighboring listing site cannot copy: b
 
 ## Evidence on Hand
 
-- Three real seeded units with pipeline-generated specs/listings and staged renders (`public/demo`, `data/seed`).
+- Three filmed seeded units with pipeline-generated specs/listings and staged renders, plus six synthetic units (AI-generated frames, always badged) with real pipeline specs/listings (`data/seed`, Blob).
 - Live-verified payment checkout flow and bilingual routing (`docs/plan/05-demo-polish.md`).
 - Absent: testimonials, customer logos, press, benchmarks. Future work must not fabricate them.
 

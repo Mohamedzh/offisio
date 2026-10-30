@@ -1,7 +1,9 @@
 // Specs (S3) + listing (S4) pipeline steps — reusable server-side code.
-// All model calls go through meta.product (muse-spark-1.3); output is
-// JSON-parsed and validated, with one validation-feedback retry.
-import { meta } from "../meta/client";
+// Non-PII product data: calls go through meta.nonPii (muse-spark-1.3; the
+// contributor model only in local dev). Output is JSON-parsed and validated,
+// with one validation-feedback retry. Results are cached by content hash.
+import { meta, nonPiiModel } from "../meta/client";
+import { cached } from "./cache";
 import { SPECS_PROMPT_V1, LISTING_PROMPT_V1, type UnitKind } from "../meta/prompts";
 
 export interface UploadOwner {
@@ -78,7 +80,7 @@ type Msg = { role: string; content: unknown };
 async function chatJson<T>(messages: Msg[], validate: (raw: unknown) => T): Promise<T> {
   let err = "";
   for (let i = 0; i < 2; i++) {
-    const r = (await meta.product.chat({
+    const r = (await meta.nonPii.chat({
       messages: err ? [...messages, { role: "user", content: `Previous reply failed validation: ${err}. Reply with valid JSON only.` }] : messages,
       temperature: 0.2,
     })) as { choices?: { message?: { content?: string } }[] };
@@ -96,12 +98,13 @@ export async function generateSpecs(frameDataUrls: string[], owner: UploadOwner)
     { type: "text", text: `Owner fields: district=${owner.district}, rent_egp=${owner.rent_egp}, floors=${owner.floor_text}, available_from=${owner.available_from}, kind=${owner.kind}. Keyframes in walk order follow.` },
     ...frameDataUrls.map((url) => ({ type: "image_url", image_url: { url } })),
   ];
-  return chatJson<Specs>([{ role: "system", content: SPECS_PROMPT_V1 }, { role: "user", content }], validateSpecs);
+  return cached("specs", nonPiiModel(), "SPECS_PROMPT_V1", [...frameDataUrls, JSON.stringify(owner)],
+    () => chatJson<Specs>([{ role: "system", content: SPECS_PROMPT_V1 }, { role: "user", content }], validateSpecs));
 }
 
 export async function generateListing(specs: Specs, owner: UploadOwner): Promise<Listing> {
-  return chatJson<Listing>([
+  return cached("listing", nonPiiModel(), "LISTING_PROMPT_V1", [JSON.stringify(specs), JSON.stringify(owner)], () => chatJson<Listing>([
     { role: "system", content: LISTING_PROMPT_V1 },
     { role: "user", content: `Specs: ${JSON.stringify(specs)}\nOwner: ${JSON.stringify(owner)}` },
-  ], validateListing);
+  ], validateListing));
 }

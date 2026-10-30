@@ -1,5 +1,7 @@
 # Video segmentation — `muse-spark-1.3-contributor`
 
+> **Retired 2026-10-27:** SAM 3.1 was dropped (listed in `/v1/models`, no callable segmentation endpoint; prompt-guided edits passed). Kept for history. Do not spawn unless the owner re-approves SAM.
+
 Model under test: `sam-3.1` (product calls only via `lib/meta/`).
 
 ## Input

@@ -1,16 +1,16 @@
 # Offisio — Detailed Design
 
-Status: Step 1 draft for review (Oct 26). Stack: Next.js 16 App Router, TypeScript strict, Tailwind 4, Postgres on Neon, Vercel Blob, Vercel deploy. All AI via Meta Model API (`https://api.meta.ai/v1`, OpenAI-compatible). Arabic (RTL) default UI, English toggle.
+Status: Step 1 draft for review (Oct 26). Stack: Next.js 16 App Router, TypeScript strict, Tailwind 4, Postgres on Neon, Vercel Blob, Vercel deploy. All AI via Meta Model API (`https://api.meta.ai/v1`, OpenAI-compatible). English default UI (owner decision 2026-10-27, kept for judges), full Arabic (RTL) variant under `/ar`.
 
 Owned decisions where this differs from [ARCHITECTURE.md](ARCHITECTURE.md) (agreed at Checkpoint 0):
 
 | # | Change | Why |
 |---|---|---|
-| D1 | Segmentation runs per-keyframe (images) as the main path; video tracking optional | We stage stills. Per-frame masks need no video API and no tracking |
+| D1 | ~~Segmentation runs per-keyframe (images) as the main path; video tracking optional~~ **Superseded 2026-10-27: SAM dropped**, prompt-guided edits only (decision log) | We stage stills. Per-frame masks need no video API and no tracking |
 | D2 | "Empty" is the staging base, not a 4th style | All 3 styles derive from one empty image; that is what keeps walls/windows consistent |
 | D3 | Specs are owner-editable estimates with confidence, never presented as measured | Vision cannot measure m² reliably |
 | D4 | Owner enters district, rent (EGP/month), floor, available-from at upload | Cannot be inferred from video; realistic listing needs them |
-| D5 | Demo seed target is 4–5 polished units, not 10–15 | Solo, 9 days; quality beats breadth for judging |
+| D5 | Demo seed target is 4–5 polished units, not 10–15. **Revised 2026-10-29:** ~13 units (3 filmed + synthetic, badged), every one fully staged, across more districts and layouts ([plan/06](plan/06-judge-ready.md) 6.6) | Solo, 9 days; quality beats breadth for judging |
 | D6 | Chat UI is a generic messaging UI, no WhatsApp branding | Trademark risk, zero demo gain |
 | D7 | `muse-spark-1.3-contributor` only for synthetic/public test data, never PII | Contributor content may train Meta models. See PII routing in [AGENTS.md](../AGENTS.md) |
 
@@ -29,7 +29,7 @@ video ─► S0 ingest ─► S1 keyframes ─► S2 segment ─► S3 specs ─
 |---|---|---|---|---|
 | S0 Ingest | Owner form (district, rent, floor, available-from) + video file | `units` row (status `processing`), video in Blob | none | free |
 | S1 Keyframes | Video (browser `<video>`+canvas, seek every ~3 s, dedupe by perceptual hash in-browser if trivial, else fixed picks) | 6–10 keyframe JPEGs in Blob, `media(kind=keyframe)` | none | free |
-| S2 Segment | Best 3 keyframes (sharpest/widest, picked in S3 pre-pass or owner picks hero frame) | Mask PNGs per prompt per frame, `media(kind=mask)` | SAM 3.1, text prompts `desk, chair, window, floor, wall, door, air conditioner` — endpoint shape unverified (U2) | per frame |
+| ~~S2 Segment~~ (dropped 2026-10-27; no step runs) | Best 3 keyframes (sharpest/widest, picked in S3 pre-pass or owner picks hero frame) | Mask PNGs per prompt per frame, `media(kind=mask)` | SAM 3.1, text prompts `desk, chair, window, floor, wall, door, air conditioner` — endpoint shape unverified (U2) | per frame |
 | S3 Specs | All keyframes + owner fields | Validated specs JSON (§4), `specs` row | `muse-spark-1.3`, `POST /v1/chat/completions`, images as content parts, `response_format` JSON schema (U4) | 1 call |
 | S4 Listing | Specs JSON + owner fields | `title_ar/en`, `summary_ar/en`, `highlights_ar/en[]` on `units` | `muse-spark-1.3`, `POST /v1/chat/completions`, JSON schema | 1 call |
 | S5 Empty | Hero keyframe + its furniture mask (desk+chair+sofa merged) | Empty-room image, `media(kind=staged, style='empty')` | `muse-image-1.0` edit, mask if accepted (U1), else prompt-guided | 1 edit |
@@ -140,6 +140,8 @@ Listing step (S4) reuses the pattern: JSON schema `{title_ar,title_en,summary_ar
 
 ## 5. Booking agent
 
+> **As built (2026-10-30):** [lib/agent/agent.ts](../lib/agent/agent.ts) sends unit and free-day data in the prompt and gets back one validated JSON action (`none` | `create_booking`) per turn. The tool loop below is the target, planned in [plan/06](plan/06-judge-ready.md) 6.5 behind a one-call tool-calling test (U4). Bookings are created `awaiting_payment` and confirm only on a signed XPay webhook.
+
 Transport: `POST /app/api/chat` with `{session_id?, unit_id?, message}` → server runs the loop, persists to `chat_sessions`, returns `{session_id, reply, booking?}`. Model: `muse-spark-1.3` via `meta.product` only (chat contains PII). Voice (stretch): client records audio → `muse-voice-transcribe-1.0` (`POST /v1/audio/transcriptions`, shape unverified U5) → transcript becomes the user message with `created_via='voice'`; transcript text is shown to the renter for correction before sending if transcription confidence is exposed, else sent directly with the raw transcript visible in the bubble.
 
 System prompt outline (`AGENT_PROMPT_V1`):
@@ -190,20 +192,24 @@ Nothing below is assumed. Each gets a `scripts/` test at Checkpoint 3, before th
 
 ## 8. UI notes
 
-Routes: `/` (unit grid, AR default), `/units/[slug]` (specs card, before/after slider, style switcher, chat entry), `/upload` (owner form + video), `/chat` (booking). `lang`/`dir` switch at root layout: `ar` → `dir="rtl" lang="ar"`, `en` → LTR. Logical Tailwind properties only. Before/after slider and style switcher are the demo centrepiece — they get polish priority over the grid.
+Routes (all under `/[lang]`, `en` default, `ar` RTL): `/` (unit grid), `/units/[slug]` (specs card, before/after slider, style switcher, chat entry), `/upload` (owner form + video), `/chat` (booking). `lang`/`dir` switch at root layout: `ar` → `dir="rtl" lang="ar"`, `en` → LTR. Logical Tailwind properties only. Before/after slider and style switcher are the demo centrepiece — they get polish priority over the grid.
 
 ## 9. Deliberately not designed (out of scope)
 
-Payments, real auth, reviews, map search, host analytics, mobile apps, multi-hero staging, auto quality-scoring of edits, WhatsApp integration. Listing them so no segment brief reintroduces them.
+~~Payments~~ (now XPay test mode, decision log 2026-10-27/29), ~~real auth~~ (now Clerk owner sign-in only, 2026-10-29), reviews, map search (a per-unit pin + agent "near X" is in), host analytics, mobile apps, multi-hero staging, auto quality-scoring of edits, WhatsApp integration (outbound `wa.me` cafe link only), QStash order status and Overpass nearby cafes (parked). Listing them so no segment brief reintroduces them.
 
 
 ## Decision log
 
-- 2026-10-27: SAM 3.1 dropped for now (future consideration). Listed in /models but no callable segmentation endpoint in the OpenAI-shaped Meta API. Prompt-guided muse-image-1.0 removal passed on furnished (full) + bare (empty1/empty2, near-identity no-op), 0 retries, so masks have no failure to fix. Revisit only if removal warps walls/leftover furniture on a future unit, or a hosted SAM endpoint ships. Segmentation was never a Wonder cost � specs use muse-spark-1.3, renders muse-image-1.0.
-- 2026-10-27: Rental model � daily flex (furnished, min 1 day; hourly 4-6h considered later), monthly furnished, long-term bare/semifinished where renter does final fit-out. AI fit-visualization (startup/clinic/training from the real room) is the selling tool for bare units. Add-ons via booking agent (coffee etc.) start as agent-collected requests itemized on the bill, partner-fulfilled; no live cafe ordering/payment integration in demo scope.
+- 2026-10-27: SAM 3.1 dropped for now (future consideration). Listed in /models but no callable segmentation endpoint in the OpenAI-shaped Meta API. Prompt-guided muse-image-1.0 removal passed on furnished (full) + bare (empty1/empty2, near-identity no-op), 0 retries, so masks have no failure to fix. Revisit only if removal warps walls/leftover furniture on a future unit, or a hosted SAM endpoint ships. Segmentation was never a Wonder cost — specs use muse-spark-1.3, renders muse-image-1.0.
+- 2026-10-27: Rental model — daily flex (furnished, min 1 day; hourly 4-6h considered later), monthly furnished, long-term bare/semifinished where renter does final fit-out. AI fit-visualization (startup/clinic/training from the real room) is the selling tool for bare units. Add-ons via booking agent (coffee etc.) start as agent-collected requests itemized on the bill, partner-fulfilled; no live cafe ordering/payment integration in demo scope.
 
 - 2026-10-27: 3-track catalog adopted. Furnished=daily+monthly, semifinished/long-term only (renter fit-out), hourly 4-6h min is Phase 2 (stored as hourly slots underneath, priced daily in v1). Add-ons API research: no Egypt-usable search+order API exists. MealMe (only true search+menu+checkout API found) is US/Canada only; Talabat Partner API is vendor-side per-vendor POS/catalog/order management, not consumer marketplace ordering; Uber Eats Marketplace/DoorDash APIs are merchant-side, approval-gated; Uber Direct/DoorDash Drive are courier-only (you supply the order). Decision: v1 add-ons = agent-collected requests from a curated partner menu, itemized on the bill, partner-fulfilled manually / via partner WhatsApp. An ddons-provider interface will abstract search/menu/order/status so MealMe/Talabat can drop in later without agent changes.
 
-- 2026-10-27: Scope change by owner: payments IN via hosted payment checkout, test mode (was out of scope). Real integration, real webhooks, test cards only � no live money during hackathon. Booking confirmed only on verified payment webhook (signature-checked), never on redirect alone. Keys in env only (see .env.example). Add-on ordering research update: Apify mena-food-intelligence is a menu scraper (Elmenus Egypt/HungerStation, items+EGP prices from restaurant URLs) � useful for discovery/enrichment of curated partners, NOT proximity search and NOT ordering. Proximity = Google Places (discovery only) or curated partners per unit. Ordering remains partner-fulfilled (WhatsApp/deep-link to Elmenus/Talabat page) until a marketplace opens a consumer ordering API; payment for add-ons rides the same bill.
+- 2026-10-27: Scope change by owner: payments IN via hosted payment checkout, test mode (was out of scope). Real integration, real webhooks, test cards only — no live money during hackathon. Booking confirmed only on verified payment webhook (signature-checked), never on redirect alone. Keys in env only (see .env.example). Add-on ordering research update: Apify mena-food-intelligence is a menu scraper (Elmenus Egypt/HungerStation, items+EGP prices from restaurant URLs) — useful for discovery/enrichment of curated partners, NOT proximity search and NOT ordering. Proximity = Google Places (discovery only) or curated partners per unit. Ordering remains partner-fulfilled (WhatsApp/deep-link to Elmenus/Talabat page) until a marketplace opens a consumer ordering API; payment for add-ons rides the same bill.
 
-- 2026-10-27: Neon live. DATABASE_URL = direct (migrations via scripts/migrate.ts), DATABASE_URL_POOLED = pooled (app runtime via lib/db/pg.ts, driver pg). Schema in lib/db/schema.sql (8 tables incl. payments, booking_addons, chat_sessions.session_key). Seeded: 3 units, 147 hourly slots (7 days x 10-17, Africa/Cairo). JSON file store removed; fresh sessions must run pnpm migrate && pnpm seed only on a new Neon project � the current project is already migrated+seeded.
+- 2026-10-27: Neon live. DATABASE_URL = direct (migrations via scripts/migrate.ts), DATABASE_URL_POOLED = pooled (app runtime via lib/db/pg.ts, driver pg). Schema in lib/db/schema.sql (8 tables incl. payments, booking_addons, chat_sessions.session_key). Seeded: 3 units, 147 hourly slots (7 days x 10-17, Africa/Cairo). JSON file store removed; fresh sessions must run pnpm migrate && pnpm seed only on a new Neon project — the current project is already migrated+seeded.
+
+- 2026-10-29: Payment provider switched from Paymob to **XPay** (test mode). Paymob's test integration had no working acquirer credentials, which Paymob support would have to fix. XPay Checkout Sessions + HMAC-signed webhook were verified live (approved card → confirmed, declined → stays unconfirmed). Detail: [plan/05](plan/05-demo-polish.md).
+- 2026-10-29 (post-audit, owner): **source video upload to Blob is allowed** (replaces the kickoff rule "video never uploads"); keyframes are still extracted in the browser and only frames reach the model. **English stays the default locale** for judges. **D5 revised** (see table). Owner sign-in via **Clerk development instance** (Google), renters stay guests; uploads unlisted on the homepage for now. QStash order status and Overpass nearby cafes **parked**. The spend ceiling is an abuse circuit breaker, not a budget cap. Full list: [plan/06](plan/06-judge-ready.md) Decisions.
+- 2026-10-29: Metering: `muse-image-1.0` returns **WebP**, and edits reject a declared MIME type that doesn't match the bytes, so staging must sniff the real type before re-feeding outputs ([plan/06](plan/06-judge-ready.md) Metering).

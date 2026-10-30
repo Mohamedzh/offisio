@@ -33,7 +33,7 @@
   "upload.furnished": "مفروش",
   "upload.semifinished": "نصف تشطيب",
   "upload.video": "فيديو المكتب",
-  "upload.videoHint": "اختار فيديو قصير للمكتب (لحد ١٠٠ ميجا). الصور هتتطلع في المتصفح عندك.",
+  "upload.videoHint": "اختار فيديو قصير للمكتب (لحد ٤٥ ثانية و٨٠ ميجا). الصور هتتطلع في المتصفح عندك.",
   "upload.extracting": "بنطلّع صور من الفيديو…",
   "upload.pickHero": "اختار الصورة الرئيسية",
   "upload.hero": "الرئيسية",
@@ -102,5 +102,15 @@
   "bookingCard.cafeNotConfigured": "خط الكافيه مش متظبط (حط CAFE_WHATSAPP_NUMBER) أو مفيش إضافات كافيه.",
   "bookingCard.refresh": "حدّث الحالة",
   "bookingCard.checkoutFailed": "الدفع فشل",
-  "money.egp": "جنيه {amount}"
+  "money.egp": "جنيه {amount}",
+  "error.RATE_LIMITED": "وصلت للحد اليومي للتجربة من الجهاز ده. جرّب تاني بكرة، أو اتفرج على المكاتب الجاهزة.",
+  "error.DEMO_QUOTA": "وصلنا لحد التجربة النهارده للخاصية دي. التصفح والحجز والدفع شغالين عادي.",
+  "error.MESSAGE_TOO_LONG": "الرسالة طويلة شوية، اختصرها لأقل من ٨٠٠ حرف.",
+  "error.SESSION_FULL": "المحادثة دي طولت. اعمل ريفريش للصفحة وابدأ محادثة جديدة.",
+  "error.VIDEO_TOO_LONG": "الفيديو أطول من ٤٥ ثانية. صوّر جولة أقصر.",
+  "error.VIDEO_TOO_BIG": "الفيديو أكبر من ٨٠ ميجا.",
+  "error.DATE_IN_PAST": "اليوم ده عدّى، اختار يوم جاي.",
+  "error.SLOT_TAKEN": "اليوم ده اتحجز، اختار يوم تاني.",
+  "error.INVALID_PHONE": "رقم الموبايل لازم يكون مصري: ١١ رقم يبدأ بـ 01.",
+  "error.BOOKING_NOT_PAYABLE": "الحجز ده مبقاش ينفع يتدفع (مهلة الـ ٣٠ دقيقة خلصت). اعمل حجز جديد."
 }

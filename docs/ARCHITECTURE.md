@@ -4,6 +4,13 @@
 > This document is intentionally high level. The detailed design and implementation plan are produced during the hackathon with Meta models (Muse Code / Muse Spark).
 >
 > Relocated from the repo root into `docs/` on Oct 26 to match the path `AGENTS.md` already referenced. Content unchanged except this note, the project name, and §9 (Neon chosen as the Postgres provider).
+>
+> **As built (updated 2026-10-30, doc unify in [plan/06](plan/06-judge-ready.md) 6.1).** Where this sketch and the build differ, the build wins:
+> - **No segmentation step.** SAM 3.1 was dropped on 2026-10-27 (no callable endpoint), and staging is prompt-guided `muse-image-1.0` edits ([plan/01](plan/01-capability-tests.md)).
+> - **The source video is stored on Vercel Blob** for playback. The browser extracts keyframes and uploads them directly to Blob, which avoids the 4.5 MB function body limit; only frames reach the model.
+> - **Payments are in scope in XPay test mode.** Owner sign-in (Clerk) and a per-unit location pin are planned in plan/06.
+> - **The booking agent** currently returns one validated JSON action per turn; the tool loop below is planned (plan/06 6.5).
+> - **Default locale is English**, with a full Arabic RTL variant.
 
 ## 1. Product in one line
 
@@ -12,12 +19,12 @@ Offisio — turn any office into a bookable, furnished-looking listing from a 30
 ## 2. The demo loop (what must work end to end)
 
 1. **Capture.** The owner uploads a short walkthrough video of an office unit.
-2. **Understand.** The system extracts keyframes, segments the room, and produces structured specs (approx. area, windows, AC, desk capacity, condition).
+2. **Understand.** The system extracts keyframes ~~, segments the room,~~ (segmentation dropped, see note) and produces structured specs (approx. area, windows, AC, desk capacity, condition).
 3. **List.** A bilingual (Arabic / English) listing page is generated from the specs.
 4. **Restage.** Furniture is removed and the room is restaged in a few styles (startup office, clinic, training room), keeping walls and windows consistent.
 5. **Book.** A renter chats in Egyptian Arabic (stretch: voice note); an agent searches units, checks availability, books a slot, and confirms.
 
-Everything outside this loop is out of scope (payments, real auth, reviews, map search, host analytics, mobile apps).
+Everything outside this loop is out of scope (~~payments, real auth~~ — now XPay test-mode payments and Clerk owner sign-in, see note; reviews, map search, host analytics, mobile apps).
 
 ## 3. System overview
 
@@ -47,7 +54,7 @@ Everything outside this loop is out of scope (payments, real auth, reviews, map 
 |---|---|---|
 | Upload + keyframes (client) | Accept video, extract 6–12 representative frames in the browser, upload video + frames | — |
 | Ingest pipeline (server) | Orchestrate steps per unit, persist status so the UI can show progress | — |
-| Segmentation | Text-prompted masks on the video, tracked across frames | SAM 3.1 |
+| ~~Segmentation~~ (dropped 2026-10-27) | ~~Text-prompted masks on the video, tracked across frames~~ | ~~SAM 3.1~~ |
 | Specs extraction | Keyframes → validated specs JSON | Muse Spark 1.3 |
 | Listing generator | Specs → Arabic + English title, summary, highlights | Muse Spark 1.3 |
 | Staging | Remove furniture, then restage per style, consistent across styles | Muse Image 1.0 (edits) |
@@ -103,9 +110,9 @@ AGENTS.md            instructions for coding agents
 
 ## 9. Stack
 
-Next.js (App Router, TypeScript), Postgres on Neon, Vercel, Vercel Blob. Keyframes extracted in the browser with `<video>` + canvas. SAM clips uploaded once through the Files API (support unverified — see [DESIGN.md](DESIGN.md) capability unknowns).
+Next.js (App Router, TypeScript), Postgres on Neon, Vercel, Vercel Blob. Keyframes extracted in the browser with `<video>` + canvas and uploaded straight to Blob (client uploads); the source video is stored on Blob too. ~~SAM clips uploaded once through the Files API~~ (SAM dropped). Payments: XPay hosted checkout (test mode), signed webhook. Owner auth: Clerk development instance (planned).
 
-## 10. Milestones
+## 10. Milestones (original; the live schedule is in [plan/06](plan/06-judge-ready.md))
 
 | Dates | Milestone |
 |---|---|
