@@ -137,5 +137,6 @@
   "stage.title": "Render fit-out concepts",
   "stage.note": "One click per use. Each render takes about 30 seconds.",
   "stage.rendering": "Rendering…",
-  "error.STYLE_NOT_IN_PLAN": "That fit-out isn't planned for this unit's layout."
+  "error.STYLE_NOT_IN_PLAN": "That fit-out isn't planned for this unit's layout.",
+  "viewer.realSynthetic": "Listing photo (AI-generated)"
 }

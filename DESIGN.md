@@ -25,6 +25,7 @@ Defined in `app/globals.css` (`@theme`). Display type: Cairo 800/900 (`next/font
 - Sheets are flat: 1px ink border, soft offset shadow (`8px 12px 28px rgba(33,29,23,.22)`), square corners. Listing sheets rotate ±0.5deg, straighten on hover.
 - Torn edges: fibrous raster mask (`public/torn-edge.jpg`, luminance mask, `mask-size: 560px`) for `.torn-b`/`.torn-t` strips and `.tear-seam` overlays; the viewer tear is a flat irregular clip (90–98% band) over the previous layer, 500ms ease-out, disabled under `prefers-reduced-motion`.
 - Labels: black ink chips (11px uppercase). Specs: ruled hairline rows. No gradient text, no glass, no kicker labels, no hard block shadows.
+- 2026-10-30: the cream `.tear-seam` strip over photos was removed (it read as a white bar across every image); the jagged clip edge alone carries the tear, and it only appears when a different layer sits beneath. The torn-edge mask is read as luminance (`mask-mode: luminance`).
 - Signature interaction: UnitViewer layer switching — the active image tears at its bottom edge to reveal the layer beneath; on load the emptied room already peeks under the real photo.
 - Home first viewport: masthead strip, two-voice headline (ink + chalk), featured furnished unit as one large torn sheet.
 

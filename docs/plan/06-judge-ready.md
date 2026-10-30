@@ -192,8 +192,23 @@ Why: the v1 pipeline sees one hero room. It measured `empty1`/`empty2` as single
   - **Synthetic units render only their brief's `target_uses`** that pass. Filmed and uploaded units render every passing use. `--reanalyze` re-runs analysis on existing frames and retires stale renders.
   - Final inventory: 13 units, all staged. Dental fits: Heliopolis, Sheikh Zayed. Dental after fit-out (bathroom retrofit): empty1, empty2, Zamalek, Smouha, Chatby. Coworking: New Cairo, October. Fit-out clinic (partitioned): Nasr City. Furnished clinic: Smouha. Training: Downtown, Louran. Law office: Zamalek, Chatby.
   - Staging totals: V3 filmed 15 edits; synthetic 39 edits; plus 36 early edits from a run overlapping the generator (renders later retired or re-used via cache).
-  - **Chat acceptance final: 10/10 PASS** on the final inventory (34 tool calls, test data cleaned).
-  - Meta spend 2026-10-30, all work: **$2.88** (ledger `usage_counters`).
+  - **Owner review 2026-10-30 (round 2):** Louran's 20 m² room rendered as a 10-seat boardroom, and its two frames contradicted each other. Root causes:
+    1. Two *independent* generations per space are never the same room.
+    2. Windows and views in the style line leaked into every space (sea views in bathrooms).
+    3. Image models oversize rooms.
+  - Fixes in `scripts/generate-units.ts` v3:
+    - one frame per space
+    - windows and views moved into the room descriptions
+    - explicit metres, 26 mm lens and furniture fit in the prompt
+    - a **QA gate**: each frame is checked by Muse Spark Open on Modal (area estimate + description match, accept 0.6–1.7×, up to 3 tries, keep the closest)
+  - All 10 units regenerated to Blob `demo/<slug>/v3/`: 38 frames, 35 passed first or second try, 6 rejections regenerated, Nasr City's bathroom re-briefed. Every unit was reviewed visually (`.scratch/synth-a.jpg`, `synth-b.jpg`).
+  - **White bar on photos fixed:**
+    - The torn-edge JPEG mask was read as alpha (`mask-mode: luminance` added).
+    - The viewer tore the photo even with no layer beneath (now only when one exists).
+    - The cream `.tear-seam` strip was removed.
+    - Synthetic hero photos are labelled "Listing photo (AI-generated)" instead of "Real today".
+  - **Chat acceptance final: 10/10 PASS** on the v3 inventory (32 tool calls, test data cleaned). Before that run, `AGENT_PROMPT_V2` was changed so an explicit renter confirmation books immediately, with no second confirmation (scenario 9 friction).
+  - Meta spend 2026-10-30, all work including the v3 regeneration: **≈ $4.10** (ledger `usage_counters`).
 
 ### 6.7 Location, minimal (Nov 2) — scope check
 - Migration (approved): `units.lat`, `units.lng` numeric, idempotent `add column if not exists`, `pnpm migrate`, verify the columns.

@@ -1,6 +1,6 @@
 // Generate synthetic demo units from floor-plan briefs (data/seed/synthetic-briefs.json,
 // owner-approved 2026-10-30): per space 1-2 muse-image-1.0 frames in walk order ->
-// 2 s/frame slideshow -> Blob demo/<slug>/v2/ -> the same analysis pipeline as a
+// 2 s/frame slideshow -> Blob demo/<slug>/v3/ -> the same analysis pipeline as a
 // live upload (survey -> rubric -> listing v2). Synthetic only, no PII; always
 // badged as AI-generated photos. Staging runs separately: pnpm stage-units.
 // Run: pnpm generate-units [--only <slug>] [--force] [--dry]
@@ -41,10 +41,26 @@ export function surveyFromBrief(b: Brief): Survey {
   return { spaces, adjacency: spaces.slice(1).map((s, i) => [spaces[i].id, s.id] as [string, string]), entrance_space: spaces.find((s) => s.type === "entrance")?.id ?? null,
     has_ac: b.kind === "furnished" ? true : null, ac_units_visible: null, flooring: null, condition: b.kind === "furnished" ? "good" : "needs_work", condition_confidence: 1, notes_ar: null };
 }
-const CAMERAS = ["photographed from the doorway, wide-angle view of the whole space", "photographed from the opposite corner, wide-angle view"];
+const CAMERAS = ["photographed at eye level from the doorway", "photographed at eye level from the opposite corner"];
 
+// Scale cues: image models oversize rooms; state metres, lens and furniture fit.
 const framePrompt = (b: Brief, s: BriefSpace, cam: string) =>
-  `Photorealistic interior photograph of an office unit in ${b.district}, Egypt: ${b.style}. This photo shows ${s.desc}, about ${s.w} x ${s.l} metres, ${cam}. Natural phone-camera photo, no people, no text, no logos.`;
+  `Photorealistic interior photograph of an office unit in ${b.district}, Egypt: ${b.style}. This photo shows ${s.desc}. The space is exactly about ${s.w} m by ${s.l} m (${Math.round(s.w * s.l)} m² floor area) with a 3 m ceiling; show its true small-or-large size honestly. ${cam}, normal 26 mm phone lens, no ultra-wide distortion. Furniture is realistically sized and only as much as physically fits this floor area. Natural phone photo, no people, no text, no logos.`;
+
+// QA gate (synthetic data -> meta.public, which runs on our Modal deployment
+// locally): reject frames whose apparent size or contents contradict the brief.
+async function qaFrame(bytes: Buffer, s: BriefSpace): Promise<{ ok: boolean; ratio: number; issue: string }> {
+  const want = s.w * s.l;
+  const r = (await meta.public.chat({ temperature: 0.1, max_tokens: 4000, messages: [{ role: "user", content: [
+    { type: "text", text: `This generated photo should show: ${s.desc}, about ${s.w} x ${s.l} m (${Math.round(want)} m2). Estimate the visible floor area from door (~0.9 m), chairs (~0.5 m) and desks (~1.2 m). Reply ONLY JSON {"area_m2": number, "matches": boolean, "issue": string|null}; matches=false if the room looks much bigger or smaller than stated or its contents contradict the description.` },
+    { type: "image_url", image_url: { url: `data:image/jpeg;base64,${bytes.toString("base64")}` } },
+  ] }] })) as { choices?: { message?: { content?: string } }[] };
+  try {
+    const j = JSON.parse((r.choices?.[0]?.message?.content ?? "").replace(/^```json\s*|\s*```$/g, "").trim()) as { area_m2: number; matches: boolean; issue: string | null };
+    const ratio = j.area_m2 / want;
+    return { ok: j.matches && ratio >= 0.6 && ratio <= 1.7, ratio, issue: j.issue ?? "" };
+  } catch { return { ok: false, ratio: 0, issue: "QA reply not JSON" }; }
+}
 
 // Titles must carry the correct rent; append the factual owner rent if the model omitted it.
 const hasRent = (t: string, r: number) => t.includes(String(r)) || t.includes(r.toLocaleString("en-US"));
@@ -63,17 +79,26 @@ async function generateFrame(prompt: string, dest: string): Promise<Buffer> {
 }
 
 async function runUnit(b: Brief): Promise<void> {
-  const dir = join(".scratch/gen-units-v2", b.slug);
+  const dir = join(".scratch/gen-units-v3", b.slug);
   mkdirSync(dir, { recursive: true });
   const shots = b.spaces.flatMap((s) => CAMERAS.slice(0, s.frames).map((cam) => ({ s, cam })));
   const frames: { url: string; t: number }[] = [];
   for (const [i, { s, cam }] of shots.entries()) {
-    console.log(`[${b.slug}] frame ${i + 1}/${shots.length}: ${s.type}`);
-    const bytes = await generateFrame(framePrompt(b, s, cam), join(dir, `frame-${i + 1}.jpg`));
-    frames.push({ url: await putPublic(`demo/${b.slug}/v2/frame-${String(i + 1).padStart(2, "0")}.jpg`, bytes, "image/jpeg"), t: i * 2 });
+    // Up to 3 attempts; keep the attempt whose apparent area is closest to the brief.
+    let bytes: Buffer | null = null; let best = Infinity;
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      const candidate = await generateFrame(framePrompt(b, s, cam), join(dir, `frame-${i + 1}.jpg`));
+      const qa = await qaFrame(candidate, s);
+      const dist = qa.ratio > 0 ? Math.abs(Math.log(qa.ratio)) : 9;
+      console.log(`[${b.slug}] frame ${i + 1}/${shots.length} ${s.type} try ${attempt}: ${qa.ok ? "OK" : "REJECT"} area x${qa.ratio.toFixed(2)} ${qa.issue}`);
+      if (dist < best) { best = dist; bytes = candidate; }
+      if (qa.ok) break;
+    }
+    writeFileSync(join(dir, `frame-${i + 1}.jpg`), bytes!);
+    frames.push({ url: await putPublic(`demo/${b.slug}/v3/frame-${String(i + 1).padStart(2, "0")}.jpg`, bytes!, "image/jpeg"), t: i * 2 });
   }
   execFileSync("ffmpeg", ["-v", "error", "-y", "-framerate", "1/2", "-i", join(dir, "frame-%d.jpg"), "-vf", "scale=1024:-2", "-c:v", "libx264", "-pix_fmt", "yuv420p", "-r", "30", join(dir, "walkthrough.mp4")]);
-  const videoUrl = await putPublic(`demo/${b.slug}/v2/walkthrough.mp4`, readFileSync(join(dir, "walkthrough.mp4")), "video/mp4");
+  const videoUrl = await putPublic(`demo/${b.slug}/v3/walkthrough.mp4`, readFileSync(join(dir, "walkthrough.mp4")), "video/mp4");
 
   const today = todayCairo();
   const owner: UploadOwner = { district: b.district, rent_egp: b.rent_egp, daily_egp: b.daily_egp, floor_text: b.floor_text, available_from: today, kind: b.kind };

@@ -91,9 +91,8 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           <Link href={localeHref(`/units/${featured.slug}`, locale)} className="block mt-6 border border-ink bg-sheet ink-offset hover:rotate-0 transition-transform">
             <div className="relative aspect-16/10 overflow-hidden">
               {featured.images.empty && <Image src={featured.images.empty} alt={`${locale === "en" ? featured.title_en : featured.title_ar} — ${t("viewer.empty")}`} fill className="object-cover" sizes="100vw" />}
-              <Image src={featured.images.real} alt={`${locale === "en" ? featured.title_en : featured.title_ar} — ${t("viewer.real")}`} fill className={`object-cover ${featured.images.empty ? "tear-layer" : ""}`} sizes="100vw" />
-              {featured.images.empty && <div className="tear-seam absolute inset-x-0 bottom-[5%] pointer-events-none" aria-hidden />}
-              <span className="absolute top-3 inset-s-3 bg-ink text-sheet px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide">{t("viewer.real")}</span>
+              <Image src={featured.images.real} alt={`${locale === "en" ? featured.title_en : featured.title_ar} — ${t(featured.synthetic ? "viewer.realSynthetic" : "viewer.real")}`} fill className={`object-cover ${featured.images.empty ? "tear-layer" : ""}`} sizes="100vw" />
+              <span className="absolute top-3 inset-s-3 bg-ink text-sheet px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide">{t(featured.synthetic ? "viewer.realSynthetic" : "viewer.real")}</span>
               {featured.images.empty && <span className="absolute bottom-3 inset-e-3 bg-mustard text-ink border border-ink px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide">{t("viewer.empty")}</span>}
             </div>
             <div className="torn-b" aria-hidden />
@@ -112,7 +111,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-8">
           {rest.map((u, i) => (
             <Link key={u.slug} href={localeHref(`/units/${u.slug}`, locale)} className={`block border border-ink bg-sheet ink-offset-sm transition-transform hover:rotate-0 ${i % 2 === 0 ? "rotate-[-0.6deg]" : "rotate-[0.5deg]"}`}>
-              <div className="relative aspect-16/10"><Image src={u.images.real} alt={`${locale === "en" ? u.title_en : u.title_ar} — ${t("viewer.real")}`} fill className="object-cover" sizes="33vw" /></div>
+              <div className="relative aspect-16/10"><Image src={u.images.real} alt={`${locale === "en" ? u.title_en : u.title_ar} — ${t(u.synthetic ? "viewer.realSynthetic" : "viewer.real")}`} fill className="object-cover" sizes="33vw" /></div>
               <div className="torn-b" aria-hidden />
               <div className="p-4">
                 <h3 className="font-display font-extrabold text-lg leading-snug tracking-[-0.02em]">{locale === "en" ? u.title_en : u.title_ar}</h3>
