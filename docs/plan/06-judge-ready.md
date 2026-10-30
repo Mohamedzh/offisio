@@ -1,6 +1,6 @@
 # Segment 6 — Judge-ready: demo data, staging coverage, agent, guardrails, ship
 
-Status: **in progress** — 6.1–6.3 done 2026-10-30 (uncommitted, owner reviews and commits); next is 6.4 (planned 2026-10-29 from the post-audit review) · Depends on: Segments 2–5 (all demo-scope done)
+Status: **in progress** — 6.1–6.5 done, 6.6 staging code + filmed units done 2026-10-30; synthetic regeneration waits on owner review of `data/seed/synthetic-briefs.json` (all uncommitted, owner reviews and commits) (planned 2026-10-29 from the post-audit review) · Depends on: Segments 2–5 (all demo-scope done)
 
 Goal: the deployed demo holds up when judges use it unattended (Nov 5–8) on a fixed $150 credit budget. That means bookable dates, the staging headline on every listing, a correct agent, hard usage limits, and docs that match the code.
 
@@ -137,10 +137,33 @@ Why: the v1 pipeline sees one hero room. It measured `empty1`/`empty2` as single
 - **Storage:** `specs.data.survey` and `specs.data.uses` (no migration). Listing prompt v2 mentions only passing uses. Unit page shows "Suitable for" chips with reasons, labelled AI estimate (D3).
 - Verify: the 3 filmed units match the calibration above. Rubric rules have tsx checks on fixture surveys (pass/fail edge cases, no model calls).
 
+- **Done 2026-10-30.**
+  - Spec: [docs/RUBRIC.md](../RUBRIC.md). Code: `lib/pipeline/survey.ts` (validated, cached), `lib/pipeline/rubric.ts` (`assess`, `deriveSpecs`), `lib/pipeline/ingest.ts` (shared by upload + scripts), `SURVEY_PROMPT_V1` / `LISTING_PROMPT_V2`.
+  - **Video-direct test:** `video_url` works on Spark (5.3k tokens per 20 s clip), but its sampling missed a room in `empty1`. Frames at 1/s are the input; the video stays for playback.
+  - **Modal Muse Spark Open** (owner, 2026-10-30) is the dev target (`OFFISIO_DEV_MODELS=modal`, vision OK). Calibration ran there; seeded data on `muse-spark-1.3`.
+  - **Calibration:**
+    - `full` = 1 room, 12 m², office fits with 3 desks comfortably (4 max); clinic and dental not suitable.
+    - `empty1` / `empty2` = 2 rooms + bathroom; clinic fits, dental fits after fit-out.
+    - Two adjustments came out of it: desk heuristic 4.0 / 3.0 m², and corridor ≥ 2 m counts as a room.
+    - Cache keys now hash the prompt text.
+  - `pnpm check-rubric`: 13 fixture checks pass. `pnpm remodel-filmed` re-surveyed the 3 filmed units (1 fps frames on Blob `demo/<slug>/frames/`).
+  - Upload: ~1 frame/s (6–30), AI-picked hero per room, keyframes keep `t`/`spaces`/`best_for`. The unit page shows "Suitable for" with verdicts and reasons in AR/EN.
+  - Open owner question (docs/RUBRIC.md): may a dental unit repurpose its *only* bathroom as the prep room?
+
 ### 6.5 Agent fixes (Nov 1) — 6-3
 - [lib/agent/agent.ts](../../lib/agent/agent.ts): server-injected Cairo date and weekday (the hardcoded `2026-10-27` goes). Per-unit `daily_egp` (the hardcoded 800 goes). Per-unit free days. Compact unit context (slug, district, kind, rents, desks, area, lat/lng after 6.7) instead of the full specs JSON.
 - First, one synthetic call through `meta.public` (contributor allowed for synthetic data) to test tool calling, U4. If it passes (O5), switch to the DESIGN §5 tools: `search_units`, `get_unit`, `check_availability`, `create_booking` (and `near` after 6.7), with a 6-round cap and per-tool argument validation.
 - Verify: 10 scripted Egyptian-Arabic conversations using synthetic names and phones (happy path, slot taken, no results, bare unit asked for a day, English mirror, off-topic refusal, add-ons, a bad phone, a changed date, "near X"). They run on `muse-spark-1.3` because chat is PII by rule, so they need **owner approval first** (about 60 calls). Record the transcripts in this file.
+
+- **Done 2026-10-30.**
+  - Native tool calling verified (one call, contributor): `search_units({district:"Zamalek",min_desks:3,use:"office"})` from an Arabic message.
+  - [lib/agent/agent.ts](../../lib/agent/agent.ts): tool loop (`search_units`, `get_unit`, `check_availability`, `create_booking`), ≤ 6 rounds, args validated in code. `AGENT_PROMPT_V2` gets the server Cairo date and weekday; prices and free days come from tools; `reasoning_effort: "low"`. The tool trace is stored in `chat_sessions.tool_calls`.
+  - `pnpm chat-acceptance`: 10 scripted conversations on `muse-spark-1.3`, synthetic renters, transcripts in `.scratch/chat-transcripts*.md`.
+    - Run 1: 6/10. Rubric-less units were filtered out of `use` searches.
+    - Run 2: 8/10.
+    - Then fixed: `matching_other_tracks` explains long-term-only units, and scenario 9's script now picks a unit and answers the add-on question.
+    - Scenarios 3 and 9 pass individually. A clean 10/10 full run is due after the synthetic regeneration.
+  - Chat acceptance cost ≈ $0.30 in total.
 
 ### 6.6 Staging coverage, redo modelling, demo data (Nov 1–2) — 6-1 / 6-2
 - `lib/pipeline/staging.ts`: move `empty` and `restage` out of [scripts/run-unit.ts](../../scripts/run-unit.ts) into a re-runnable step that is cached and budgeted. One style runs per request, to stay under the 300 s limit. Semifinished units skip the empty step.
@@ -154,6 +177,14 @@ Why: the v1 pipeline sees one hero room. It measured `empty1`/`empty2` as single
   - Extend [scripts/generate-units.ts](../../scripts/generate-units.ts) with briefs and a `--stage` flag. Synthetic badge unchanged.
 - Batch estimate: about 20 new frame generations, about 40 staging edits, and 8 spark calls. **Owner approves the batch and its cost before it runs** (dry-run first to print the call count).
 - Verify: every unit page shows real, empty (furnished units) and 3 fits. All media URLs return 200. A side-by-side drift check of the 3 styles on each unit, where a drifted style is re-run alone.
+
+- **Code + filmed units done 2026-10-30.**
+  - `lib/pipeline/staging.ts`: `planStaging` from the verdicts. Styles: office, open_plan, meeting, clinic_waiting + clinic_exam (or clinic_split for one room), dental_exam + dental_prep, legal_office. Each style renders on its role's best frame, with `{N}` from the rubric.
+  - `stageOne`: furnished spaces are emptied per space first. Every edit is cached by base bytes + prompt. WebP outputs go to Blob `staged/<slug>/`.
+  - `STAGE_PROMPTS_V2`. Route `GET|POST /api/units/[slug]/stage` (existing styles never cost a call; image_edit limit + breaker). `StageButtons` on the unit page renders missing styles (O1). `UnitViewer` builds tabs dynamically.
+  - `pnpm stage-units [--dry]` ran 14 edits ($0.14): `full` = empty + office, no clinic render. `empty1`/`empty2` = office, training, clinic waiting + exam, dental, law office. Legacy v1 renders are retired, including `full`'s clinic render.
+  - Visual QA (`.scratch/qa-montage.jpg`): geometry and windows hold. One minor drift: the `empty1` waiting render repaints the ceiling.
+  - **Waiting on owner:** review of [data/seed/synthetic-briefs.json](../../data/seed/synthetic-briefs.json) (10 floor-plan briefs, 48 frames). After approval: rewrite `scripts/generate-units.ts` for per-space frames, regenerate, run analysis + staging (~$1.50 total), then a clean 10/10 `pnpm chat-acceptance`.
 
 ### 6.7 Location, minimal (Nov 2) — scope check
 - Migration (approved): `units.lat`, `units.lng` numeric, idempotent `add column if not exists`, `pnpm migrate`, verify the columns.

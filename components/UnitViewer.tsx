@@ -1,16 +1,16 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import { getT, type Locale } from "@/lib/i18n";
+import { getT, type Locale, type TranslationKey } from "@/lib/i18n";
 
-export default function UnitViewer({ images, locale }: { images: { real: string; empty: string | null; fits: Record<string, string> }; locale: Locale }) {
+type Images = { real: string; empty: string | null; staged: { style: string; url: string }[] };
+
+export default function UnitViewer({ images, locale }: { images: Images; locale: Locale }) {
   const t = getT(locale);
   const views = [
     { key: "real", label: t("viewer.real"), src: images.real },
     ...(images.empty ? [{ key: "empty", label: t("viewer.empty"), src: images.empty }] : []),
-    { key: "startup", label: t("viewer.fitStartup"), src: images.fits.startup },
-    { key: "clinic", label: t("viewer.fitClinic"), src: images.fits.clinic },
-    { key: "training", label: t("viewer.fitTraining"), src: images.fits.training },
+    ...images.staged.map((s) => ({ key: s.style, label: t(`viewer.style.${s.style}` as TranslationKey), src: s.url })),
   ].filter((v) => v.src);
   const [active, setActive] = useState(views[0]);
   const [prev, setPrev] = useState(() => views.find((v) => v.key === "empty") ?? views[0]);

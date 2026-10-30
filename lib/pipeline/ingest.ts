@@ -1,0 +1,42 @@
+// Unit analysis (docs/RUBRIC.md): frames -> survey -> RUBRIC_V1 verdicts ->
+// derived specs -> listing v2. Shared by the live upload route and the seeding
+// scripts. Every model step is cached by content, so re-runs are free.
+import { runSurvey, type Frame, type Survey } from "./survey";
+import { assess, deriveSpecs, area, type UseVerdict } from "./rubric";
+import { generateListingV2, type Listing, type UploadOwner } from "./specs-listing";
+import { replaceKeyframes, saveGenerated } from "../db/store";
+
+export interface Analysis { survey: Survey; uses: UseVerdict[]; specs: Record<string, unknown>; listing: Listing; heroIndex: number }
+
+async function toDataUrl(url: string): Promise<string> {
+  if (url.startsWith("data:")) return url;
+  const r = await fetch(url);
+  if (!r.ok) throw new Error(`fetch frame failed: ${r.status}`);
+  return `data:image/jpeg;base64,${Buffer.from(await r.arrayBuffer()).toString("base64")}`;
+}
+
+// Hero = best frame of the largest usable room, else the first frame.
+function heroOf(survey: Survey): number {
+  const rooms = survey.spaces.filter((s) => s.type === "room" || s.type === "other").sort((a, b) => (area(b) ?? 0) - (area(a) ?? 0));
+  return (rooms[0] ?? survey.spaces[0]).best_frame ?? 0;
+}
+
+export async function analyzeUnit(owner: UploadOwner, frames: Frame[]): Promise<Analysis> {
+  const inline = await Promise.all(frames.map(async (f) => ({ url: await toDataUrl(f.url), t: f.t })));
+  const survey = await runSurvey(inline, `Owner fields: district=${owner.district}, floors=${owner.floor_text}, kind=${owner.kind}.`);
+  const uses = assess(survey, owner.kind);
+  const specs = { ...deriveSpecs(survey, uses), survey, uses };
+  const listing = await generateListingV2(specs, owner, uses);
+  return { survey, uses, specs, listing, heroIndex: heroOf(survey) };
+}
+
+// Persist: keyframes (with timestamp, spaces, hero) + specs + listing.
+export async function saveAnalysis(unitId: string, frames: Frame[], a: Analysis, extraMeta: Record<string, unknown> = {}): Promise<void> {
+  const spacesFor = (i: number) => a.survey.spaces.filter((s) => s.frames.includes(i)).map((s) => s.id);
+  const bestFor = (i: number) => a.survey.spaces.filter((s) => s.best_frame === i).map((s) => s.id);
+  await replaceKeyframes(unitId, frames.map((f, i) => ({
+    url: f.url,
+    meta: { ...extraMeta, t: f.t, frame: i, spaces: spacesFor(i), best_for: bestFor(i), ...(i === a.heroIndex ? { hero: true } : {}) },
+  })));
+  await saveGenerated(unitId, a.specs, a.listing);
+}

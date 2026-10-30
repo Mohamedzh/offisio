@@ -10,7 +10,8 @@ export interface Unit {
   title_ar: string; title_en: string; summary_ar: string; summary_en: string;
   highlights_ar: string[]; highlights_en: string[];
   specs: Record<string, unknown>;
-  images: { real: string; empty: string | null; fits: Record<string, string> };
+  // staged: current fit-out renders, one per style (v2 use-driven, or legacy v1 startup/clinic/training).
+  images: { real: string; empty: string | null; staged: { style: string; url: string }[] };
   video: string | null;
   synthetic: boolean;
 }
@@ -33,6 +34,8 @@ interface UnitRow {
   media: { kind: string; style: string | null; url: string; meta?: Record<string, unknown> }[] | null;
 }
 
+// Viewer order of fit-out styles (lib/meta/prompts.ts STAGE_PROMPTS_V2, then legacy v1).
+const STYLE_ORDER = ["office", "open_plan", "meeting", "clinic_waiting", "clinic_exam", "clinic_split", "dental_exam", "dental_prep", "legal_office", "startup", "clinic", "training"];
 function rowToUnit(r: UnitRow): Unit {
   const media = r.media ?? [];
   // Legacy rows may still hold local /demo/... or /uploads/... paths next to
@@ -41,6 +44,7 @@ function rowToUnit(r: UnitRow): Unit {
     list?.find((m) => m.url.startsWith("https://"))?.url ?? list?.find((m) => !m.url.startsWith("/"))?.url ?? list?.[0]?.url ?? null;
   const byKind = (kind: string, style?: string) =>
     pick(media.filter((m) => m.kind === kind && (style === undefined || m.style === style)));
+  const heroSpaces = ((media.find((m) => m.kind === "keyframe" && m.meta?.hero === true)?.meta?.spaces as string[] | undefined) ?? []).map(String);
   return {
     slug: r.slug, kind: r.kind, district: r.district, rent_egp: r.rent_egp, floor_text: r.floor_text ?? "",
     available_from: r.available_from ? new Date(r.available_from).toISOString().slice(0, 10) : "",
@@ -49,8 +53,11 @@ function rowToUnit(r: UnitRow): Unit {
     highlights_ar: r.highlights_ar ?? [], highlights_en: r.highlights_en ?? [], specs: r.specs ?? {},
     images: {
       real: pick(media.filter((m) => m.kind === "keyframe" && m.meta?.hero === true)) ?? byKind("keyframe") ?? "",
-      empty: byKind("staged", "empty"),
-      fits: { startup: byKind("staged", "startup") ?? "", clinic: byKind("staged", "clinic") ?? "", training: byKind("staged", "training") ?? "" },
+      // Empty of the hero's space when known, else the newest empty render.
+      empty: pick(media.filter((m) => m.kind === "staged" && m.style === "empty" && heroSpaces.includes(String(m.meta?.space_id)))) ?? byKind("staged", "empty"),
+      staged: [...new Set(media.filter((m) => m.kind === "staged" && m.style && m.style !== "empty").map((m) => m.style as string))]
+        .sort((a, b) => STYLE_ORDER.indexOf(a) - STYLE_ORDER.indexOf(b))
+        .map((style) => ({ style, url: byKind("staged", style) ?? "" })).filter((s) => s.url),
     },
     video: byKind("video"),
     synthetic: media.some((m) => m.meta?.synthetic === true),
@@ -82,6 +89,35 @@ export async function createUploadedUnit(input: CreateUploadedUnitInput): Promis
 }
 export async function addMedia(unitId: string, kind: string, url: string, style: string | null = null, meta: Record<string, unknown> = {}): Promise<void> {
   await pool().query(`insert into media (unit_id, kind, style, url, meta) values ($1,$2,$3,$4,$5)`, [unitId, kind, style, url, JSON.stringify(meta)]);
+}
+// Retire the unit's current keyframes and insert a new set (re-runnable analysis).
+export async function replaceKeyframes(unitId: string, frames: { url: string; meta: Record<string, unknown> }[]): Promise<void> {
+  const client = await pool().connect();
+  try {
+    await client.query("begin");
+    await client.query("update media set is_current = false where unit_id = $1 and kind = 'keyframe'", [unitId]);
+    for (const f of frames)
+      await client.query("insert into media (unit_id, kind, url, meta) values ($1, 'keyframe', $2, $3)", [unitId, f.url, JSON.stringify(f.meta)]);
+    await client.query("commit");
+  } catch (e) { try { await client.query("rollback"); } catch { /* noop */ } throw e; }
+  finally { client.release(); }
+}
+export async function keyframesOf(unitId: string): Promise<{ url: string; frame: number }[]> {
+  const { rows } = await pool().query<{ url: string; frame: string | null }>(
+    "select url, meta->>'frame' as frame from media where unit_id = $1 and kind = 'keyframe' and is_current order by created_at", [unitId]);
+  return rows.map((r, i) => ({ url: r.url, frame: r.frame === null ? i : Number(r.frame) }));
+}
+export async function stagedOf(unitId: string): Promise<{ style: string; url: string; meta: Record<string, unknown> }[]> {
+  const { rows } = await pool().query<{ style: string; url: string; meta: Record<string, unknown> }>(
+    "select style, url, meta from media where unit_id = $1 and kind = 'staged' and is_current order by created_at desc", [unitId]);
+  return rows;
+}
+export async function retireStaged(unitId: string, style: string): Promise<void> {
+  await pool().query("update media set is_current = false where unit_id = $1 and kind = 'staged' and style = $2", [unitId, style]);
+}
+export async function unitRef(slug: string): Promise<{ id: string; slug: string; kind: Unit["kind"] } | null> {
+  const { rows } = await pool().query<{ id: string; slug: string; kind: Unit["kind"] }>("select id, slug, kind from units where slug = $1", [slug]);
+  return rows[0] ?? null;
 }
 export async function setUnitStatus(slug: string, status: "processing" | "ready" | "failed"): Promise<void> {
   await pool().query(`update units set status = $2 where slug = $1`, [slug, status]);

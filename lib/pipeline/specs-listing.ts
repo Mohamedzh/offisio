@@ -4,7 +4,8 @@
 // with one validation-feedback retry. Results are cached by content hash.
 import { meta, nonPiiModel } from "../meta/client";
 import { cached } from "./cache";
-import { SPECS_PROMPT_V1, LISTING_PROMPT_V1, type UnitKind } from "../meta/prompts";
+import { SPECS_PROMPT_V1, LISTING_PROMPT_V1, LISTING_PROMPT_V2, type UnitKind } from "../meta/prompts";
+import type { UseVerdict } from "./rubric";
 
 export interface UploadOwner {
   district: string; rent_egp: number; daily_egp: number | null;
@@ -98,13 +99,23 @@ export async function generateSpecs(frameDataUrls: string[], owner: UploadOwner)
     { type: "text", text: `Owner fields: district=${owner.district}, rent_egp=${owner.rent_egp}, floors=${owner.floor_text}, available_from=${owner.available_from}, kind=${owner.kind}. Keyframes in walk order follow.` },
     ...frameDataUrls.map((url) => ({ type: "image_url", image_url: { url } })),
   ];
-  return cached("specs", nonPiiModel(), "SPECS_PROMPT_V1", [...frameDataUrls, JSON.stringify(owner)],
+  return cached("specs", nonPiiModel(), "SPECS_PROMPT_V1", [SPECS_PROMPT_V1, ...frameDataUrls, JSON.stringify(owner)],
     () => chatJson<Specs>([{ role: "system", content: SPECS_PROMPT_V1 }, { role: "user", content }], validateSpecs));
 }
 
 export async function generateListing(specs: Specs, owner: UploadOwner): Promise<Listing> {
-  return cached("listing", nonPiiModel(), "LISTING_PROMPT_V1", [JSON.stringify(specs), JSON.stringify(owner)], () => chatJson<Listing>([
+  return cached("listing", nonPiiModel(), "LISTING_PROMPT_V1", [LISTING_PROMPT_V1, JSON.stringify(specs), JSON.stringify(owner)], () => chatJson<Listing>([
     { role: "system", content: LISTING_PROMPT_V1 },
     { role: "user", content: `Specs: ${JSON.stringify(specs)}\nOwner: ${JSON.stringify(owner)}` },
+  ], validateListing));
+}
+
+// Listing v2: also told which uses the rubric passed (never the failing ones).
+export async function generateListingV2(specs: Record<string, unknown>, owner: UploadOwner, uses: UseVerdict[]): Promise<Listing> {
+  const passing = uses.filter((u) => u.verdict !== "not_suitable").map((u) => ({ use: u.use, verdict: u.verdict, reasons: u.reasons_en, capacity: u.capacity }));
+  const { survey: _s, uses: _u, ...summary } = specs; void _s; void _u;
+  return cached("listing", nonPiiModel(), "LISTING_PROMPT_V2", [LISTING_PROMPT_V2, JSON.stringify(summary), JSON.stringify(owner), JSON.stringify(passing)], () => chatJson<Listing>([
+    { role: "system", content: LISTING_PROMPT_V2 },
+    { role: "user", content: `Specs: ${JSON.stringify(summary)}\nOwner: ${JSON.stringify(owner)}\nUSES: ${JSON.stringify(passing)}` },
   ], validateListing));
 }

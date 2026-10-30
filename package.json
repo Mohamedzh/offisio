@@ -14,7 +14,11 @@
     "upload-demo": "tsx scripts/upload-demo.ts",
     "generate-home-art": "tsx scripts/generate-home-art.ts",
     "generate-units": "tsx scripts/generate-units.ts",
-    "topup-availability": "tsx scripts/topup-availability.ts"
+    "topup-availability": "tsx scripts/topup-availability.ts",
+    "check-rubric": "tsx scripts/check-rubric.ts",
+    "remodel-filmed": "tsx scripts/remodel-filmed.ts",
+    "chat-acceptance": "tsx scripts/chat-acceptance.ts",
+    "stage-units": "tsx scripts/stage-units.ts"
   },
   "dependencies": {
     "@vercel/blob": "^2.8.2",

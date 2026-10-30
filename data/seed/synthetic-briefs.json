@@ -1,0 +1,113 @@
+{
+  "_note": "Floor-plan briefs for synthetic demo units (plan/06 6.6). DRAFT for owner review — no generation until approved. Each unit: a style line used verbatim in every frame, then spaces in walk order; each space gets 1-2 frames. Units are always badged as AI-generated photos.",
+  "units": [
+    {
+      "slug": "gen-zamalek", "district": "Zamalek, Cairo", "kind": "furnished", "rent_egp": 18500, "daily_egp": 1250, "floor_text": "4th",
+      "target_uses": ["office", "legal"],
+      "style": "classic Zamalek apartment building converted to an office, high ceilings with cornices, warm white walls, herringbone oak parquet, tall wooden windows with sheer curtains, bright daylight",
+      "spaces": [
+        { "type": "entrance", "w": 2.0, "l": 2.5, "desc": "small entrance foyer with a coat stand and the front door", "frames": 1 },
+        { "type": "room", "w": 3.0, "l": 3.5, "desc": "reception room with a small reception desk, a two-seat leather sofa and a side table", "frames": 2 },
+        { "type": "room", "w": 3.5, "l": 4.0, "desc": "private office with an executive desk, a leather chair, two client chairs and a bookshelf of binders", "frames": 2 },
+        { "type": "bathroom", "w": 1.4, "l": 2.0, "desc": "small finished bathroom with a WC and a sink, white tiles", "frames": 1 }
+      ]
+    },
+    {
+      "slug": "gen-heliopolis", "district": "Heliopolis, Cairo", "kind": "semifinished", "rent_egp": 13500, "daily_egp": null, "floor_text": "2nd",
+      "target_uses": ["clinic", "dental", "legal"],
+      "style": "semifinished shell in a Heliopolis building: plastered white walls, plain grey ceramic floor tiles, exposed electrical boxes, aluminium windows, no furniture",
+      "spaces": [
+        { "type": "entrance", "w": 1.5, "l": 3.0, "desc": "entrance corridor from the front door", "frames": 1 },
+        { "type": "room", "w": 3.0, "l": 3.0, "desc": "empty front room with one window (future waiting room)", "frames": 1 },
+        { "type": "room", "w": 3.5, "l": 4.0, "desc": "empty larger room with a window and water pipe stubs on one wall (future exam room)", "frames": 2 },
+        { "type": "other", "w": 1.5, "l": 1.6, "desc": "small partitioned nook next to the bathroom with a water stub and a floor drain", "frames": 1 },
+        { "type": "bathroom", "w": 1.4, "l": 1.8, "desc": "unfinished bathroom shell with WC drain and pipe stubs, bare brick", "frames": 1 }
+      ]
+    },
+    {
+      "slug": "gen-new-cairo", "district": "New Cairo (5th Settlement)", "kind": "furnished", "rent_egp": 32000, "daily_egp": 1800, "floor_text": "1st",
+      "target_uses": ["open_plan", "meeting", "office"],
+      "style": "modern business-park office in New Cairo, light grey walls, polished light grey porcelain floor, floor-to-ceiling glazing, linear LED ceiling lights, bright daylight",
+      "spaces": [
+        { "type": "entrance", "w": 2.0, "l": 2.0, "desc": "glass entrance door with a small reception counter", "frames": 1 },
+        { "type": "room", "w": 6.0, "l": 8.0, "desc": "open-plan coworking hall with rows of white desks and black mesh chairs, a long shared table", "frames": 2 },
+        { "type": "room", "w": 3.5, "l": 4.0, "desc": "glass-walled meeting room with a table for eight and a screen", "frames": 1 },
+        { "type": "kitchenette", "w": 2.0, "l": 2.5, "desc": "kitchenette with a counter, sink and coffee machine", "frames": 1 },
+        { "type": "bathroom", "w": 1.6, "l": 2.0, "desc": "finished bathroom with WC and sink", "frames": 1 }
+      ]
+    },
+    {
+      "slug": "gen-nasr-city", "district": "Nasr City, Cairo", "kind": "semifinished", "rent_egp": 9000, "daily_egp": null, "floor_text": "Ground",
+      "target_uses": ["office", "meeting", "clinic (after fit-out)"],
+      "style": "bare semifinished ground-floor unit: unpainted plaster walls with primer patches, bare grey concrete floor, exposed ceiling with a single bulb, one aluminium shopfront window",
+      "spaces": [
+        { "type": "room", "w": 5.0, "l": 6.0, "desc": "one large empty hall seen from the front door", "frames": 2 },
+        { "type": "bathroom", "w": 1.4, "l": 1.8, "desc": "unfinished bathroom shell at the back with WC drain and pipe stubs", "frames": 1 }
+      ]
+    },
+    {
+      "slug": "gen-downtown", "district": "Downtown (Talaat Harb), Cairo", "kind": "furnished", "rent_egp": 11000, "daily_egp": 750, "floor_text": "3rd",
+      "target_uses": ["meeting", "office"],
+      "style": "historic downtown Cairo building, 4 m ceilings, ornate plaster mouldings, painted cream walls, patterned cement floor tiles, tall French windows with wooden shutters, warm daylight",
+      "spaces": [
+        { "type": "entrance", "w": 1.6, "l": 3.0, "desc": "entrance hall with a tall wooden double door", "frames": 1 },
+        { "type": "room", "w": 4.5, "l": 5.0, "desc": "large high-ceiling room set up for workshops: folding tables in rows facing a whiteboard", "frames": 2 },
+        { "type": "kitchenette", "w": 1.8, "l": 2.0, "desc": "small kitchenette with a sink and kettle", "frames": 1 }
+      ]
+    },
+    {
+      "slug": "gen-sheikh-zayed", "district": "Sheikh Zayed, Giza", "kind": "semifinished", "rent_egp": 22000, "daily_egp": null, "floor_text": "Ground (villa floor)",
+      "target_uses": ["dental", "clinic", "legal", "office"],
+      "style": "semifinished villa ground floor in Sheikh Zayed: plastered off-white walls, beige porcelain floor, large windows onto a garden, bright daylight, no furniture",
+      "spaces": [
+        { "type": "entrance", "w": 2.5, "l": 3.0, "desc": "entrance foyer with the villa front door", "frames": 1 },
+        { "type": "room", "w": 3.5, "l": 4.0, "desc": "empty front room facing the garden", "frames": 1 },
+        { "type": "room", "w": 4.0, "l": 4.5, "desc": "empty main room with garden windows", "frames": 1 },
+        { "type": "room", "w": 3.0, "l": 3.0, "desc": "empty back room with one window", "frames": 1 },
+        { "type": "kitchenette", "w": 2.0, "l": 2.5, "desc": "kitchenette shell with water stubs and a drain", "frames": 1 },
+        { "type": "bathroom", "w": 1.6, "l": 2.2, "desc": "unfinished bathroom with WC and sink stubs", "frames": 1 }
+      ]
+    },
+    {
+      "slug": "gen-october", "district": "6th of October (near Smart Village), Giza", "kind": "furnished", "rent_egp": 26000, "daily_egp": 1600, "floor_text": "2nd",
+      "target_uses": ["open_plan", "meeting", "office"],
+      "style": "contemporary office building near Smart Village, white walls, grey carpet tiles, suspended ceiling with LED panels, long strip windows, even daylight",
+      "spaces": [
+        { "type": "entrance", "w": 2.0, "l": 2.5, "desc": "entrance with a glass door", "frames": 1 },
+        { "type": "room", "w": 7.0, "l": 9.0, "desc": "large open-plan floor with clusters of desks and task chairs", "frames": 2 },
+        { "type": "bathroom", "w": 1.6, "l": 2.0, "desc": "finished bathroom with WC and sink", "frames": 1 }
+      ]
+    },
+    {
+      "slug": "gen-alex-smouha", "district": "Smouha, Alexandria", "kind": "furnished", "rent_egp": 14000, "daily_egp": 900, "floor_text": "1st",
+      "target_uses": ["clinic", "office"],
+      "style": "furnished medical-office unit in Smouha, clean white walls, light grey vinyl floor, white ceiling with panel lights, windows with white blinds",
+      "spaces": [
+        { "type": "entrance", "w": 1.5, "l": 2.5, "desc": "entrance with the front door", "frames": 1 },
+        { "type": "room", "w": 3.0, "l": 3.5, "desc": "waiting room with a row of upholstered chairs and a small reception desk", "frames": 1 },
+        { "type": "room", "w": 3.5, "l": 3.5, "desc": "examination room with an exam bed, a doctor's desk and a sink cabinet", "frames": 2 },
+        { "type": "bathroom", "w": 1.4, "l": 1.8, "desc": "finished bathroom with WC and sink", "frames": 1 }
+      ]
+    },
+    {
+      "slug": "gen-alex-chatby", "district": "Chatby, Alexandria", "kind": "furnished", "rent_egp": 8500, "daily_egp": 600, "floor_text": "3rd",
+      "target_uses": ["office", "legal"],
+      "style": "older Alexandria building near the Corniche, white walls, terracotta ceramic floor, windows with white shutters, bright Mediterranean daylight",
+      "spaces": [
+        { "type": "room", "w": 3.0, "l": 3.0, "desc": "front room with a small desk and two visitor chairs", "frames": 1 },
+        { "type": "room", "w": 3.0, "l": 4.0, "desc": "office room with two light wood desks and blue fabric chairs", "frames": 2 },
+        { "type": "bathroom", "w": 1.3, "l": 1.8, "desc": "small finished bathroom with WC and sink", "frames": 1 }
+      ]
+    },
+    {
+      "slug": "gen-alex-louran", "district": "Louran, Alexandria (near Bibliotheca Alexandrina)", "kind": "furnished", "rent_egp": 12000, "daily_egp": 850, "floor_text": "5th",
+      "target_uses": ["meeting", "office"],
+      "style": "sea-view office in Louran, soft white walls, light oak laminate floor, wide window and balcony door with bright sea daylight, recessed ceiling lights",
+      "spaces": [
+        { "type": "entrance", "w": 1.5, "l": 2.0, "desc": "small entrance with the front door", "frames": 1 },
+        { "type": "room", "w": 4.0, "l": 5.0, "desc": "meeting and training room with a long table for ten and a screen, sea view", "frames": 2 },
+        { "type": "bathroom", "w": 1.4, "l": 1.8, "desc": "finished bathroom with WC and sink", "frames": 1 }
+      ]
+    }
+  ]
+}

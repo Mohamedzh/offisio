@@ -11,7 +11,7 @@ function newSlug(): string {
   return btoa(bin).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
 }
 
-interface Frame { blob: Blob; url: string }
+interface Frame { blob: Blob; url: string; t: number }
 // Mirrors CAPS in lib/guard.ts (server enforces the byte cap via the Blob token).
 const MAX_BYTES = 80 * 1024 * 1024;
 const MAX_SECONDS = 45;
@@ -25,7 +25,8 @@ async function extractFrames(file: File): Promise<Frame[]> {
     const duration = video.duration;
     if (!Number.isFinite(duration) || duration <= 0) throw new Error("video has no duration");
     if (duration > MAX_SECONDS) throw new Error("VIDEO_TOO_LONG");
-    const count = Math.min(10, Math.max(6, Math.round(duration / 3) || 6));
+    // ~1 frame per second (6-30) so the survey sees every room (docs/RUBRIC.md).
+    const count = Math.min(30, Math.max(6, Math.round(duration)));
     const scale = Math.min(1, 1024 / (video.videoWidth || 1024));
     const canvas = document.createElement("canvas");
     canvas.width = Math.round((video.videoWidth || 1024) * scale);
@@ -34,12 +35,13 @@ async function extractFrames(file: File): Promise<Frame[]> {
     if (!ctx) throw new Error("canvas unavailable");
     const frames: Frame[] = [];
     for (let i = 0; i < count; i++) {
-      video.currentTime = ((i + 0.5) * duration) / count;
+      const t = ((i + 0.5) * duration) / count;
+      video.currentTime = t;
       await new Promise<void>((resolve, reject) => { video.onseeked = () => resolve(); video.onerror = () => reject(new Error("seek failed")); });
       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
       const blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, "image/jpeg", 0.85));
       if (!blob) throw new Error("frame capture failed");
-      frames.push({ blob, url: URL.createObjectURL(blob) });
+      frames.push({ blob, url: URL.createObjectURL(blob), t: Math.round(t * 10) / 10 });
     }
     return frames;
   } finally { URL.revokeObjectURL(objectUrl); }
@@ -47,7 +49,7 @@ async function extractFrames(file: File): Promise<Frame[]> {
 
 export default function UploadForm({ locale }: { locale: Locale }) {
   const router = useRouter(); const t = getT(locale);
-  const [frames, setFrames] = useState<Frame[]>([]); const [hero, setHero] = useState(0);
+  const [frames, setFrames] = useState<Frame[]>([]);
   const [district, setDistrict] = useState(""); const [rent, setRent] = useState(""); const [daily, setDaily] = useState("");
   const [floor, setFloor] = useState(""); const [availableFrom, setAvailableFrom] = useState(""); const [kind, setKind] = useState("furnished");
   const [msg, setMsg] = useState(""); const [extracting, setExtracting] = useState(false); const [busy, setBusy] = useState(false);
@@ -55,7 +57,7 @@ export default function UploadForm({ locale }: { locale: Locale }) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   async function onVideo(file: File | undefined) {
-    setMsg(""); setFrames([]); setHero(0); setVideoFile(file ?? null);
+    setMsg(""); setFrames([]); setVideoFile(file ?? null);
     if (!file) return;
     if (!file.type.startsWith("video/")) { setMsg(t("upload.failed")); return; }
     if (file.size > MAX_BYTES) { setMsg(errorText(t, "VIDEO_TOO_BIG")); return; }
@@ -90,7 +92,7 @@ export default function UploadForm({ locale }: { locale: Locale }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           slug, district, rent_egp: rent, daily_egp: daily || null,
-          floor_text: floor, available_from: availableFrom, kind, heroIndex: hero, frameUrls, videoUrl,
+          floor_text: floor, available_from: availableFrom, kind, frameUrls, frameTimes: frames.map((f) => f.t), videoUrl,
         }),
       });
       const data = await res.json();
@@ -112,14 +114,11 @@ export default function UploadForm({ locale }: { locale: Locale }) {
       {busy && <p className="inline-block bg-ink text-sheet text-[11px] uppercase tracking-wide px-2 py-0.5">{t("upload.processing")}</p>}
       {frames.length > 0 && (
         <div>
-          <p className="text-sm font-medium">{t("upload.pickHero")} · {t("upload.framesReady", { count: frames.length })}</p>
-          <div className="mt-2 grid grid-cols-3 gap-2">
-            {frames.map((f, i) => (
-              <button key={f.url} type="button" onClick={() => setHero(i)} className={`relative overflow-hidden rounded-none border border-ink bg-sheet p-1 ${i === hero ? "outline-2 outline-ink outline-offset-1" : "opacity-80"}`}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={f.url} alt="" className="aspect-video w-full object-cover" />
-                {i === hero && <span className="absolute bottom-2 inset-s-2 bg-ink text-sheet px-2 py-0.5 text-[11px] uppercase tracking-wide">{t("upload.hero")}</span>}
-              </button>
+          <p className="text-sm font-medium">{t("upload.framesReady", { count: frames.length })} · {t("upload.autoHero")}</p>
+          <div className="mt-2 grid grid-cols-6 gap-1">
+            {frames.map((f) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img key={f.url} src={f.url} alt="" className="aspect-square w-full object-cover border border-ink/40" />
             ))}
           </div>
         </div>

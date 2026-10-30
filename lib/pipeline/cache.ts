@@ -1,5 +1,6 @@
 // Content-hash cache for model results (docs/plan/06 6.3). A re-run on an
-// unchanged input (same bytes, prompt version and model) costs nothing.
+// unchanged input (same bytes, prompt text and model) costs nothing. Callers
+// put the prompt text itself in `parts`, so editing a prompt invalidates.
 // The model is part of the key, so dev contributor results are never served
 // to production.
 import { createHash } from "node:crypto";

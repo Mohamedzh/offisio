@@ -38,7 +38,7 @@ Enforcement, not convention:
 
 - Model IDs and prompts live only in `lib/meta/`. The client exposes `meta.public` (may use contributor), `meta.nonPii` (spark; contributor only via the local dev switch) and `meta.product` (never contributor). No other code picks a model ID.
 - Any handler that receives chat text, a phone number, a name, or audio must use `meta.product`. When in doubt, treat data as PII.
-- Dev switch (planned in [06](docs/plan/06-judge-ready.md) 6.3): `OFFISIO_DEV_MODELS=contributor` sends **non-PII** calls (specs, listing) to the contributor model during local runs on our own or synthetic footage. It is ignored whenever `VERCEL` is set, so production always uses `muse-spark-1.3`, and chat never switches.
+- Dev switch ([06](docs/plan/06-judge-ready.md) 6.3): `OFFISIO_DEV_MODELS=modal` (preferred) sends **non-PII** calls (survey, specs, listing) to our own **Muse Spark Open** deployment on Modal (`MODAL_SPARK_URL`, `MODAL_KEY`, `MODAL_SECRET`; open-weight Meta model, Modal credits until Nov 4). `=contributor` uses `muse-spark-1.3-contributor` instead. Only for local runs on our own or synthetic footage. Ignored whenever `VERCEL` is set, so production always uses `muse-spark-1.3`, and chat never switches. Seeded/demo data is generated on `muse-spark-1.3`.
 - Any model output that feeds code must be structured (JSON schema) and validated before use.
 - If unsure whether an API supports something (masks on edits, video segmentation parameters), write a minimal test in `scripts/` and run it before building on it. See the unknown-capability list in [docs/DESIGN.md](docs/DESIGN.md).
 

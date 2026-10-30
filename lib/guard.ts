@@ -11,7 +11,7 @@ const DEFAULTS: Record<LimitKind, { ip: number; global: number }> = {
   upload: { ip: 3, global: 20 },
   image_edit: { ip: 4, global: 40 },
   booking: { ip: 5, global: 100 },
-  blob_token: { ip: 40, global: 400 }, // ~11 tokens per upload (frames + video)
+  blob_token: { ip: 100, global: 1000 }, // up to 31 tokens per upload (frames + video)
 };
 export const CAPS = {
   chatChars: 800,
@@ -19,6 +19,8 @@ export const CAPS = {
   videoSeconds: 45,
   videoBytes: 80 * 1024 * 1024,
   frameBytes: 1024 * 1024,
+  framesMin: 3,
+  framesMax: 30,
 } as const;
 
 const envNum = (name: string, fallback: number) => {
@@ -53,35 +55,46 @@ export async function limit(kind: LimitKind, req: Request): Promise<{ ok: true }
 }
 export const deny = (code: string, status = 429) => Response.json({ error: code }, { status });
 
-// --- Spend: token usage x owner-supplied prices (USD per 1M tokens) ---------
-type Usage = { prompt_tokens?: number; completion_tokens?: number; input_tokens?: number; output_tokens?: number };
-const family = (model: string) => (model.startsWith("muse-image") ? "IMAGE" : model.includes("contributor") ? "SPARK_CONTRIBUTOR" : "SPARK");
-const price = (model: string, dir: "IN" | "OUT") => Number(process.env[`META_PRICE_${family(model)}_${dir}_PER_M`]);
+// --- Spend: Meta list prices (developer console, captured 2026-10-30) ------
+// Chat: USD per 1M tokens (cached input billed separately). Image: USD per
+// output image. Env META_PRICE_<FAMILY>_<IN|CACHED|OUT>_PER_M and
+// META_PRICE_IMAGE_PER_IMAGE override the defaults.
+type Usage = { prompt_tokens?: number; completion_tokens?: number; input_tokens?: number; output_tokens?: number; prompt_tokens_details?: { cached_tokens?: number } };
+const CHAT_PRICES: Record<string, { IN: number; CACHED: number; OUT: number }> = {
+  SPARK: { IN: 1.25, CACHED: 0.15, OUT: 4.25 },
+  SPARK_CONTRIBUTOR: { IN: 0.10, CACHED: 0.002, OUT: 0.20 },
+};
+const IMAGE_PER_IMAGE = 0.01;
+const family = (model: string) => (model.includes("contributor") ? "SPARK_CONTRIBUTOR" : "SPARK");
+const chatPrice = (model: string, dir: "IN" | "CACHED" | "OUT") =>
+  envNum(`META_PRICE_${family(model)}_${dir}_PER_M`, CHAT_PRICES[family(model)][dir]);
 
-export async function recordUsage(model: string, usage: Usage | undefined): Promise<void> {
-  if (!usage) return;
+// Estimated cost in micro-USD of one model response (images = outputs returned).
+export function costMicroUsd(model: string, usage: Usage | undefined, images = 0): number {
+  if (model.startsWith("meta-models/")) return 0; // own Modal deployment: Modal credits, not Meta spend
+  if (model.startsWith("muse-image")) return Math.round(images * envNum("META_PRICE_IMAGE_PER_IMAGE", IMAGE_PER_IMAGE) * 1e6);
+  if (!usage) return 0;
   const inTok = usage.prompt_tokens ?? usage.input_tokens ?? 0;
+  const cachedTok = usage.prompt_tokens_details?.cached_tokens ?? 0;
   const outTok = usage.completion_tokens ?? usage.output_tokens ?? 0;
-  await bump("tokens", model, inTok + outTok);
-  const pin = price(model, "IN"); const pout = price(model, "OUT");
   // tokens x (USD per 1M tokens) = micro-USD
-  if (Number.isFinite(pin) && Number.isFinite(pout)) await bump("spend_micro_usd", "global", Math.round(inTok * pin + outTok * pout));
+  return Math.round((inTok - cachedTok) * chatPrice(model, "IN") + cachedTok * chatPrice(model, "CACHED") + outTok * chatPrice(model, "OUT"));
 }
 
-// True when today's estimated spend (or, without prices, total tokens) is over
-// the ceiling. Blocks uploads and staging only; browsing, booking, payment and
-// cached units keep working. Chat has its own caps.
+export async function recordUsage(model: string, usage: Usage | undefined, images = 0): Promise<void> {
+  const tokens = (usage?.prompt_tokens ?? usage?.input_tokens ?? 0) + (usage?.completion_tokens ?? usage?.output_tokens ?? 0);
+  if (tokens) await bump("tokens", model, tokens);
+  const micro = costMicroUsd(model, usage, images);
+  if (micro) await bump("spend_micro_usd", "global", micro);
+}
+
+// True when today's estimated spend is over DEMO_DAILY_SPEND_USD (default $15).
+// Blocks uploads and staging only; browsing, booking, payment and cached
+// units keep working. Chat has its own caps.
 export async function spendBlocked(): Promise<boolean> {
-  const day = todayCairo();
-  const pricesSet = ["SPARK", "IMAGE"].every((f) => Number.isFinite(Number(process.env[`META_PRICE_${f}_IN_PER_M`])));
-  if (pricesSet) {
-    const { rows } = await pool().query<{ n: string }>("select coalesce(sum(n),0)::text n from usage_counters where day = $1 and kind = 'spend_micro_usd'", [day]);
-    const over = Number(rows[0].n) / 1e6 >= envNum("DEMO_DAILY_SPEND_USD", 15);
-    if (over) console.warn("[guard] DEMO_QUOTA: daily spend ceiling reached");
-    return over;
-  }
-  const { rows } = await pool().query<{ n: string }>("select coalesce(sum(n),0)::text n from usage_counters where day = $1 and kind = 'tokens'", [day]);
-  const over = Number(rows[0].n) >= envNum("DEMO_DAILY_TOKEN_CAP", 6_000_000);
-  if (over) console.warn("[guard] DEMO_QUOTA: daily token cap reached (prices not set)");
+  const { rows } = await pool().query<{ n: string }>(
+    "select coalesce(sum(n),0)::text n from usage_counters where day = $1 and kind = 'spend_micro_usd'", [todayCairo()]);
+  const over = Number(rows[0].n) / 1e6 >= envNum("DEMO_DAILY_SPEND_USD", 15);
+  if (over) console.warn("[guard] DEMO_QUOTA: daily spend ceiling reached");
   return over;
 }
