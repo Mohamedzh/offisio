@@ -5,6 +5,8 @@
 import { pool } from "../lib/db/pg";
 import { getUnit, stagedOf, unitRef, retireStaged } from "../lib/db/store";
 import { planStaging, stageOne } from "../lib/pipeline/staging";
+import { STAGE_VERSION } from "../lib/meta/prompts";
+import { BRIEFS, targetUses } from "./generate-units";
 import type { Survey } from "../lib/pipeline/survey";
 import type { UseVerdict } from "../lib/pipeline/rubric";
 
@@ -17,16 +19,20 @@ async function main() {
     const [ref, unit] = await Promise.all([unitRef(slug), getUnit(slug)]);
     const survey = unit?.specs.survey as Survey | undefined; const uses = unit?.specs.uses as UseVerdict[] | undefined;
     if (!ref || !survey || !uses) { console.log(`${slug}: no survey yet, skipped`); continue; }
-    const jobs = planStaging(survey, uses);
+    const brief = BRIEFS.find((b) => b.slug === slug);
+    const jobs = planStaging(survey, uses, brief ? targetUses(brief) : undefined);
     const staged = await stagedOf(ref.id);
-    const v2 = new Set(staged.filter((m) => m.meta.prompt === "STAGE_PROMPTS_V2").map((m) => m.style));
+    const v2 = new Set(staged.filter((m) => m.meta.prompt === STAGE_VERSION).map((m) => m.style));
     const emptied = new Set(staged.filter((m) => m.style === "empty" && m.meta.space_id).map((m) => String(m.meta.space_id)));
     const todo = jobs.filter((j) => !v2.has(j.style));
     const emptyEdits = ref.kind === "furnished" ? new Set(todo.map((j) => j.spaceId).filter((s) => !emptied.has(s))).size : 0;
     edits += todo.length + emptyEdits;
     console.log(`${slug} (${ref.kind}): ${jobs.map((j) => `${j.style}@${j.spaceId}#${j.frame}${v2.has(j.style) ? "✓" : ""}`).join(", ") || "nothing passes"} -> ${todo.length + emptyEdits} edits`);
     if (dry) continue;
-    for (const legacy of ["startup", "clinic", "training"]) await retireStaged(ref.id, legacy);
+    // Retire legacy v1 renders and any style the current plan no longer includes.
+    const planned = new Set(jobs.map((j) => j.style));
+    for (const style of new Set(["startup", "clinic", "training", ...staged.map((m) => m.style)]))
+      if (style !== "empty" && !planned.has(style)) await retireStaged(ref.id, style);
     await pool().query("update media set is_current = false where unit_id = $1 and kind = 'staged' and style = 'empty' and not (meta ? 'space_id')", [ref.id]);
     for (const j of todo) {
       const t0 = Date.now();

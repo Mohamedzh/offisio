@@ -1,217 +1,132 @@
-// Generate 6 synthetic demo units: muse-image-1.0 frames -> slideshow mp4
-// -> Blob uploads -> existing upload pipeline (specs -> listing).
-// Synthetic only, no PII. Never presented as filmed offices (synthetic meta).
-// Run: pnpm generate-units [--only <slug>] [--force]
+// Generate synthetic demo units from floor-plan briefs (data/seed/synthetic-briefs.json,
+// owner-approved 2026-10-30): per space 1-2 muse-image-1.0 frames in walk order ->
+// 2 s/frame slideshow -> Blob demo/<slug>/v2/ -> the same analysis pipeline as a
+// live upload (survey -> rubric -> listing v2). Synthetic only, no PII; always
+// badged as AI-generated photos. Staging runs separately: pnpm stage-units.
+// Run: pnpm generate-units [--only <slug>] [--force] [--dry]
 import { execFileSync } from "node:child_process";
-import { mkdirSync, readFileSync, unlinkSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { putPublic } from "../lib/blob";
 import { pool } from "../lib/db/pg";
-import { addMedia, createUploadedUnit, generateAvailability, saveGenerated, setUnitStatus, type RentPeriod } from "../lib/db/store";
-import { loadEnvLocal, MODELS, requireKey } from "../lib/meta/client";
+import { addMedia, createUploadedUnit, generateAvailability, setUnitStatus, todayCairo, type RentPeriod } from "../lib/db/store";
+import { meta } from "../lib/meta/client";
 import type { UnitKind } from "../lib/meta/prompts";
-import { generateListing, generateSpecs, type UploadOwner } from "../lib/pipeline/specs-listing";
+import type { UploadOwner } from "../lib/pipeline/specs-listing";
+import { analyzeUnit, saveAnalysis } from "../lib/pipeline/ingest";
+import { area, USES, type Use } from "../lib/pipeline/rubric";
+import type { Survey, SpaceType } from "../lib/pipeline/survey";
+import { keyframesOf } from "../lib/db/store";
 
-const BASE = "https://api.meta.ai/v1";
+interface BriefSpace { type: string; w: number; l: number; desc: string; frames: number }
+interface Brief { slug: string; district: string; kind: UnitKind; rent_egp: number; daily_egp: number | null; floor_text: string; style: string; spaces: BriefSpace[]; target_uses: string[] }
+export const BRIEFS = (JSON.parse(readFileSync("data/seed/synthetic-briefs.json", "utf8")) as { units: Brief[] }).units;
 
-interface GenUnit {
-  slug: string; district: string; rent_egp: number; daily_egp: number | null;
-  floor_text: string; kind: UnitKind; brief: string;
-}
+// "clinic (after fit-out)" -> "clinic"
+export const targetUses = (b: Brief): Use[] => b.target_uses.map((t) => t.split(" ")[0]).filter((t): t is Use => (USES as readonly string[]).includes(t));
 
-// Fixed room brief per unit: the brief string is used verbatim in every
-// frame prompt for that unit; only the camera position varies.
-const UNITS: GenUnit[] = [
-  {
-    slug: "gen-zamalek", district: "Zamalek, Cairo", rent_egp: 18500, daily_egp: 1250, floor_text: "4th", kind: "furnished",
-    brief: "Photorealistic interior of one single furnished office room, about 28 square metres, three light-oak desks in a row each with a black mesh office chair and a desktop monitor, warm white walls, two tall windows with sheer curtains on the left wall with bright daylight, light wood laminate flooring, one white wall-mounted air conditioner, a small green potted plant by the window, recessed ceiling lights, no people, no text, no logos",
-  },
-  {
-    slug: "gen-heliopolis", district: "Heliopolis, Cairo", rent_egp: 13500, daily_egp: 900, floor_text: "2nd", kind: "furnished",
-    brief: "Photorealistic interior of one single furnished office room, about 22 square metres, two white desks facing each other each with a grey fabric office chair and a laptop, cream walls, one wide window with white blinds on the far wall with bright daylight, beige ceramic tile flooring, one white wall-mounted air conditioner, a small bookshelf against the right wall, recessed ceiling lights, no people, no text, no logos",
-  },
-  {
-    slug: "gen-new-cairo", district: "New Cairo", rent_egp: 16500, daily_egp: 1100, floor_text: "1st", kind: "furnished",
-    brief: "Photorealistic interior of one single furnished office room, about 32 square metres, four dark walnut desks in two rows each with a black office chair and a desktop monitor, light grey walls, floor-to-ceiling windows along the right wall with bright daylight, polished light grey tile flooring, two white wall-mounted air conditioners, a tall green potted plant in the corner, recessed ceiling lights, no people, no text, no logos",
-  },
-  {
-    slug: "gen-nasr-city", district: "Nasr City, Cairo", rent_egp: 9000, daily_egp: null, floor_text: "Ground", kind: "semifinished",
-    brief: "Photorealistic interior of one single bare semifinished office room, about 30 square metres, completely empty with no furniture at all, unpainted pale plaster walls with patches of primer, bare grey concrete flooring, one plain window with an aluminium frame on the far wall with moderate daylight, exposed ceiling with a single hanging bulb, one closed plain wooden door, no desks, no chairs, no people, no text, no logos",
-  },
-  {
-    slug: "gen-alex-chatby", district: "Chatby, Alexandria", rent_egp: 8500, daily_egp: 600, floor_text: "3rd", kind: "furnished",
-    brief: "Photorealistic interior of one single furnished office room, about 20 square metres, two light wood desks each with a blue fabric office chair and a laptop, white walls, two windows with white shutters on the left wall with bright Mediterranean daylight, warm terracotta ceramic tile flooring, one white wall-mounted air conditioner, a small potted olive plant by the window, a simple ceiling light, no people, no text, no logos",
-  },
-  {
-    slug: "gen-alex-louran", district: "Louran, Alexandria (near Bibliotheca Alexandrina)", rent_egp: 12000, daily_egp: 850, floor_text: "5th", kind: "furnished",
-    brief: "Photorealistic interior of one single furnished office room, about 26 square metres, three white desks in an L shape each with a light grey mesh office chair and a desktop monitor, soft white walls, a wide window and a small balcony door on the far wall with bright sea daylight, light oak laminate flooring, one white wall-mounted air conditioner, a bookshelf with a few books on the right wall, recessed ceiling lights, no people, no text, no logos",
-  },
-];
-
-const CAMERAS_FURNISHED = [
-  "photographed from the entrance, wide-angle view of the whole room",
-  "photographed from the opposite corner, wide-angle view of the whole room",
-  "photographed from the window side looking across the room",
-  "low desk-level detail view close to the desks and floor",
-  "diagonal overview from a high corner of the room",
-] as const;
-
-const CAMERAS_BARE = [
-  "photographed from the entrance, wide-angle view of the whole room",
-  "photographed from the opposite corner, wide-angle view of the whole room",
-  "photographed from the window side looking across the room",
-  "low corner detail view close to the wall and floor",
-  "diagonal overview from a high corner of the room",
-] as const;
-
-async function generateImage(prompt: string): Promise<Buffer> {
-  const key = requireKey();
-  const res = await fetch(`${BASE}/images/generations`, {
-    method: "POST",
-    headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ model: MODELS.image, prompt, size: "1536x1024" }),
+// The brief IS the floor plan: build the survey from it, frames mapped exactly.
+export function surveyFromBrief(b: Brief): Survey {
+  let frame = 0;
+  const spaces = b.spaces.map((s, i) => {
+    const frames = Array.from({ length: s.frames }, () => frame++);
+    const isRoom = s.type === "room" || s.type === "other";
+    return {
+      id: `s${i + 1}`, type: s.type as SpaceType, label_en: s.desc, frames, best_frame: frames[0],
+      width_m: s.w, length_m: s.l, dims_confidence: 1, windows: isRoom ? 1 : 0, natural_light: isRoom ? "bright" as const : null,
+      plumbing: { wc: s.type === "bathroom" ? true : null, sink: s.type === "bathroom" || s.type === "kitchenette" ? true : null, water_stub: /water|stub/.test(s.desc) ? true : null, drain: /drain/.test(s.desc) ? true : null },
+      finish: b.kind === "semifinished" ? "semifinished" as const : "finished" as const, furnished: b.kind === "furnished" && isRoom, notes: "from floor-plan brief",
+    };
   });
-  const text = await res.text();
-  console.log(`/images/generations ${res.status}`);
-  if (!res.ok) throw new Error(`generations failed ${res.status}: ${text.slice(0, 400)}`);
-  const data = (JSON.parse(text) as { data?: { b64_json?: string; url?: string }[] }).data?.[0];
-  if (data?.b64_json) return Buffer.from(data.b64_json, "base64");
-  if (data?.url) return Buffer.from(await (await fetch(data.url)).arrayBuffer());
-  throw new Error("image response has neither b64_json nor url");
+  return { spaces, adjacency: spaces.slice(1).map((s, i) => [spaces[i].id, s.id] as [string, string]), entrance_space: spaces.find((s) => s.type === "entrance")?.id ?? null,
+    has_ac: b.kind === "furnished" ? true : null, ac_units_visible: null, flooring: null, condition: b.kind === "furnished" ? "good" : "needs_work", condition_confidence: 1, notes_ar: null };
+}
+const CAMERAS = ["photographed from the doorway, wide-angle view of the whole space", "photographed from the opposite corner, wide-angle view"];
+
+const framePrompt = (b: Brief, s: BriefSpace, cam: string) =>
+  `Photorealistic interior photograph of an office unit in ${b.district}, Egypt: ${b.style}. This photo shows ${s.desc}, about ${s.w} x ${s.l} metres, ${cam}. Natural phone-camera photo, no people, no text, no logos.`;
+
+// Titles must carry the correct rent; append the factual owner rent if the model omitted it.
+const hasRent = (t: string, r: number) => t.includes(String(r)) || t.includes(r.toLocaleString("en-US"));
+function withRentInTitles<T extends { title_en: string; title_ar: string }>(l: T, rent: number): T {
+  return { ...l, title_en: hasRent(l.title_en, rent) ? l.title_en : `${l.title_en} - EGP ${rent.toLocaleString("en-US")}/mo`,
+    title_ar: hasRent(l.title_ar, rent) ? l.title_ar : `${l.title_ar} - ${rent.toLocaleString("en-US")} جنيه/شهر` };
 }
 
-function toJpeg(raw: Buffer, dest: string): Buffer {
-  const tmp = `${dest}.raw`;
-  writeFileSync(tmp, raw);
-  try {
-    execFileSync("ffmpeg", ["-y", "-i", tmp, "-q:v", "3", dest], { stdio: "ignore" });
-    return readFileSync(dest);
-  } catch {
-    console.log(`ffmpeg transcode unavailable, keeping original bytes for ${dest}`);
-    writeFileSync(dest, raw);
-    return raw;
-  } finally {
-    try { unlinkSync(tmp); } catch { /* already gone */ }
-  }
+async function generateFrame(prompt: string, dest: string): Promise<Buffer> {
+  const d = (await meta.imageGenerate(prompt)).data?.[0];
+  const raw = d?.b64_json ? Buffer.from(d.b64_json, "base64") : d?.url ? Buffer.from(await (await fetch(d.url)).arrayBuffer()) : null;
+  if (!raw) throw new Error("image response has neither b64_json nor url");
+  writeFileSync(`${dest}.raw`, raw);
+  execFileSync("ffmpeg", ["-v", "error", "-y", "-i", `${dest}.raw`, "-vf", "scale=1024:-2", "-q:v", "3", dest]); // JPEG, long side 1024
+  return readFileSync(dest);
 }
 
-function buildSlideshow(dir: string): string {
-  const out = join(dir, "walkthrough.mp4");
-  execFileSync("ffmpeg", ["-y", "-framerate", "1/2", "-i", join(dir, "frame-%d.jpg"), "-c:v", "libx264", "-pix_fmt", "yuv420p", "-r", "30", out], { stdio: "inherit" });
-  return out;
-}
-
-function containsRent(title: string, rent: number): boolean {
-  return title.includes(String(rent)) || title.includes(rent.toLocaleString("en-US"));
-}
-
-function warnRentTitles(slug: string, rent: number, titleEn: string, titleAr: string): void {
-  if (!containsRent(titleEn, rent)) console.warn(`[warn] ${slug}: title_en does not contain rent ${rent}: ${titleEn}`);
-  if (!containsRent(titleAr, rent)) console.warn(`[warn] ${slug}: title_ar does not contain rent ${rent}: ${titleAr}`);
-}
-
-// Titles must carry the correct rent (plan step 2 acceptance). If the model
-// omitted it, append the factual owner rent deterministically — never invent.
-export function withRentInTitles<T extends { title_en: string; title_ar: string }>(listing: T, rent: number): T {
-  const en = containsRent(listing.title_en, rent) ? listing.title_en : `${listing.title_en} - EGP ${rent.toLocaleString("en-US")}/mo`;
-  const ar = containsRent(listing.title_ar, rent) ? listing.title_ar : `${listing.title_ar} - ${rent.toLocaleString("en-US")} جنيه/شهر`;
-  return { ...listing, title_en: en, title_ar: ar };
-}
-
-async function unitExists(slug: string): Promise<boolean> {
-  const { rows } = await pool().query("select id from units where slug = $1", [slug]);
-  return rows.length > 0;
-}
-
-async function deleteUnit(slug: string): Promise<void> {
-  await pool().query("delete from units where slug = $1", [slug]);
-}
-
-async function runUnit(unit: GenUnit, today: string): Promise<void> {
-  const dir = join(".scratch/gen-units", unit.slug);
+async function runUnit(b: Brief): Promise<void> {
+  const dir = join(".scratch/gen-units-v2", b.slug);
   mkdirSync(dir, { recursive: true });
-  const cameras = unit.kind === "semifinished" ? CAMERAS_BARE : CAMERAS_FURNISHED;
-  const framePaths: string[] = [];
-  const frameBytes: Buffer[] = [];
-  for (let i = 0; i < cameras.length; i++) {
-    const prompt = `${unit.brief}, ${cameras[i]}`;
-    console.log(`[${unit.slug}] frame ${i + 1}/5`);
-    const raw = await generateImage(prompt);
-    const dest = join(dir, `frame-${i + 1}.jpg`);
-    frameBytes.push(toJpeg(raw, dest));
-    framePaths.push(dest);
+  const shots = b.spaces.flatMap((s) => CAMERAS.slice(0, s.frames).map((cam) => ({ s, cam })));
+  const frames: { url: string; t: number }[] = [];
+  for (const [i, { s, cam }] of shots.entries()) {
+    console.log(`[${b.slug}] frame ${i + 1}/${shots.length}: ${s.type}`);
+    const bytes = await generateFrame(framePrompt(b, s, cam), join(dir, `frame-${i + 1}.jpg`));
+    frames.push({ url: await putPublic(`demo/${b.slug}/v2/frame-${String(i + 1).padStart(2, "0")}.jpg`, bytes, "image/jpeg"), t: i * 2 });
   }
-  const videoPath = buildSlideshow(dir);
-  const frameUrls: string[] = [];
-  for (let i = 0; i < framePaths.length; i++)
-    frameUrls.push(await putPublic(`uploads/${unit.slug}/frame-${i + 1}.jpg`, frameBytes[i], "image/jpeg"));
-  const videoUrl = await putPublic(`uploads/${unit.slug}/walkthrough.mp4`, readFileSync(videoPath), "video/mp4");
+  execFileSync("ffmpeg", ["-v", "error", "-y", "-framerate", "1/2", "-i", join(dir, "frame-%d.jpg"), "-vf", "scale=1024:-2", "-c:v", "libx264", "-pix_fmt", "yuv420p", "-r", "30", join(dir, "walkthrough.mp4")]);
+  const videoUrl = await putPublic(`demo/${b.slug}/v2/walkthrough.mp4`, readFileSync(join(dir, "walkthrough.mp4")), "video/mp4");
 
-  const owner: UploadOwner = { district: unit.district, rent_egp: unit.rent_egp, daily_egp: unit.daily_egp, floor_text: unit.floor_text, available_from: today, kind: unit.kind };
-  const rentPeriods: RentPeriod[] = unit.kind === "furnished" ? ["daily", "monthly"] : ["long_term"];
-  let created = false;
+  const today = todayCairo();
+  const owner: UploadOwner = { district: b.district, rent_egp: b.rent_egp, daily_egp: b.daily_egp, floor_text: b.floor_text, available_from: today, kind: b.kind };
+  const rent_periods: RentPeriod[] = b.kind === "furnished" ? ["daily", "monthly"] : ["long_term"];
+  const unitId = await createUploadedUnit({ slug: b.slug, ...owner, rent_periods });
   try {
-    const unitId = await createUploadedUnit({ slug: unit.slug, kind: unit.kind, district: unit.district, rent_egp: unit.rent_egp, daily_egp: unit.daily_egp, floor_text: unit.floor_text, available_from: today, rent_periods: rentPeriods });
-    created = true;
-    // Hero first so it is identifiable; all frames stored as keyframes.
-    const order = [0, ...frameUrls.map((_, i) => i).filter((i) => i !== 0)];
-    for (const i of order)
-      await addMedia(unitId, "keyframe", frameUrls[i], null, i === 0 ? { hero: true, synthetic: true, source: "muse-image-1.0" } : { synthetic: true, source: "muse-image-1.0" });
     await addMedia(unitId, "video", videoUrl, null, { synthetic: true });
-    const dataUrls = frameBytes.map((b) => `data:image/jpeg;base64,${b.toString("base64")}`);
-    const specs = await generateSpecs(dataUrls, owner);
-    const rawListing = await generateListing(specs, owner);
-    warnRentTitles(unit.slug, unit.rent_egp, rawListing.title_en, rawListing.title_ar);
-    const listing = withRentInTitles(rawListing, unit.rent_egp);
-    await saveGenerated(unitId, specs, listing);
+    const a = await analyzeUnit(owner, frames, surveyFromBrief(b));
+    a.listing = withRentInTitles(a.listing, b.rent_egp);
+    await saveAnalysis(unitId, frames, a, { synthetic: true, source: "muse-image-1.0" });
     await generateAvailability(unitId, today);
-    await setUnitStatus(unit.slug, "ready");
-    console.log(`[${unit.slug}] ready`);
-  } catch (e) {
-    if (created) { try { await setUnitStatus(unit.slug, "failed"); } catch { /* keep original error */ } }
-    throw e;
-  }
+    await setUnitStatus(b.slug, "ready");
+    console.log(`[${b.slug}] ready: ${a.survey.spaces.map((s) => `${s.type} ${area(s) ?? "?"}m2`).join(", ")}`);
+    console.log(`  uses: ${a.uses.map((u) => `${u.use}=${u.verdict}`).join(" ")}`);
+  } catch (e) { await setUnitStatus(b.slug, "failed"); throw e; }
 }
 
 async function main(): Promise<void> {
-  loadEnvLocal();
   const args = process.argv.slice(2);
-  const force = args.includes("--force");
-  const onlyIdx = args.indexOf("--only");
-  const only = onlyIdx >= 0 ? args[onlyIdx + 1] : undefined;
-  if (onlyIdx >= 0 && !only) throw new Error("--only requires a slug");
-  const selected = only ? UNITS.filter((u) => u.slug === only) : UNITS;
-  if (selected.length === 0) throw new Error(`unknown slug for --only: ${only}`);
-  if (args.includes("--fix-titles")) {
-    // Re-runnable title repair for already-created units: no model calls.
-    for (const unit of selected) {
-      const { rows } = await pool().query<{ title_en: string | null; title_ar: string | null }>(
-        "select title_en, title_ar from units where slug = $1", [unit.slug]);
-      if (!rows[0]?.title_en || !rows[0]?.title_ar) { console.log(`[${unit.slug}] no listing yet, skipping`); continue; }
-      const fixed = withRentInTitles({ title_en: rows[0].title_en, title_ar: rows[0].title_ar }, unit.rent_egp);
-      await pool().query("update units set title_en = $2, title_ar = $3 where slug = $1", [unit.slug, fixed.title_en, fixed.title_ar]);
-      console.log(`[${unit.slug}] titles fixed`);
+  const only = args.includes("--only") ? args[args.indexOf("--only") + 1] : undefined;
+  const selected = BRIEFS.filter((b) => !only || b.slug === only);
+  if (!selected.length) throw new Error(`unknown slug: ${only}`);
+  const frames = selected.reduce((n, b) => n + b.spaces.reduce((m, s) => m + s.frames, 0), 0);
+  console.log(`${selected.length} units, ${frames} frames (~$${(frames * 0.01).toFixed(2)} generation + ~$0.03/unit analysis)`);
+  if (args.includes("--dry")) { await pool().end(); return; }
+  if (args.includes("--reanalyze")) {
+    // Re-run analysis on already-generated frames (no image generation).
+    for (const b of selected) {
+      const { rows } = await pool().query<{ id: string }>("select id from units where slug = $1", [b.slug]);
+      if (!rows[0]) { console.log(`[${b.slug}] not generated yet`); continue; }
+      const frames = (await keyframesOf(rows[0].id)).sort((x, y) => x.frame - y.frame).map((f) => ({ url: f.url, t: f.frame * 2 }));
+      const owner: UploadOwner = { district: b.district, rent_egp: b.rent_egp, daily_egp: b.daily_egp, floor_text: b.floor_text, available_from: todayCairo(), kind: b.kind };
+      const a = await analyzeUnit(owner, frames, surveyFromBrief(b));
+      a.listing = withRentInTitles(a.listing, b.rent_egp);
+      await saveAnalysis(rows[0].id, frames, a, { synthetic: true, source: "muse-image-1.0" });
+      // Roles may now point at different spaces: retire renders (re-staging hits the cache where unchanged).
+      await pool().query("update media set is_current = false where unit_id = $1 and kind = 'staged'", [rows[0].id]);
+      console.log(`[${b.slug}] ${a.uses.map((u) => `${u.use}=${u.verdict}`).join(" ")}`);
     }
-    try { await pool().end(); } catch { /* ignore */ }
-    return;
+    await pool().end(); return;
   }
-  const today = new Date().toISOString().slice(0, 10);
   let failed = 0;
-  for (const unit of selected) {
+  for (const b of selected) {
     try {
-      if (await unitExists(unit.slug)) {
-        if (!force) { console.log(`[${unit.slug}] exists, skipping (use --force to regenerate)`); continue; }
-        await deleteUnit(unit.slug);
-        console.log(`[${unit.slug}] deleted existing row (--force)`);
-      }
-      await runUnit(unit, today);
-    } catch (e) {
-      failed++;
-      console.error(`[${unit.slug}] FAILED: ${(e as Error).message}`);
-    }
+      const { rows } = await pool().query<{ n: number }>("select count(*)::int n from bookings b join units u on u.id = b.unit_id where u.slug = $1", [b.slug]);
+      const exists = (await pool().query("select 1 from units where slug = $1", [b.slug])).rows.length > 0;
+      if (exists && !args.includes("--force")) { console.log(`[${b.slug}] exists, skipping (use --force)`); continue; }
+      if (exists && rows[0].n > 0) { console.log(`[${b.slug}] has bookings, not regenerated`); continue; }
+      if (exists) await pool().query("delete from units where slug = $1", [b.slug]);
+      await runUnit(b);
+    } catch (e) { failed++; console.error(`[${b.slug}] FAILED: ${(e as Error).message}`); }
   }
-  try { await pool().end(); } catch { /* pool may not be started */ }
-  if (failed > 0) process.exit(1);
+  await pool().end();
+  if (failed) process.exit(1);
 }
-
-main().catch((e) => { console.error("FAIL", (e as Error).message); process.exit(1); });
+if (process.argv[1]?.includes("generate-units")) main().catch((e) => { console.error("FAIL", (e as Error).message); process.exit(1); });

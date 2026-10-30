@@ -4,7 +4,7 @@
 // bytes + prompt text, so re-runs cost nothing.
 import { createHash } from "node:crypto";
 import { meta, MODELS } from "../meta/client";
-import { EMPTY_PROMPT_V1, STAGE_PROMPTS_V2, type UnitKind } from "../meta/prompts";
+import { EMPTY_PROMPT_V1, STAGE_VERSION, stagePrompt, type UnitKind } from "../meta/prompts";
 import { putPublic } from "../blob";
 import { cached } from "./cache";
 import { area, T, type Role, type Use, type UseVerdict } from "./rubric";
@@ -14,14 +14,14 @@ import { addMedia, retireStaged, keyframesOf, stagedOf } from "../db/store";
 export interface StageJob { style: string; use: Use; role: Role; spaceId: string; frame: number; n: number }
 
 // Which renders a unit should have, from its verdicts.
-export function planStaging(survey: Survey, uses: UseVerdict[]): StageJob[] {
+export function planStaging(survey: Survey, uses: UseVerdict[], only?: Use[]): StageJob[] {
   const space = (id?: string) => survey.spaces.find((s) => s.id === id);
   const jobs: StageJob[] = [];
   const add = (style: string, u: UseVerdict, role: Role, n: (a: number) => number) => {
     const s = space(u.roles[role]); if (!s) return;
     jobs.push({ style, use: u.use, role, spaceId: s.id, frame: s.best_frame, n: Math.max(1, n(area(s) ?? 0)) });
   };
-  for (const u of uses.filter((x) => x.verdict !== "not_suitable")) {
+  for (const u of uses.filter((x) => x.verdict !== "not_suitable" && (!only || only.includes(x.use)))) {
     if (u.use === "office") add("office", u, "room", (a) => Math.floor(a / T.deskComfortM2));
     if (u.use === "open_plan") add("open_plan", u, "room", (a) => Math.floor(a / T.deskComfortM2));
     if (u.use === "meeting") add("meeting", u, "room", (a) => Math.floor(a / T.seatClassroomM2));
@@ -44,7 +44,7 @@ async function bytesOf(url: string): Promise<Buffer> {
 // One image edit -> Blob URL, cached by (base bytes, prompt).
 async function edit(slug: string, style: string, baseUrl: string, prompt: string): Promise<string> {
   const base = await bytesOf(baseUrl);
-  const res = await cached("stage", MODELS.image, "STAGE_PROMPTS_V2", [prompt, base], async () => {
+  const res = await cached("stage", MODELS.image, STAGE_VERSION, [prompt, base], async () => {
     const out = await meta.imageEdit({ imagePath: baseUrl, prompt });
     const d = out.data?.[0];
     const img = d?.b64_json ? Buffer.from(d.b64_json, "base64") : d?.url ? await bytesOf(d.url) : null;
@@ -67,10 +67,10 @@ export async function stageOne(unit: { id: string; slug: string; kind: UnitKind 
     base = existing?.url ?? await edit(unit.slug, `empty-${job.spaceId}`, baseFrame, EMPTY_PROMPT_V1);
     if (!existing) await addMedia(unit.id, "staged", base, "empty", { space_id: job.spaceId, source_frame: job.frame });
   }
-  const prompt = (STAGE_PROMPTS_V2[job.style] ?? "").replace("{N}", String(job.n));
+  const prompt = stagePrompt(job.style, unit.kind, job.n);
   if (!prompt) throw new Error(`no prompt for style ${job.style}`);
   const url = await edit(unit.slug, job.style, base, prompt);
   await retireStaged(unit.id, job.style);
-  await addMedia(unit.id, "staged", url, job.style, { use: job.use, role: job.role, space_id: job.spaceId, source_frame: job.frame, n: job.n, prompt: "STAGE_PROMPTS_V2" });
+  await addMedia(unit.id, "staged", url, job.style, { use: job.use, role: job.role, space_id: job.spaceId, source_frame: job.frame, n: job.n, prompt: STAGE_VERSION });
   return url;
 }

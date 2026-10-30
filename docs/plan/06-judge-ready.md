@@ -1,6 +1,6 @@
 # Segment 6 — Judge-ready: demo data, staging coverage, agent, guardrails, ship
 
-Status: **in progress** — 6.1–6.5 done, 6.6 staging code + filmed units done 2026-10-30; synthetic regeneration waits on owner review of `data/seed/synthetic-briefs.json` (all uncommitted, owner reviews and commits) (planned 2026-10-29 from the post-audit review) · Depends on: Segments 2–5 (all demo-scope done)
+Status: **in progress** — 6.1–6.6 done 2026-10-30 (owner reviews and commits); next is 6.7 location, then 6.8 Clerk owner auth
 
 Goal: the deployed demo holds up when judges use it unattended (Nov 5–8) on a fixed $150 credit budget. That means bookable dates, the staging headline on every listing, a correct agent, hard usage limits, and docs that match the code.
 
@@ -148,7 +148,7 @@ Why: the v1 pipeline sees one hero room. It measured `empty1`/`empty2` as single
     - Cache keys now hash the prompt text.
   - `pnpm check-rubric`: 13 fixture checks pass. `pnpm remodel-filmed` re-surveyed the 3 filmed units (1 fps frames on Blob `demo/<slug>/frames/`).
   - Upload: ~1 frame/s (6–30), AI-picked hero per room, keyframes keep `t`/`spaces`/`best_for`. The unit page shows "Suitable for" with verdicts and reasons in AR/EN.
-  - Open owner question (docs/RUBRIC.md): may a dental unit repurpose its *only* bathroom as the prep room?
+  - Owner rule 2026-10-30: with no separate prep space, the bathroom can be retrofitted as the prep/sterilisation area. Dental is then fits after fit-out, and the prep render shows the converted bathroom.
 
 ### 6.5 Agent fixes (Nov 1) — 6-3
 - [lib/agent/agent.ts](../../lib/agent/agent.ts): server-injected Cairo date and weekday (the hardcoded `2026-10-27` goes). Per-unit `daily_egp` (the hardcoded 800 goes). Per-unit free days. Compact unit context (slug, district, kind, rents, desks, area, lat/lng after 6.7) instead of the full specs JSON.
@@ -184,7 +184,16 @@ Why: the v1 pipeline sees one hero room. It measured `empty1`/`empty2` as single
   - `STAGE_PROMPTS_V2`. Route `GET|POST /api/units/[slug]/stage` (existing styles never cost a call; image_edit limit + breaker). `StageButtons` on the unit page renders missing styles (O1). `UnitViewer` builds tabs dynamically.
   - `pnpm stage-units [--dry]` ran 14 edits ($0.14): `full` = empty + office, no clinic render. `empty1`/`empty2` = office, training, clinic waiting + exam, dental, law office. Legacy v1 renders are retired, including `full`'s clinic render.
   - Visual QA (`.scratch/qa-montage.jpg`): geometry and windows hold. One minor drift: the `empty1` waiting render repaints the ceiling.
-  - **Waiting on owner:** review of [data/seed/synthetic-briefs.json](../../data/seed/synthetic-briefs.json) (10 floor-plan briefs, 48 frames). After approval: rewrite `scripts/generate-units.ts` for per-space frames, regenerate, run analysis + staging (~$1.50 total), then a clean 10/10 `pnpm chat-acceptance`.
+  - **Owner review 2026-10-30:** briefs approved.
+    - Semifinished renders must show the finished fit-out: new floor over the dirty tiles, a white gypsum false ceiling with lights instead of the raw slab, and painted walls. Geometry stays fixed. This is `STAGE_PROMPTS_V3` with `stagePrompt(style, kind, n)`.
+    - The runner retires styles that are no longer planned. A style counts as done only if it was rendered at the current prompt version.
+  - `scripts/generate-units.ts` v2 reads the briefs: per-space frames → slideshow → Blob `demo/<slug>/v2/` → `analyzeUnit`/`saveAnalysis` (synthetic meta). `meta.imageGenerate` was added so generations are tracked in the spend ledger.
+  - **Synthetic units use their brief as the survey** (`surveyFromBrief`, `survey_source: "brief"`). Reason: each camera angle is an independent generation, so the model survey read one 48 m² hall as 150 m² and one room as four, and nearly every use passed. The brief is the authored floor plan. Real footage and live uploads keep the model survey.
+  - **Synthetic units render only their brief's `target_uses`** that pass. Filmed and uploaded units render every passing use. `--reanalyze` re-runs analysis on existing frames and retires stale renders.
+  - Final inventory: 13 units, all staged. Dental fits: Heliopolis, Sheikh Zayed. Dental after fit-out (bathroom retrofit): empty1, empty2, Zamalek, Smouha, Chatby. Coworking: New Cairo, October. Fit-out clinic (partitioned): Nasr City. Furnished clinic: Smouha. Training: Downtown, Louran. Law office: Zamalek, Chatby.
+  - Staging totals: V3 filmed 15 edits; synthetic 39 edits; plus 36 early edits from a run overlapping the generator (renders later retired or re-used via cache).
+  - **Chat acceptance final: 10/10 PASS** on the final inventory (34 tool calls, test data cleaned).
+  - Meta spend 2026-10-30, all work: **$2.88** (ledger `usage_counters`).
 
 ### 6.7 Location, minimal (Nov 2) — scope check
 - Migration (approved): `units.lat`, `units.lng` numeric, idempotent `add column if not exists`, `pnpm migrate`, verify the columns.

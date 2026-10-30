@@ -21,11 +21,14 @@ function heroOf(survey: Survey): number {
   return (rooms[0] ?? survey.spaces[0]).best_frame ?? 0;
 }
 
-export async function analyzeUnit(owner: UploadOwner, frames: Frame[]): Promise<Analysis> {
-  const inline = await Promise.all(frames.map(async (f) => ({ url: await toDataUrl(f.url), t: f.t })));
-  const survey = await runSurvey(inline, `Owner fields: district=${owner.district}, floors=${owner.floor_text}, kind=${owner.kind}.`);
+// `given` skips the model survey: synthetic units pass the survey built from
+// their own floor-plan brief (independent generated frames fool a survey).
+export async function analyzeUnit(owner: UploadOwner, frames: Frame[], given?: Survey): Promise<Analysis> {
+  const survey = given ?? await runSurvey(
+    await Promise.all(frames.map(async (f) => ({ url: await toDataUrl(f.url), t: f.t }))),
+    `Owner fields: district=${owner.district}, floors=${owner.floor_text}, kind=${owner.kind}.`);
   const uses = assess(survey, owner.kind);
-  const specs = { ...deriveSpecs(survey, uses), survey, uses };
+  const specs = { ...deriveSpecs(survey, uses), survey, uses, survey_source: given ? "brief" : "model" };
   const listing = await generateListingV2(specs, owner, uses);
   return { survey, uses, specs, listing, heroIndex: heroOf(survey) };
 }

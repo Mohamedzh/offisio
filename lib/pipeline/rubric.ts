@@ -96,14 +96,14 @@ export function assess(survey: Survey, kind: UnitKind): UseVerdict[] {
   const used = new Set(Object.values(clinicRoles));
   const prep = survey.spaces.find((s) => !used.has(s.id) && s.type !== "corridor" && s.type !== "entrance" && s.type !== "balcony" &&
     (isBath(s) ? baths.length > 1 : true) && ((area(s) ?? T.prepMinM2) >= T.prepMinM2));
-  // Fit-out route: partition the prep area from a clinic room with spare area.
-  const spare = clinic === "fits" && ((exam && (area(exam) ?? 0) >= T.examMinM2 + T.prepMinM2) ||
-    (waitingRoom && (area(waitingRoom) ?? 0) >= T.waitingMinM2 + T.prepMinM2));
+  // Owner rule 2026-10-30: with no separate prep space, the bathroom can be
+  // retrofitted as the prep/sterilisation area (a real, common conversion).
   if (clinic === "fits" && prep) v("dental", "fits", ["Clinic layout plus a separate area for the prep/sterilisation lab."], ["تخطيط عيادة ومعاه مكان منفصل لمعمل التحضير والتعقيم."], { ...clinicRoles, prep: prep.id });
-  else if (clinic !== "not_suitable" && fitout && (prep || spare || largest >= T.dentalSplitM2))
-    v("dental", "fits_after_fitout", ["A prep/sterilisation area can be partitioned in the fit-out."], ["ممكن يتعمل معمل تحضير وتعقيم بقاطع في التشطيب."], { ...clinicRoles, ...(prep ? { prep: prep.id } : {}) });
-  else if (clinic === "not_suitable") { const [en, ar] = clinicWhy(); v("dental", "not_suitable", en, ar); }
-  else v("dental", "not_suitable", ["No separate space for the prep/sterilisation lab."], ["مفيش مكان منفصل لمعمل التحضير والتعقيم."]);
+  else if (clinic !== "not_suitable" && prep)
+    v("dental", "fits_after_fitout", ["Clinic fit-out plus a separate area for the prep/sterilisation lab."], ["بعد التشطيب: عيادة ومعاها مكان منفصل لمعمل التحضير والتعقيم."], { ...clinicRoles, prep: prep.id });
+  else if (clinic !== "not_suitable" && bath)
+    v("dental", "fits_after_fitout", ["The bathroom can be retrofitted as the prep/sterilisation area."], ["الحمام ممكن يتحول لمعمل التحضير والتعقيم."], { ...clinicRoles, prep: bath.id });
+  else { const [en, ar] = clinicWhy(); v("dental", "not_suitable", en, ar); }
 
   // Accounting / law office: reception + >= 1 private office
   const office = rooms.find((r) => (area(r) ?? 0) >= T.legalOfficeMinM2);

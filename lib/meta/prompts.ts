@@ -50,18 +50,26 @@ ADDONS: {ADDONS}`;
 
 // Use-driven fit-out renders (lib/pipeline/staging.ts). One per passing use and
 // space role; {N} is the rubric's capacity for that space, so renders match it.
-const KEEP = "Keep walls, windows, doors, floor, ceiling and camera angle EXACTLY unchanged; only add furniture and fittings that physically fit this space. Photorealistic.";
-export const STAGE_PROMPTS_V2: Record<string, string> = {
-  office: `Fit out this space as a modern startup office with {N} desks (120 x 70 cm) with monitors and ergonomic mesh chairs, tidy cable trays, one small plant per desk, warm light. ${KEEP}`,
-  open_plan: `Fit out this space as a coworking hall: {N} desks in rows, one long shared table, a small lounge corner, pendant lights. ${KEEP}`,
-  meeting: `Fit out this space as a training room: about {N} seats classroom-style in rows of simple tables facing one wall with a whiteboard and projector screen. ${KEEP}`,
-  clinic_waiting: `Fit out this space as a clinic waiting area: a row of about {N} upholstered waiting chairs along one wall, a small reception desk, one plant, calm clinical lighting. ${KEEP}`,
-  clinic_exam: `Fit out this space as a medical examination room: an examination bed with a paper roll, a doctor's desk with two chairs, a wall-mounted sink cabinet, a privacy curtain, clean clinical light. ${KEEP}`,
-  clinic_split: `Partition this room with a light glass-and-gypsum wall into a small clinic waiting area (waiting chairs, reception desk) and an examination area (exam bed, doctor's desk, sink cabinet). Keep the existing walls, windows, floor, ceiling and camera angle EXACTLY unchanged. Photorealistic.`,
-  dental_exam: `Fit out this space as a dental treatment room: one dental chair unit with an overhead operating light and side delivery cart, wall cabinets with a sink, a doctor's stool, clean white clinical finish. ${KEEP}`,
-  dental_prep: `Fit out this small space as a dental prep and sterilisation lab: a stainless-steel counter with a sink, an autoclave, sealed wall cabinets, washable surfaces. ${KEEP}`,
-  legal_office: `Fit out this space as an accounting or law office: an executive desk with a leather chair, two client chairs, tall bookshelves with binders, framed certificates. ${KEEP}`,
+// V3 (owner, 2026-10-30): semifinished shells are rendered FINISHED (new floor,
+// gypsum ceiling, paint) because the renter fits them out; geometry stays fixed.
+export const STAGE_VERSION = "STAGE_PROMPTS_V3";
+const KEEP_FINISHED = "Keep walls, windows, doors, floor, ceiling and camera angle EXACTLY unchanged; only add furniture and fittings that physically fit this space. Photorealistic.";
+const KEEP_SEMIFINISHED = "This is a bare semifinished shell, so render it as completed by the fit-out: lay a new clean floor finish (light porcelain tiles or vinyl) over the existing floor, install a finished white gypsum false ceiling with recessed lights in place of the exposed concrete, and paint the walls. Keep the walls, windows, doors and camera angle EXACTLY in their positions; only finishes, furniture and fittings change. Photorealistic.";
+const STAGE_BODIES: Record<string, string> = {
+  office: "Fit out this space as a modern startup office with {N} desks (120 x 70 cm) with monitors and ergonomic mesh chairs, tidy cable trays, one small plant per desk, warm light.",
+  open_plan: "Fit out this space as a coworking hall: {N} desks in rows, one long shared table, a small lounge corner, pendant lights.",
+  meeting: "Fit out this space as a training room: about {N} seats classroom-style in rows of simple tables facing one wall with a whiteboard and projector screen.",
+  clinic_waiting: "Fit out this space as a clinic waiting area: a row of about {N} upholstered waiting chairs along one wall, a small reception desk, one plant, calm clinical lighting.",
+  clinic_exam: "Fit out this space as a medical examination room: an examination bed with a paper roll, a doctor's desk with two chairs, a wall-mounted sink cabinet, a privacy curtain, clean clinical light.",
+  clinic_split: "Partition this room with a light glass-and-gypsum wall into a small clinic waiting area (waiting chairs, reception desk) and an examination area (exam bed, doctor's desk, sink cabinet).",
+  dental_exam: "Fit out this space as a dental treatment room: one dental chair unit with an overhead operating light and side delivery cart, wall cabinets with a sink, a doctor's stool, clean white clinical finish.",
+  dental_prep: "Convert this small space into a dental prep and sterilisation lab (if it is a bathroom, remove the WC): a stainless-steel counter with a sink, an autoclave, sealed wall cabinets, washable surfaces.",
+  legal_office: "Fit out this space as an accounting or law office: an executive desk with a leather chair, two client chairs, tall bookshelves with binders, framed certificates.",
 };
+export function stagePrompt(style: string, kind: UnitKind, n: number): string | null {
+  const body = STAGE_BODIES[style];
+  return body ? `${body.replace("{N}", String(n))} ${kind === "semifinished" ? KEEP_SEMIFINISHED : KEEP_FINISHED}` : null;
+}
 
 export const EMPTY_PROMPT_V1 = `Remove ALL furniture and movable objects (desks, chairs, monitors, keyboards, drawers, bins, cables, papers) from this office photo. Keep walls, windows, doors, floor, ceiling and light direction EXACTLY as they are — same camera angle, same geometry, photorealistic empty room. If the room is already empty, return it unchanged.`;
 

@@ -27,10 +27,10 @@ expect("2 rooms + bath + nook (dental case)", survey([sp("e", "entrance", 1.2, 4
   { office: "fits", clinic: "fits", dental: "fits", meeting: "fits", legal: "fits" });
 expect("nook without dims still counts as prep", survey([sp("b", "bathroom", 1.5, 2), sp("r1", "room", 3.5, 4.5, { windows: 1 }), sp("r2", "room", 2.8, 3), sp("n", "kitchenette", null, null)]), "furnished",
   { clinic: "fits", dental: "fits" });
-expect("2 rooms + bath, no extra space, furnished", survey([sp("b", "bathroom", 1.5, 2), sp("r1", "room", 3.5, 4), sp("r2", "room", 2.5, 3)]), "furnished",
-  { clinic: "fits", dental: "not_suitable" });
-expect("only bathroom cannot double as prep", survey([sp("b", "bathroom", 1.5, 2), sp("r1", "room", 3, 3.5), sp("r2", "room", 2.5, 3)]), "furnished",
-  { dental: "not_suitable" });
+expect("2 rooms + bath, no extra space, furnished -> bathroom retrofit", survey([sp("b", "bathroom", 1.5, 2), sp("r1", "room", 3.5, 4), sp("r2", "room", 2.5, 3)]), "furnished",
+  { clinic: "fits", dental: "fits_after_fitout" });
+expect("only bathroom can be retrofitted as prep", survey([sp("b", "bathroom", 1.5, 2), sp("r1", "room", 3, 3.5), sp("r2", "room", 2.5, 3)]), "furnished",
+  { dental: "fits_after_fitout" });
 expect("second bathroom can be prep", survey([sp("b", "bathroom", 1.5, 2), sp("b2", "bathroom", 1.2, 1.8), sp("r1", "room", 3, 3.5), sp("r2", "room", 2.5, 3)]), "furnished",
   { clinic: "fits", dental: "fits" });
 expect("1 big semifinished room + bath -> fit-out clinic", survey([sp("b", "bathroom", 1.5, 2), sp("r1", "room", 4, 5, { windows: 2 })]), "semifinished",
@@ -44,7 +44,7 @@ expect("narrow 1.2 m nook gives no desk", survey([sp("r1", "room", 3, 3, { windo
 // `empty2` shape: 2 rooms + bathroom, no nook seen, semifinished -> prep partitioned from the 11 m2 room.
 expect("semifinished clinic with spare room area -> dental after fit-out", survey([sp("b", "bathroom", 1.6, 2), sp("r1", "room", 3.2, 3.5), sp("r2", "room", 3.2, 3.8, { windows: 2 })]), "semifinished",
   { clinic: "fits", dental: "fits_after_fitout" });
-expect("furnished clinic with spare area still needs a real prep space", survey([sp("b", "bathroom", 1.6, 2), sp("r1", "room", 3.2, 3.5), sp("r2", "room", 3.2, 3.8, { windows: 2 })]), "furnished",
-  { clinic: "fits", dental: "not_suitable" });
+expect("furnished clinic, no prep space -> bathroom retrofit", survey([sp("b", "bathroom", 1.6, 2), sp("r1", "room", 3.2, 3.5), sp("r2", "room", 3.2, 3.8, { windows: 2 })]), "furnished",
+  { clinic: "fits", dental: "fits_after_fitout" });
 console.log(fails ? `${fails} FAILED` : "all rubric checks passed");
 process.exit(fails ? 1 : 0);

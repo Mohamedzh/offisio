@@ -39,7 +39,7 @@ Owner-approved 2026-10-30 ([plan/06](plan/06-judge-ready.md) 6.4). This decides 
 | Open-plan / coworking | largest room ≥ 25 m² | — |
 | Meeting / training room | a room ≥ 15 m² | — |
 | General clinic | an **exam room ≥ 9 m²**, a **separate waiting space ≥ 6 m²** (another room, or the entrance foyer), and a **bathroom** | one room ≥ 16 m² that could be split, plus a bathroom |
-| Dental clinic | general clinic **plus a separate prep/sterilisation area ≥ 2 m²**. Any extra space counts (nook, kitchenette, storage, small room, or a second bathroom) | as clinic, with a room ≥ 18 m² to partition everything, **or** a clinic layout whose exam room (≥ 11 m²) or waiting room (≥ 8 m²) can lose 2 m² to a prep partition |
+| Dental clinic | general clinic **plus a prep/sterilisation area**: a separate space ≥ 2 m² (nook, kitchenette, storage, small room, second bathroom) = fits; otherwise the bathroom retrofitted as prep = fits after fit-out | as clinic, with a room ≥ 18 m² to partition everything, **or** a clinic layout whose exam room (≥ 11 m²) or waiting room (≥ 8 m²) can lose 2 m² to a prep partition |
 | Accounting / law office | a **reception/waiting space ≥ 6 m²** plus **≥ 1 private office room ≥ 7 m²** | one room ≥ 14 m² that could be split |
 
 Planning heuristics, open to the owner's correction:
@@ -50,7 +50,7 @@ Planning heuristics, open to the owner's correction:
 
 These are not Ministry of Health figures. Swap in official minimums if the owner provides them.
 
-**Open owner question:** a dental unit whose *only* bathroom is repurposed as the prep room would have no patient WC. V1 requires the prep area to be separate from the one bathroom the clinic keeps.
+**Owner rule (2026-10-30):** if there is no separate prep space, the **bathroom can be retrofitted as the prep/sterilisation area**, a real and common conversion. Dental is then **fits after fit-out**, and the prep render shows the bathroom converted.
 
 ## Capacity
 

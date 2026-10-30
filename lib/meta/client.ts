@@ -125,6 +125,9 @@ export const meta = {
   // Public/synthetic test calls: Modal when configured locally, else contributor.
   public: { chat: (body: ChatBody) => chat(!process.env.VERCEL && process.env.MODAL_SPARK_URL ? MODELS.sparkOpen : MODELS.sparkContributor)(body) },
   models: () => call<{ data?: { id: string }[] }>("/models", { method: "GET" }, "none"),
+  // Text-to-image (synthetic demo frames only).
+  imageGenerate: (prompt: string, size = "1536x1024") =>
+    call<{ data?: { b64_json?: string; url?: string }[] }>("/images/generations", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ model: MODELS.image, prompt, size }) }, MODELS.image),
   imageEdit: async ({ imagePath, prompt, maskPath }: ImageEditOpts) => {
     const { readFile } = await import("node:fs/promises");
     // imagePath may be a Blob/remote URL (Vercel) or a local disk path.
