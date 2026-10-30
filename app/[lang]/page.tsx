@@ -39,8 +39,8 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       <header className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2 border border-ink bg-sheet px-3 py-2.5 sm:px-4 sm:py-3 ink-offset-sm mb-8">
         <span className="font-display text-xl sm:text-2xl font-black tracking-[-0.02em]">{t("brand")}</span>
         <div className="flex flex-wrap gap-1.5 sm:gap-2 text-[13px] sm:text-sm items-center">
-          <Link href={localeHref("/upload", locale)} className="px-1.5 py-2 font-bold underline underline-offset-4">{t("nav.listOffice")}</Link>
-          <Link href={localeHref("/chat", locale)} className="bg-brick text-white px-3 py-2 sm:px-4 font-bold uppercase">{t("nav.chatToBook")}</Link>
+          <Link href={localeHref("/upload", locale)} className="px-1.5 py-2 link">{t("nav.listOffice")}</Link>
+          <Link href={localeHref("/chat", locale)} className="btn btn-brick px-3 py-2 sm:px-4">{t("nav.chatToBook")}</Link>
           <LangToggle locale={locale} />
         </div>
       </header>
@@ -52,8 +52,8 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             <h1 className="font-display font-black tracking-[-0.02em] leading-[1.08] text-4xl sm:text-5xl text-balance"><span className="text-ink">{m ? m[1] : tag}</span>{m?.[2] && <span className="text-chalk"> {m[2]}</span>}</h1> ); })()}
           <p className="mt-4 leading-relaxed text-ink/85">{t("home.sub")}</p>
           <div className="mt-6 flex flex-wrap items-center gap-4">
-            <a href="#real-offices" className="bg-brick text-white font-bold uppercase px-5 py-3 ink-offset-sm">{t("home.browse")}</a>
-            <Link href={localeHref("/chat", locale)} className="font-bold underline underline-offset-4">{t("nav.chatToBook")}</Link>
+            <a href="#real-offices" className="btn btn-brick btn-lg">{t("home.browse")}</a>
+            <Link href={localeHref("/chat", locale)} className="link">{t("nav.chatToBook")}</Link>
           </div>
         </div>
         <figure className="md:col-span-7 rotate-[-0.7deg]">
@@ -88,7 +88,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         </div>
 
         {featured && (
-          <Link href={localeHref(`/units/${featured.slug}`, locale)} className="block mt-6 border border-ink bg-sheet ink-offset hover:rotate-0 transition-transform">
+          <Link href={localeHref(`/units/${featured.slug}`, locale)} className="card-lift block mt-6 border border-ink bg-sheet ink-offset">
             <div className="relative aspect-16/10 overflow-hidden">
               {featured.images.empty && <Image src={featured.images.empty} alt={`${locale === "en" ? featured.title_en : featured.title_ar} — ${t("viewer.empty")}`} fill className="object-cover" sizes="100vw" />}
               <Image src={featured.images.real} alt={`${locale === "en" ? featured.title_en : featured.title_ar} — ${t(featured.synthetic ? "viewer.realSynthetic" : "viewer.real")}`} fill className={`object-cover ${featured.images.empty ? "tear-layer" : ""}`} sizes="100vw" />
@@ -110,15 +110,15 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-8">
           {rest.map((u, i) => (
-            <Link key={u.slug} href={localeHref(`/units/${u.slug}`, locale)} className={`block border border-ink bg-sheet ink-offset-sm transition-transform hover:rotate-0 ${i % 2 === 0 ? "rotate-[-0.6deg]" : "rotate-[0.5deg]"}`}>
-              <div className="relative aspect-16/10"><Image src={u.images.real} alt={`${locale === "en" ? u.title_en : u.title_ar} — ${t(u.synthetic ? "viewer.realSynthetic" : "viewer.real")}`} fill className="object-cover" sizes="33vw" /></div>
+            <Link key={u.slug} href={localeHref(`/units/${u.slug}`, locale)} className={`card-lift flex flex-col border border-ink bg-sheet ink-offset-sm ${i % 2 === 0 ? "rotate-[-0.6deg]" : "rotate-[0.5deg]"}`}>
+              <div className="relative aspect-16/10 overflow-hidden"><Image src={u.images.real} alt={`${locale === "en" ? u.title_en : u.title_ar} — ${t(u.synthetic ? "viewer.realSynthetic" : "viewer.real")}`} fill className="card-img object-cover" sizes="33vw" /></div>
               <div className="torn-b" aria-hidden />
-              <div className="p-4">
+              <div className="flex flex-1 flex-col p-4">
                 <h3 className="font-display font-extrabold text-lg leading-snug tracking-[-0.02em]">{locale === "en" ? u.title_en : u.title_ar}</h3>
                 <p className="tnum mt-2 inline-block bg-brick text-white px-2 py-1 text-sm font-bold">{formatEgp(locale, u.rent_egp)}{t("unit.perMonth")}{u.daily_egp ? ` · ${formatEgp(locale, u.daily_egp)}${t("unit.perDay")}` : ""}</p>
                 <p className="text-sm text-ink/75 mt-2">{u.district}</p>
                 {specLine(u) && <p className="tnum text-sm font-bold mt-1">{specLine(u)}</p>}
-                <p className="text-xs mt-2 flex gap-1 flex-wrap"><span className={chip}>{u.kind === "furnished" ? t("unit.furnished") : t("unit.semifinished")}</span>{u.rent_periods.map((r) => <span key={r} className={chip}>{t(`track.${r}` as "track.daily")}</span>)}{u.synthetic && <span className="bg-mustard text-ink border border-ink text-[11px] font-bold px-2 py-0.5">{t("unit.synthetic")}</span>}</p>
+                <p className="text-xs mt-auto pt-3 flex gap-1 flex-wrap"><span className={chip}>{u.kind === "furnished" ? t("unit.furnished") : t("unit.semifinished")}</span>{u.rent_periods.map((r) => <span key={r} className={chip}>{t(`track.${r}` as "track.daily")}</span>)}{u.synthetic && <span className="bg-mustard text-ink border border-ink text-[11px] font-bold px-2 py-0.5">{t("unit.synthetic")}</span>}</p>
               </div>
             </Link>
           ))}
@@ -137,7 +137,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         <div className="md:col-span-5">
           <h2 className="font-display font-black text-3xl tracking-[-0.02em] leading-tight">{t("home.fitTitle")}</h2>
           <p className="mt-3 leading-relaxed text-ink/85">{t("home.fitBody")}</p>
-          <Link href={localeHref("/upload", locale)} className="mt-5 inline-block bg-ink text-sheet font-bold uppercase px-5 py-3">{t("home.fitCta")}</Link>
+          <Link href={localeHref("/upload", locale)} className="btn btn-ink btn-lg mt-5">{t("home.fitCta")}</Link>
         </div>
       </section>
 
@@ -147,7 +147,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           <h2 className="font-display font-black text-2xl tracking-[-0.02em]">{t("home.ownerTitle")}</h2>
           <p className="text-sm leading-relaxed text-ink/80 mt-1 max-w-[52ch]">{t("home.ownerBody")}</p>
         </div>
-        <Link href={localeHref("/upload", locale)} className="bg-ink text-sheet font-bold uppercase px-5 py-3">{t("home.fitCta")}</Link>
+        <Link href={localeHref("/upload", locale)} className="btn btn-ink btn-lg">{t("home.fitCta")}</Link>
       </section>
 
       <footer className="mt-14 border-t-2 border-ink pt-4 flex flex-wrap justify-between gap-2 text-sm text-ink/75">

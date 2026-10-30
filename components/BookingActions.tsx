@@ -29,12 +29,12 @@ export default function BookingActions({ id, locale }: { id: string; locale: Loc
         <p className="tnum mt-3 bg-ink text-sheet font-display text-2xl font-black px-3 py-2 flex justify-between"><span>{formatEgp(locale, b.total_egp)}</span></p>
       </div>
       {msg && <p className="text-sm font-bold text-ink bg-mustard/40 border border-ink p-3">{msg}</p>}
-      {b.status === "awaiting_payment" && <button disabled={busy} onClick={pay} className="w-full bg-brick text-white font-bold uppercase py-3 disabled:opacity-40">{t("bookingCard.pay")}</button>}
+      {b.status === "awaiting_payment" && <button disabled={busy} onClick={pay} className="btn btn-brick btn-lg w-full">{t("bookingCard.pay")}</button>}
       {b.status === "confirmed" && b.cafe_whatsapp_url && (
-        <a href={b.cafe_whatsapp_url} target="_blank" rel="noreferrer" className="block text-center w-full bg-chalk text-white font-bold uppercase py-3">{t("bookingCard.whatsapp")}</a>
+        <a href={b.cafe_whatsapp_url} target="_blank" rel="noreferrer" className="btn btn-chalk btn-lg w-full">{t("bookingCard.whatsapp")}</a>
       )}
       {b.status === "confirmed" && !b.cafe_whatsapp_url && <p className="text-sm text-ink/75">{t("bookingCard.cafeNotConfigured")}</p>}
-      <button onClick={load} className="text-sm underline">{t("bookingCard.refresh")}</button>
+      <button onClick={load} className="text-sm link">{t("bookingCard.refresh")}</button>
     </div>
   );
 }

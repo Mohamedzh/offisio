@@ -34,10 +34,10 @@ export default function ChatBox({ locale }: { locale: Locale }) {
         ))}
         {busy && <p className="text-xs text-ink/75">{t("chat.typing")}</p>}
       </div>
-      {bookingId && <Link href={localeHref(`/booking/${bookingId}`, locale)} className="mx-4 mb-2 text-center bg-chalk text-white font-bold py-2 text-sm">{t("chat.completePayment")}</Link>}
+      {bookingId && <Link href={localeHref(`/booking/${bookingId}`, locale)} className="btn btn-chalk btn-sm mx-4 mb-2">{t("chat.completePayment")}</Link>}
       <div className="flex gap-2 p-3 border-t border-ink bg-sheet">
-        <input value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => e.key === "Enter" && send()} placeholder={t("chat.placeholder")} className="flex-1 rounded-none border border-ink bg-sheet p-2 focus:outline-none focus:ring-2 focus:ring-chalk focus:ring-offset-1" />
-        <button onClick={send} disabled={busy} className="bg-brick text-white font-bold uppercase px-4 disabled:opacity-40">{t("chat.send")}</button>
+        <input value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => e.key === "Enter" && send()} placeholder={t("chat.placeholder")} className="field flex-1 w-auto!" />
+        <button onClick={send} disabled={busy} className="btn btn-brick px-4">{t("chat.send")}</button>
       </div>
     </div>
   );

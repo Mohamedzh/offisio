@@ -35,7 +35,7 @@ export default function SpecsEditForm({ slug, specs, locale }: { slug: string; s
     } catch (e) { setMsg((e as Error).message); } finally { setBusy(false); }
   }
 
-  const inputCls = "mt-1 w-full rounded-none border border-ink bg-sheet p-2 focus:outline-none focus:ring-2 focus:ring-chalk focus:ring-offset-1";
+  const inputCls = "field mt-1";
   return (
     <div className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-2">
@@ -55,12 +55,12 @@ export default function SpecsEditForm({ slug, specs, locale }: { slug: string; s
           <select value={flooring} onChange={(e) => setFlooring(e.target.value)} className={inputCls}>
             <option value="">—</option><option value="tile">tile</option><option value="wood">wood</option><option value="carpet">carpet</option><option value="concrete">concrete</option><option value="unknown">unknown</option>
           </select></label>
-        <label className="flex items-center gap-2 text-sm pt-6"><input type="checkbox" checked={hasAc} onChange={(e) => setHasAc(e.target.checked)} />{t("spec.hasAc")}</label>
+        <label className="flex items-center gap-2 text-sm pt-6"><input type="checkbox" className="size-4 accent-brick" checked={hasAc} onChange={(e) => setHasAc(e.target.checked)} />{t("spec.hasAc")}</label>
       </div>
       <label className="block text-sm">{t("spec.notes")}<input value={notes} onChange={(e) => setNotes(e.target.value)} className={inputCls} /></label>
       <p className="text-xs text-ink/75">{t("edit.note")}</p>
       {msg && <p className="text-sm font-bold text-ink">{msg}</p>}
-      <button disabled={busy} onClick={save} className="bg-brick text-white font-bold uppercase px-5 py-2.5 disabled:opacity-40">{t("edit.save")}</button>
+      <button disabled={busy} onClick={save} className="btn btn-brick btn-md">{t("edit.save")}</button>
     </div>
   );
 }

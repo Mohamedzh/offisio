@@ -10,7 +10,7 @@ export default async function ChatPage({ params }: PageProps<"/[lang]/chat">) {
   return (
     <main className="mx-auto w-full max-w-2xl px-4 py-8">
       <div className="flex items-center justify-between">
-        <Link href={localeHref("/", locale)} className="text-sm font-bold text-ink">← {t("nav.allOffices")}</Link>
+        <Link href={localeHref("/", locale)} className="link-back"><span className="arr" aria-hidden>←</span>{t("nav.allOffices")}</Link>
         <LangToggle locale={locale} />
       </div>
       <div className="mt-4 border border-ink bg-sheet ink-offset">

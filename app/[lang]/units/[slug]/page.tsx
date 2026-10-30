@@ -40,7 +40,7 @@ export default async function UnitPage({ params }: PageProps<"/[lang]/units/[slu
   return (
     <main className="mx-auto w-full max-w-5xl px-4 py-8">
       <div className="flex items-center justify-between">
-        <Link href={localeHref("/", locale)} className="text-sm font-bold text-ink">← {t("nav.allOffices")}</Link>
+        <Link href={localeHref("/", locale)} className="link-back"><span className="arr" aria-hidden>←</span>{t("nav.allOffices")}</Link>
         <LangToggle locale={locale} />
       </div>
       <h1 className="font-display text-4xl sm:text-5xl font-black mt-4 leading-[1.02] tracking-[-0.02em]">{locale === "en" ? unit.title_en : unit.title_ar}</h1>
@@ -89,7 +89,7 @@ export default async function UnitPage({ params }: PageProps<"/[lang]/units/[slu
             <div className="border border-ink bg-sheet p-5 ink-offset-sm">
               <h3 className="font-display font-black text-lg">{t("booking.longTermOnly")}</h3>
               <p className="text-sm text-ink/75 mt-1">{t("booking.longTermNote")}</p>
-              <Link href={localeHref("/chat", locale)} className="mt-3 block text-center bg-brick text-white font-bold uppercase py-2.5">{t("booking.chatArrange")}</Link>
+              <Link href={localeHref("/chat", locale)} className="btn btn-brick btn-md mt-3 w-full">{t("booking.chatArrange")}</Link>
             </div>
           )}
         </aside>

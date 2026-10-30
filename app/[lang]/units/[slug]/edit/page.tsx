@@ -19,7 +19,7 @@ export default async function EditUnitPage({ params }: PageProps<"/[lang]/units/
   return (
     <main className="mx-auto w-full max-w-2xl px-4 py-8">
       <div className="flex items-center justify-between">
-        <Link href={localeHref("/", locale)} className="text-sm font-bold text-ink">← {t("nav.allOffices")}</Link>
+        <Link href={localeHref("/", locale)} className="link-back"><span className="arr" aria-hidden>←</span>{t("nav.allOffices")}</Link>
         <LangToggle locale={locale} />
       </div>
       <div className="mt-4 border border-ink bg-sheet ink-offset">
@@ -27,7 +27,7 @@ export default async function EditUnitPage({ params }: PageProps<"/[lang]/units/
         <div className="p-5">
           <h1 className="font-display text-3xl font-black tracking-[-0.02em] mb-4">{t("edit.title")}</h1>
           <SpecsEditForm slug={slug} specs={unit.specs} locale={locale} />
-          <Link href={localeHref(`/units/${slug}`, locale)} className="mt-4 inline-block text-sm font-bold underline">{t("edit.viewListing")}</Link>
+          <Link href={localeHref(`/units/${slug}`, locale)} className="mt-4 inline-block text-sm link">{t("edit.viewListing")}</Link>
         </div>
       </div>
     </main>

@@ -223,6 +223,11 @@ Why: the v1 pipeline sees one hero room. It measured `empty1`/`empty2` as single
   - Stale renders retired, including New Cairo's old dental render (not in its brief).
   - 18 edits (~$0.18), visually checked. `reassess-units` made no listing calls.
 
+- **Styling pass 2026-10-31.**
+  - Shared control classes in `app/globals.css` (`.btn` + `btn-brick|ink|chalk|paper` + sizes, `.field`, `.link`, `.link-back`, `.card-lift`) replace ad-hoc button and input classes in every page and component.
+  - Buttons get a pointer cursor and hover lift onto a hard ink shadow, press in on click, and show dashed when disabled. Fields tint on hover and get a chalk offset on focus.
+  - The file picker is styled. Listing cards straighten, lift and zoom their photo on hover, and their tags sit on the bottom edge. The back arrow is mirrored in RTL. Checked in EN and AR.
+
 ### 6.7 Location, minimal (Nov 2) — scope check
 - Migration (approved): `units.lat`, `units.lng` numeric, idempotent `add column if not exists`, `pnpm migrate`, verify the columns.
 - Seed coordinates: district centroid, labelled "approximate area". Upload form: an optional lat/lng or pasted Google Maps link, parsed server-side.

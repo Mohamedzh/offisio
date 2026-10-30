@@ -101,12 +101,12 @@ export default function UploadForm({ locale }: { locale: Locale }) {
     } catch (e) { setMsg(errorText(t, (e as Error).message)); setBusy(false); }
   }
 
-  const inputCls = "mt-1 w-full rounded-none border border-ink bg-sheet p-2 focus:outline-none focus:ring-2 focus:ring-chalk focus:ring-offset-1";
+  const inputCls = "field mt-1";
   return (
     <div className="space-y-4">
       <div>
         <label className="block text-sm">{t("upload.video")}
-          <input ref={inputRef} type="file" accept="video/*" onChange={(e) => onVideo(e.target.files?.[0])} className="mt-1 block w-full text-sm" />
+          <input ref={inputRef} type="file" accept="video/*" onChange={(e) => onVideo(e.target.files?.[0])} className="field mt-1 text-sm" />
         </label>
         <p className="text-xs text-ink/75 mt-1">{t("upload.videoHint")}</p>
       </div>
@@ -136,7 +136,7 @@ export default function UploadForm({ locale }: { locale: Locale }) {
           <option value="semifinished">{t("upload.semifinished")}</option>
         </select></label>
       {msg && <p className="text-sm font-bold text-brick">{msg}</p>}
-      <button disabled={busy || extracting || frames.length < 3 || !district || !rent || !floor || !availableFrom} onClick={submit} className="w-full bg-brick text-white font-bold uppercase py-2.5 disabled:bg-sheet disabled:text-ink/50 disabled:border disabled:border-ink/40">{busy ? t("upload.processing") : t("upload.submit")}</button>
+      <button disabled={busy || extracting || frames.length < 3 || !district || !rent || !floor || !availableFrom} onClick={submit} className="btn btn-brick btn-md w-full">{busy ? t("upload.processing") : t("upload.submit")}</button>
     </div>
   );
 }

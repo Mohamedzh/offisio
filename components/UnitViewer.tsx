@@ -29,7 +29,6 @@ export default function UnitViewer({ images, locale, synthetic = false }: { imag
   const view = views[active.view]; const shot = view.shots[active.shot];
   const under = prev && prev.src !== shot.src ? prev : null; // no layer beneath -> no tear
   function pick(v: number, s = 0) { setPrev(shot); setActive({ view: v, shot: s }); }
-  const btn = (on: boolean) => `px-3 py-1.5 text-sm border border-ink font-bold ${on ? "bg-ink text-sheet" : "bg-sheet text-ink"}`;
   return (
     <div>
       <div className="relative aspect-[4/5] sm:aspect-[16/10] overflow-hidden border border-ink bg-torn">
@@ -42,7 +41,7 @@ export default function UnitViewer({ images, locale, synthetic = false }: { imag
             <div className="flex flex-wrap gap-1">
               {view.shots.map((s, i) => (
                 <button key={s.src} onClick={() => pick(active.view, i)} aria-pressed={active.shot === i}
-                  className={`px-2.5 py-1 text-xs font-bold border border-ink ${active.shot === i ? "bg-sheet text-ink" : "bg-ink text-sheet hover:bg-sheet hover:text-ink"}`}>
+                  className={`btn px-2.5 py-1 text-xs normal-case tracking-normal ${active.shot === i ? "bg-sheet text-ink" : "bg-ink text-sheet hover:bg-sheet! hover:text-ink!"}`}>
                   {i + 1}. {s.part}
                 </button>
               ))}
@@ -54,7 +53,7 @@ export default function UnitViewer({ images, locale, synthetic = false }: { imag
       <div className="torn-b" aria-hidden />
       <div className="mt-3 flex flex-wrap gap-2">
         {views.map((v, i) => (
-          <button key={v.key} onClick={() => pick(i)} className={`${btn(active.view === i)} inline-flex items-center gap-2`}>
+          <button key={v.key} onClick={() => pick(i)} aria-pressed={active.view === i} className="btn btn-paper btn-sm">
             {v.label}
             {v.shots.length > 1 && <span className="grid size-5 place-items-center rounded-full bg-brick text-[11px] text-white">{v.shots.length}</span>}
           </button>

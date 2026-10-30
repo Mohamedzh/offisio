@@ -22,7 +22,7 @@ export default function StageButtons({ slug, styles, locale }: { slug: string; s
       <p className="text-xs text-ink/75 mt-1">{t("stage.note")}</p>
       <div className="mt-2 flex flex-wrap gap-2">
         {styles.map((s) => (
-          <button key={s} disabled={!!busy} onClick={() => render(s)} className="px-3 py-1.5 text-sm border border-ink font-bold bg-brick text-white disabled:opacity-40">
+          <button key={s} disabled={!!busy} onClick={() => render(s)} className="btn btn-brick btn-sm">
             {busy === s ? t("stage.rendering") : t(`viewer.style.${s.replace(/_s\d+$/, "")}` as TranslationKey)}
           </button>
         ))}
