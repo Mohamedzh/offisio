@@ -1,11 +1,11 @@
 // Render use-driven fit-out concepts for units that have a survey (plan/06 6.6).
 // --dry prints the plan and the number of image edits without calling a model.
 // A real run retires legacy v1 renders (startup/clinic/training, unscoped empty).
-// Run: pnpm stage-units [slug] [--dry]
+// --redo=a,b re-renders those styles even if current (after a prompt change).
+// Run: pnpm stage-units [slug] [--dry] [--redo=style,...]
 import { pool } from "../lib/db/pg";
 import { getUnit, stagedOf, unitRef, retireStaged } from "../lib/db/store";
-import { planStaging, stageOne } from "../lib/pipeline/staging";
-import { STAGE_VERSION } from "../lib/meta/prompts";
+import { isCurrent, planStaging, stageOne } from "../lib/pipeline/staging";
 import { BRIEFS, targetUses } from "./generate-units";
 import type { Survey } from "../lib/pipeline/survey";
 import type { UseVerdict } from "../lib/pipeline/rubric";
@@ -13,6 +13,7 @@ import type { UseVerdict } from "../lib/pipeline/rubric";
 async function main() {
   const dry = process.argv.includes("--dry");
   const only = process.argv.slice(2).find((a) => !a.startsWith("--"));
+  const redo = (process.argv.find((a) => a.startsWith("--redo="))?.slice(7) ?? "").split(",").filter(Boolean);
   const { rows } = await pool().query<{ slug: string }>("select slug from units where status = 'ready' order by created_at");
   let edits = 0;
   for (const { slug } of rows.filter((r) => !only || r.slug === only)) {
@@ -22,12 +23,12 @@ async function main() {
     const brief = BRIEFS.find((b) => b.slug === slug);
     const jobs = planStaging(survey, uses, brief ? targetUses(brief) : undefined);
     const staged = await stagedOf(ref.id);
-    const v2 = new Set(staged.filter((m) => m.meta.prompt === STAGE_VERSION).map((m) => m.style));
+    const done = new Set(jobs.filter((j) => !redo.includes(j.style) && staged.some((m) => isCurrent(m, j))).map((j) => j.style));
     const emptied = new Set(staged.filter((m) => m.style === "empty" && m.meta.space_id).map((m) => String(m.meta.space_id)));
-    const todo = jobs.filter((j) => !v2.has(j.style));
+    const todo = jobs.filter((j) => !done.has(j.style));
     const emptyEdits = ref.kind === "furnished" ? new Set(todo.map((j) => j.spaceId).filter((s) => !emptied.has(s))).size : 0;
     edits += todo.length + emptyEdits;
-    console.log(`${slug} (${ref.kind}): ${jobs.map((j) => `${j.style}@${j.spaceId}#${j.frame}${v2.has(j.style) ? "✓" : ""}`).join(", ") || "nothing passes"} -> ${todo.length + emptyEdits} edits`);
+    console.log(`${slug} (${ref.kind}): ${jobs.map((j) => `${j.style}@${j.spaceId}#${j.frame}${done.has(j.style) ? "✓" : ""}`).join(", ") || "nothing passes"} -> ${todo.length + emptyEdits} edits`);
     if (dry) continue;
     // Retire legacy v1 renders and any style the current plan no longer includes.
     const planned = new Set(jobs.map((j) => j.style));

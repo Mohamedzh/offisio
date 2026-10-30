@@ -64,7 +64,7 @@ async function qaFrame(bytes: Buffer, s: BriefSpace): Promise<{ ok: boolean; rat
 
 // Titles must carry the correct rent; append the factual owner rent if the model omitted it.
 const hasRent = (t: string, r: number) => t.includes(String(r)) || t.includes(r.toLocaleString("en-US"));
-function withRentInTitles<T extends { title_en: string; title_ar: string }>(l: T, rent: number): T {
+export function withRentInTitles<T extends { title_en: string; title_ar: string }>(l: T, rent: number): T {
   return { ...l, title_en: hasRent(l.title_en, rent) ? l.title_en : `${l.title_en} - EGP ${rent.toLocaleString("en-US")}/mo`,
     title_ar: hasRent(l.title_ar, rent) ? l.title_ar : `${l.title_ar} - ${rent.toLocaleString("en-US")} جنيه/شهر` };
 }

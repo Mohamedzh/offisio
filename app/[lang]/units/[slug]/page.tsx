@@ -27,7 +27,8 @@ export default async function UnitPage({ params }: PageProps<"/[lang]/units/[slu
   const uses = ((specs.uses as UseVerdict[] | undefined) ?? []).slice().sort((a, b) => order[a.verdict] - order[b.verdict]);
   // Fit-out styles the rubric plans but that are not rendered yet (live uploads, O1).
   const rendered = new Set(unit.images.staged.map((s) => s.style));
-  const missingStyles = specs.survey && specs.uses ? planStaging(specs.survey as Survey, specs.uses as UseVerdict[]).map((j) => j.style).filter((s) => !rendered.has(s)) : [];
+  // Synthetic units are staged by script to their brief's target uses only.
+  const missingStyles = !unit.synthetic && specs.survey && specs.uses ? planStaging(specs.survey as Survey, specs.uses as UseVerdict[]).map((j) => j.style).filter((s) => !rendered.has(s)) : [];
   const specRows: [string, string][] = [
     [t("spec.area"), specs.area_m2_estimate ? `~${specs.area_m2_estimate} m²` : "—"],
     ...(specs.rooms_count != null ? [[t("spec.rooms"), String(specs.rooms_count)], [t("spec.bathrooms"), String(specs.bathrooms_count ?? 0)]] as [string, string][] : []),

@@ -18,7 +18,8 @@
     "check-rubric": "tsx scripts/check-rubric.ts",
     "remodel-filmed": "tsx scripts/remodel-filmed.ts",
     "chat-acceptance": "tsx scripts/chat-acceptance.ts",
-    "stage-units": "tsx scripts/stage-units.ts"
+    "stage-units": "tsx scripts/stage-units.ts",
+    "reassess-units": "tsx scripts/reassess-units.ts"
   },
   "dependencies": {
     "@vercel/blob": "^2.8.2",

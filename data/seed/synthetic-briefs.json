@@ -156,7 +156,8 @@
       "target_uses": [
         "office",
         "meeting",
-        "clinic (after fit-out)"
+        "clinic (partitioned)",
+        "dental (partitioned)"
       ],
       "style": "bare semifinished ground-floor unit: unpainted plaster walls with primer patches, bare grey concrete floor, exposed ceiling with a single bulb",
       "spaces": [
@@ -281,7 +282,9 @@
       "target_uses": [
         "open_plan",
         "meeting",
-        "office"
+        "office",
+        "clinic (partitioned)",
+        "dental (partitioned)"
       ],
       "style": "contemporary office building near Smart Village, white walls, grey carpet tiles, suspended ceiling with LED panels",
       "spaces": [

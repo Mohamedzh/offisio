@@ -18,7 +18,7 @@ export function planStaging(survey: Survey, uses: UseVerdict[], only?: Use[]): S
   const space = (id?: string) => survey.spaces.find((s) => s.id === id);
   const jobs: StageJob[] = [];
   const add = (style: string, u: UseVerdict, role: Role, n: (a: number) => number) => {
-    const s = space(u.roles[role]); if (!s) return;
+    const s = space(u.roles[role]); if (!s || jobs.some((j) => j.style === style)) return;
     jobs.push({ style, use: u.use, role, spaceId: s.id, frame: s.best_frame, n: Math.max(1, n(area(s) ?? 0)) });
   };
   for (const u of uses.filter((x) => x.verdict !== "not_suitable" && (!only || only.includes(x.use)))) {
@@ -26,10 +26,15 @@ export function planStaging(survey: Survey, uses: UseVerdict[], only?: Use[]): S
     if (u.use === "open_plan") add("open_plan", u, "room", (a) => Math.floor(a / T.deskComfortM2));
     if (u.use === "meeting") add("meeting", u, "room", (a) => Math.floor(a / T.seatClassroomM2));
     if (u.use === "clinic") {
-      if (u.roles.waiting && u.roles.waiting === u.roles.exam) add("clinic_split", u, "exam", () => 1);
+      if (u.roles.waiting && u.roles.waiting === u.roles.exam) add("clinic_split", u, "exam", (a) => Math.floor(a / 4));
       else { add("clinic_waiting", u, "waiting", (a) => Math.floor(a / 1.5)); add("clinic_exam", u, "exam", () => 1); }
     }
-    if (u.use === "dental") { add("dental_exam", u, "exam", () => 1); add("dental_prep", u, "prep", () => 1); }
+    // A clinic is waiting + exam together (owner 2026-10-30); dental adds the prep lab.
+    // The waiting render is shared by both (deduped by style above).
+    if (u.use === "dental") {
+      if (u.roles.waiting && u.roles.waiting === u.roles.exam) add("dental_split", u, "exam", (a) => Math.floor(a / 4));
+      else { add("clinic_waiting", u, "waiting", (a) => Math.floor(a / 1.5)); add("dental_exam", u, "exam", () => 1); add("dental_prep", u, "prep", () => 1); }
+    }
     if (u.use === "legal") add("legal_office", u, "office", () => 1);
   }
   return jobs;
@@ -57,6 +62,10 @@ async function edit(slug: string, style: string, baseUrl: string, prompt: string
 }
 
 // Render one job (emptying the space first for furnished units); replaces any current render of that style.
+// A render is current when it is the same style, on the same space, at the current prompt version.
+export const isCurrent = (m: { style: string; meta: Record<string, unknown> }, job: StageJob) =>
+  m.style === job.style && m.meta.prompt === STAGE_VERSION && m.meta.space_id === job.spaceId;
+
 export async function stageOne(unit: { id: string; slug: string; kind: UnitKind }, job: StageJob): Promise<string> {
   const frames = await keyframesOf(unit.id);
   const baseFrame = frames.find((f) => f.frame === job.frame)?.url;

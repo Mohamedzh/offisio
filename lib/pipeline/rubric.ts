@@ -43,6 +43,19 @@ export function deskCapacity(rooms: Space[]): { comfortable: number; max: number
   return { comfortable, max };
 }
 
+// Walk depth from the front door: hops from the entrance space, else minus hops
+// from the bathroom (the WC sits inside, so rooms far from it are outer rooms).
+function depthFrom(survey: Survey, bathId: string | undefined): (id: string) => number {
+  const start = survey.entrance_space ?? bathId; const sign = survey.entrance_space ? 1 : -1;
+  const d = new Map<string, number>(); if (!start) return () => 0;
+  d.set(start, 0); const q = [start];
+  while (q.length) {
+    const c = q.shift()!;
+    for (const [a, b] of survey.adjacency) { const n = a === c ? b : b === c ? a : null; if (n && !d.has(n)) { d.set(n, d.get(c)! + 1); q.push(n); } }
+  }
+  return (id) => sign * (d.get(id) ?? 0);
+}
+
 export function assess(survey: Survey, kind: UnitKind): UseVerdict[] {
   const rooms = survey.spaces.filter(usable).sort((a, b) => (area(b) ?? 0) - (area(a) ?? 0));
   const largest = rooms[0] ? area(rooms[0]) ?? 0 : 0;
@@ -72,15 +85,23 @@ export function assess(survey: Survey, kind: UnitKind): UseVerdict[] {
   if (largest >= T.meetingMinM2) v("meeting", "fits", [`A ${m2(largest)} room seats about ${Math.floor(largest / T.seatClassroomM2)} classroom-style.`], [`أوضة ${ar2(largest)} تاخد حوالي ${Math.floor(largest / T.seatClassroomM2)} كرسي بنظام الفصل.`], { room: rooms[0].id }, { seats_classroom: Math.floor(largest / T.seatClassroomM2), seats_theatre: Math.floor(largest / T.seatTheatreM2) });
   else v("meeting", "not_suitable", [`Largest room is about ${m2(largest)}; a training room needs ${m2(T.meetingMinM2)}.`], [`أكبر أوضة حوالي ${ar2(largest)}؛ قاعة التدريب محتاجة ${ar2(T.meetingMinM2)}.`]);
 
-  // General clinic: exam + separate waiting + bathroom
-  const exam = rooms.find((r) => (area(r) ?? 0) >= T.examMinM2);
-  const waitingRoom = rooms.find((r) => r !== exam && (area(r) ?? 0) >= T.waitingMinM2);
-  const waiting = waitingRoom ?? entrance;
+  // General clinic: exam + separate waiting + bathroom. Owner rule 2026-10-30:
+  // waiting is the outer room (by the door), exam the larger room behind it.
   const bath = baths[0];
+  const depth = depthFrom(survey, bath?.id);
+  let exam: Space | undefined, waitingRoom: Space | undefined;
+  for (const w of [...rooms].sort((a, b) => depth(a.id) - depth(b.id) || (area(a) ?? 0) - (area(b) ?? 0))) {
+    if ((area(w) ?? 0) < T.waitingMinM2) continue;
+    const e = rooms.find((r) => r !== w && (area(r) ?? 0) >= T.examMinM2);
+    if (e) { waitingRoom = w; exam = e; break; }
+  }
+  exam ??= rooms.find((r) => (area(r) ?? 0) >= T.examMinM2);
+  const waiting = waitingRoom ?? entrance;
   let clinic: Verdict = "not_suitable";
   const clinicRoles: UseVerdict["roles"] = {};
   if (bath && exam && waiting) { clinic = "fits"; Object.assign(clinicRoles, { exam: exam.id, waiting: waiting.id, bathroom: bath.id }); }
-  else if (bath && fitout && largest >= T.clinicSplitM2) { clinic = "fits_after_fitout"; Object.assign(clinicRoles, { exam: rooms[0].id, waiting: rooms[0].id, bathroom: bath.id }); }
+  // One big room: full-height partition walls (any kind; furnished rooms are emptied in the render).
+  else if (bath && largest >= T.clinicSplitM2) { clinic = "fits_after_fitout"; Object.assign(clinicRoles, { exam: rooms[0].id, waiting: rooms[0].id, bathroom: bath.id }); }
   const clinicWhy = (): [string[], string[]] => {
     const en: string[] = [], ar: string[] = [];
     if (!bath) { en.push("No bathroom was seen."); ar.push("مفيش حمام ظاهر."); }
@@ -89,7 +110,7 @@ export function assess(survey: Survey, kind: UnitKind): UseVerdict[] {
     return [en, ar];
   };
   if (clinic === "fits") v("clinic", "fits", ["Separate exam room, waiting area and bathroom."], ["أوضة كشف وانتظار منفصلين وحمام."], clinicRoles);
-  else if (clinic === "fits_after_fitout") v("clinic", clinic, [`One ${m2(largest)} room could be partitioned into exam + waiting; bathroom present.`], [`أوضة ${ar2(largest)} ممكن تتقسم كشف وانتظار؛ والحمام موجود.`], clinicRoles);
+  else if (clinic === "fits_after_fitout") v("clinic", clinic, [`One ${m2(largest)} room could be partitioned with full-height walls into a waiting room and a closed exam room; bathroom present.`], [`أوضة ${ar2(largest)} ممكن تتقسم بقواطيع لحد السقف لأوضة انتظار وأوضة كشف مقفولة؛ والحمام موجود.`], clinicRoles);
   else { const [en, ar] = clinicWhy(); v("clinic", "not_suitable", en, ar); }
 
   // Dental: clinic + a separate prep/sterilisation area (not the one kept bathroom)
@@ -98,7 +119,11 @@ export function assess(survey: Survey, kind: UnitKind): UseVerdict[] {
     (isBath(s) ? baths.length > 1 : true) && ((area(s) ?? T.prepMinM2) >= T.prepMinM2));
   // Owner rule 2026-10-30: with no separate prep space, the bathroom can be
   // retrofitted as the prep/sterilisation area (a real, common conversion).
-  if (clinic === "fits" && prep) v("dental", "fits", ["Clinic layout plus a separate area for the prep/sterilisation lab."], ["تخطيط عيادة ومعاه مكان منفصل لمعمل التحضير والتعقيم."], { ...clinicRoles, prep: prep.id });
+  const split = clinic === "fits_after_fitout";
+  if (split && largest >= T.dentalSplitM2)
+    v("dental", "fits_after_fitout", [`The ${m2(largest)} room can be partitioned into waiting, a closed treatment room and a small prep/sterilisation cubicle.`], [`الأوضة ${ar2(largest)} ممكن تتقسم انتظار وأوضة علاج مقفولة وكابينة صغيرة للتحضير والتعقيم.`], { ...clinicRoles, prep: rooms[0].id });
+  else if (split) v("dental", "not_suitable", [`A partitioned dental clinic needs at least ${m2(T.dentalSplitM2)}.`], [`عيادة الأسنان بالتقسيم محتاجة ${ar2(T.dentalSplitM2)} على الأقل.`]);
+  else if (clinic === "fits" && prep) v("dental", "fits", ["Clinic layout plus a separate area for the prep/sterilisation lab."], ["تخطيط عيادة ومعاه مكان منفصل لمعمل التحضير والتعقيم."], { ...clinicRoles, prep: prep.id });
   else if (clinic !== "not_suitable" && prep)
     v("dental", "fits_after_fitout", ["Clinic fit-out plus a separate area for the prep/sterilisation lab."], ["بعد التشطيب: عيادة ومعاها مكان منفصل لمعمل التحضير والتعقيم."], { ...clinicRoles, prep: prep.id });
   else if (clinic !== "not_suitable" && bath)

@@ -22,7 +22,7 @@ Owner-approved 2026-10-30 ([plan/06](plan/06-judge-ready.md) 6.4). This decides 
 ## Verdicts
 
 - **fits** — the layout works as filmed.
-- **fits after fit-out** — semifinished/bare units only. Partitions could create the missing rooms. The bathroom and plumbing must already exist, because they can't be added cheaply.
+- **fits after fit-out** — partitions could create the missing rooms. The bathroom and plumbing must already exist, because they can't be added cheaply. Since 2026-10-30 this also applies to furnished units for the clinic split, because the render empties the room first.
 - **not suitable** — with the reason.
 
 ## Spaces that count
@@ -38,7 +38,7 @@ Owner-approved 2026-10-30 ([plan/06](plan/06-judge-ready.md) 6.4). This decides 
 | Private / startup office | ≥ 1 usable room ≥ 6 m²; a window or AC | — |
 | Open-plan / coworking | largest room ≥ 25 m² | — |
 | Meeting / training room | a room ≥ 15 m² | — |
-| General clinic | an **exam room ≥ 9 m²**, a **separate waiting space ≥ 6 m²** (another room, or the entrance foyer), and a **bathroom** | one room ≥ 16 m² that could be split, plus a bathroom |
+| General clinic | an **exam room ≥ 9 m²**, a **separate waiting space ≥ 6 m²** (another room, or the entrance foyer), and a **bathroom** | one room ≥ 16 m² that could be split with full-height walls, plus a bathroom (any kind) |
 | Dental clinic | general clinic **plus a prep/sterilisation area**: a separate space ≥ 2 m² (nook, kitchenette, storage, small room, second bathroom) = fits; otherwise the bathroom retrofitted as prep = fits after fit-out | as clinic, with a room ≥ 18 m² to partition everything, **or** a clinic layout whose exam room (≥ 11 m²) or waiting room (≥ 8 m²) can lose 2 m² to a prep partition |
 | Accounting / law office | a **reception/waiting space ≥ 6 m²** plus **≥ 1 private office room ≥ 7 m²** | one room ≥ 14 m² that could be split |
 
@@ -49,6 +49,11 @@ Planning heuristics, open to the owner's correction:
 - private office 7 m² (desk + 2 client chairs)
 
 These are not Ministry of Health figures. Swap in official minimums if the owner provides them.
+
+**Owner rules (2026-10-30, round 2):**
+- **Waiting is the outer room, exam is behind it.** The waiting room is the room closest to the entrance, measured in walk hops over the survey's `adjacency` from `entrance_space`. With no known entrance, it is the room farthest from the bathroom. The exam room is the largest remaining room ≥ 9 m². Ties go to the smaller room as waiting.
+- **Partitioned clinics use real partitions.** The walls are full-height, solid and demountable (gypsum board or panel systems, no glass), with closed doors, so the exam room can't be seen from the waiting area. A partitioned dental clinic needs a room ≥ 18 m² and adds a small sterilisation cubicle. Each use is one render (`clinic_split` / `dental_split`) from the waiting side, because a single photo angle can't show inside the closed rooms.
+- **A clinic is presented as a whole.** The viewer shows one tab per use. "Clinic" holds the waiting + exam renders together; "Dental clinic" holds waiting + treatment room + prep lab. A tab shows only if its exam (or split) render exists, never a waiting room alone ([lib/fit-groups.ts](../lib/fit-groups.ts)).
 
 **Owner rule (2026-10-30):** if there is no separate prep space, the **bathroom can be retrofitted as the prep/sterilisation area**, a real and common conversion. Dental is then **fits after fit-out**, and the prep render shows the bathroom converted.
 

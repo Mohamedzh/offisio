@@ -2,11 +2,10 @@
 // and which styles exist. POST {style}: render one missing style. Existing
 // styles return immediately and never cost a call. Owner-only once Clerk lands (6.8).
 import { getUnit, stagedOf, unitRef } from "@/lib/db/store";
-import { planStaging, stageOne } from "@/lib/pipeline/staging";
+import { isCurrent, planStaging, stageOne } from "@/lib/pipeline/staging";
 import type { Survey } from "@/lib/pipeline/survey";
 import type { UseVerdict } from "@/lib/pipeline/rubric";
 import { deny, limit, spendBlocked } from "@/lib/guard";
-import { STAGE_VERSION } from "@/lib/meta/prompts";
 
 export const maxDuration = 300;
 
@@ -15,8 +14,8 @@ async function load(slug: string) {
   if (!ref || !unit) return null;
   const survey = unit.specs.survey as Survey | undefined; const uses = unit.specs.uses as UseVerdict[] | undefined;
   const jobs = survey && uses ? planStaging(survey, uses) : [];
-  const done = new Set((await stagedOf(ref.id)).filter((m) => m.meta.prompt === STAGE_VERSION).map((m) => m.style));
-  return { ref, jobs: jobs.map((j) => ({ ...j, done: done.has(j.style) })) };
+  const staged = await stagedOf(ref.id);
+  return { ref, jobs: jobs.map((j) => ({ ...j, done: staged.some((m) => isCurrent(m, j)) })) };
 }
 
 export async function GET(_req: Request, { params }: { params: Promise<{ slug: string }> }) {

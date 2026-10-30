@@ -1,6 +1,6 @@
 # Segment 6 — Judge-ready: demo data, staging coverage, agent, guardrails, ship
 
-Status: **in progress** — 6.1–6.6 done 2026-10-30 (owner reviews and commits); next is 6.7 location, then 6.8 Clerk owner auth
+Status: **in progress** — 6.1–6.6 done and committed 2026-10-30 (through `662570d`, pushed by owner); next is 6.7 location, then 6.8 Clerk owner auth
 
 Goal: the deployed demo holds up when judges use it unattended (Nov 5–8) on a fixed $150 credit budget. That means bookable dates, the staging headline on every listing, a correct agent, hard usage limits, and docs that match the code.
 
@@ -210,6 +210,13 @@ Why: the v1 pipeline sees one hero room. It measured `empty1`/`empty2` as single
   - **Chat acceptance final: 10/10 PASS** on the v3 inventory (32 tool calls, test data cleaned). Before that run, `AGENT_PROMPT_V2` was changed so an explicit renter confirmation books immediately, with no second confirmation (scenario 9 friction).
   - Meta spend 2026-10-30, all work including the v3 regeneration: **≈ $4.10** (ledger `usage_counters`).
 
+- **Owner review 2026-10-30 (round 3): clinics shown as whole units.** Separate "waiting" and "exam" tabs made each room look like a standalone use, and empty2 put the waiting room in the inner room. Fixes:
+  1. The viewer groups renders per use ([lib/fit-groups.ts](../../lib/fit-groups.ts)), with sub-buttons Waiting · Exam · Prep. Dental plans now include the shared waiting render.
+  2. Rubric: waiting = the outer room by walk depth (entrance, else farthest from the bathroom), exam = the larger room behind it.
+  3. Partitioned clinics use full-height solid demountable walls with closed doors (`clinic_split` prompt rewritten, new `dental_split`), and the split now also applies to furnished units. October and Nasr City target the partitioned clinic and dental uses.
+  - The runner and the stage route count a render as current only for the same style, space and prompt version (`isCurrent`). `--redo=style` forces a re-render after a prompt edit. Synthetic unit pages no longer show render buttons.
+  - `pnpm reassess-units [--dry]` re-runs the rubric on stored surveys. It made 2 listing calls (Louran, October), whose uses changed. Renders: 7 edits (empty2 ×3, October ×2, Nasr City ×2), visually checked. Verified locally in EN LTR and AR RTL.
+
 ### 6.7 Location, minimal (Nov 2) — scope check
 - Migration (approved): `units.lat`, `units.lng` numeric, idempotent `add column if not exists`, `pnpm migrate`, verify the columns.
 - Seed coordinates: district centroid, labelled "approximate area". Upload form: an optional lat/lng or pasted Google Maps link, parsed server-side.
@@ -237,4 +244,22 @@ Why: the v1 pipeline sees one hero room. It measured `empty1`/`empty2` as single
 - Cold run on prod by someone other than the builder, AR RTL and EN LTR, recorded here. Record the 3-minute demo on Nov 3. Submit Nov 4.
 
 ## Handoff
-Next session starts at 6.1. The 6.5 and 6.6 runs are approved (dry run above); they run once their code lands. Before 6.3: owner supplies per-token prices.
+6.1–6.6 are committed and pushed (`662570d`). Next session starts at **6.7 location**, then 6.8 Clerk, the 6.9 voice go/no-go, and 6.10 ship.
+
+Owner actions before the next deploy:
+- Set `GUARD_SALT` in Vercel (copy the value from `.env.local`). Without it, per-IP limit keys fall back and are less private.
+- Optionally set `DEMO_DAILY_SPEND_USD` in Vercel (the code default is 15).
+- Do not set `OFFISIO_DEV_MODELS` or `MODAL_*` in Vercel. They are dev-only, and the switch is ignored when `VERCEL` is set.
+- After deploying, spot-check prod: the homepage, one synthetic unit (AI-generated label, no white bar), one filmed unit (tear reveals the emptied room), and one chat booking.
+
+Tab count: the per-use grouping (round 3) brings filmed units from 8 tabs down to 6. A further cap is not needed for now.
+
+6.7 approach (approved scope, no new dependencies):
+1. Migration: `units.lat`, `units.lng`.
+2. District-centroid seed coordinates, labelled "approximate area".
+3. "Open in Maps" link on the unit page.
+4. Optional pasted Google Maps link on upload, parsed on the server.
+5. `lib/geo/landmarks.ts` (about 15 landmarks), plus a haversine `near` parameter on the agent's `search_units`.
+6. Verify with a chat scenario: "near AUC" should rank New Cairo first.
+
+Estimated model spend: a single chat acceptance run (about $0.10).

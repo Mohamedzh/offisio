@@ -138,5 +138,12 @@
   "stage.note": "One click per use. Each render takes about 30 seconds.",
   "stage.rendering": "Rendering…",
   "error.STYLE_NOT_IN_PLAN": "That fit-out isn't planned for this unit's layout.",
-  "viewer.realSynthetic": "Listing photo (AI-generated)"
+  "viewer.realSynthetic": "Listing photo (AI-generated)",
+  "viewer.group.clinic": "Fit: Clinic",
+  "viewer.group.dental": "Fit: Dental clinic",
+  "viewer.part.waiting": "Waiting room",
+  "viewer.part.exam": "Exam room",
+  "viewer.part.prep": "Prep lab",
+  "viewer.part.partitioned": "Partitioned fit-out",
+  "viewer.style.dental_split": "Fit: Dental clinic (partitioned)"
 }
