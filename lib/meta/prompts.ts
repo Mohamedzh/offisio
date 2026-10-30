@@ -65,10 +65,12 @@ const STAGE_BODIES: Record<string, string> = {
   dental_split: "Partition this room into a dental clinic: build full-height solid demountable partition walls (opaque white gypsum-board or panel system, floor to ceiling, no glass) across the far part of the room, with two closed solid doors, one to the treatment room and one to a small sterilisation cubicle. In front of the walls is the waiting area: about {N} upholstered waiting chairs and a small reception desk. Nothing behind the walls is visible.",
   dental_exam: "Fit out this space as a dental treatment room: one dental chair unit with an overhead operating light and side delivery cart, wall cabinets with a sink, a doctor's stool, clean white clinical finish.",
   dental_prep: "Convert this small space into a dental prep and sterilisation lab (if it is a bathroom, remove the WC): a stainless-steel counter with a sink, an autoclave, sealed wall cabinets, washable surfaces.",
+  legal_reception: "Fit out this space as the reception of an accounting or law office: a reception desk with a chair, two client armchairs with a small side table, a framed certificate on the wall, calm warm light.",
   legal_office: "Fit out this space as an accounting or law office: an executive desk with a leather chair, two client chairs, tall bookshelves with binders, framed certificates.",
 };
 export function stagePrompt(style: string, kind: UnitKind, n: number): string | null {
-  const body = STAGE_BODIES[style];
+  // office_<spaceId> = the office fit on an extra room.
+  const body = STAGE_BODIES[style] ?? STAGE_BODIES[style.replace(/_s\d+$/, "")];
   return body ? `${body.replace("{N}", String(n))} ${kind === "semifinished" ? KEEP_SEMIFINISHED : KEEP_FINISHED}` : null;
 }
 

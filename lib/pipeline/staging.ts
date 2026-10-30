@@ -7,7 +7,7 @@ import { meta, MODELS } from "../meta/client";
 import { EMPTY_PROMPT_V1, STAGE_VERSION, stagePrompt, type UnitKind } from "../meta/prompts";
 import { putPublic } from "../blob";
 import { cached } from "./cache";
-import { area, T, type Role, type Use, type UseVerdict } from "./rubric";
+import { area, deskCapacity, T, usableRooms, type Role, type Use, type UseVerdict } from "./rubric";
 import type { Survey } from "./survey";
 import { addMedia, retireStaged, keyframesOf, stagedOf } from "../db/store";
 
@@ -17,12 +17,18 @@ export interface StageJob { style: string; use: Use; role: Role; spaceId: string
 export function planStaging(survey: Survey, uses: UseVerdict[], only?: Use[]): StageJob[] {
   const space = (id?: string) => survey.spaces.find((s) => s.id === id);
   const jobs: StageJob[] = [];
-  const add = (style: string, u: UseVerdict, role: Role, n: (a: number) => number) => {
-    const s = space(u.roles[role]); if (!s || jobs.some((j) => j.style === style)) return;
+  const add = (style: string, u: UseVerdict, role: Role, n: (a: number) => number, id = u.roles[role]) => {
+    const s = space(id); if (!s || jobs.some((j) => j.style === style)) return;
     jobs.push({ style, use: u.use, role, spaceId: s.id, frame: s.best_frame, n: Math.max(1, n(area(s) ?? 0)) });
   };
   for (const u of uses.filter((x) => x.verdict !== "not_suitable" && (!only || only.includes(x.use)))) {
-    if (u.use === "office") add("office", u, "room", (a) => Math.floor(a / T.deskComfortM2));
+    // Office: the main room, then every other room that takes a desk (owner 2026-10-31).
+    if (u.use === "office") {
+      add("office", u, "room", (a) => Math.floor(a / T.deskComfortM2));
+      for (const r of usableRooms(survey).sort((a, b) => (area(b) ?? 0) - (area(a) ?? 0)))
+        if (r.id !== u.roles.room && (area(r) ?? 0) >= T.officeMinM2 && deskCapacity([r]).comfortable > 0)
+          add(`office_${r.id}`, u, "room", (a) => Math.floor(a / T.deskComfortM2), r.id);
+    }
     if (u.use === "open_plan") add("open_plan", u, "room", (a) => Math.floor(a / T.deskComfortM2));
     if (u.use === "meeting") add("meeting", u, "room", (a) => Math.floor(a / T.seatClassroomM2));
     if (u.use === "clinic") {
@@ -35,7 +41,10 @@ export function planStaging(survey: Survey, uses: UseVerdict[], only?: Use[]): S
       if (u.roles.waiting && u.roles.waiting === u.roles.exam) add("dental_split", u, "exam", (a) => Math.floor(a / 4));
       else { add("clinic_waiting", u, "waiting", (a) => Math.floor(a / 1.5)); add("dental_exam", u, "exam", () => 1); add("dental_prep", u, "prep", () => 1); }
     }
-    if (u.use === "legal") add("legal_office", u, "office", () => 1);
+    if (u.use === "legal") {
+      if (u.roles.reception && u.roles.reception !== u.roles.office) add("legal_reception", u, "reception", () => 1);
+      add("legal_office", u, "office", () => 1);
+    }
   }
   return jobs;
 }

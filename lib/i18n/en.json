@@ -145,5 +145,11 @@
   "viewer.part.exam": "Exam room",
   "viewer.part.prep": "Prep lab",
   "viewer.part.partitioned": "Partitioned fit-out",
-  "viewer.style.dental_split": "Fit: Dental clinic (partitioned)"
+  "viewer.style.dental_split": "Fit: Dental clinic (partitioned)",
+  "viewer.style.legal_reception": "Fit: Law office reception",
+  "viewer.part.main": "Main room",
+  "viewer.part.room": "Room {n}",
+  "viewer.part.reception": "Reception",
+  "viewer.part.private": "Private office",
+  "viewer.rooms": "{n} rooms in this fit, tap to switch"
 }

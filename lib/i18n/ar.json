@@ -145,5 +145,11 @@
   "viewer.part.exam": "أوضة الكشف",
   "viewer.part.prep": "معمل التحضير",
   "viewer.part.partitioned": "تجهيز بقواطيع",
-  "viewer.style.dental_split": "تجهيز: عيادة أسنان بقواطيع"
+  "viewer.style.dental_split": "تجهيز: عيادة أسنان بقواطيع",
+  "viewer.style.legal_reception": "تجهيز: استقبال مكتب محاماة",
+  "viewer.part.main": "الأوضة الرئيسية",
+  "viewer.part.room": "أوضة {n}",
+  "viewer.part.reception": "الاستقبال",
+  "viewer.part.private": "المكتب الخاص",
+  "viewer.rooms": "{n} أوض في التجهيز ده، دوس للتبديل"
 }

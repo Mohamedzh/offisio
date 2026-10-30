@@ -217,6 +217,12 @@ Why: the v1 pipeline sees one hero room. It measured `empty1`/`empty2` as single
   - The runner and the stage route count a render as current only for the same style, space and prompt version (`isCurrent`). `--redo=style` forces a re-render after a prompt edit. Synthetic unit pages no longer show render buttons.
   - `pnpm reassess-units [--dry]` re-runs the rubric on stored surveys. It made 2 listing calls (Louran, October), whose uses changed. Renders: 7 edits (empty2 ×3, October ×2, Nasr City ×2), visually checked. Verified locally in EN LTR and AR RTL.
 
+- **Owner review 2026-10-31 (round 4): every fit shows all its rooms; clearer switcher.**
+  - Office fits render every room that takes a desk. Law offices render reception (outer room) + private office (inner room); the rubric's `outerInner` helper is now shared by clinic and legal.
+  - The viewer's room switcher moved onto the photo: brick-red chips numbered "1. Reception · 2. Private office", pulsing twice when a multi-room tab opens (off under reduced motion). Tabs carry a room-count badge.
+  - Stale renders retired, including New Cairo's old dental render (not in its brief).
+  - 18 edits (~$0.18), visually checked. `reassess-units` made no listing calls.
+
 ### 6.7 Location, minimal (Nov 2) — scope check
 - Migration (approved): `units.lat`, `units.lng` numeric, idempotent `add column if not exists`, `pnpm migrate`, verify the columns.
 - Seed coordinates: district centroid, labelled "approximate area". Upload form: an optional lat/lng or pasted Google Maps link, parsed server-side.

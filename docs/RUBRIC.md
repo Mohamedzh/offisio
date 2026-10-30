@@ -53,6 +53,10 @@ These are not Ministry of Health figures. Swap in official minimums if the owner
 **Owner rules (2026-10-30, round 2):**
 - **Waiting is the outer room, exam is behind it.** The waiting room is the room closest to the entrance, measured in walk hops over the survey's `adjacency` from `entrance_space`. With no known entrance, it is the room farthest from the bathroom. The exam room is the largest remaining room ≥ 9 m². Ties go to the smaller room as waiting.
 - **Partitioned clinics use real partitions.** The walls are full-height, solid and demountable (gypsum board or panel systems, no glass), with closed doors, so the exam room can't be seen from the waiting area. A partitioned dental clinic needs a room ≥ 18 m² and adds a small sterilisation cubicle. Each use is one render (`clinic_split` / `dental_split`) from the waiting side, because a single photo angle can't show inside the closed rooms.
+- **Every fit shows all its rooms (2026-10-31).**
+  - An office fit renders the main room plus every other room that takes a desk (`office_<spaceId>`).
+  - A law/accounting office is reception (outer room) + private office (inner room), using the same outer/inner rule as clinics.
+  - Meeting/training and coworking stay one render on the largest room.
 - **A clinic is presented as a whole.** The viewer shows one tab per use. "Clinic" holds the waiting + exam renders together; "Dental clinic" holds waiting + treatment room + prep lab. A tab shows only if its exam (or split) render exists, never a waiting room alone ([lib/fit-groups.ts](../lib/fit-groups.ts)).
 
 **Owner rule (2026-10-30):** if there is no separate prep space, the **bathroom can be retrofitted as the prep/sterilisation area**, a real and common conversion. Dental is then **fits after fit-out**, and the prep render shows the bathroom converted.

@@ -67,7 +67,14 @@ body {
   from { clip-path: polygon(0 0, 100% 0, 100% 100%, 96% 100%, 93% 100%, 88% 100%, 84% 100%, 76% 100%, 71% 100%, 64% 100%, 58% 100%, 50% 100%, 44% 100%, 37% 100%, 31% 100%, 24% 100%, 18% 100%, 12% 100%, 7% 100%, 3% 100%, 0 100%); }
   to { clip-path: polygon(0 0, 100% 0, 100% 92%, 96% 96%, 93% 90%, 88% 97%, 84% 93%, 76% 98%, 71% 91%, 64% 96%, 58% 92%, 50% 97%, 44% 90%, 37% 95%, 31% 92%, 24% 97%, 18% 91%, 12% 96%, 7% 93%, 3% 97%, 0 92%); }
 }
+/* UnitViewer room switcher: two pulses when a multi-room fit opens */
+.rooms-nudge { animation: rooms-nudge 700ms ease-in-out 300ms 2; transform-origin: top left; }
+[dir="rtl"] .rooms-nudge { transform-origin: top right; }
+@keyframes rooms-nudge {
+  0%, 100% { transform: scale(1); }
+  45% { transform: scale(1.08); box-shadow: 0 0 0 6px color-mix(in srgb, var(--color-brick) 45%, transparent); }
+}
 @media (prefers-reduced-motion: reduce) {
-  .tear-layer { animation: none; transition: none; }
+  .tear-layer, .rooms-nudge { animation: none; transition: none; }
   *, *::before, *::after { transition-duration: 0.01ms !important; }
 }

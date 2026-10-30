@@ -25,6 +25,7 @@ export const T = {
 
 export const area = (s: Space): number | null => (s.width_m && s.length_m ? Math.round(s.width_m * s.length_m * 10) / 10 : null);
 // A "corridor" at least 2 m in both directions is really a room (survey guard).
+export const usableRooms = (survey: Survey) => survey.spaces.filter(usable);
 const usable = (s: Space) => s.type === "room" || s.type === "other" ||
   (s.type === "corridor" && s.width_m !== null && s.length_m !== null && Math.min(s.width_m, s.length_m) >= 2);
 const isBath = (s: Space) => s.type === "bathroom" || s.plumbing.wc === true;
@@ -89,13 +90,16 @@ export function assess(survey: Survey, kind: UnitKind): UseVerdict[] {
   // waiting is the outer room (by the door), exam the larger room behind it.
   const bath = baths[0];
   const depth = depthFrom(survey, bath?.id);
-  let exam: Space | undefined, waitingRoom: Space | undefined;
-  for (const w of [...rooms].sort((a, b) => depth(a.id) - depth(b.id) || (area(a) ?? 0) - (area(b) ?? 0))) {
-    if ((area(w) ?? 0) < T.waitingMinM2) continue;
-    const e = rooms.find((r) => r !== w && (area(r) ?? 0) >= T.examMinM2);
-    if (e) { waitingRoom = w; exam = e; break; }
-  }
-  exam ??= rooms.find((r) => (area(r) ?? 0) >= T.examMinM2);
+  // Outer room (>= outerMin, nearest the door) + the largest room behind it (>= innerMin).
+  const outerInner = (outerMin: number, innerMin: number): [Space | undefined, Space | undefined] => {
+    for (const w of [...rooms].sort((a, b) => depth(a.id) - depth(b.id) || (area(a) ?? 0) - (area(b) ?? 0))) {
+      if ((area(w) ?? 0) < outerMin) continue;
+      const e = rooms.find((r) => r !== w && (area(r) ?? 0) >= innerMin);
+      if (e) return [w, e];
+    }
+    return [undefined, rooms.find((r) => (area(r) ?? 0) >= innerMin)];
+  };
+  const [waitingRoom, exam] = outerInner(T.waitingMinM2, T.examMinM2);
   const waiting = waitingRoom ?? entrance;
   let clinic: Verdict = "not_suitable";
   const clinicRoles: UseVerdict["roles"] = {};
@@ -130,9 +134,9 @@ export function assess(survey: Survey, kind: UnitKind): UseVerdict[] {
     v("dental", "fits_after_fitout", ["The bathroom can be retrofitted as the prep/sterilisation area."], ["الحمام ممكن يتحول لمعمل التحضير والتعقيم."], { ...clinicRoles, prep: bath.id });
   else { const [en, ar] = clinicWhy(); v("dental", "not_suitable", en, ar); }
 
-  // Accounting / law office: reception + >= 1 private office
-  const office = rooms.find((r) => (area(r) ?? 0) >= T.legalOfficeMinM2);
-  const reception = rooms.find((r) => r !== office && (area(r) ?? 0) >= T.waitingMinM2) ?? entrance;
+  // Accounting / law office: reception (outer room) + >= 1 private office behind it
+  const [receptionRoom, office] = outerInner(T.waitingMinM2, T.legalOfficeMinM2);
+  const reception = receptionRoom ?? entrance;
   if (office && reception) v("legal", "fits", ["A reception/waiting area plus a private office."], ["استقبال وانتظار ومعاهم مكتب خاص."], { office: office.id, reception: reception.id });
   else if (fitout && largest >= T.legalSplitM2) v("legal", "fits_after_fitout", [`One ${m2(largest)} room could be split into reception + office.`], [`أوضة ${ar2(largest)} ممكن تتقسم استقبال ومكتب.`], { office: rooms[0].id, reception: rooms[0].id });
   else v("legal", "not_suitable", ["Needs a reception area separate from a private office."], ["محتاج استقبال منفصل عن المكتب الخاص."]);
