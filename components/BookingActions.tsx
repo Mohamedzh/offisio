@@ -1,8 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
-import { errorText, formatEgp, getT, type Locale } from "@/lib/i18n";
+import { errorText, formatEgp, getT, type Locale, type TranslationKey } from "@/lib/i18n";
 
-interface Booking { id: string; status: string; total_egp: number; rent_egp_total: number; cafe_whatsapp_url: string | null; unit_slug: string; addons: { name_en: string; qty: number; unit_price_egp: number }[] }
+interface Booking { id: string; status: string; track: string; date: string | null; total_egp: number; rent_egp_total: number; cafe_whatsapp_url: string | null; unit_slug: string; addons: { name_en: string; name_ar: string; qty: number; unit_price_egp: number }[] }
+
+// "2026-11-03" -> "Tue, 3 Nov" / Arabic equivalent; parsed as UTC so the day never shifts.
+function formatDay(locale: Locale, iso: string): string {
+  return new Date(`${iso}T00:00:00Z`).toLocaleDateString(locale === "ar" ? "ar-EG" : "en-GB", { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" });
+}
 
 export default function BookingActions({ id, locale }: { id: string; locale: Locale }) {
   const t = getT(locale);
@@ -24,16 +29,22 @@ export default function BookingActions({ id, locale }: { id: string; locale: Loc
     <div className="space-y-4">
       <div className="border border-ink p-5 bg-sheet">
         <p className="text-[11px] uppercase tracking-wide text-ink/75">{t("bookingCard.booking")} {b.id} · {t("bookingCard.unit")} {b.unit_slug}</p>
-        <div className="flex justify-between border-b border-ink/25 py-2 text-sm"><span>{t("bookingCard.status")}</span><strong>{b.status}</strong></div>
-        {b.addons.length > 0 && <ul className="text-sm">{b.addons.map((a, i) => <li key={i} className="tnum flex justify-between border-b border-ink/25 py-2"><span>{a.qty} × {a.name_en}</span><span>{formatEgp(locale, a.qty * a.unit_price_egp)}</span></li>)}</ul>}
-        <p className="tnum mt-3 bg-ink text-sheet font-display text-2xl font-black px-3 py-2 flex justify-between"><span>{formatEgp(locale, b.total_egp)}</span></p>
+        <div className="flex justify-between border-b border-ink/25 py-2 text-sm"><span>{t("bookingCard.status")}</span><strong>{t(`bookingStatus.${b.status}` as TranslationKey)}</strong></div>
+        <div className="tnum flex justify-between border-b border-ink/25 py-2 text-sm">
+          <span>{b.track === "daily" && b.date ? t("bookingCard.rentDaily", { date: formatDay(locale, b.date) }) : t("bookingCard.rentMonthly")}</span>
+          <span>{formatEgp(locale, b.rent_egp_total)}</span>
+        </div>
+        {b.addons.length > 0 && <>
+          <p className="pt-3 text-[11px] uppercase tracking-wide text-ink/75">{t("bookingCard.addons")}</p>
+          <ul className="text-sm">{b.addons.map((a, i) => <li key={i} className="tnum flex justify-between border-b border-ink/25 py-2"><span>{a.qty} × {locale === "ar" ? a.name_ar : a.name_en}</span><span>{formatEgp(locale, a.qty * a.unit_price_egp)}</span></li>)}</ul>
+        </>}
+        <p className="tnum mt-3 bg-ink text-sheet font-display text-2xl font-black px-3 py-2 flex justify-between"><span>{t("bookingCard.total")}</span><span>{formatEgp(locale, b.total_egp)}</span></p>
       </div>
       {msg && <p className="text-sm font-bold text-ink bg-mustard/40 border border-ink p-3">{msg}</p>}
       {b.status === "awaiting_payment" && <button disabled={busy} onClick={pay} className="btn btn-brick btn-lg w-full">{t("bookingCard.pay")}</button>}
       {b.status === "confirmed" && b.cafe_whatsapp_url && (
         <a href={b.cafe_whatsapp_url} target="_blank" rel="noreferrer" className="btn btn-chalk btn-lg w-full">{t("bookingCard.whatsapp")}</a>
       )}
-      {b.status === "confirmed" && !b.cafe_whatsapp_url && <p className="text-sm text-ink/75">{t("bookingCard.cafeNotConfigured")}</p>}
       <button onClick={load} className="text-sm link">{t("bookingCard.refresh")}</button>
     </div>
   );

@@ -23,6 +23,7 @@ export type BookingStatus = "awaiting_payment" | "confirmed" | "payment_failed" 
 export interface Booking {
   id: string; unit_slug: string; slot_ids: string[]; track: RentPeriod;
   renter_name: string; renter_phone: string; rent_egp_total: number;
+  date: string | null; // Cairo day for daily bookings; null for monthly tracks
   addons: AddonItem[]; total_egp: number; status: BookingStatus;
   payment_id: string | null; cafe_whatsapp_url: string | null; created_at: string;
 }
@@ -221,7 +222,7 @@ export async function freeDates(): Promise<string[]> {
 interface BookingRow {
   id: string; unit_slug: string; availability_ids: string[]; track: RentPeriod;
   renter_name: string; renter_phone: string; rent_egp_total: number; total_egp: number;
-  status: BookingStatus; created_at: string;
+  status: BookingStatus; created_at: string; date: string | null;
   addons: (Omit<AddonItem, "booking_id" | "status"> & { cafe_status: string })[] | null;
 }
 
@@ -229,6 +230,7 @@ function rowToBooking(r: BookingRow, paymentId: string | null, cafeUrl: string |
   return {
     id: r.id, unit_slug: r.unit_slug, slot_ids: r.availability_ids ?? [], track: r.track,
     renter_name: r.renter_name, renter_phone: r.renter_phone, rent_egp_total: r.rent_egp_total,
+    date: r.date,
     addons: (r.addons ?? []).map((a) => ({ ...a, booking_id: r.id, status: (a.cafe_status === "sent_to_cafe" ? "sent_to_cafe" : "pending_cafe") as AddonItem["status"] })),
     total_egp: r.total_egp, status: r.status, payment_id: paymentId, cafe_whatsapp_url: cafeUrl,
     created_at: new Date(r.created_at).toISOString(),
@@ -238,6 +240,7 @@ function rowToBooking(r: BookingRow, paymentId: string | null, cafeUrl: string |
 const BOOKING_SQL = `
   select b.id, u.slug as unit_slug, b.availability_ids, b.track, b.renter_name, b.renter_phone,
          b.rent_egp_total, b.total_egp, b.status, b.created_at,
+         (select min(s.starts_at at time zone 'Africa/Cairo')::date::text from availability s where s.id = any(b.availability_ids)) as date,
          coalesce((select json_agg(json_build_object('id', a.id, 'item_id', a.item_id, 'name_en', a.name_en, 'name_ar', a.name_ar, 'qty', a.qty, 'unit_price_egp', a.unit_price_egp, 'deliver_at', a.deliver_at, 'cafe_status', a.cafe_status)) from booking_addons a where a.booking_id = b.id), '[]') as addons
   from bookings b join units u on u.id = b.unit_id`;
 
