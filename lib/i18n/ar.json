@@ -167,5 +167,17 @@
   "pipeline.status.failed": "وقعت",
   "pipeline.attempts": "محاولة {n}",
   "pipeline.retry": "جرّب تاني",
-  "error.NOT_RETRYABLE": "الخطوة دي مش واقعة."
+  "error.NOT_RETRYABLE": "الخطوة دي مش واقعة.",
+  "meta.siteTitle": "أوفيسيو — احجز مكاتب حقيقية في القاهرة",
+  "meta.siteDescription": "مكاتب حقيقية بصور حقيقية. شوف تصورات تجهيز متعملة من نفس الأوضة، واحجز بالدردشة بالمصري أو بالإنجليزي.",
+  "meta.ogAlt": "أوفيسيو — احجز مكاتب حقيقية بالدردشة",
+  "meta.chatTitle": "احجز مكتب بالمحادثة",
+  "meta.chatDescription": "قول لوكيل أوفيسيو محتاج إيه بالمصري أو بالإنجليزي. هيلاقيلك مكتب مناسب، يشوف الأيام الفاضية، يضيف قهوة من الكافيه، ويبعتلك لينك الدفع.",
+  "meta.uploadTitle": "ضيف مكتبك",
+  "meta.uploadDescription": "صوّر جولة قصيرة في مكتبك. أوفيسيو بيقدّر المواصفات، ويكتب الإعلان بالعربي والإنجليزي، ويعمل تصورات تجهيز من نفس الأوضة.",
+  "meta.unitDescription": "{district} · {rent}/شهر · {summary}",
+  "meta.unitPhotoAlt": "صورة حقيقية لـ {title}",
+  "meta.editTitle": "تعديل مواصفات الإعلان",
+  "meta.bookingTitle": "حجزك",
+  "meta.notFoundTitle": "المكتب مش موجود"
 }

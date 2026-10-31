@@ -18,6 +18,7 @@
     "check-rubric": "tsx scripts/check-rubric.ts",
     "remodel-filmed": "tsx scripts/remodel-filmed.ts",
     "chat-acceptance": "tsx scripts/chat-acceptance.ts",
+    "brand-assets": "tsx scripts/brand-assets.ts",
     "stage-units": "tsx scripts/stage-units.ts",
     "reassess-units": "tsx scripts/reassess-units.ts",
     "backfill-locations": "tsx scripts/backfill-locations.ts"

@@ -167,5 +167,17 @@
   "pipeline.status.failed": "Failed",
   "pipeline.attempts": "attempt {n}",
   "pipeline.retry": "Retry",
-  "error.NOT_RETRYABLE": "That step is not in a failed state."
+  "error.NOT_RETRYABLE": "That step is not in a failed state.",
+  "meta.siteTitle": "Offisio — Book real offices in Cairo",
+  "meta.siteDescription": "Real offices with real photos. See AI fit concepts rendered from each room, then book by chatting in Egyptian Arabic or English.",
+  "meta.ogAlt": "Offisio — book real offices by chat",
+  "meta.chatTitle": "Chat to book an office",
+  "meta.chatDescription": "Tell the Offisio agent what you need in Egyptian Arabic or English. It finds a matching office, checks free days, adds cafe coffee and sends a payment link.",
+  "meta.uploadTitle": "List your office",
+  "meta.uploadDescription": "Film a short walkthrough of your office. Offisio estimates the specs, writes the listing in Arabic and English, and renders fit concepts from the same room.",
+  "meta.unitDescription": "{district} · {rent}/month · {summary}",
+  "meta.unitPhotoAlt": "Real photo of {title}",
+  "meta.editTitle": "Edit listing specs",
+  "meta.bookingTitle": "Your booking",
+  "meta.notFoundTitle": "Office not found"
 }

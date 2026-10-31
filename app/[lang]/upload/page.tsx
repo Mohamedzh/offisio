@@ -3,6 +3,14 @@ import UploadForm from "@/components/UploadForm";
 import LangToggle from "@/components/LangToggle";
 import { getT, localeHref } from "@/lib/i18n";
 import { localeFromParam } from "@/lib/i18n/server";
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
+
+export async function generateMetadata({ params }: PageProps<"/[lang]/upload">): Promise<Metadata> {
+  const locale = localeFromParam((await params).lang);
+  const t = getT(locale);
+  return pageMetadata(locale, { title: t("meta.uploadTitle"), description: t("meta.uploadDescription"), path: "/upload" });
+}
 
 export default async function UploadPage({ params }: PageProps<"/[lang]/upload">) {
   const locale = localeFromParam((await params).lang);

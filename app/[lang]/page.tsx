@@ -5,6 +5,7 @@ import { listUnits } from "@/lib/db/store";
 import { formatEgp, getT, localeHref } from "@/lib/i18n";
 import { localeFromParam } from "@/lib/i18n/server";
 import LangToggle from "@/components/LangToggle";
+import Logo from "@/components/Logo";
 
 export const instant = false;
 
@@ -37,7 +38,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
   return (
     <main className="mx-auto w-full max-w-5xl px-4 py-8">
       <header className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2 border border-ink bg-sheet px-3 py-2.5 sm:px-4 sm:py-3 ink-offset-sm mb-8">
-        <span className="font-display text-xl sm:text-2xl font-black tracking-[-0.02em]">{t("brand")}</span>
+        <Link href={localeHref("/", locale)} aria-label={t("brand")}><Logo locale={locale} /></Link>
         <div className="flex flex-wrap gap-1.5 sm:gap-2 text-[13px] sm:text-sm items-center">
           <Link href={localeHref("/upload", locale)} className="px-1.5 py-2 link">{t("nav.listOffice")}</Link>
           <Link href={localeHref("/chat", locale)} className="btn btn-brick px-3 py-2 sm:px-4">{t("nav.chatToBook")}</Link>
@@ -151,7 +152,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       </section>
 
       <footer className="mt-14 border-t-2 border-ink pt-4 flex flex-wrap justify-between gap-2 text-sm text-ink/75">
-        <span className="font-display font-black text-ink">{t("brand")}</span>
+        <Logo locale={locale} size="sm" />
         <span>{t("home.decorative")}</span>
       </footer>
     </main>

@@ -3,8 +3,17 @@ import BookingActions from "@/components/BookingActions";
 import LangToggle from "@/components/LangToggle";
 import { getT, localeHref } from "@/lib/i18n";
 import { localeFromParam } from "@/lib/i18n/server";
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 
 export const instant = false;
+
+// Bookings are private: generic title, site description, never indexed.
+export async function generateMetadata({ params }: PageProps<"/[lang]/booking/[id]">): Promise<Metadata> {
+  const { id, lang } = await params;
+  const locale = localeFromParam(lang);
+  return pageMetadata(locale, { title: getT(locale)("meta.bookingTitle"), path: `/booking/${id}`, noindex: true });
+}
 
 export default async function BookingPage({ params }: PageProps<"/[lang]/booking/[id]">) {
   const { id, lang } = await params;

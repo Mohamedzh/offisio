@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Offisio">
+  <rect x="12" y="12" width="48" height="48" fill="#A63A2A" stroke="#211D17" stroke-width="3"/>
+  <path d="M4 4H52V30L47 33L49 37L43 40L44 44L38 46L37 50L31 52H4Z" fill="#EFEAE0" stroke="#211D17" stroke-width="3" stroke-linejoin="round"/>
+  <circle cx="24" cy="24" r="10" fill="none" stroke="#211D17" stroke-width="7"/>
+</svg>

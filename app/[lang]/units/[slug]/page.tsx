@@ -12,8 +12,28 @@ import { formatEgp, getT, localeHref, type TranslationKey } from "@/lib/i18n";
 import type { UseVerdict } from "@/lib/pipeline/rubric";
 import { localeFromParam } from "@/lib/i18n/server";
 import { mapsUrl } from "@/lib/geo";
+import type { Metadata } from "next";
+import { clip, pageMetadata } from "@/lib/metadata";
 
 export const instant = false;
+
+// Share card: the listing's own title, summary and real photo.
+export async function generateMetadata({ params }: PageProps<"/[lang]/units/[slug]">): Promise<Metadata> {
+  await connection();
+  const { slug, lang } = await params;
+  const locale = localeFromParam(lang);
+  const t = getT(locale);
+  const unit = await getUnit(slug);
+  if (!unit) return pageMetadata(locale, { title: t("meta.notFoundTitle"), path: `/units/${slug}`, noindex: true });
+  const title = locale === "en" ? unit.title_en : unit.title_ar;
+  const summary = locale === "en" ? unit.summary_en : unit.summary_ar;
+  return pageMetadata(locale, {
+    title,
+    description: clip(t("meta.unitDescription", { district: unit.district, rent: formatEgp(locale, unit.rent_egp), summary })),
+    path: `/units/${slug}`,
+    image: unit.images.real ? { url: unit.images.real, alt: t("meta.unitPhotoAlt", { title }) } : undefined,
+  });
+}
 
 export default async function UnitPage({ params }: PageProps<"/[lang]/units/[slug]">) {
   await connection();

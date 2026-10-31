@@ -7,8 +7,17 @@ import SpecsEditForm from "@/components/SpecsEditForm";
 import LangToggle from "@/components/LangToggle";
 import { getT, localeHref } from "@/lib/i18n";
 import { localeFromParam } from "@/lib/i18n/server";
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 
 export const instant = false;
+
+// Owner-only page: generic title, never indexed.
+export async function generateMetadata({ params }: PageProps<"/[lang]/units/[slug]/edit">): Promise<Metadata> {
+  const { slug, lang } = await params;
+  const locale = localeFromParam(lang);
+  return pageMetadata(locale, { title: getT(locale)("meta.editTitle"), path: `/units/${slug}/edit`, noindex: true });
+}
 
 export default async function EditUnitPage({ params }: PageProps<"/[lang]/units/[slug]/edit">) {
   await connection();

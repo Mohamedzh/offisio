@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 194 64" width="194" height="64" role="img" aria-label="Offisio"><g fill="none" stroke="#EFEAE0" stroke-width="10">
+    <circle cx="17" cy="41" r="12"/>
+    <path d="M44 58V14A9 9 0 0 1 53 5H56M66 58V14A9 9 0 0 1 75 5H80M36 29H78"/>
+    <path d="M91 58V24M148 58V24"/>
+    <path d="M133 30.5Q129 29 121 29Q112 29 112 35Q112 41 121 41Q130 41 130 47Q130 53 121 53Q113 53 108 51"/>
+    <circle cx="175" cy="41" r="12"/>
+  </g>
+  <rect x="86" y="5" width="10" height="11" fill="#A63A2A"/>
+  <rect x="143" y="5" width="10" height="11" fill="#A63A2A"/></svg>
