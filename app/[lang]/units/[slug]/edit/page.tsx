@@ -38,7 +38,8 @@ export default async function EditUnitPage({ params }: PageProps<"/[lang]/units/
         <div className="p-5">
           <h1 className="font-display text-3xl font-black tracking-[-0.02em] mb-4">{t("edit.title")}</h1>
           <PipelineStatus slug={slug} initial={jobs} locale={locale} />
-          <SpecsEditForm slug={slug} specs={unit.specs} locale={locale} />
+          {/* Remount when the analyze step lands, so the form never holds (or saves) stale empty specs. */}
+          <SpecsEditForm key={unit.specs.survey ? "analyzed" : "pending"} slug={slug} specs={unit.specs} locale={locale} />
           <Link href={localeHref(`/units/${slug}`, locale)} className="mt-4 inline-block text-sm link">{t("edit.viewListing")}</Link>
         </div>
       </div>

@@ -1,6 +1,6 @@
 # Offisio — Implementation Plan (index)
 
-Status: **Segment 6 (judge-ready) in progress — 6.1–6.6 done and committed through `d58d02a` (2026-10-31: review rounds 3–4, multi-room fits, styling pass); 6.7 steps 1–2 (location, QStash pipeline jobs) built and migrated 2026-10-31, uncommitted; next session starts at [plan/06-judge-ready.md](plan/06-judge-ready.md) Handoff (deployed QStash check, then 6.7 step 3 brand-menu import), then 6.8 (WhatsApp channel), 6.9 (Clerk, stretch).** Segment 5 steps 1–3 are done; its steps 4–8 are superseded by Segment 6.
+Status: **Segment 6 (judge-ready) in progress — 6.1–6.6 done and committed through `d58d02a` (2026-10-31: review rounds 3–4, multi-room fits, styling pass); 6.7 steps 1–2 (location, QStash pipeline jobs) done 2026-10-31, deployed and verified on production; next session starts at [plan/06-judge-ready.md](plan/06-judge-ready.md) Handoff (6.7 step 3 brand-menu import), then 6.8 (WhatsApp channel), 6.9 (Clerk, stretch).** Segment 5 steps 1–3 are done; its steps 4–8 are superseded by Segment 6.
 
 Work is split into segments so each runs in a fresh chat session with a small context. Protocol: [plan/README.md](plan/README.md).
 
