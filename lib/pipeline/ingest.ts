@@ -4,7 +4,7 @@
 import { runSurvey, type Frame, type Survey } from "./survey";
 import { assess, deriveSpecs, area, type UseVerdict } from "./rubric";
 import { generateListingV2, type Listing, type UploadOwner } from "./specs-listing";
-import { replaceKeyframes, saveGenerated } from "../db/store";
+import { replaceKeyframes, saveListing, saveSpecs } from "../db/store";
 
 export interface Analysis { survey: Survey; uses: UseVerdict[]; specs: Record<string, unknown>; listing: Listing; heroIndex: number }
 
@@ -24,22 +24,32 @@ function heroOf(survey: Survey): number {
 // `given` skips the model survey: synthetic units pass the survey built from
 // their own floor-plan brief (independent generated frames fool a survey).
 export async function analyzeUnit(owner: UploadOwner, frames: Frame[], given?: Survey): Promise<Analysis> {
+  const a = await analyzeSpecs(owner, frames, given);
+  return { ...a, listing: await generateListingV2(a.specs, owner, a.uses) };
+}
+
+// Survey + rubric + specs only (the pipeline `analyze` step; `listing` runs separately).
+export async function analyzeSpecs(owner: UploadOwner, frames: Frame[], given?: Survey): Promise<Omit<Analysis, "listing">> {
   const survey = given ?? await runSurvey(
     await Promise.all(frames.map(async (f) => ({ url: await toDataUrl(f.url), t: f.t }))),
     `Owner fields: district=${owner.district}, floors=${owner.floor_text}, kind=${owner.kind}.`);
   const uses = assess(survey, owner.kind);
   const specs = { ...deriveSpecs(survey, uses), survey, uses, survey_source: given ? "brief" : "model" };
-  const listing = await generateListingV2(specs, owner, uses);
-  return { survey, uses, specs, listing, heroIndex: heroOf(survey) };
+  return { survey, uses, specs, heroIndex: heroOf(survey) };
 }
 
 // Persist: keyframes (with timestamp, spaces, hero) + specs + listing.
 export async function saveAnalysis(unitId: string, frames: Frame[], a: Analysis, extraMeta: Record<string, unknown> = {}): Promise<void> {
+  await saveKeyframesAndSpecs(unitId, frames, a, extraMeta);
+  await saveListing(unitId, a.listing);
+}
+
+export async function saveKeyframesAndSpecs(unitId: string, frames: Frame[], a: Omit<Analysis, "listing">, extraMeta: Record<string, unknown> = {}): Promise<void> {
   const spacesFor = (i: number) => a.survey.spaces.filter((s) => s.frames.includes(i)).map((s) => s.id);
   const bestFor = (i: number) => a.survey.spaces.filter((s) => s.best_frame === i).map((s) => s.id);
   await replaceKeyframes(unitId, frames.map((f, i) => ({
     url: f.url,
     meta: { ...extraMeta, t: f.t, frame: i, spaces: spacesFor(i), best_for: bestFor(i), ...(i === a.heroIndex ? { hero: true } : {}) },
   })));
-  await saveGenerated(unitId, a.specs, a.listing);
+  await saveSpecs(unitId, a.specs);
 }

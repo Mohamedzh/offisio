@@ -151,5 +151,21 @@
   "viewer.part.room": "أوضة {n}",
   "viewer.part.reception": "الاستقبال",
   "viewer.part.private": "المكتب الخاص",
-  "viewer.rooms": "{n} أوض في التجهيز ده، دوس للتبديل"
+  "viewer.rooms": "{n} أوض في التجهيز ده، دوس للتبديل",
+  "upload.location": "الموقع",
+  "upload.locationHint": "حط لينك المكتب من Google Maps (مشاركة ← نسخ اللينك)، أو اكتب lat, lng.",
+  "error.LOCATION_INVALID": "مقدرناش نقرا موقع في مصر من اللي كتبته. حط لينك Google Maps أو lat, lng (مثلاً 30.0609, 31.2194).",
+  "unit.openInMaps": "افتح في الخريطة",
+  "unit.approxArea": "المنطقة تقريبياً",
+  "pipeline.title": "تقدّم الإعلان",
+  "pipeline.note": "الإعلان بينزل بعد خطوة نص الإعلان، وصور التجهيز بتكمل بعدها. كل خطوة بتشتغل لوحدها، فلو واحدة وقعت الباقي يكمل.",
+  "pipeline.step.analyze": "مسح الأوض والمواصفات",
+  "pipeline.step.listing": "نص الإعلان (بينزل)",
+  "pipeline.status.queued": "في الطابور",
+  "pipeline.status.running": "شغّالة",
+  "pipeline.status.done": "خلصت",
+  "pipeline.status.failed": "وقعت",
+  "pipeline.attempts": "محاولة {n}",
+  "pipeline.retry": "جرّب تاني",
+  "error.NOT_RETRYABLE": "الخطوة دي مش واقعة."
 }

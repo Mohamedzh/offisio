@@ -11,6 +11,7 @@ import LangToggle from "@/components/LangToggle";
 import { formatEgp, getT, localeHref, type TranslationKey } from "@/lib/i18n";
 import type { UseVerdict } from "@/lib/pipeline/rubric";
 import { localeFromParam } from "@/lib/i18n/server";
+import { mapsUrl } from "@/lib/geo";
 
 export const instant = false;
 
@@ -44,7 +45,7 @@ export default async function UnitPage({ params }: PageProps<"/[lang]/units/[slu
         <LangToggle locale={locale} />
       </div>
       <h1 className="font-display text-4xl sm:text-5xl font-black mt-4 leading-[1.02] tracking-[-0.02em]">{locale === "en" ? unit.title_en : unit.title_ar}</h1>
-      <p className="mt-3 flex flex-wrap items-center gap-2 text-ink/75"><span className="w-full sm:w-auto">{unit.district} · {t("unit.floors")} {unit.floor_text}</span><span className="tnum bg-brick text-white font-display font-black px-3 py-1 ink-offset-sm">{formatEgp(locale, unit.rent_egp)}{t("unit.perMonth")}</span></p>
+      <p className="mt-3 flex flex-wrap items-center gap-2 text-ink/75"><span className="w-full sm:w-auto">{unit.district} · {t("unit.floors")} {unit.floor_text}</span>{unit.location && <a href={mapsUrl(unit.location)} target="_blank" rel="noopener noreferrer" className="link text-sm">{t("unit.openInMaps")}{unit.location.approx && ` (${t("unit.approxArea")})`}</a>}<span className="tnum bg-brick text-white font-display font-black px-3 py-1 ink-offset-sm">{formatEgp(locale, unit.rent_egp)}{t("unit.perMonth")}</span></p>
       {unit.synthetic && <p className="mt-3"><span className="bg-mustard text-ink border border-ink text-[11px] font-bold px-2 py-0.5">{t("unit.synthetic")}</span></p>}
       <div className="mt-5 border border-ink bg-sheet p-3 ink-offset"><UnitViewer images={unit.images} locale={locale} synthetic={unit.synthetic} /><StageButtons slug={unit.slug} styles={missingStyles} locale={locale} /></div>
       {unit.video && (

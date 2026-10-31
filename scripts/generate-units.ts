@@ -17,6 +17,7 @@ import { analyzeUnit, saveAnalysis } from "../lib/pipeline/ingest";
 import { area, USES, type Use } from "../lib/pipeline/rubric";
 import type { Survey, SpaceType } from "../lib/pipeline/survey";
 import { keyframesOf } from "../lib/db/store";
+import { SEED_DISTRICTS } from "../lib/geo";
 
 interface BriefSpace { type: string; w: number; l: number; desc: string; frames: number }
 interface Brief { slug: string; district: string; kind: UnitKind; rent_egp: number; daily_egp: number | null; floor_text: string; style: string; spaces: BriefSpace[]; target_uses: string[] }
@@ -103,7 +104,9 @@ async function runUnit(b: Brief): Promise<void> {
   const today = todayCairo();
   const owner: UploadOwner = { district: b.district, rent_egp: b.rent_egp, daily_egp: b.daily_egp, floor_text: b.floor_text, available_from: today, kind: b.kind };
   const rent_periods: RentPeriod[] = b.kind === "furnished" ? ["daily", "monthly"] : ["long_term"];
-  const unitId = await createUploadedUnit({ slug: b.slug, ...owner, rent_periods });
+  const at = SEED_DISTRICTS[b.slug];
+  if (!at) throw new Error(`add ${b.slug} to SEED_DISTRICTS in lib/geo.ts`);
+  const unitId = await createUploadedUnit({ slug: b.slug, ...owner, rent_periods, ...at, location_approx: true });
   try {
     await addMedia(unitId, "video", videoUrl, null, { synthetic: true });
     const a = await analyzeUnit(owner, frames, surveyFromBrief(b));

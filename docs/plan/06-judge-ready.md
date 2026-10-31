@@ -1,6 +1,6 @@
 # Segment 6 — Judge-ready: demo data, staging coverage, agent, guardrails, ship
 
-Status: **in progress** — 6.1–6.6 done and committed 2026-10-30 (through `662570d`, pushed by owner); next is 6.7 location, then 6.8 Clerk owner auth
+Status: **in progress** — 6.1–6.6 done and committed (through `d58d02a`, 2026-10-31). 6.7–6.10 re-planned 2026-10-31: next is 6.7 location + nearby places + menus, then 6.8 WhatsApp, 6.9 Clerk (stretch), 6.10 ship
 
 Goal: the deployed demo holds up when judges use it unattended (Nov 5–8) on a fixed $150 credit budget. That means bookable dates, the staging headline on every listing, a correct agent, hard usage limits, and docs that match the code.
 
@@ -228,49 +228,87 @@ Why: the v1 pipeline sees one hero room. It measured `empty1`/`empty2` as single
   - Buttons get a pointer cursor and hover lift onto a hard ink shadow, press in on click, and show dashed when disabled. Fields tint on hover and get a chalk offset on focus.
   - The file picker is styled. Listing cards straighten, lift and zoom their photo on hover, and their tags sit on the bottom edge. The back arrow is mirrored in RTL. Checked in EN and AR.
 
-### 6.7 Location, minimal (Nov 2) — scope check
-- Migration (approved): `units.lat`, `units.lng` numeric, idempotent `add column if not exists`, `pnpm migrate`, verify the columns.
-- Seed coordinates: district centroid, labelled "approximate area". Upload form: an optional lat/lng or pasted Google Maps link, parsed server-side.
-- Unit page: "Open in Maps" link (no map library).
-- Agent `near`: haversine against `lib/geo/landmarks.ts` (about 15 landmarks: universities, metro stations, Bibliotheca Alexandrina…).
-- Not building (parked, O6): Overpass cafes, the nearby-cafe pipeline, QStash.
-- Verify: every unit has coordinates and a working maps link. Chat "near the AUC in New Cairo" ranks New Cairo units first.
+### 6.7 Location, nearby places and menus (Oct 31 – Nov 1) — revised by owner 2026-10-31
+Owner decisions 2026-10-31: location is **required**; nearby places come from the **Google Places API** (owner supplies a billing-enabled key); menus come from a one-off chain-brand catalogue (AGENTS rule 2 exception) or an owner menu photo; long steps run on **QStash** inside this repo (no separate backend, no folder split, no live scraper).
 
-### 6.8 Owner auth with Clerk (Nov 2) — 5 / O2 / O3
-- Install through the **Vercel Marketplace** (`vercel integration add clerk` or the dashboard), which provisions `CLERK_SECRET_KEY` and `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`. SDK `@clerk/nextjs` v7 (Core 3: `await auth()`, `await auth.protect()`). Add the Clerk vars to `.env.example`.
-- Google sign-in on a **Clerk development instance** (owner decision): Clerk's shared Google credentials, so there's no domain or Google Cloud setup. The dev badge and user limits are accepted for the demo.
-- [proxy.ts](../../proxy.ts): wrap the existing locale redirect inside `clerkMiddleware(async (auth, req) => …)`, and keep the matcher so API routes still run through it. Protect `/[lang]/upload`, `/[lang]/units/[slug]/edit`, `POST /api/units/upload`, `POST /api/units/specs`, the stage route, and the `/api/blob/upload` token issue. **Public:** browse, unit pages, chat, bookings, checkout, webhook (guest renters).
-- [app/[lang]/layout.tsx](../../app/[lang]/layout.tsx): `<ClerkProvider>` goes **inside `<body>`** (required with `cacheComponents: true`). Localized sign-in and sign-up pages at `/[lang]/sign-in/[[...sign-in]]` and `/[lang]/sign-up/[[...sign-up]]` (Clerk `ar` localization plus RTL check). `<UserButton />` in the header for owners.
-- Schema: `units.owner_user_id text` (null for seeded units, which are therefore read-only). Edit and stage check `owner_user_id === userId`. Uploads stay unlisted on the homepage (O3), but the column already allows a later "my listings".
-- PII: owner email and name live in Clerk only. No model ever receives them, and they never touch a contributor model.
-- Verify: signed out, `/upload` redirects to sign-in and the upload/specs APIs return 401. The owner can edit their own unit, another owner gets 403, and seeded units return 403. A guest renter books and pays with no login. Google sign-in works on prod in both AR (RTL) and EN.
+1. **Location.** Migration `units.lat`, `units.lng` (numeric, idempotent). The upload form makes location required: a pasted Google Maps link or lat/lng, parsed on the server. Seeded units get district coordinates labelled "approximate area". The unit page gets an "Open in Maps" link (no map library).
+2. **Pipeline jobs (QStash).** New table `pipeline_jobs(unit_id, step, status, attempts, last_error, updated_at)`. Steps: `analyze` → `listing` → `stage:<style>` (one job each) → `places` → `menus`. QStash calls one signed route per step (`/api/pipeline/[step]`) and retries non-2xx responses. Steps are idempotent and isolated, so one failure never blocks the others. The listing goes live after `listing`; renders and places fill in later. The owner edit page shows per-step status with a retry button. Env: `QSTASH_*` (already in `.env.example`).
 
-### 6.9 Voice note, stretch (likely cut; go/no-go Nov 2) — 6-7
-- Go/no-go at the end of Nov 1 (O8). First a U5 one-call test of `muse-voice-transcribe-1.0` with one owner-recorded Egyptian-Arabic note (shape, formats, quality).
-- If it's a go: record in ChatBox (MediaRecorder) → `POST /api/chat/voice` (≤ 30 s, ≤ 2 MB, counted in the chat limits) → transcript shown in the bubble → normal agent turn with `created_via='voice'`. PII routing: transcribe model, then `meta.product` only.
-- Verify: 5 voice notes covering search and booking intents. Text chat is unaffected when voice is off.
+**Status 2026-10-31 (steps 1–2 built, migrated, uncommitted).** `pnpm chat-acceptance` re-run first: **10/10** (33 tool calls; clinic-role changes from rounds 3–4 did not regress).
+- Step 1 done: `units.lat/lng` (numeric(9,6)) + `location_approx`, migrated on Neon. [lib/geo.ts](../../lib/geo.ts) parses Maps links (prefers the `!3d!4d` pin over the `@` centre, `?q=`/`query=`, plain "lat, lng"), expands `maps.app.goo.gl`/`goo.gl` short links (Google hosts only), rejects points outside Egypt. Upload requires it (`LOCATION_INVALID`). `pnpm backfill-locations` gave 12 seeded units district centres (approximate); `--slug <s> --at <link> [--district <text>]` pins one unit exactly. Unit page: "Open in Maps" link, "(approximate area)" when approximate. Verified EN + AR.
+- Step 2 done: `pipeline_jobs` migrated. [lib/pipeline/jobs.ts](../../lib/pipeline/jobs.ts): upload stores the unit + keyframes + location, returns 202, queues `analyze`; `analyze` (survey + rubric + specs) queues `listing` (goes live) and one `stage:<style>` per planned render, in parallel. Atomic claim makes duplicate deliveries no-ops; a step stuck in `running` > 6 min can be reclaimed. QStash over plain HTTP ([lib/qstash.ts](../../lib/qstash.ts), no new dependency): publish with `Upstash-Retries: 2`, JWT signature verified (current then next key, iss/sub/exp/nbf/body hash). Retryable errors → 500 (QStash retries); quota/missing-input errors are permanent → 200. Locally (no public URL) steps run in-process with no automatic retry. Edit page: per-step status, polling while active, Retry on failed steps (`/api/units/[slug]/pipeline`, rate-limited). Verified EN + AR with temporary fake rows (deleted). Offline checks of the parser and signature verifier pass.
+- Decisions (owner 2026-10-31): auto-rendering every planned fit-out on upload is OK (better demo; still behind the daily spend cap). `gen-alex-louran` pinned by the Bibliotheca (Chatby side), not Louran proper. `QSTASH_*` set in Vercel by owner. In Claude Code sessions subagents run on Opus; the Muse agent table in AGENTS.md is for Muse sessions only.
+- Owner check (set up 2026-10-31): the filmed 3-desk unit `full` moved from Maadi to **New Administrative Capital (Pioneer Plaza)**, Regional Ring Rd. Pinned exactly at 30.036687, 31.681687 (from the owner's plus code `2MPJ+MM`, recovered to `8G2H2MPJ+MM`), `location_approx = false`. Its listing text was swapped Maadi → "Pioneer Plaza, New Capital" / "بايونير بلازا بالعاصمة الإدارية" in plain code (no model call; prices untouched); `scripts/seed.ts` district updated. Expected step-4 result: exactly one nearby cafe, matched to **Second Cup**. Note: `data/seed/full-listing.json` is older than the live text, so `pnpm seed` would overwrite the reassessed listing (pre-existing).
+- Not yet verified: a live end-to-end upload through QStash on the deployed preview (needs a deploy).
+3. **Brand menu catalogue (one-off import).**
+   - `data/seed/chain-brands.json` is the owner-editable list (~150 Egyptian cafe/restaurant chains, with the elmenus slug per brand).
+   - `scripts/import-brand-menus.ts` fetches each brand's menu JSON once, at a polite rate, into new table `brand_menus(brand, source, fetched_at, items jsonb)`.
+   - Plain code does the fetching (no model needed). Muse (`meta.public`; public data) then normalises each brand: Arabic + English item names, a category tag, the 10–15 items best suited to office add-ons, and brand aliases ("Costa", "كوستا", "Costa Coffee - Zamalek").
+   - **Prices are copied from the source, never generated**; validation rejects any price that is not in the source.
+   - Source label shown wherever menus appear.
+4. **Nearby places (`places` step).**
+   - Places API Nearby Search finds the 1–2 nearest cafes/restaurants within ~500 m.
+   - Matching:
+     1. A cheap text pre-filter over the normalised names and aliases gives the top 5 brand candidates.
+     2. One `muse-spark-1.3-contributor` call (via `meta.public`, public place names only) picks the brand or "none".
+   - Stored in `unit_places(unit_id, place_id, name, distance_m, maps_url, brand, menu_source)`.
+   - Embeddings only after a one-call capability test (unknown whether the Meta API offers them).
+   - Respect Places terms: store `place_id` plus what we need to display, with attribution.
+5. **Owner menu photo (fallback, `menus` step).** No brand match → an optional menu photo at upload or edit → Muse vision extracts items with prices (validated JSON) → labelled "from the owner's photo". Without a photo, the place shows with a Maps link and "menu not listed yet".
+6. **Product surfaces.**
+   - Unit page "Nearby" section: place, distance, a top-items menu, source label.
+   - Daily bookings: menu items become add-ons, paid with the booking.
+   - Agent: tools `nearby_places(unit)` and `near` search (landmarks list, haversine), so it can answer "what's near to eat" and "near AUC".
+   - Monthly tenants only see the info plus the cafe's WhatsApp link (no standalone food orders).
+7. **Verify.**
+   - Every unit has coordinates; at least 10/13 units show a matched brand menu.
+   - A fresh upload with a real Cairo location gets places within one QStash run.
+   - A failed step can be retried alone.
+   - Chat "near AUC" ranks New Cairo first; chat acceptance is still 10/10.
+   - Cost: the brand normalisation is ~150 contributor calls (~$0.05); Places calls are billed to the owner's key.
+
+### 6.8 WhatsApp booking channel (Nov 1–2) — owner decision 2026-10-31
+- **Setup (owner):** create a Meta Business account and a developer app with the WhatsApp product. Add the new number (it must not be active in the WhatsApp app) and verify it by SMS or call. Create a permanent access token. Env: `WHATSAPP_TOKEN`, `WHATSAPP_PHONE_NUMBER_ID`, `WHATSAPP_APP_SECRET`, `WHATSAPP_VERIFY_TOKEN`.
+- **First:** a one-message capability test (send plus receive) before building. Open questions to confirm:
+  - whether display-name review limits messaging;
+  - the business-initiated message limits for unverified businesses.
+- **Build:**
+  - `GET|POST /api/whatsapp/webhook`: verify the challenge, check the `X-Hub-Signature-256` HMAC, dedupe by message id.
+  - Each text runs the existing agent with `created_via='whatsapp'`. A session is keyed by a hashed sender number.
+  - Replies go through the Cloud API, inside the 24-hour customer-service window.
+  - After `create_booking` the agent sends the XPay test-mode checkout link. The signed XPay webhook confirms the booking, then a WhatsApp confirmation goes out.
+  - No COD, no partial payments.
+- **PII:** message text and phone numbers go to `meta.product` (`muse-spark-1.3`) only, never contributor. Store minimal data; the phone number is hashed for session lookup.
+- **Limits:** the same chat limits (chars, turns, per-number rate) and spend breaker as web chat.
+- **Verify:**
+  - Book end to end from 2 phones (AR + EN): search → availability → booking → pay link → confirmation message.
+  - A bad signature returns 401.
+  - Web chat is unaffected.
+
+### 6.9 Owner auth with Clerk (stretch; only if 6.7–6.8 are done by Nov 2) — 5 / O2 / O3
+- As planned earlier: Clerk dev instance via the Vercel Marketplace, Google sign-in, `clerkMiddleware` around the locale redirect, protect upload/edit/specs/stage/blob-token, and `units.owner_user_id`. Renters stay guests.
+- If cut: the existing per-IP limits and spend breaker remain the abuse controls. Say so in the README judge notes.
 
 ### 6.10 Ship (Nov 2–3, Nov 4 buffer)
-- README final pass: "What we built" section, models used, bring-your-own `META_API_KEY` for local runs, judge notes on limits and the quota message.
-- Cold run on prod by someone other than the builder, AR RTL and EN LTR, recorded here. Record the 3-minute demo on Nov 3. Submit Nov 4.
+- README final pass:
+  - "What we built", models used, bring-your-own `META_API_KEY`, judge notes on limits.
+  - The WhatsApp number for testing (only allow-listed numbers if still in test mode).
+  - The elmenus source note: demo data, not affiliated; production = authorized integration.
+- Cold run on prod by someone other than the builder, AR RTL and EN LTR, recorded here. Record the 3-minute demo on Nov 3 (show WhatsApp booking and the nearby menu). Submit Nov 4.
+- Voice notes (old 6.9): **cut** (owner, 2026-10-31).
 
 ## Handoff
-6.1–6.6 are committed and pushed (`662570d`). Next session starts at **6.7 location**, then 6.8 Clerk, the 6.9 voice go/no-go, and 6.10 ship.
+6.1–6.6 are committed (through `d58d02a`). **6.7 steps 1–2 are built, migrated on Neon and verified locally (EN + AR), uncommitted** (2026-10-31; detail under 6.7 "Status"). Chat acceptance 10/10.
+
+Next session, in this order:
+1. Deploy and run one real upload through QStash on the preview/production URL (`NEXT_PUBLIC_APP_URL` must be the public origin); check per-step status and a Retry.
+2. 6.7 step 3: brand-menu import. Owner has finished `data/seed/chain-brands.json` and set `GOOGLE_PLACES_API_KEY`. Dry run first (brand count, calls, cost), real run only after owner go.
+3. Then steps 4–7 (places, menus, product surfaces, verify; `full` must show exactly one cafe, Second Cup).
+
+In parallel (owner): Meta Business + WhatsApp Cloud API setup for 6.8. Send the phone number ID; tokens go in env only.
 
 Owner actions before the next deploy:
-- Set `GUARD_SALT` in Vercel (copy the value from `.env.local`). Without it, per-IP limit keys fall back and are less private.
+- Set `GUARD_SALT` in Vercel (copy the value from `.env.local`).
 - Optionally set `DEMO_DAILY_SPEND_USD` in Vercel (the code default is 15).
-- Do not set `OFFISIO_DEV_MODELS` or `MODAL_*` in Vercel. They are dev-only, and the switch is ignored when `VERCEL` is set.
-- After deploying, spot-check prod: the homepage, one synthetic unit (AI-generated label, no white bar), one filmed unit (tear reveals the emptied room), and one chat booking.
-
-Tab count: the per-use grouping (round 3) brings filmed units from 8 tabs down to 6. A further cap is not needed for now.
-
-6.7 approach (approved scope, no new dependencies):
-1. Migration: `units.lat`, `units.lng`.
-2. District-centroid seed coordinates, labelled "approximate area".
-3. "Open in Maps" link on the unit page.
-4. Optional pasted Google Maps link on upload, parsed on the server.
-5. `lib/geo/landmarks.ts` (about 15 landmarks), plus a haversine `near` parameter on the agent's `search_units`.
-6. Verify with a chat scenario: "near AUC" should rank New Cairo first.
-
-Estimated model spend: a single chat acceptance run (about $0.10).
+- Do not set `OFFISIO_DEV_MODELS` or `MODAL_*` in Vercel.
+- `NEXT_PUBLIC_APP_URL` in Vercel must be the production https origin (QStash posts there; protected previews reject it).

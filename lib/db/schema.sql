@@ -83,3 +83,20 @@ alter table chat_sessions add column if not exists turns int not null default 0;
 create index if not exists idx_media_unit_kind on media(unit_id, kind);
 create index if not exists idx_avail_open on availability(unit_id, starts_at) where not is_booked;
 create index if not exists idx_units_status on units(status);
+-- Location (plan/06 6.7 step 1). Nullable so existing rows migrate; the upload
+-- route requires it and scripts/backfill-locations.ts fills seeded units with
+-- district centres (location_approx = true, shown as "approximate area").
+alter table units add column if not exists lat numeric(9,6);
+alter table units add column if not exists lng numeric(9,6);
+alter table units add column if not exists location_approx boolean not null default false;
+-- Pipeline jobs (plan/06 6.7 step 2): one row per unit and step
+-- (analyze | listing | stage:<style> | places | menus), driven by QStash.
+create table if not exists pipeline_jobs (
+  unit_id uuid not null references units(id) on delete cascade,
+  step text not null,
+  status text not null default 'queued' check (status in ('queued','running','done','failed')),
+  attempts int not null default 0,
+  last_error text,
+  updated_at timestamptz not null default now(),
+  primary key (unit_id, step)
+);

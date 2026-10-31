@@ -7,7 +7,7 @@ import { generateAvailability } from "../lib/db/store";
 
 interface Listing { title_ar: string; title_en: string; summary_ar: string; summary_en: string; highlights_ar: string[]; highlights_en: string[] }
 const UNITS = [
-  { slug: "full", kind: "furnished", periods: ["daily", "monthly"], daily: 800, district: "Maadi, Cairo", rent: 14500, floor: "2nd" },
+  { slug: "full", kind: "furnished", periods: ["daily", "monthly"], daily: 800, district: "New Administrative Capital (Pioneer Plaza)", rent: 14500, floor: "2nd" },
   { slug: "empty1", kind: "semifinished", periods: ["long_term"], daily: null, district: "Nasr City, Cairo", rent: 8500, floor: "Ground" },
   { slug: "empty2", kind: "semifinished", periods: ["long_term"], daily: null, district: "New Cairo", rent: 11000, floor: "5th" },
 ] as const;

@@ -151,5 +151,21 @@
   "viewer.part.room": "Room {n}",
   "viewer.part.reception": "Reception",
   "viewer.part.private": "Private office",
-  "viewer.rooms": "{n} rooms in this fit, tap to switch"
+  "viewer.rooms": "{n} rooms in this fit, tap to switch",
+  "upload.location": "Location",
+  "upload.locationHint": "Paste the Google Maps link of the office (Share → Copy link), or type lat, lng.",
+  "error.LOCATION_INVALID": "We couldn't read a location in Egypt from that. Paste a Google Maps link or lat, lng (e.g. 30.0609, 31.2194).",
+  "unit.openInMaps": "Open in Maps",
+  "unit.approxArea": "approximate area",
+  "pipeline.title": "Listing progress",
+  "pipeline.note": "Your listing goes live after the listing step; fit-out renders fill in afterwards. Each step runs on its own, so one failure does not stop the others.",
+  "pipeline.step.analyze": "Room survey and specs",
+  "pipeline.step.listing": "Listing text (goes live)",
+  "pipeline.status.queued": "Queued",
+  "pipeline.status.running": "Running",
+  "pipeline.status.done": "Done",
+  "pipeline.status.failed": "Failed",
+  "pipeline.attempts": "attempt {n}",
+  "pipeline.retry": "Retry",
+  "error.NOT_RETRYABLE": "That step is not in a failed state."
 }

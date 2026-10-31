@@ -14,6 +14,8 @@ export interface Unit {
   images: { real: string; empty: string | null; staged: { style: string; url: string }[] };
   video: string | null;
   synthetic: boolean;
+  // Required for uploads; seeded units carry district centres (approx = true).
+  location: { lat: number; lng: number; approx: boolean } | null;
 }
 export interface Slot { id: string; unit_slug: string; date: string; starts_at: string; ends_at: string; is_booked: boolean }
 export interface AddonItem { id: string; booking_id: string; item_id: string; name_en: string; name_ar: string; qty: number; unit_price_egp: number; deliver_at: string | null; status: "pending_cafe" | "sent_to_cafe" }
@@ -31,6 +33,7 @@ interface UnitRow {
   floor_text: string; available_from: string; rent_periods: RentPeriod[];
   title_ar: string; title_en: string; summary_ar: string; summary_en: string;
   highlights_ar: string[]; highlights_en: string[]; specs: Record<string, unknown> | null;
+  lat: string | null; lng: string | null; location_approx: boolean;
   media: { kind: string; style: string | null; url: string; meta?: Record<string, unknown> }[] | null;
 }
 
@@ -61,13 +64,14 @@ function rowToUnit(r: UnitRow): Unit {
     },
     video: byKind("video"),
     synthetic: media.some((m) => m.meta?.synthetic === true),
+    location: r.lat !== null && r.lng !== null ? { lat: Number(r.lat), lng: Number(r.lng), approx: r.location_approx } : null,
   };
 }
 
 const UNIT_SQL = `
   select u.slug, u.kind, u.district, u.rent_egp, u.daily_egp, u.floor_text, u.available_from,
          u.rent_periods, u.title_ar, u.title_en, u.summary_ar, u.summary_en, u.highlights_ar, u.highlights_en,
-         s.data as specs,
+         u.lat, u.lng, u.location_approx, s.data as specs,
          coalesce((select json_agg(json_build_object('kind', m.kind, 'style', m.style, 'url', m.url, 'meta', m.meta) order by (m.url like 'https://%') desc, m.created_at desc) from media m where m.unit_id = u.id and m.is_current), '[]') as media
   from units u left join specs s on s.unit_id = u.id`;
 
@@ -78,13 +82,13 @@ export async function listUnits(): Promise<Unit[]> {
 
 export interface CreateUploadedUnitInput {
   slug: string; kind: Unit["kind"]; district: string; rent_egp: number; daily_egp: number | null;
-  floor_text: string; available_from: string; rent_periods: RentPeriod[];
+  floor_text: string; available_from: string; rent_periods: RentPeriod[]; lat: number; lng: number; location_approx?: boolean;
 }
 export async function createUploadedUnit(input: CreateUploadedUnitInput): Promise<string> {
   const { rows } = await pool().query<{ id: string }>(
-    `insert into units (slug, kind, status, district, rent_egp, daily_egp, floor_text, available_from, rent_periods)
-     values ($1,$2,'processing',$3,$4,$5,$6,$7,$8) returning id`,
-    [input.slug, input.kind, input.district, input.rent_egp, input.daily_egp, input.floor_text, input.available_from, input.rent_periods]);
+    `insert into units (slug, kind, status, district, rent_egp, daily_egp, floor_text, available_from, rent_periods, lat, lng, location_approx)
+     values ($1,$2,'processing',$3,$4,$5,$6,$7,$8,$9,$10,$11) returning id`,
+    [input.slug, input.kind, input.district, input.rent_egp, input.daily_egp, input.floor_text, input.available_from, input.rent_periods, input.lat, input.lng, input.location_approx ?? false]);
   return rows[0].id;
 }
 export async function addMedia(unitId: string, kind: string, url: string, style: string | null = null, meta: Record<string, unknown> = {}): Promise<void> {
@@ -124,7 +128,13 @@ export async function setUnitStatus(slug: string, status: "processing" | "ready"
 }
 export interface GeneratedListing { title_ar: string; title_en: string; summary_ar: string; summary_en: string; highlights_ar: string[]; highlights_en: string[] }
 export async function saveGenerated(unitId: string, specs: Record<string, unknown>, listing: GeneratedListing): Promise<void> {
+  await saveSpecs(unitId, specs);
+  await saveListing(unitId, listing);
+}
+export async function saveSpecs(unitId: string, specs: Record<string, unknown>): Promise<void> {
   await pool().query(`insert into specs (unit_id, data, model) values ($1,$2,'muse-spark-1.3') on conflict (unit_id) do update set data = excluded.data, model = excluded.model`, [unitId, JSON.stringify(specs)]);
+}
+export async function saveListing(unitId: string, listing: GeneratedListing): Promise<void> {
   await pool().query(
     `update units set title_ar = $2, title_en = $3, summary_ar = $4, summary_en = $5, highlights_ar = $6, highlights_en = $7 where id = $1`,
     [unitId, listing.title_ar, listing.title_en, listing.summary_ar, listing.summary_en, JSON.stringify(listing.highlights_ar), JSON.stringify(listing.highlights_en)]);
@@ -237,4 +247,48 @@ export async function getBooking(id: string): Promise<Booking | null> {
   const pay = await pool().query<{ id: string }>("select id from payments where booking_id = $1 order by created_at desc limit 1", [id]);
   // Cafe WhatsApp URL is derived at confirm time, not stored; recompute in booking service.
   return rowToBooking(rows[0], pay.rows[0]?.id ?? null, null);
+}
+
+// Pipeline jobs (plan/06 6.7 step 2). One row per (unit, step); see lib/pipeline/jobs.ts.
+export type JobStatus = "queued" | "running" | "done" | "failed";
+export interface Job { step: string; status: JobStatus; attempts: number; last_error: string | null; updated_at: string }
+export async function queueJobs(unitId: string, steps: string[]): Promise<void> {
+  if (!steps.length) return;
+  await pool().query(
+    `insert into pipeline_jobs (unit_id, step) select $1, unnest($2::text[])
+     on conflict (unit_id, step) do update set status = 'queued', last_error = null, updated_at = now()`, [unitId, steps]);
+}
+// Atomic claim: queued, failed (a QStash retry) or stuck running. Null = already done or in progress.
+const STUCK_MINUTES = 6;
+export async function claimJob(unitId: string, step: string): Promise<number | null> {
+  const { rows } = await pool().query<{ attempts: number }>(
+    `update pipeline_jobs set status = 'running', attempts = attempts + 1, updated_at = now()
+     where unit_id = $1 and step = $2
+       and (status in ('queued','failed') or (status = 'running' and updated_at < now() - make_interval(mins => $3::int)))
+     returning attempts`, [unitId, step, STUCK_MINUTES]);
+  return rows[0]?.attempts ?? null;
+}
+export async function finishJob(unitId: string, step: string, error: string | null = null): Promise<void> {
+  await pool().query(
+    "update pipeline_jobs set status = $3, last_error = $4, updated_at = now() where unit_id = $1 and step = $2",
+    [unitId, step, error === null ? "done" : "failed", error === null ? null : error.slice(0, 500)]);
+}
+export async function jobsOf(unitId: string): Promise<Job[]> {
+  const { rows } = await pool().query<Job>(
+    "select step, status, attempts, last_error, updated_at from pipeline_jobs where unit_id = $1 order by updated_at", [unitId]);
+  return rows.map((r) => ({ ...r, updated_at: new Date(r.updated_at).toISOString() }));
+}
+// What the analyze/listing steps need: owner fields and keyframes with timestamps.
+export interface UploadInputs {
+  id: string; slug: string; kind: Unit["kind"]; district: string; rent_egp: number; daily_egp: number | null;
+  floor_text: string; available_from: string; frames: { url: string; t: number }[]; specs: Record<string, unknown> | null;
+}
+export async function uploadInputs(slug: string): Promise<UploadInputs | null> {
+  const { rows } = await pool().query<Omit<UploadInputs, "frames"> & { frames: { url: string; t: number | null }[] | null }>(
+    `select u.id, u.slug, u.kind, u.district, u.rent_egp, u.daily_egp, u.floor_text, u.available_from::text as available_from, s.data as specs,
+            (select json_agg(json_build_object('url', m.url, 't', (m.meta->>'t')::float) order by (m.meta->>'frame')::int nulls last, m.created_at)
+             from media m where m.unit_id = u.id and m.kind = 'keyframe' and m.is_current) as frames
+     from units u left join specs s on s.unit_id = u.id where u.slug = $1`, [slug]);
+  const r = rows[0];
+  return r ? { ...r, frames: (r.frames ?? []).map((f, i) => ({ url: f.url, t: f.t ?? i })) } : null;
 }

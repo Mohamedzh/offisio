@@ -11,7 +11,7 @@ Owned decisions where this differs from [ARCHITECTURE.md](ARCHITECTURE.md) (agre
 | D3 | Specs are owner-editable estimates with confidence, never presented as measured | Vision cannot measure m² reliably |
 | D4 | Owner enters district, rent (EGP/month), floor, available-from at upload | Cannot be inferred from video; realistic listing needs them |
 | D5 | Demo seed target is 4–5 polished units, not 10–15. **Revised 2026-10-29:** ~13 units (3 filmed + synthetic, badged), every one fully staged, across more districts and layouts ([plan/06](plan/06-judge-ready.md) 6.6) | Solo, 9 days; quality beats breadth for judging |
-| D6 | Chat UI is a generic messaging UI, no WhatsApp branding | Trademark risk, zero demo gain |
+| D6 | Chat UI is a generic messaging UI, no WhatsApp branding. **Amended 2026-10-31:** renters may also book over WhatsApp as a *channel* (Meta WhatsApp Cloud API, owner's own business number). Our web UI still copies no WhatsApp look; we only name and link the channel ("Chat with Offisio on WhatsApp"). | Trademark risk in our UI; the channel itself keeps the demo inside Meta's ecosystem |
 | D7 | `muse-spark-1.3-contributor` only for synthetic/public test data, never PII | Contributor content may train Meta models. See PII routing in [AGENTS.md](../AGENTS.md) |
 
 Test footage (owned, licensed): a furnished 3-desk office and a meeting room, shot on phone. These are the capability-test and demo inputs. No stock or third-party assets anywhere.

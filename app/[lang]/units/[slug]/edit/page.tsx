@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { connection } from "next/server";
-import { getUnit } from "@/lib/db/store";
+import { getUnit, jobsOf, unitRef } from "@/lib/db/store";
+import PipelineStatus from "@/components/PipelineStatus";
 import SpecsEditForm from "@/components/SpecsEditForm";
 import LangToggle from "@/components/LangToggle";
 import { getT, localeHref } from "@/lib/i18n";
@@ -14,8 +15,9 @@ export default async function EditUnitPage({ params }: PageProps<"/[lang]/units/
   const { slug, lang } = await params;
   const locale = localeFromParam(lang);
   const t = getT(locale);
-  const unit = await getUnit(slug);
-  if (!unit) notFound();
+  const [unit, ref] = await Promise.all([getUnit(slug), unitRef(slug)]);
+  if (!unit || !ref) notFound();
+  const jobs = await jobsOf(ref.id);
   return (
     <main className="mx-auto w-full max-w-2xl px-4 py-8">
       <div className="flex items-center justify-between">
@@ -26,6 +28,7 @@ export default async function EditUnitPage({ params }: PageProps<"/[lang]/units/
         <div className="torn-b" aria-hidden />
         <div className="p-5">
           <h1 className="font-display text-3xl font-black tracking-[-0.02em] mb-4">{t("edit.title")}</h1>
+          <PipelineStatus slug={slug} initial={jobs} locale={locale} />
           <SpecsEditForm slug={slug} specs={unit.specs} locale={locale} />
           <Link href={localeHref(`/units/${slug}`, locale)} className="mt-4 inline-block text-sm link">{t("edit.viewListing")}</Link>
         </div>

@@ -1,11 +1,12 @@
-import { addMedia, createUploadedUnit, generateAvailability, setUnitStatus, type RentPeriod } from "@/lib/db/store";
+// Owner upload: validate, store the unit (status processing) with its keyframes
+// and location, then hand off to the pipeline (lib/pipeline/jobs.ts). The
+// survey, listing and renders run as separate QStash steps after this returns.
+import { addMedia, createUploadedUnit, replaceKeyframes, setUnitStatus, type RentPeriod } from "@/lib/db/store";
 import { isBlobUrl } from "@/lib/blob";
-import type { UploadOwner } from "@/lib/pipeline/specs-listing";
-import { analyzeUnit, saveAnalysis } from "@/lib/pipeline/ingest";
+import { enqueue } from "@/lib/pipeline/jobs";
+import { resolveLocation } from "@/lib/geo";
 import type { UnitKind } from "@/lib/meta/prompts";
 import { CAPS, deny, limit, spendBlocked } from "@/lib/guard";
-
-export const maxDuration = 300;
 
 const bad = (error: string) => Response.json({ error }, { status: 400 });
 const SLUG_RE = /^[A-Za-z0-9_-]{1,64}$/;
@@ -37,6 +38,7 @@ export async function POST(req: Request) {
   const frameUrls = body.frameUrls;
   const frameTimes = Array.isArray(body.frameTimes) ? (body.frameTimes as unknown[]).map(Number) : null;
   const videoUrl = body.videoUrl === undefined || body.videoUrl === null ? null : String(body.videoUrl);
+  const locationText = String(body.location ?? "");
 
   if (!SLUG_RE.test(slug)) return bad("slug is invalid");
   if (!district) return bad("district is required");
@@ -50,26 +52,20 @@ export async function POST(req: Request) {
   if (frameTimes && (frameTimes.length !== frameUrls.length || !frameTimes.every((t) => Number.isFinite(t) && t >= 0))) return bad("frameTimes must match frameUrls");
   for (const u of frameUrls as string[]) if (!isUploadsUrl(u, slug)) return bad("frame URL must be a Blob URL under uploads/<slug>/");
   if (videoUrl !== null && !isUploadsUrl(videoUrl, slug)) return bad("video URL must be a Blob URL under uploads/<slug>/");
+  const location = await resolveLocation(locationText);
+  if (!location) return bad("LOCATION_INVALID");
 
-  const owner: UploadOwner = { district, rent_egp, daily_egp, floor_text, available_from, kind: kind as UnitKind };
   const rent_periods: RentPeriod[] = kind === "furnished" ? ["daily", "monthly"] : ["long_term"];
-  let step = "ingest";
   let created = false;
   try {
-    const unitId = await createUploadedUnit({ slug, kind: kind as UnitKind, district, rent_egp, daily_egp, floor_text, available_from, rent_periods });
+    const unitId = await createUploadedUnit({ slug, kind: kind as UnitKind, district, rent_egp, daily_egp, floor_text, available_from, rent_periods, ...location });
     created = true;
-    const frames = (frameUrls as string[]).map((url, i) => ({ url, t: frameTimes?.[i] ?? i }));
+    await replaceKeyframes(unitId, (frameUrls as string[]).map((url, i) => ({ url, meta: { t: frameTimes?.[i] ?? i, frame: i } })));
     if (videoUrl) await addMedia(unitId, "video", videoUrl, null, {});
-    // Survey -> rubric -> specs -> listing v2 (docs/RUBRIC.md); keyframes keep timestamps + spaces.
-    step = "analysis";
-    const analysis = await analyzeUnit(owner, frames);
-    step = "save";
-    await saveAnalysis(unitId, frames, analysis);
-    await generateAvailability(unitId, available_from);
-    await setUnitStatus(slug, "ready");
-    return Response.json({ slug }, { status: 201 });
+    await enqueue(unitId, slug, ["analyze"]);
+    return Response.json({ slug }, { status: 202 });
   } catch (e) {
     if (created) { try { await setUnitStatus(slug, "failed"); } catch { /* keep original error */ } }
-    return Response.json({ error: `${step}: ${(e as Error).message}` }, { status: 502 });
+    return Response.json({ error: `ingest: ${(e as Error).message}` }, { status: 502 });
   }
 }

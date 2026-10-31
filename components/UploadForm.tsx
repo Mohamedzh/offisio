@@ -50,7 +50,7 @@ async function extractFrames(file: File): Promise<Frame[]> {
 export default function UploadForm({ locale }: { locale: Locale }) {
   const router = useRouter(); const t = getT(locale);
   const [frames, setFrames] = useState<Frame[]>([]);
-  const [district, setDistrict] = useState(""); const [rent, setRent] = useState(""); const [daily, setDaily] = useState("");
+  const [district, setDistrict] = useState(""); const [location, setLocation] = useState(""); const [rent, setRent] = useState(""); const [daily, setDaily] = useState("");
   const [floor, setFloor] = useState(""); const [availableFrom, setAvailableFrom] = useState(""); const [kind, setKind] = useState("furnished");
   const [msg, setMsg] = useState(""); const [extracting, setExtracting] = useState(false); const [busy, setBusy] = useState(false);
   const [videoFile, setVideoFile] = useState<File | null>(null);
@@ -91,13 +91,13 @@ export default function UploadForm({ locale }: { locale: Locale }) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          slug, district, rent_egp: rent, daily_egp: daily || null,
+          slug, district, location, rent_egp: rent, daily_egp: daily || null,
           floor_text: floor, available_from: availableFrom, kind, frameUrls, frameTimes: frames.map((f) => f.t), videoUrl,
         }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error ?? t("upload.failed"));
-      router.push(localeHref(`/units/${data.slug}/edit`, locale));
+      router.push(localeHref(`/units/${data.slug}/edit`, locale)); // pipeline status shows there
     } catch (e) { setMsg(errorText(t, (e as Error).message)); setBusy(false); }
   }
 
@@ -124,6 +124,10 @@ export default function UploadForm({ locale }: { locale: Locale }) {
         </div>
       )}
       <label className="block text-sm">{t("upload.district")}<input value={district} onChange={(e) => setDistrict(e.target.value)} className={inputCls} /></label>
+      <div>
+        <label className="block text-sm">{t("upload.location")}<input value={location} onChange={(e) => setLocation(e.target.value)} dir="ltr" inputMode="url" placeholder="https://maps.app.goo.gl/…" className={inputCls} /></label>
+        <p className="text-xs text-ink/75 mt-1">{t("upload.locationHint")}</p>
+      </div>
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="block text-sm">{t("upload.rent")}<input type="number" min={1} value={rent} onChange={(e) => setRent(e.target.value)} className={inputCls} /></label>
         <label className="block text-sm">{t("upload.dailyRent")}<input type="number" min={1} value={daily} onChange={(e) => setDaily(e.target.value)} className={inputCls} /></label>
@@ -136,7 +140,7 @@ export default function UploadForm({ locale }: { locale: Locale }) {
           <option value="semifinished">{t("upload.semifinished")}</option>
         </select></label>
       {msg && <p className="text-sm font-bold text-brick">{msg}</p>}
-      <button disabled={busy || extracting || frames.length < 3 || !district || !rent || !floor || !availableFrom} onClick={submit} className="btn btn-brick btn-md w-full">{busy ? t("upload.processing") : t("upload.submit")}</button>
+      <button disabled={busy || extracting || frames.length < 3 || !district || !location.trim() || !rent || !floor || !availableFrom} onClick={submit} className="btn btn-brick btn-md w-full">{busy ? t("upload.processing") : t("upload.submit")}</button>
     </div>
   );
 }
