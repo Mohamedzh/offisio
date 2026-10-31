@@ -11,6 +11,8 @@ import { ADDON_CATALOG } from "../addons/catalog";
 import { USES, type UseVerdict } from "../pipeline/rubric";
 
 const MAX_ROUNDS = 6;
+export type Channel = "chat" | "whatsapp";
+type Ctx = { bookingId?: string; total?: number; channel: Channel };
 type Msg = { role: string; content: string | null; tool_calls?: ToolCall[]; tool_call_id?: string };
 interface ToolCall { id: string; type: "function"; function: { name: string; arguments: string } }
 
@@ -37,7 +39,7 @@ const brief = (u: Unit) => ({
 });
 const str = (v: unknown, max = 80) => (typeof v === "string" && v.trim() && v.length <= max ? v.trim() : null);
 
-async function runTool(name: string, rawArgs: string, ctx: { bookingId?: string; total?: number }): Promise<unknown> {
+async function runTool(name: string, rawArgs: string, ctx: Ctx): Promise<unknown> {
   let a: Record<string, unknown>;
   try { a = JSON.parse(rawArgs || "{}"); } catch { return { error: "arguments must be JSON" }; }
   if (name === "search_units") {
@@ -79,6 +81,7 @@ async function runTool(name: string, rawArgs: string, ctx: { bookingId?: string;
         unit_slug: String(a.slug ?? ""), date: String(a.date ?? ""), track: ["daily", "monthly", "long_term"].find((x) => x === a.track) as Unit["rent_periods"][number] | undefined,
         renter_name: String(a.renter_name ?? ""), renter_phone: String(a.renter_phone ?? "").replace(/\D/g, ""),
         addons: Array.isArray(a.addons) ? (a.addons as { item_id: string; qty: number }[]).slice(0, 10) : [],
+        created_via: ctx.channel,
       });
       ctx.bookingId = b.id; ctx.total = b.total_egp;
       return { booking_ref: b.id.slice(0, 8), status: b.status, total_egp: b.total_egp, hold_minutes: 30 };
@@ -113,10 +116,10 @@ export async function sessionTurns(sessionKey: string): Promise<number> {
   return rows[0]?.turns ?? 0;
 }
 
-export async function chatTurn(sessionId: string, message: string): Promise<{ reply: string; booking_id?: string; total_egp?: number }> {
+export async function chatTurn(sessionId: string, message: string, channel: Channel = "chat"): Promise<{ reply: string; booking_id?: string; total_egp?: number }> {
   const history = (await loadHistory(sessionId)).slice(-10);
   const msgs: Msg[] = [{ role: "system", content: systemPrompt() }, ...history, { role: "user", content: message }];
-  const ctx: { bookingId?: string; total?: number } = {};
+  const ctx: Ctx = { channel };
   const trace: unknown[] = [];
   let reply = "";
   for (let round = 0; round <= MAX_ROUNDS; round++) {

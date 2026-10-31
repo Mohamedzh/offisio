@@ -1,0 +1,1714 @@
+{
+  "brand": "El Tabei El Domyati",
+  "source": "elmenus.com",
+  "source_label": "Menu source: elmenus.com (demo data, not affiliated)",
+  "restaurant_url": "https://elmenus.com/cairo/el-tabei-el-domyati-p7wz",
+  "branch_code": "9pzm",
+  "fetched_at": "2026-10-31T12:38:37.348Z",
+  "categories": [
+    {
+      "name": "Value Meals",
+      "items": [
+        {
+          "name": "Breakfast Offer",
+          "description": "fried cheese sandwich, 1 medium packet of French fries, 1 Pepsi can",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Salads ",
+      "items": [
+        {
+          "name": "Green Salad",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 13
+            }
+          ]
+        },
+        {
+          "name": "Tehina",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 16.5
+            }
+          ]
+        },
+        {
+          "name": "Baba Ghanoug",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 17.5
+            }
+          ]
+        },
+        {
+          "name": "Hummus Salad",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 21
+            }
+          ]
+        },
+        {
+          "name": "Larousse Salad",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 17
+            }
+          ]
+        },
+        {
+          "name": "Coleslaw",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 19.5
+            }
+          ]
+        },
+        {
+          "name": "Garlic Dip",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 18
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pickles ",
+      "items": [
+        {
+          "name": "Super Pickles Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 9.5
+            }
+          ]
+        },
+        {
+          "name": "Mexican Pepper Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 16
+            }
+          ]
+        },
+        {
+          "name": "Pickled Eggplant Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 15
+            }
+          ]
+        },
+        {
+          "name": "Pickled Cucumber Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 14
+            }
+          ]
+        },
+        {
+          "name": "Pickled Potatoes Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 14
+            }
+          ]
+        },
+        {
+          "name": "Pickled Lemon Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 16
+            }
+          ]
+        },
+        {
+          "name": "Mix Pickles Jar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 38.5
+            }
+          ]
+        },
+        {
+          "name": "Saffron Lemon Jar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 61.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Foul Sandwiches",
+      "items": [
+        {
+          "name": "Foul Fino Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 16.5
+            }
+          ]
+        },
+        {
+          "name": "Foul with Salsa Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 18
+            }
+          ]
+        },
+        {
+          "name": "Foul Demes Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        },
+        {
+          "name": "Mix Foul Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        },
+        {
+          "name": "Spicy Foul Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 19.5
+            }
+          ]
+        },
+        {
+          "name": "Foul with Lemon Sauce Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 19.5
+            }
+          ]
+        },
+        {
+          "name": "Foul with Flaxseed Oil Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20.5
+            }
+          ]
+        },
+        {
+          "name": "Foul with Olive Oil Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 21
+            }
+          ]
+        },
+        {
+          "name": "Foul with Boiled Eggs Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 28
+            }
+          ]
+        },
+        {
+          "name": "Foul with Omelette Eggs Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 28
+            }
+          ]
+        },
+        {
+          "name": "Hummus Foul Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 23
+            }
+          ]
+        },
+        {
+          "name": "Foul with Sojouk Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 37
+            }
+          ]
+        },
+        {
+          "name": "El Tabei Foul with Khalta Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 14.5
+            }
+          ]
+        },
+        {
+          "name": "Foul Baladi Bread Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 15.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Falafel Sandwiches ",
+      "items": [
+        {
+          "name": "Falafel Fino Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 16.5
+            }
+          ]
+        },
+        {
+          "name": "El Tabei Falafel Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 14.5
+            }
+          ]
+        },
+        {
+          "name": "Hummus Falafel  Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 23
+            }
+          ]
+        },
+        {
+          "name": "Spicy Falafel Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 18
+            }
+          ]
+        },
+        {
+          "name": "American Falafel Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 24
+            }
+          ]
+        },
+        {
+          "name": "Large Falafel Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 16
+            }
+          ]
+        },
+        {
+          "name": "Grand Falafel",
+          "description": "Falafel with salad and tahini, served in French bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 23
+            }
+          ]
+        },
+        {
+          "name": "Syrian Falafel Sandwich",
+          "description": "Falafel with garlic dip, pickled cucumber and Syrian bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 28
+            }
+          ]
+        },
+        {
+          "name": "Baladi Falafel",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 15.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Potatoes Sandwiches ",
+      "items": [
+        {
+          "name": "Fries Fino Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 22.5
+            }
+          ]
+        },
+        {
+          "name": "French Fries Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20.5
+            }
+          ]
+        },
+        {
+          "name": "Mashed Potatoes with Minced Meat Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 28
+            }
+          ]
+        },
+        {
+          "name": "Fries with Thousand Sauce Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 24
+            }
+          ]
+        },
+        {
+          "name": "Mashed Potato Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 16
+            }
+          ]
+        },
+        {
+          "name": "Mashed Potato with Roumi Sauce Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 26.5
+            }
+          ]
+        },
+        {
+          "name": "Fries with Sojouk Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 44
+            }
+          ]
+        },
+        {
+          "name": "Mashed Potatoes with Sojouk Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 39.5
+            }
+          ]
+        },
+        {
+          "name": "Fries with Ketchup Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 22.5
+            }
+          ]
+        },
+        {
+          "name": "Mashed Potato with Egg Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 28
+            }
+          ]
+        },
+        {
+          "name": "Fries with Roumi Sauce Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 31
+            }
+          ]
+        },
+        {
+          "name": "Grand Potatoes Sandwich",
+          "description": "Fries with salad and tahini, served in French bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 28.5
+            }
+          ]
+        },
+        {
+          "name": "Fries with Fried Cheese Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 48
+            }
+          ]
+        },
+        {
+          "name": "Syrian Fries Sandwich",
+          "description": "Fries with garlic dip and pickled cucumbers served in Syrian bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 41
+            }
+          ]
+        },
+        {
+          "name": "Fries with Baba Ghanoug Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 32.5
+            }
+          ]
+        },
+        {
+          "name": "Baladi Fries",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 21.5
+            }
+          ]
+        },
+        {
+          "name": "Chips Fries Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 18
+            }
+          ]
+        },
+        {
+          "name": "Chips with Thousand Sauce Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 21.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Omelette Sandwiches ",
+      "items": [
+        {
+          "name": "Plain Omelette Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 24.5
+            }
+          ]
+        },
+        {
+          "name": "Shakshouka Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 27
+            }
+          ]
+        },
+        {
+          "name": "Omelette with Roumi Sauce Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 29.5
+            }
+          ]
+        },
+        {
+          "name": "Plain Omelette Sandwich in French Bread",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35.5
+            }
+          ]
+        },
+        {
+          "name": "Omelette with Sojouk Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 44
+            }
+          ]
+        },
+        {
+          "name": "Shami Bread Omelette with White Cheese Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 36.5
+            }
+          ]
+        },
+        {
+          "name": "Omelette with White Cheese Sandwich",
+          "description": "French bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Boiled Eggs Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 23.5
+            }
+          ]
+        },
+        {
+          "name": "Omelette with Ajwa Sandwich",
+          "description": "Shami bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 28.5
+            }
+          ]
+        },
+        {
+          "name": "Omelette with Ajwa Sandwich in French Bread",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Omelette with Pastrami Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 39
+            }
+          ]
+        },
+        {
+          "name": "Omelette with Pastrami Sandwich",
+          "description": "French bread",
+          "sizes": [
+            {
+              "size": "French Bread",
+              "price_egp": 47
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Varieties Sandwiches ",
+      "items": [
+        {
+          "name": "Fried Eggplant Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 17
+            }
+          ]
+        },
+        {
+          "name": "Plain Moussaka'a Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 17
+            }
+          ]
+        },
+        {
+          "name": "Baba Ghanoug Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 23
+            }
+          ]
+        },
+        {
+          "name": "Mix Fried Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 23.5
+            }
+          ]
+        },
+        {
+          "name": "White Cheese Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 25
+            }
+          ]
+        },
+        {
+          "name": "Fried Roomi Cheese Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Grilled Roumi Cheese Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 44
+            }
+          ]
+        },
+        {
+          "name": "Moussaka'a with Sojouk Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 41.5
+            }
+          ]
+        },
+        {
+          "name": "Fries and Falafel Mix Syrian Sandwich",
+          "description": "Falafel, fries, garlic dip and pickled cucumbers, served in Syrian bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 39
+            }
+          ]
+        },
+        {
+          "name": "Saklans",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Shami Egga Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 27
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Meat Sandwiches",
+      "items": [
+        {
+          "name": "Cheese Burger Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kaiser",
+              "price_egp": 89
+            }
+          ]
+        },
+        {
+          "name": "Grilled Kofta Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kaiser",
+              "price_egp": 102.5
+            }
+          ]
+        },
+        {
+          "name": "Oriental Sojouk Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "FRENCH_BREAD",
+              "price_egp": 109
+            },
+            {
+              "size": "Syrian",
+              "price_egp": 109
+            }
+          ]
+        },
+        {
+          "name": "Syrian Kofta Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Syrian",
+              "price_egp": 102.5
+            }
+          ]
+        },
+        {
+          "name": "Alexandrian Liver Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "FRENCH_BREAD",
+              "price_egp": 76.5
+            }
+          ]
+        },
+        {
+          "name": "Plain Burger Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kaiser",
+              "price_egp": 79.5
+            }
+          ]
+        },
+        {
+          "name": "Cheese Burger with Eggs Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kaiser",
+              "price_egp": 94.25
+            }
+          ]
+        },
+        {
+          "name": "Double Duplex Burger Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kaiser",
+              "price_egp": 141.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chicken Sandwiches",
+      "items": [
+        {
+          "name": "Chicken Pane Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Syrian",
+              "price_egp": 102.5
+            },
+            {
+              "size": "French Bread",
+              "price_egp": 102.5
+            }
+          ]
+        },
+        {
+          "name": "Shish Tawook Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Syrian",
+              "price_egp": 103.5
+            },
+            {
+              "size": "French Bread",
+              "price_egp": 103.5
+            }
+          ]
+        },
+        {
+          "name": "Syrian Chicken Pane Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 102.5
+            }
+          ]
+        },
+        {
+          "name": "Syrian Shish Tawook Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 103.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Shawerma ",
+      "items": [
+        {
+          "name": "Chicken Shawerma Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "FRENCH_BREAD",
+              "price_egp": 90
+            },
+            {
+              "size": "Kaiser",
+              "price_egp": 52
+            },
+            {
+              "size": "Syrian",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Meat Shawerma Fattah Meal",
+          "description": "Meat shawerma, basmati rice, crispy bread or fries and tahina",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 206
+            }
+          ]
+        },
+        {
+          "name": "Chicken Shawerma Fattah Meal",
+          "description": "Chicken shawarma, basmati rice, crispy bread or French fries, garlic dip sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 193
+            }
+          ]
+        },
+        {
+          "name": "Meat Shawerma Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "FRENCH_BREAD",
+              "price_egp": 122
+            },
+            {
+              "size": "Kaiser",
+              "price_egp": 73.5
+            },
+            {
+              "size": "Syrian",
+              "price_egp": 122
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Boxes ",
+      "items": [
+        {
+          "name": "Foul with Hummus Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 44.5
+            },
+            {
+              "size": "Small",
+              "price_egp": 31.5
+            }
+          ]
+        },
+        {
+          "name": "Potato with Minced Meat Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 31.5
+            }
+          ]
+        },
+        {
+          "name": "Foul with El Tabei Khalta Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35.5
+            },
+            {
+              "size": "Small",
+              "price_egp": 23.5
+            }
+          ]
+        },
+        {
+          "name": "Foul Demes Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 39.5
+            },
+            {
+              "size": "Small",
+              "price_egp": 24.5
+            }
+          ]
+        },
+        {
+          "name": "Foul with Salsa Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 38
+            },
+            {
+              "size": "Small",
+              "price_egp": 23
+            }
+          ]
+        },
+        {
+          "name": "Foul with Sojouk Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 57
+            }
+          ]
+        },
+        {
+          "name": "Besara Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        },
+        {
+          "name": "Falafel Paste Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Moussak'a Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 23
+            }
+          ]
+        },
+        {
+          "name": "Fried Eggplant Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 22.5
+            }
+          ]
+        },
+        {
+          "name": "White Cheese Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 26
+            }
+          ]
+        },
+        {
+          "name": "Mashed Potato Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 18
+            }
+          ]
+        },
+        {
+          "name": "Foul Qedra Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 31
+            },
+            {
+              "size": "Small",
+              "price_egp": 22.5
+            }
+          ]
+        },
+        {
+          "name": "Foul with Olive Oil Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 43
+            },
+            {
+              "size": "Small",
+              "price_egp": 28.5
+            }
+          ]
+        },
+        {
+          "name": "Foul with Flaxseed Oil Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 37
+            },
+            {
+              "size": "Small",
+              "price_egp": 25
+            }
+          ]
+        },
+        {
+          "name": "Pasta with Minced Meat Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Meals",
+      "items": [
+        {
+          "name": "Chicken Pane Meal",
+          "description": "Chicken pane pieces, basmati rice, French fries, thousand sauce, pickles, Syrian bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "Shish Tawook Meal",
+          "description": "Shish tawook pieces, basmati rice, French fries, thousand sauce, pickles, Syrian bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 206
+            }
+          ]
+        },
+        {
+          "name": "Mix Grill Meal",
+          "description": "Chicken fillet pieces, kofta, shish tawook, basmati rice, fries, thousand island sauce, tahini, pickles, Syrian bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 292.5
+            }
+          ]
+        },
+        {
+          "name": "Liver Meal",
+          "description": "Liver, basmati rice, fries, tahini salad, pickles, Syrian bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 160.5
+            }
+          ]
+        },
+        {
+          "name": "Meat Shawerma Fattah Meal",
+          "description": "Meat shawerma, basmati rice, crispy bread or fries and tahina",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 206
+            }
+          ]
+        },
+        {
+          "name": "Chicken Shawerma Fattah Meal",
+          "description": "Chicken shawarma, basmati rice, crispy bread or French fries, garlic dip sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 193
+            }
+          ]
+        },
+        {
+          "name": "Special Tabei Meal",
+          "description": "tabei foul beans, small falafel or large falafel, egg omelette, cheese, yogurt, honey, jam, 3 bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 139.5
+            }
+          ]
+        },
+        {
+          "name": "Foul Demes Meal",
+          "description": "Fava beans, 3 small falafel or large falafel, French fries, omelette egg, cheese, yogurt, 3 bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 139.5
+            }
+          ]
+        },
+        {
+          "name": "Foul with Flaxseed Oil Meal",
+          "description": "Flaxseed oil foul, 3 small falafel or large falafel, French fries, omelette egg, cheese, yogurt, 3 bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 145.5
+            }
+          ]
+        },
+        {
+          "name": "Foul with Olive Oil Meal",
+          "description": "Olive oil foul, 3 small falafel or large falafel, French fries, omelette egg , cheese, yogurt, 3 bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 149.5
+            }
+          ]
+        },
+        {
+          "name": "Foul with Salsa Meal",
+          "description": "Salsa foul, 3 small falafel  or large falafel, French fries, omelette egg, cheese, yogurt, 3 bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 139.5
+            }
+          ]
+        },
+        {
+          "name": "Foul with Sojouk Meal",
+          "description": "Foul with sojouk, 3 small falafel or large falafel, French fries, omelet egg, cheese, yogurt, 3 bread.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 166.5
+            }
+          ]
+        },
+        {
+          "name": "Grilled Kofta Meal",
+          "description": "4 kofta sticks, basmati rice, fries, tahini, pickles, Syrian bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 180
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Side Dishes",
+      "items": [
+        {
+          "name": "Fino",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 4.5
+            }
+          ]
+        },
+        {
+          "name": "Kaiser Bread",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 5
+            }
+          ]
+        },
+        {
+          "name": "Half Fried Falafel",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 42
+            },
+            {
+              "size": "2 Kilo ",
+              "price_egp": 195
+            },
+            {
+              "size": "40 Pieces",
+              "price_egp": 195
+            }
+          ]
+        },
+        {
+          "name": "Large Falafel Piece",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 4.5
+            }
+          ]
+        },
+        {
+          "name": "Egga Qors",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 17.5
+            }
+          ]
+        },
+        {
+          "name": "Small Falafel Piece",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 2.25
+            }
+          ]
+        },
+        {
+          "name": "Fries Packet",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 22
+            }
+          ]
+        },
+        {
+          "name": "Basmati Rice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 30
+            }
+          ]
+        },
+        {
+          "name": "Fried Eggs",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 13
+            }
+          ]
+        },
+        {
+          "name": "Boiled Egg",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 13
+            }
+          ]
+        },
+        {
+          "name": "White Cheese",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 12
+            }
+          ]
+        },
+        {
+          "name": "Ketchup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 2
+            }
+          ]
+        },
+        {
+          "name": "Flaxseed Oil",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 7
+            }
+          ]
+        },
+        {
+          "name": "Olive Oil",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 11
+            }
+          ]
+        },
+        {
+          "name": "Shami Bread",
+          "description": "3 pieces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 6
+            }
+          ]
+        },
+        {
+          "name": "French Bread",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 5.5
+            }
+          ]
+        },
+        {
+          "name": "Syrian Bread",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 6.5
+            }
+          ]
+        },
+        {
+          "name": "Hummus",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 10
+            }
+          ]
+        },
+        {
+          "name": "Pastrami",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 14
+            }
+          ]
+        },
+        {
+          "name": "Fried Eggplant",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 9.5
+            }
+          ]
+        },
+        {
+          "name": "Fries Rings Packet",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 16.25
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        {
+          "name": "Jam",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 7.5
+            }
+          ]
+        },
+        {
+          "name": "Honey",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 11.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Soft Drinks",
+      "items": [
+        {
+          "name": "Maxi Cola",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 21
+            }
+          ]
+        },
+        {
+          "name": "Mineral Water",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 14
+            }
+          ]
+        },
+        {
+          "name": "Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 19.5
+            }
+          ]
+        },
+        {
+          "name": "Maxi Apple",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 18
+            }
+          ]
+        },
+        {
+          "name": "Maxi Pineapple",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 18
+            }
+          ]
+        },
+        {
+          "name": "Maxi Orange",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 18
+            }
+          ]
+        },
+        {
+          "name": "V Cola",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 26
+            }
+          ]
+        },
+        {
+          "name": "V7",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 26
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

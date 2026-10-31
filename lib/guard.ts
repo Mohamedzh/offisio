@@ -48,10 +48,18 @@ async function bump(kind: string, key: string, by = 1): Promise<number> {
 
 export type Denied = { ok: false; code: "RATE_LIMITED" | "DEMO_QUOTA" };
 export async function limit(kind: LimitKind, req: Request): Promise<{ ok: true } | Denied> {
+  return limitKey(kind, `ip:${clientKey(req)}`);
+}
+// Same caps keyed by any hashed caller id (e.g. a WhatsApp sender); the "ip" cap applies per key.
+export async function limitKey(kind: LimitKind, key: string): Promise<{ ok: true } | Denied> {
   const lim = limitsFor(kind);
-  if ((await bump(kind, `ip:${clientKey(req)}`)) > lim.ip) return { ok: false, code: "RATE_LIMITED" };
+  if ((await bump(kind, key)) > lim.ip) return { ok: false, code: "RATE_LIMITED" };
   if ((await bump(kind, "global")) > lim.global) return { ok: false, code: "DEMO_QUOTA" };
   return { ok: true };
+}
+// True only the first time (kind, key) is seen today: dedupes webhook retries.
+export async function firstSeen(kind: string, key: string): Promise<boolean> {
+  return (await bump(kind, key)) === 1;
 }
 export const deny = (code: string, status = 429) => Response.json({ error: code }, { status });
 

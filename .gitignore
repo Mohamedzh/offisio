@@ -56,3 +56,6 @@ public/demo
 /.agents/skills/neon/
 /.agents/skills/neon-postgres/
 /skills-lock.json
+
+# Playwright MCP session snapshots/logs (local tooling output)
+.playwright-mcp/

@@ -42,7 +42,7 @@ Defined in `app/globals.css` (`@theme`). Display type: Cairo 800/900 (`next/font
 - `public/brand/**`, app icons and the OG card: drawn by hand as SVG in this repo (no font files, no stock); rasters generated from them by `scripts/brand-assets.ts`.
 
 - `public/torn-edge.jpg`: generated (muse-image-1.0), generation prompt embedded in the file (`impeccable embed-prompt`); used only as a mask, never shown directly.
-- `public/demo/**` rasters: produced by the project pipeline (`scripts/run-unit.ts`, muse-image-1.0 edits of owned footage) — see docs/plan/02 and 03. No stock assets anywhere.
+- `public/demo/**` rasters: produced by the project pipeline (the staging pipeline in `lib/pipeline/staging.ts`, muse-image-1.0 edits of owned footage) — see docs/plan/02 and 03. No stock assets anywhere.
 
 ## Review record
 

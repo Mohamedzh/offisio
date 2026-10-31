@@ -1,0 +1,1539 @@
+{
+  "brand": "Brioche Doree",
+  "source": "elmenus.com",
+  "source_label": "Menu source: elmenus.com (demo data, not affiliated)",
+  "restaurant_url": "https://elmenus.com/cairo/brioche-doree-rqk7",
+  "branch_code": "lnrwl",
+  "fetched_at": "2026-10-31T12:38:37.083Z",
+  "categories": [
+    {
+      "name": "Breakfast ",
+      "items": [
+        {
+          "name": "Bonjour",
+          "description": "Hot drink with your favorite french croissant with traditional French bread, served with butter and jam",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 300
+            }
+          ]
+        },
+        {
+          "name": "Brioche Doree",
+          "description": "Fresh juice, hot drink with your favorite french croissant with traditional French bread, served with jam, butter, your choice of eggs and green salad",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 405
+            }
+          ]
+        },
+        {
+          "name": "Moyen Orient",
+          "description": "Fresh juice, hot drink with your favorite french croissant, cheese platter served with traditional French bread, jam, butter, your choice of eggs, green salad",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 435
+            }
+          ]
+        },
+        {
+          "name": "Gourmand",
+          "description": "Fresh juice, hot drink with your favorite french croissant with traditional French bread served with jam, butter, your choice of eggs, french fries, sausage, green salad, grilled tomatoes",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 455
+            }
+          ]
+        },
+        {
+          "name": "Gourmand Breakfast",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 440
+            }
+          ]
+        },
+        {
+          "name": "Large Halloumi Croissant Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 255
+            }
+          ]
+        },
+        {
+          "name": "Club Doree Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 365
+            }
+          ]
+        },
+        {
+          "name": "Trio Profiterolles",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Breakfast Specials ",
+      "items": [
+        {
+          "name": "Classic Eggs",
+          "description": "Your choice of fried, omelette or scrambled eggs served with toasted butter bread, sauted mushrooms, baked potatoes, green salad",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 220
+            }
+          ]
+        },
+        {
+          "name": "Croque Madame Omelette",
+          "description": "Omelette topped on two slices of toasted butter bread, creamy sauce, smoked turkey, mix cheese served with sauted mushrooms, baked potatoes, green salad",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 345
+            }
+          ]
+        },
+        {
+          "name": "Sausage Omelette",
+          "description": "Omelette stuffed with sausage, mix cheese on toasted butter bread served with sauted mushrooms, baked potatoes, green salad",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 305
+            }
+          ]
+        },
+        {
+          "name": "Spanish Omelette",
+          "description": "Spanish omelette eggs served with toasted butter bread, sauted mushrooms, baked potatoes, green salad",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 255
+            }
+          ]
+        },
+        {
+          "name": "Italian Omelette",
+          "description": "Omelette stuffed with sundried tomatoes, feta cheese, labneh, basil on toasted, butter bread served with sauted mushrooms, baked potatoes, green salad",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 285
+            }
+          ]
+        },
+        {
+          "name": "Smoked Turkey Omelette & Cheese",
+          "description": "Omelette stuffed with smoked turkey, mix cheese on toasted butter bread served with sauted mushrooms, baked potatoes, green salad",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 310
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": " Bakeries  & Croissant ",
+      "items": [
+        {
+          "name": "Smoked Turkey & Cheese Croissant Sandwich",
+          "description": "Croissant sandwich with smoked turkey, emmental cheese, lettuce served with green salad",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 215
+            }
+          ]
+        },
+        {
+          "name": "Smoked Salmon Croissant Sandwich",
+          "description": "Croissant sandwich with smoked salmon, cream cheese, arugula served with green salad",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 310
+            }
+          ]
+        },
+        {
+          "name": "Halloumi Croissant Sandwich",
+          "description": "Croissant sandwich with halloumi cheese slices, tomatoes, served with green salad",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Butter Croissant",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Cheese Croissant",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Nutella Croissant",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 145
+            }
+          ]
+        },
+        {
+          "name": "Thyme Croissant",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Almond Croissant",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 155
+            }
+          ]
+        },
+        {
+          "name": "Raisins Pate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Chocolate & Almond Pate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 145
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Pate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Flan Brioche",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 155
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Salads",
+      "items": [
+        {
+          "name": "Crispy Chicken Salad",
+          "description": "Breaded fried chicken with sweet corn, bell pepper, avocado, cheddar cheese, black olives, lettuce served with cocktail sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 365
+            }
+          ]
+        },
+        {
+          "name": "Chicken Ranch Salad",
+          "description": "Mix green lettuce, bell pepper, olives, sweet corn, chicken and ranch sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 305
+            }
+          ]
+        },
+        {
+          "name": "Chicken Caesar Salad",
+          "description": "Grilled chicken, lettuce, parmesan cheese, cherry tomatoes with a homemade caesar dressing and crouton bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 305
+            }
+          ]
+        },
+        {
+          "name": "Chicken Quinoa Salad",
+          "description": "Quinoa, cucumbers,\ncarrots, parsley topped with grilled chicken, roasted almonds, served with pineapple dressing",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 340
+            }
+          ]
+        },
+        {
+          "name": "Greek Salad",
+          "description": "Lettuce, tomatoes, cucmber, black olives, red onions, feta cheese served with olive oil & lemon",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 235
+            }
+          ]
+        },
+        {
+          "name": "Chicken Teriyaki Salad",
+          "description": "You definitely got to nourish to flourish with our grilled chicken slices with teriyaki sauce along with grilled vegetables consisting of carrots, zucchini, bell peppers, red cabbage with cherry tomatoes & mixed lettuce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 335
+            }
+          ]
+        },
+        {
+          "name": "Tuna Caesar Salad",
+          "description": "Dive into the perfect fuel of our tuna chunks, mixed with caesar sauce, mixed lettuce, colored pepper, onion served in croutons bread, olives",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 325
+            }
+          ]
+        },
+        {
+          "name": "Goat Cheese Salad",
+          "description": "Mix green lettuce, dried figs, walnuts, cherry tomatoes, roasted zucchini topped with a toasted bread, goat cheese drizzled with honey",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 305
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Soups",
+      "items": [
+        {
+          "name": "Chicken and Mushroom Soup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "Tomato  Soup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Onion Soup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 145
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Appetizers ",
+      "items": [
+        {
+          "name": "Fried Mozzarella",
+          "description": "Fried mozzarella sticks served with cocktail sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Cheesy Fries",
+          "description": "French fries with cheddar, mozzarella cheese melted, served with sour cream",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "Shrimp Dynamite",
+          "description": "Fried shrimp pieces topped with dynamite sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 355
+            }
+          ]
+        },
+        {
+          "name": "Sweet Potato",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Mixed Appetizer Plate",
+          "description": "Our range of indulgent, iuscious dips paired with crunchy shrimps, chicken strips, mozzarella sticks, cheesy fries served with cocktail, honey mustard, cream cheese sauces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 390
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sandwiches",
+      "items": [
+        {
+          "name": "Crispy Chicken Sandwich",
+          "description": "Crispy fried chicken strips with mayo sauce, lettuce, cheddar cheese, tomatoes served in traditional French bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 320
+            }
+          ]
+        },
+        {
+          "name": "Grilled Chicken Sandwich",
+          "description": "Grilled chicken slices with mayonnaise, mustard, tomatoes, pickles, lettuce served in traditional French bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 285
+            }
+          ]
+        },
+        {
+          "name": "Mix Cheese Sandwich",
+          "description": "Emmental cheese, cheddar cheese, mozzarella cheese, butter, served in traditional French bread, green salad",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 260
+            }
+          ]
+        },
+        {
+          "name": "Smoked Turkey & Cheese Sandwich",
+          "description": "Smoked turkey, mix of mozzarella, emmental cheese, spread of pure butter served in traditional French bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 295
+            }
+          ]
+        },
+        {
+          "name": "Toasted Halloumi Cheese Sandwich",
+          "description": "Grilled Halloumi cheese laid on mashed olives, mint, tomatoes, cucumbers served in traditional French bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 255
+            }
+          ]
+        },
+        {
+          "name": "Smoked Salmon Sandwich",
+          "description": "Smoked salmon laid on lemon cream cheese with onions, capri, arugula served in traditional French bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 420
+            }
+          ]
+        },
+        {
+          "name": "Chicken Italiano Sandwich",
+          "description": "Experience a festival of flavors with our grilled chicken slices with italian concasse sauce, rocca served in traditional french bread with olive oil & thyme",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 295
+            }
+          ]
+        },
+        {
+          "name": "Tuna Sandwich",
+          "description": "Tuna chunks mixed mayo sauce laid on mashed olives, mozzarella cheese, served in traditional french bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 300
+            }
+          ]
+        },
+        {
+          "name": "Club Dore Sandwich",
+          "description": "Slices of toasted bread layered with grilled chicken, boiled eggs, emmental cheese, beef bacon, turkey, tomatoes, lettuce, mayo sauce served with french fries",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 365
+            }
+          ]
+        },
+        {
+          "name": "Philly Cheesesteak Sandwich",
+          "description": "Enjoy the authentic philly cheesesteak sandwich with our delicious seasoned steak, mozzarella cheese, bell pepper, mushrooms served on traditional French bread, crunchy French fries",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 405
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Quiche ",
+      "items": [
+        {
+          "name": "Chicken & Mushroom Quiche",
+          "description": "Cream, egg mixture with chicken, mushrooms served with green salad",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "Beef Bacon & Mushroom Quiche",
+          "description": "Cream, egg mixture with beef bacon, mushrooms served with green salad",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "Salmon & Spinach Quiche",
+          "description": "Cream, egg mixture with salmon, sauteed spinach served with green salad",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 285
+            }
+          ]
+        },
+        {
+          "name": "Goat Cheese & Spinach Quiche",
+          "description": "Cream, egg mixture with goat cheese, spinach served with green salad",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "Vegetables Quiche",
+          "description": "Cream, egg mixture with vegetables served with green salad",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 185
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pasta ",
+      "items": [
+        {
+          "name": "Beef with Brown Sauce Pasta",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 435
+            }
+          ]
+        },
+        {
+          "name": "Seafood Pasta",
+          "description": "Penne pasta with shrimps, fresh salmon, creamy sauce, dill, bell pepper, parmesan cheese served with one piece of garlic bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 505
+            }
+          ]
+        },
+        {
+          "name": "Lasagne Pasta",
+          "description": "Layers of lasagna with minced meat, bechamel, cheese served with green salad",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 355
+            }
+          ]
+        },
+        {
+          "name": "Beef Brown Sauce Pasta",
+          "description": "Penne pasta, bell pepper, soy sauce, cream, meat, mushroom, onion, parmesan cheese served with one piece of garlic bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 435
+            }
+          ]
+        },
+        {
+          "name": "Chicken Fettuccine Pasta",
+          "description": "Fettuccine pasta with grilled chicken, mushrooms, creamy sauce, parmesan cheese served with one piece of garlic bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 395
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pizza ",
+      "items": [
+        {
+          "name": "Pepperoni Pizza",
+          "description": "Pizza dough with mozzarella cheese, tomato sauce topped with pepperoni slices, topped parmesan cheese",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 330
+            }
+          ]
+        },
+        {
+          "name": "Chicken BBQ Pizza",
+          "description": "Pizza dough with mozzarella cheese, BBQ sauce topped with chicken, onions, colored peppers, mushrooms",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 330
+            }
+          ]
+        },
+        {
+          "name": "Chicken & Vegetables Pizza",
+          "description": "Pizza dough with mozzarella cheese, tomato sauce topped with chicken, tomatoes, onions, black olives, colored peppers, mushrooms",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 350
+            }
+          ]
+        },
+        {
+          "name": "Mix Cheese Pizza",
+          "description": "Pizza dough with tomato sauce topped with three types of cheese (mozzarella,  emmental, red cheddar)",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 310
+            }
+          ]
+        },
+        {
+          "name": "Margarita Pizza",
+          "description": "Pizza dough with mozzarella cheese, tomato sauce topped with parmesan cheese",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 275
+            }
+          ]
+        },
+        {
+          "name": "Shrimp Pizza",
+          "description": "Pizza dough with mozzarella cheese, tomato sauce topped with marinated shrimps, green pepper & cherry tomato",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 395
+            }
+          ]
+        },
+        {
+          "name": "Chicken Ranch Pizza",
+          "description": "Pizza dough with mozzarella cheese, ranch sauce topped with marinated chicken, colored peppers, jalapeno",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 335
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Savory Platter ",
+      "items": [
+        {
+          "name": "Teriyaki Beef Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 630
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Main Course",
+      "items": [
+        {
+          "name": "Special Beef Fillet Plate",
+          "description": "Beef fillet topped with mushroom sauce or black pepper sauce served with sauteed vegetables, french fries",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 605
+            }
+          ]
+        },
+        {
+          "name": "Blanc Chicken Plate",
+          "description": "Fried chicken escalope with cheddar, emmental cheese, lemon, dill sauce served with side items (sauteed vegetables, fries)",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 430
+            }
+          ]
+        },
+        {
+          "name": "Chicken With Lemon Sauce Plate",
+          "description": "Grilled chicken slices with creamy lemon sauce, sweet corn, bell pepper served with rice, sauteed vegetables",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 425
+            }
+          ]
+        },
+        {
+          "name": "Rib Eye & Fries Plate",
+          "description": "Brioche Dorees tender, juicy, very flavorful rib eye taste, served with tasty crunchy fries will be unforgettable",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 950
+            }
+          ]
+        },
+        {
+          "name": "Grilled Salmon Plate",
+          "description": "Grilled fresh salmon fillet with lemon sauce, dill, cherry tomatoes, served with side items (mashed potatoes, sauteed vegetables)",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 640
+            }
+          ]
+        },
+        {
+          "name": "Supreme Chicken Plate",
+          "description": "Grilled chicken breasts with mushroom sauce served with side items (sauteed vegetables, rice]",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 420
+            }
+          ]
+        },
+        {
+          "name": "Beef Teriyaki Plate",
+          "description": "Indulge in our beef filet, mixed vegetables with teriyaki sauce, the side dishes are served with dauphinoise potatoes, sauteed vegetables",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 630
+            }
+          ]
+        },
+        {
+          "name": "Twisted Cordon Bleu Plate",
+          "description": "Indulge in Brioche Doree's tasty twisted cordon bleu while savoring every moment, every bite",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 465
+            }
+          ]
+        },
+        {
+          "name": "Chicken BBQ Plate",
+          "description": "Chicken, bell pepper, demi glace sauce, BBQ sauce, olive oil served with rice, sauteed vegetables",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 420
+            }
+          ]
+        },
+        {
+          "name": "Grilled Chicken Plate",
+          "description": "Grilled chicken served with potato, sauteed vegetables",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 400
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kids Meal ",
+      "items": [
+        {
+          "name": "Chicken Nuggets Meal",
+          "description": "Chicken nuggets, fries served with green salad",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 195
+            }
+          ]
+        },
+        {
+          "name": "Grilled Chicken Meal",
+          "description": "Grilled chicken strips, fries, served with green salad",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 215
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        {
+          "name": "Nutella & Banana Pancake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 275
+            }
+          ]
+        },
+        {
+          "name": "Lotus Pancake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 265
+            }
+          ]
+        },
+        {
+          "name": "Nutella Fudge",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 155
+            }
+          ]
+        },
+        {
+          "name": "Carrot Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "Opera Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Fudge",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Huzelnut Dome",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 145
+            }
+          ]
+        },
+        {
+          "name": "Fruit Salad",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "San Sebastian Cheesecake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Blueberry Cheesecake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Cheesecake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Nutella Eclair",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Caramel Eclair",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Eclair",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Lotus Eclair",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Coffee Eclair",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Chocolate & Banana Tart",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Chocolate & Walnut Tart",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Toffee Pecan Tart",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Berries & White Chocolate Tart",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Trio Profiteroles",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        {
+          "name": "Espresso",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 80
+            },
+            {
+              "size": "Single",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Espresso Macchiato",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 85
+            },
+            {
+              "size": "Single",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Turkish Coffee",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 80
+            },
+            {
+              "size": "Single",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "French Coffee",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 85
+            },
+            {
+              "size": "Single",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Black Coffee",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Cappuccino",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 130
+            },
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Cafe Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Hot Matcha Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Breakfast Tea",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Hot Apple Cider",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Caramel Macchiato",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Hot Spanish Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Flat White",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Cafe Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Hot Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Soft Drinks ",
+      "items": [
+        {
+          "name": "Soft Drinks",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Mineral Water",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 60
+            },
+            {
+              "size": "Small",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Sparkling Water",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 80
+            }
+          ]
+        },
+        {
+          "name": "Red Bull",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 125
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fresh Juices ",
+      "items": [
+        {
+          "name": "Mint Lemonade Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Lemonade Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Mango Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Orange Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Guava Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Beverages ",
+      "items": [
+        {
+          "name": "Strawberry Mojito",
+          "description": "Wild mint syrup with lime slices, mint leaves, strawberry juice topped with 7up",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Blue Orange Mojito",
+          "description": "Mojito syrup with orange, the taste of orange blue covered with lemon, mint, 7UP",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Orange Passion Fruit Slutsh",
+          "description": "Fresh orange, passion fruit, lemon, mint, 7UP",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Mix Vitamins",
+          "description": "Fresh carrots, fresh orange juice, apple juice, pineapple juice, honey",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "Milkshake",
+          "description": "Ice cream of your choice with milk",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Green Apple & Mint Mojito",
+          "description": "Green apple drink mixed with lemon, mint, 7UP",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Peach & Orange Slush",
+          "description": "Fresh orange, peach syrup, lemon topped, mint, 7UP",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Avocado Shake",
+          "description": "Fresh avocado, white honey, arugula, ice cream, milk",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 165
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cold Drinks ",
+      "items": [
+        {
+          "name": "Caramel Latte Frappe",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "Mocha Frappe",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "Cold Latte Spanish",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "Ice Coffee",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "Ice Mocha",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 115
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

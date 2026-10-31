@@ -117,13 +117,16 @@ function sniffImage(buf: Uint8Array): { type: string; ext: string } {
   return { type: "image/jpeg", ext: "jpg" };
 }
 
+// Public data (synthetic tests, brand menus): Modal when configured locally, else contributor.
+export const publicModel = () => (!process.env.VERCEL && process.env.MODAL_SPARK_URL ? MODELS.sparkOpen : MODELS.sparkContributor);
+
 export const meta = {
   // PII-safe path: never contributor (AGENTS.md routing table).
   product: { chat: chat(MODELS.spark) },
   // Non-PII product data (specs, listing): spark, or contributor in local dev.
   nonPii: { chat: (body: ChatBody) => chat(nonPiiModel())(body) },
   // Public/synthetic test calls: Modal when configured locally, else contributor.
-  public: { chat: (body: ChatBody) => chat(!process.env.VERCEL && process.env.MODAL_SPARK_URL ? MODELS.sparkOpen : MODELS.sparkContributor)(body) },
+  public: { chat: (body: ChatBody) => chat(publicModel())(body) },
   models: () => call<{ data?: { id: string }[] }>("/models", { method: "GET" }, "none"),
   // Text-to-image (synthetic demo frames only).
   imageGenerate: (prompt: string, size = "1536x1024") =>

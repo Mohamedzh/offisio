@@ -1,0 +1,3180 @@
+{
+  "brand": "Tseppas",
+  "source": "elmenus.com",
+  "source_label": "Menu source: elmenus.com (demo data, not affiliated)",
+  "restaurant_url": "https://elmenus.com/cairo/tseppas-rdzw",
+  "branch_code": "5ld58",
+  "fetched_at": "2026-10-31T12:38:37.133Z",
+  "categories": [
+    {
+      "name": "Tres Lychee",
+      "items": [
+        {
+          "name": "Tiramisu Tres Lychee Pyrex",
+          "description": "biscuits, nescafe, milk, chocolate cake, lychee sauce, and cocoa",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 185
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Tres Lychee Pyrex",
+          "description": "Rawani chocolate cake, lychee sauce, pistachio Nutella, pastry cream",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 195
+            }
+          ]
+        },
+        {
+          "name": "Duabi Chocolate Tres Lychee Pyrex",
+          "description": "Chocolate cake, cocoa, lychee sauce, kunafa, nutella chocolate, vionteen, nutella pistachio",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 265
+            }
+          ]
+        },
+        {
+          "name": "Lemon Meringue Tres Lychee Pyrex",
+          "description": "Rawani cake, lychee sauce, lemon sauce, meringue",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Fruits Babaz",
+          "description": "Babas, white cream, mixed fruits",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Oreo Cheesecake",
+          "description": "Creamy cheese mix, crunched biscuit, butter, oreo biscuits",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Cheesecake",
+          "description": "Creamy cheese, crunched biscuit, strawberry sauce, butter",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Candy Jars",
+      "items": [
+        {
+          "name": "Glass Cool Mint Jar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Scotch Mint Jar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Fruit Jelly Jar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Rock Stone Jar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ice Cream Torte ",
+      "items": [
+        {
+          "name": "Pistachio & Chocolate Ice Cream Torte",
+          "description": "Ice cream, pistachio, nutella, kunafa and chocolate",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 530
+            }
+          ]
+        },
+        {
+          "name": "Half Mango and Half Vanilla Ice Cream Torte",
+          "description": "Vanilla ice cream, mango ice cream, oreo, crispy chocolate and sponge cake",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 455
+            }
+          ]
+        },
+        {
+          "name": "Four Seasons Ice Cream Torte",
+          "description": "Mango ice cream, vanilla ice cream, chocolate ice cream, berries yogurt ice cream, hazelnut, nutella, pistachio, oreo, dark chocolate, crunchy chocolate, sponge cake",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 595
+            }
+          ]
+        },
+        {
+          "name": "Half Strawberry and Half Vanilla Ice Cream Torte",
+          "description": "Vanilla ice cream, strawberry ice cream, oreo, nuts, crispy chocolate, sponge cake",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 455
+            }
+          ]
+        },
+        {
+          "name": "Lotus Ice Cream Torte",
+          "description": "Lotus ice cream, caramel sauce, lotus biscuit and sponge cake",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 395
+            }
+          ]
+        },
+        {
+          "name": "Nutella Ice Cream Torte",
+          "description": "Nutella ice cream, nutella sauce, hazelnut and sponge cake",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 675
+            }
+          ]
+        },
+        {
+          "name": "Pistachio & Chocolate Ice Cream Torte",
+          "description": "Chocolate ice cream, pistachio ice cream, mars chocolate, pistachio, chocolate and sponge cake",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 740
+            }
+          ]
+        },
+        {
+          "name": "Oreo Ice Cream Torte",
+          "description": "Chocolate ice cream, nutella, oreo, chocolate and sponge cake",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 535
+            }
+          ]
+        },
+        {
+          "name": "8 Seasons Ice Cream Torte",
+          "description": "Mango ice cream, vanilla ice cream, chocolate ice cream, berries yogurt ice cream, strawberry ice cream, pistachio ice cream, lotus ice cream, hazelnut ice cream, mixed nuts, caramel sauce, nutella and sponge cake",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 595
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Ice Cream Torte",
+          "description": "Pistachio ice cream, pistachio and sponge cake",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 760
+            }
+          ]
+        },
+        {
+          "name": "Berries Yogurt Ice Cream Torte",
+          "description": "Berries yogurt ice cream, berries sauce and sponge cake",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 650
+            }
+          ]
+        },
+        {
+          "name": "Hazelnut Ice Cream Torte",
+          "description": "Hazelnut ice cream, hazelnut, caramel sauce and sponge cake",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 620
+            }
+          ]
+        },
+        {
+          "name": "Half Strawberry and Half Mango Ice Cream Torte",
+          "description": "Mango ice cream, strawberry ice cream, oreo, crispy chocolate and sponge cake",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 455
+            }
+          ]
+        },
+        {
+          "name": "Half Chocolate and Half Yogurt Berry Ice Cream Torte",
+          "description": "Chocolate ice cream, berries yogurt ice cream, berries, hazelnut, nutella, mars chocolate and sponge cake",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 695
+            }
+          ]
+        },
+        {
+          "name": "Half Chocolate and Half Vanilla Ice Cream Torte",
+          "description": "Chocolate ice cream, vanilla ice cream, mars chocolate, oreo, crispy chocolate, caramel sauce and sponge cake",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 595
+            }
+          ]
+        },
+        {
+          "name": "Mango Ice Cream Torte",
+          "description": "Mango ice cream, crispy chocolate, oreo and sponge cake.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 535
+            }
+          ]
+        },
+        {
+          "name": "Half Chocolate and Half Mango Ice Cream Torte",
+          "description": "Chocolate ice cream, mango ice cream, oreo, nutella, crispy chocolate, mars chocolate and sponge cake",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 620
+            }
+          ]
+        },
+        {
+          "name": "Honey Ice Cream Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Pistachio Ice Cream Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Lemon Mint Ice Cream Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Torte",
+      "items": [
+        {
+          "name": "Mini Chocolate Torte",
+          "description": "Chocolate sponge, ganache, chocolate cream",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 295
+            }
+          ]
+        },
+        {
+          "name": "Mini Oreo Torte",
+          "description": "Chocolate sponge, Oreo white cream, Oreo biscuits, ganache",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 295
+            }
+          ]
+        },
+        {
+          "name": "Mini Fruit and Chocolate Torte",
+          "description": "Chocolate sponge, white sponge, white cream, ganache, mixed fruits, syrup and chocolate shavings",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 295
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Cheesecake",
+          "description": "Creamy cheese, crunched biscuit, strawberry sauce, butter",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Virginia Torte",
+          "description": "Fudge, caramel mousse, orange sauce, caramel, Fountain",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 420
+            }
+          ]
+        },
+        {
+          "name": "3 Seasons Torte",
+          "description": "Cherry, strawberry filling, caramel, chocolate cream, chocolate ganache, chocolate lover, mix fruits, mix chocolate, grated plain chocolate, grated white chocolate, mango slices",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 650
+            }
+          ]
+        },
+        {
+          "name": "American Four Seasons",
+          "description": "Chocolate, white, lotus, fruits, white cream, chocolate cream, chocolate noir, white chocolate, and crushed lotus biscuit",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 525
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Pistachio & Gold Fussion Cake",
+          "description": "Cake, caramel sauce, banana, honey mousse, crumble, lotus butter, kunafa, praline pistachio, fudge cake, milk mousse, chocolate, pistachio",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 675
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Pistachio Cake",
+          "description": "Konafa, praline pistachio, fudge cake, milk mousse, chocolate, pistachio",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 550
+            }
+          ]
+        },
+        {
+          "name": "Caramelized Almond Torte",
+          "description": "Sponge cake, yogurt jam, almonds, caramel sauce, cream",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 495
+            }
+          ]
+        },
+        {
+          "name": "Fruits Cake",
+          "description": "White sponge, white cream, strawberry sauce, mixed fruits, gelatin",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 550
+            }
+          ]
+        },
+        {
+          "name": "Mini Oreo Cake",
+          "description": "Chocolate sponge, oreo white cream, oreo biscuit, ganache",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 295
+            }
+          ]
+        },
+        {
+          "name": "Mini Fruit and Half Chocolate Cake",
+          "description": "Chocolate sponge, white sponge, white cream, ganache, mixed fruits, syrup, chocolate shavings",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 295
+            }
+          ]
+        },
+        {
+          "name": "Lotus Cake and Fruit Cake",
+          "description": "White sponge, white mousse, almond filling, lotus, vanilla, mixed fruits",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 650
+            }
+          ]
+        },
+        {
+          "name": "Black Forest Cake",
+          "description": "Chocolate sponge, white cream, cherry filling,  crumble, syrup, cherries",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 495
+            }
+          ]
+        },
+        {
+          "name": "Eglace",
+          "description": "Chocolate sponge, chocolate cream, feuilletine, ganache, chocolate glaze, syrup",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 495
+            }
+          ]
+        },
+        {
+          "name": "White Forest Cake",
+          "description": "White sponge, white cream, strawberry sauce, white chocolate, cherries, syrup",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 495
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Mix Cake",
+          "description": "Chocolate sponge, mix chocolate mousse, almond croquant, chocolate cream, oreo, lotus biscuit, mars chocolate, kitkat chocolate, and chocolate pearls",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 720
+            }
+          ]
+        },
+        {
+          "name": "Half Chocolate And Half Fruits Torte",
+          "description": "Chocolate sponge, white sponge, chocolate cream, white cream, mixed fruits, chocolate noir, and strawberry filling",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 595
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Lover Torte",
+          "description": "Crumble, ganache layer, biscuit layer, and chocolate mousse",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 775
+            }
+          ]
+        },
+        {
+          "name": "8 Seasons Torte",
+          "description": "Mandolin, delight, stracciatella, chocolate layer, black and white, mixed fruit, and chocolate mix.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 795
+            }
+          ]
+        },
+        {
+          "name": "Dolce Nutella Torte",
+          "description": "Dulce nutella mousse, fudge, feuilletine, ganache, vanilla cream, and hazelnut",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 695
+            }
+          ]
+        },
+        {
+          "name": "Rocher Torte",
+          "description": "Fudge, chocolate mousse, hazelnuts, rocher chocolate",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 595
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Vanilla Torte",
+          "description": "White sponge, strawberries, strawberry sauce, white cream",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 435
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cookies",
+      "items": [
+        {
+          "name": "Lotus Cookies",
+          "description": "Butter, sugar, flour, eggs, Lotus, caramel, white chocolate",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Peanuts Cookies",
+          "description": "Butter, sugar, flour, eggs, peanut butter, milk chocolate",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Oatmeal Cookies",
+          "description": "Corn flour, butter, sugar, oats, hazelnut",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Cookies",
+          "description": "Flour, sugar, butter, honey, eggs, vanilla, salt, baking powder, pistachio.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Feteer Meshaltet ",
+      "items": [
+        {
+          "name": "Mini Feteer Meshaltet",
+          "description": "Flour, sugar, butter, ghee",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Small Feteer Meshaltet",
+          "description": "Flour, white sugar, water, imported butter, and local ghee",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Large Feteer Meshaltet",
+          "description": "Flour, white sugar, water, imported butter, local ghee",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 320
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Koras ",
+      "items": [
+        {
+          "name": "Pack of Plain Koras",
+          "description": "Flour, coarse fennel, Juhayna milk, white sugar, imported butter, instant yeast",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 145
+            }
+          ]
+        },
+        {
+          "name": "Pack of Dates Koras",
+          "description": "Flour, date paste, Juhayna milk, white sugar, imported butter, instant yeast",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 140
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bakery",
+      "items": [
+        {
+          "name": "Roast Beef Croissant",
+          "description": "Flour, butter, yeast, roast beef, mayonnaise, cabbage",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Smoked Turkey Croissant",
+          "description": "Flour, butter, smoked turkey, yeast, mayonnaise and cabbage",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Thyme Croissant",
+          "description": "Flour, yeast, butter and thyme",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 30
+            }
+          ]
+        },
+        {
+          "name": "Kunafa Pistachio Croissant",
+          "description": "Flour, butter, yeast, flaky kunafa, nutella, pistachio, apricot sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Chicken Croissant",
+          "description": "Flour, butter, yeast, chicken pane, mayonnaise, cabbage",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Hot Dog Croissant",
+          "description": "Flour, butter, yeast, Gouda cheese, hot dog, tomato sauce, onion mixture",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Cheddar Croissant",
+          "description": "Flour, yeast, butter, cheddar cheese, cabbage",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Mini Croissant Box",
+          "description": "Mini Zinger croissant, mini chicken fillet croissant, mini roast croissant, mini chicken shawarma croissant, mini beef croissant, mini grilled chicken croissant",
+          "sizes": [
+            {
+              "size": "6 Pieces",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Plain Croissant",
+          "description": "Flour, sugar, butter, yeast, milk",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Roumi Croissant",
+          "description": "Flour, eggs, butter, milk, yeast, roumi cheese.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Danish",
+          "description": "Flour, butter, yeast, cream, pastry, nutella, pistachio, apricot jam",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Berry Danish",
+          "description": "Flour, butter, yeast, pastry cream, apricot jam, raspberry filling",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Apple Pie Danish",
+          "description": "Flour, butter, yeast, apple, apple sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Cinnamon Danish",
+          "description": "Flour, sugar, butter, yeast, milk, salt, pistachio, vanilla, cream pastry and cinnamon",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Almond Danish",
+          "description": "Flour, sugar, butter, yeast, milk, almond",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Danish",
+          "description": "Flour, sugar, butter, yeast, milk, salt, almond, vanilla, strawberry jam",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Peach Danish",
+          "description": "Flour, sugar, butter, yeast, milk, salt, almond, vanilla, peach jam",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Pineapple Danish",
+          "description": "Flour, sugar, butter, yeast, milk, salt, pistachio, vanilla, cream pastry",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Chocolate English Cake",
+          "description": "Chocolate cake, plain chocolate, chocolate drops",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "Plain English  Cake",
+          "description": "Flour, sugar, eggs, butter and vanilla",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Apple English  Cake",
+          "description": "White cake, white ganache, apple, cinnamon",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 210
+            }
+          ]
+        },
+        {
+          "name": "Pineapple English  Cake",
+          "description": "White cake, white ganache, pineapple, cherry",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 235
+            }
+          ]
+        },
+        {
+          "name": "Strawberry English  Cake",
+          "description": "White cake, strawberry sauce, strawberry pieces, white ganache",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Rocher English  Cake",
+          "description": "Chocolate cake, rocher filling, roasted hazelnuts, nutella chocolate",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 285
+            }
+          ]
+        },
+        {
+          "name": "Cherry English  Cake",
+          "description": "White cake, white ganache, cherry syrup pieces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 235
+            }
+          ]
+        },
+        {
+          "name": "Blueberry English  Cake",
+          "description": "White cake, white ganache, blueberry syrup, cherry",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 195
+            }
+          ]
+        },
+        {
+          "name": "Vanilla with Chocolate English  Cake",
+          "description": "Chocolate cake, white cake, plain chocolate, white chocolate",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Raisin English Cake",
+          "description": "Flour, sugar, eggs, butter, vanilla, raisin",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Mixed Donuts English Box",
+          "description": "Strawberry donuts, lotus donuts, nutella donuts, pastry cream",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "Italian Pizza Box",
+          "description": "Italian pizza dough, mixed vegetable pizza sauce, garlic butter, gouda cheese, roumi cheese, beef, mozzarella cheese, thyme",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "Lotus Milk Cake",
+          "description": "Soft cake, condensed milk, white cream, nutella lotus, lotus biscuit, creme brulee",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Nutella Milk Cake",
+          "description": "Soft cake, condensed milk, white cream, nutella, hazelnuts, creme brulee",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Milk Cake",
+          "description": "Soft cake, condensed milk mixture, nutella pistachio, creme brulee",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Creme Brulee Milk Cake",
+          "description": "Soft cake, condensed milk, white cream, cream brulee, banana & caramel sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Milk Cake",
+          "description": "Soft cake, condensed milk, white cream, cream brulee, jelly & strawberries",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Crackers ",
+      "items": [
+        {
+          "name": "Lux Petit Four",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Small",
+              "price_egp": 245
+            }
+          ]
+        },
+        {
+          "name": "Kahk with Malban",
+          "description": "Flour, baladi ghee, butter, sugar, yeast, mahlab, malban",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Agwa Kahk",
+          "description": "Dates filling, flour, baladi ghee, butter, sugar, yeast and mahlab",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Agamia Kahk",
+          "description": "Flour, baladi ghee, butter, sugar, yeast, mahlab, agwa",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Kahk",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 250
+            }
+          ]
+        },
+        {
+          "name": "Vanilla Petit Four",
+          "description": "Softened hazelnut or softened pistachio, flour, eggs, vanilla, jam, butter, sugar and corn oil",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Petit Four",
+          "description": "Softened hazelnut or softened pistachio, flour, eggs, vanilla, jam, butter, sugar, corn oil, cocoa",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Plain Kaab Gazelle Biscuit Packet",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Sesame Kaab Gazelle Biscuit Packet",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Menin with Agwa",
+          "description": "Flour, ghee, butter, corn oil, fennel, milk, sugar, yeast, agwa",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Plain Menin",
+          "description": "Flour, ghee, butter, corn oil, fennel, milk, sugar, yeast",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Diet Kresina",
+          "description": "",
+          "sizes": [
+            {
+              "size": "500 Gm",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Menin with Agwa & Sesame",
+          "description": "",
+          "sizes": [
+            {
+              "size": "500 Gm",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Cherry Shaklama",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 265
+            }
+          ]
+        },
+        {
+          "name": "Lux Fiontine Cripsy Petit Four",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 295
+            }
+          ]
+        },
+        {
+          "name": "Lux Petit Four Tart Walnut Caramel",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 295
+            }
+          ]
+        },
+        {
+          "name": "White Chocolate Lux Petit Four",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 295
+            }
+          ]
+        },
+        {
+          "name": "Lux Genash Macron Petit Four",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 295
+            }
+          ]
+        },
+        {
+          "name": "Lux Crocand Petit Four",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 295
+            }
+          ]
+        },
+        {
+          "name": "Crispy Mocha Caramel Lux Petit Four",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 295
+            }
+          ]
+        },
+        {
+          "name": "Star Raspberry Lux Petiti Four",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 295
+            }
+          ]
+        },
+        {
+          "name": "Polo Lux Petit Four",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 295
+            }
+          ]
+        },
+        {
+          "name": "Briwa Lux Petit Four",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 295
+            }
+          ]
+        },
+        {
+          "name": "Genash Lux Petit Four",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 295
+            }
+          ]
+        },
+        {
+          "name": "Freng Pan Lux Petit Four",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 295
+            }
+          ]
+        },
+        {
+          "name": "Milk Strawberry Lux Petit Four",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 295
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Salizon",
+      "items": [
+        {
+          "name": "Salizon Box 2",
+          "description": "Salizon toast with Gouda, club sandwich with luncheon meat, grilled chicken club sandwich, Salizon with dry sausages, Salizon mille-feuille with black seed, tuna club sandwich, smoked salmon mille-feuille, chicken tortilla, meat tortilla, Salizon Turkish toast, Salizon mixed pizza, mini hawawshi",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 340
+            }
+          ]
+        },
+        {
+          "name": "Salizon Box 6",
+          "description": "Club sandwich brown tuna, club sandwich luncheon, mini hawawshi, mille-feuille with smoked salmon, Salizon mille-feuille creams with black seed, meat tortilla, chicken tortilla, Salizon Turkish toast, Salizon toast with gouda",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Mix Meat Tortilla Box",
+          "description": "Chicken and beef tortilla",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 73.75
+            }
+          ]
+        },
+        {
+          "name": "Cheese Mini Sandwich Box",
+          "description": "Mini cheddar sandwich, mini gouda cheese sandwich, mini roquefort cheese sandwich, mini romi cheese sandwich",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Meat Mini Sandwich Box",
+          "description": "Mini chicken fillet sandwich, mini roast sandwich, mini turkey ham sandwich, mini roast beef sandwich, mini tuna sandwich, mini smoked salmon sandwich, mini white tandoori sandwich, mini zinger sandwich, mini beef sandwich",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Mini Sandwiches 28 Pieces",
+          "description": "Mini chicken fillet sandwich, mini roast beef sandwich, mini roast sandwich, mini white tandoori sandwich, mini gouda cheese sandwich, mini roquefort cheese sandwich, mini tuna sandwich, mini smoked salmon sandwich",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 350
+            }
+          ]
+        },
+        {
+          "name": "Mini Sandwiches 40 Pieces",
+          "description": "Mini chicken fillet sandwich, mini roast beef sandwich, mini roast sandwich, mini white tandoori sandwich, mini gouda cheese sandwich, mini roquefort cheese sandwich, mini tuna sandwich, mini smoked salmon sandwich",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 585
+            }
+          ]
+        },
+        {
+          "name": "Mini Chicken Sandwich",
+          "description": "Mini chicken fillet kaiser, mini chicken tandoori kaiser, mini chicken zinger kaiser, garlic butter",
+          "sizes": [
+            {
+              "size": "9 Pieces",
+              "price_egp": 285
+            }
+          ]
+        },
+        {
+          "name": "Club Sandwich Box",
+          "description": "Grilled chicken club sandwich, tuna club sandwich, luncheon club sandwich, capers, cherry tomatoes, pickled green olives",
+          "sizes": [
+            {
+              "size": "9 Pieces",
+              "price_egp": 380
+            }
+          ]
+        },
+        {
+          "name": "Mini Sandwich Box",
+          "description": "Mini Mixed Cheese Sandwich, Mini White Tandoori Sandwich, Mini Grilled Chicken Croissant, Mini Chicken Fillet Croissant, Mini Zinger Croissant, Mini Halloumi Croissant, Chicken Tortilla, Mini Hawawshi, Chicken Pattie Ban Tandoori, Baguette Sandwich Halloumi, Baguette Sandwich Oatmeal Roquefort, Baguette Sandwich Oatmeal Tuna, Club Sandwich Brown - Tuna, Club Sandwich Roquefort, Club Sandwich Luncheon, Club Sandwich Grilled Chicken, Italian Pizza",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 750
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ice Cream ",
+      "items": [
+        {
+          "name": "Caramel Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Mocha Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Cassata Ice Cream",
+          "description": "Prive vanilla mix, candied fruits",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Lemon Ice Cream",
+          "description": "Ice cream, fruit ice cream , white sugar, lemon , skimmed milk",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Vanilla Ice Cream",
+          "description": "Vanilla, white sugar, cream, milk, skimmed milk powder, ice cream stabilizer",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Ice Cream",
+          "description": "Aleppo pistachios, pistachio praline, ice cream mix",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Ice Cream",
+          "description": "White sugar, strawberries, feuilletine syrup, strawberry syrup, ice cream stabilizer, water, ice cream mix",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Mango Ice Cream",
+          "description": "Mango, white sugar, ice cream stabilizer, water, ice cream mix",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Hazelnut Ice Cream",
+          "description": "Hazelnut praline, white sugar, cream, milk, skimmed milk powder, vanilla, ice cream stabilizer",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Gum Ice Cream",
+          "description": "Milk ice cream mix, italian mastic dough",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Cheesecake Ice Cream",
+          "description": "Cheesecake powder, blueberries, white sugar, cream, milk, skimmed milk powder, vanilla, ice cream stabilizer",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Lotus Ice Cream",
+          "description": "Lotus, white sugar, cream, milk, skimmed milk powder, vanilla, ice cream stabilizer",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Tuttira Ice Cream",
+          "description": "Milk, ice cream stabilizer, cream, white sugar, ice vanilla priva, arabesque biscuits",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Ice Cream",
+          "description": "White sugar, cream, milk, milk chocolate, dark chocolate, skimmed milk powder, vanilla, milk ice cream stabilizer",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Berry Yogurt Ice Cream",
+          "description": "Yogurt ice cream, red berries, white sugar, cream, milk, skimmed milk powder, vanilla, ice cream stabilizer",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Gianduia Ice Cream",
+          "description": "Arabesque biscuits, gianduia, white sugar, cream, milk, skimmed milk powder, vanilla, ice cream stabilizer",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Gateaux Lux",
+      "items": [
+        {
+          "name": "Strawberry Gateaux Lux",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 33
+            }
+          ]
+        },
+        {
+          "name": "Mercato Gateaux Lux",
+          "description": "Chocolate cake, dark chocolate mousse, caramelized almond",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 39
+            }
+          ]
+        },
+        {
+          "name": "Rivieria Gateau Lux",
+          "description": "Riviera berries, walnut mousse, fudge, biscuit cake, almond biscuit",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 48
+            }
+          ]
+        },
+        {
+          "name": "Jam Mille-Feuille",
+          "description": "Milk, egg yolks, vanilla extract, pastry cream, corn flour, flour, sugar, rolled puff pastry, jam",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Mille-Feuille Gateau Lux",
+          "description": "Milk, egg yolks, vanilla extract, pastry cream, corn flour, flour, sugar, rolled puff pastry, chocolate",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 38
+            }
+          ]
+        },
+        {
+          "name": "Caramel Mille-Feuille",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Eclair",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 39
+            }
+          ]
+        },
+        {
+          "name": "Caramel Eclair",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 39
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Eclair",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 39
+            }
+          ]
+        },
+        {
+          "name": "Soft Chocolate Gateau Lux",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 39
+            }
+          ]
+        },
+        {
+          "name": "Eclair Gateau Lux",
+          "description": "Butter, salt, flour, eggs, milk, whipped cream, sugar, vanilla and choux pastry.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 39
+            }
+          ]
+        },
+        {
+          "name": "Oreo Cheesecake",
+          "description": "Crunched biscuit, butter, sugar, eggs, creamy cheese, oreo biscuits",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 58
+            }
+          ]
+        },
+        {
+          "name": "Blueberry Cheesecake",
+          "description": "Crunched biscuit, butter, sugar, eggs, creamy cheese,  berries jam",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Caramel Cheesecake",
+          "description": "Crunched biscuit, butter, sugar, eggs, creamy cheese,  caramel",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Strawberry  Gateau Lux",
+          "description": "Vanilla sponge, cream, strawberry, strawberry sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 33
+            }
+          ]
+        },
+        {
+          "name": "Crunchy Chocolate Eclair",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 37
+            }
+          ]
+        },
+        {
+          "name": "Mango Lux Gateaux",
+          "description": "White sponge, syrup, white cream, mango jam, jelly, sliced mango",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 39
+            }
+          ]
+        },
+        {
+          "name": "Lotus Molten Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Tres Leche",
+          "description": "Rawani cake, cream, strawberry, strawberry sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 49
+            }
+          ]
+        },
+        {
+          "name": "Truffle Gateaux Lux",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 39
+            }
+          ]
+        },
+        {
+          "name": "Virginia Lux Gateau",
+          "description": "Fudge, caramel mousse, orange sauce, caramel, fountain",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Vanilla Swiss Roll Piece",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Forge Luxe Gateau",
+          "description": "Chocolate sponge, ganache, chocolate milkshake",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Chocolate  Swiss Roll",
+          "description": "Chocolate cake, chocolate",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 25
+            }
+          ]
+        },
+        {
+          "name": "Lux Cake Eclair Yogurt Berry",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 39
+            }
+          ]
+        },
+        {
+          "name": "Lux Cake Eclair Coffee",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 39
+            }
+          ]
+        },
+        {
+          "name": "Eclair Cinnamon",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 39
+            }
+          ]
+        },
+        {
+          "name": "Gateau Luxe Choco Dubai",
+          "description": "Chocolate cake, berlin pudding, kunafa, pistachio, nutella pistachio, choco mousse, choco milk mousse",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Lux Mille-feuille Berry Yogurt Gateau",
+          "description": "Mille-feuille, pastry cream, berry yogurt, white ganache",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Lux Mille-feuille Banana Gateau",
+          "description": "Mille-feuille, pastry cream , caramel sauce, banana, cinnamon butter",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Gateau Luxe Banana Chocolate",
+          "description": "Ganache, fudge, pastry cream, cinnamon, banana, feuilletine, nutella",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Jam Mille Feuille Gateau",
+          "description": "Mille-feuille, pastry cream, apricot jam, clear jelly, chocolate jelly",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Sugar Mille-Feuille",
+          "description": "Mille-feuille, pastry cream, powdered sugar",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Honey Cake Slice",
+          "description": "Honey cake, honey cake mousse, lotus biscuits, honey, whipped cream, cream cheese",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Eclair Gateaux Lux",
+          "description": "Choux, pastry cream, whipping cream,  chocolate filling",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Dolce Nutella Gateau Lux",
+          "description": "Dolce nutella mousse, fudge, chocolate nutella, vanilla cream, hazelnut",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 68
+            }
+          ]
+        },
+        {
+          "name": "Lotus Gateaux Lux",
+          "description": "Lotus biscuit, lotus spread, cream cheese, vanilla cake, cherry",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Ganache Gateaux Lux",
+          "description": "Chocolate sponge, chocolate sauce, hazelnuts",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Lover Gateau Lux",
+          "description": "Biscuit alfer cake, milk chocolate",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 68
+            }
+          ]
+        },
+        {
+          "name": "White Forest Gateaux Lux",
+          "description": "Vanilla sponge, white cream, strawberry sauce, white chocolate",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Truffle Gateaux Lux",
+          "description": "Chocolate sponge, chocolate cream, walnuts",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Black Forest Gateaux Lux",
+          "description": "Chocolate sponge, white cream, cherry sauce, chocolate decor",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Gateaux Soiree",
+      "items": [
+        {
+          "name": "Mini Mix Mille-feuille Box 16 Pieces",
+          "description": "Mille-feuille, pastry cream, milk chocolate-apricot jam",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Assorted Mini Soiree Gateaux Box 42 Pieces",
+          "description": "Lotus, white forest, truffle, eclair, cheesecake, lotus, caramel, pistachio, chocolate mille-feuille, jam mille-feuille",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 465
+            }
+          ]
+        },
+        {
+          "name": "Assorted Mini Soiree Gateaux Box 42 Pieces",
+          "description": "White forest, black forest, ganache, eclair, cheesecake, dulce nutella, oats, chocolate mille-feuille, jam mille-feuille",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 465
+            }
+          ]
+        },
+        {
+          "name": "Box Assorted Mini Soiree Gateaux Box  28 Pieces",
+          "description": "lotus, pineapple fruit, white forest, black forest, ganache, eclair, lotus, chocolate mille-feuille, jam mille-feuille",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 295
+            }
+          ]
+        },
+        {
+          "name": "Assorted Mini Soiree Gateaux Box  16 Pieces",
+          "description": "Cheesecake, dulce nutella, white forest,  ganache, black forest, pineapple fruit, truffle, lotus",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 195
+            }
+          ]
+        },
+        {
+          "name": "Assorted Mini Soiree Gateaux Box 42 Pieces",
+          "description": "truffle, white forest, ganache, pineapple fruit,cheesecake, black forest, lotus",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 465
+            }
+          ]
+        },
+        {
+          "name": "Assorted Eclairs Box 16 Pieces",
+          "description": "Caramel, lotus, chocolate, pistachio",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 155
+            }
+          ]
+        },
+        {
+          "name": "Mini Sugar Mille-Feuille Box 16 Pieces",
+          "description": "Mille-feuille, pastry cream, powdered sugar",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Mini Mille-Feuille With Jam Box  16 Pieces",
+          "description": "Mille-feuille, pastry cream, apricot jam",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Assorted Mini Soiree Gateaux Box  28 Pieces",
+          "description": "Black forest, ganache, pineapple fruit cheesecake, dulce nutella, lotus, white forest",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 335
+            }
+          ]
+        },
+        {
+          "name": "Assorted Eclairs Box 28 Pieces",
+          "description": "Caramel, lotus, chocolate, pistachio",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 265
+            }
+          ]
+        },
+        {
+          "name": "Mini Chocolate Mille-Feuille Box 16 Pieces",
+          "description": "Mille-feuille, pastry cream, milk chocolate",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cups",
+      "items": [
+        {
+          "name": "Chocolate Fudge Cup",
+          "description": "Fudge, mixed chocolate mousse, milk mousse, caramel sauce",
+          "sizes": [
+            {
+              "size": "1 Piece",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Mille-feuille Berry Yogurt Cup",
+          "description": "Mille-feuille, pastry cream, berry yogurt, red berry filling, jelly",
+          "sizes": [
+            {
+              "size": "1 Piece",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Tiramisu Special Cup",
+          "description": "Tiramisu mousse with ammonia cookies, dark cocoa, and syrup",
+          "sizes": [
+            {
+              "size": "1 Piece",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Millefeuille Sugar Special Cup",
+          "description": "Milfeuille, pastry cream, powdered sugar",
+          "sizes": [
+            {
+              "size": "1 Piece",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Mille-feuille Special Cup",
+          "description": "Mille-feuille with pastry cream and pistachio nutella",
+          "sizes": [
+            {
+              "size": "1 Piece",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Blueberry Cheesecake Special Cup",
+          "description": "Lotus mousse tart, blueberry filling,  lotus biscuit",
+          "sizes": [
+            {
+              "size": "1 Piece",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Caramel Cheesecake Special Cup",
+          "description": "Mousse tart, walnuts, caramel sauce, lotus biscuit",
+          "sizes": [
+            {
+              "size": "1 Piece",
+              "price_egp": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tart",
+      "items": [
+        {
+          "name": "Fudge Tart",
+          "description": "Fudge, ganache, almonds",
+          "sizes": [
+            {
+              "size": "1 Piece",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Lotus Tart",
+          "description": "Cheesecake, lotus paste, lotus biscuit, almond sable, lotus tart mousse",
+          "sizes": [
+            {
+              "size": "1 Piece",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Tart",
+          "description": "Almond sable, cream, strawberry and white chocolate",
+          "sizes": [
+            {
+              "size": "1 Piece",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Banana Vanilla Tart",
+          "description": "Almond sable, white chocolate, banana mix, white sponge, banana mousse, toffee caramel filling, white cream",
+          "sizes": [
+            {
+              "size": "1 Piece",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Honey Cake Tart",
+          "description": "Honey cake, lotus mousse tart, whipped white cream, crushed lotus biscuit, honey",
+          "sizes": [
+            {
+              "size": "1 Piece",
+              "price_egp": 60
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Oriental Corner",
+      "items": [
+        {
+          "name": "Plain Warbat",
+          "description": "Baklava dough, imported ghee, syrup",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 111.25
+            }
+          ]
+        },
+        {
+          "name": "Nutella Hazelnut Warbat",
+          "description": "Plain warbat, nutella and hazelnut",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 173.75
+            }
+          ]
+        },
+        {
+          "name": "Asawer Goulash with Pistachio",
+          "description": "Baklava dough , ghee , pistachio ,syrup",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 196.25
+            }
+          ]
+        },
+        {
+          "name": "Goulash Cigarettes with Qeshta",
+          "description": "Goulash dough, imported ghee, qeshta, pistachio, syrup",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 98.75
+            }
+          ]
+        },
+        {
+          "name": "Asawer Kunafa with Chocolate and Pistachio",
+          "description": "Kunafa, nutella pistachio, pistachio",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 156.25
+            }
+          ]
+        },
+        {
+          "name": "Asawer Kunafa with Chocolate, Hazelnut & Almond",
+          "description": "Kunafa, nutella hazelnut & almond",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 148.75
+            }
+          ]
+        },
+        {
+          "name": "Asawer Kunafa with Mango",
+          "description": "",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 123.75
+            }
+          ]
+        },
+        {
+          "name": "Cheese Chocolate Kunafa Lava",
+          "description": "Kunafa, nutella pistachio, cheese & nutella chocolate",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Berry Cheesecake Kunafa Lava",
+          "description": "Kunafa, nutella pistachio, cheesecake, berry sauce & yogurt berry filling",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Mixed Nuts Kunafa",
+          "description": "kunafa, nuts and syrup",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 131.25
+            }
+          ]
+        },
+        {
+          "name": "Soiree Othmania with Pistachio",
+          "description": "Kunafa, baladi ghee, pistachio, syrup",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 316.25
+            }
+          ]
+        },
+        {
+          "name": "Hazelnut Othmania",
+          "description": "Konafa, baladi ghee, hazelnut, syrup",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 322.5
+            }
+          ]
+        },
+        {
+          "name": "Soiree Borma Kunafa with Hazelnut",
+          "description": "Kunafa, ghee, hazelnut, syrup",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 123.75
+            }
+          ]
+        },
+        {
+          "name": "Kunafa Cigarettes with Qeshta",
+          "description": "Kunafa, baladi ghee, milk, qeshta, syrup",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 161.25
+            }
+          ]
+        },
+        {
+          "name": "Soiree Borma  Konafa with Pistachio",
+          "description": "Kunafa, ghee, pistachio, syrup",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 275
+            }
+          ]
+        },
+        {
+          "name": "Asawer Kunafa with Hazelnut",
+          "description": "Kunafa, ghee, hazelnut, syrup",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 161.25
+            }
+          ]
+        },
+        {
+          "name": "Asawer Kunafa with Pistachio",
+          "description": "Kunafa, ghee, pistachio and syrup",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 397.5
+            }
+          ]
+        },
+        {
+          "name": "Kunafa with Cream",
+          "description": "Kunafa, baladi ghee, milk, qeshta, starch, syrup",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Plain Konafa Cigarettes",
+          "description": "Konafa, baladi ghee, milk, syrup",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 86.25
+            }
+          ]
+        },
+        {
+          "name": "Konafa Bites With Pistachio",
+          "description": "Konafa, baladi ghee, milk, syrup",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 368.75
+            }
+          ]
+        },
+        {
+          "name": "Kol w Ashkor Baklava",
+          "description": "Baklava dough, imported ghee, pistachio, syrup",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 298.75
+            }
+          ]
+        },
+        {
+          "name": "Baklava Eish with Pistachio",
+          "description": "Baklava dough, imported ghee, hazelnut, syrup",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 198.75
+            }
+          ]
+        },
+        {
+          "name": "Seashell Baklava with Cashew",
+          "description": "Baklava dough, ghee, cashew , sherbet",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 173.75
+            }
+          ]
+        },
+        {
+          "name": "Seashell Baklava with Pistachio",
+          "description": "Baklava dough, ghee, pistachio , sherbet",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 343.75
+            }
+          ]
+        },
+        {
+          "name": "Baklava Comb with Hazelnut",
+          "description": "Baklava dough, ghee, hazelnut, syrup",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Special Baklava With Walnut And Cinnamon",
+          "description": "Baklava dough, ghee,  walnut, cinnamon, syrup",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Baklava Original with Pistachio",
+          "description": "Baklava dough, imported ghee, pistachio, syrup",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 348.75
+            }
+          ]
+        },
+        {
+          "name": "Kol w Ashkor Baklava Soiree",
+          "description": "Baklava dough, imported ghee, pistachio, syrup",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 287.75
+            }
+          ]
+        },
+        {
+          "name": "Louts Baklava",
+          "description": "Baklava dough, ghee, lotus biscuits, chocolate sauce, syrup",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 148.75
+            }
+          ]
+        },
+        {
+          "name": "Plain Basbousa",
+          "description": "Semolina, baladi ghee, sugar, milk, syrup",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 56.25
+            }
+          ]
+        },
+        {
+          "name": "Lux Basbousa",
+          "description": "Semolina, ghee, sugar, milk, pistachio, hazelnut, almond, sherbet",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 220
+            }
+          ]
+        },
+        {
+          "name": "Plain Basbousa Form Platter",
+          "description": "Semolina, baladi ghee, sugar, milk, syrup",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 265
+            }
+          ]
+        },
+        {
+          "name": "Mix Basbousa Form",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 390
+            }
+          ]
+        },
+        {
+          "name": "Basbousa with Pistachio Form",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 525
+            }
+          ]
+        },
+        {
+          "name": "Syrian Basbousa",
+          "description": "Semolina, baladi ghee, sugar, milk, hazelnut, syrup",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 91.25
+            }
+          ]
+        },
+        {
+          "name": "Basbousa With Pistachio",
+          "description": "Semolina, baladi ghee, sugar, milk, pistachio, syrup",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 153.75
+            }
+          ]
+        },
+        {
+          "name": "Syrian Basbousa Form Platter",
+          "description": "Semolina, baladi ghee, sugar, milk, hazelnut, syrup",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 370
+            }
+          ]
+        },
+        {
+          "name": "Lux Basbousa Form",
+          "description": "Semolina, baladi ghee, sugar, milk",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 370
+            }
+          ]
+        },
+        {
+          "name": "Basbousa with Qeshta",
+          "description": "Semolina, baladi ghee, milk, qeshta, syrup",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 83.75
+            }
+          ]
+        },
+        {
+          "name": "Basbousa with Qeshta Form",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 495
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Pistachio Basbousa",
+          "description": "Plain basbousa, nutella pistachio, hazelnut filling",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 156.25
+            }
+          ]
+        },
+        {
+          "name": "Almond Harrisa",
+          "description": "Semolina, ghee, coconut, almond filling",
+          "sizes": [
+            {
+              "size": "250gm",
+              "price_egp": 98.75
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dairy Products",
+      "items": [
+        {
+          "name": "Cream Caramel Cup",
+          "description": "Sugar, eggs, milk and vanilla",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Rice Pudding Cup",
+          "description": "Milk, sugar, rice and qeshta",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Oven Baked Rice Pudding Cup",
+          "description": "Rice, milk, cream, vanilla, starch, sugar",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Milk Pudding Cup",
+          "description": "Starch, milk, qeshta and sugar",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Om Ali Cup",
+          "description": "Milk, sugar, mille feuille and whipped cream",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Pumpkin Cup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Large Om Ali Cream Brulee Tagen",
+          "description": "Mille feuille, creme brulee, almond",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 395
+            }
+          ]
+        },
+        {
+          "name": "Small Om Ali Cream Brulee Tagen",
+          "description": "Mille feuille, creme brulee, almond",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 69
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chocolate Per Kilo ",
+      "items": [
+        {
+          "name": "Waffer Biscuits Chocolate",
+          "description": "Belgian chocolate, soft waffer filling, hazelnut spread",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 780
+            }
+          ]
+        },
+        {
+          "name": "Snickers Chocolate",
+          "description": "Cocoa butter, sugar, vanilla, milk, snickers",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 690
+            }
+          ]
+        },
+        {
+          "name": "Oreo Chocolate",
+          "description": "Cocoa butter, sugar, vanilla, milk, oreo",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 780
+            }
+          ]
+        },
+        {
+          "name": "Crispy Chocolate",
+          "description": "Belgian chocolate, hazelnut praline filling, crispy chocolate pieces",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 780
+            }
+          ]
+        },
+        {
+          "name": "Crispy Chocolate",
+          "description": "Belgian chocolate, hazelnut praline filling, crispy chocolate pieces",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 780
+            }
+          ]
+        },
+        {
+          "name": "Hazelnut chocolate",
+          "description": "Cocoa butter, sugar, vanilla, milk, hazelnut pieces",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 820
+            }
+          ]
+        },
+        {
+          "name": "Praline Sesame Chocolate",
+          "description": "Belgian chocolate, milk chocolate spread, sesame",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 780
+            }
+          ]
+        },
+        {
+          "name": "Yoghurt Chocolate",
+          "description": "Belgian chocolate, yoghurt filling, berries",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 820
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chocolate ",
+      "items": [
+        {
+          "name": "Dark Kunafa Hazelnut Chocolate Bar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Dark Kunafa Pistachio Chocolate Bar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "White Kunafa Pistachio Chocolate Bar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "Milk Kunafa Pistachio Chocolate Bar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "Milk Kunafa Hazelnut Chocolate Bar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "White Kunafa Hazelnut Chocolate Bar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Dark Kunafa Yogurt Chocolate Bar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Milk Kunafa Yogurt Chocolate Bar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Cookies & Cream Chocolate Bar",
+          "description": "Natural belgian chocolate, sugar, natural vanilla, cocoa butter, skimmed milk and oreo pieces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Caramel Chocolate Bar",
+          "description": "Natural Belgian chocolate, sugar, natural vanilla, cocoa butter, skimmed milk powder, French caramel",
+          "sizes": [
+            {
+              "size": "Mini",
+              "price_egp": 40
+            },
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "White Chocolate Bar",
+          "description": "Skimmed milk, natural vanilla, sugar, cocoa butter, coconut oil",
+          "sizes": [
+            {
+              "size": "Mini",
+              "price_egp": 40
+            },
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Dark Chocolate Bar",
+          "description": "Dark Belgian chocolate, sugar, natural vanilla, cocoa butter, skimmed milk powder",
+          "sizes": [
+            {
+              "size": "Mini",
+              "price_egp": 40
+            },
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Milk Chocolate Bar",
+          "description": "Natural Belgian chocolate, sugar, natural vanilla, cocoa butter, skimmed milk powder",
+          "sizes": [
+            {
+              "size": "Mini",
+              "price_egp": 40
+            },
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Almond Brittle Chocolate Bar",
+          "description": "Natural Belgian chocolate, sugar, natural vanilla, cocoa butter, skimmed milk powder, almond, almond butter",
+          "sizes": [
+            {
+              "size": "Mini",
+              "price_egp": 40
+            },
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chocolate Gift ",
+      "items": [
+        {
+          "name": "Mini Chocolate Metal Box",
+          "description": "Chocolate with pistachio kunafa, chocolate with hazelnut kunafa, gianduja chocolate, chocolate with berlin hazelnut, plain chocolate",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 790
+            }
+          ]
+        },
+        {
+          "name": "Gold Square Tray Chocolate Gift",
+          "description": "Lotus chocolate, almond-filled wrapped chocolate",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 3335
+            }
+          ]
+        },
+        {
+          "name": "Small Crystal Boat Chocolate Gift",
+          "description": "Gold flake chocolate, round crispy filled chocolate, high heart chocolate, almond-filled chocolate",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 2290
+            }
+          ]
+        },
+        {
+          "name": "Square Crystal Chocolate Gift",
+          "description": "Kinder-coated chocolate, almond-coated chocolate, large heart chocolate",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 2990
+            }
+          ]
+        },
+        {
+          "name": "Silver Chocolate Gift With Square Base / Silver Wrapped Chocolates",
+          "description": "Lotus chocolate, chocolate coated almonds",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 2105
+            }
+          ]
+        },
+        {
+          "name": "Silver Egg-Shaped Chocolate Gift (Gold Wrapped Chocolates)",
+          "description": "Large plain chocolate, plain square chocolate, almond coated chocolate, gold chocolate",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1865
+            }
+          ]
+        },
+        {
+          "name": "Silver Square Chocolate Carrier with Gold Handle Gift",
+          "description": "Chocolate-wrapped kinder filling",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 2645
+            }
+          ]
+        },
+        {
+          "name": "Silver Boat-Shaped Chocolate Gift (Gold Wrapped Chocolate)",
+          "description": "Plain finger chocolate, almond coated chocolate, plain square chocolate, crispy round chocolate, golden chocolate",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1705
+            }
+          ]
+        },
+        {
+          "name": "Golden Rectangular Chocolate Gift",
+          "description": "Chocolate wrapped Kinder filling",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 2345
+            }
+          ]
+        },
+        {
+          "name": "Silver Tray Square Gift - Half Uncovered",
+          "description": "Plain finger chocolate, plain square chocolate, crispy coated chocolate, lotus milk chocolate, almond coated chocolate, hazelnut and yogurt coated chocolate.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 3765
+            }
+          ]
+        },
+        {
+          "name": "Golden Square Tray Chocolate Gift",
+          "description": "Plain finger chocolate, gold chocolate, lotus filling chocolate, lion bar coated chocolate.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 2130
+            }
+          ]
+        },
+        {
+          "name": "Silver Egg-Shaped Chocolate Gift (Silver Wrapped Chocolates)",
+          "description": "Large heart chocolate, plain square chocolate, almond coated chocolate, gold chocolate.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1865
+            }
+          ]
+        },
+        {
+          "name": "Silver Boat-Shaped Chocolate Gift (Silver Wrapped Chocolate)",
+          "description": "Plain finger chocolate, almond coated chocolate, plain square chocolate, crispy round chocolate, gold chocolate",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1705
+            }
+          ]
+        },
+        {
+          "name": "Silver Tray Chocolate Square Gift",
+          "description": "Lotus milk chocolate, almond wrapped chocolate, plain square chocolate",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 3765
+            }
+          ]
+        },
+        {
+          "name": "Silver Oval Chocolate Gift",
+          "description": "Milk chocolate lotus, chocolate-coated spider almonds, chocolate-coated crispy almonds.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 2145
+            }
+          ]
+        },
+        {
+          "name": "Crystal Round Chocolate Dish With A Crystal Base",
+          "description": "Chocolate coated almonds, chocolate coated hazelnuts, chocolate with lotus filling",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 2475
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

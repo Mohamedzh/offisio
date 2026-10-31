@@ -1,0 +1,985 @@
+{
+  "brand": "Nola Cupcakes",
+  "source": "elmenus.com",
+  "source_label": "Menu source: elmenus.com (demo data, not affiliated)",
+  "restaurant_url": "https://elmenus.com/cairo/nola-cupcakes-4lrx",
+  "branch_code": "8322",
+  "fetched_at": "2026-10-31T12:38:37.292Z",
+  "categories": [
+    {
+      "name": "Cupcakes",
+      "items": [
+        {
+          "name": "Vanilla Cupcake",
+          "description": "Vanilla cake, buttercream icing, sprinkles",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Cupcake",
+          "description": "Chocolate cake, icing with chocolate ganache",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "Red Velvet Cupcake",
+          "description": "Red velvet cake, icing cream cheese topped with red velvet pieces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Nutella Twix Cupcake",
+          "description": "Vanilla cake filled with caramel sauce, mashed digestive biscuit, icing nutella and 2 pieces of twix",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Cookies N' Cream Cupcake",
+          "description": "Mashed oreo cake stuffed with oreo piece, icing cream cheese, mashed oreo topped with oreo",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Pralines N' Cream Cupcake",
+          "description": "Caramel cake, icing cream cheese with caramel and walnut pieces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Birthday Cupcake",
+          "description": "Vanilla cake stuffed with sprinkles sugar, icing milk chocolate, maltesers, sprinkles sugar and white chocolate",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "Lotus Madness Cupcake",
+          "description": "Vanilla cake stuffed with lotus cream topped with cream cheese, cream lotus and lotus biscuit",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Chips Cupcake",
+          "description": "Vanilla cake stuffed with chocolate chips topped with cream cheese, chocolate chips and piece of cookie",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Peanut Butter Cupcake",
+          "description": "Chocolate cake filled with peanut butter topped with chocolate and peanut butter",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cakes",
+      "items": [
+        {
+          "name": "Mango Classic Cake",
+          "description": "Vanilla sponge cake, fresh cream, stuffed with mango pieces and topped with mango slices, enough for 8 to 10 persons",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 850
+            }
+          ]
+        },
+        {
+          "name": "Mango Nos & Nos Cake",
+          "description": "Half mango (3 layers of vanilla sponge cake, fresh cream, fresh mango pieces) and half chocolate (3 layers of chocolate fudge cake, milk chocolate ganache, caramelized hazelnut layer and nutella), serves 8 to 10 people, 22 cm",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 890
+            }
+          ]
+        },
+        {
+          "name": "Nos & Nos Fruit Cake",
+          "description": "Half fruit (3 layers of vanilla sponge cake with fresh cream, pineapple pieces, peach, and kiwi compote) half chocolate (3 layers of fudge chocolate cake with milk chocolate ganache, a layer of caramelized hazelnuts, nutella)",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 950
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Volcano Cake",
+          "description": "Chocolate fudge cake with dark chocolate ganache, topped with a layer of cream cheese and cocoa powder",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 790
+            }
+          ]
+        },
+        {
+          "name": "Nutella Crunchy Cake",
+          "description": "4 layers of fudge chocolate cake, nutella cream cheese, with nutella buttercream, nutella sauce, hazelnut chocolate, chocolate macaroons",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 920
+            }
+          ]
+        },
+        {
+          "name": "Kinder Bueno Bomb Cake",
+          "description": "4 layers of fudge chocolate cake with melted chocolate inside, chocolate ganache, white chocolate sauce, hazelnut chocolate, chocolate macarons, oreo chocolate, dark chocolate maltesers",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 970
+            }
+          ]
+        },
+        {
+          "name": "Devil Chocolate Cake",
+          "description": "2 layers of light fudge cake with Belgian dark chocolate ganache, milk chocolate sauce, grated fudge cake",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 790
+            }
+          ]
+        },
+        {
+          "name": "Choco Croquant Cake",
+          "description": "3 layers of fudge chocolate cake with belgian chocolate ganache, crunchy almonds",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 920
+            }
+          ]
+        },
+        {
+          "name": "Birthday Cake",
+          "description": "6 layer vanilla sponge cake with colorful layers, belgian milk chocolate ganache, colorful sprinkles.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 920
+            }
+          ]
+        },
+        {
+          "name": "Rainbow Cake",
+          "description": "5 layer vanilla cake with colorful layers, cream cheese, and colorful sprinkles.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 820
+            }
+          ]
+        },
+        {
+          "name": "Piniata Cake",
+          "description": "5 layer vanilla sponge cake with colorful layers, hollow inside filled with m&m's, maltesers, cream cheese, colorful sprinkles",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 750
+            }
+          ]
+        },
+        {
+          "name": "Lotus Cake",
+          "description": "2 layers of vanilla cake with lotus cream cheese, lotus spread, lotus biscuits",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 690
+            }
+          ]
+        },
+        {
+          "name": "Banoffee Cake",
+          "description": "3 layers of sponge cake with caramel, condensed milk, banana, fresh cream, meringue",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 690
+            }
+          ]
+        },
+        {
+          "name": "Red Velvet Cake",
+          "description": "2 layers of red vanilla cake with cream cheese and shredded red velvet cake",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 870
+            }
+          ]
+        },
+        {
+          "name": "Carrot Cake",
+          "description": "2 layers of carrot cake with cinnamon and walnuts, topped with cream cheese frosting",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 790
+            }
+          ]
+        },
+        {
+          "name": "Vanilla Lemon Blueberry Cake",
+          "description": "Vanilla cake with lemon, white chocolate mousse, blueberry sauce, fresh berries",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 820
+            }
+          ]
+        },
+        {
+          "name": "Dubai Viral Chocolate Pistachio Cake",
+          "description": "2 layers of fudge chocolate cake, dark Belgian chocolate ganash, crunchy kunafa, pistachio spread, enough for 8 persons",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1095
+            }
+          ]
+        },
+        {
+          "name": "Blueberry Cheesecake",
+          "description": "Cheesecake with Digestive Biscuits, Fresh Blueberries, and Edible Flowers",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 970
+            }
+          ]
+        },
+        {
+          "name": "Raspberry Vanilla Cake",
+          "description": "Two layers of vanilla cake filled with fresh cream and raspberries, coated with cream cheese and topped with fresh raspberry pieces",
+          "sizes": [
+            {
+              "size": "20cm",
+              "price_egp": 950
+            }
+          ]
+        },
+        {
+          "name": "Tiramisu Chocolate Cake",
+          "description": "Chocolate fudge cake layered with coffee soaked ladyfingers, tiramisu cream, and topped with a dusting of cocoa powder.",
+          "sizes": [
+            {
+              "size": "20cm",
+              "price_egp": 795
+            }
+          ]
+        },
+        {
+          "name": "Blueberry Vanilla Cake",
+          "description": "Two layers of vanilla cake filled with fresh cream and blueberries, coated with cream cheese blended with fresh blueberries, giving it a natural purple, and topped with fresh blueberry pieces.",
+          "sizes": [
+            {
+              "size": "20cm",
+              "price_egp": 920
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Small Cakes",
+      "items": [
+        {
+          "name": "Small Mango Classic",
+          "description": "3 layers of vanilla sponge cake with fresh cream, mango pieces serve from 3 to 4 person size: 15 cm",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 420
+            }
+          ]
+        },
+        {
+          "name": "Small Mango Nos & Nos",
+          "description": "Half mango: (3 layers of vanilla sponge cake with fresh cream and fresh mango Pieces.)\nhalf chocolate: (3 layers of chocolate fudge cake with milk chocolate ganache, a layer of caramelized hazelnuts, nutella) serve from 3 to 4 person size: 15 cm",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 490
+            }
+          ]
+        },
+        {
+          "name": "Small Nutella Crunchy Cake",
+          "description": "4 layers of fudge chocolate cake with nutella cream cheese, nutella buttercream, nutella sauce, hazelnut chocolate, and chocolate macarons",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 450
+            }
+          ]
+        },
+        {
+          "name": "Small Kinder Bueno Bomb Cake",
+          "description": "4 layers of fudge chocolate cake with melted chocolate inside, chocolate ganache, white chocolate sauce, hazelnut chocolate, chocolate macarons, oreo chocolate, and dark chocolate maltesers.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 550
+            }
+          ]
+        },
+        {
+          "name": "Dubai Viral Chocolate Pistachio Small Cake",
+          "description": "2 layers of fudge chocolate cake with belgian dark chocolate ganache between the layers, a crispy kunafa layer, pistachio spread, and dark chocolate ganache.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 590
+            }
+          ]
+        },
+        {
+          "name": "Devil Chocolate Small Cake",
+          "description": "2 layers of light fudge cake with belgian dark chocolate ganache, milk chocolate sauce, and grated fudge cake.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 320
+            }
+          ]
+        },
+        {
+          "name": "Small Chocolate Croquette Cake",
+          "description": "3 layers of fudge chocolate cake with belgian chocolate ganache and crunchy almonds.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 450
+            }
+          ]
+        },
+        {
+          "name": "Small Birthday Cake",
+          "description": "6 layer vanilla sponge cake with colorful layers, belgian milk chocolate ganache, and colorful sprinkles.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 520
+            }
+          ]
+        },
+        {
+          "name": "Vanilla Birthday Small Cake",
+          "description": "4 layers of sponge cake in red, orange, yellow, and green colors with cream cheese, colorful sprinkles, and white chocolate pieces.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 520
+            }
+          ]
+        },
+        {
+          "name": "Small Red Velvet Cake",
+          "description": "2 layers of red vanilla cake with cream cheese and shredded red velvet cake.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 470
+            }
+          ]
+        },
+        {
+          "name": "Small Banoffee Cake",
+          "description": "3 layers of sponge cake with caramel, condensed milk, banana, fresh cream, and meringue.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 320
+            }
+          ]
+        },
+        {
+          "name": "Small Carrot Cake",
+          "description": "2 layers of carrot cake with cinnamon and walnuts, topped with cream cheese frosting.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 320
+            }
+          ]
+        },
+        {
+          "name": "Small Sebastian Cheesecake",
+          "description": "Small san sebastian cheesecake(baked cheesecake)",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 470
+            }
+          ]
+        },
+        {
+          "name": "Small Blueberry Cheesecake",
+          "description": "Cheesecake with digestive biscuits and blueberries",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 420
+            }
+          ]
+        },
+        {
+          "name": "Blueberry Vanilla Small Cake",
+          "description": "Two layers of vanilla cake filled with fresh cream and blueberries, coated with cream cheese blended with fresh blueberries, giving it a natural purple hue, and topped with fresh blueberry pieces.",
+          "sizes": [
+            {
+              "size": "12_CM",
+              "price_egp": 395
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Large Bowls",
+      "items": [
+        {
+          "name": "Mango Tres Leches Bowl",
+          "description": "Vanilla cake with a milk mixture (evaporated milk, condensed milk, fresh cream), topped with fresh cream, mango pieces, serve from 6 to 8 person size: 26*20 cm",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 850
+            }
+          ]
+        },
+        {
+          "name": "Mango Milkshake",
+          "description": "Vanilla cake with a milk mixture (evaporated milk, condensed milk, fresh cream), Topped with fresh cream, mango pieces with a bottle of mango milkshake serve from 6 to 8 person size: 26*20 cm",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 890
+            }
+          ]
+        },
+        {
+          "name": "Tres Leches Bowl",
+          "description": "Vanilla cake with a milk mixture made of (evaporated milk, condensed milk, fresh cream) topped with toasted meringue",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 750
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tiny Bowls ",
+      "items": [
+        {
+          "name": "Tres Leches Mango Tiny Bowl",
+          "description": "Vanilla cake with a milk mixture (evaporated milk, condensed milk, fresh cream), topped with fresh cream, mango pieces serve: 1 person size: 8 cm",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Mango Fresh Cream Tiny Bowl",
+          "description": "Vanilla sponge cake with fresh cream and mango pieces serve: 1 person size: 8 cm",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Tres Leches Tiny Bowl",
+          "description": "Vanilla cake with a milk mixture (evaporated milk, condensed milk, fresh cream), topped with fresh cream and strawberry pieces with a bottle of strawberry milkshake",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cake Slice",
+      "items": [
+        {
+          "name": "Mango Milkshake Slice",
+          "description": "Vanilla cake with a milk mixture (evaporated milk, condensed milk and fresh cream), topped with fresh cream and mango pieces with a bottle of mango milkshake, serve from 1 to 2 person, size: 12*8 cm",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 250
+            }
+          ]
+        },
+        {
+          "name": "Sebastian Cheese Slice",
+          "description": "San sebastian cheesecake slices (baked cheesecake)",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "Nutella San Sebastian Slice Cheesecake",
+          "description": "San sebastian cheesecake slice served with a cup of nutella sauce (baked cheesecake)",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "Matilda Slice Chocolate Cake",
+          "description": "Two layers of fudge cake with belgian dark chocolate ganache, served with a bottle of milk chocolate sauce, a container of caramelized almonds",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 260
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Savory",
+      "items": [
+        {
+          "name": "Savory Box",
+          "description": "Savory box of 21 pieces (1 mini tuna pizza, 2 mini vegetable pizzas, 2 mini hot dog pizza, 1 tuna club sandwich, 1 turkey club sandwich, 1 cheddar cheese club sandwich, 1 smoked beef club sandwich, 1 roasted beef club sandwich, 2 mini blue cheese sandwich, 1 mini tuna sandwich, 1 mini emmental cheese sandwich, 1 mini chicken & corn sandwich, 2 mini turkey sandwich, 1 mini beef sandwich, 1 mini cheddar cheese croissant sandwich, 1 mini turkey croissant sandwich, 1 mini tuna croissant sandwich), serve from 3 to 4 person",
+          "sizes": [
+            {
+              "size": "21 Pieces",
+              "price_egp": 550
+            }
+          ]
+        },
+        {
+          "name": "Mini Pizza Box 20 Pieces",
+          "description": "4 mini tuna pizza, 8 mini vegetables pizza, 8 mini hot dog pizza",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 420
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sharing Boxes",
+      "items": [
+        {
+          "name": "Sable Box 24 Pieces",
+          "description": "4 milk chocolate, 4 white chocolate, 4 apricot jam, 4 walnut, 4 lotus, 4 coffee, serve 5 person",
+          "sizes": [
+            {
+              "size": "24 Pieces",
+              "price_egp": 290
+            }
+          ]
+        },
+        {
+          "name": "Cake Balls Box 24 Pieces",
+          "description": "4 dark chocolate, 4 white chocolate, 4 strawberry, 4 coffee, 4 lemon coconut, 4 caramel, serve 5 person",
+          "sizes": [
+            {
+              "size": "24 Pieces",
+              "price_egp": 620
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tin Boxes",
+      "items": [
+        {
+          "name": "Banana Kinder Crunch Tin Box",
+          "description": "Ladyfingers layered with a rich pudding, fresh banana slices, a layer of kinder spread, kinder coated cornflakes, topped with Kinder chocolate pieces (the pudding is made with condensed milk, fresh cream, pastry cream) enough for 6 peoples",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 870
+            }
+          ]
+        },
+        {
+          "name": "Mango Lotus Crunch Tin Box",
+          "description": "Vanilla cake layered with rich pudding, fresh mango chunks, Owais mango juice, topped with a layer of Lotus spread, lotus coated cornflakes, fresh mango pieces (the pudding is made with condensed milk, fresh cream, pastry cream) enough for 6 peoples",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 920
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pound Cake",
+      "items": [
+        {
+          "name": "Vanilla Pound Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Cake",
+              "price_egp": 280
+            }
+          ]
+        },
+        {
+          "name": "Marble Pound Cake",
+          "description": "Vanilla and chocolate cake",
+          "sizes": [
+            {
+              "size": "Cake",
+              "price_egp": 290
+            }
+          ]
+        },
+        {
+          "name": "Orange Pound Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Cake",
+              "price_egp": 280
+            }
+          ]
+        },
+        {
+          "name": "Vanilla Pound Cake Slice",
+          "description": "2 slices of vanilla pound cake",
+          "sizes": [
+            {
+              "size": "Cake",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Marble Pound Cake Slice",
+          "description": "2 slices of marble pound cake",
+          "sizes": [
+            {
+              "size": "Cake",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Orange Pound Cake Slice",
+          "description": "2 slices of orange pound cake",
+          "sizes": [
+            {
+              "size": "Cake",
+              "price_egp": 40
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Gelato Cake",
+      "items": [
+        {
+          "name": "Kinder Gelato Cake",
+          "description": "Two layers fudge sponge cake filled with hazelnut spread, topped with Kinder chocolate pieces, serves 8 persons",
+          "sizes": [
+            {
+              "size": "20_CM",
+              "price_egp": 920
+            }
+          ]
+        },
+        {
+          "name": "Tiramisu Gelato Cake",
+          "description": "Two layers coffee-soaked ladyfingers with tiramisu cream, topped with layer of cocoa powder, chocolate pieces, serves 8 persons",
+          "sizes": [
+            {
+              "size": "20_CM",
+              "price_egp": 850
+            }
+          ]
+        },
+        {
+          "name": "Nutella Crunchy Gelato Cake",
+          "description": "Layer of vanilla sponge cake with a layer of nutella ice cream, crunchy almond pieces, topped with a crunchy layer, for 8 persons",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 850
+            }
+          ]
+        },
+        {
+          "name": "Mango Ice Cream Gelato Cake",
+          "description": "Vanilla sponge cake base, vanilla gelato with oweiss mango, for 8 persons",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 790
+            }
+          ]
+        },
+        {
+          "name": "Yogurt Berries Gelato Cake",
+          "description": "Vanilla sponge cake layer, yogurt gelato, berries, for 8 persons",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 890
+            }
+          ]
+        },
+        {
+          "name": "Lotus Ice Cream Gelato Cake",
+          "description": "Lotus ice cream with lotus spread and lotus biscuit, for 8 persons",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 890
+            }
+          ]
+        },
+        {
+          "name": "Banoffee Gelato Cake",
+          "description": "Ice cream with banana, caramel, biscuit layer and meringue, for 8 persons",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 750
+            }
+          ]
+        },
+        {
+          "name": "Vanilla Chocolate Gelato Cake",
+          "description": "Brownies layer with vanilla ice cream, chocolate ice cream, brownie piece, marshmallow, vanilla stick topped with chocolate, for 8 persons",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 870
+            }
+          ]
+        },
+        {
+          "name": "Crunchy Salted Caramel Gelato Cake",
+          "description": "Vanilla sponge cake layer with salted caramel, caramel, caramel toffee, for 8 persons",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 790
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Gelato Cake",
+          "description": "Layer of vanilla ice cream with strawberry ice cream, topped with strawberry sauce and strawberry pieces.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 720
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ice Cream",
+      "items": [
+        {
+          "name": "Chocolate Brownies Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Nutella Drizzle Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Red Velvet Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "French Vanilla Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Oreo Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Mango Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Yogurt Raspberry Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mini Cakes",
+      "items": [
+        {
+          "name": "Mini Chocolate Vocano Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Tiramisu Chocolate Mini Cake",
+          "description": "Chocolate fudge cake layered with coffee soaked ladyfingers, tiramisu cream, and topped with a dusting of cocoa powder.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 220
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Macaroons",
+      "items": [
+        {
+          "name": "9  Pieces Macaroons  Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "6 Pieces Macaroons Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mini Babas ",
+      "items": [
+        {
+          "name": "Mini Mango Babas",
+          "description": "Babas with fresh cream and mango pieces, serves 1 person, 8 cm",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 80
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

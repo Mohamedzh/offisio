@@ -1,0 +1,1313 @@
+{
+  "brand": "Shawarma El Reem",
+  "source": "elmenus.com",
+  "source_label": "Menu source: elmenus.com (demo data, not affiliated)",
+  "restaurant_url": "https://elmenus.com/cairo/shawerma-el-reem-lnmg",
+  "branch_code": "5lmxz",
+  "fetched_at": "2026-10-31T12:38:37.356Z",
+  "categories": [
+    {
+      "name": "Value Meals",
+      "items": [
+        {
+          "name": "El Tabtaba Box Offer",
+          "description": "2 large saj chicken shawerma, 1 large saj kofta, 6 mini hawawshi, fries, tahini, garlic dip, pickles, El Reem sauce, fried bread and coca cola liter",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 480
+            }
+          ]
+        },
+        {
+          "name": "Twins Meal Offer",
+          "description": "2 medium chicken shawerma fattah, 2 garlic dip, 2 tahina, 2 pickles and 2 juice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 315
+            }
+          ]
+        },
+        {
+          "name": "X-Box Offer",
+          "description": "1 medium sandwich, 2 mini hawawshi bites, 1 crispy piece, small bites fries, small toasted bread, small sauce, pickles sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 250
+            }
+          ]
+        },
+        {
+          "name": "Bun Due Meal Offer",
+          "description": "2 kaiser, fries packet, juice, small sauce and small pickles",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 300
+            }
+          ]
+        },
+        {
+          "name": "Chicken Value Meal Offer",
+          "description": "1 medium chicken shawerma sandwich, medium saj fries, garlic dip and pickles",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Kofta Value Meal Offer",
+          "description": "1 medium kofta sandwich, medium saj fries, garlic dip and pickles",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "El Henayn Box",
+          "description": "1 medium saj fries sandwich, 3 mini hawawshi, pickles and garlic dip",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "El Henayn Beef Box",
+          "description": "1 medium fries with smoked beef sandwich, 3 mini hawashi, garlic dip and pickles",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 145
+            }
+          ]
+        },
+        {
+          "name": "El Haty Box",
+          "description": "1 medium kofta sandwich, 3 mini hawawshi, tahina and pickles",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 145
+            }
+          ]
+        },
+        {
+          "name": "Breakfast Offer",
+          "description": "1 medium fries sandwich, 1 medium sandwich of your choice, garlic dip and pickles",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Salads",
+      "items": [
+        {
+          "name": "Reem Spicy Sauce",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 25
+            },
+            {
+              "size": "Medium",
+              "price_egp": 15
+            }
+          ]
+        },
+        {
+          "name": "Pickles",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 15
+            }
+          ]
+        },
+        {
+          "name": "Pickled Cucumber",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 15
+            }
+          ]
+        },
+        {
+          "name": "Tehina",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 30
+            },
+            {
+              "size": "Medium",
+              "price_egp": 15
+            }
+          ]
+        },
+        {
+          "name": "Garlic Dip",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 25
+            },
+            {
+              "size": "Medium",
+              "price_egp": 15
+            }
+          ]
+        },
+        {
+          "name": "Spicy Haresa Sauce",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 25
+            },
+            {
+              "size": "Medium",
+              "price_egp": 15
+            }
+          ]
+        },
+        {
+          "name": "Cheddar Sauce",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 35
+            },
+            {
+              "size": "Medium",
+              "price_egp": 25
+            }
+          ]
+        },
+        {
+          "name": "Coleslaw",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 30
+            }
+          ]
+        },
+        {
+          "name": "Ketchup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 30
+            },
+            {
+              "size": "Medium",
+              "price_egp": 15
+            }
+          ]
+        },
+        {
+          "name": "Mayonnaise",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 30
+            },
+            {
+              "size": "Medium",
+              "price_egp": 15
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Appetizers",
+      "items": [
+        {
+          "name": "Saj Bread",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 5
+            }
+          ]
+        },
+        {
+          "name": "Basamti Rice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Chicken Strips",
+          "description": "3 pieces with fries",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "El Reem Fries with Meat Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "El Reem Fries Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Pan-Fried Bread with El Reem Spices & El Reem Sauce",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 30
+            }
+          ]
+        },
+        {
+          "name": "Fries Packet",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "El Reem Fries with Chicken Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Pan-Fried Bread Dish",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 15
+            }
+          ]
+        },
+        {
+          "name": "El Reem Mix Fries Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Fries with Cheddar Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Fries with Meat and Cheddar Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Fries with Chicken and Cheddar Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Fries with Strips and Cheddar Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Pan-Fried Bread with El Reem Spices",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Shawerma Sandwiches",
+      "items": [
+        {
+          "name": "Saj Beef Shawerma Sandwich",
+          "description": "Beef shawerma slices, onion, parsley, mint, turnip and tehina sauce",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 150
+            },
+            {
+              "size": "Medium",
+              "price_egp": 120
+            },
+            {
+              "size": "French Bread",
+              "price_egp": 185
+            }
+          ]
+        },
+        {
+          "name": "Crispy Saj Sandwich",
+          "description": "Strips slices, smoked beef, cheddar cheese, mayonnaise",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 135
+            },
+            {
+              "size": "Medium",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Saj Chicken Shawerma Sandwich",
+          "description": "Chicken shawerma slices, garlic dip and pickled cucumber",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 105
+            },
+            {
+              "size": "Medium",
+              "price_egp": 85
+            },
+            {
+              "size": "French Bread",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "Saj Extra Chicken Shawerma  Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Saj Bread",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "Saj Extra Beef Shawerma  Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Saj Bread",
+              "price_egp": 210
+            }
+          ]
+        },
+        {
+          "name": "Saj Extra Chicken Shawerma with Mozzarella Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Saj Bread",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Saj Extra Beef Shawerma with Mozzarella Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Saj Bread",
+              "price_egp": 240
+            }
+          ]
+        },
+        {
+          "name": "Beef Shawerma Kaiser Sandwich",
+          "description": "Shawerma slices, onion, parsley, mint, turnip, tehina",
+          "sizes": [
+            {
+              "size": "Kaiser",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Chicken Shawerma Kaiser Sandwich",
+          "description": "Shawerma slices, onion, parsley, mint, turnip, tehina",
+          "sizes": [
+            {
+              "size": "Kaiser",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Mexican Beef Shawerma Sandwich",
+          "description": "Shawarma slices, mushroom, colored pepper, olives, sweet corn, Mexican sauce",
+          "sizes": [
+            {
+              "size": "Saj Bread",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Mexican Chicken Shawerma Sandwich",
+          "description": "Shawarma slices, mushroom, colored pepper, olives, sweet corn, Mexican sauce",
+          "sizes": [
+            {
+              "size": "Saj Bread",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Supreme Sandwich",
+          "description": "Beef shawarma slices, smoked mozzarella, mayonnaise sauce and pickled cucumber",
+          "sizes": [
+            {
+              "size": "Beef",
+              "price_egp": 185
+            },
+            {
+              "size": "Chicken",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "Beef Shawerma with Fries Sandwich",
+          "description": "Shawerma slices, fries, onion, parsley, mint, turnip, tehina",
+          "sizes": [
+            {
+              "size": "Saj Bread",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Chicken Shawerma with Fries Sandwich",
+          "description": "Shawerma slices, fries, pickled cucumber, garlic dip",
+          "sizes": [
+            {
+              "size": "Saj Bread",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Sojouk Saj Sandwich",
+          "description": "Sojouk slices with mozzarella, El Reem sauce, garlic dip and pepper",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Saj Beef Shawerma with Mozzarella Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 180
+            },
+            {
+              "size": "Medium",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Saj Chicken Shawerma with Mozzarella Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 130
+            },
+            {
+              "size": "Medium",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Mexican Beef Shawerma El Reem Sandwich",
+          "description": "Shawerma slices, colored pepper, olives, sweet corn, mushroom, Mexican sauce with mozzarella cheese",
+          "sizes": [
+            {
+              "size": "Saj Bread",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "Mexican Chicken Shawerma El Reem Sandwich",
+          "description": "Shawerma slices, colored pepper, olives, sweet corn, mushroom, Mexican sauce with mozzarella cheese",
+          "sizes": [
+            {
+              "size": "Saj Bread",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Spicy Beef Shawerma Sandwich",
+          "description": "Meat shawerma, jalapeno, spicy El Reem sauce, pickled cucumber, fries",
+          "sizes": [
+            {
+              "size": "Saj Bread",
+              "price_egp": 155
+            }
+          ]
+        },
+        {
+          "name": "Spicy Chicken Shawerma Sandwich",
+          "description": "Chicken shawerma, jalapeno, spicy El Reem sauce, pickled cucumber, fries",
+          "sizes": [
+            {
+              "size": "Saj Bread",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "Kofta Saj  Sandwich",
+          "description": "2 Kofta skewers, onions, parsley, tahini sauce",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 100
+            },
+            {
+              "size": "Medium",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Shish Tawook Saj Sandwich",
+          "description": "Grilled chicken pieces with onions, green peppers and garlic dip sauce",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Kofta Kaiser Sandwich",
+          "description": "Grilled kofta, onion, parsley, mint, tehina",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Crispy Kaiser Sandwich",
+          "description": "Crispy chicken pieces with smoked beef and cheddar cheese sauce, lettuce, cucumber and mayonnaise sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Sojouk Kaiser Sandwich",
+          "description": "Sojouk pieces, peppers, tomatoes, el reem sauce, tahini",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Shish Tawook Kaiser Sandwich",
+          "description": "Grilled chicken pieces with bell peppers, grilled onions, pickled cucumbers and mayonnaise sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Spicy Mixed Shawarma Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Shawarma With Spicy Fries Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Reem Fries Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Saj Extra Mix Shawerma with Mozzarella Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 230
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Shawerma Per Kilo",
+      "items": [
+        {
+          "name": "Shawerma Slices 180gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Chicken",
+              "price_egp": 215
+            },
+            {
+              "size": "Meat",
+              "price_egp": 300
+            }
+          ]
+        },
+        {
+          "name": "Shawerma Slices 250gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Chicken",
+              "price_egp": 240
+            },
+            {
+              "size": "Meat",
+              "price_egp": 400
+            }
+          ]
+        },
+        {
+          "name": "Shawerma Slices 500gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Chicken",
+              "price_egp": 465
+            },
+            {
+              "size": "Meat",
+              "price_egp": 760
+            }
+          ]
+        },
+        {
+          "name": "Shawerma Slices 1000gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Chicken",
+              "price_egp": 900
+            },
+            {
+              "size": "Meat",
+              "price_egp": 1400
+            }
+          ]
+        },
+        {
+          "name": "Mix Shawerma Slices Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 300
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Falafel ",
+      "items": [
+        {
+          "name": "Falafel Saj Bread",
+          "description": "Hummus falafel with onions, parsley, mint, turnip and tahini sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Falafel with Fries Sandwich",
+          "description": "Falafel, French fries, onion, parsley, mint, turnip and sesame paste salad, served in saj bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fattah",
+      "items": [
+        {
+          "name": "Large Shawerma Fattah",
+          "description": "Shawerma slices with basmati rice pan-fried bread, served with pickles, garlic dip and Reem sauce",
+          "sizes": [
+            {
+              "size": "Chicken",
+              "price_egp": 200
+            },
+            {
+              "size": "Meat",
+              "price_egp": 240
+            },
+            {
+              "size": "Mix",
+              "price_egp": 240
+            }
+          ]
+        },
+        {
+          "name": "Medium Shawerma Fattah",
+          "description": "Shawerma slices, basmati rice, fried bread, served with pickles, garlic dip, el reem sauce",
+          "sizes": [
+            {
+              "size": "Chicken",
+              "price_egp": 130
+            },
+            {
+              "size": "Meat",
+              "price_egp": 165
+            },
+            {
+              "size": "Mix",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Large Egyptian Shawerma Fattah",
+          "description": "Shawerma slices with onions, parsley, tomatoes, basmati rice served with pickles, garlic dip and el Reem sauce",
+          "sizes": [
+            {
+              "size": "Chicken",
+              "price_egp": 205
+            },
+            {
+              "size": "Meat",
+              "price_egp": 240
+            }
+          ]
+        },
+        {
+          "name": "Large Shawerma Fattah with Mozzarella Cheese",
+          "description": "Shawerma slices, mozzarella cheese, basmati rice and pan fries bread, served with pickles, garlic dip, Reem sauce",
+          "sizes": [
+            {
+              "size": "Chicken",
+              "price_egp": 230
+            },
+            {
+              "size": "Meat",
+              "price_egp": 270
+            },
+            {
+              "size": "Mix",
+              "price_egp": 270
+            }
+          ]
+        },
+        {
+          "name": "Large Mexican Shawerma Fattah",
+          "description": "Shawerma slices, mushroom, colored pepper, olives, sweet corn, Mexican sauce, basmati rice and pan fried bread, served with pickles, garlic dip, Reem sauce",
+          "sizes": [
+            {
+              "size": "Chicken",
+              "price_egp": 220
+            },
+            {
+              "size": "Meat",
+              "price_egp": 255
+            },
+            {
+              "size": "Mix",
+              "price_egp": 255
+            }
+          ]
+        },
+        {
+          "name": "Mexican Shawerma Fattah with Mozzarella",
+          "description": "Shawerma slices with mushroom, bell peppers, olives, sweet corn and Mexican sauce, served with basmati rice, pickles, garlic dip and El Reem sauce",
+          "sizes": [
+            {
+              "size": "Chicken",
+              "price_egp": 240
+            },
+            {
+              "size": "Meat",
+              "price_egp": 290
+            },
+            {
+              "size": "Mix",
+              "price_egp": 290
+            }
+          ]
+        },
+        {
+          "name": "Fatoutet Shawerma",
+          "description": "50 gm shawerma slices, 200g basmati rice and pan fried bread, served with pickles, garlic dip",
+          "sizes": [
+            {
+              "size": "Chicken",
+              "price_egp": 105
+            },
+            {
+              "size": "Meat",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Fatoutet Strips",
+          "description": "Strips, basmati rice, fried bread, served with pickles, garlic dip",
+          "sizes": [
+            {
+              "size": "Chicken",
+              "price_egp": 110
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Saving Box",
+      "items": [
+        {
+          "name": "Single Bites Box",
+          "description": "1 large bites sandwich, fries, toasted bread, pickles, garlic dip",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Duetto Bites Box",
+          "description": "2 large bites sandwiches, fries, toasted bread, pickles, garlic dip",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 275
+            }
+          ]
+        },
+        {
+          "name": "Shawawshi Bites Box",
+          "description": "3 hawawshi bites, 1 large bites sandwich, fries, toasted bread, pickles, garlic dip",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "New Star Box",
+          "description": "4 kaiser sandwiches, fries",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 315
+            }
+          ]
+        },
+        {
+          "name": "Ellantem Box",
+          "description": "4 hawawshi bites, 4 crispy pieces, 2 large bites sandwiches, fries, toasted bread, pickles, garlic dip, tehina, Reem sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 530
+            }
+          ]
+        },
+        {
+          "name": "4x4 Bites Box",
+          "description": "4 large bites sandwiches, fries, toasted bread, pickles, garlic dip, Reem sauce, tehina",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 505
+            }
+          ]
+        },
+        {
+          "name": "5x5 Bites Box",
+          "description": "4 large bites sandwiches, 1 hawawshi, fries, toasted bread, pickles, garlic dip, Reem sauce, tehina",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 575
+            }
+          ]
+        },
+        {
+          "name": "Hawawshi Bites Box",
+          "description": "A box of hawawshi bites served with fries, fried bread, pickles and tahini",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Mix Bites Box",
+          "description": "6 hawawshi bites, 4 large bites sandwiches, pickles, garlic dip, Reem sauce, tehina",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 575
+            }
+          ]
+        },
+        {
+          "name": "Super Hattrick  Box",
+          "description": "Box of 4 hawawshi bites, 4 crispy pieces, French fries, toasted bread, pickles, garlic dip",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 210
+            }
+          ]
+        },
+        {
+          "name": "All Star Box",
+          "description": "8 kaiser sandwiches, fries",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 600
+            }
+          ]
+        },
+        {
+          "name": "Family Box",
+          "description": "6 large bites sandwiches of your choice, 10 hawawshi bites, 2 cheddar fries plate, pickles, garlic dip, tahini, el Reem sauce, toasted bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1005
+            }
+          ]
+        },
+        {
+          "name": "Crispy Chicken Box",
+          "description": "5 strips pieces, coleslaw, ketchup, mayonnaise, juice and French fries",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "Supreme Box",
+          "description": "Box  of 1 large bites sandwich, 2 hawawshi bites, 2 crispy pieces, pickles, garlic dip",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 285
+            }
+          ]
+        },
+        {
+          "name": "Gangista Box",
+          "description": "4 large bites sandwich, 3 hawawshi bites, 3 crispy pieces, 2 cheddar fries platters,pickles, garlic dip, tahina, Reem sauce, toasted bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 630
+            }
+          ]
+        },
+        {
+          "name": "Hattrick Box",
+          "description": "3 hawawshi bites, 3 crispy pieces, fries, toasted bread, garlic dip, pickles",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 195
+            }
+          ]
+        },
+        {
+          "name": "Extreme Box",
+          "description": "6 large bites sandwiches , pickles, garlic dip, Reem sauce, tehina",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 725
+            }
+          ]
+        },
+        {
+          "name": "El Mebatat Meat",
+          "description": "Meat shawerma, saj bread, cream cheese, mozzarella cheese, onions, sumac, meat sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "El Mebatat Chicken",
+          "description": "Chicken shawerma, saj bread, cream cheese, mozzarella cheese, saffron lemon sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "El Mebatat Crispy",
+          "description": "Crispy, saj bread, cream cheese, mozzarella cheese, smoked beef, crispy sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 180
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kids Meal ",
+      "items": [
+        {
+          "name": "Meat Shawarma Kids Meal",
+          "description": "Juice, fries, toy",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Chicken Shawarma Kids Meal",
+          "description": "Juice, fries, toy",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Strips Kids Meal",
+          "description": "Juice, fries, toy",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 160
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        {
+          "name": "Blueberry Cheesecake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "V7 Cola",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 25
+            }
+          ]
+        },
+        {
+          "name": "V7  Lemon Mint",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 25
+            }
+          ]
+        },
+        {
+          "name": "V7 Blueberry",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 25
+            }
+          ]
+        },
+        {
+          "name": "V7 Pomegranate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 25
+            }
+          ]
+        },
+        {
+          "name": "V Pineapple",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 25
+            }
+          ]
+        },
+        {
+          "name": "Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

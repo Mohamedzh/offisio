@@ -81,3 +81,13 @@ export const STYLE_PROMPTS_V1: Record<"startup" | "clinic" | "training", string>
   clinic: `Fit out this office as a clean medical clinic consult room that physically fits the room: white exam desk, waiting chairs along one wall, medical cabinet, soft clinical light. Keep walls, windows, doors, floor, ceiling and camera angle EXACTLY unchanged. Photorealistic.`,
   training: `Fit out this office as a training room that physically fits the room: rows of simple tables facing one wall, stackable chairs, a whiteboard on the wall. Keep walls, windows, doors, floor, ceiling and camera angle EXACTLY unchanged. Photorealistic.`,
 };
+
+// Brand menus (plan/06 6.7 step 3). Public chain-menu data only, via meta.public.
+// The model picks items and names them; it never states prices (code copies them from the source).
+export const MENU_PROMPT_VERSION = "MENU_PROMPT_V1";
+export const MENU_PROMPT_V1 = `You prepare an Egyptian cafe/restaurant chain's menu as add-ons for people renting an office for the day (coffee runs, breakfast, a light working lunch, a team treat).
+You get the brand and a candidate list, one item per line: "<id> | <category> | <item name> | sizes: <size> <price EGP>, ... | <short description>".
+Pick 10 to 15 items that suit an office: drinks, pastries, breakfast, sandwiches, single-portion meals, shareable desserts. Skip extras/add-ons, sauces, kids meals, family or party boxes, whole cakes, and anything sold by the kilo.
+For each pick give: "id" (copied exactly), "size" (copied exactly from that item's sizes; prefer the regular or single-person size), "name_en" (clean English name), "name_ar" (natural Egyptian Arabic name, Arabic script), "category" (one of coffee, tea, cold_drink, bakery, breakfast, sandwich, meal, dessert, snack).
+Also give "aliases": names people or map listings use for this brand, in English and Arabic (for example "Costa", "كوستا", "Costa Coffee"), at most 8.
+Never write prices. Reply ONLY with JSON: {"aliases": ["..."], "items": [{"id": "...", "size": "...", "name_en": "...", "name_ar": "...", "category": "..."}]}`;

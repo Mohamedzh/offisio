@@ -1,0 +1,991 @@
+{
+  "brand": "Krispy Kreme",
+  "source": "elmenus.com",
+  "source_label": "Menu source: elmenus.com (demo data, not affiliated)",
+  "restaurant_url": "https://elmenus.com/cairo/krispy-kreme-wqxad",
+  "branch_code": "7rxm7",
+  "fetched_at": "2026-10-31T12:38:37.110Z",
+  "categories": [
+    {
+      "name": "Spring Campaign",
+      "items": [
+        {
+          "name": "Berry Kreme",
+          "description": "Doughnut filled with berry kreme, dipped in berry kreme icing & decorated with white drizzle.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 67
+            }
+          ]
+        },
+        {
+          "name": "Hazel Cookie",
+          "description": "Doughnut filled with chocolate hazelnut, dipped in chocolate icing,  topped with cookie crumbs and coffee kreme with chocolate drizzle",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 67
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Value Boxes",
+      "items": [
+        {
+          "name": "Original Glazed Joy Box",
+          "description": "Enjoy 3 of our signature original glazed ring doughnuts, all made fresh daily",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 112
+            }
+          ]
+        },
+        {
+          "name": "Original Glazed Half Dozen",
+          "description": "Enjoy 6 of our signature Original Glazed ring doughnuts, all made fresh daily",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 198
+            }
+          ]
+        },
+        {
+          "name": "Build Your Own Joy Box",
+          "description": "Choose 3 of your favorite assorted doughnuts, all made fresh daily",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 112
+            }
+          ]
+        },
+        {
+          "name": "Add Churros on Your Own Dozen",
+          "description": "Choose 12 of our greatest doughnuts, with our freshly made  4 pieces of churros doughnuts, with your choice of 1 sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 383
+            }
+          ]
+        },
+        {
+          "name": "Original Glazed Dozen",
+          "description": "Enjoy 12 of our best seller original glazed ring doughnuts, all made fresh daily",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 343
+            }
+          ]
+        },
+        {
+          "name": "Build Your Own Dozen",
+          "description": "Select 12 of our greatest doughnuts, all made fresh daily",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 343
+            }
+          ]
+        },
+        {
+          "name": "Build Your Own Half Dozen",
+          "description": "Pick 6 of our greatest doughnuts, all made fresh daily",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 198
+            }
+          ]
+        },
+        {
+          "name": "Add Churros on Your OG Dozen",
+          "description": "Enjoy 12 of our best seller original glazed ring doughnuts, with our freshly made  4 pieces of churros doughnuts, with your choice of 1 sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 574
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Minis",
+      "items": [
+        {
+          "name": "Mini Assorted 4 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "Mini Assorted 16 Pieces",
+          "description": "A box of 16 selection of mini original glazed, mini chocolate iced, mini chocolate iced with sprinkles",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 390
+            }
+          ]
+        },
+        {
+          "name": "Mini Original Glazed 4 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 107
+            }
+          ]
+        },
+        {
+          "name": "Mini Original Glazed 16 Pieces",
+          "description": "A box of 16 mini original glazed, all made fresh daily",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 335
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Better Together",
+      "items": [
+        {
+          "name": "2 Original Glazed Doughnuts & Coffee",
+          "description": "2 original glazed doughnuts, regular size coffee of your choice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 99
+            }
+          ]
+        },
+        {
+          "name": "2 Doughnuts (1 Original Glazed Doughnut & 1 Doughnut) and Coffee",
+          "description": "1 original glazed doughnut, 1 doughnut of your choice, regular size coffee of your choice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 119
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Churros",
+      "items": [
+        {
+          "name": "Churros 9 Pieces",
+          "description": "Freshly made churros, 9 pieces of cinnamon dough churros with your choice of 3 sauces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 210
+            }
+          ]
+        },
+        {
+          "name": "Churros 18 Pieces",
+          "description": "Freshly made churros, 18 pieces of cinnamon dough churros with your choice of 4 sauces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 360
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Doughnuts Varieties",
+      "items": [
+        {
+          "name": "Pink Sprinkles",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 56
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Dream Cream",
+          "description": "Filled with chocolate sauce, hand dipped in chocolate icing and topped with dark chocolate chips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 67
+            }
+          ]
+        },
+        {
+          "name": "Lotus Biscoff Kreme Filled",
+          "description": "Filled with Lotus biscoff, smothered with Lotus biscoff spread and topped with lotus biscoff crumb",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 84
+            }
+          ]
+        },
+        {
+          "name": "Nutty Cocoa Filled Ring",
+          "description": "Filled & dipped in Nutella hazelnut spread, topped off with crunchy hazelnut pieces, and drizzled with chocolate icing",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 84
+            }
+          ]
+        },
+        {
+          "name": "Original Glazed",
+          "description": "Our signature doughnut, hand made fresh daily.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 44
+            }
+          ]
+        },
+        {
+          "name": "Choco Iced with Sprinkles",
+          "description": "We dip our Chocolate iced doughnut ring in colorful sprinkles",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 56
+            }
+          ]
+        },
+        {
+          "name": "Powdered Strawberry",
+          "description": "Jam-packed with strawberry filling and dusted with powdered sugar",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 56
+            }
+          ]
+        },
+        {
+          "name": "Hazelnut Dream Cake",
+          "description": "Filled with Hazelnut sauce, hand dipped in chocolate icing and topped with dark and white chocolate.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 67
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Iced Custard Filled",
+          "description": "Filled with creamy custard and hand-dipped in rich chocolate icing.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 56
+            }
+          ]
+        },
+        {
+          "name": "Cinnamon and Cheesecake",
+          "description": "Rolled in crunchy sugar and powdered cinnamon and filled with cheesecake cream",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 56
+            }
+          ]
+        },
+        {
+          "name": "Lotus Creme Doughnut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 84
+            }
+          ]
+        },
+        {
+          "name": "Mixed Berries Doughnut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 67
+            }
+          ]
+        },
+        {
+          "name": "Spanish Latte Doughnut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 67
+            }
+          ]
+        },
+        {
+          "name": "Choco Caramel Doughnut",
+          "description": "Shell doughnut filled with caramel and covered with chocolate icing, topped with caramel drizzle and hazelnuts",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 67
+            }
+          ]
+        },
+        {
+          "name": "The Birthday Doughnut",
+          "description": "Shell doughnut with vanilla kreme filling and topped with white icing and birthday sprinkles",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 67
+            }
+          ]
+        },
+        {
+          "name": "Cinnamon Ring",
+          "description": "Our signature original glazed doughnut, topped with cinnamon powder",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 56
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Creme",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 84
+            }
+          ]
+        },
+        {
+          "name": "Cookies N Creme",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 67
+            }
+          ]
+        },
+        {
+          "name": "Apple Cinnamon",
+          "description": "Jam-packed with apple filling and dusted with powdered cinnamon",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 56
+            }
+          ]
+        },
+        {
+          "name": "Choco Basket Doughnut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 67
+            }
+          ]
+        },
+        {
+          "name": "Caramel Glazed Doughnut",
+          "description": "Original glazed doughnut covered with caramel icing and topped with chocolate drizzle",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 56
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hot Coffee And More",
+      "items": [
+        {
+          "name": "Toffee Nut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 113
+            },
+            {
+              "size": "Medium",
+              "price_egp": 102
+            }
+          ]
+        },
+        {
+          "name": "Spanish Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 108
+            },
+            {
+              "size": "Medium",
+              "price_egp": 97
+            }
+          ]
+        },
+        {
+          "name": "Macchiato",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 88
+            },
+            {
+              "size": "Medium",
+              "price_egp": 82
+            },
+            {
+              "size": "Small",
+              "price_egp": 76
+            }
+          ]
+        },
+        {
+          "name": "Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 98
+            },
+            {
+              "size": "Medium",
+              "price_egp": 87
+            },
+            {
+              "size": "Small",
+              "price_egp": 81
+            }
+          ]
+        },
+        {
+          "name": "Cappuccino",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 98
+            },
+            {
+              "size": "Medium",
+              "price_egp": 87
+            },
+            {
+              "size": "Small",
+              "price_egp": 81
+            }
+          ]
+        },
+        {
+          "name": "Mocha",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 108
+            },
+            {
+              "size": "Medium",
+              "price_egp": 102
+            },
+            {
+              "size": "Small",
+              "price_egp": 96
+            }
+          ]
+        },
+        {
+          "name": "Americano",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 83
+            },
+            {
+              "size": "Medium",
+              "price_egp": 77
+            },
+            {
+              "size": "Small",
+              "price_egp": 71
+            }
+          ]
+        },
+        {
+          "name": "Espresso",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 56
+            },
+            {
+              "size": "Single",
+              "price_egp": 47
+            }
+          ]
+        },
+        {
+          "name": "Hot Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 98
+            },
+            {
+              "size": "Medium",
+              "price_egp": 92
+            },
+            {
+              "size": "Small",
+              "price_egp": 86
+            }
+          ]
+        },
+        {
+          "name": "Original Brew",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 78
+            },
+            {
+              "size": "Medium",
+              "price_egp": 72
+            },
+            {
+              "size": "Small",
+              "price_egp": 66
+            }
+          ]
+        },
+        {
+          "name": "Caramel Macchiato",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 103
+            },
+            {
+              "size": "Medium",
+              "price_egp": 92
+            },
+            {
+              "size": "Small",
+              "price_egp": 86
+            }
+          ]
+        },
+        {
+          "name": "Tea",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 53
+            },
+            {
+              "size": "Medium",
+              "price_egp": 47
+            },
+            {
+              "size": "Small",
+              "price_egp": 41
+            }
+          ]
+        },
+        {
+          "name": "Flat White",
+          "description": "Made with a double shot of espresso and steamed milk, it's a perfect balance of strength and creaminess that will keep you going throughout the day",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 80
+            }
+          ]
+        },
+        {
+          "name": "Caramel Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 103
+            },
+            {
+              "size": "Medium",
+              "price_egp": 92
+            },
+            {
+              "size": "Small",
+              "price_egp": 86
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Iced Coffee & More",
+      "items": [
+        {
+          "name": "Iced Toffee Nut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 113
+            },
+            {
+              "size": "Medium",
+              "price_egp": 102
+            }
+          ]
+        },
+        {
+          "name": "Iced Spanish latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 108
+            },
+            {
+              "size": "Medium",
+              "price_egp": 97
+            }
+          ]
+        },
+        {
+          "name": "Iced Caramel Macchiato",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 103
+            },
+            {
+              "size": "Medium",
+              "price_egp": 92
+            },
+            {
+              "size": "Small",
+              "price_egp": 86
+            }
+          ]
+        },
+        {
+          "name": "Iced Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 98
+            },
+            {
+              "size": "Medium",
+              "price_egp": 87
+            },
+            {
+              "size": "Small",
+              "price_egp": 81
+            }
+          ]
+        },
+        {
+          "name": "Iced Americano",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 83
+            },
+            {
+              "size": "Medium",
+              "price_egp": 77
+            },
+            {
+              "size": "Small",
+              "price_egp": 71
+            }
+          ]
+        },
+        {
+          "name": "Iced Mocha",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 108
+            },
+            {
+              "size": "Medium",
+              "price_egp": 102
+            },
+            {
+              "size": "Small",
+              "price_egp": 96
+            }
+          ]
+        },
+        {
+          "name": "Iced Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 98
+            },
+            {
+              "size": "Medium",
+              "price_egp": 92
+            },
+            {
+              "size": "Small",
+              "price_egp": 86
+            }
+          ]
+        },
+        {
+          "name": "Iced Macchiato",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 88
+            },
+            {
+              "size": "Medium",
+              "price_egp": 82
+            },
+            {
+              "size": "Small",
+              "price_egp": 76
+            }
+          ]
+        },
+        {
+          "name": "Iced Original Brew",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 78
+            },
+            {
+              "size": "Medium",
+              "price_egp": 72
+            },
+            {
+              "size": "Small",
+              "price_egp": 66
+            }
+          ]
+        },
+        {
+          "name": "Iced Caramel Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 98
+            },
+            {
+              "size": "Medium",
+              "price_egp": 92
+            },
+            {
+              "size": "Small",
+              "price_egp": 86
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Frappe",
+      "items": [
+        {
+          "name": "Caramel Frappe",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 129
+            },
+            {
+              "size": "Medium",
+              "price_egp": 112
+            },
+            {
+              "size": "Small",
+              "price_egp": 101
+            }
+          ]
+        },
+        {
+          "name": "Mocha Frappe",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 129
+            },
+            {
+              "size": "Medium",
+              "price_egp": 112
+            },
+            {
+              "size": "Small",
+              "price_egp": 101
+            }
+          ]
+        },
+        {
+          "name": "Vanilla Frappe",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 113
+            },
+            {
+              "size": "Medium",
+              "price_egp": 102
+            },
+            {
+              "size": "Small",
+              "price_egp": 96
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Frappe",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 129
+            },
+            {
+              "size": "Medium",
+              "price_egp": 112
+            },
+            {
+              "size": "Small",
+              "price_egp": 101
+            }
+          ]
+        },
+        {
+          "name": "Coffee Frappe",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 129
+            },
+            {
+              "size": "Medium",
+              "price_egp": 112
+            },
+            {
+              "size": "Small",
+              "price_egp": 101
+            }
+          ]
+        },
+        {
+          "name": "Choco Cookies Frappe",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 129
+            },
+            {
+              "size": "Medium",
+              "price_egp": 112
+            },
+            {
+              "size": "Small",
+              "price_egp": 101
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halawah Coffee Frappe",
+      "items": [
+        {
+          "name": "Halawah Coffee Frappe",
+          "description": "Refreshing and creamy blend of a smooth espresso with the sweet flavor of hlawah and ice, topped with whipped cream",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 125
+            },
+            {
+              "size": "Medium",
+              "price_egp": 115
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Others",
+      "items": [
+        {
+          "name": "Water",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

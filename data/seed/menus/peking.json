@@ -1,0 +1,1206 @@
+{
+  "brand": "Peking",
+  "source": "elmenus.com",
+  "source_label": "Menu source: elmenus.com (demo data, not affiliated)",
+  "restaurant_url": "https://elmenus.com/cairo/peking-ry95",
+  "branch_code": "ry4x",
+  "fetched_at": "2026-10-31T12:38:37.379Z",
+  "categories": [
+    {
+      "name": "Starters",
+      "items": [
+        {
+          "name": "1-  Vegetables Spring Rolls",
+          "description": "",
+          "sizes": [
+            {
+              "size": "5 Pieces",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "1- Beef Spring Rolls",
+          "description": "",
+          "sizes": [
+            {
+              "size": "4 Pieces",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "1- Chicken and Mushroom Spring Rolls",
+          "description": "",
+          "sizes": [
+            {
+              "size": "4 Pieces",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "1- Prawn Spring Rolls",
+          "description": "",
+          "sizes": [
+            {
+              "size": "4 Pieces",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "2- Beef Wun Ton",
+          "description": "",
+          "sizes": [
+            {
+              "size": "10 Pieces",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "2- Chicken Wun Ton",
+          "description": "",
+          "sizes": [
+            {
+              "size": "10 Pieces",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "3- Steamed Chicken  Wun Ton",
+          "description": "With chili sauce",
+          "sizes": [
+            {
+              "size": "10 Pieces",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "3- Steamed Beef Wun Ton",
+          "description": "With chili sauce",
+          "sizes": [
+            {
+              "size": "10 Pieces",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "4-Beef Dumplings",
+          "description": "",
+          "sizes": [
+            {
+              "size": "5 Pieces",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "5- Steamed Beef Dumplings",
+          "description": "With chili sauce",
+          "sizes": [
+            {
+              "size": "5 Pieces",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "6- Crisp Shandong Vegetables",
+          "description": "With chili sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "7- Crisp Shandong Potatoes",
+          "description": "With chili sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "8- Crisp Shandong Mushroom",
+          "description": "With chili sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "13- Prawn Crackers",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Salads",
+      "items": [
+        {
+          "name": "14- Chinese Salad",
+          "description": "Cucumber and vermicelli",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "15- Peking Salad",
+          "description": "Rocket, vermicelli and Chinese mushrooms",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "16- Cabbage Chili Salad",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "17- Mixed Jumbo Salad",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "18- Chicken Sweet Corn Salad",
+          "description": "With mayonnaise",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "19- Prawn Sweet Corn Salad",
+          "description": "with mayonnaise",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "20- Special Seafood Salad",
+          "description": "Prawns, calamari, crab legs",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 265
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Soups",
+      "items": [
+        {
+          "name": "21- Vegetables Soup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "22- Peking Soup",
+          "description": "Creamy soup with chicken and mushroom",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "23-Neuro Beef with Mushrooms Soup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "24-Creamy Chicken and Broccoli Soup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "25- Broccoli and Shiitake Mushroom Soup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "26-Wun Ton Soup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "27-  Chicken and Glass Noodles Soup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "28- Sweet Corn and Chicken Soup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "29- Chicken Hot and Sour Soup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "30- Hong Kong Soup",
+          "description": "Cream soup with prawns and Chinese spices",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "31- Crab Soup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "32- Seafood Soup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 170
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sauces",
+      "items": [
+        {
+          "name": "33- Chicken",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 270
+            }
+          ]
+        },
+        {
+          "name": "34- Beef",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 325
+            }
+          ]
+        },
+        {
+          "name": "35- Prawns",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 450
+            }
+          ]
+        },
+        {
+          "name": "36- Fried Fish",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 385
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": " Fish",
+      "items": [
+        {
+          "name": "37- Fried Fish with Ginger & Garlic",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 395
+            }
+          ]
+        },
+        {
+          "name": "38- Fried Fish Lemony Oyster",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 405
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Prawns",
+      "items": [
+        {
+          "name": "39- Prawns with Ginger & Garlic",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 440
+            }
+          ]
+        },
+        {
+          "name": "40- Prawns with Cashew Nuts",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 470
+            }
+          ]
+        },
+        {
+          "name": "41- Prawns with Shiitake Mushroom",
+          "description": "With supreme oyster sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 485
+            }
+          ]
+        },
+        {
+          "name": "42- Prawn Glass Noodles",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 440
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Seafood Paella",
+      "items": [
+        {
+          "name": "43- Spicy Peking Paella with Mixed Seafood",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 425
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": " Chicken ",
+      "items": [
+        {
+          "name": "44- Chicken with Green Pepper",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 270
+            }
+          ]
+        },
+        {
+          "name": "45- Chicken with Ginger & Garlic",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 270
+            }
+          ]
+        },
+        {
+          "name": "46- Chicken with Mushroom & Bamboo",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 295
+            }
+          ]
+        },
+        {
+          "name": "47- Chicken with Broccoli and Mushroom",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 295
+            }
+          ]
+        },
+        {
+          "name": "48- Chicken with Five Spices",
+          "description": "With mushroom and soya",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 295
+            }
+          ]
+        },
+        {
+          "name": "49- Chicken with Cashew Nuts",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 305
+            }
+          ]
+        },
+        {
+          "name": "50- Chicken with Almonds and Mushroom",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 305
+            }
+          ]
+        },
+        {
+          "name": "51- Chicken with Shitake & Mushroom",
+          "description": "With supreme oyster sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 345
+            }
+          ]
+        },
+        {
+          "name": "52- Chicken Glass Noodles",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 250
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": " Duck",
+      "items": [
+        {
+          "name": "53- Sliced Roasted Duck with Pancake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 350
+            }
+          ]
+        },
+        {
+          "name": "54- Sliced Duck with Shiitake & Mushroom",
+          "description": "With supreme oyster sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 410
+            }
+          ]
+        },
+        {
+          "name": "55- Sliced Duck with Teriyak and Mushroom",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 395
+            }
+          ]
+        },
+        {
+          "name": "56 - Sliced Duck with Black Pepper Sauce",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 395
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": " Beef",
+      "items": [
+        {
+          "name": "57- Beef with Green Pepper",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 315
+            }
+          ]
+        },
+        {
+          "name": "58- Beef with Onion and  Soya",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 315
+            }
+          ]
+        },
+        {
+          "name": "59- Beef with Mushroom and Bamboo",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 325
+            }
+          ]
+        },
+        {
+          "name": "60- Beef with Five Spices",
+          "description": "Served with 5 spices, mushrooms, soy",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 325
+            }
+          ]
+        },
+        {
+          "name": "61- Beef with Potato",
+          "description": "With mushroom and chili",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 325
+            }
+          ]
+        },
+        {
+          "name": "62- Beef with Shiitake and Mushroom",
+          "description": "With supreme, oyster sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 375
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Baked",
+      "items": [
+        {
+          "name": "63- Chicken with Creamy Spicy Hoisin Sauce",
+          "description": "Served with shiitake mushroom and broccoli",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 330
+            }
+          ]
+        },
+        {
+          "name": "64- Beef with Creamy Teriyaki Sauce and Mushroom",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 395
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Barbecue",
+      "items": [
+        {
+          "name": "65- Mixed Vegetables BBQ",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "66- Chicken BBQ",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 300
+            }
+          ]
+        },
+        {
+          "name": "67- Beef BBQ",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 345
+            }
+          ]
+        },
+        {
+          "name": "68- Prawn BBQ",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 430
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sizzling",
+      "items": [
+        {
+          "name": "69- Mixed Vegetables Sizzling",
+          "description": "",
+          "sizes": [
+            {
+              "size": "With Noodles ",
+              "price_egp": 260
+            },
+            {
+              "size": "with Rice ",
+              "price_egp": 240
+            }
+          ]
+        },
+        {
+          "name": "70- Chicken Sizzling",
+          "description": "",
+          "sizes": [
+            {
+              "size": "With Noodles ",
+              "price_egp": 350
+            },
+            {
+              "size": "with Rice ",
+              "price_egp": 330
+            }
+          ]
+        },
+        {
+          "name": "71- Beef Sizzling",
+          "description": "",
+          "sizes": [
+            {
+              "size": "With Noodles ",
+              "price_egp": 405
+            },
+            {
+              "size": "with Rice ",
+              "price_egp": 385
+            }
+          ]
+        },
+        {
+          "name": "72- Prawns Sizzling",
+          "description": "",
+          "sizes": [
+            {
+              "size": "With Noodles ",
+              "price_egp": 510
+            },
+            {
+              "size": "with Rice ",
+              "price_egp": 490
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Vegetables",
+      "items": [
+        {
+          "name": "73- Shredded Mixed Vegetables",
+          "description": "With garlic and mushroom",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "74- Chinese Mixed Vegetables",
+          "description": "With mushroom, bamboo, Chinese fungus",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 215
+            }
+          ]
+        },
+        {
+          "name": "75- Broccoli & Mushroom with Ginger & Garlic",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "76- Spicy Mixed Stir Fry Vegetable",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "77-Vegetable Glass Noodles",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 180
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noodles",
+      "items": [
+        {
+          "name": "78-Plain Fried Noodles with Soy",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "79-Fried Noodles with Vegetables & Soya",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "80-Fried Noodles with Mushroom",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "81-Fried Noodles with Chicken & Vegetables",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "82-Fried Noodles with Beef & Vegetables",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "83-Fried  Noodles with Prawns & Vegetables",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 270
+            }
+          ]
+        },
+        {
+          "name": "84-Mixed Fried Noodles",
+          "description": "With chicken, prawns and vegetables",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 240
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Rice",
+      "items": [
+        {
+          "name": "85- Steamed Rice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "86-  Fried Rice with Eggs",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "86-  Fried Rice with Vegetables",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "86- Fried Rice with Chicken",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "86- Fried Rice with Prawns",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "86- Mixed Fried Rice",
+          "description": "With chicken, prawns",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "86- Mixed Fried Rice Guandong Style",
+          "description": "With chicken, prawns, eggs",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 125
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        {
+          "name": "87- Candied Banana",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "88- Candied Pineapple",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "89- Candied Banana with Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "90- Candied Pineapple with Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "91- Profiterole Wang",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Beverages",
+      "items": [
+        {
+          "name": "92- Coca Cola",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "92- Fanta Orange",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "92-Fanta Apple",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "92-Sprite",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "93- Schweppes",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "94- Schweppes Gold",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "95- Birell",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "96- Tonic",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "97- Red Bull",
+          "description": "Energy drink",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "98- Small Mineral Water",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        },
+        {
+          "name": "92- Coca Cola Diet",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "96- Soda",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -8,11 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "pipeline": "tsx scripts/run-unit.ts",
     "migrate": "tsx scripts/migrate.ts",
-    "seed": "tsx scripts/seed.ts",
-    "upload-demo": "tsx scripts/upload-demo.ts",
-    "generate-home-art": "tsx scripts/generate-home-art.ts",
     "generate-units": "tsx scripts/generate-units.ts",
     "topup-availability": "tsx scripts/topup-availability.ts",
     "check-rubric": "tsx scripts/check-rubric.ts",
@@ -21,7 +17,8 @@
     "brand-assets": "tsx scripts/brand-assets.ts",
     "stage-units": "tsx scripts/stage-units.ts",
     "reassess-units": "tsx scripts/reassess-units.ts",
-    "backfill-locations": "tsx scripts/backfill-locations.ts"
+    "backfill-locations": "tsx scripts/backfill-locations.ts",
+    "import-brand-menus": "tsx scripts/import-brand-menus.ts"
   },
   "dependencies": {
     "@vercel/blob": "^2.8.2",

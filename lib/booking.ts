@@ -6,6 +6,7 @@ export interface AddonRequest { item_id: string; qty: number; deliver_at?: strin
 export interface CreateBookingInput {
   unit_slug: string; date: string; track?: RentPeriod;
   renter_name: string; renter_phone: string; addons?: AddonRequest[];
+  created_via?: "chat" | "whatsapp";
 }
 
 export async function createBooking(input: CreateBookingInput): Promise<Booking> {
@@ -44,9 +45,9 @@ export async function createBooking(input: CreateBookingInput): Promise<Booking>
     });
     const total = rent + addons.reduce((s, a) => s + a.qty * a.unit_price_egp, 0);
     const ins = await client.query<{ id: string; created_at: string }>(
-      `insert into bookings (unit_id, availability_ids, track, renter_name, renter_phone, rent_egp_total, total_egp)
-       values ($1,$2,$3,$4,$5,$6,$7) returning id, created_at`,
-      [uId, slotIds, track, input.renter_name.trim(), input.renter_phone, rent, total]);
+      `insert into bookings (unit_id, availability_ids, track, renter_name, renter_phone, rent_egp_total, total_egp, created_via)
+       values ($1,$2,$3,$4,$5,$6,$7,$8) returning id, created_at`,
+      [uId, slotIds, track, input.renter_name.trim(), input.renter_phone, rent, total, input.created_via ?? "chat"]);
     const bookingId = ins.rows[0].id;
     for (const a of addons)
       await client.query(

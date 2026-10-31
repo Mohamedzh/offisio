@@ -1,0 +1,1333 @@
+{
+  "brand": "Lord of the Wings",
+  "source": "elmenus.com",
+  "source_label": "Menu source: elmenus.com (demo data, not affiliated)",
+  "restaurant_url": "https://elmenus.com/cairo/lord-of-the-wings-v662",
+  "branch_code": "5l8vz",
+  "fetched_at": "2026-10-31T12:38:37.267Z",
+  "categories": [
+    {
+      "name": "Offers ",
+      "items": [
+        {
+          "name": "Happiness Box",
+          "description": "2 smash burger, 5 traditional wings, onion rings, 2 coleslaw, 2 coca cola can",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 450
+            }
+          ]
+        },
+        {
+          "name": "Lord Box",
+          "description": "5 traditional wings, 3 boneless wings, 1 smash burger, fries, coleslaw, coca cola can",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 350
+            }
+          ]
+        },
+        {
+          "name": "Destroying Box",
+          "description": "4 burger of your choice, 2 fries, 2 coleslaw, 2 coca cola can",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 550
+            }
+          ]
+        },
+        {
+          "name": "Melty Cheese & Cheetos Burger Offer",
+          "description": "With fries and drink",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Our Famous Wings ",
+      "items": [
+        {
+          "name": "Traditional Wings",
+          "description": "Never breaded! just tossed in one of our 12 signature sauces intense flavor guaranteed",
+          "sizes": [
+            {
+              "size": "10 Wings",
+              "price_egp": 216.6
+            },
+            {
+              "size": "20 Wings",
+              "price_egp": 399
+            },
+            {
+              "size": "5 Pieces",
+              "price_egp": 114
+            },
+            {
+              "size": "30_PIECES",
+              "price_egp": 570
+            }
+          ]
+        },
+        {
+          "name": "Grilled Wings",
+          "description": "Tossed in oner of our 20 signature sauces with that hint of the grill flavor",
+          "sizes": [
+            {
+              "size": "10 Wings",
+              "price_egp": 216.6
+            },
+            {
+              "size": "20 Wings",
+              "price_egp": 399
+            },
+            {
+              "size": "5 Pieces",
+              "price_egp": 114
+            },
+            {
+              "size": "30_PIECES",
+              "price_egp": 570
+            }
+          ]
+        },
+        {
+          "name": "Boneless Wings",
+          "description": "Golden crisp white meat & just tossed in one of our 12 signature sauces",
+          "sizes": [
+            {
+              "size": "10 Wings",
+              "price_egp": 444.6
+            },
+            {
+              "size": "20 Wings",
+              "price_egp": 741
+            },
+            {
+              "size": "5 Wings",
+              "price_egp": 228
+            }
+          ]
+        },
+        {
+          "name": "The Winger's Combo",
+          "description": "5 traditional and 3 boneless wings with your choice of two sauces, served with skin-on fries, carrot sticks and blue cheese or ranch dip",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 342
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Appetizers",
+      "items": [
+        {
+          "name": "Onion Rings",
+          "description": "Crisp hot rings served with BBQ dip",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 79.8
+            }
+          ]
+        },
+        {
+          "name": "Fries & Cheddar",
+          "description": "Skinny fries smothered with hot melted cheddar",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 102.6
+            }
+          ]
+        },
+        {
+          "name": "Curly Fries",
+          "description": "Curly crispy seasoned fries",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 136.8
+            }
+          ]
+        },
+        {
+          "name": "Skinny Fries",
+          "description": "Gold crisp skinny fries",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 62.7
+            }
+          ]
+        },
+        {
+          "name": "Crispy Chicken Strips",
+          "description": "5 pieces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 199.5
+            }
+          ]
+        },
+        {
+          "name": "Mozzarella Sticks",
+          "description": "Golden crisp fried mozzarella sticks",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 102.6
+            }
+          ]
+        },
+        {
+          "name": "Chili Cheese Nachos",
+          "description": "Our crunchy nachos dressed with our steaming chili and cheese mix",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 171
+            }
+          ]
+        },
+        {
+          "name": "Fiery Shrimp Bomb",
+          "description": "Crispy battered layers of shrimp mixed with dynamite sauce & served on a bed of romaine lettuce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 285
+            }
+          ]
+        },
+        {
+          "name": "Nacho Chips",
+          "description": "Crispy corn tortilla served with our famous salsa and just smashed guacamole",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85.5
+            }
+          ]
+        },
+        {
+          "name": "Sampler Combo",
+          "description": "Crispy boneless wings, onion rings, nacho chips and mozzarella sticks, served with ranch, salsa and buffalo mild sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 285
+            }
+          ]
+        },
+        {
+          "name": "Chili Cheese Fries",
+          "description": "Skin-on fries dressed with our steaming chili and cheese mix",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 171
+            }
+          ]
+        },
+        {
+          "name": "Cheesy Chicken Fries",
+          "description": "The signature crispy chicken with cheddar cheese sauce, French fries",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 171
+            }
+          ]
+        },
+        {
+          "name": "Baby Dogs",
+          "description": "2 beef baby dogs topped with hot melted cheddar, potato crisps and red onion",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 171
+            }
+          ]
+        },
+        {
+          "name": "Double Slider",
+          "description": "Combine any two of your favorite burgers from the American, peppercorn mushroom or classic BBQ burger",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 171
+            }
+          ]
+        },
+        {
+          "name": "Super Duber Cheese Nachos",
+          "description": "Warm corn tortilla chips, topped with our melted cheese  blend, served with guacamole, sauce and sour cream",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 136.8
+            }
+          ]
+        },
+        {
+          "name": "Jalapeno Cheese Bites",
+          "description": "Fried spicy jalapeno pepper stuffed with mozzarella cheese served with sweet chili sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 108.3
+            }
+          ]
+        },
+        {
+          "name": "Winzo",
+          "description": "Special rice mixed with BBQ sauce with our signature crispy fried chicken mixed with BBQ sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 114
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Crisp Salad",
+      "items": [
+        {
+          "name": "Chicken Avocado Salad",
+          "description": "Our super grain salad crispy greens topped with grilled chicken, hard boiled egg, cherry tomatoes, avocado and cheddar",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 199.5
+            }
+          ]
+        },
+        {
+          "name": "Texas Salad",
+          "description": "Crispy romaine lettuce tossed in ranch dressing with blue cheese, avocado and chicken, beef bacon, cherry tomatoes, served on crispy tortillas bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205.2
+            }
+          ]
+        },
+        {
+          "name": "Original Ceasar Salad",
+          "description": "The traditional recipe crisp romaine tossed in our ceasar dreassing topped with herbed croutons and grated parmesan",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 114
+            }
+          ]
+        },
+        {
+          "name": "Chicken Ceasar Salad",
+          "description": "Original caesar topped with marinated grilled chicken strips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 193.8
+            }
+          ]
+        },
+        {
+          "name": "All Natural Quinoa Salad",
+          "description": "Our super-grain salad with cherry tomatoes, avocado, cucumber, red onion and mint in a subtle orange lemon dressing, never tasted that good",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 171
+            }
+          ]
+        },
+        {
+          "name": "Zesty Grilled Corn & Rocket Salad",
+          "description": "Fire-grilled off-the-cob kernels, cherry tomatoes, avocado, red onion and rocket leaves, all tossed in a lemon mustard dressing",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 148.2
+            }
+          ]
+        },
+        {
+          "name": "Grilled Pineapple Salad",
+          "description": "Crispy romaine lettuce, cucumber, bell pepper, avocado, pineapple tossed in pineapple mayo dressing topped with grilled chicken",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 182.4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Flatbread ",
+      "items": [
+        {
+          "name": "Buffalo Chicken",
+          "description": "Chicken tenders diced and mixed with buffalo sauce, mozzarella cheese with blue cheese crumbles, sweet corn, parsley & onion",
+          "sizes": [
+            {
+              "size": "Full",
+              "price_egp": 205.2
+            },
+            {
+              "size": "Half",
+              "price_egp": 114
+            }
+          ]
+        },
+        {
+          "name": "BBQ Chicken",
+          "description": "BBQ classic sauce, our signature cheese mix, grilled chicken strips and red onion",
+          "sizes": [
+            {
+              "size": "Full",
+              "price_egp": 205.2
+            },
+            {
+              "size": "Half",
+              "price_egp": 114
+            }
+          ]
+        },
+        {
+          "name": "Buffalo Shrimp",
+          "description": "Blue cheese, mozzarella cheese, shrimps with buffalo sauce",
+          "sizes": [
+            {
+              "size": "Full",
+              "price_egp": 285
+            },
+            {
+              "size": "Half",
+              "price_egp": 148.2
+            }
+          ]
+        },
+        {
+          "name": "Margherita",
+          "description": "Tomato sauce, mozzarella cheese and basil",
+          "sizes": [
+            {
+              "size": "Full",
+              "price_egp": 142.5
+            },
+            {
+              "size": "Half",
+              "price_egp": 85.5
+            }
+          ]
+        },
+        {
+          "name": "Veggie Special",
+          "description": "Tomato sauce, mozzarella cheese, bell pepper, red onion, mushroom, cherry tomatoes, olives and basil",
+          "sizes": [
+            {
+              "size": "Full",
+              "price_egp": 159.6
+            },
+            {
+              "size": "Half",
+              "price_egp": 102.6
+            }
+          ]
+        },
+        {
+          "name": "Four Cheese",
+          "description": "Yellow cheddar, mozzarella cheese, parmesan cheese and blue cheese",
+          "sizes": [
+            {
+              "size": "Full",
+              "price_egp": 159.6
+            },
+            {
+              "size": "Half",
+              "price_egp": 102.6
+            }
+          ]
+        },
+        {
+          "name": "Cheesy Burger",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Full",
+              "price_egp": 205.2
+            },
+            {
+              "size": "Half",
+              "price_egp": 114
+            }
+          ]
+        },
+        {
+          "name": "Mushroom Garlic",
+          "description": "Sauteed garlic mushrooms, basil pesto with grated parmesan & mozzarella cheese",
+          "sizes": [
+            {
+              "size": "Full",
+              "price_egp": 171
+            },
+            {
+              "size": "Half",
+              "price_egp": 102.6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Quesadillas",
+      "items": [
+        {
+          "name": "Cheese Quesadilla",
+          "description": "Toasted flour tortilla stuffed with our melted cheese blend",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 114
+            }
+          ]
+        },
+        {
+          "name": "Chicken Quesadilla",
+          "description": "Toasted flour tortilla stuffed with grilled chicken fillet, bacon, onion, fire roasted bell pepper and our melted cheese blend, served with sour cream and salsa",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 171
+            }
+          ]
+        },
+        {
+          "name": "Beef Quesadilla",
+          "description": "Toasted flour tortilla stuffed with grilled tenderloin strips, caramelized onion, fire roasted bell pepper and our melted cheese blend, served with sour cream and salsa",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 182.4
+            }
+          ]
+        },
+        {
+          "name": "Mix Quesadilla",
+          "description": "Just ask and we'll serve 1/2 chicken, 1/2 beef served with sour cream and salsa",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 193.8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Beef  Burgers",
+      "items": [
+        {
+          "name": "The American Burger",
+          "description": "An all time favorite! grass fed patty, American cheese, crisp iceberg, tomato, red onion, dill pickles and our burger spread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 159.6
+            }
+          ]
+        },
+        {
+          "name": "Classic BBQ Burger",
+          "description": "BBQ lovers, here's your choice of burger\na grass fed patty smothered with a classic BBQ sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 165.3
+            }
+          ]
+        },
+        {
+          "name": "The Hula Hoop Mountain Burger",
+          "description": "Grass fed patty topped with a mountain of crunchy deep fried onion curls & a good drizzle of melted cheddar",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 171
+            }
+          ]
+        },
+        {
+          "name": "Crunchy Melty Burger",
+          "description": "Grass fed patty, onion rings, mozzarella sticks, grilled bacon and BBQ smoky sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 193.8
+            }
+          ]
+        },
+        {
+          "name": "Cheesy Steak Burger",
+          "description": "Grass fed patty topped with a mountain of cheesy steak beef",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 216.6
+            }
+          ]
+        },
+        {
+          "name": "Melty Cheese & Cheetos Burger",
+          "description": "Grass fed patty generously drizzled with red cheddar sauce & cheetos bites",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 171
+            }
+          ]
+        },
+        {
+          "name": "2*2 Stack Burger",
+          "description": "Double grass fed patties, double the cheese, dill pickles and our burger spread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 199.5
+            }
+          ]
+        },
+        {
+          "name": "Avocado Egg Burger",
+          "description": "Grass fed patty, American cheese, grilled onion, avocado, sunny side up egg and guacamole",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 176.7
+            }
+          ]
+        },
+        {
+          "name": "Jalapeno Cheese Burger",
+          "description": "Grass fed patty stuffed with a spicy jalapeno cheddar mixture",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 159.6
+            }
+          ]
+        },
+        {
+          "name": "Deeping Cheese Burger",
+          "description": "Grass fed patty, mix cheese, dill pickles and our burger spread, cutting half & dipping in cheese sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 182.4
+            }
+          ]
+        },
+        {
+          "name": "Single Smash Burger",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 136.8
+            }
+          ]
+        },
+        {
+          "name": "Double Smash Burger",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205.2
+            }
+          ]
+        },
+        {
+          "name": "Peppercorn Mushroom Burger",
+          "description": "Grass fed patty, white cheddar, sauteed mushroom and peppercorn sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 171
+            }
+          ]
+        },
+        {
+          "name": "Dynamite Shrimp Burger",
+          "description": "Grass fed patty topped with crispy fried spicy shrimp and our tangy dynamite sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 216.6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chicken  Burgers",
+      "items": [
+        {
+          "name": "The Premium Chicken Burger",
+          "description": "Marinated grilled chicken fillet, white cheddar, crisp iceberg, tomato, dill pickles and roasted garlic mayo",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 182.4
+            }
+          ]
+        },
+        {
+          "name": "Sweet Chick Burger",
+          "description": "Crispy chicken tenders, American cheese, lettuce, tomato and honey mustard sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 182.4
+            }
+          ]
+        },
+        {
+          "name": "The Firecracker Burger",
+          "description": "Breaded chicken fillet tossed in buffalo sauce,  crisp iceberg, red onion, jalapenos and blue cheese spread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 182.4
+            }
+          ]
+        },
+        {
+          "name": "Crispy Chicken Bun",
+          "description": "Super moist crispy chicken burger served with our secret crispy topping & a light creamy herb mayo and our pink pickles",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 182.4
+            }
+          ]
+        },
+        {
+          "name": "Caesar Chicken Sandwich",
+          "description": "A perfectly grilled chicken breast served over a bed of lettuce & avocado, drizzled with our signature creamy caesar dressing topped with arugula leaves",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 182.4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sandwiches ",
+      "items": [
+        {
+          "name": "The Club Sandwich",
+          "description": "The most popular triple decker sandwich since the 1800's! grilled chicken salad, sunny side up egg dressed with bacon, melted cheddar and tomato",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 171
+            }
+          ]
+        },
+        {
+          "name": "Grilled Chicken Sandwich",
+          "description": "Grilled chicken fillet, crisp iceberg, guacamole and pico de gallo",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 182.4
+            }
+          ]
+        },
+        {
+          "name": "Buffalo  Shrimp Sandwich",
+          "description": "Marianted fried shrimp, rocca and tartar dressing",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 228
+            }
+          ]
+        },
+        {
+          "name": "Philly Steak Sandwich",
+          "description": "Cheesy steak beef tossed with onion, green pepper and gravy sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205.2
+            }
+          ]
+        },
+        {
+          "name": "Chicken Ranch Sandwich",
+          "description": "Breaded chicken fillet tossed in ranch dressing, tomato ana lettuce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 182.4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Wraps ",
+      "items": [
+        {
+          "name": "Garlic Chicken Wrap",
+          "description": "Marinated grilled chicken fillet, coleslaw, pickles, potato crisps and fresh garlic paste",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 171
+            }
+          ]
+        },
+        {
+          "name": "Crispy Buffalo Shrimp Wrap",
+          "description": "Crispy fried shrimp tossed in buffalo mild sauce, shredded iceberg, red onion, potato crisps and blue cheese sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 228
+            }
+          ]
+        },
+        {
+          "name": "Crispy Buffalo Chicken Wrap",
+          "description": "Crispy tenders tossed in buffalo mild sauce, shredded iceberg, red onion, potato crisps and blue cheese sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 171
+            }
+          ]
+        },
+        {
+          "name": "Grilled Chicken Wrap",
+          "description": "Lean chicken breast, grilled and wrapped in a whole wheat tortilla with shredded lettuce, light mayo, pico de gallo and a ranch spread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 171
+            }
+          ]
+        },
+        {
+          "name": "Dynamite Shrimp Wrap",
+          "description": "Crispy fried shrimp coated in a spicy tangy sauce layered over a bed of shredded lettuce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 228
+            }
+          ]
+        },
+        {
+          "name": "Cheesy Beef Wrap",
+          "description": "Our signature grounded beef, pickles, mozzarella cheese and cheese sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 182.4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pasta",
+      "items": [
+        {
+          "name": "Penne Shrimp Arrabbiata Pasta",
+          "description": "Penne cooked in spicy tomato sauce with sauteed shrimps topped with parmesan shavings",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 307.8
+            }
+          ]
+        },
+        {
+          "name": "Mushroom Penne Alfredo Pasta",
+          "description": "Penne with mushroom tossed in creamy sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 216.6
+            }
+          ]
+        },
+        {
+          "name": "Penne Bolognese Pasta",
+          "description": "Penne served with the classic meat sauce topped with parmesan cheese",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 171
+            }
+          ]
+        },
+        {
+          "name": "Bespoke Cajun Pasta",
+          "description": "Hot and creamy Cajun sauce tossed with grilled chicken strips and pasta",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 250.8
+            }
+          ]
+        },
+        {
+          "name": "Cheetos Pasta",
+          "description": "A creamy pasta alfredo, smothered with cheetos flavored cheese sauce, topped with crunchy cheetos bites",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 171
+            }
+          ]
+        },
+        {
+          "name": "Taco Beef Pasta",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 193.8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Signature Platters ",
+      "items": [
+        {
+          "name": "Chicken Espetada Platter",
+          "description": "Grilled chicken cubes with peri-peri  sauce served with Mexican rice and sauteed vegetables and tortillas bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 330.6
+            }
+          ]
+        },
+        {
+          "name": "Buffalo Shrimps Platter",
+          "description": "Seasoned fried shrimps, coated with your choice of our signature buffalo hot,mild or suicide sauce and served with ranch dip, sauteed vegetables and your choice of one side",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 364.8
+            }
+          ]
+        },
+        {
+          "name": "Chicken Parmesan Platter",
+          "description": "Slightly breaded chicken fillets, topped with marinara sauce and parmesan served with tomato sauce spaghetti",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 330.6
+            }
+          ]
+        },
+        {
+          "name": "Rib Eye Steak Platter",
+          "description": "250gm grilled ribeye steak local meat served with Mexican rice and sauteed  vegetables and your choice of sauces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 513
+            }
+          ]
+        },
+        {
+          "name": "Barbecued Half Chicken Platter",
+          "description": "Basted in our famous citrus pepper sauce grilled to perfection and served with Mexican rice and sauteed  vegetables and your choice of sauces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 296.4
+            }
+          ]
+        },
+        {
+          "name": "Grilled Chicken Fillet Platter",
+          "description": "Two marinated grilled chicken fillet topped with pico de gallo served with Mexican rice and sauteed vegetables and your choice of sauces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 330.6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kids Meals",
+      "items": [
+        {
+          "name": "Burger Meal",
+          "description": "Served with fries",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 171
+            }
+          ]
+        },
+        {
+          "name": "Grilled Cheese Sandwich  Meal",
+          "description": "Served with fries",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 114
+            }
+          ]
+        },
+        {
+          "name": "Chicken Tender & Fries Meal",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 171
+            }
+          ]
+        },
+        {
+          "name": "Macaroni  & Cheese  Meal",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 114
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fresh Juices",
+      "items": [
+        {
+          "name": "Orange Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 79.8
+            }
+          ]
+        },
+        {
+          "name": "Lemon Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 68.4
+            }
+          ]
+        },
+        {
+          "name": "Lemon Mint Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 74.1
+            }
+          ]
+        },
+        {
+          "name": "Mango Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85.5
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Smoothie ",
+      "items": [
+        {
+          "name": "Fresh Juice Smoothie",
+          "description": "Your choice of seasonal fresh fruit juice with crushed ice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Shakes ",
+      "items": [
+        {
+          "name": "Strawberry Cheese Shake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 114
+            }
+          ]
+        },
+        {
+          "name": "Cookies with Cream Shake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 114
+            }
+          ]
+        },
+        {
+          "name": "Red Velvet Shake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 114
+            }
+          ]
+        },
+        {
+          "name": "Peanut Butter Shake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 114
+            }
+          ]
+        },
+        {
+          "name": "Oreo Shake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 114
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fresh Ades",
+      "items": [
+        {
+          "name": "Fizzy Lemon Mint",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 79.8
+            }
+          ]
+        },
+        {
+          "name": "Pink Lemonade",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 79.8
+            }
+          ]
+        },
+        {
+          "name": "Black Magic",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 79.8
+            }
+          ]
+        },
+        {
+          "name": "Fizzy Storm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 79.8
+            }
+          ]
+        },
+        {
+          "name": "Orange Pomegranate Ade",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 79.8
+            }
+          ]
+        },
+        {
+          "name": "Blue Lagoon",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 79.8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Iced Drinks ",
+      "items": [
+        {
+          "name": "Iced Tea",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 62.7
+            }
+          ]
+        },
+        {
+          "name": "Flavored Iced Tea",
+          "description": "Peach or lemon",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 74.1
+            }
+          ]
+        },
+        {
+          "name": "Iced Green Tea Mint",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 62.7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Soft Drinks",
+      "items": [
+        {
+          "name": "Coca Cola",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45.6
+            }
+          ]
+        },
+        {
+          "name": "Sprite",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45.6
+            }
+          ]
+        },
+        {
+          "name": "Fanta Orange",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45.6
+            }
+          ]
+        },
+        {
+          "name": "Fanta  Apple",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45.6
+            }
+          ]
+        },
+        {
+          "name": "Mineral Water",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 34.2
+            },
+            {
+              "size": "Small",
+              "price_egp": 22.8
+            }
+          ]
+        },
+        {
+          "name": "Red Bull",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 74.1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

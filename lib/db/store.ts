@@ -1,5 +1,5 @@
 // Postgres-backed store (Neon). Pooled connection via lib/db/pg.ts.
-// Schema: lib/db/schema.sql. Seed: scripts/seed.ts.
+// Schema: lib/db/schema.sql (pnpm migrate).
 import { pool } from "./pg";
 
 export type RentPeriod = "daily" | "monthly" | "long_term";

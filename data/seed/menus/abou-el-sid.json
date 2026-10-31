@@ -1,0 +1,885 @@
+{
+  "brand": "Abou El Sid",
+  "source": "elmenus.com",
+  "source_label": "Menu source: elmenus.com (demo data, not affiliated)",
+  "restaurant_url": "https://elmenus.com/cairo/abou-el-sid-595q",
+  "branch_code": "5oyq",
+  "fetched_at": "2026-10-31T12:38:37.176Z",
+  "categories": [
+    {
+      "name": "Breakfast Menu",
+      "items": [
+        {
+          "name": "Tehina",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 63
+            }
+          ]
+        },
+        {
+          "name": "Oriental Salad",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 63
+            }
+          ]
+        },
+        {
+          "name": "Spicy Cheese Dip",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 76
+            }
+          ]
+        },
+        {
+          "name": "Foul",
+          "description": "Foul with bell pepper, onion or tahina",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 76
+            }
+          ]
+        },
+        {
+          "name": "Falafel",
+          "description": "4 pieces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 76
+            }
+          ]
+        },
+        {
+          "name": "Eggs",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Eggs with Pastrami",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Grilled Eggplant & Green Pepper",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 58
+            }
+          ]
+        },
+        {
+          "name": "French Fries",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 80
+            }
+          ]
+        },
+        {
+          "name": "Mixed Pickles",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 53
+            }
+          ]
+        },
+        {
+          "name": "Oriental Sojouk",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 330
+            }
+          ]
+        },
+        {
+          "name": "Feteer",
+          "description": "Oriental pancakes With honey",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 156
+            }
+          ]
+        },
+        {
+          "name": "Special Breakfast Tray",
+          "description": "Foul with tehina, falafel, French fries, oriental salad, grilled eggplant and green pepper, tea or coffee",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 321
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Soups",
+      "items": [
+        {
+          "name": "Chicken Broth with Orzo Soup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 80
+            }
+          ]
+        },
+        {
+          "name": "Lentil Soup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 89
+            }
+          ]
+        },
+        {
+          "name": "Pigeons Soup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 89
+            }
+          ]
+        },
+        {
+          "name": "Knuckles Soup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "Vegetable Soup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 80
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mezze & Appetizers",
+      "items": [
+        {
+          "name": "Abou El Sid Salad",
+          "description": "Grilled mashed eggplant with vegetables and olive oil on Abou El Sid's way",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 58
+            }
+          ]
+        },
+        {
+          "name": "Tehina",
+          "description": "Sesame cream dip",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 63
+            }
+          ]
+        },
+        {
+          "name": "Baba Ghanoug",
+          "description": "Aubergine dip",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 67
+            }
+          ]
+        },
+        {
+          "name": "Yogurt with Cucumber and Mint Dip",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 58
+            }
+          ]
+        },
+        {
+          "name": "Oriental Salad",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 63
+            }
+          ]
+        },
+        {
+          "name": "Bessara",
+          "description": "Foul and coriander dip",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 80
+            }
+          ]
+        },
+        {
+          "name": "Abou El Sid's Lentils",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 72
+            }
+          ]
+        },
+        {
+          "name": "Kishk with Yogurt",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 94
+            }
+          ]
+        },
+        {
+          "name": "Spicy Cheese Dip",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 76
+            }
+          ]
+        },
+        {
+          "name": "Vine Leaves with Yogurt & Mint Dip",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Fried Eggplant with Garlic & Vinegar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 63
+            }
+          ]
+        },
+        {
+          "name": "Foul with Bell Pepper & Onions",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 76
+            }
+          ]
+        },
+        {
+          "name": "Foul with Tehina",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 76
+            }
+          ]
+        },
+        {
+          "name": "Falafel with Sesame",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 76
+            }
+          ]
+        },
+        {
+          "name": "Sunny Side Up Eggs with Pastrami",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Lamb Kofta",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 272
+            }
+          ]
+        },
+        {
+          "name": "Tarb",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 402
+            }
+          ]
+        },
+        {
+          "name": "Spicy Oriental Sojouk",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 330
+            }
+          ]
+        },
+        {
+          "name": "Kobeba",
+          "description": "With pine, mint and baba ghanoug",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 255
+            }
+          ]
+        },
+        {
+          "name": "Alexandrian Chicken Liver",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "Grilled Quail",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 277
+            }
+          ]
+        },
+        {
+          "name": "Mini Veal Kebab Brochette",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 393
+            }
+          ]
+        },
+        {
+          "name": "Stuffed Sausage Abou El Sid's Way",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 178
+            }
+          ]
+        },
+        {
+          "name": "Alexandrian Veal Liver",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 290
+            }
+          ]
+        },
+        {
+          "name": "Hawawshi",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Abou El Sid's Appetizers Tray",
+          "description": "Tehina, bessara, vine leaves, yogurt cucumber and mint dip, four or falafel",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 339
+            }
+          ]
+        },
+        {
+          "name": "Dolma Abou El Sid",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 196
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Main Courses",
+      "items": [
+        {
+          "name": "Mesaka'a Dish",
+          "description": "Eggplant with minced meat",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 290
+            }
+          ]
+        },
+        {
+          "name": "Spinach with Veal Tagin",
+          "description": "Served with white rice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 468
+            }
+          ]
+        },
+        {
+          "name": "Artichoke with Veal Meat Tagin",
+          "description": "With white rice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 468
+            }
+          ]
+        },
+        {
+          "name": "Veal Mouza with Fereek Tagin",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 468
+            }
+          ]
+        },
+        {
+          "name": "Okra with Veal Mouza Tagin",
+          "description": "With white rice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 468
+            }
+          ]
+        },
+        {
+          "name": "Orzo with Veal Meat Tagin",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 468
+            }
+          ]
+        },
+        {
+          "name": "Veal Meat with Pearl Onion Tagin",
+          "description": "With white rice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 468
+            }
+          ]
+        },
+        {
+          "name": "Vine Leaves with Knuckles Tagin",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 468
+            }
+          ]
+        },
+        {
+          "name": "Green Peas Tagin",
+          "description": "Green peas with veal cubes, oven cooked and served with white rice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 468
+            }
+          ]
+        },
+        {
+          "name": "Veal Mouza with Vermicelli Tagin",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 468
+            }
+          ]
+        },
+        {
+          "name": "Baked Rice with Meat Tagin",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 468
+            }
+          ]
+        },
+        {
+          "name": "Baked Rice with Chicken Tagin",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 322
+            }
+          ]
+        },
+        {
+          "name": "Baked Rice with Pigeons Tagin",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 468
+            }
+          ]
+        },
+        {
+          "name": "Molokheya with Chicken Dish",
+          "description": "Served with rice, onion and red sauce with garlic",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 420
+            }
+          ]
+        },
+        {
+          "name": "Molokheya with Rabbit Dish",
+          "description": "Served with rice, onion and  red sauce with garlic",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 446
+            }
+          ]
+        },
+        {
+          "name": "Molokheya with Dawood Basha Dish",
+          "description": "Served with rice and onion",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 344
+            }
+          ]
+        },
+        {
+          "name": "1 Stuffed Pigeon Dish",
+          "description": "Rice or freek",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 236
+            }
+          ]
+        },
+        {
+          "name": "Pair of Stuffed Pigeons Dish",
+          "description": "Rice or freek",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 446
+            }
+          ]
+        },
+        {
+          "name": "Roasted Veal Mouza Dish",
+          "description": "With saffron sauce and yellow rice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 468
+            }
+          ]
+        },
+        {
+          "name": "Roasted Lamb Meat Dish",
+          "description": "With potatoes, onion and colored pepper",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 487
+            }
+          ]
+        },
+        {
+          "name": "Roasted Duck with Vermicelli and Nuts Dish",
+          "description": "Half duck",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 487
+            }
+          ]
+        },
+        {
+          "name": "Grilled Veal Chops Dish",
+          "description": "Served with oriental khalta rice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 759
+            }
+          ]
+        },
+        {
+          "name": "Mix Grill Dish",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 732
+            }
+          ]
+        },
+        {
+          "name": "Abou El Sid's Tournedos Fillet Dish",
+          "description": "With chicken liver and sauteed vegetables",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 571
+            }
+          ]
+        },
+        {
+          "name": "Fillet Abou El Sid Dish",
+          "description": "With green pepper and sauteed vegetables",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 571
+            }
+          ]
+        },
+        {
+          "name": "Fettah Dish",
+          "description": "Egyptian fettah with yogurt, meat and tomato sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 509
+            }
+          ]
+        },
+        {
+          "name": "Knuckles Fattah Dish",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 509
+            }
+          ]
+        },
+        {
+          "name": "Chicken Sharkasya Dish",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 446
+            }
+          ]
+        },
+        {
+          "name": "Pan-Fried Chicken Dish",
+          "description": "With onion and bell pepper",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 330
+            }
+          ]
+        },
+        {
+          "name": "Koshari Dish",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 134
+            }
+          ]
+        },
+        {
+          "name": "Fish Sayadeya with Onion and Pepper Dish",
+          "description": "Served with red rice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 402
+            }
+          ]
+        },
+        {
+          "name": "Grilled Fish Dish",
+          "description": "Fish fillet grilled and served with red rice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 402
+            }
+          ]
+        },
+        {
+          "name": "Shrimp Tagin Dish",
+          "description": "Served with red rice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 500
+            }
+          ]
+        },
+        {
+          "name": "Seafood Tagin",
+          "description": "Fish, shrimp, calamari, served with red rice oven cooked",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 500
+            }
+          ]
+        },
+        {
+          "name": "Oxtails Tagin",
+          "description": "Served with vermicelli rice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 527
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        {
+          "name": "Om Ali with Nuts",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 112
+            }
+          ]
+        },
+        {
+          "name": "Milk Pudding with Nuts",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 98
+            }
+          ]
+        },
+        {
+          "name": "Meshaltet Feteer",
+          "description": "With honey, nuts, jam, qeshta or with all of them",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 156
+            }
+          ]
+        },
+        {
+          "name": "Rice Pudding with Nuts",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 103
+            }
+          ]
+        },
+        {
+          "name": "Pumpkin",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 116
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

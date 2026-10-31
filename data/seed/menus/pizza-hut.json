@@ -1,0 +1,1678 @@
+{
+  "brand": "Pizza Hut",
+  "source": "elmenus.com",
+  "source_label": "Menu source: elmenus.com (demo data, not affiliated)",
+  "restaurant_url": "https://elmenus.com/cairo/pizza-hut-5oyq",
+  "branch_code": "vx25",
+  "fetched_at": "2026-10-31T12:38:37.229Z",
+  "categories": [
+    {
+      "name": "Peri Ranch Supreme",
+      "items": [
+        {
+          "name": "Super Supreme Spicy Ranch",
+          "description": "Our Famous Combination of beef pepproni, juicy beef , mushroms, green peppers, onions, black olives and melting mozzarella cheese with Peri Peri & Ranch Sauce",
+          "sizes": [
+            {
+              "size": "LARGE_PAN",
+              "price_egp": 354
+            },
+            {
+              "size": "MEDIUM_SC_BEEF_&_CHEDDAR",
+              "price_egp": 351
+            },
+            {
+              "size": "LARGE_CHEESY_BITES",
+              "price_egp": 454
+            },
+            {
+              "size": "Large Stuffed Crust",
+              "price_egp": 439
+            },
+            {
+              "size": "Medium Stuffed Crust",
+              "price_egp": 331
+            },
+            {
+              "size": "LARGE_SC_BEEF_&_CHEDDAR",
+              "price_egp": 459
+            },
+            {
+              "size": "SMALL_PAN",
+              "price_egp": 178
+            },
+            {
+              "size": "MEDIUM_THIN_N_CRISPY",
+              "price_egp": 256
+            },
+            {
+              "size": "LARGE_THIN_N_CRISPY",
+              "price_egp": 354
+            },
+            {
+              "size": "MEDIUM_PAN",
+              "price_egp": 256
+            },
+            {
+              "size": "MEDIUM_CHEESY_BITES",
+              "price_egp": 346
+            },
+            {
+              "size": "SMALL_THIN_N_CRISPY",
+              "price_egp": 178
+            }
+          ]
+        },
+        {
+          "name": "Peri Peri Ranch Super Supreme Pasta",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 224
+            }
+          ]
+        },
+        {
+          "name": "Peri Peri Ranch Super Supreme Melts",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "Spicy Ranch Wedges",
+          "description": "Crispy baked potato wedges, seasoned to perfection, and served with a kick of Peri Peri sauce and creamy Ranch dressing",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dip & Crunch",
+      "items": [
+        {
+          "name": "Dip & Crunch",
+          "description": "Your Choice of 2 Sauces ( Galric Parmesan - Ranch - Peri Peri - Honey Mustard - Aisan Sauce ) 2 Crunches (Cheetos - Forno Chipsy - Pepproni)",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 59
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "What's New",
+      "items": [
+        {
+          "name": "Crafted Flatzz - Garlic Parmesan Chicken",
+          "description": "A creamy garlic-parmesan delight!\r\nCrafted dough topped with rich garlic sauce, melted mozzarella, grilled chicken fillet, and a sprinkle of Parmesan and oregano for the perfect cheesy finish.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 129
+            }
+          ]
+        },
+        {
+          "name": "Crafted Flatzz - Three Cheese",
+          "description": "The ultimate cheese lover’s dream.\r\nCrafted dough layered with savory pizza sauce and a rich trio of mozzarella, cheddar, and Parmesan — finished with a hint of oregano.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 129
+            }
+          ]
+        },
+        {
+          "name": "Crafted Flatzz - Pepperoni Duo",
+          "description": "Double the flavor, double the fun!\r\nOur crafted dough loaded with beef pepperoni, melted mozzarella, Parmesan cheese, and a dash of oregano — baked to golden perfection.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 129
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Up to 50% Off",
+      "items": [
+        {
+          "name": "Party Meal",
+          "description": "3 Medium Pizzas + Deluxe Salad (3 cups) + Family Potato Wedges + 1 Litre Pepsi",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 749
+            }
+          ]
+        },
+        {
+          "name": "Triple Treat Box + Family Pepsi",
+          "description": "2 Rectangular Pizzas + 2 Sides + Chocolate Pizza",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 549
+            }
+          ]
+        },
+        {
+          "name": "Family Deal",
+          "description": "2 Medium Pizza + Potato wedges + Supreme Salad + Pepsi 1L",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 599
+            }
+          ]
+        },
+        {
+          "name": "Ranch Box + Family Pepsi",
+          "description": "Get it all in the New Ranch Box: Medium Ranch + Medium Pan+  Wedges + 5pcs Chicken Wings + 2 Sauces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 599
+            }
+          ]
+        },
+        {
+          "name": "Hatrick Medium + Family Pepsi",
+          "description": "Enjoy 3 Medium Pizza of your choice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 569
+            }
+          ]
+        },
+        {
+          "name": "Hut Saver Stuffed Crust Offer",
+          "description": "2 Medium stuffed crust pizzas and 1-liter soft drink.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 539
+            }
+          ]
+        },
+        {
+          "name": "Super Saver",
+          "description": "Get 2 Medium pizzas of your choice for EGP 329 only!",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 369
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Limo",
+      "items": [
+        {
+          "name": "Limo Pizza + Family Pepsi",
+          "description": "Enjoy 36 pizza slices and 3 sauces of your choice!",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 539
+            }
+          ]
+        },
+        {
+          "name": "Ultimate Limo + Family Pepsi",
+          "description": "Enjoy 3 square pizzas of your choice including 1 Ranch pizzas, and 2 Classic, or Supreme or Margarita pizzas and 3 sauces of your choice!",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 649
+            }
+          ]
+        },
+        {
+          "name": "Limo Plus + Family Pepsi",
+          "description": "Enjoy 3 square pizzas of your choice including 2 Supreme pizzas & 1 Margarita pizza and 3 sauces of your choice!",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 569
+            }
+          ]
+        },
+        {
+          "name": "Classic Limo + Family Pepsi",
+          "description": "Enjoy 3 square pizzas of your choice including up to 3 Classic pizzas or 2 Classic pizzas and 1 Supreme pizza and 3 sauces of your choice!",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 569
+            }
+          ]
+        },
+        {
+          "name": "Premium Limo + Family Pepsi",
+          "description": "Enjoy 3 square pizzas of your choice including all ranch pizzas and 3 sauces of your choice!",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 695
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "For Me",
+      "items": [
+        {
+          "name": "My Box",
+          "description": "One Square Pizza + 2 Sides of the following items (Buffalo or Fire  wings , Potato wedges , Chicken BBQ Spin Rolls , Garlic Bread Supreme)",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 195
+            }
+          ]
+        },
+        {
+          "name": "My Box Pro - Chicken",
+          "description": "Square Pizza + Chicken Alfredo Pasta + 1 Side Item",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 239
+            }
+          ]
+        },
+        {
+          "name": "My Box Pro - Veggie",
+          "description": "Square Pizza + Veggie Alfredo Pasta + 1 Side Item",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "My Melts Box",
+          "description": "Melts + 2 Side Items",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "The Boss Deal",
+          "description": "1 Pizza + 1 Drink",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Melts Pepperoni",
+          "description": "Cheesy,Crispy, Loaded with Pepperoni & served with a perfectly paired Ranch dip.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 121
+            }
+          ]
+        },
+        {
+          "name": "Melts Spicy Chicken Ranch",
+          "description": "Cheesy,Crispy, Loaded with Chicken, Jalapeno & Mushroom Toppings and served with a perfectly paired Peri Peri dip.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "Melts Meat Lovers",
+          "description": "Cheesy,Crispy, Loaded with Beef & Pepperoni Toppings & served with a perfectly paired BBQ dip.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 121
+            }
+          ]
+        },
+        {
+          "name": "Single Melts Pepperoni Lovers",
+          "description": "Double portion of pepperoni, mozzarella, tomato sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Single Melts Spicy Chicken Ranch",
+          "description": "Grilled chicken, tomatoes, mushrooms, mozzarella, jalapeno, creamy ranch sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Single Melts Meat Lovers",
+          "description": "Beef, pepperoni, grilled chicken, mozzarella, BBQ sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pizza",
+      "items": [
+        {
+          "name": "Margherita",
+          "description": "Go back to where it all began with the classic cheese and tomato base.",
+          "sizes": [
+            {
+              "size": "LARGE_PAN",
+              "price_egp": 274
+            },
+            {
+              "size": "MEDIUM_SC_BEEF_&_CHEDDAR",
+              "price_egp": 281
+            },
+            {
+              "size": "LARGE_CHEESY_BITES",
+              "price_egp": 379
+            },
+            {
+              "size": "Large Stuffed Crust",
+              "price_egp": 359
+            },
+            {
+              "size": "Medium Stuffed Crust",
+              "price_egp": 261
+            },
+            {
+              "size": "LARGE_SC_BEEF_&_CHEDDAR",
+              "price_egp": 379
+            },
+            {
+              "size": "SMALL_PAN",
+              "price_egp": 113
+            },
+            {
+              "size": "MEDIUM_THIN_N_CRISPY",
+              "price_egp": 186
+            },
+            {
+              "size": "LARGE_THIN_N_CRISPY",
+              "price_egp": 274
+            },
+            {
+              "size": "MEDIUM_PAN",
+              "price_egp": 186
+            },
+            {
+              "size": "MEDIUM_CHEESY_BITES",
+              "price_egp": 276
+            },
+            {
+              "size": "SMALL_THIN_N_CRISPY",
+              "price_egp": 113
+            }
+          ]
+        },
+        {
+          "name": "Chicken BBQ",
+          "description": "Chicken BBQ",
+          "sizes": [
+            {
+              "size": "LARGE_PAN",
+              "price_egp": 304
+            },
+            {
+              "size": "MEDIUM_SC_BEEF_&_CHEDDAR",
+              "price_egp": 311
+            },
+            {
+              "size": "LARGE_CHEESY_BITES",
+              "price_egp": 409
+            },
+            {
+              "size": "Large Stuffed Crust",
+              "price_egp": 389
+            },
+            {
+              "size": "Medium Stuffed Crust",
+              "price_egp": 291
+            },
+            {
+              "size": "LARGE_SC_BEEF_&_CHEDDAR",
+              "price_egp": 409
+            },
+            {
+              "size": "SMALL_PAN",
+              "price_egp": 143
+            },
+            {
+              "size": "MEDIUM_THIN_N_CRISPY",
+              "price_egp": 216
+            },
+            {
+              "size": "LARGE_THIN_N_CRISPY",
+              "price_egp": 304
+            },
+            {
+              "size": "MEDIUM_PAN",
+              "price_egp": 216
+            },
+            {
+              "size": "MEDIUM_CHEESY_BITES",
+              "price_egp": 306
+            },
+            {
+              "size": "SMALL_THIN_N_CRISPY",
+              "price_egp": 143
+            }
+          ]
+        },
+        {
+          "name": "Classic Pepperoni",
+          "description": "One of our all-time specialties. A meaty feast of pepperoni, mushroom, black olives, mozzarella cheese and tomato sauce",
+          "sizes": [
+            {
+              "size": "LARGE_PAN",
+              "price_egp": 304
+            },
+            {
+              "size": "MEDIUM_SC_BEEF_&_CHEDDAR",
+              "price_egp": 311
+            },
+            {
+              "size": "LARGE_CHEESY_BITES",
+              "price_egp": 409
+            },
+            {
+              "size": "Large Stuffed Crust",
+              "price_egp": 389
+            },
+            {
+              "size": "Medium Stuffed Crust",
+              "price_egp": 291
+            },
+            {
+              "size": "LARGE_SC_BEEF_&_CHEDDAR",
+              "price_egp": 409
+            },
+            {
+              "size": "SMALL_PAN",
+              "price_egp": 143
+            },
+            {
+              "size": "MEDIUM_THIN_N_CRISPY",
+              "price_egp": 216
+            },
+            {
+              "size": "LARGE_THIN_N_CRISPY",
+              "price_egp": 304
+            },
+            {
+              "size": "MEDIUM_PAN",
+              "price_egp": 216
+            },
+            {
+              "size": "MEDIUM_CHEESY_BITES",
+              "price_egp": 306
+            },
+            {
+              "size": "SMALL_THIN_N_CRISPY",
+              "price_egp": 143
+            }
+          ]
+        },
+        {
+          "name": "Super Supreme",
+          "description": "Our combination of beef pepperoni, juicy beef, mushrooms, green peppers, onions, black olives and melting mozzarella cheese",
+          "sizes": [
+            {
+              "size": "LARGE_PAN",
+              "price_egp": 329
+            },
+            {
+              "size": "MEDIUM_SC_BEEF_&_CHEDDAR",
+              "price_egp": 336
+            },
+            {
+              "size": "LARGE_CHEESY_BITES",
+              "price_egp": 434
+            },
+            {
+              "size": "Large Stuffed Crust",
+              "price_egp": 414
+            },
+            {
+              "size": "Medium Stuffed Crust",
+              "price_egp": 316
+            },
+            {
+              "size": "LARGE_SC_BEEF_&_CHEDDAR",
+              "price_egp": 434
+            },
+            {
+              "size": "SMALL_PAN",
+              "price_egp": 168
+            },
+            {
+              "size": "MEDIUM_THIN_N_CRISPY",
+              "price_egp": 241
+            },
+            {
+              "size": "LARGE_THIN_N_CRISPY",
+              "price_egp": 329
+            },
+            {
+              "size": "MEDIUM_PAN",
+              "price_egp": 241
+            },
+            {
+              "size": "MEDIUM_CHEESY_BITES",
+              "price_egp": 331
+            },
+            {
+              "size": "SMALL_THIN_N_CRISPY",
+              "price_egp": 168
+            }
+          ]
+        },
+        {
+          "name": "Original Chicken Ranch",
+          "description": "Ranch base sauce with grilled chicken, mushroom slices, Mozzarella, Jalapeno &vtomatoes Toppedd with Ranch drizzle sauce",
+          "sizes": [
+            {
+              "size": "LARGE_PAN",
+              "price_egp": 359
+            },
+            {
+              "size": "MEDIUM_SC_BEEF_&_CHEDDAR",
+              "price_egp": 366
+            },
+            {
+              "size": "LARGE_CHEESY_BITES",
+              "price_egp": 464
+            },
+            {
+              "size": "Large Stuffed Crust",
+              "price_egp": 444
+            },
+            {
+              "size": "Medium Stuffed Crust",
+              "price_egp": 346
+            },
+            {
+              "size": "LARGE_SC_BEEF_&_CHEDDAR",
+              "price_egp": 464
+            },
+            {
+              "size": "SMALL_PAN",
+              "price_egp": 198
+            },
+            {
+              "size": "MEDIUM_THIN_N_CRISPY",
+              "price_egp": 271
+            },
+            {
+              "size": "LARGE_THIN_N_CRISPY",
+              "price_egp": 359
+            },
+            {
+              "size": "MEDIUM_PAN",
+              "price_egp": 271
+            },
+            {
+              "size": "MEDIUM_CHEESY_BITES",
+              "price_egp": 361
+            },
+            {
+              "size": "SMALL_THIN_N_CRISPY",
+              "price_egp": 198
+            }
+          ]
+        },
+        {
+          "name": "Spicy Chicken Ranch",
+          "description": "Grilled chicken, tomatoes, mushrooms and jalapeno peppers, chopped garlic, creamy ranch sauce",
+          "sizes": [
+            {
+              "size": "LARGE_PAN",
+              "price_egp": 359
+            },
+            {
+              "size": "MEDIUM_SC_BEEF_&_CHEDDAR",
+              "price_egp": 366
+            },
+            {
+              "size": "LARGE_CHEESY_BITES",
+              "price_egp": 464
+            },
+            {
+              "size": "Large Stuffed Crust",
+              "price_egp": 444
+            },
+            {
+              "size": "Medium Stuffed Crust",
+              "price_egp": 346
+            },
+            {
+              "size": "LARGE_SC_BEEF_&_CHEDDAR",
+              "price_egp": 464
+            },
+            {
+              "size": "SMALL_PAN",
+              "price_egp": 198
+            },
+            {
+              "size": "MEDIUM_THIN_N_CRISPY",
+              "price_egp": 271
+            },
+            {
+              "size": "LARGE_THIN_N_CRISPY",
+              "price_egp": 359
+            },
+            {
+              "size": "MEDIUM_PAN",
+              "price_egp": 271
+            },
+            {
+              "size": "MEDIUM_CHEESY_BITES",
+              "price_egp": 361
+            },
+            {
+              "size": "SMALL_THIN_N_CRISPY",
+              "price_egp": 198
+            }
+          ]
+        },
+        {
+          "name": "Vegetarian Supreme",
+          "description": "Mushrooms, green peppers, fresh tomatoes, onions & black olives loaded on a tomato base & topped with melting mozzarella cheese",
+          "sizes": [
+            {
+              "size": "LARGE_PAN",
+              "price_egp": 329
+            },
+            {
+              "size": "MEDIUM_SC_BEEF_&_CHEDDAR",
+              "price_egp": 336
+            },
+            {
+              "size": "LARGE_CHEESY_BITES",
+              "price_egp": 434
+            },
+            {
+              "size": "Large Stuffed Crust",
+              "price_egp": 414
+            },
+            {
+              "size": "Medium Stuffed Crust",
+              "price_egp": 316
+            },
+            {
+              "size": "LARGE_SC_BEEF_&_CHEDDAR",
+              "price_egp": 434
+            },
+            {
+              "size": "SMALL_PAN",
+              "price_egp": 168
+            },
+            {
+              "size": "MEDIUM_THIN_N_CRISPY",
+              "price_egp": 241
+            },
+            {
+              "size": "LARGE_THIN_N_CRISPY",
+              "price_egp": 329
+            },
+            {
+              "size": "MEDIUM_PAN",
+              "price_egp": 241
+            },
+            {
+              "size": "MEDIUM_CHEESY_BITES",
+              "price_egp": 331
+            },
+            {
+              "size": "SMALL_THIN_N_CRISPY",
+              "price_egp": 168
+            }
+          ]
+        },
+        {
+          "name": "Vegetarian",
+          "description": "Green pepper, fresh tomato, onion loaded on tomato base & topped with mozzarella cheese",
+          "sizes": [
+            {
+              "size": "LARGE_PAN",
+              "price_egp": 304
+            },
+            {
+              "size": "MEDIUM_SC_BEEF_&_CHEDDAR",
+              "price_egp": 311
+            },
+            {
+              "size": "LARGE_CHEESY_BITES",
+              "price_egp": 409
+            },
+            {
+              "size": "Large Stuffed Crust",
+              "price_egp": 389
+            },
+            {
+              "size": "Medium Stuffed Crust",
+              "price_egp": 291
+            },
+            {
+              "size": "LARGE_SC_BEEF_&_CHEDDAR",
+              "price_egp": 409
+            },
+            {
+              "size": "SMALL_PAN",
+              "price_egp": 143
+            },
+            {
+              "size": "MEDIUM_THIN_N_CRISPY",
+              "price_egp": 216
+            },
+            {
+              "size": "LARGE_THIN_N_CRISPY",
+              "price_egp": 304
+            },
+            {
+              "size": "MEDIUM_PAN",
+              "price_egp": 216
+            },
+            {
+              "size": "MEDIUM_CHEESY_BITES",
+              "price_egp": 306
+            },
+            {
+              "size": "SMALL_THIN_N_CRISPY",
+              "price_egp": 143
+            }
+          ]
+        },
+        {
+          "name": "Pepperoni Supreme",
+          "description": "Pepperoni Supreme",
+          "sizes": [
+            {
+              "size": "LARGE_PAN",
+              "price_egp": 329
+            },
+            {
+              "size": "MEDIUM_SC_BEEF_&_CHEDDAR",
+              "price_egp": 336
+            },
+            {
+              "size": "LARGE_CHEESY_BITES",
+              "price_egp": 434
+            },
+            {
+              "size": "Large Stuffed Crust",
+              "price_egp": 414
+            },
+            {
+              "size": "Medium Stuffed Crust",
+              "price_egp": 316
+            },
+            {
+              "size": "LARGE_SC_BEEF_&_CHEDDAR",
+              "price_egp": 434
+            },
+            {
+              "size": "SMALL_PAN",
+              "price_egp": 168
+            },
+            {
+              "size": "MEDIUM_THIN_N_CRISPY",
+              "price_egp": 241
+            },
+            {
+              "size": "LARGE_THIN_N_CRISPY",
+              "price_egp": 329
+            },
+            {
+              "size": "MEDIUM_PAN",
+              "price_egp": 241
+            },
+            {
+              "size": "MEDIUM_CHEESY_BITES",
+              "price_egp": 331
+            },
+            {
+              "size": "SMALL_THIN_N_CRISPY",
+              "price_egp": 168
+            }
+          ]
+        },
+        {
+          "name": "Cheese Lovers",
+          "description": "A special blend of cheese withany two toppings of your choice. (Not valid on the following  praws)",
+          "sizes": [
+            {
+              "size": "LARGE_PAN",
+              "price_egp": 359
+            },
+            {
+              "size": "MEDIUM_SC_BEEF_&_CHEDDAR",
+              "price_egp": 366
+            },
+            {
+              "size": "LARGE_CHEESY_BITES",
+              "price_egp": 464
+            },
+            {
+              "size": "Medium Stuffed Crust",
+              "price_egp": 346
+            },
+            {
+              "size": "LARGE_SC_BEEF_&_CHEDDAR",
+              "price_egp": 464
+            },
+            {
+              "size": "SMALL_PAN",
+              "price_egp": 198
+            },
+            {
+              "size": "MEDIUM_THIN_N_CRISPY",
+              "price_egp": 271
+            },
+            {
+              "size": "LARGE_THIN_N_CRISPY",
+              "price_egp": 359
+            },
+            {
+              "size": "MEDIUM_PAN",
+              "price_egp": 271
+            },
+            {
+              "size": "MEDIUM_CHEESY_BITES",
+              "price_egp": 361
+            },
+            {
+              "size": "SMALL_THIN_N_CRISPY",
+              "price_egp": 198
+            }
+          ]
+        },
+        {
+          "name": "Chicken Supreme",
+          "description": "The ultimate mix of chicken together with mushrooms, red onions, green peppers, fresh tomatoes, olives and melting mozzarella cheese",
+          "sizes": [
+            {
+              "size": "LARGE_PAN",
+              "price_egp": 329
+            },
+            {
+              "size": "MEDIUM_SC_BEEF_&_CHEDDAR",
+              "price_egp": 336
+            },
+            {
+              "size": "LARGE_CHEESY_BITES",
+              "price_egp": 434
+            },
+            {
+              "size": "Large Stuffed Crust",
+              "price_egp": 414
+            },
+            {
+              "size": "Medium Stuffed Crust",
+              "price_egp": 316
+            },
+            {
+              "size": "LARGE_SC_BEEF_&_CHEDDAR",
+              "price_egp": 434
+            },
+            {
+              "size": "SMALL_PAN",
+              "price_egp": 168
+            },
+            {
+              "size": "MEDIUM_THIN_N_CRISPY",
+              "price_egp": 241
+            },
+            {
+              "size": "LARGE_THIN_N_CRISPY",
+              "price_egp": 329
+            },
+            {
+              "size": "MEDIUM_PAN",
+              "price_egp": 241
+            },
+            {
+              "size": "MEDIUM_CHEESY_BITES",
+              "price_egp": 331
+            },
+            {
+              "size": "SMALL_THIN_N_CRISPY",
+              "price_egp": 168
+            }
+          ]
+        },
+        {
+          "name": "BBQ Chicken Ranch",
+          "description": "Ranch base sauce with grilled chicken pieces, topped with mushroom slices, onions, mixed with Mozzarella and topped with tasty BBQ sauce and chopped parsley.",
+          "sizes": [
+            {
+              "size": "LARGE_PAN",
+              "price_egp": 359
+            },
+            {
+              "size": "MEDIUM_SC_BEEF_&_CHEDDAR",
+              "price_egp": 366
+            },
+            {
+              "size": "LARGE_CHEESY_BITES",
+              "price_egp": 464
+            },
+            {
+              "size": "Large Stuffed Crust",
+              "price_egp": 444
+            },
+            {
+              "size": "Medium Stuffed Crust",
+              "price_egp": 346
+            },
+            {
+              "size": "LARGE_SC_BEEF_&_CHEDDAR",
+              "price_egp": 464
+            },
+            {
+              "size": "SMALL_PAN",
+              "price_egp": 198
+            },
+            {
+              "size": "MEDIUM_THIN_N_CRISPY",
+              "price_egp": 271
+            },
+            {
+              "size": "LARGE_THIN_N_CRISPY",
+              "price_egp": 359
+            },
+            {
+              "size": "MEDIUM_PAN",
+              "price_egp": 271
+            },
+            {
+              "size": "MEDIUM_CHEESY_BITES",
+              "price_egp": 361
+            },
+            {
+              "size": "SMALL_THIN_N_CRISPY",
+              "price_egp": 198
+            }
+          ]
+        },
+        {
+          "name": "Meat Lovers",
+          "description": "Cheesy,Crispy, Loaded with Beef & Pepperoni Toppings & served with a perfectly paired BBQ dip.",
+          "sizes": [
+            {
+              "size": "MEDIUM_HAND_CRAFTED_SOUR_DOUGH",
+              "price_egp": 210
+            },
+            {
+              "size": "LARGE_PAN",
+              "price_egp": 304
+            },
+            {
+              "size": "MEDIUM_SC_BEEF_&_CHEDDAR",
+              "price_egp": 311
+            },
+            {
+              "size": "LARGE_CHEESY_BITES",
+              "price_egp": 409
+            },
+            {
+              "size": "Large Stuffed Crust",
+              "price_egp": 389
+            },
+            {
+              "size": "Medium Stuffed Crust",
+              "price_egp": 291
+            },
+            {
+              "size": "LARGE_SC_BEEF_&_CHEDDAR",
+              "price_egp": 409
+            },
+            {
+              "size": "SMALL_PAN",
+              "price_egp": 143
+            },
+            {
+              "size": "MEDIUM_THIN_N_CRISPY",
+              "price_egp": 216
+            },
+            {
+              "size": "LARGE_THIN_N_CRISPY",
+              "price_egp": 304
+            },
+            {
+              "size": "MEDIUM_PAN",
+              "price_egp": 216
+            },
+            {
+              "size": "MEDIUM_CHEESY_BITES",
+              "price_egp": 306
+            },
+            {
+              "size": "SMALL_THIN_N_CRISPY",
+              "price_egp": 143
+            }
+          ]
+        },
+        {
+          "name": "Pepperoni Delights",
+          "description": "Beef pepperoni, olives, mozzarella cheese and tomato sauce.",
+          "sizes": [
+            {
+              "size": "LARGE_PAN",
+              "price_egp": 264
+            },
+            {
+              "size": "MEDIUM_SC_BEEF_&_CHEDDAR",
+              "price_egp": 271
+            },
+            {
+              "size": "LARGE_CHEESY_BITES",
+              "price_egp": 369
+            },
+            {
+              "size": "Medium Stuffed Crust",
+              "price_egp": 251
+            },
+            {
+              "size": "LARGE_SC_BEEF_&_CHEDDAR",
+              "price_egp": 369
+            },
+            {
+              "size": "SMALL_PAN",
+              "price_egp": 103
+            },
+            {
+              "size": "MEDIUM_THIN_N_CRISPY",
+              "price_egp": 176
+            },
+            {
+              "size": "LARGE_THIN_N_CRISPY",
+              "price_egp": 264
+            },
+            {
+              "size": "MEDIUM_PAN",
+              "price_egp": 176
+            },
+            {
+              "size": "MEDIUM_CHEESY_BITES",
+              "price_egp": 266
+            },
+            {
+              "size": "SMALL_THIN_N_CRISPY",
+              "price_egp": 103
+            }
+          ]
+        },
+        {
+          "name": "Chicken Fajita Delights",
+          "description": "Tender chicken fajita, tomato sauce, and mozzarella cheese topped with sliced onion.",
+          "sizes": [
+            {
+              "size": "LARGE_PAN",
+              "price_egp": 264
+            },
+            {
+              "size": "MEDIUM_SC_BEEF_&_CHEDDAR",
+              "price_egp": 271
+            },
+            {
+              "size": "Large Stuffed Crust",
+              "price_egp": 349
+            },
+            {
+              "size": "Medium Stuffed Crust",
+              "price_egp": 251
+            },
+            {
+              "size": "LARGE_SC_BEEF_&_CHEDDAR",
+              "price_egp": 369
+            },
+            {
+              "size": "SMALL_PAN",
+              "price_egp": 103
+            },
+            {
+              "size": "MEDIUM_THIN_N_CRISPY",
+              "price_egp": 176
+            },
+            {
+              "size": "LARGE_THIN_N_CRISPY",
+              "price_egp": 264
+            },
+            {
+              "size": "MEDIUM_PAN",
+              "price_egp": 176
+            },
+            {
+              "size": "MEDIUM_CHEESY_BITES",
+              "price_egp": 266
+            },
+            {
+              "size": "SMALL_THIN_N_CRISPY",
+              "price_egp": 103
+            }
+          ]
+        },
+        {
+          "name": "Veggie Delights",
+          "description": "Green pepper, tomatoes, onion, tomato sauce and mozzarella cheese.",
+          "sizes": [
+            {
+              "size": "LARGE_PAN",
+              "price_egp": 264
+            },
+            {
+              "size": "MEDIUM_SC_BEEF_&_CHEDDAR",
+              "price_egp": 260
+            },
+            {
+              "size": "LARGE_CHEESY_BITES",
+              "price_egp": 353
+            },
+            {
+              "size": "Large Stuffed Crust",
+              "price_egp": 333
+            },
+            {
+              "size": "Medium Stuffed Crust",
+              "price_egp": 251
+            },
+            {
+              "size": "LARGE_SC_BEEF_&_CHEDDAR",
+              "price_egp": 353
+            },
+            {
+              "size": "SMALL_PAN",
+              "price_egp": 103
+            },
+            {
+              "size": "MEDIUM_THIN_N_CRISPY",
+              "price_egp": 176
+            },
+            {
+              "size": "LARGE_THIN_N_CRISPY",
+              "price_egp": 264
+            },
+            {
+              "size": "MEDIUM_PAN",
+              "price_egp": 176
+            },
+            {
+              "size": "MEDIUM_CHEESY_BITES",
+              "price_egp": 255
+            },
+            {
+              "size": "SMALL_THIN_N_CRISPY",
+              "price_egp": 103
+            }
+          ]
+        },
+        {
+          "name": "Meat Delights",
+          "description": "Tender beef, onion slices, and juicy tomatoes sauce, topped with melted mozzarella cheese.",
+          "sizes": [
+            {
+              "size": "LARGE_PAN",
+              "price_egp": 264
+            },
+            {
+              "size": "MEDIUM_SC_BEEF_&_CHEDDAR",
+              "price_egp": 271
+            },
+            {
+              "size": "LARGE_CHEESY_BITES",
+              "price_egp": 369
+            },
+            {
+              "size": "Large Stuffed Crust",
+              "price_egp": 349
+            },
+            {
+              "size": "Medium Stuffed Crust",
+              "price_egp": 251
+            },
+            {
+              "size": "LARGE_SC_BEEF_&_CHEDDAR",
+              "price_egp": 369
+            },
+            {
+              "size": "SMALL_PAN",
+              "price_egp": 103
+            },
+            {
+              "size": "MEDIUM_THIN_N_CRISPY",
+              "price_egp": 176
+            },
+            {
+              "size": "LARGE_THIN_N_CRISPY",
+              "price_egp": 264
+            },
+            {
+              "size": "MEDIUM_PAN",
+              "price_egp": 176
+            },
+            {
+              "size": "MEDIUM_CHEESY_BITES",
+              "price_egp": 266
+            },
+            {
+              "size": "SMALL_THIN_N_CRISPY",
+              "price_egp": 103
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pastas",
+      "items": [
+        {
+          "name": "Chicken Alfredo Pasta",
+          "description": "Penne pasta baked with fresh mushrooms, spinach, alfredo sauce, and grilled chicken, topped with melted mozzarella cheese and shredded parmesan cheese.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 179
+            }
+          ]
+        },
+        {
+          "name": "Veggie Alfredo Pasta",
+          "description": "Penne pasta baked with fresh mushrooms, spinach, and alfredo sauce, topped with melted mozzarella cheese and shredded parmesan cheese.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 159
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dips",
+      "items": [
+        {
+          "name": "Ranch Sauce",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 25
+            }
+          ]
+        },
+        {
+          "name": "Cheese Fondue Sauce",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 25
+            }
+          ]
+        },
+        {
+          "name": "Honey Mustard Sauce",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 25
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        {
+          "name": "Chocolate Cake",
+          "description": "A rich, soft, dark chocolate cake. A must for chocolate lovers",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Carrot Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Cookie",
+          "description": "Indulge in our delicious, freshly baked cookie with a perfect balance of sweetness and texture. Enjoy it as a delightful dessert or a sweet snack that is perfect for sharing or just as a treat for yourself.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Wings Bucket - Spicy",
+          "description": "A satisfying combo featuring 6 tender spicy wings, crispy seasoned potato wedges, and 1 of 3 delicious sauces of your choice.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Boneless Wings Bucket",
+          "description": "A satisfying combo featuring tender boneless wings, crispy seasoned potato wedges, and 1 of 3 delicious sauces of your choice.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "6 Pcs Fire Wings - Spicy",
+          "description": "6 pieces Juicy chicken wings coated and baked to perfection served with BBQ Sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 134
+            }
+          ]
+        },
+        {
+          "name": "Wings Bucket - Original",
+          "description": "A satisfying combo featuring 6 tender wings, crispy seasoned potato wedges, and 1 of 3 delicious sauces of your choice.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "6 Pcs Buffalo Wings",
+          "description": "6 pieces Juicy chicken wings coated and baked to perfection served with BBQ Sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Garlic Bread 4 Pcs",
+          "description": "Garlic Bread4PC",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Garlic Bread 2 PC",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 29
+            }
+          ]
+        },
+        {
+          "name": "Potato Wedges",
+          "description": "Crispy, oven baked potato wedges",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Duetto salad",
+          "description": "Choose 2 items from our world famous salad bar",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 86
+            }
+          ]
+        },
+        {
+          "name": "Trio",
+          "description": "Chicken BBQ Spin Rolls,Chicken Wings original or Hot and Wedges served with BBQ Sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 224
+            }
+          ]
+        },
+        {
+          "name": "Garlic Bread Super Supreme",
+          "description": "Freshly baked french bread With garlic butter, melted Mozzarella cheese, herbs & Slices of beef pepperoni",
+          "sizes": [
+            {
+              "size": "2_PCS_-_GB_SUPER_SUPREME",
+              "price_egp": 55
+            },
+            {
+              "size": "4_PCS_-_GB_SUPER_SUPREME",
+              "price_egp": 107
+            }
+          ]
+        },
+        {
+          "name": "Garlic bread supreme",
+          "description": "Freshly baked french bread with garlic butter, melted Mozzarella cheese & herbs",
+          "sizes": [
+            {
+              "size": "4_PCS_-_GB_SUPREME",
+              "price_egp": 85
+            },
+            {
+              "size": "2_PCS_-_GB_SUPREME",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Solo Salad",
+          "description": "Choose 1 item from our world famous salad bar",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Supreme Salad",
+          "description": "Enjoy the new Supreme Salad. Choose 5 items from our world famous salad bar",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 145
+            }
+          ]
+        },
+        {
+          "name": "BBQ Chicken Spin Rolls",
+          "description": "Tortilla rolls stuffed with BBQ chicken served with BBQ sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Pepsi ( 1 litre)",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Passion Fruit Fizz",
+          "description": "Real fruit passion fruit puree & Fizzy 7Up.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 61
+            }
+          ]
+        },
+        {
+          "name": "Lemon Mint Mojito",
+          "description": "Bright, zesty lemon meets cool mint and fizzy 7UP for a crisp, refreshing mojito made for instant chill vibes",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 63
+            }
+          ]
+        },
+        {
+          "name": "Pepsi",
+          "description": "",
+          "sizes": [
+            {
+              "size": "330ML_-_PEPSI",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Diet Pepsi",
+          "description": "",
+          "sizes": [
+            {
+              "size": "330ML_-_DIET_PEPSI",
+              "price_egp": 40
+            },
+            {
+              "size": "1_LITRE_-_DIET_PEPSI",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "7up",
+          "description": "",
+          "sizes": [
+            {
+              "size": "330ML_-_7UP",
+              "price_egp": 40
+            },
+            {
+              "size": "1_LITRE_-_7UP",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Diet 7up",
+          "description": "",
+          "sizes": [
+            {
+              "size": "1_LITRE_-_DIET_7UP",
+              "price_egp": 60
+            },
+            {
+              "size": "330ML_-_DIET_7UP",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Mirinda",
+          "description": "",
+          "sizes": [
+            {
+              "size": "330ML_-_MIRINDA",
+              "price_egp": 40
+            },
+            {
+              "size": "1_LITRE_-_MIRINDA",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Water",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

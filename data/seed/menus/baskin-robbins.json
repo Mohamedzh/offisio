@@ -1,0 +1,953 @@
+{
+  "brand": "Baskin Robbins",
+  "source": "elmenus.com",
+  "source_label": "Menu source: elmenus.com (demo data, not affiliated)",
+  "restaurant_url": "https://elmenus.com/cairo/baskin-robbins--2n5n",
+  "branch_code": "kogx",
+  "fetched_at": "2026-10-31T12:38:37.319Z",
+  "categories": [
+    {
+      "name": "Single Scoop",
+      "items": [
+        {
+          "name": "Baseball Nut Ice Cream Single",
+          "description": "Vanilla ice cream with cashews and a black raspberry ribbon",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 185
+            },
+            {
+              "size": "Medium",
+              "price_egp": 125
+            },
+            {
+              "size": "Small",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Chip Single",
+          "description": "Vanilla ice cream with lots of bittersweet chocolate chips",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 185
+            },
+            {
+              "size": "Medium",
+              "price_egp": 125
+            },
+            {
+              "size": "Small",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Love Passion 31 Single",
+          "description": "Cupid's white chocolate and raspberry ice creams swirled with a raspberry ribbon and loaded with raspberry filled chocolate cups and chocolate chips.",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 185
+            },
+            {
+              "size": "Medium",
+              "price_egp": 125
+            },
+            {
+              "size": "Small",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Cookie N Cream Single",
+          "description": "Vanilla ice cream with lots of cookie chunks throughout.",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 185
+            },
+            {
+              "size": "Medium",
+              "price_egp": 125
+            },
+            {
+              "size": "Small",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Mousse Royal Single",
+          "description": "A light chocolate ice cream with chocolate royale flavor bursts and a mousse like texture.",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 185
+            },
+            {
+              "size": "Medium",
+              "price_egp": 125
+            },
+            {
+              "size": "Small",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Cheesecake Single",
+          "description": "Cheesecake ice cream with cheesecake cubes and a strawberry ribbon",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 185
+            },
+            {
+              "size": "Medium",
+              "price_egp": 125
+            },
+            {
+              "size": "Small",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Cookie Dough Single",
+          "description": "Vanilla with chunks of chocolate chip cookie dough and chocolate chips",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 185
+            },
+            {
+              "size": "Medium",
+              "price_egp": 125
+            },
+            {
+              "size": "Small",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Single",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 185
+            },
+            {
+              "size": "Medium",
+              "price_egp": 125
+            },
+            {
+              "size": "Small",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Jamoca Almond Fudge Single",
+          "description": "Jamocha with a chocolate fudge ribbon and roasted almonds",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 185
+            },
+            {
+              "size": "Medium",
+              "price_egp": 125
+            },
+            {
+              "size": "Small",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Caramel Praline Cheesecake Single",
+          "description": "Indulgent vanilla cheesecake flavoured ice cream swirled with a caramel ribbon and praline pecans",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 185
+            },
+            {
+              "size": "Medium",
+              "price_egp": 125
+            },
+            {
+              "size": "Small",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Nutty Salted Caramel Single",
+          "description": "Salted Caramel Ice cream with almond brittle pieces, swirled with a salted caramel ribbon",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 185
+            },
+            {
+              "size": "Medium",
+              "price_egp": 125
+            },
+            {
+              "size": "Small",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Very Berry Strawberry Single",
+          "description": "Strawberry ice cream loaded with real strawberries.",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 185
+            },
+            {
+              "size": "Medium",
+              "price_egp": 125
+            },
+            {
+              "size": "Small",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Gold Medal Ribbon Single",
+          "description": "Vanilla and chocolate ice creams with a caramel ribbon",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 185
+            },
+            {
+              "size": "Medium",
+              "price_egp": 125
+            },
+            {
+              "size": "Small",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Maui Brownie Madness Single",
+          "description": "Chocolate frozen yogurt with chunks of brownie and macadamia nuts, ribboned with chocolate fudge.",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 185
+            },
+            {
+              "size": "Medium",
+              "price_egp": 125
+            },
+            {
+              "size": "Small",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Peanut Butter Chocolate Single",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 185
+            },
+            {
+              "size": "Medium",
+              "price_egp": 125
+            },
+            {
+              "size": "Small",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "It Takes Two To Mango Single",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 185
+            },
+            {
+              "size": "Medium",
+              "price_egp": 125
+            },
+            {
+              "size": "Small",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Vanilla Single",
+          "description": "Made with fresh cream and real vanilla.",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 185
+            },
+            {
+              "size": "Medium",
+              "price_egp": 125
+            },
+            {
+              "size": "Small",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Pralines N Cream Single",
+          "description": "Sweet praline-coated pecan pieces and rich caramel in creamy vanilla flavored ice cream.",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 185
+            },
+            {
+              "size": "Medium",
+              "price_egp": 125
+            },
+            {
+              "size": "Small",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "World Class Chocolate Single",
+          "description": "A tempting mix of white and dark chocolate mousse ice creams.",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 185
+            },
+            {
+              "size": "Medium",
+              "price_egp": 125
+            },
+            {
+              "size": "Small",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Rainbow Sherbet Single",
+          "description": "Orange, pineapple and raspberry flavoured sherbets all mixed up in a rainbow of fruity flavour",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 185
+            },
+            {
+              "size": "Medium",
+              "price_egp": 125
+            },
+            {
+              "size": "Small",
+              "price_egp": 85
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Double Scoops",
+      "items": [
+        {
+          "name": "Nutty Salted Caramel Double",
+          "description": "One scoop of Salted Caramel Ice cream with almond brittle pieces, swirled with a salted caramel ribbon and choose the other scoop",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 315
+            },
+            {
+              "size": "Medium",
+              "price_egp": 225
+            },
+            {
+              "size": "Small",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Love Passion 31 Double",
+          "description": "One scoop of Cupid's white chocolate and raspberry ice creams swirled with a raspberry ribbon and loaded with raspberry-filled chocolate cups and chocolate chips. and choose the other scoop",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 315
+            },
+            {
+              "size": "Medium",
+              "price_egp": 225
+            },
+            {
+              "size": "Small",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Peanut Butter Chocolate Double",
+          "description": "One scoop of Chocolate ice cream with a peanut butter ribbon. and choose the other scoop",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 315
+            },
+            {
+              "size": "Medium",
+              "price_egp": 225
+            },
+            {
+              "size": "Small",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "It Takes Two To Mango Double",
+          "description": "One scoop of Luscious mango ice cream with a tango mango ribbon and choose the other scoop",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 315
+            },
+            {
+              "size": "Medium",
+              "price_egp": 225
+            },
+            {
+              "size": "Small",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Baseball Nut Ice Cream Double",
+          "description": "One scoop of Vanilla ice cream with cashews and a black raspberry ribbon and choose the other scoop",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 315
+            },
+            {
+              "size": "Medium",
+              "price_egp": 225
+            },
+            {
+              "size": "Small",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Double",
+          "description": "One scoop of Extra Chocolate Ice Cream and choose the other scoop",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 315
+            },
+            {
+              "size": "Medium",
+              "price_egp": 225
+            },
+            {
+              "size": "Small",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Cheesecake Double",
+          "description": "One scoop of Cheesecake ice cream with cheesecake cubes and a strawberry ribbon. and choose the other scoop",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 315
+            },
+            {
+              "size": "Medium",
+              "price_egp": 225
+            },
+            {
+              "size": "Small",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Vanilla Double",
+          "description": "One scoop of fresh cream and real vanilla. and choose the other scoop",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 315
+            },
+            {
+              "size": "Medium",
+              "price_egp": 225
+            },
+            {
+              "size": "Small",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Rainbow Sherbet Double",
+          "description": "One scoop of Orange, pineapple and raspberry flavoured sherbets all mixed up in a rainbow of fruity flavour and choose the other scoop",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 315
+            },
+            {
+              "size": "Medium",
+              "price_egp": 225
+            },
+            {
+              "size": "Small",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Pralines N' Cream Double",
+          "description": "One scoop of sweet praline-coated pecan pieces and rich caramel in creamy vanilla flavored ice cream. and choose the other scoop",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 315
+            },
+            {
+              "size": "Medium",
+              "price_egp": 225
+            },
+            {
+              "size": "Small",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Very Berry Strawberry Double",
+          "description": "One scoop of Strawberry ice cream loaded with real strawberries. and choose the other scoop",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 315
+            },
+            {
+              "size": "Medium",
+              "price_egp": 225
+            },
+            {
+              "size": "Small",
+              "price_egp": 160
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Triple Scoops",
+      "items": [
+        {
+          "name": "Baseball Nut Ice Cream Triple",
+          "description": "One scoop of Vanilla ice cream with cashews and a black raspberry ribbon and choose the other 2 scoop",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 300
+            },
+            {
+              "size": "Small",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Triple",
+          "description": "One scoop of Extra Chocolate Ice Cream and choose the other 2 scoop",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 300
+            },
+            {
+              "size": "Small",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Love Passion 31 Triple",
+          "description": "One scoop of Cupid's white chocolate and raspberry ice creams swirled with a raspberry ribbon and loaded with raspberry-filled chocolate cups and chocolate chips. and choose the other 2 scoop",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 300
+            },
+            {
+              "size": "Small",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Maui Brownie Madness Triple",
+          "description": "One scoop of Chocolate frozen yogurt with chunks of brownie and macadamia nuts, ribboned with chocolate fudge. and choose the other 2 scoop",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 300
+            },
+            {
+              "size": "Small",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Caramel Praline Cheesecake Triple",
+          "description": "One scoop of Indulgent vanilla cheesecake flavoured ice cream swirled with a caramel ribbon and praline pecans and choose the other 2 scoop",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 300
+            },
+            {
+              "size": "Small",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Peanut Butter Chocolate Triple",
+          "description": "One scoop of Chocolate ice cream with a peanut butter ribbon. and choose the other 2 scoop",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 300
+            },
+            {
+              "size": "Small",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Vanilla Triple",
+          "description": "One scoop of fresh cream and real vanilla. and choose the other 2 scoop",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 300
+            },
+            {
+              "size": "Small",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Jamoca Almond Fudge Triple",
+          "description": "One scoop of Jamocha with a chocolate fudge ribbon and roasted almonds and choose the other 2 scoop",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 300
+            },
+            {
+              "size": "Small",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "World Class Chocolate Triple",
+          "description": "One scoop of A tempting mix of white and dark chocolate mousse ice creams. and choose the other 2 scoop",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 300
+            },
+            {
+              "size": "Small",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "It Takes Two To Mango Triple",
+          "description": "One scoop of Luscious mango ice cream with a tango mango ribbon and choose the other 2 scoop",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 300
+            },
+            {
+              "size": "Small",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Gold Medal Ribbon Triple",
+          "description": "One scoop of Vanilla and chocolate ice creams with a caramel ribbon and choose the other 2 scoop",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 300
+            },
+            {
+              "size": "Small",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Pralines N' Cream Triple",
+          "description": "One scoop of Sweet praline-coated pecan pieces and rich caramel in creamy vanilla flavored ice cream. and choose the other 2 scoop",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 300
+            },
+            {
+              "size": "Small",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Nutty Salted Caramel Triple",
+          "description": "One scoop of Salted Caramel Ice cream with almond brittle pieces, swirled with a salted caramel ribbon and choose the other 2 scoop",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 300
+            },
+            {
+              "size": "Small",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Chip Triple",
+          "description": "One scoop of Vanilla ice cream with lots of bittersweet chocolate chips. and choose the other 2 scoop",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 300
+            },
+            {
+              "size": "Small",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Mousse Royal Triple",
+          "description": "One scoop of A light chocolate ice cream with chocolate royale flavor bursts and a mousse-like texture. and choose the other 2 scoop",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 300
+            },
+            {
+              "size": "Small",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Cheesecake Triple",
+          "description": "One scoop of Cheesecake ice cream with cheesecake cubes and a strawberry ribbon. and choose the other 2 scoop",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 300
+            },
+            {
+              "size": "Small",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Cookie N Cream Triple",
+          "description": "One scoop of Vanilla ice cream with lots of cookie chunks throughout. and choose the other 2 scoop",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 300
+            },
+            {
+              "size": "Small",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Rainbow Sherbet Triple",
+          "description": "One scoop of Orange, pineapple and raspberry flavoured sherbets all mixed up in a rainbow of fruity flavour and choose the other 2 scoop",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 300
+            },
+            {
+              "size": "Small",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Cookie Dough Triple",
+          "description": "One scoop of Vanilla with chunks of chocolate chip cookie dough and chocolate chips and choose the other 2 scoop",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 300
+            },
+            {
+              "size": "Small",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Very Berry Strawberry Triple",
+          "description": "One scoop of Strawberry ice cream loaded with real strawberries. and choose the other 2 scoop",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 300
+            },
+            {
+              "size": "Small",
+              "price_egp": 225
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Family Sizes",
+      "items": [
+        {
+          "name": "Pint",
+          "description": "5 ice cream scoops flavors: vanilla, chocolate chips, cookies, peanut butter chocolate, maui brownie, gold medal, salted caramel",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 340
+            }
+          ]
+        },
+        {
+          "name": "Quart",
+          "description": "9 ice cream scoops of flavors: vanilla, praline in cream, chocolate mousse, chocolate chips, cookies, peanut butter chocolate, world class chocolate, maui brownie, love passion 31, golden medal or strawberry rose",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 650
+            }
+          ]
+        },
+        {
+          "name": "Half Gallon",
+          "description": "18 ice cream scoops of flavors: vanilla, praline in cream, chocolate mousse, chocolate chips, cookies, peanut butter chocolate, world class chocolate, maui brownie, love passion 31, golden medal, salted caramel or strawberry rose",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1150
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Toppings",
+      "items": [
+        {
+          "name": "Butter Scoutch",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 21
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Syrup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 21
+            }
+          ]
+        },
+        {
+          "name": "Almonds",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 21
+            }
+          ]
+        },
+        {
+          "name": "Strawberry",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 21
+            }
+          ]
+        },
+        {
+          "name": "Sprinkles",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 21
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

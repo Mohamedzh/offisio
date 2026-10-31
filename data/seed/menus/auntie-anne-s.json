@@ -1,0 +1,1559 @@
+{
+  "brand": "Auntie Anne's",
+  "source": "elmenus.com",
+  "source_label": "Menu source: elmenus.com (demo data, not affiliated)",
+  "restaurant_url": "https://elmenus.com/cairo/auntie-annes-xpwk",
+  "branch_code": "wp75k",
+  "fetched_at": "2026-10-31T12:38:37.330Z",
+  "categories": [
+    {
+      "name": "Savory Pretzels",
+      "items": [
+        {
+          "name": "Original Pretzel",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Garlic Pretzel",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Original Stix",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Original Nuggets",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Sour Cream and Onion Pretzel",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Jalapeno Pretzel",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Savory Combo with Lemonade Mixer ",
+      "items": [
+        {
+          "name": "Original Pretzel with Lemonade Offer",
+          "description": "Original pretzel with lemonade mixer, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Garlic Pretzel with Lemonade Offer",
+          "description": "Garlic pretzel with lemonade mixer, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Original Stix with Lemonade Offer",
+          "description": "Lemonade mixer, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Jalapeno Pretzel with Lemonade Offer",
+          "description": "Lemonade mixer, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Original Nuggets with Lemonade Offer",
+          "description": "Lemonade mixer, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Sour Cream Onion with Lemonade Offer",
+          "description": "Lemonade mixer, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 165
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Savory Combo with Soft Drink ",
+      "items": [
+        {
+          "name": "Original Pretzel with Soft Drink Offer",
+          "description": "Soft drink, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "Garlic Pretzel with Soft Drink Offer",
+          "description": "Soft drink, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "Original Stix with Soft Drink Offer",
+          "description": "Soft drink, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "Sour Cream Onion with Soft Drink Offer",
+          "description": "Soft drink, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "Jalapeno Pretzel with Soft Drink Offer",
+          "description": "Soft drink, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "Original Nuggets with Soft Drink Offer",
+          "description": "Soft drink, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 140
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Meat Pretzels",
+      "items": [
+        {
+          "name": "Pretzel Dog",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Cheesy Pretzel Dog",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Pepperoni Pretzel",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Pepperoni Nuggets",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Mozzarella Kofta Pretzel",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Mini Pretzel Dog",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Jalapeno Cheesy Pretzel Dog",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Pepperoni Pocket",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Turkey & Cheddar Pocket",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Roast Beef Pocket",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "BBQ Chicken Pocket",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Meat Combo with Lemonade Mixer ",
+      "items": [
+        {
+          "name": "Pepperoni Pretzel with Lemonade Mixer",
+          "description": "Lemonade mixer, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "Pretzel Hot Dog Pretzel Dog with Lemonade Mixer",
+          "description": "Lemonade mixer, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 215
+            }
+          ]
+        },
+        {
+          "name": "Cheesy Pretzel Dog with Lemonade Mixer",
+          "description": "Lemonade mixer, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 235
+            }
+          ]
+        },
+        {
+          "name": "Pepperoni Nuggets with Lemonade Mixer",
+          "description": "Lemonade mixer, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Mozzarella Kofta Pretzel with Lemonade Mixer",
+          "description": "Lemonade mixer, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 235
+            }
+          ]
+        },
+        {
+          "name": "Mini Pretzel Dog with Lemonade Mixer",
+          "description": "Lemonade mixer, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 235
+            }
+          ]
+        },
+        {
+          "name": "Jalapeno Cheesy Pretzel Dog with Lemonade Mixer",
+          "description": "Lemonade mixer, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 235
+            }
+          ]
+        },
+        {
+          "name": "Pepperoni Pocket with Lemonade Mixer",
+          "description": "Lemonade mixer, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 235
+            }
+          ]
+        },
+        {
+          "name": "Turkey & Cheddar Pocket with Lemonade Mixer",
+          "description": "Lemonade mixer, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 265
+            }
+          ]
+        },
+        {
+          "name": "Roast Beef Pocket with  Lemonade Mixer",
+          "description": "Lemonade mixer, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 255
+            }
+          ]
+        },
+        {
+          "name": "BBQ Chicken Pocket with Lemonade Mixer",
+          "description": "Lemonade mixer, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 235
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Meat Combo with Soft Drink",
+      "items": [
+        {
+          "name": "Pretzel Dog with Soft Drink",
+          "description": "Soft drink, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "Cheesy Pretzel Dog with Soft Drink",
+          "description": "Soft drink, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 210
+            }
+          ]
+        },
+        {
+          "name": "Jalapeno Cheesy Pretzel Dog with Soft Drink",
+          "description": "Soft drink, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 210
+            }
+          ]
+        },
+        {
+          "name": "Pepperoni Pretzel with Soft Drink",
+          "description": "Soft drink, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "Pepperoni Nuggets with Soft Drink",
+          "description": "Soft drink, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 200
+            }
+          ]
+        },
+        {
+          "name": "Mozzarella Kofta Pretzel with Soft Drink",
+          "description": "Soft drink, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 210
+            }
+          ]
+        },
+        {
+          "name": "Mini Pretzel Dog with Soft Drink",
+          "description": "Soft drink, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 210
+            }
+          ]
+        },
+        {
+          "name": "Pepperoni Pocket with Soft Drink",
+          "description": "Soft drink, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 210
+            }
+          ]
+        },
+        {
+          "name": "Turkey & Cheddar Pocket with Soft Drink",
+          "description": "Soft drink, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 240
+            }
+          ]
+        },
+        {
+          "name": "Roast Beef Pocket with Soft Drink",
+          "description": "Soft drink, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 230
+            }
+          ]
+        },
+        {
+          "name": "BBQ Chicken Pocket with Soft Drink",
+          "description": "Soft drink, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 210
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sweet Pretzels",
+      "items": [
+        {
+          "name": "Cinnamon Sugar Stix",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Cinnamon Sugar Nuggets",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Cinnamon Pretzel",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Wind Upz Mars",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Wind Upz Twix",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Sweets Almond Pretzel",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Pull - A- Parts",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Molten Stix",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Chips Pretzel",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Chips Stix",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Pull - A- Parts Kinder",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Pull - A- Parts Pistachio",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Almond Nuggets",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Almond Stix",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Choco Chips Nuggets",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sweet Combo with Lemonade Mixer ",
+      "items": [
+        {
+          "name": "Cinnamon Pretzel with Lemonade Mixer Offer",
+          "description": "With lemonade mixer and dips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Wind Upz Mars with Lemonade Mixer Offer",
+          "description": "With lemonade mixer and dips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "Wind Upz Twix with Lemonade Mixer Offer",
+          "description": "With lemonade mixer and dips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "Cinnamon Sugar Stix with Lemonade Mixer Offer",
+          "description": "With lemonade mixer and dips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Cinnamon Sugar Nuggets with Lemonade Mixer Offer",
+          "description": "With lemonade mixer and dips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Sweets Almond Pretzel with Lemonade Mixer Offer",
+          "description": "With lemonade mixer and dips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Pull -A- Parts with Lemonade Mixer Offer",
+          "description": "With lemonade mixer and dips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Pull -A- Parts Kinder with Lemonade Mixer Offer",
+          "description": "With lemonade mixer and dips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 215
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Pull -A- Parts Pistachio with Lemonade Mixer Offer",
+          "description": "With lemonade mixer and dips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 255
+            }
+          ]
+        },
+        {
+          "name": "Molten Stix with Lemonade Mixer Offer",
+          "description": "With lemonade mixer and dips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Chips Pretzel with Lemonade Mixer Offer",
+          "description": "With lemonade mixer and dips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Chips Stix with Lemonade Mixer Offer",
+          "description": "With lemonade mixer and dips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Almond Nuggets with Lemonade Mixer Offer",
+          "description": "With lemonade mixer and dips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Almond Stix with Lemonade Mixer Offer",
+          "description": "With lemonade mixer and dips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Choco Chips Nuggets with Lemonade Mixer Offer",
+          "description": "With lemonade mixer and dips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 160
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sweet Combo with Soft Drink ",
+      "items": [
+        {
+          "name": "Cinnamon Sugar Nuggets with Soft Drink Offer",
+          "description": "Soft drink and dips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Sweets Almond Pretzel with Soft Drink Offer",
+          "description": "Soft drink and dips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Pull  -A- Parts with Soft Drink Offer",
+          "description": "Soft drink and dips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Pull -A- Parts Kinder with Soft Drink Offer",
+          "description": "Soft drink and dips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 200
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Pull -A- Parts Pistachio with Soft Drink Offer",
+          "description": "Soft drink and dips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 230
+            }
+          ]
+        },
+        {
+          "name": "Cinnamon Pretzel with Soft Drink Offer",
+          "description": "Soft drink and dips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Chips Pretzel with Soft Drink Offer",
+          "description": "Soft drink and dips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Chips Stix with Soft Drink Offer",
+          "description": "Soft drink and dips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Almond Nuggets with Soft Drink  Offer",
+          "description": "Soft drink and dips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Wind Upz Mars with Soft Drink Offer",
+          "description": "Soft drink and dips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "Wind Upz Twix with Soft Drink Offer",
+          "description": "Soft drink and dips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "Cinnamon Sugar Stix with Soft Drink Offer",
+          "description": "Soft drink and dips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Molten Stix with Soft Drink Offer",
+          "description": "Soft drink and dips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 200
+            }
+          ]
+        },
+        {
+          "name": "Almond Stix with Soft Drink Offer",
+          "description": "Soft drink and dips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Choco Chips Nuggets with Soft Drink Offer",
+          "description": "Soft drink and dips",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pizza",
+      "items": [
+        {
+          "name": "Margherita Pizza",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 180
+            },
+            {
+              "size": "Medium",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Pepperoni Pizza",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 250
+            },
+            {
+              "size": "Medium",
+              "price_egp": 195
+            }
+          ]
+        },
+        {
+          "name": "BBQ Chicken Pizza",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 295
+            },
+            {
+              "size": "Medium",
+              "price_egp": 220
+            }
+          ]
+        },
+        {
+          "name": "Mushroom Pizza",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 230
+            },
+            {
+              "size": "Medium",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Chicken Ranch Pizza",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 305
+            },
+            {
+              "size": "Medium",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Hot Dog Pizza",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 280
+            },
+            {
+              "size": "Medium",
+              "price_egp": 200
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pizza Combo with Lemonade Mixer ",
+      "items": [
+        {
+          "name": "Margherita Pizza Combo with Lemonade Mixer",
+          "description": "Medium pizza, lemonade mixer, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 250
+            }
+          ]
+        },
+        {
+          "name": "Pepperoni Pizza Combo with Lemonade Mixer",
+          "description": "Medium pizza, lemonade mixer,  potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 310
+            }
+          ]
+        },
+        {
+          "name": "BBQ Chicken Pizza Combo with Lemonade Mixer",
+          "description": "Medium pizza, lemonade mixer,  potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 335
+            }
+          ]
+        },
+        {
+          "name": "Mushroom Pizza Combo with Lemonade Mixer",
+          "description": "Medium pizza, lemonade mixer,  potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 275
+            }
+          ]
+        },
+        {
+          "name": "Chicken Ranch Pizza Combo with Lemonade Mixer",
+          "description": "Medium pizza, lemonade mixer,  potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 340
+            }
+          ]
+        },
+        {
+          "name": "Hot Dog Pizza Combo with Lemonade Mixer",
+          "description": "Medium pizza, lemonade mixer,  potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 315
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pizza Combo with Soft Drink ",
+      "items": [
+        {
+          "name": "Margherita Pizza Combo with  Soft Drink",
+          "description": "Medium pizza, soft drink, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Pepperoni Pizza Combo with  Soft Drink",
+          "description": "Medium pizza, soft drink, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 285
+            }
+          ]
+        },
+        {
+          "name": "BBQ Chicken Pizza Combo with Soft Drink",
+          "description": "Medium pizza, soft drink, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 310
+            }
+          ]
+        },
+        {
+          "name": "Mushroom Pizza Combo with Soft Drink",
+          "description": "Medium pizza, soft drink, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 250
+            }
+          ]
+        },
+        {
+          "name": "Chicken Ranch Pizza with Soft Drink",
+          "description": "Medium pizza, soft drink, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 315
+            }
+          ]
+        },
+        {
+          "name": "Hot Dog Pizza with Soft Drink",
+          "description": "Medium pizza, soft drink, potato wedges or cinnamon sugar nuggets",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 290
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Side Item ",
+      "items": [
+        {
+          "name": "Cinnamon Sugar Nuggets",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Potato Wedges",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dips Savory ",
+      "items": [
+        {
+          "name": "Marinara Dip",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Honey Mustard Dip",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Thai Chili Dip",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Cheese Dip",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "BBQ  Dip",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Ketchup Pack",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        },
+        {
+          "name": "Jalapeno Cup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dips Sweets ",
+      "items": [
+        {
+          "name": "Caramel Dip",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Chocolate  Dip",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Dip",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Kinder Dip",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Creamy Chocolate Dip",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Soda",
+      "items": [
+        {
+          "name": "Coca Cola",
+          "description": "",
+          "sizes": [
+            {
+              "size": "330ml",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Fanta Orange",
+          "description": "",
+          "sizes": [
+            {
+              "size": "330ml",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Diet Cola",
+          "description": "",
+          "sizes": [
+            {
+              "size": "330ml",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Sprite",
+          "description": "",
+          "sizes": [
+            {
+              "size": "330ml",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Water",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        },
+        {
+          "name": "Red Bull",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Lemonade Mixer",
+      "items": [
+        {
+          "name": "Mixer Mint  Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Mixer B. Berry Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Mixer Cherry Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Mixer Watermelon Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Mixer Kiwi Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Mixer Strawberry Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Mixer Lemonade Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Mixer Mango Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Mixer Passion Fruit Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Mixer Curacao Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 60
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

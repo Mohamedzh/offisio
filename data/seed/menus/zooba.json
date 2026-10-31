@@ -1,0 +1,750 @@
+{
+  "brand": "Zooba",
+  "source": "elmenus.com",
+  "source_label": "Menu source: elmenus.com (demo data, not affiliated)",
+  "restaurant_url": "https://elmenus.com/cairo/zooba-vodp",
+  "branch_code": "v7w7",
+  "fetched_at": "2026-10-31T12:38:37.149Z",
+  "categories": [
+    {
+      "name": "Mazzat  ",
+      "items": [
+        {
+          "name": "Fried Eggplant",
+          "description": "Eggplant, hot peppers fried, marinated in garlic vinegar dressing,168 calories",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 64.83
+            }
+          ]
+        },
+        {
+          "name": "Marinated Tomatoes",
+          "description": "Ripe tomatoes marinated in a flavorful mixture of herbs, olive oil, vinegar, garlic, spices, adding a tangy and aromatic flavour",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 34.23
+            }
+          ]
+        },
+        {
+          "name": "Sweet Harissa Cauliflower",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 113.07
+            }
+          ]
+        },
+        {
+          "name": "Om Ghanoush",
+          "description": "Charred eggplant, garlic vinegar dakka, beetroot tahina",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 62.21
+            }
+          ]
+        },
+        {
+          "name": "Zooba Bessara",
+          "description": "Fava beans cooked with onion, garlic, cilantro topped with crispy onion and drizzled with olive oil,183 calories",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 111.23
+            }
+          ]
+        },
+        {
+          "name": "White Cheese & Tomato",
+          "description": "Served with roasted baladi bread, 244 calories",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 111.23
+            }
+          ]
+        },
+        {
+          "name": "Olive Labna Dip",
+          "description": "Served with roasted baladi bread, 365 calories",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 111.23
+            }
+          ]
+        },
+        {
+          "name": "Pickled Cucumbers",
+          "description": "Cucumbers preserved in a vinegar brine, often with other seasonings such as salt, sugar, spices",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 34.22
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ful",
+      "items": [
+        {
+          "name": "Ful Plate",
+          "description": "Fresh fava beans soaked overnight on low heat then slow-cooked for 12 hours daily, mashed with our own spice blend, drizzled with olive, sunflower or flaxseed oil",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 69.65
+            }
+          ]
+        },
+        {
+          "name": "Ful Sandwich",
+          "description": "Fresh fava beans soaked overnight on low heat then slow-cooked for 12 hours daily, mashed with our own spice blend, drizzled with olive, sunflower or flaxseed oil",
+          "sizes": [
+            {
+              "size": "TAHINA_FUL",
+              "price_egp": 24.83
+            },
+            {
+              "size": "PICKLED_LEMON_FUL",
+              "price_egp": 24.83
+            },
+            {
+              "size": "ALEXANDRIAN_FUL",
+              "price_egp": 20.78
+            },
+            {
+              "size": "LIME_FUL",
+              "price_egp": 19.34
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Taameya",
+      "items": [
+        {
+          "name": "Taameya Piece",
+          "description": "Piece  taameya prepared with our secret blend of fava bean and spices, herbs mix, made in house all day long",
+          "sizes": [
+            {
+              "size": "1 Piece",
+              "price_egp": 11.53
+            }
+          ]
+        },
+        {
+          "name": "Taameya Sandwich",
+          "description": "Taameya prepared with our secret blend of fava bean and spices, herbs mix, made in house all day long",
+          "sizes": [
+            {
+              "size": "EGGPLANT_TAAMEYA_SANDWICH",
+              "price_egp": 31.47
+            },
+            {
+              "size": "CLASSIC_TAAMEYA_SANDWICH",
+              "price_egp": 25.41
+            },
+            {
+              "size": "PICKLED_LEMON_TAAMEYA_SANDWICH",
+              "price_egp": 31.47
+            },
+            {
+              "size": "SPICY_TAAMEYA_SANDWICH",
+              "price_egp": 34.37
+            }
+          ]
+        },
+        {
+          "name": "Taameya Dough",
+          "description": "Fresh uncooked taameya and zooba spices, ready to be fried",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 103.3
+            }
+          ]
+        },
+        {
+          "name": "Taameya Salad",
+          "description": "3 taameya pieces, lettuce, arugula, beetroot tahini, black cumin beetroot dip, fried eggplant, pickled beetroot, shredded carrots seasoned with parsley",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 172.88
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Eggs",
+      "items": [
+        {
+          "name": "Shakshouka Plate",
+          "description": "Diner style scrambled eggs, tomato onion relish, parsley, 312 calories",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 137
+            }
+          ]
+        },
+        {
+          "name": "Shakshouka Sandwich",
+          "description": "Diner style scrambled eggs, tomato onion relish and parsley",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 92.28
+            }
+          ]
+        },
+        {
+          "name": "Egg Basterma Plate",
+          "description": "Diner style scrambled eggs, fenugreek seasoned air dried cured beef, 359 calories",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 176.47
+            }
+          ]
+        },
+        {
+          "name": "Basterma Eggs Sandwich",
+          "description": "Diner style scrambled eggs, fenugreek seasoned air dried cured beef, 429 calories",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 119.42
+            }
+          ]
+        },
+        {
+          "name": "Scrambled Eggs Sandwich",
+          "description": "Plain scrambled eggs with salt and black peppers",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 80.76
+            }
+          ]
+        },
+        {
+          "name": "Scrambled Eggs Plate",
+          "description": "Plain scrambled eggs with salt and black peppers",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 124.02
+            }
+          ]
+        },
+        {
+          "name": "Boiled Egg Side",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 28.97
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Favorite Sandwiches ",
+      "items": [
+        {
+          "name": "Roumy Cheese Sandwich",
+          "description": "Melted Eggplant cow and buffalo's milk cheese, black olive paste",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 88.53
+            }
+          ]
+        },
+        {
+          "name": "Hawawshi",
+          "description": "",
+          "sizes": [
+            {
+              "size": "CHEESE_HAWAWSHI",
+              "price_egp": 188.46
+            },
+            {
+              "size": "SPICY_HAWAWSHI",
+              "price_egp": 162.83
+            },
+            {
+              "size": "STREET_HAWAWSHI",
+              "price_egp": 153.78
+            }
+          ]
+        },
+        {
+          "name": "Fries Sandwich",
+          "description": "French fries served with your choice of labneh with arugula and tomatoes or salad with tahini sauce",
+          "sizes": [
+            {
+              "size": "TAHINA_FRIES_SANDWICH",
+              "price_egp": 63.24
+            },
+            {
+              "size": "LABNA_FRIES_SANDWICH",
+              "price_egp": 78.44
+            }
+          ]
+        },
+        {
+          "name": "Spicy Sausage Sandwich",
+          "description": "Traditional Egyptian beef sausages, diced tomatoes, onions, green peppers, pickled cucumbers, tomato onion relish, arugula, classic tahina, 642 calories",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 195.99
+            }
+          ]
+        },
+        {
+          "name": "Beef Liver Sandwich",
+          "description": "Pan seared beef liver, mixed peppers, pickled lemons, arugula, tomato onion relish and tahina",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 174.89
+            }
+          ]
+        },
+        {
+          "name": "Chicken Shawerma Sandwich",
+          "description": "Tamarind-marinated shredded chicken, diced tomatoes, sauteed onion, bell peppers, pickled beetroot, pickled cucumbers, arugula, parsley, tahina, 452 calories",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 174.89
+            }
+          ]
+        },
+        {
+          "name": "White Cheese with Tomatoes Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60.05
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Soup",
+      "items": [
+        {
+          "name": "Molokheya Soup",
+          "description": "Molokhia in a cup and served with 2 bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 103.12
+            }
+          ]
+        },
+        {
+          "name": "Vermicelli Chicken Broth Vegetable Soup",
+          "description": "Vermicelli with chicken and vegetable soup",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 59.68
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mains ",
+      "items": [
+        {
+          "name": "Koshari",
+          "description": "Mix grains, (short grain rice, spaghetti, tubetti), simmered brown lentils, stewed chickpeas, slow cooked tomato sauce, fried onions, Aswani chilli sauce and duqqa",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 120.72
+            },
+            {
+              "size": "Regular",
+              "price_egp": 92.08
+            }
+          ]
+        },
+        {
+          "name": "Cairene Molokheya",
+          "description": "Served with vermicelli rice, half a pan fried chicken and  pickled eggplant and tomatoes",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 482.45
+            }
+          ]
+        },
+        {
+          "name": "1/2 Chicken",
+          "description": "1/2 chicken pan-fried",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 343.74
+            }
+          ]
+        },
+        {
+          "name": "Sausage Plate",
+          "description": "Traditional Egyptian beef sausages, diced tomatoes, onions, green peppers, pickled cucumbers, tomato onion relish, arugula, tahina, vermicelli rice, 1142 calories",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 298.51
+            }
+          ]
+        },
+        {
+          "name": "Chicken Shawerma Plate",
+          "description": "Tamarind marinated shredded chicken, diced tomatoes, sauteed onions, bell peppers, pickled beetroot, pickled cucumbers, arugula, parsley, tahina, ermicelli rice, 742 calories",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 263.84
+            }
+          ]
+        },
+        {
+          "name": "Liver Plate",
+          "description": "Pan seared beef liver, mixed peppers, pickled lemons, arugula, tomato onion relish and tahina and vermicelli rice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 278.92
+            }
+          ]
+        },
+        {
+          "name": "Lemongrass Ginger Okra with Beef Shank Tagen",
+          "description": "Served with vermicelli rice, marinated tomatoes, eggplant",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 527.68
+            }
+          ]
+        },
+        {
+          "name": "Molokheya Dawood Basha",
+          "description": "Served with vermicelli rice, dawood basha meatballs, pickled eggplant and tomatoes",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 442.33
+            }
+          ]
+        },
+        {
+          "name": "Dawood Basha Meatballs",
+          "description": "In slow cooked tomato sauce, served with vermicelli rice, pickled eggplant & tomatoes",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 376.91
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sides  ",
+      "items": [
+        {
+          "name": "House Fries",
+          "description": "12 spice dukka potatoes and cilantro",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 92.55
+            }
+          ]
+        },
+        {
+          "name": "Baladi Salad",
+          "description": "Diced tomatoes, diced cucumbers, parsley, lime vinaigrette, 35 calories",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 52.77
+            }
+          ]
+        },
+        {
+          "name": "Zooba Mixed Pickles",
+          "description": "Carrots, turnips, pearl onion, cucumber, hot pepper, olives, cauliflower, 55 calories",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 42.76
+            }
+          ]
+        },
+        {
+          "name": "Vermicelli Rice",
+          "description": "Made with delicate vermicelli noodles, fluffy basmati rice, a blend of aromatic spices",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 59.92
+            }
+          ]
+        },
+        {
+          "name": "Classic Baladi Bread",
+          "description": "160 calories",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 9.23
+            }
+          ]
+        },
+        {
+          "name": "Baladi Bread Chips",
+          "description": "Crunchy baladi bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 27.06
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sauces ",
+      "items": [
+        {
+          "name": "Beetroot Hibiscus Tahina",
+          "description": "93 calories",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 49.75
+            }
+          ]
+        },
+        {
+          "name": "Classic Tehina Sauce",
+          "description": "Cup",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 49.75
+            }
+          ]
+        },
+        {
+          "name": "Sweet Harissa Sauce",
+          "description": "Harissa, raisin hot sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 19.75
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sweets  ",
+      "items": [
+        {
+          "name": "Zooba Rice Pudding",
+          "description": "Angel hair halawa, clover honey, crushed mixed nuts, orange zest, 293 calories",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 119.58
+            }
+          ]
+        },
+        {
+          "name": "Classic Rice Pudding",
+          "description": "270 calories",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 68.17
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Drinks ",
+      "items": [
+        {
+          "name": "Hibiscus Limeade",
+          "description": "145 calories",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 71.73
+            }
+          ]
+        },
+        {
+          "name": "Mint Limeade",
+          "description": "134 calories",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 71.73
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Juice",
+          "description": "Freshly prepared strawberry juice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 118.46
+            }
+          ]
+        },
+        {
+          "name": "Fakhfakhina Juice",
+          "description": "Fakhfakhina juice, a refreshing and zesty juice blend",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 118.46
+            }
+          ]
+        },
+        {
+          "name": "Orange Juice",
+          "description": "Freshly squeezed orange juice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 118.46
+            }
+          ]
+        },
+        {
+          "name": "Mango Juice",
+          "description": "Made from fresh, ripe mangos, for perfect balance of sweetness, tanginess",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 118.46
+            }
+          ]
+        },
+        {
+          "name": "Guava Juice",
+          "description": "Pure, refreshing guava extract",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 118.46
+            }
+          ]
+        },
+        {
+          "name": "Bottled Water",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 28.1
+            }
+          ]
+        },
+        {
+          "name": "Pepsi",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 59.39
+            }
+          ]
+        },
+        {
+          "name": "Pepsi Diet",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 59.39
+            }
+          ]
+        },
+        {
+          "name": "7up",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 59.39
+            }
+          ]
+        },
+        {
+          "name": "Mirinda",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 59.39
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Zooba Boxes",
+      "items": [
+        {
+          "name": "Fries Box",
+          "description": "12 spice dukka potatoes, cilantro with classic tahina, beetroot tahina & sweet harissa",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 425.42
+            }
+          ]
+        },
+        {
+          "name": "Taameya Box",
+          "description": "30 piece of taameya with classic tahina, beetroot tahina & sweet harissa",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 298.1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

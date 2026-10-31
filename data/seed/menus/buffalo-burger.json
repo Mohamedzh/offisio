@@ -1,0 +1,981 @@
+{
+  "brand": "Buffalo Burger",
+  "source": "elmenus.com",
+  "source_label": "Menu source: elmenus.com (demo data, not affiliated)",
+  "restaurant_url": "https://elmenus.com/cairo/buffalo-burger-95gm",
+  "branch_code": "2gv8",
+  "fetched_at": "2026-10-31T12:38:37.192Z",
+  "categories": [
+    {
+      "name": "Value Meals",
+      "items": [
+        {
+          "name": "4 In The Box",
+          "description": "4 sandwiches 200gm with 4 small fries and 4 drinks",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 950
+            }
+          ]
+        },
+        {
+          "name": "King Mo",
+          "description": "2 sandwiches 200gm with 2 medium fries and 2 drinks",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 525
+            }
+          ]
+        },
+        {
+          "name": "Buffalo Combo 200",
+          "description": "Your choice of 200gm sandwich with French fries and drink",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 265
+            }
+          ]
+        },
+        {
+          "name": "Take It Cheesy",
+          "description": "Your choice of two 100gm sandwiches in brioche bread with a cheddar cheese cup sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 299
+            }
+          ]
+        },
+        {
+          "name": "Buff Mix",
+          "description": "Your choice of a 150gm sandwich with your choice of a chicken sandwich with French fries and a soft drink",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 375
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Appetizers",
+      "items": [
+        {
+          "name": "Chicken Fingers",
+          "description": "Served with ranch Sauce",
+          "sizes": [
+            {
+              "size": "2 Pieces",
+              "price_egp": 145
+            }
+          ]
+        },
+        {
+          "name": "French Fries",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Onion Rings",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 119
+            }
+          ]
+        },
+        {
+          "name": "Cheesy Fries",
+          "description": "Served with Thousand Island sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 116
+            }
+          ]
+        },
+        {
+          "name": "Mozzarella Bites",
+          "description": "Served with ranch sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Fried Buffalo Wings",
+          "description": "Served with spicy buffalo sauce or ranch sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "Blanco Fries",
+          "description": "French Fries with onion pieces, ketchup and mayonnaise",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 112
+            }
+          ]
+        },
+        {
+          "name": "Coleslaw",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Curly Fries",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 101
+            }
+          ]
+        },
+        {
+          "name": "Cheddar Jalapeno Bites",
+          "description": "Served with ranch sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 114
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Burger Sandwiches",
+      "items": [
+        {
+          "name": "The Rastafari Sandwich",
+          "description": "Crispy cheddar jalapeno bites, on a grilled burger patty with creamy Buffalo sauce",
+          "sizes": [
+            {
+              "size": "150gm",
+              "price_egp": 244
+            },
+            {
+              "size": "200gm",
+              "price_egp": 280
+            },
+            {
+              "size": "400gm",
+              "price_egp": 405
+            },
+            {
+              "size": "200GM_COMBO",
+              "price_egp": 280
+            },
+            {
+              "size": "150GM_COMBO",
+              "price_egp": 244
+            },
+            {
+              "size": "400GM_COMBO",
+              "price_egp": 405
+            }
+          ]
+        },
+        {
+          "name": "Cholo's Sandwich",
+          "description": "Pickled sliced jalapenos, Buffalo sauce and cheddar cheese on top of our pure beef burger patty",
+          "sizes": [
+            {
+              "size": "150gm",
+              "price_egp": 227
+            },
+            {
+              "size": "200gm",
+              "price_egp": 263
+            },
+            {
+              "size": "400gm",
+              "price_egp": 384
+            },
+            {
+              "size": "200GM_COMBO",
+              "price_egp": 263
+            },
+            {
+              "size": "150GM_COMBO",
+              "price_egp": 227
+            },
+            {
+              "size": "400GM_COMBO",
+              "price_egp": 384
+            }
+          ]
+        },
+        {
+          "name": "The Secret Burger Sandwich",
+          "description": "Flamed burger patty with crispy onion and BBQ sauce with caramelized onion, topped with crispy secret cheese and creamy Buffalo sauce",
+          "sizes": [
+            {
+              "size": "150gm",
+              "price_egp": 252
+            },
+            {
+              "size": "200gm",
+              "price_egp": 305
+            },
+            {
+              "size": "400gm",
+              "price_egp": 419
+            },
+            {
+              "size": "200GM_COMBO",
+              "price_egp": 305
+            },
+            {
+              "size": "150GM_COMBO",
+              "price_egp": 252
+            },
+            {
+              "size": "400GM_COMBO",
+              "price_egp": 419
+            }
+          ]
+        },
+        {
+          "name": "Shiitake Mushroom Sandwich",
+          "description": "Sauteed mushroom, cheddar cheese and creamy mayonnaise spread on top of our pure beef burger patty",
+          "sizes": [
+            {
+              "size": "150gm",
+              "price_egp": 230
+            },
+            {
+              "size": "200gm",
+              "price_egp": 275
+            },
+            {
+              "size": "400gm",
+              "price_egp": 394
+            },
+            {
+              "size": "200GM_COMBO",
+              "price_egp": 275
+            },
+            {
+              "size": "150GM_COMBO",
+              "price_egp": 230
+            },
+            {
+              "size": "400GM_COMBO",
+              "price_egp": 394
+            }
+          ]
+        },
+        {
+          "name": "Blue Cheese Sandwich",
+          "description": "Crumbles of creamy French blue cheese top our famous burger patty with our signature mayonnaise sauce",
+          "sizes": [
+            {
+              "size": "150gm",
+              "price_egp": 221
+            },
+            {
+              "size": "200gm",
+              "price_egp": 264
+            },
+            {
+              "size": "400gm",
+              "price_egp": 400
+            },
+            {
+              "size": "200GM_COMBO",
+              "price_egp": 264
+            },
+            {
+              "size": "150GM_COMBO",
+              "price_egp": 221
+            },
+            {
+              "size": "400GM_COMBO",
+              "price_egp": 400
+            }
+          ]
+        },
+        {
+          "name": "Hitchhiker Sandwich",
+          "description": "Crispy mini mozzarella sticks, loaded with ketchup and mustard drops, beef bacon and creamy Buffalo sauce on top of our pure beef burger patty",
+          "sizes": [
+            {
+              "size": "150gm",
+              "price_egp": 274
+            },
+            {
+              "size": "200gm",
+              "price_egp": 322
+            },
+            {
+              "size": "400gm",
+              "price_egp": 425
+            },
+            {
+              "size": "200GM_COMBO",
+              "price_egp": 322
+            },
+            {
+              "size": "150GM_COMBO",
+              "price_egp": 274
+            },
+            {
+              "size": "400GM_COMBO",
+              "price_egp": 425
+            }
+          ]
+        },
+        {
+          "name": "Bacon Mushroom Jack Sandwich",
+          "description": "Beef bacon with fresh sauteed mushroom, cheddar cheese, creamy mayonnaise and pure beef burger patty",
+          "sizes": [
+            {
+              "size": "150gm",
+              "price_egp": 281
+            },
+            {
+              "size": "200gm",
+              "price_egp": 323
+            },
+            {
+              "size": "400gm",
+              "price_egp": 437
+            },
+            {
+              "size": "200GM_COMBO",
+              "price_egp": 323
+            },
+            {
+              "size": "150GM_COMBO",
+              "price_egp": 281
+            },
+            {
+              "size": "400GM_COMBO",
+              "price_egp": 437
+            }
+          ]
+        },
+        {
+          "name": "Old School Sandwich",
+          "description": "Pure beef burger patty, topped with our signature Buffalo sauce and cheddar cheese",
+          "sizes": [
+            {
+              "size": "150gm",
+              "price_egp": 222
+            },
+            {
+              "size": "200gm",
+              "price_egp": 263
+            },
+            {
+              "size": "400gm",
+              "price_egp": 384
+            },
+            {
+              "size": "200GM_COMBO",
+              "price_egp": 263
+            },
+            {
+              "size": "150GM_COMBO",
+              "price_egp": 222
+            },
+            {
+              "size": "400GM_COMBO",
+              "price_egp": 384
+            }
+          ]
+        },
+        {
+          "name": "Charbroiled BBQ Sandwich",
+          "description": "Grilled burger topped with sweet onion, BBQ sauce, creamy Charbroiled sauce and Swiss cheese",
+          "sizes": [
+            {
+              "size": "150gm",
+              "price_egp": 227
+            },
+            {
+              "size": "200gm",
+              "price_egp": 260
+            },
+            {
+              "size": "400gm",
+              "price_egp": 384
+            },
+            {
+              "size": "200GM_COMBO",
+              "price_egp": 260
+            },
+            {
+              "size": "150GM_COMBO",
+              "price_egp": 278
+            },
+            {
+              "size": "400GM_COMBO",
+              "price_egp": 384
+            }
+          ]
+        },
+        {
+          "name": "X Urban Sandwich",
+          "description": "A juicy burger patty with cheddar cheese, beef bacon, crispy onion rings with BBQ sauce and caramelized onions",
+          "sizes": [
+            {
+              "size": "150gm",
+              "price_egp": 276
+            },
+            {
+              "size": "200gm",
+              "price_egp": 315
+            },
+            {
+              "size": "400gm",
+              "price_egp": 425
+            },
+            {
+              "size": "200GM_COMBO",
+              "price_egp": 315
+            },
+            {
+              "size": "150GM_COMBO",
+              "price_egp": 276
+            },
+            {
+              "size": "400GM_COMBO",
+              "price_egp": 425
+            }
+          ]
+        },
+        {
+          "name": "Grungy Sandwich",
+          "description": "Pure beef burger patty, topped with our custom grungy sauce, cheddar cheese, tomatoes, onion and lettuce",
+          "sizes": [
+            {
+              "size": "150gm",
+              "price_egp": 216
+            },
+            {
+              "size": "200gm",
+              "price_egp": 257
+            },
+            {
+              "size": "400gm",
+              "price_egp": 376
+            },
+            {
+              "size": "200GM_COMBO",
+              "price_egp": 267
+            },
+            {
+              "size": "150GM_COMBO",
+              "price_egp": 216
+            },
+            {
+              "size": "400GM_COMBO",
+              "price_egp": 376
+            }
+          ]
+        },
+        {
+          "name": "Truffle Beef Burger Sandwich",
+          "description": "Flame grilled burger with Sauteed mushroom, crispy onion, truffle sauce and cheddar cheese",
+          "sizes": [
+            {
+              "size": "150gm",
+              "price_egp": 238
+            },
+            {
+              "size": "200gm",
+              "price_egp": 280
+            },
+            {
+              "size": "400gm",
+              "price_egp": 405
+            },
+            {
+              "size": "200GM_COMBO",
+              "price_egp": 280
+            },
+            {
+              "size": "150GM_COMBO",
+              "price_egp": 238
+            },
+            {
+              "size": "400GM_COMBO",
+              "price_egp": 405
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chicken Sandwiches",
+      "items": [
+        {
+          "name": "Cholo's Chicken Sandwich",
+          "description": "Chicken strips with pickled sliced jalapenos, Buffalo sauce and melted cheddar cheese",
+          "sizes": [
+            {
+              "size": "Chicken Strips",
+              "price_egp": 225
+            },
+            {
+              "size": "CHICKEN_STRIPS_COMBO",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Rastafari Chicken Sandwich",
+          "description": "Crispy cheddar jalapeno bites with chicken strips and creamy Buffalo sauce",
+          "sizes": [
+            {
+              "size": "Chicken Strips",
+              "price_egp": 230
+            },
+            {
+              "size": "CHICKEN_STRIPS_COMBO",
+              "price_egp": 230
+            }
+          ]
+        },
+        {
+          "name": "Chicken Buster Sandwich",
+          "description": "Chicken strips with Buffalo sauce and melted cheddar cheese",
+          "sizes": [
+            {
+              "size": "Chicken Strips",
+              "price_egp": 215
+            },
+            {
+              "size": "CHICKEN_STRIPS_COMBO",
+              "price_egp": 215
+            }
+          ]
+        },
+        {
+          "name": "Chicken Ditch Sandwich",
+          "description": "Crispy chicken breast topped with beef bacon, sauteed mushroom, cheddar cheese, and smoky buff sauce",
+          "sizes": [
+            {
+              "size": "Chicken Strips",
+              "price_egp": 270
+            },
+            {
+              "size": "CHICKEN_STRIPS_COMBO",
+              "price_egp": 270
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sandwiches 100gm",
+      "items": [
+        {
+          "name": "Grungy 100gm Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 162
+            }
+          ]
+        },
+        {
+          "name": "Old School 100gm Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 162
+            }
+          ]
+        },
+        {
+          "name": "Cholo's 100gm Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 167
+            }
+          ]
+        },
+        {
+          "name": "Shiitake Mushroom 100gm Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 183
+            }
+          ]
+        },
+        {
+          "name": "Charbroiled BBQ 100gm Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 183
+            }
+          ]
+        },
+        {
+          "name": "Bacon Mushroom Jack 100gm Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 224
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Keto & Light Sandwiches",
+      "items": [
+        {
+          "name": "Skinny Buffalo Sandwich",
+          "description": "A grilled lean burger patty on a multi-grain bread bun with buffalo sauce and cheddar cheese",
+          "sizes": [
+            {
+              "size": "400GM_SANDWICH",
+              "price_egp": 381
+            },
+            {
+              "size": "200GM_SANDWICH",
+              "price_egp": 260
+            },
+            {
+              "size": "200GM_COMBO",
+              "price_egp": 260
+            },
+            {
+              "size": "150GM_SANDWICH",
+              "price_egp": 228
+            },
+            {
+              "size": "150GM_COMBO",
+              "price_egp": 228
+            },
+            {
+              "size": "400GM_COMBO",
+              "price_egp": 375
+            }
+          ]
+        },
+        {
+          "name": "Keto Lettuce Wrap Sandwich",
+          "description": "Pure beef burger embedded in fresh whole romaine lettuce with cheddar cheese. Served with our signature Buffalo sauce in a cup",
+          "sizes": [
+            {
+              "size": "400GM_SANDWICH",
+              "price_egp": 380
+            },
+            {
+              "size": "200GM_SANDWICH",
+              "price_egp": 280
+            },
+            {
+              "size": "200GM_COMBO",
+              "price_egp": 280
+            },
+            {
+              "size": "150GM_SANDWICH",
+              "price_egp": 245
+            },
+            {
+              "size": "150GM_COMBO",
+              "price_egp": 245
+            },
+            {
+              "size": "400GM_COMBO",
+              "price_egp": 380
+            }
+          ]
+        },
+        {
+          "name": "Keto Shiitake Mushroom Sandwich",
+          "description": "Sauteed fresh mushroom, cheddar cheese and beef burger patty embedded in fresh whole romaine lettuce, served with our mayonnaise sauce in a cup",
+          "sizes": [
+            {
+              "size": "400GM_SANDWICH",
+              "price_egp": 385
+            },
+            {
+              "size": "200GM_SANDWICH",
+              "price_egp": 295
+            },
+            {
+              "size": "200GM_COMBO",
+              "price_egp": 295
+            },
+            {
+              "size": "150GM_SANDWICH",
+              "price_egp": 250
+            },
+            {
+              "size": "150GM_COMBO",
+              "price_egp": 250
+            },
+            {
+              "size": "400GM_COMBO",
+              "price_egp": 385
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Buffalo Play",
+      "items": [
+        {
+          "name": "Buffalo Play Burger Meal",
+          "description": "Burger sandwich, small fries, juice and toy",
+          "sizes": [
+            {
+              "size": "BUFFALO_PLAY_(INCLUDING_A_TOY)",
+              "price_egp": 260
+            }
+          ]
+        },
+        {
+          "name": "Buffalo Play Chicken Sandwich",
+          "description": "Chicken strips sandwich with small fries, juice and toy",
+          "sizes": [
+            {
+              "size": "BUFFALO_PLAY_(INCLUDING_A_TOY)",
+              "price_egp": 260
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sauces",
+      "items": [
+        {
+          "name": "Cheddar Cheese Sauce",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 30
+            }
+          ]
+        },
+        {
+          "name": "BBQ Sauce",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 9
+            }
+          ]
+        },
+        {
+          "name": "Thousand Island Sauce Cup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 10
+            }
+          ]
+        },
+        {
+          "name": "Mayonnaise",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 15
+            }
+          ]
+        },
+        {
+          "name": "Mustard",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 15
+            }
+          ]
+        },
+        {
+          "name": "BBQ Sauce Cup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 15
+            }
+          ]
+        },
+        {
+          "name": "Ranch Sauce Cup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 15
+            }
+          ]
+        },
+        {
+          "name": "Smoked Sauce Cup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 15
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        {
+          "name": "Blueberry Cheesecake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Lotus Cheesecake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Apple Pie",
+          "description": "Freshly baked apple & cinnamon pie",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 63
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sweet Pies",
+      "items": [
+        {
+          "name": "Blueberry Cheesecake Pie",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Soft Drinks",
+      "items": [
+        {
+          "name": "Water Bottle",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 10
+            }
+          ]
+        },
+        {
+          "name": "V Cola",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Can",
+              "price_egp": 42
+            }
+          ]
+        },
+        {
+          "name": "V 7 Lemon",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Can",
+              "price_egp": 42
+            }
+          ]
+        },
+        {
+          "name": "V Cola Diet",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Can",
+              "price_egp": 42
+            }
+          ]
+        },
+        {
+          "name": "Orange Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 62
+            }
+          ]
+        },
+        {
+          "name": "Pure Apple Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 25
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

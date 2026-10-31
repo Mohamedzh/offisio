@@ -1,0 +1,948 @@
+{
+  "brand": "Dolato",
+  "source": "elmenus.com",
+  "source_label": "Menu source: elmenus.com (demo data, not affiliated)",
+  "restaurant_url": "https://elmenus.com/cairo/dolato-mya47",
+  "branch_code": "m8r2o",
+  "fetched_at": "2026-10-31T12:38:37.324Z",
+  "categories": [
+    {
+      "name": "Cones ",
+      "items": [
+        {
+          "name": "Gluten Free Cone",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 80
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Cone",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Chocolate with Nuts Cone",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Gelato",
+      "items": [
+        {
+          "name": "Signature Scoop",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 465
+            },
+            {
+              "size": "Medium",
+              "price_egp": 340
+            },
+            {
+              "size": "Small",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Box 500gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 735
+            },
+            {
+              "size": "SIGNATURE",
+              "price_egp": 875
+            }
+          ]
+        },
+        {
+          "name": "Box 1000gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1380
+            },
+            {
+              "size": "SIGNATURE",
+              "price_egp": 1655
+            }
+          ]
+        },
+        {
+          "name": "1 Signature Scoop in Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 25
+            }
+          ]
+        },
+        {
+          "name": "Gelato Scoop",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 390
+            },
+            {
+              "size": "Medium",
+              "price_egp": 290
+            },
+            {
+              "size": "Small",
+              "price_egp": 145
+            }
+          ]
+        },
+        {
+          "name": "Box of 6 Scoops",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 735
+            }
+          ]
+        },
+        {
+          "name": "Box of 12 Scoops",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1380
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Gelato Weights ",
+      "items": [
+        {
+          "name": "Gelato Premio",
+          "description": "",
+          "sizes": [
+            {
+              "size": "1000_GM",
+              "price_egp": 850
+            },
+            {
+              "size": "500gm",
+              "price_egp": 499
+            }
+          ]
+        },
+        {
+          "name": "Gelato Signature",
+          "description": "",
+          "sizes": [
+            {
+              "size": "1000_GM",
+              "price_egp": 1099
+            },
+            {
+              "size": "500gm",
+              "price_egp": 599
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Summer",
+      "items": [
+        {
+          "name": "Mixed Fruits Slush",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Mango Passion Slush",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 200
+            }
+          ]
+        },
+        {
+          "name": "Banana Pudding",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 185
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Minis Sticks",
+      "items": [
+        {
+          "name": "Minis 25 Pieces Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 735
+            }
+          ]
+        },
+        {
+          "name": "Minis 50 Pieces Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1380
+            }
+          ]
+        },
+        {
+          "name": "Dolato Mini",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Minis 5 Pieces Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Minis 10 Pieces Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 340
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Gelato Premio Cake ",
+      "items": [
+        {
+          "name": "Tiramisu Gelato Cake",
+          "description": "Cocoa powder, savoiardi biscuits",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 1095
+            },
+            {
+              "size": "Small",
+              "price_egp": 805
+            }
+          ]
+        },
+        {
+          "name": "Blueberry Yogurt Gelato Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 1120
+            },
+            {
+              "size": "Small",
+              "price_egp": 840
+            }
+          ]
+        },
+        {
+          "name": "Signature Cake",
+          "description": "Pistachio, chocolate, Hazelnut",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 1555
+            },
+            {
+              "size": "Small",
+              "price_egp": 1145
+            }
+          ]
+        },
+        {
+          "name": "Mascarpone Pecan Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1440
+            }
+          ]
+        },
+        {
+          "name": "Dubai Chocolate Gelato Cake",
+          "description": "Dubai chocolate gelato, kunafa, pistachio sacue, chocolate sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 2130
+            }
+          ]
+        },
+        {
+          "name": "Strawberry & Pineapple Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 1095
+            },
+            {
+              "size": "Small",
+              "price_egp": 805
+            }
+          ]
+        },
+        {
+          "name": "Lemon Cheesecake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 1120
+            },
+            {
+              "size": "Small",
+              "price_egp": 840
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Waffles",
+      "items": [
+        {
+          "name": "Waffle with Topping",
+          "description": "Gluten free",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 220
+            }
+          ]
+        },
+        {
+          "name": "Waffle with 1 Scoop",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 320
+            }
+          ]
+        },
+        {
+          "name": "Waffle with 2  Scoops",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 390
+            }
+          ]
+        },
+        {
+          "name": "Bubble Waffle with Topping",
+          "description": "Gluten free",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 220
+            }
+          ]
+        },
+        {
+          "name": "Bubble Waffle with 1 Scoop",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 320
+            }
+          ]
+        },
+        {
+          "name": "Bubble Waffle with 2 Scoop",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 390
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dolato Lite ",
+      "items": [
+        {
+          "name": "Strawberry Bliss",
+          "description": "73kcal",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 290
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Cravings",
+          "description": "126kcal",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 290
+            }
+          ]
+        },
+        {
+          "name": "Hazelnut Delights",
+          "description": "139kcal",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 310
+            }
+          ]
+        },
+        {
+          "name": "Spanish Latte",
+          "description": "123kcal",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 310
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Pleasure",
+          "description": "145 kcal",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 350
+            }
+          ]
+        },
+        {
+          "name": "Mango Matcha",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 335
+            }
+          ]
+        },
+        {
+          "name": "Vanilla Hibiscus",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 265
+            }
+          ]
+        },
+        {
+          "name": "Raspberry Lite",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 265
+            }
+          ]
+        },
+        {
+          "name": "Greek Passion",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 265
+            }
+          ]
+        },
+        {
+          "name": "Greek Yogurt Lite with Passion Fruit",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 265
+            }
+          ]
+        },
+        {
+          "name": "Mango Blast",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 290
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        {
+          "name": "Espresso",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 99
+            },
+            {
+              "size": "Single",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Macchiato",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 115
+            },
+            {
+              "size": "Single",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Cortado",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Cappuccino",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 155
+            },
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Flat White",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 145
+            }
+          ]
+        },
+        {
+          "name": "Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 145
+            },
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Mocha",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Spanish Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Americano",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 120
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        {
+          "name": "Water",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Sparkling Water",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 80
+            }
+          ]
+        },
+        {
+          "name": "Redbull",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Signature Milkshake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 355
+            },
+            {
+              "size": "Regular",
+              "price_egp": 325
+            }
+          ]
+        },
+        {
+          "name": "Popcorn Milkshake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 325
+            },
+            {
+              "size": "Regular",
+              "price_egp": 265
+            }
+          ]
+        },
+        {
+          "name": "Lite Milkshake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 265
+            },
+            {
+              "size": "SIGNATURE",
+              "price_egp": 325
+            }
+          ]
+        },
+        {
+          "name": "Affogato",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            },
+            {
+              "size": "SIGNATURE",
+              "price_egp": 220
+            }
+          ]
+        },
+        {
+          "name": "Smoothie",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "Banana Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 200
+            }
+          ]
+        },
+        {
+          "name": "Iced Spanish Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "Iced Americano",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Iced Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "Mocha Frappe",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 199
+            }
+          ]
+        },
+        {
+          "name": "White Frappe",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 199
+            }
+          ]
+        },
+        {
+          "name": "Salted Frappe",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 199
+            }
+          ]
+        },
+        {
+          "name": "Classic Mojito",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 145
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Mojito",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Apple Mojito",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Kiwi Mojito",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Banana Mojito",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Raspberry Mojito",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 199
+            }
+          ]
+        },
+        {
+          "name": "Bluberry Mojito",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 199
+            }
+          ]
+        },
+        {
+          "name": "Mix Berry Mojito",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 199
+            }
+          ]
+        },
+        {
+          "name": "Lychee Mojito",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 199
+            }
+          ]
+        },
+        {
+          "name": "Passion Mojito",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 199
+            }
+          ]
+        },
+        {
+          "name": "Milkshake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 325
+            },
+            {
+              "size": "Regular",
+              "price_egp": 265
+            }
+          ]
+        },
+        {
+          "name": "Iced Mocha",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 160
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

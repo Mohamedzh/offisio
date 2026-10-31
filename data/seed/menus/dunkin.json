@@ -1,0 +1,1708 @@
+{
+  "brand": "Dunkin'",
+  "source": "elmenus.com",
+  "source_label": "Menu source: elmenus.com (demo data, not affiliated)",
+  "restaurant_url": "https://elmenus.com/cairo/dunkin--9w2k",
+  "branch_code": "8wn8w",
+  "fetched_at": "2026-10-31T12:38:37.078Z",
+  "categories": [
+    {
+      "name": "Value Meals",
+      "items": [
+        {
+          "name": "Dunkin Club with Hot Dunkin Coffee & 1 Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 200
+            },
+            {
+              "size": "Medium",
+              "price_egp": 190
+            },
+            {
+              "size": "Small",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "Dunkin Club with Iced Dunkin Coffee & 1 Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 200
+            },
+            {
+              "size": "Medium",
+              "price_egp": 190
+            },
+            {
+              "size": "Small",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "Dunkin Club with Hot Latte & 1 Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 210
+            },
+            {
+              "size": "Medium",
+              "price_egp": 200
+            },
+            {
+              "size": "Small",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "Dunkin Club with Iced Latte & 1 Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 210
+            },
+            {
+              "size": "Medium",
+              "price_egp": 200
+            },
+            {
+              "size": "Small",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "Dunkin Club with Cappuccino & 1 Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 210
+            },
+            {
+              "size": "Medium",
+              "price_egp": 200
+            },
+            {
+              "size": "Small",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "1 Bo Boy Sandwich with Donuts & Hot Coffee",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 190
+            },
+            {
+              "size": "Medium",
+              "price_egp": 180
+            },
+            {
+              "size": "Small",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "1 Bo Boy Sandwich with Donuts & Iced Coffee",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 190
+            },
+            {
+              "size": "Medium",
+              "price_egp": 180
+            },
+            {
+              "size": "Small",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Dunkin Bo Boy Chicken with Hot Latte & 1 Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 200
+            },
+            {
+              "size": "Medium",
+              "price_egp": 190
+            },
+            {
+              "size": "Small",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "Dunkin Bo Boy Chicken with Iced Latte & 1 Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 200
+            },
+            {
+              "size": "Medium",
+              "price_egp": 190
+            },
+            {
+              "size": "Small",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "1 Bo Boy Sandwich with Donuts & Cappuccino",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 200
+            },
+            {
+              "size": "Medium",
+              "price_egp": 190
+            },
+            {
+              "size": "Small",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "Croissant Sandwich with Hot Dunkin Coffee & 1 Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 170
+            },
+            {
+              "size": "Medium",
+              "price_egp": 160
+            },
+            {
+              "size": "Small",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Croissant Sandwich with Iced Dunkin Coffee & 1 Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 170
+            },
+            {
+              "size": "Medium",
+              "price_egp": 160
+            },
+            {
+              "size": "Small",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Croissant Sandwich with Hot Latte & 1 Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 185
+            },
+            {
+              "size": "Medium",
+              "price_egp": 175
+            },
+            {
+              "size": "Small",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Croissant Sandwich with Iced Latte & 1 Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 185
+            },
+            {
+              "size": "Medium",
+              "price_egp": 175
+            },
+            {
+              "size": "Small",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Croissant Sandwich with Cappuccino & 1 Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 185
+            },
+            {
+              "size": "Medium",
+              "price_egp": 175
+            },
+            {
+              "size": "Small",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Egg Toast N American Cheese with Dunkin Hot Coffee & 1 Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 185
+            },
+            {
+              "size": "Medium",
+              "price_egp": 175
+            },
+            {
+              "size": "Small",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Egg Toast N American Cheese with Dunkin Iced Coffee & 1 Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 185
+            },
+            {
+              "size": "Medium",
+              "price_egp": 175
+            },
+            {
+              "size": "Small",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Egg Toast N American Cheese with Hot Latte & 1 Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 190
+            },
+            {
+              "size": "Medium",
+              "price_egp": 180
+            },
+            {
+              "size": "Small",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Egg Toast N American Cheese with Iced Latte & 1 Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 190
+            },
+            {
+              "size": "Medium",
+              "price_egp": 180
+            },
+            {
+              "size": "Small",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Egg Toast N American Cheese with Cappuccino & 1 Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 190
+            },
+            {
+              "size": "Medium",
+              "price_egp": 180
+            },
+            {
+              "size": "Small",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Egg Toast N Cream Cheese with Cappuccino & 1 Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 190
+            },
+            {
+              "size": "Medium",
+              "price_egp": 180
+            },
+            {
+              "size": "Small",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Beef Bacon N American Cheese Bagel with Dunkin Iced Coffee & 1 Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 175
+            },
+            {
+              "size": "Medium",
+              "price_egp": 165
+            },
+            {
+              "size": "Small",
+              "price_egp": 155
+            }
+          ]
+        },
+        {
+          "name": "Beef Bacon N American Cheese Bagel with Dunkin Hot Coffee & 1 Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 175
+            },
+            {
+              "size": "Medium",
+              "price_egp": 165
+            },
+            {
+              "size": "Small",
+              "price_egp": 155
+            }
+          ]
+        },
+        {
+          "name": "Beef Bacon N American Cheese Bagel with Iced Latte & 1 Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 185
+            },
+            {
+              "size": "Medium",
+              "price_egp": 205
+            },
+            {
+              "size": "Small",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Beef Bacon N American Cheese Bagel with Cappuccino & 1 Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 185
+            },
+            {
+              "size": "Medium",
+              "price_egp": 175
+            },
+            {
+              "size": "Small",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Egg Toast N Cream Cheese with Dunkin Hot Coffee & 1 Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 185
+            },
+            {
+              "size": "Medium",
+              "price_egp": 175
+            },
+            {
+              "size": "Small",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Egg Toast N Cream Cheese with Hot Latte & 1 Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 190
+            },
+            {
+              "size": "Medium",
+              "price_egp": 180
+            },
+            {
+              "size": "Small",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "4 Donuts & 2 Cappuccino",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 240
+            },
+            {
+              "size": "Medium",
+              "price_egp": 225
+            },
+            {
+              "size": "Small",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "4 Donuts with 2 Dunkin Hot Coffee",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 215
+            },
+            {
+              "size": "Medium",
+              "price_egp": 205
+            },
+            {
+              "size": "Small",
+              "price_egp": 195
+            }
+          ]
+        },
+        {
+          "name": "4 Donuts with 2 Dunkin Iced Coffee",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 215
+            },
+            {
+              "size": "Medium",
+              "price_egp": 205
+            },
+            {
+              "size": "Small",
+              "price_egp": 195
+            }
+          ]
+        },
+        {
+          "name": "4 Donuts with 2 Hot Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 240
+            },
+            {
+              "size": "Medium",
+              "price_egp": 225
+            },
+            {
+              "size": "Small",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "4 Donuts with 2 Iced Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 240
+            },
+            {
+              "size": "Medium",
+              "price_egp": 225
+            },
+            {
+              "size": "Small",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "Cream Cheese Bagel with Dunkin Hot Coffee & 1 Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 170
+            },
+            {
+              "size": "Medium",
+              "price_egp": 160
+            },
+            {
+              "size": "Small",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Cream Cheese Bagel with Dunkin Iced Coffee & 1 Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 170
+            },
+            {
+              "size": "Medium",
+              "price_egp": 160
+            },
+            {
+              "size": "Small",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Cream Cheese Bagel with Hot Latte & 1 Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 180
+            },
+            {
+              "size": "Medium",
+              "price_egp": 170
+            },
+            {
+              "size": "Small",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Cream Cheese Bagel with Iced Latte & 1 Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 180
+            },
+            {
+              "size": "Medium",
+              "price_egp": 170
+            },
+            {
+              "size": "Small",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Cream Cheese Bagel with Cappuccino & 1 Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 180
+            },
+            {
+              "size": "Medium",
+              "price_egp": 170
+            },
+            {
+              "size": "Small",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "2 Donuts with  Iced Dunkin Coffee",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 140
+            },
+            {
+              "size": "Medium",
+              "price_egp": 130
+            },
+            {
+              "size": "Small",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Hot Latte & 2 Donuts",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 145
+            },
+            {
+              "size": "Medium",
+              "price_egp": 135
+            },
+            {
+              "size": "Small",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "Iced Latte & 2 Donuts",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 145
+            },
+            {
+              "size": "Medium",
+              "price_egp": 135
+            },
+            {
+              "size": "Small",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "Cappuccino & 2 Donuts",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 145
+            },
+            {
+              "size": "Medium",
+              "price_egp": 135
+            },
+            {
+              "size": "Small",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "2 Donuts with  Hot Dunkin Coffee",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 140
+            },
+            {
+              "size": "Medium",
+              "price_egp": 130
+            },
+            {
+              "size": "Small",
+              "price_egp": 120
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sandwiches and Others ",
+      "items": [
+        {
+          "name": "Plain Croissant",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Brown Croissant",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Croissant Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Brown Croissant Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Plain Bagel",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Plain Brown Bagel",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Cream Cheese Bagel",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Brown Bagel with Cream Cheese",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Beef Bacon & American Cheese Bagel",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Brown Bagel with Beef Bacon & American Cheese",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Tuna Sandwich",
+          "description": "Tuna, American cheese, mayonnaise and mustard",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 155
+            }
+          ]
+        },
+        {
+          "name": "Dunkin Club",
+          "description": "Turkey, pastrami, beef bacon, American cheese, mayonnaise, mustard, ketchup and pickles",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "Grilled Chicken Wrap",
+          "description": "Grilled chicken, American cheese, mayonnaise and mustard, served in tortilla bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Dunkin Bo Boy Chicken",
+          "description": "Chicken pops, pickles, barbecue sauce and ranch sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "Pastrami Egg Wrap",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 80
+            }
+          ]
+        },
+        {
+          "name": "Egg N American Cheese Wrap",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Turkey &  American Cheese Toast",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Toasted Turkey N Creamy Cheese",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Egg Toast N Cream Cheese",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Egg Toast N American Cheese",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Munchkins",
+          "description": "",
+          "sizes": [
+            {
+              "size": "10 Pieces",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Muffin",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Blueberry Muffin",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Orange Muffin",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Oats Cookies",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Werdo Cookies",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Mini Cookies",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Mini Brownies",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Donuts ",
+      "items": [
+        {
+          "name": "Heart Beat Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Banana with Coconut Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Mocha Cream Filling Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Choco Oreo Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Choco Biscuit Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Filled Ring Bavarian Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Powdered Yeast Ring Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Powder Bavarian Cream Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Powder Strawberry Jelly Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Frosted Ring Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Frosted Sprinkles Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Double Strawberry Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Caramel Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Boston Cream Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Yellow Star Donut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Freshly Made Donuts",
+      "items": [
+        {
+          "name": "Box of 3",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 102
+            }
+          ]
+        },
+        {
+          "name": "Box of 6",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 200
+            }
+          ]
+        },
+        {
+          "name": "Box of 12",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 360
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Iced Beverages",
+      "items": [
+        {
+          "name": "Dunkin' Iced Coffee",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 80
+            },
+            {
+              "size": "Medium",
+              "price_egp": 80
+            },
+            {
+              "size": "Small",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Iced Americano",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 80
+            },
+            {
+              "size": "Medium",
+              "price_egp": 70
+            },
+            {
+              "size": "Small",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Iced Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 100
+            },
+            {
+              "size": "Medium",
+              "price_egp": 90
+            },
+            {
+              "size": "Small",
+              "price_egp": 80
+            }
+          ]
+        },
+        {
+          "name": "Iced Caramel Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 115
+            },
+            {
+              "size": "Medium",
+              "price_egp": 85
+            },
+            {
+              "size": "Small",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Iced Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 100
+            },
+            {
+              "size": "Medium",
+              "price_egp": 90
+            },
+            {
+              "size": "Small",
+              "price_egp": 80
+            }
+          ]
+        },
+        {
+          "name": "Iced Macchiato",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 95
+            },
+            {
+              "size": "Medium",
+              "price_egp": 85
+            },
+            {
+              "size": "Small",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Iced Mocha",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 115
+            },
+            {
+              "size": "Medium",
+              "price_egp": 100
+            },
+            {
+              "size": "Small",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Iced Mocha with White Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 115
+            },
+            {
+              "size": "Medium",
+              "price_egp": 100
+            },
+            {
+              "size": "Small",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Dulce De Leche Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 115
+            },
+            {
+              "size": "Medium",
+              "price_egp": 100
+            },
+            {
+              "size": "Small",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Hazelnut Coffee Dunkaccino",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 115
+            },
+            {
+              "size": "Medium",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Dunkin' Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 115
+            },
+            {
+              "size": "Medium",
+              "price_egp": 100
+            },
+            {
+              "size": "Small",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Coffee Dunkaccino",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 115
+            },
+            {
+              "size": "Medium",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Caramel Coffee Dunkaccino",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 115
+            },
+            {
+              "size": "Medium",
+              "price_egp": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hot Beverages",
+      "items": [
+        {
+          "name": "Dunkin' Coffee",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 95
+            },
+            {
+              "size": "Medium",
+              "price_egp": 80
+            },
+            {
+              "size": "Small",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "Espresso",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 60
+            },
+            {
+              "size": "Small",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Americano",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 95
+            },
+            {
+              "size": "Medium",
+              "price_egp": 80
+            },
+            {
+              "size": "Small",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 110
+            },
+            {
+              "size": "Medium",
+              "price_egp": 90
+            },
+            {
+              "size": "Small",
+              "price_egp": 80
+            }
+          ]
+        },
+        {
+          "name": "Dulce De Leche Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 115
+            },
+            {
+              "size": "Medium",
+              "price_egp": 100
+            },
+            {
+              "size": "Small",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Caramel Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 110
+            },
+            {
+              "size": "Medium",
+              "price_egp": 95
+            },
+            {
+              "size": "Small",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Cappuccino",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 105
+            },
+            {
+              "size": "Medium",
+              "price_egp": 90
+            },
+            {
+              "size": "Small",
+              "price_egp": 80
+            }
+          ]
+        },
+        {
+          "name": "Macchiato",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 105
+            },
+            {
+              "size": "Medium",
+              "price_egp": 95
+            },
+            {
+              "size": "Small",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Mocha",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 110
+            },
+            {
+              "size": "Medium",
+              "price_egp": 100
+            },
+            {
+              "size": "Small",
+              "price_egp": 80
+            }
+          ]
+        },
+        {
+          "name": "Mocha with White Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 110
+            },
+            {
+              "size": "Medium",
+              "price_egp": 100
+            },
+            {
+              "size": "Small",
+              "price_egp": 80
+            }
+          ]
+        },
+        {
+          "name": "English Tea",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 70
+            },
+            {
+              "size": "Medium",
+              "price_egp": 60
+            },
+            {
+              "size": "Small",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Flavored Tea",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 70
+            },
+            {
+              "size": "Medium",
+              "price_egp": 60
+            },
+            {
+              "size": "Small",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Classic Hot Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 115
+            },
+            {
+              "size": "Medium",
+              "price_egp": 100
+            },
+            {
+              "size": "Small",
+              "price_egp": 90
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

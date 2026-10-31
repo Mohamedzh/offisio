@@ -1,0 +1,2354 @@
+{
+  "brand": "Mori Sushi",
+  "source": "elmenus.com",
+  "source_label": "Menu source: elmenus.com (demo data, not affiliated)",
+  "restaurant_url": "https://elmenus.com/cairo/mori-sushi-z7ym",
+  "branch_code": "245n",
+  "fetched_at": "2026-10-31T12:38:37.372Z",
+  "categories": [
+    {
+      "name": "Soups",
+      "items": [
+        {
+          "name": "Miso Soup",
+          "description": "Soybean paste with chives, tofu and wakame",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 200
+            }
+          ]
+        },
+        {
+          "name": "Suimono Soup",
+          "description": "Japanese seafood soup with crab and shrimp",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 217
+            }
+          ]
+        },
+        {
+          "name": "Chicken Noodle Soup",
+          "description": "Served with chicken flakes",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 257
+            }
+          ]
+        },
+        {
+          "name": "Beef Noodle Soup",
+          "description": "Served with beef flakes",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 280
+            }
+          ]
+        },
+        {
+          "name": "Shifudo Soup",
+          "description": "Shrimp, calamari, mussels and red cheddar cheese",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 303
+            }
+          ]
+        },
+        {
+          "name": "Tom Yum Soup",
+          "description": "Shrimp, mushroom, lemon grass and Japanese spices",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 291
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Salads",
+      "items": [
+        {
+          "name": "Edamame Salad",
+          "description": "Soybean topped with sea salt, served with sweet chili",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 280
+            }
+          ]
+        },
+        {
+          "name": "Shrimp Crab Salad",
+          "description": "Crab, shrimp, mayonnaise, cucumber, carrots",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 291
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Appetizers",
+      "items": [
+        {
+          "name": "Shrimp Tempura Moriawase",
+          "description": "Shrimp tempura, mixed vegetables, served with gyoza sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 303
+            }
+          ]
+        },
+        {
+          "name": "Vegetable Tempura",
+          "description": "Bell peppers, zucchini and eggplant tempura, served with gyoza sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 177
+            }
+          ]
+        },
+        {
+          "name": "Spicy Shrimp Mayonnaise",
+          "description": "Shrimp tempura served with mori spicy mayonnaise",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 285
+            }
+          ]
+        },
+        {
+          "name": "Crispy Tuna",
+          "description": "Panko crusted tuna with your choice of spicy mayonnaise or ponzu sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 354
+            }
+          ]
+        },
+        {
+          "name": "Crispy Salmon",
+          "description": "Panko crusted salmon with your choice of spicy mayonnaise or ponzu sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 354
+            }
+          ]
+        },
+        {
+          "name": "Salmon Ceviche",
+          "description": "Salmon, cucumber, red onion, fresh vegetables, our special dressing",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 325
+            }
+          ]
+        },
+        {
+          "name": "Shrimp Spring Rolls",
+          "description": "Served with garlic, basil & spring rolls sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 263
+            }
+          ]
+        },
+        {
+          "name": "Shrimp BonBon",
+          "description": "Small shrimp, mixed cheese, served with sweet chili sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 251
+            }
+          ]
+        },
+        {
+          "name": "Gyoza",
+          "description": "Traditional Japanese steamed or grilled dumplings, served with gyoza sauce & spicy lemon",
+          "sizes": [
+            {
+              "size": "Chicken",
+              "price_egp": 211
+            },
+            {
+              "size": "Shrimp",
+              "price_egp": 228
+            }
+          ]
+        },
+        {
+          "name": "Truffle Seared Salmon",
+          "description": "Salmon, truffle paste, chives with Mori special sauce",
+          "sizes": [
+            {
+              "size": "10 Pieces",
+              "price_egp": 428
+            },
+            {
+              "size": "5 Pieces",
+              "price_egp": 285
+            }
+          ]
+        },
+        {
+          "name": "New Crab & Salmon Tartar",
+          "description": "Salmon, mango, crab sticks, avocado, caviar masago, served with our sesame sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 348
+            }
+          ]
+        },
+        {
+          "name": "Vegetarian Spring Rolls",
+          "description": "Vegetarian spring rolls with garlic and basil",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 194
+            }
+          ]
+        },
+        {
+          "name": "Bushi Onion Seared Salmon Platter",
+          "description": "Salmon, teriyaki sauce, fried red onions & lemon cubes",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 377
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mori's Special Rolls",
+      "items": [
+        {
+          "name": "Crunchy Roll",
+          "description": "Avocado, shrimp tempura, caviar, cheese sauce new lemon mayo, Mori special sauce rolled in crunchy cheetos",
+          "sizes": [
+            {
+              "size": "4 Pieces",
+              "price_egp": 193
+            },
+            {
+              "size": "8 Pieces",
+              "price_egp": 364
+            }
+          ]
+        },
+        {
+          "name": "Dynamite Whole Shrimp Roll",
+          "description": "Jumbo shrimp, minced salmon & cream cheese",
+          "sizes": [
+            {
+              "size": "4 Pieces",
+              "price_egp": 285
+            },
+            {
+              "size": "8 Pieces",
+              "price_egp": 399
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mori's Special Hot Rolls ",
+      "items": [
+        {
+          "name": "Hot Halloween Roll",
+          "description": "Salmon, crab sticks, cream cheese, teriyaki sauce, lemon mayonnaise, spicy mayonnaise",
+          "sizes": [
+            {
+              "size": "6_PIECES",
+              "price_egp": 342
+            }
+          ]
+        },
+        {
+          "name": "Fried Mori Roll",
+          "description": "Crab, avocado, cheese, salmon, spicy mayonnaise with green onion",
+          "sizes": [
+            {
+              "size": "8_PIECES",
+              "price_egp": 382
+            },
+            {
+              "size": "4 Pieces",
+              "price_egp": 217
+            }
+          ]
+        },
+        {
+          "name": "Hot Crispy Cheese",
+          "description": "Shrimp tempura cheese, special yuzo, spicy mayonnaise",
+          "sizes": [
+            {
+              "size": "10 Pieces",
+              "price_egp": 331
+            },
+            {
+              "size": "5 Pieces",
+              "price_egp": 189
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mori's Hot Dishes",
+      "items": [
+        {
+          "name": "Teppanyaki",
+          "description": "Your choice of salmon, beef or chicken, with mix vegetables served with your choice of steamed rice, fried rice or noodles",
+          "sizes": [
+            {
+              "size": "Chicken",
+              "price_egp": 405
+            },
+            {
+              "size": "Salmon",
+              "price_egp": 502
+            }
+          ]
+        },
+        {
+          "name": "Salmon Teriyaki",
+          "description": "Grilled salmon, teriyaki, steamed rice, green onions, togarashi",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 593
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Teppanyaki",
+      "items": [
+        {
+          "name": "Chicken Teppanyaki",
+          "description": "Mix vegetables served with your choice of steamed rice, fried rice or noodles",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 405
+            }
+          ]
+        },
+        {
+          "name": "Salmon Teppanyaki",
+          "description": "Mix vegetables served with your choice of steamed rice, fried rice or noodles",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 502
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dynamite Roll",
+      "items": [
+        {
+          "name": "Dynamite Sweet Shrimp",
+          "description": "Dynamite roll featuring sweet shrimp",
+          "sizes": [
+            {
+              "size": "8_PIECES",
+              "price_egp": 354
+            }
+          ]
+        },
+        {
+          "name": "Dynamite Whole Shrimp",
+          "description": "Jumbo shrimp, minced salmon and cream cheese",
+          "sizes": [
+            {
+              "size": "8_PIECES",
+              "price_egp": 399
+            }
+          ]
+        },
+        {
+          "name": "Dynamite Shrimp Salmon Tempura",
+          "description": "Shrimp tempura rolled with salmon",
+          "sizes": [
+            {
+              "size": "8_PIECES",
+              "price_egp": 365
+            },
+            {
+              "size": "4 Pieces",
+              "price_egp": 251
+            }
+          ]
+        },
+        {
+          "name": "Dynamite Salmon with Cheese",
+          "description": "Minced salmon and cream cheese rolled with salmon",
+          "sizes": [
+            {
+              "size": "8_PIECES",
+              "price_egp": 382
+            },
+            {
+              "size": "4 Pieces",
+              "price_egp": 263
+            }
+          ]
+        },
+        {
+          "name": "Dynamite Mix",
+          "description": "Minced salmon and shrimp, chives and mayonnaise rolled with salmon",
+          "sizes": [
+            {
+              "size": "8_PIECES",
+              "price_egp": 388
+            },
+            {
+              "size": "4 Pieces",
+              "price_egp": 240
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hoso Maki",
+      "items": [
+        {
+          "name": "Hoso Salmon Maki",
+          "description": "Salmon roll",
+          "sizes": [
+            {
+              "size": "6_PIECES",
+              "price_egp": 263
+            }
+          ]
+        },
+        {
+          "name": "Hoso Shrimp Maki",
+          "description": "Shrimp roll",
+          "sizes": [
+            {
+              "size": "6_PIECES",
+              "price_egp": 257
+            }
+          ]
+        },
+        {
+          "name": "Hoso Shrimp Tempura",
+          "description": "Fried shrimp roll",
+          "sizes": [
+            {
+              "size": "6_PIECES",
+              "price_egp": 223
+            }
+          ]
+        },
+        {
+          "name": "Hoso Tuna Maki",
+          "description": "Tuna roll",
+          "sizes": [
+            {
+              "size": "6_PIECES",
+              "price_egp": 234
+            }
+          ]
+        },
+        {
+          "name": "Hoso Crab Maki",
+          "description": "Crab maki",
+          "sizes": [
+            {
+              "size": "6_PIECES",
+              "price_egp": 189
+            }
+          ]
+        },
+        {
+          "name": "Hoso Eel Maki",
+          "description": "Eel roll",
+          "sizes": [
+            {
+              "size": "6_PIECES",
+              "price_egp": 268
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Nigiri Sushi",
+      "items": [
+        {
+          "name": "Shrimp Nigiri",
+          "description": "Sushi rice topped with fresh shrimp.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Salmon Nigiri",
+          "description": "Sushi rice, Salmon, Wasabi and Soy sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 57
+            }
+          ]
+        },
+        {
+          "name": "Tuna Nigiri",
+          "description": "Sushi rice topped with fresh tuna.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Octopus Nigiri",
+          "description": "Sushi rice topped with fresh octopus slices.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 57
+            }
+          ]
+        },
+        {
+          "name": "Eel Nigiri",
+          "description": "Sushi rice topped with grilled eel and sauce.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 62
+            }
+          ]
+        },
+        {
+          "name": "Crab Sticks Nigiri",
+          "description": "Sushi rice topped with crab sticks.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 43
+            }
+          ]
+        },
+        {
+          "name": "Squid Nigiri",
+          "description": "Seared squid",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 46
+            }
+          ]
+        },
+        {
+          "name": "Salmon Tataki Nigiri",
+          "description": "Salmon, garlic, chives topped with yuzu sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 57
+            }
+          ]
+        },
+        {
+          "name": "Tuna Tataki Nigiri",
+          "description": "Tuna, garlic, chives and yuzu sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Salmon Tempura Nigiri",
+          "description": "Sushi rice topped with crispy salmon tempura.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Shrimp Tempura Nigiri",
+          "description": "Sushi rice topped with crispy shrimp tempura.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 48
+            }
+          ]
+        },
+        {
+          "name": "Shrimp Crispy Rice Nigiri",
+          "description": "Whole shrimp with avocado served on fried rice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 56
+            }
+          ]
+        },
+        {
+          "name": "Tuna Crispy Rice Nigiri",
+          "description": "Spiced tuna served on fried rice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 56
+            }
+          ]
+        },
+        {
+          "name": "Shrimp Salmon Crispy Rice Nigiri",
+          "description": "Minced shrimp, salmon, fresh mint, served on fried rice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 57
+            }
+          ]
+        },
+        {
+          "name": "Crispy & Crab Crunchy Nigiri",
+          "description": "Crispy rice topped with crab and crunchy toppings.",
+          "sizes": [
+            {
+              "size": "1 Piece",
+              "price_egp": 48
+            }
+          ]
+        },
+        {
+          "name": "New Style Salmon Tempura Nigiri",
+          "description": "Salmon tempura, teriyaki sauce, spicy cheese",
+          "sizes": [
+            {
+              "size": "1 Piece",
+              "price_egp": 62
+            }
+          ]
+        },
+        {
+          "name": "Black Caviar Nigiri",
+          "description": "Black caviar served over sushi rice.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 93
+            }
+          ]
+        },
+        {
+          "name": "Salmon Fire Nigiri",
+          "description": "Salmon seared, spicy cheese, white and black sesame.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 59
+            }
+          ]
+        },
+        {
+          "name": "Crab Tempura Nigiri",
+          "description": "Crab sticks tempura, teriyaki sauce, new spicy cheese sauce",
+          "sizes": [
+            {
+              "size": "1 Piece",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Salmon Wasabi Grilled Rice Nigiri",
+          "description": "Crispy rice, honey butter, salmon mixed with spicy cheese and wasabi mayo.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 62
+            }
+          ]
+        },
+        {
+          "name": "Salmon Teriyaki Nigiri",
+          "description": "Salmon marinated in teriyaki",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 59
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Special Nigiri",
+      "items": [
+        {
+          "name": "Salmon Truffle",
+          "description": "Salmon with truffle",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 137
+            }
+          ]
+        },
+        {
+          "name": "Wasabi Mayo Salmon",
+          "description": "Salmon with creamy wasabi mayonnaise",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 137
+            }
+          ]
+        },
+        {
+          "name": "Sriracha Yuzu Glazed Salmon",
+          "description": "Salmon with spicy citrus glaze",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 137
+            }
+          ]
+        },
+        {
+          "name": "Tuna Truffle",
+          "description": "Tuna with truffle",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 137
+            }
+          ]
+        },
+        {
+          "name": "Wasabi Mayo Tuna",
+          "description": "Tuna with creamy wasabi mayonnaise",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 137
+            }
+          ]
+        },
+        {
+          "name": "Sriracha Yuzu Glazed Tuna",
+          "description": "Tuna with spicy citrus glaze",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 137
+            }
+          ]
+        },
+        {
+          "name": "Sea bass Truffle",
+          "description": "Sea bass finished with truffle sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 149
+            }
+          ]
+        },
+        {
+          "name": "Wasabi Mayo Sea bass",
+          "description": "Sea bass with creamy wasabi mayonnaise",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 149
+            }
+          ]
+        },
+        {
+          "name": "Creamy Parmesan Shrimp",
+          "description": "Shrimp with creamy parmesan",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 171
+            }
+          ]
+        },
+        {
+          "name": "Sriracha Yuzu Glazed Sea bass",
+          "description": "Sea bass with spicy citrus glaze",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 149
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ura Maki",
+      "items": [
+        {
+          "name": "Ura Salmon Maki",
+          "description": "Salmon roll",
+          "sizes": [
+            {
+              "size": "8_PIECES",
+              "price_egp": 331
+            },
+            {
+              "size": "4 Pieces",
+              "price_egp": 217
+            }
+          ]
+        },
+        {
+          "name": "Ura California Maki",
+          "description": "Crab sticks, cucumber and avocado",
+          "sizes": [
+            {
+              "size": "8_PIECES",
+              "price_egp": 257
+            },
+            {
+              "size": "4 Pieces",
+              "price_egp": 171
+            }
+          ]
+        },
+        {
+          "name": "Ura Tuna Maki",
+          "description": "",
+          "sizes": [
+            {
+              "size": "8_PIECES",
+              "price_egp": 285
+            },
+            {
+              "size": "4 Pieces",
+              "price_egp": 200
+            }
+          ]
+        },
+        {
+          "name": "Ura Shrimp Tempura Maki",
+          "description": "Shrimp Tempura",
+          "sizes": [
+            {
+              "size": "8_PIECES",
+              "price_egp": 297
+            },
+            {
+              "size": "4 Pieces",
+              "price_egp": 194
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mono Maki",
+      "items": [
+        {
+          "name": "Mono Salmon Shimeji",
+          "description": "Salmon, mushroom and cream cheese",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 285
+            }
+          ]
+        },
+        {
+          "name": "Mono Mori",
+          "description": "Shrimp tempura, salmon, grilled eel, avocado and cream cheese",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 285
+            }
+          ]
+        },
+        {
+          "name": "Schirashi Sushi",
+          "description": "Mixed sashimi and rice with sesame",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 417
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Poke Bowl",
+      "items": [
+        {
+          "name": "Salmon Poke",
+          "description": "Salmon, white rice with your choice of topping",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 445
+            }
+          ]
+        },
+        {
+          "name": "Tuna Poke",
+          "description": "Tuna, white rice with your choice of topping",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 445
+            }
+          ]
+        },
+        {
+          "name": "White Fish Poke",
+          "description": "White fish, white rice with your choice of topping",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 445
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Joey Maki",
+      "items": [
+        {
+          "name": "Tuna Roll",
+          "description": "Rice hand rolled in tuna with your choice of topping",
+          "sizes": [
+            {
+              "size": "PER_PIECE",
+              "price_egp": 194
+            }
+          ]
+        },
+        {
+          "name": "Salmon Roll",
+          "description": "Rice hand rolled in salmon with your choice of topping",
+          "sizes": [
+            {
+              "size": "PER_PIECE",
+              "price_egp": 194
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sashimi",
+      "items": [
+        {
+          "name": "Tataki Black Pepper Tuna",
+          "description": "Seared tuna with yuzu sauce and roasted garlic",
+          "sizes": [
+            {
+              "size": "10_PIECES",
+              "price_egp": 445
+            },
+            {
+              "size": "5_PIECES",
+              "price_egp": 240
+            }
+          ]
+        },
+        {
+          "name": "Tataki Black Pepper Salmon",
+          "description": "Seared salmon with yuzu sauce and roasted garlic",
+          "sizes": [
+            {
+              "size": "10_PIECES",
+              "price_egp": 468
+            },
+            {
+              "size": "5_PIECES",
+              "price_egp": 251
+            }
+          ]
+        },
+        {
+          "name": "Sakana Maki",
+          "description": "Salmon, shrimp, and crab sashimi rolled in salmon, served with lemon slices",
+          "sizes": [
+            {
+              "size": "5_PIECES",
+              "price_egp": 399
+            }
+          ]
+        },
+        {
+          "name": "Squid Sashimi",
+          "description": "",
+          "sizes": [
+            {
+              "size": "10_PIECES",
+              "price_egp": 422
+            },
+            {
+              "size": "5_PIECES",
+              "price_egp": 217
+            }
+          ]
+        },
+        {
+          "name": "Salmon Sashimi",
+          "description": "",
+          "sizes": [
+            {
+              "size": "10_PIECES",
+              "price_egp": 542
+            },
+            {
+              "size": "5_PIECES",
+              "price_egp": 297
+            }
+          ]
+        },
+        {
+          "name": "White Fish Sashimi",
+          "description": "",
+          "sizes": [
+            {
+              "size": "10_PIECES",
+              "price_egp": 513
+            },
+            {
+              "size": "5_PIECES",
+              "price_egp": 285
+            }
+          ]
+        },
+        {
+          "name": "Octopus Sashimi",
+          "description": "",
+          "sizes": [
+            {
+              "size": "10_PIECES",
+              "price_egp": 479
+            },
+            {
+              "size": "5_PIECES",
+              "price_egp": 274
+            }
+          ]
+        },
+        {
+          "name": "Tuna Sashimi",
+          "description": "",
+          "sizes": [
+            {
+              "size": "10_PIECES",
+              "price_egp": 445
+            },
+            {
+              "size": "5_PIECES",
+              "price_egp": 246
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Special Ura",
+      "items": [
+        {
+          "name": "Togarashi Roll",
+          "description": "Shrimp tempura, salmon, avocado, togarashi spice and mayonnaise",
+          "sizes": [
+            {
+              "size": "4_PIECES",
+              "price_egp": 223
+            },
+            {
+              "size": "8_PIECES",
+              "price_egp": 434
+            }
+          ]
+        },
+        {
+          "name": "New Style California Roll",
+          "description": "Crab, red caviar, cucumber,\navocado and mayonnaise",
+          "sizes": [
+            {
+              "size": "4_PIECES",
+              "price_egp": 217
+            },
+            {
+              "size": "8_PIECES",
+              "price_egp": 411
+            }
+          ]
+        },
+        {
+          "name": "Avocado Caterpillar Roll",
+          "description": "Eel, cucumber and avocado\nwith teriyaki drizzle",
+          "sizes": [
+            {
+              "size": "4_PIECES",
+              "price_egp": 217
+            },
+            {
+              "size": "8_PIECES",
+              "price_egp": 422
+            }
+          ]
+        },
+        {
+          "name": "Philadelphia Roll",
+          "description": "Salmon, cream cheese, avocado and cucumber",
+          "sizes": [
+            {
+              "size": "4_PIECES",
+              "price_egp": 228
+            },
+            {
+              "size": "8_PIECES",
+              "price_egp": 434
+            }
+          ]
+        },
+        {
+          "name": "Shrimp Crab Paste Roll",
+          "description": "Crab, red caviar, avocado,\ncucumber and mayonnaise",
+          "sizes": [
+            {
+              "size": "4_PIECES",
+              "price_egp": 211
+            },
+            {
+              "size": "8_PIECES",
+              "price_egp": 382
+            }
+          ]
+        },
+        {
+          "name": "Pink Panther",
+          "description": "Shrimp tempura, salmon, pink crab paste, avocado with Mori's sesame sauce",
+          "sizes": [
+            {
+              "size": "4_PIECES",
+              "price_egp": 217
+            },
+            {
+              "size": "8_PIECES",
+              "price_egp": 411
+            }
+          ]
+        },
+        {
+          "name": "Mori Rainbow Roll",
+          "description": "Shrimp, salmon, avocado, cucumber and cream cheese",
+          "sizes": [
+            {
+              "size": "4_PIECES",
+              "price_egp": 217
+            },
+            {
+              "size": "8_PIECES",
+              "price_egp": 399
+            }
+          ]
+        },
+        {
+          "name": "Hawaiian Roll",
+          "description": "Caviar, shrimp tempura,\navocado, white sesame, spicy\nmayonnaise and teriyaki",
+          "sizes": [
+            {
+              "size": "4_PIECES",
+              "price_egp": 206
+            },
+            {
+              "size": "8_PIECES",
+              "price_egp": 388
+            }
+          ]
+        },
+        {
+          "name": "Rainbow Veggie Roll",
+          "description": "Sushi roll with assorted vegetables and colorful layers.",
+          "sizes": [
+            {
+              "size": "4_PIECES",
+              "price_egp": 160
+            },
+            {
+              "size": "8_PIECES",
+              "price_egp": 189
+            }
+          ]
+        },
+        {
+          "name": "Special Ura Squid Roll",
+          "description": "Vegetable tempura, fried calamari and lemon mayonnaise",
+          "sizes": [
+            {
+              "size": "4_PIECES",
+              "price_egp": 194
+            },
+            {
+              "size": "8_PIECES",
+              "price_egp": 365
+            }
+          ]
+        },
+        {
+          "name": "Hanami Roll",
+          "description": "Shrimp tempura, eel, salmon, avocado, cream cheese",
+          "sizes": [
+            {
+              "size": "4_PIECES",
+              "price_egp": 223
+            },
+            {
+              "size": "8_PIECES",
+              "price_egp": 428
+            }
+          ]
+        },
+        {
+          "name": "Special Gishaa roll",
+          "description": "Special tempura, spicy crab, vegetable tempura and avocado",
+          "sizes": [
+            {
+              "size": "4_PIECES",
+              "price_egp": 194
+            },
+            {
+              "size": "8_PIECES",
+              "price_egp": 337
+            }
+          ]
+        },
+        {
+          "name": "Mori Smoked Roll",
+          "description": "Smoked salmon, spicy crab, avocado, spicy mayo and teriyaki",
+          "sizes": [
+            {
+              "size": "4_PIECES",
+              "price_egp": 217
+            },
+            {
+              "size": "8_PIECES",
+              "price_egp": 411
+            }
+          ]
+        },
+        {
+          "name": "New Style Philadelphia Roll",
+          "description": "Shrimp tempura, smoked salmon, avocado teriyaki sauce and cream cheese",
+          "sizes": [
+            {
+              "size": "4_PIECES",
+              "price_egp": 228
+            },
+            {
+              "size": "8_PIECES",
+              "price_egp": 434
+            }
+          ]
+        },
+        {
+          "name": "Crab Tempura",
+          "description": "Crispy battered crab with a golden crunch",
+          "sizes": [
+            {
+              "size": "4_PIECES",
+              "price_egp": 177
+            },
+            {
+              "size": "8_PIECES",
+              "price_egp": 331
+            }
+          ]
+        },
+        {
+          "name": "Corn Tempura",
+          "description": "Shrimp tempura, caviar cheese sauce, avocado, sweet corn tempura with new lemon mayo and teriyaki sauce.",
+          "sizes": [
+            {
+              "size": "4_PIECES",
+              "price_egp": 206
+            },
+            {
+              "size": "8_PIECES",
+              "price_egp": 354
+            }
+          ]
+        },
+        {
+          "name": "Salmon Natal Roll",
+          "description": "Shrimp tempura, caviar cheese, avocado rolled in spicy salmon with spicy cheese sauce",
+          "sizes": [
+            {
+              "size": "4_PIECES",
+              "price_egp": 217
+            },
+            {
+              "size": "8_PIECES",
+              "price_egp": 399
+            }
+          ]
+        },
+        {
+          "name": "Salvador Roll",
+          "description": "Salmon, avocado rolled in caviar with spicy crab.",
+          "sizes": [
+            {
+              "size": "4_PIECES",
+              "price_egp": 234
+            },
+            {
+              "size": "8_PIECES",
+              "price_egp": 434
+            }
+          ]
+        },
+        {
+          "name": "New Shrimp Dynamite Roll",
+          "description": "Sweet shrimp topped with a spicy dynamite sauce.",
+          "sizes": [
+            {
+              "size": "4_PIECES",
+              "price_egp": 194
+            },
+            {
+              "size": "8_PIECES",
+              "price_egp": 365
+            }
+          ]
+        },
+        {
+          "name": "Ciao Roll",
+          "description": "Salmon, cream cheese, shrimp tempura, spicy mayo and mix of crab with caviar cheese",
+          "sizes": [
+            {
+              "size": "6_PIECES",
+              "price_egp": 360
+            }
+          ]
+        },
+        {
+          "name": "Sao Paulo Roll",
+          "description": "Salmon, avocado, shrimp tempura and caviar cheese sauce rolled in caviar masago.",
+          "sizes": [
+            {
+              "size": "4_PIECES",
+              "price_egp": 240
+            }
+          ]
+        },
+        {
+          "name": "Crispy Shrimp Avocado Roll",
+          "description": "Shrimp tempura and avocado served with teriyaki",
+          "sizes": [
+            {
+              "size": "4_PIECES",
+              "price_egp": 217
+            },
+            {
+              "size": "8_PIECES",
+              "price_egp": 405
+            }
+          ]
+        },
+        {
+          "name": "Crispy Veggie Roll",
+          "description": "",
+          "sizes": [
+            {
+              "size": "4_PIECES",
+              "price_egp": 160
+            },
+            {
+              "size": "8_PIECES",
+              "price_egp": 200
+            }
+          ]
+        },
+        {
+          "name": "New Style Spider Roll",
+          "description": "",
+          "sizes": [
+            {
+              "size": "4_PIECES",
+              "price_egp": 200
+            },
+            {
+              "size": "8_PIECES",
+              "price_egp": 360
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Premium Rolls",
+      "items": [
+        {
+          "name": "Avocado Salmon Roll",
+          "description": "Shrimp tempura, avocado, salmon, spicy mayo with teriyaki",
+          "sizes": [
+            {
+              "size": "4 Pieces",
+              "price_egp": 240
+            },
+            {
+              "size": "8 Pieces",
+              "price_egp": 434
+            }
+          ]
+        },
+        {
+          "name": "Yuzu Fusion Roll",
+          "description": "White fish, beetroot, avocado, cucumber, teriyaki sauce",
+          "sizes": [
+            {
+              "size": "8 Pieces",
+              "price_egp": 365
+            }
+          ]
+        },
+        {
+          "name": "Mori Truffle Roll",
+          "description": "Crab mayo, avocado, green onions, cream cheese, topped with seared salmon & truffle sauce",
+          "sizes": [
+            {
+              "size": "4 Pieces",
+              "price_egp": 240
+            },
+            {
+              "size": "8 Pieces",
+              "price_egp": 445
+            }
+          ]
+        },
+        {
+          "name": "Texas Roll",
+          "description": "Shrimp tempura, seared salmon, avocado, topped with salmon & teriyaki sauce",
+          "sizes": [
+            {
+              "size": "4 Pieces",
+              "price_egp": 228
+            },
+            {
+              "size": "8 Pieces",
+              "price_egp": 422
+            }
+          ]
+        },
+        {
+          "name": "Tuna Style Roll",
+          "description": "Tuna, crab, avocado, cream cheese, topped with teriyaki",
+          "sizes": [
+            {
+              "size": "4 Pieces",
+              "price_egp": 206
+            },
+            {
+              "size": "8 Pieces",
+              "price_egp": 371
+            }
+          ]
+        },
+        {
+          "name": "Tsunami Roll",
+          "description": "Shrimp tempura, crab mayo, crispy rice, cream cheese, green onions with spicy mayo",
+          "sizes": [
+            {
+              "size": "4 Pieces",
+              "price_egp": 206
+            },
+            {
+              "size": "8 Pieces",
+              "price_egp": 371
+            }
+          ]
+        },
+        {
+          "name": "Glass Noodles Roll",
+          "description": "Rolled salmon stuffed with glass noodles, cheese, topped with teriyaki, spicy mayo and caviar",
+          "sizes": [
+            {
+              "size": "6 Pieces",
+              "price_egp": 479
+            }
+          ]
+        },
+        {
+          "name": "Korean Style Roll",
+          "description": "Salmon, cheese, avocado, fried shrimps with our Mori's special Korean sauce",
+          "sizes": [
+            {
+              "size": "6 Pieces",
+              "price_egp": 479
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Skewers",
+      "items": [
+        {
+          "name": "Beef Kushiyaki",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 422
+            }
+          ]
+        },
+        {
+          "name": "Salmon Kushiyaki",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 451
+            }
+          ]
+        },
+        {
+          "name": "Mushroom Kushiyaki",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 291
+            }
+          ]
+        },
+        {
+          "name": "White Fish Kushiyaki",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 314
+            }
+          ]
+        },
+        {
+          "name": "Korean Chicken Wings",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 371
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Gunkan",
+      "items": [
+        {
+          "name": "Gunkan Sake",
+          "description": "Salmon gunkan.",
+          "sizes": [
+            {
+              "size": "4 Pieces",
+              "price_egp": 240
+            },
+            {
+              "size": "8 Pieces",
+              "price_egp": 445
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hot Roll Tempura",
+      "items": [
+        {
+          "name": "Hot Crispy Cheese Roll",
+          "description": "Crispy sushi roll filled with melted cheese",
+          "sizes": [
+            {
+              "size": "4 Pieces",
+              "price_egp": 183
+            }
+          ]
+        },
+        {
+          "name": "Hot Ura Salmon",
+          "description": "Salmon with cream cheese",
+          "sizes": [
+            {
+              "size": "8 Pieces",
+              "price_egp": 342
+            }
+          ]
+        },
+        {
+          "name": "Crispy Roll",
+          "description": "Roll with a crispy filling",
+          "sizes": [
+            {
+              "size": "4 Pieces",
+              "price_egp": 206
+            }
+          ]
+        },
+        {
+          "name": "Hot Ura Shrimp Tempura",
+          "description": "Fried shrimp tempura with cream cheese",
+          "sizes": [
+            {
+              "size": "8 Pieces",
+              "price_egp": 320
+            }
+          ]
+        },
+        {
+          "name": "Rio Hot Roll",
+          "description": "Salmon, crab sticks, spicy mayonnaise and avocado, rolled with Bangkok-style topping.",
+          "sizes": [
+            {
+              "size": "6 Pieces",
+              "price_egp": 399
+            }
+          ]
+        },
+        {
+          "name": "Hot Mono Roll",
+          "description": "Salmon with shrimp, mushroom and cream cheese.",
+          "sizes": [
+            {
+              "size": "6 Pieces",
+              "price_egp": 320
+            }
+          ]
+        },
+        {
+          "name": "Hot Dynamite Salmon",
+          "description": "Salmon and Cream cheese rolled in salmon.",
+          "sizes": [
+            {
+              "size": "8 Pieces",
+              "price_egp": 388
+            }
+          ]
+        },
+        {
+          "name": "New Hot Roll",
+          "description": "Salmon, green onion, mayo and teriyaki.",
+          "sizes": [
+            {
+              "size": "6 Pieces",
+              "price_egp": 308
+            }
+          ]
+        },
+        {
+          "name": "Hot Panko Roll",
+          "description": "Shrimp Tempura, Caviar, Asparagus, Cream cheese with teriyaki sauce and lemon mayonnaie.",
+          "sizes": [
+            {
+              "size": "8 Pieces",
+              "price_egp": 320
+            }
+          ]
+        },
+        {
+          "name": "Hot Golden Roll",
+          "description": "Fried white fish and squid, spicy mayo, crab cheese, teriyaki and mayo.",
+          "sizes": [
+            {
+              "size": "4 Pieces",
+              "price_egp": 200
+            },
+            {
+              "size": "8 Pieces",
+              "price_egp": 371
+            }
+          ]
+        },
+        {
+          "name": "Teriyaki Lemon Roll",
+          "description": "Salmon, cream cheese, shrimp tempura, teriyaki and lemon mayo sauce.",
+          "sizes": [
+            {
+              "size": "6 Pieces",
+              "price_egp": 354
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Vegetarian",
+      "items": [
+        {
+          "name": "Crunchy Roll",
+          "description": "Mori Sushi's Crunchy Roll.",
+          "sizes": [
+            {
+              "size": "6_PIECES",
+              "price_egp": 206
+            }
+          ]
+        },
+        {
+          "name": "Hoso Cucumber Maki",
+          "description": "Cucumber roll",
+          "sizes": [
+            {
+              "size": "6_PIECES",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Hoso Avocado",
+          "description": "Avocado, cream cheese and fresh mint",
+          "sizes": [
+            {
+              "size": "6_PIECES",
+              "price_egp": 183
+            }
+          ]
+        },
+        {
+          "name": "Ura Maki",
+          "description": "Sun-dried tomatoes, avocado, cucumber and cream cheese",
+          "sizes": [
+            {
+              "size": "4_PIECES",
+              "price_egp": 160
+            },
+            {
+              "size": "8_PIECES",
+              "price_egp": 189
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noodles & Ramen",
+      "items": [
+        {
+          "name": "Stir-Fried Egg Noodles with Vegetables",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 337
+            }
+          ]
+        },
+        {
+          "name": "Yaki Udon Noodles with Vegetables",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 337
+            }
+          ]
+        },
+        {
+          "name": "Glass Noodles with Vegetables",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 337
+            }
+          ]
+        },
+        {
+          "name": "Spicy Shrimp  Ramen Soup",
+          "description": "Spicy ramen soup with shrimp",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 342
+            }
+          ]
+        },
+        {
+          "name": "Spicy Beef  Ramen Soup",
+          "description": "Spicy ramen soup with beef",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 342
+            }
+          ]
+        },
+        {
+          "name": "Spicy  Chicken Ramen Soup",
+          "description": "Spicy ramen soup with chicken",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 342
+            }
+          ]
+        },
+        {
+          "name": "Truffle Mushroom Udon Noodles",
+          "description": "Udon noodles with mushrooms and truffle flavor",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 445
+            }
+          ]
+        },
+        {
+          "name": "Glass Noodle Salad",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 365
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Side Dishes",
+      "items": [
+        {
+          "name": "Steamed Rice",
+          "description": "Steamed sushi rice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Fried Rice",
+          "description": "Japanese-style fried rice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 143
+            }
+          ]
+        },
+        {
+          "name": "Salmon Natal Roll",
+          "description": "Shrimp tempura, caviar cheese, avocado rolled in spicy salmon with spicy cheese sauce.",
+          "sizes": [
+            {
+              "size": "4 Pieces",
+              "price_egp": 217
+            }
+          ]
+        },
+        {
+          "name": "Olinda Salmon Roll",
+          "description": "Olinda signature salmon roll",
+          "sizes": [
+            {
+              "size": "8 Pieces",
+              "price_egp": 354
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hot Pot ",
+      "items": [
+        {
+          "name": "Black Mushroom Hot Pot",
+          "description": "Hot pot with black mushrooms and fried rice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 297
+            }
+          ]
+        },
+        {
+          "name": "Seafood Hot Pot",
+          "description": "Hot pot with assorted seafood and fried rice.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 377
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sauce",
+      "items": [
+        {
+          "name": "Teriyaki Sauce",
+          "description": "Mori's teriyaki sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 97
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        {
+          "name": "Belgium Chocolate Fondant",
+          "description": "Classic warm chocolate fondant with vanilla ice cream",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 211
+            }
+          ]
+        },
+        {
+          "name": "Miso Brownies Cake",
+          "description": "Flourless brownies cake, flavored with Japanese miso, served warm with ginger & dates spread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 194
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Fudge",
+          "description": "White & dark chocolate fudge, drizzled with milk chocolate sauce, topped with ice cream",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 194
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fresh Juices",
+      "items": [
+        {
+          "name": "Mango Juice",
+          "description": "Made from the freshest, ripest mangos, carefully selected for the perfect balance of sweetness and tanginess.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 126
+            }
+          ]
+        },
+        {
+          "name": "Orange Juice",
+          "description": "Made with freshly squeezed oranges, it's a great source of Vitamin C and perfect for any time of the day.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 126
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Juice",
+          "description": "Fresh strawberry juice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 126
+            }
+          ]
+        },
+        {
+          "name": "Guava Juice",
+          "description": "Fresh guava juice.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 126
+            }
+          ]
+        },
+        {
+          "name": "Lemon Mint Juice",
+          "description": "Lemon, mint and milk.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 126
+            }
+          ]
+        },
+        {
+          "name": "Lemonade Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 97
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cocktails ",
+      "items": [
+        {
+          "name": "Pink Lemonade",
+          "description": "Strawberry, lemon juice, fresh mint",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 137
+            }
+          ]
+        },
+        {
+          "name": "Peach Ice Tea",
+          "description": "Iced tea with peach flavor.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 109
+            }
+          ]
+        },
+        {
+          "name": "Mango Passion",
+          "description": "Refreshing mango and passion fruit drink.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 137
+            }
+          ]
+        },
+        {
+          "name": "Kiwi Mango",
+          "description": "Kiwi, mango, pineapple",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 137
+            }
+          ]
+        },
+        {
+          "name": "Ice Berry",
+          "description": "Blueberry, milk, frozen yogurt",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 137
+            }
+          ]
+        },
+        {
+          "name": "Kiwi nana",
+          "description": "Kiwi, strawberry, banana",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 132
+            }
+          ]
+        },
+        {
+          "name": "Mori Lemon",
+          "description": "Lemon juice, orange, pineapple with kiwi syrup",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 132
+            }
+          ]
+        },
+        {
+          "name": "Mango Peach Smoothie",
+          "description": "Smooth blend of mango and peach.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 137
+            }
+          ]
+        },
+        {
+          "name": "Pina Colada Smoothie",
+          "description": "Creamy pineapple and coconut smoothie.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 206
+            }
+          ]
+        },
+        {
+          "name": "Bubble Passion Mojito",
+          "description": "Passion fruit sauce, soda, fresh mint, mojito, lemon",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 206
+            }
+          ]
+        },
+        {
+          "name": "Bubble Strawberry Mojito",
+          "description": "Lemon, sprite zero, mint, strawberry syrup",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 206
+            }
+          ]
+        },
+        {
+          "name": "Bubble Mojito Minto",
+          "description": "Lemon, sprite zero, mint",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 206
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Soft Drinks",
+      "items": [
+        {
+          "name": "Pepsi",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 57
+            }
+          ]
+        },
+        {
+          "name": "Pepsi Diet",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 57
+            }
+          ]
+        },
+        {
+          "name": "7up",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 57
+            }
+          ]
+        },
+        {
+          "name": "7up Diet",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 57
+            }
+          ]
+        },
+        {
+          "name": "Mirinda Orange",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 57
+            }
+          ]
+        },
+        {
+          "name": "Mirinda apple",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 57
+            }
+          ]
+        },
+        {
+          "name": "Fayrouz",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Red Bull",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 114
+            }
+          ]
+        },
+        {
+          "name": "Large Mineral Water",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 69
+            }
+          ]
+        },
+        {
+          "name": "Small Mineral Water",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 46
+            }
+          ]
+        },
+        {
+          "name": "Sparkling Water",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 69
+            }
+          ]
+        },
+        {
+          "name": "V Cola",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "V7 Gold",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "V7 Blueberry",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "V7  Pinacolada",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "V7  Lemon Mint",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "V7 Pomegranate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "V Cola Diet",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

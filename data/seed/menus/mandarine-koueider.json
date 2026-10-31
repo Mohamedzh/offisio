@@ -1,0 +1,765 @@
+{
+  "brand": "Mandarine Koueider",
+  "source": "elmenus.com",
+  "source_label": "Menu source: elmenus.com (demo data, not affiliated)",
+  "restaurant_url": "https://elmenus.com/cairo/mandarine-koueider-3o37",
+  "branch_code": "k3g3",
+  "fetched_at": "2026-10-31T12:38:37.115Z",
+  "categories": [
+    {
+      "name": "Kahk & Petit Four",
+      "items": [
+        {
+          "name": "Plain Kahk",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 390
+            }
+          ]
+        },
+        {
+          "name": "Plain Petit Four",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 400
+            }
+          ]
+        },
+        {
+          "name": "Kahk with A'gwa",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 390
+            }
+          ]
+        },
+        {
+          "name": "Kahk with Walnut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 590
+            }
+          ]
+        },
+        {
+          "name": "Nashader Biscuits",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 370
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Oriental Desserts",
+      "items": [
+        {
+          "name": "Asawer Chocolate Hazelnut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 530
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 265
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 132.5
+            },
+            {
+              "size": "3/4 kilo",
+              "price_egp": 397.5
+            }
+          ]
+        },
+        {
+          "name": "Plain Basbousa Forma",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 280
+            }
+          ]
+        },
+        {
+          "name": "Plain Konafa",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 290
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 145
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 72.5
+            },
+            {
+              "size": "3/4 kilo",
+              "price_egp": 217.5
+            }
+          ]
+        },
+        {
+          "name": "Borma with Cashew",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 550
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 275
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 137.5
+            },
+            {
+              "size": "3/4 kilo",
+              "price_egp": 412.5
+            }
+          ]
+        },
+        {
+          "name": "Baklava Fingers With Almonds",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 550
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 275
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 137.5
+            },
+            {
+              "size": "750 Gm",
+              "price_egp": 412.5
+            }
+          ]
+        },
+        {
+          "name": "Eish Baklava With Almonds",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 550
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 275
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 137.5
+            },
+            {
+              "size": "750 Gm",
+              "price_egp": 412.5
+            }
+          ]
+        },
+        {
+          "name": "Othmanleyah Konafa",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 420
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 210
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 105
+            },
+            {
+              "size": "3/4 kilo",
+              "price_egp": 315
+            }
+          ]
+        },
+        {
+          "name": "Kol w Eshkor",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 550
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 275
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 137.5
+            },
+            {
+              "size": "3/4 kilo",
+              "price_egp": 412.5
+            }
+          ]
+        },
+        {
+          "name": "Turkish Baklava Fingers With Pistachio",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 1500
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 750
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 375
+            },
+            {
+              "size": "3/4 kilo",
+              "price_egp": 1125
+            }
+          ]
+        },
+        {
+          "name": "Om Ali",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Plain Basbousa",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 240
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 120
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 60
+            },
+            {
+              "size": "3/4 kilo",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "Basbousa Lux  with Nuts Forma",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 390
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Borma",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 1500
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 750
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 375
+            },
+            {
+              "size": "3/4 kilo",
+              "price_egp": 1125
+            }
+          ]
+        },
+        {
+          "name": "Hazelnut Asawer",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 550
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 275
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 137.5
+            },
+            {
+              "size": "3/4 kilo",
+              "price_egp": 412.5
+            }
+          ]
+        },
+        {
+          "name": "White Buloriya",
+          "description": "",
+          "sizes": [
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 700
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 350
+            },
+            {
+              "size": "3/4 kilo",
+              "price_egp": 1050
+            }
+          ]
+        },
+        {
+          "name": "Red Baloriya",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1400
+            }
+          ]
+        },
+        {
+          "name": "Basbousa Lux",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 340
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 170
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 85
+            },
+            {
+              "size": "3/4 kilo",
+              "price_egp": 255
+            }
+          ]
+        },
+        {
+          "name": "Eish Saraya Form",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 260
+            }
+          ]
+        },
+        {
+          "name": "Namoura with Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 350
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 175
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 87.5
+            },
+            {
+              "size": "3/4 kilo",
+              "price_egp": 262.5
+            }
+          ]
+        },
+        {
+          "name": "Baladi Qeshta",
+          "description": "",
+          "sizes": [
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Plain Gulash",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 370
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 185
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 92.5
+            },
+            {
+              "size": "3/4 kilo",
+              "price_egp": 277.5
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Asawer",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 1100
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 550
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 275
+            },
+            {
+              "size": "3/4 kilo",
+              "price_egp": 825
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tortes",
+      "items": [
+        {
+          "name": "Berry Yogurt Ice Cream Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 550
+            }
+          ]
+        },
+        {
+          "name": "Fudge  24 Cm Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 420
+            }
+          ]
+        },
+        {
+          "name": "Four Seasons 24 Cm Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 360
+            }
+          ]
+        },
+        {
+          "name": "Fruits 24 cm Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 415
+            }
+          ]
+        },
+        {
+          "name": "Lotus 24 Cm Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 420
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Twins 24 Cm Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 350
+            }
+          ]
+        },
+        {
+          "name": "Carrot Cake 24 Cm Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 420
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Shamiat & Malban",
+      "items": [
+        {
+          "name": "Malban Goz",
+          "description": "Malban, walnuts, powdered sugar",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 480
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 240
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 120
+            },
+            {
+              "size": "3/4 kilo",
+              "price_egp": 360
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ice Cream ",
+      "items": [
+        {
+          "name": "Mango Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Per Kilo",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Blueberry Yogurt  Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Per Kilo",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Vanilla Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Per Kilo",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Mocha  with Nuts Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Per Kilo",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Popcorn Caramel Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Per Kilo",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Snickers Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Per Kilo",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Oreo Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Per Kilo",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Lemon Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Per Kilo",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Mastic with Pistachio Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Per Kilo",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Strawberry  Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Per Kilo",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Vanilla with Cherries and Walnut Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Per Kilo",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Cheese Cake Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Per Kilo",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Dark Chocolate Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Per Kilo",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Mandarine Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Per Kilo",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Louts Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Per Kilo",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Caramel with Hazelnut Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Per Kilo",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Add Ice Cream Biscuits",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 15
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

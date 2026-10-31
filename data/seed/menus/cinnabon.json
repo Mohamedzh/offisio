@@ -1,0 +1,868 @@
+{
+  "brand": "Cinnabon",
+  "source": "elmenus.com",
+  "source_label": "Menu source: elmenus.com (demo data, not affiliated)",
+  "restaurant_url": "https://elmenus.com/cairo/cinnabon-bakery-cafe-8zw2",
+  "branch_code": "rv6x",
+  "fetched_at": "2026-10-31T12:38:37.104Z",
+  "categories": [
+    {
+      "name": "New ",
+      "items": [
+        {
+          "name": "Turtle Classic Cinnabon",
+          "description": "Classic roll with pecans and chocolate sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 210
+            }
+          ]
+        },
+        {
+          "name": "Cookie Chocobon",
+          "description": "Classic roll with cookies and cream",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 179
+            }
+          ]
+        },
+        {
+          "name": "Caramel Cinnabon",
+          "description": "Classic roll with caramel sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 169
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Handmade Treats",
+      "items": [
+        {
+          "name": "Chocobon",
+          "description": "Warm dough, stuffed with chocolate and topped with signature cream cheese frosting & chocolate syrup. without cinnamon",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 169
+            }
+          ]
+        },
+        {
+          "name": "Choco Pecanbon",
+          "description": "Warm dough, stuffed with chocolate and topped with signature cream cheese frosting, chocolate syrup and pecans. without cinnamon",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 199
+            }
+          ]
+        },
+        {
+          "name": "Caramel Pecanbon Roll",
+          "description": "Warm dough, legendary Makara cinnamon, topped with caramel frosting and pecans",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 199
+            }
+          ]
+        },
+        {
+          "name": "Caramel Roll",
+          "description": "Warm dough, legendary Makara cinnamon and topped with caramel frosting",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 169
+            }
+          ]
+        },
+        {
+          "name": "Minibon Caramel Pecanbon",
+          "description": "A smaller-portioned treat: oven-fresh bon with Cinnabon Makara cinnamon and topped with caramel frosting and pecans.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Classic Roll",
+          "description": "Warm dough, legendary Makara cinnamon, topped with signature cream cheese frosting.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 145
+            }
+          ]
+        },
+        {
+          "name": "Classic Cinnabon Bites",
+          "description": "4 Small bons of warm dough, legendary Makara cinnamon, topped with signature cream cheese frosting.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 99
+            }
+          ]
+        },
+        {
+          "name": "Caramel Pecanbon Bites",
+          "description": "4 Small bons filled with our signature Makara cinnamon and topped with chopped pecan and caramel frosting.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Roll On The Go Caramel",
+          "description": "Roll classic cut into small pieces easy to eat and covered with caramel cream frosting",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Minibon Chocobon",
+          "description": "Roll choco cut into small pieces easy to eat and covered  with signature cream cheese frosting & Chocolate syrup and pecan without cinnamon",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Choco Pecan Roll On The Go",
+          "description": "Roll choco cut into small pieces easy to eat and covered  with signature cream cheese frosting & Chocolate syrup and pecan without cinnamon",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Minibon Classic",
+          "description": "A smaller-portioned treat, oven-fresh bon with cinnabon Makara cinnamon and signature cream cheese frosting",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Chocobon Bites",
+          "description": "4 small bons filled with chocolate, topped with signature cream cheese frosting & chocolate syrup (without cinnamon)",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Choco Pecanbon Bites",
+          "description": "4 small bons filled with chocolate, topped with signature cream cheese frosting, chocolate syrup and pecans (without cinnamon)",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 137
+            }
+          ]
+        },
+        {
+          "name": "Minibon Choco Pecanbon",
+          "description": "A smaller-portioned treat; oven-fresh bon, stuffed with chocolate and with signature cream cheese frosting, chocolate syrup and pecans (without cinnamon)",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Choco Roll On The Go",
+          "description": "Roll  Choco cut into small pieces easy to eat and covered with signature cream cheese frosting, and Chocolate syrup without cinnamon",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Roll on The Go Classic",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 145
+            }
+          ]
+        },
+        {
+          "name": "Caramel Pecan Minibon",
+          "description": "Brewed coffee with cinnamon flavor syrup and ice cubes",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 138
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "On The Go Treats",
+      "items": [
+        {
+          "name": "Roll on The Go (Caramel)",
+          "description": "Classic roll cut into small pieces easy to eat and covered with caramel cream frosting",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Roll on The Go (Choco Pecanbon)",
+          "description": "Roll Choco cut into small pieces easy to eat and covered  with signature cream cheese frosting & chocolate syrup and pecan",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 160
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cinnamix ",
+      "items": [
+        {
+          "name": "Cinnamix Cheesecake Chocolate",
+          "description": "Bites of our famous Cinnabon dough, baked with signature fillings and topped with a rich and creamy cheesecake layer, topped with indulgent chocolate sauce.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 210
+            }
+          ]
+        },
+        {
+          "name": "Cinnamix Cheesecake Caramel",
+          "description": "Bites of our famous Cinnabon dough, baked with signature fillings and topped with a rich and creamy cheesecake layer, topped with rich caramel sauce.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 210
+            }
+          ]
+        },
+        {
+          "name": "Cinnamix Cheesecake Strawberry",
+          "description": "Bites of our famous Cinnabon dough, baked with signature fillings and topped with a rich and creamy cheesecake layer, topped with delicious strawberry sauce.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 210
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Matcha ",
+      "items": [
+        {
+          "name": "Hot Spanish Matcha Latte",
+          "description": "Premium matcha with steamed milk, sweetened condensed milk for a rich, smooth, perfectly balanced hot latte",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Iced Passion Fruit Matcha",
+          "description": "A refreshing blend of matcha, milk, passion fruit served over ice, combining tropical flavors with the distinctive taste of matcha",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Iced Strawberry Matcha",
+          "description": "A refreshing blend of matcha, milk, strawberry flavor served over ice, for a refreshing drink with a fruity twist",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Iced Spanish Matcha",
+          "description": "Premium matcha with milk, sweetened condensed milk for a rich, creamy, refreshing experience",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 160
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Boba ",
+      "items": [
+        {
+          "name": "Passion Fruit Refresher with Strawberry Boba",
+          "description": "A refreshing lemon vanilla juice base with passion fruit puree and strawberry popping boba over ice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Mango Refresher with Passion Fruit Boba",
+          "description": "A refreshing lemon vanilla juice base with mango puree, passion fruit popping boba over ice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Refresher with Blueberry Boba",
+          "description": "A refreshing lemon vanilla juice base with strawberry puree and blueberry popping boba over ice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Sparkling Peach Refresher with Strawberry Boba",
+          "description": "A refreshing lemon vanilla juice base, sparkling water with peach puree, strawberry popping boba over ice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 170
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Classic Hot Coffees",
+      "items": [
+        {
+          "name": "Cappuccino",
+          "description": "",
+          "sizes": [
+            {
+              "size": "REGULAR_12OZ",
+              "price_egp": 95
+            },
+            {
+              "size": "Large 16oz",
+              "price_egp": 105
+            },
+            {
+              "size": "Small 8oz",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Cinnamon Cappuccino",
+          "description": "Cappuccino with cinnamon roll flavor syrup",
+          "sizes": [
+            {
+              "size": "REGULAR_12OZ",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "REGULAR_12OZ",
+              "price_egp": 95
+            },
+            {
+              "size": "Large 16oz",
+              "price_egp": 105
+            },
+            {
+              "size": "Small 8oz",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Cinnamon Latte",
+          "description": "Latte with cinnamon roll flavor syrup",
+          "sizes": [
+            {
+              "size": "REGULAR_12OZ",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Flat White",
+          "description": "",
+          "sizes": [
+            {
+              "size": "REGULAR_12OZ",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Mocha",
+          "description": "",
+          "sizes": [
+            {
+              "size": "REGULAR_12OZ",
+              "price_egp": 105
+            },
+            {
+              "size": "Large 16oz",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "Americano",
+          "description": "",
+          "sizes": [
+            {
+              "size": "REGULAR_12OZ",
+              "price_egp": 75
+            },
+            {
+              "size": "Large 16oz",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Spiced Turkish Coffee",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 80
+            },
+            {
+              "size": "Single",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Makara Cinnamon Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "REGULAR_12OZ",
+              "price_egp": 100
+            },
+            {
+              "size": "Large 16oz",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Latte Toffee Nut",
+          "description": "Latte with toffee nut flavor syrup",
+          "sizes": [
+            {
+              "size": "REGULAR_12OZ",
+              "price_egp": 98
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Signature Hot Chocolate",
+      "items": [
+        {
+          "name": "Signature Hot Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 130
+            },
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Other Beverages ",
+      "items": [
+        {
+          "name": "Tea",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Flavored Tea",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Classic Cold Coffees",
+      "items": [
+        {
+          "name": "Cold Brew Cinnamon Roll",
+          "description": "Brewed coffee with cinnamon flavor syrup and ice cubes",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Cold Brew Chocolate Cookies",
+          "description": "Brewed coffee with chocolate flavor syrup, cookies and ice cubes",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Cold Brew Toffee Nut",
+          "description": "Brewed coffee with toffee nut flavor syrup  and ice cubes",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Cold Brew",
+          "description": "Brewed coffee and ice cubes",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Iced Latte",
+          "description": "Made with rich espresso, milk, and ice, it's the perfect way to cool down and refresh yourself during the hot summer days, or any time you crave a refreshing coffee.",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 105
+            },
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Iced Mocha",
+          "description": "Elevate your coffee game with the rich and creamy blend of espresso, chocolate, and milk in our Iced Mocha, the perfect treat to cool you down and perk you up on a hot day.",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 125
+            },
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Iced Makara Cinnamon Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 130
+            },
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Signature Iced Chocolate",
+      "items": [
+        {
+          "name": "Signature Ice Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 125
+            },
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chillattas",
+      "items": [
+        {
+          "name": "Strawberry Chillattas",
+          "description": "Milk shaken with ice, topped with strawberry  syrup, whipped cream and strawberry sauce",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 135
+            },
+            {
+              "size": "Regular",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Banana Chillattas",
+          "description": "Milk shaken with ice, strawberry and banana  syrup, whipped cream and strawberry sauce",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 135
+            },
+            {
+              "size": "Regular",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "Tropical Blast Chillattas",
+          "description": "Milk shaken with ice, topped with tropical blast syrup, whipped cream and strawberry sauce",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 135
+            },
+            {
+              "size": "Regular",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "Cappuccino Chillattas",
+          "description": "Milk shaken with ice, topped with coffee, whipped cream and caramel sauce",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 135
+            },
+            {
+              "size": "Regular",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Mocha Chillattas",
+          "description": "Milk shaken with ice, topped with coffee and chocolate, whipped cream and chocolate sauce",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 135
+            },
+            {
+              "size": "Regular",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "Cookies & Cream Chillattas",
+          "description": "Milk shaken with ice, topped with cookies and cream, whipped cream and chocolate sauce.",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 135
+            },
+            {
+              "size": "Regular",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "Caramel Banana Chillattas",
+          "description": "Milk shaken with ice, topped with caramel banana syrup, whipped cream and caramel sauce",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 135
+            },
+            {
+              "size": "Regular",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "Caramel Chillattas",
+          "description": "Milk shaken with ice, topped with caramel flavored syrup, whipped cream and caramel sauce",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 135
+            },
+            {
+              "size": "Regular",
+              "price_egp": 115
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Lemonattas",
+      "items": [
+        {
+          "name": "Raspberry Lemonattas",
+          "description": "Blended lemon with ice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Lemonattas",
+          "description": "Blended lemon with ice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Lemonattas",
+          "description": "Blended lemon with ice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Soft Drinks",
+      "items": [
+        {
+          "name": "Fanta Apple",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Small Mineral Water",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 27
+            }
+          ]
+        },
+        {
+          "name": "Alkaline Water",
+          "description": "",
+          "sizes": [
+            {
+              "size": "330ml",
+              "price_egp": 28
+            },
+            {
+              "size": "600ml",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Coca Cola Zero",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

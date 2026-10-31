@@ -77,7 +77,7 @@ const parseJson = (t: string): unknown => JSON.parse(t.replace(/^```json\s*|\s*`
 type Msg = { role: string; content: unknown };
 
 // One validation-feedback retry: parse/validate failures are fed back to
-// the model once; a second failure throws (mirrors scripts/run-unit.ts).
+// the model once; a second failure throws.
 async function chatJson<T>(messages: Msg[], validate: (raw: unknown) => T): Promise<T> {
   let err = "";
   for (let i = 0; i < 2; i++) {

@@ -1,0 +1,2901 @@
+{
+  "brand": "Beano's Cafe",
+  "source": "elmenus.com",
+  "source_label": "Menu source: elmenus.com (demo data, not affiliated)",
+  "restaurant_url": "https://elmenus.com/cairo/beanos-cafe-957l",
+  "branch_code": "rl5l",
+  "fetched_at": "2026-10-31T12:38:40.727Z",
+  "categories": [
+    {
+      "name": "Breakfast ",
+      "items": [
+        {
+          "name": "Mexican Breakfast Taquitos",
+          "description": "Scrambled eggs with cheddar cheese, smoked turkey, onions & peppers in a taco wrap served with a side salad of  seasoned potatoes & chili sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 295
+            }
+          ]
+        },
+        {
+          "name": "Oriental Breakfast",
+          "description": "Beano's foul with special herbs",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 235
+            }
+          ]
+        },
+        {
+          "name": "Homemade Plain Greek Yogurt",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Vegetables Omelette",
+          "description": "Omelet with bell peppers, tomatoes, olives & onions served on brown bread with grilled potatoes",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 285
+            }
+          ]
+        },
+        {
+          "name": "Poached Eggs with Smoked Salmon",
+          "description": "Buttered brown toast, avocado, poached eggs, smoked salmon & a side salad of pickled cucumbers & capers",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 400
+            }
+          ]
+        },
+        {
+          "name": "Smoked Turkey Omelette",
+          "description": "Seasoned omelet with smoked turkey, olives & green peppers served on brown bread with grilled potatoes",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 295
+            }
+          ]
+        },
+        {
+          "name": "Scrambled Royal with Avocado",
+          "description": "Eggs, smoked salmon, avocado & capers served on brown bread with grilled potatoes",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 400
+            }
+          ]
+        },
+        {
+          "name": "Egg White Omelette",
+          "description": "White omelet served on brown bread with grilled potatoes",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 275
+            }
+          ]
+        },
+        {
+          "name": "Healthy Granola Parfait",
+          "description": "Homemade granola, greek yogurt, fresh seasonal fruits & honey",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 215
+            }
+          ]
+        },
+        {
+          "name": "3 Pancakes",
+          "description": "",
+          "sizes": [
+            {
+              "size": "TALL_STACK",
+              "price_egp": 235
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Chips Pancakes",
+          "description": "Pancakes with nutella & chocolate chips",
+          "sizes": [
+            {
+              "size": "TALL_STACK",
+              "price_egp": 260
+            }
+          ]
+        },
+        {
+          "name": "Healthy Oatmeal Breakfast",
+          "description": "Hot oatmeal with almond milk, chia seeds and cinnamon, topped with fresh seasonal fruits & crispy coconut falkes",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 250
+            }
+          ]
+        },
+        {
+          "name": "Granola Parfait with Seasonal Fruits",
+          "description": "Homemade granola, greek yogurt, fresh seasonal fruits & honey",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 215
+            }
+          ]
+        },
+        {
+          "name": "Nutella Crepe",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 235
+            }
+          ]
+        },
+        {
+          "name": "Scrambled Egg With Avocado",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 400
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Matcha Overnight Oats",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 290
+            }
+          ]
+        },
+        {
+          "name": "Egg Avocado Brioche",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 280
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bakery",
+      "items": [
+        {
+          "name": "Cheese & Thyme Croissant",
+          "description": "A flaky croissant filled with savory cheese and thyme",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "Cheese & Olives Croissant",
+          "description": "A buttery croissant with a savory filling of cheese and olives",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "Plain Croissant",
+          "description": "Made with layers of flaky, buttery pastry dough, the croissant has a light and delicate texture that is perfect for breakfast or as a snack",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Banana Bread",
+          "description": "A sweet cake made with bananas",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Brownie Brittle",
+          "description": "Brownie chips brittles in a jar",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Mini Muffin Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Almond Yougurt Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Brownies",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Cinnamon Walnut Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Vanilla Madeleine",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "White Chocolate & Pistachio Rose Petals Flat Croissant",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 155
+            }
+          ]
+        },
+        {
+          "name": "Dark Chocolate Flat Croissant",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 155
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Crepes",
+      "items": [
+        {
+          "name": "Nutella Crepe",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 220
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Salads",
+      "items": [
+        {
+          "name": "Healthy Nut Salad",
+          "description": "Grilled chicken breast, cucumber, green pepper, lettuce & rocket leaves topped with flaked almonds topped with vinaigrette dressing",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 265
+            }
+          ]
+        },
+        {
+          "name": "Chicken Caesar Salad",
+          "description": "Grilled chicken breast, parmesan cheese, croutons and iceberg lettuce topped with homemade creaser dressing",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 315
+            }
+          ]
+        },
+        {
+          "name": "Tuna Salad",
+          "description": "Fresh tuna chunks and boiled eggs layered, bell peppers, potatoes, green beans with a classic lemon vinaigrette dressing",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 295
+            }
+          ]
+        },
+        {
+          "name": "South of The Boarder Salad",
+          "description": "Grilled chicken strips, cucumber, sweet corn, red kidney beans with cheddar cheese & fresh lettuce, served all in a taco basket topped with yogurt dressing",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 315
+            }
+          ]
+        },
+        {
+          "name": "Mexican Chicken Salad",
+          "description": "Red beans, grilled chicken, sweet corn, hummus, cherry tomato, avocado, cucumber, fresh parsley and coriander with mustard pesto dressing",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 340
+            }
+          ]
+        },
+        {
+          "name": "Asian Chicken Salad",
+          "description": "Tandoori chicken, lettuce, red leaf, arugula, mushrooms with roasted almonds & Asian soy dressing",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 340
+            }
+          ]
+        },
+        {
+          "name": "Halloumi Grilled Corn Salad",
+          "description": "Halloumi cheese, carrot, avocado, beetroot, red leaf, lettuce & arugula with special dressing",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 315
+            }
+          ]
+        },
+        {
+          "name": "Asian Chicken Satay Warm Bowl",
+          "description": "Basmati rice, chicken, carrots, bell pepper, sweet corn, Asian sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 375
+            }
+          ]
+        },
+        {
+          "name": "Chicken with Almond & Apple Salad",
+          "description": "Tender roasted chicken with sour green apples, cucumber, fresh lettuce, rocket leaves & roasted almond drizzled with our signature sweet honey mustard dressing",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 300
+            }
+          ]
+        },
+        {
+          "name": "Warm Greek Quinoa Bowl",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 340
+            }
+          ]
+        },
+        {
+          "name": "Blue Spirulina Smoothie Bowl",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 320
+            }
+          ]
+        },
+        {
+          "name": "Moroccan Couscous Salad",
+          "description": "Grilled chicken, couscous, zucchini, bell pepper, cherry tomatoes, carrot with almonds, raisins & mint dressing",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 300
+            }
+          ]
+        },
+        {
+          "name": "Sweet Potato and Fig Salad",
+          "description": "Sweet potato, pomegranate, figs, chickpeas, roasted almonds, creamy feta cheese, mixed lettuce, baby spinach, dried cranberries & all drizzled with a pomegranate mint dressing",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 255
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sandwiches",
+      "items": [
+        {
+          "name": "Panino Chicken Sandwich",
+          "description": "Grilled chicken breast, melted mozzarella cheese, roasted tomatoes, pesto sauce in focaccia bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 280
+            }
+          ]
+        },
+        {
+          "name": "Smoked Salmon Avocado Sandwich",
+          "description": "Smoked salmon, avocado paste, cream cheese, pickled cucumbers, rocket leaves & capers in multi seed bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 405
+            }
+          ]
+        },
+        {
+          "name": "Roasted Turkey Sandwich",
+          "description": "Roasted turkey breast, mint sauce, cheddar cheese, iceberg , tomatoes & pickled cucumber in multi seed bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 320
+            }
+          ]
+        },
+        {
+          "name": "Croque-Monsieur Sandwich",
+          "description": "Smoked turkey, cheddar cheese & mustard on toasted white bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 250
+            }
+          ]
+        },
+        {
+          "name": "Crostini Sandwich",
+          "description": "Feta cheese, sliced tomatoes & olive paste on multi seed brown bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 215
+            }
+          ]
+        },
+        {
+          "name": "Halloumi & Vegetables Simit",
+          "description": "Grilled halloumi cheese, roasted tomato, rocket leaves & grilled bell peppers in a whole wheat simit",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 305
+            }
+          ]
+        },
+        {
+          "name": "Fresh Roast Beef Sandwich",
+          "description": "Roast beef, cheddar cheese, lettuce, mustard & mayonnaise on multi seed brown bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 300
+            }
+          ]
+        },
+        {
+          "name": "Grilled Vegetable Wrap",
+          "description": "Grilled bell peppers, avocado, olive paste & hummus in a whole wheat wrap",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 200
+            }
+          ]
+        },
+        {
+          "name": "Honey Mustard Turkey Sandwich",
+          "description": "Grilled turkey breast, honey mustard sauce and rocket leaves in toasted brown bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 315
+            }
+          ]
+        },
+        {
+          "name": "Mexican Chicken Wrap",
+          "description": "Grilled chicken breast, bell peppers, mozzarella cheese, cheddar cheese, taco seasoning & yogurt dressing",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 240
+            }
+          ]
+        },
+        {
+          "name": "Spicy Avocado Tuna Sandwich",
+          "description": "Tuna with avocado slices, dill, jalapeno & chili sauce in sourdough bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 290
+            }
+          ]
+        },
+        {
+          "name": "Truffle Roast Beef Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 305
+            }
+          ]
+        },
+        {
+          "name": "Pesto Tunacado Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 290
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pocket Sandwiches",
+      "items": [
+        {
+          "name": "Salmon Wasabi Sandwich",
+          "description": "Smoked salmon, cucumber, black sesame seed, fresh dill, wasabi powder, mayonnaise",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 275
+            }
+          ]
+        },
+        {
+          "name": "Honey Mustard Chicken Sandwich",
+          "description": "Grilled chicken breast, fresh red apple, honey mustard, mayonnaise",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 210
+            }
+          ]
+        },
+        {
+          "name": "Melted Tuna With Siracha Sandwich",
+          "description": "Tuna, cheddar cheese, light mayonnaise",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 210
+            }
+          ]
+        },
+        {
+          "name": "Chicken BBQ With Caramelized Onions Sandwich",
+          "description": "Chicken breast, caramelized onions, fresh thyme, mayonnaise, BBQ sauce, red apple vinegar",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 210
+            }
+          ]
+        },
+        {
+          "name": "Caprese Pocket Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Brisket Pocket Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "Bresaola With Parmesan Cheese Sandwich",
+          "description": "Dry bresaola, grilled zucchini, basil oil, grilled carrots, parmesan cheese, roasted bell peppers, fresh thyme",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 285
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": " Beano's Chips",
+      "items": [
+        {
+          "name": "Beano's Crisp Sea Salt",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Beano's Crisp Sea Salt & Vinegar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Beano's Crisp Sweet Chili",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Salt & Vinegar Fava Nuts",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Chili & Lemon Nuts",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chocolate Bars",
+      "items": [
+        {
+          "name": "Salted Caramel Belgian Chocolate",
+          "description": "Belgian chocolate with Caramel",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "Hazelnut Belgian Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Dark Belgian Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Milk Belgian Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "Dubai Kunafa Pistachio Belgian Chocolate",
+          "description": "Belgian milk chocolate with kunafa and pistachio",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 300
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        {
+          "name": "Chocolate Fondant Cake",
+          "description": "Warm chocolate fondant",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Triple Layer Cheesecake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 210
+            }
+          ]
+        },
+        {
+          "name": "Brownies",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Vanilla Madeleine",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Vanilla Muffin",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Muffin",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Blueberry Muffin",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Mini Muffin Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Cookies",
+          "description": "Oatmeal, nutella, chocolate chips, white chocolate, cranberry",
+          "sizes": [
+            {
+              "size": "1 Piece",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Breakfast Cookies",
+          "description": "Gluten-free cookies made with oats, chia flax & almond seeds with white pulp, cranberries, walnut & cinnamon",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Salted Caramel Chocolate Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "Vegan Cookie",
+          "description": "Gluten-free, dairy free cookies made with oats, chia flax  almond seeds with white pulp, cranberries, walnut and cinnamon",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "Gluten-Free Brownie Cookie",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Krunchoco Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "Upside Down Cheesecake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 260
+            }
+          ]
+        },
+        {
+          "name": "Cinnamon Crumble Muffin",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Sugar Free Pumpkin Spice Muffin",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 145
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Cashew Bar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Peanut butter Bar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "Peanut butter Bar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "Almond & Granola bar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Fudge Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Fondant Cake with Ice Cream",
+          "description": "Warm chocolate fondant tapped with vanilla ice cream & chocolate sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 220
+            }
+          ]
+        },
+        {
+          "name": "Honey Cake",
+          "description": "Thin layers of honey cake filled with fresh cream, topped with caramel & cinnamon",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Classic Cheesecake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "Date Walnut Tart",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 185
+            }
+          ]
+        },
+        {
+          "name": "Cinnamon Walnut Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Madeleine",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Cinnamon Muffin",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Healthy Granola Bars",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Fruits & Nuts Granola Bar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Granola Jar",
+          "description": "200 gm",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 200
+            }
+          ]
+        },
+        {
+          "name": "Yoghurt Almond Honey Cake",
+          "description": "Yogurt cake with almond slices & honey",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Latte Cake",
+          "description": "Fudge latte with cheese latte with coffee",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "Humming Bird Cake",
+          "description": "Carrot cake with cream cheese and caramelized pineapple",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "Matcha Cherry Cake",
+          "description": "White matcha and matcha cream with cherry",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "Dubai Pistachio Tart",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 220
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Tart",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Brownies Ice Cream",
+          "description": "Brownies with ice cream drizzled with caramel & chocolate sauce and topped with nuts",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Tiramisu Cake",
+          "description": "Thin layers of honey cake filled with fresh cream, caramel and cinnamon",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "Mango Tart",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 145
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Coffee",
+      "items": [
+        {
+          "name": "Cappuccino",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 120
+            },
+            {
+              "size": "Medium",
+              "price_egp": 115
+            },
+            {
+              "size": "Small",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Caramel Macchiato",
+          "description": "Espresso with steamed milk & caramel sauce",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 150
+            },
+            {
+              "size": "Medium",
+              "price_egp": 140
+            },
+            {
+              "size": "Small",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Cafe Mocha",
+          "description": "Espresso with steamed milk and chocolate sauce",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 150
+            },
+            {
+              "size": "Medium",
+              "price_egp": 140
+            },
+            {
+              "size": "Small",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Cafe Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 125
+            },
+            {
+              "size": "Medium",
+              "price_egp": 115
+            },
+            {
+              "size": "Small",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "White Mocha",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 160
+            },
+            {
+              "size": "Medium",
+              "price_egp": 150
+            },
+            {
+              "size": "Small",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "American Coffee",
+          "description": "American coffee with hot water",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Espresso Macchiato",
+          "description": "Espresso with a dash of foam",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 90
+            },
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Deep White",
+          "description": "Triple espresso shot with hot milk",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Turkish Coffee Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Caramel Swirl",
+          "description": "Espresso, steamed milk & caramel flavor with cinnamon",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Salted Caramel Latte",
+          "description": "Espresso and milk with salted caramel flavor & honeycomb pieces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Power Couple Latte",
+          "description": "Coffee, nutmeg, cinnamon and milk",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 125
+            },
+            {
+              "size": "Regular",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Latte",
+          "description": "A burst of flavors with a sweet pistachio sauce paired with a shot of espresso and steamed milk, topped with pistachio crumbs for a cozy winter drink",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 215
+            },
+            {
+              "size": "Regular",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "Penut Butter Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Honey Cinnamon Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "Pumkin Spice Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 185
+            }
+          ]
+        },
+        {
+          "name": "Ginger Blue Spirulina",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Hot Lavender Matcha",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Hot Strawberry Matcha",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Dirty Chai Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Hot Matcha Latte",
+          "description": "Matcha powder frappe, milk, mango juice with ice cubes",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Caramel Spanish Latte",
+          "description": "Espresso with condensed milk and caramel sauce",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 170
+            },
+            {
+              "size": "Regular",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Flat White",
+          "description": "Experience a rich and full flavored coffee with a velvety smooth texture",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "French Coffee",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Hot Tahini Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 290
+            }
+          ]
+        },
+        {
+          "name": "Hot Winter Spice Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 185
+            }
+          ]
+        },
+        {
+          "name": "Hot Vanilla Date Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Americano",
+          "description": "Rich espresso and hot water",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 115
+            },
+            {
+              "size": "Medium",
+              "price_egp": 105
+            },
+            {
+              "size": "Small",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Espresso",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 85
+            },
+            {
+              "size": "Single",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Turkish Coffee",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 90
+            },
+            {
+              "size": "Single",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Hot Chocolate Salted Caramel Latte",
+          "description": "Hot chocolate with milk flavored with salted caramel, cream and honeycomb",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Beano's Herbal Coffee",
+      "items": [
+        {
+          "name": "Power Couple Latte",
+          "description": "Espresso, nutmeg, cinnamon & milk\nThis latte could help balance blood sugar levels, boost your mood & reduce muscle fatigue",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 120
+            },
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Golden Healer",
+          "description": "Turmeric, cinnamon, ginger & milk with coconut oil rich and creamy, this soothing anti-inflammatory & antioxidant-rich beverage is an excellent choice for muscle repair and improved immunity",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 120
+            },
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ice Coffee, Frappe & Shakes",
+      "items": [
+        {
+          "name": "Iced Mocha",
+          "description": "Espresso & melted chocolate blended with milk topped with whipped cream",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 185
+            },
+            {
+              "size": "Medium",
+              "price_egp": 160
+            },
+            {
+              "size": "Regular",
+              "price_egp": 145
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Frappe",
+          "description": "Beano's frappe, milk, chocolate sauce and whipped cream",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 190
+            },
+            {
+              "size": "Medium",
+              "price_egp": 165
+            },
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Caramel Frappe",
+          "description": "Beano's frappe, milk, caramel sauce and whipped cream",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 190
+            },
+            {
+              "size": "Medium",
+              "price_egp": 165
+            },
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Iced Latte",
+          "description": "Espresso, foamed milk & ice cubes",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 175
+            },
+            {
+              "size": "Medium",
+              "price_egp": 150
+            },
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Oreo Milkshake",
+          "description": "A blend of milk, vanilla ice cream, oreo biscuits with whipped cream",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "Vanilla Frappe",
+          "description": "Beano's frappe & whipped cream with vanilla flavor",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 190
+            },
+            {
+              "size": "Medium",
+              "price_egp": 165
+            },
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Iced Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Banana Milkshake",
+          "description": "A blend of milk, bananas & chocolate",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 145
+            }
+          ]
+        },
+        {
+          "name": "Salted Caramel Frappe",
+          "description": "Beano's frappe with milk & salted caramel flavor, whipped cream & honeycomb pieces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "White Iced Mocha",
+          "description": "Espresso, white chocolate, milk & whipped cream",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 185
+            },
+            {
+              "size": "Medium",
+              "price_egp": 160
+            },
+            {
+              "size": "Regular",
+              "price_egp": 145
+            }
+          ]
+        },
+        {
+          "name": "Iced Matcha Latte",
+          "description": "Matcha powder frappe, milk & honey with ice cups",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Matcha Frappe",
+          "description": "Matcha powder frappe, blended with milk, honey and ice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "Iced Pistachio Latte",
+          "description": "Espresso, pistachio sauce flavor with milk & ice cubes",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Blended Vanilla Coconut Milk Matcha",
+          "description": "soft drink with blueberry, lemon slices ,mint leaves",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 270
+            }
+          ]
+        },
+        {
+          "name": "Iced Spanish Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 185
+            }
+          ]
+        },
+        {
+          "name": "Iced Americano",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Iced Brown Sugar Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Iced Salted Brownie Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Iced Salted Vanilla",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Iced Tahini Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "Iced Winter Spice Latte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 195
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hot Beverages",
+      "items": [
+        {
+          "name": "Hot Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 130
+            },
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Nut Sahlab",
+          "description": "The Egyptian classic-foamy milk topped with cinnamon & nuts",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Hot Apple Cider",
+          "description": "Apple juice served with cinnamon sticks",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Tea with Foamed Milk",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 80
+            }
+          ]
+        },
+        {
+          "name": "French Hot Chocolate",
+          "description": "A rich and creamy hot chocolate crafted to make you feel cozy winter vibes",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 185
+            }
+          ]
+        },
+        {
+          "name": "Milk Tea",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Hot Ginger Blue Spirulina",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Rich Salted Caramel Hot Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Salted Vanilla Hot Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Golden Healer",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 125
+            },
+            {
+              "size": "Small",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "Tea with Peach Flavor",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Tea with Raspberry Flavor",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Tea with Strawberry Flavor",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Tea with Mix Fruits Flavor",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Juices & Smoothies",
+      "items": [
+        {
+          "name": "Mango Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Orange Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Guava Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Sobia Smoothie",
+          "description": "Egypt's most iconic thirst quencher Sobia & milk blended with ice to create the richest smoothie",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Blackberry Hibiscus Smoothie",
+          "description": "A traditional Egyptian combination of sweet hibiscus flowers & blackberry juice are blended with ice to create this berrylicious smoothie",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Lemon & Mint Smoothie",
+          "description": "Lemon juice with fresh mint blended with ice creating the most refreshing traditional Egyptian smoothie",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 145
+            }
+          ]
+        },
+        {
+          "name": "Peach Apple Delight",
+          "description": "A blend of apple, peach, mango & cranberry juice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Mango Smoothie",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Smoothie",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Energize Juice",
+          "description": "Banana, dates, & cinnamon with almond milk",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 200
+            }
+          ]
+        },
+        {
+          "name": "Green Giant Juice",
+          "description": "Spinach, banana, apple, yogurt & chia seeds with almond milk",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 200
+            }
+          ]
+        },
+        {
+          "name": "Banana Twist Juice",
+          "description": "Banana, mango, pineapple & yogurt",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 200
+            }
+          ]
+        },
+        {
+          "name": "Passion Fruit Smoothie",
+          "description": "A blend of passion fruit and fresh mango juice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 185
+            }
+          ]
+        },
+        {
+          "name": "Avocado Green Power Smoothie",
+          "description": "Almond milk, flaxseeds and chia seeds, avocado and dates",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 210
+            }
+          ]
+        },
+        {
+          "name": "Passion Fruit Mojito",
+          "description": "Soft drink with passion fruit and lemon slices, mint leaves",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 155
+            }
+          ]
+        },
+        {
+          "name": "Blueberry Mojito",
+          "description": "Soft drink with blueberry fruit and lemon slices, mint leaves",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Iced Matcha",
+          "description": "Matcha powder frappe, milk and condensed milk with ice cubes",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "Iced Mango Matcha",
+          "description": "Matcha powder frappe, milk and mango juice with ice cubes",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 200
+            }
+          ]
+        },
+        {
+          "name": "Blueberry Matcha",
+          "description": "Matcha powder frappe, milk and blueberry flavor with ice cubes",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "Iced Spanish Latte",
+          "description": "Espresso with condensed milk with ice cubes",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Blended Matcha",
+          "description": "Matcha powder frappe, milk and condensed milk with ice cubes",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "Pink Pitaya Smoothie",
+          "description": "Pink pitaya powder (dragon fruit)  with milk, pineapple  and banana",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 240
+            }
+          ]
+        },
+        {
+          "name": "Blue Spirulina Smoothie",
+          "description": "Pink pitaya powder (dragon fruit)  with milk, pineapple  and banana",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 220
+            }
+          ]
+        },
+        {
+          "name": "Iced Blue Oat Matcha",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 280
+            }
+          ]
+        },
+        {
+          "name": "Energize Smoothie",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 210
+            }
+          ]
+        },
+        {
+          "name": "Iced Strawberry Matcha",
+          "description": "Matcha powder frappe, milk and strawberry flavor with ice cubes",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "Tropical Refresher Smoothie",
+          "description": "Pineapple milk with turmeric, apple and honey",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 130
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Guilt- Free Range",
+      "items": [
+        {
+          "name": "Date Banana Protein",
+          "description": "Vegan protein, almond milk, banana, dates, almonds , cinnamon and sugar free vanilla",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "Classic Overnight Oat",
+          "description": "Oats, chia seeds, carrots,  cinnamon and honey",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Apples Overnight Oat",
+          "description": "Oats, chia seeds, carrots, shredded apples honey and cinnamon in almond milk topped with seasonal fruits",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Almond Milk Bottle",
+          "description": "Almond natural milk bottle 200 gm",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Yogurt Banana Protein",
+          "description": "Vegan protein, oat milk, banana, Greek yogurt, peanut butter, cocoa powder and sugar free vanilla",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "Oat Banana Protein",
+          "description": "Vegan protein, oat milk, strawberry, banana, oat powder and peanut butter",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "Carrot Overnight Oat Meal",
+          "description": "Oats, chia seeds, carrots, raisins honey and cinnamon in almond milk topped with roasted almonds and coconut",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Cashew Milk Bottle",
+          "description": "A bottle of natural cashew milk (200 gm)",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Milk Bottle",
+          "description": "A refreshing drink made with creamy pistachio and milk",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Protein Shakes",
+      "items": [
+        {
+          "name": "Power Punch",
+          "description": "Vegan protein, almond milk, banana, dates, almonds, cinnamon and sugar-free vanilla",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 300
+            }
+          ]
+        },
+        {
+          "name": "Post Workout",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 300
+            }
+          ]
+        },
+        {
+          "name": "Ripped Berry",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 300
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Soft Drinks & Water",
+      "items": [
+        {
+          "name": "Pepsi",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "7up",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "Red Bull",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Mineral Water",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 25
+            }
+          ]
+        },
+        {
+          "name": "V-Cola",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "Cinnamon & Apple Detox Water",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Cucumber Detox Water",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Coconut Red Bull",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Sugar Free Red Bull",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Cherry & Wild Berries Red Bull",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Pepsi Diet",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "Mirinda Orange",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "Mirinda Apple",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "Sparkling Lemon Water",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Carbonated Water",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Beano's Merchandise ",
+      "items": [
+        {
+          "name": "Brazilian Coffee Capsules",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 375
+            }
+          ]
+        },
+        {
+          "name": "Colombian Coffee Capsules",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 375
+            }
+          ]
+        },
+        {
+          "name": "Beano's Stuffed Medium Roast Mixed Coffee 200 Gram",
+          "description": "Turkish coffee (medium)",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 320
+            }
+          ]
+        },
+        {
+          "name": "Beano's Light Mixed Coffee 200 Gm",
+          "description": "Turkish coffee",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 320
+            }
+          ]
+        },
+        {
+          "name": "Beano's Light Plain Coffee 200 Gm",
+          "description": "Turkish coffee",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 275
+            }
+          ]
+        },
+        {
+          "name": "Beano's Travel Mug",
+          "description": "A travel mug practical designed to keep your coffee hot for hours",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 275
+            }
+          ]
+        },
+        {
+          "name": "Beano's Plain Coffee Medium Roast 200gm",
+          "description": "A medium roast coffee with a rich, balanced flavor",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 275
+            }
+          ]
+        },
+        {
+          "name": "Beanos Coffee- 200 Gm",
+          "description": "Arabic coffee",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 280
+            }
+          ]
+        },
+        {
+          "name": "Beanos Coffee 250 Gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 565
+            }
+          ]
+        },
+        {
+          "name": "Brazilian Filter Coffee",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 630
+            }
+          ]
+        },
+        {
+          "name": "Colombian Filter Coffee",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 630
+            }
+          ]
+        },
+        {
+          "name": "Decaf Capsules",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 375
+            }
+          ]
+        },
+        {
+          "name": "Thermal Mug Beanos",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 560
+            }
+          ]
+        },
+        {
+          "name": "Stainless Steel Flask",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 460
+            }
+          ]
+        },
+        {
+          "name": "Water Bottle",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Striped Glass Jar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Ribbed Glass Jar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Beanos Coffee 250GM",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 520
+            }
+          ]
+        },
+        {
+          "name": "Stuffed Coffee Light-250GM",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 275
+            }
+          ]
+        },
+        {
+          "name": "Stuffed Coffee Medium Roast-250GM",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 275
+            }
+          ]
+        },
+        {
+          "name": "Stuffed Coffee Dark Roast-250Gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 255
+            }
+          ]
+        },
+        {
+          "name": "Plain Coffee Light-250GM",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 230
+            }
+          ]
+        },
+        {
+          "name": "Plain Coffee Medium Roast-250GM",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 275
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Palestine Merchandise",
+      "items": [
+        {
+          "name": "Palestine Notebook",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Palestine Hoodie",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 365
+            }
+          ]
+        },
+        {
+          "name": "Palestine Tote Bag",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Palestine Stickers",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        },
+        {
+          "name": "Black Palestine T-Shirt",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 255
+            }
+          ]
+        },
+        {
+          "name": "White Palestine T-Shirt",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 255
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -100,3 +100,21 @@ create table if not exists pipeline_jobs (
   updated_at timestamptz not null default now(),
   primary key (unit_id, step)
 );
+-- Brand menus (plan/06 6.7 step 3): one row per chain, normalised from the
+-- one-off elmenus capture in data/seed/menus/ (AGENTS rule 2 exception).
+-- items: 8-15 office add-on picks; every price_egp is copied from the source file.
+create table if not exists brand_menus (
+  brand text primary key,
+  name_ar text not null,
+  kind text not null,
+  source text not null default 'elmenus.com',
+  source_label text not null,
+  restaurant_url text not null,
+  fetched_at timestamptz not null,
+  aliases jsonb not null default '[]',
+  items jsonb not null default '[]',
+  source_items int not null,
+  model text not null,
+  prompt_version text not null,
+  normalised_at timestamptz not null default now()
+);

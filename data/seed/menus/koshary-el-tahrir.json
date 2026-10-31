@@ -1,0 +1,184 @@
+{
+  "brand": "Koshary El Tahrir",
+  "source": "elmenus.com",
+  "source_label": "Menu source: elmenus.com (demo data, not affiliated)",
+  "restaurant_url": "https://elmenus.com/cairo/koshary-el-tahrir-v2g7",
+  "branch_code": "xom5",
+  "fetched_at": "2026-10-31T12:38:37.142Z",
+  "categories": [
+    {
+      "name": "Koshary",
+      "items": [
+        {
+          "name": "Family Plate",
+          "description": "Enough for 5 persons",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 300
+            }
+          ]
+        },
+        {
+          "name": "Mega Plate",
+          "description": "Enough for 3 persons",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 185
+            }
+          ]
+        },
+        {
+          "name": "Tahrir King",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 80
+            }
+          ]
+        },
+        {
+          "name": "Tahrir Large",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Tahrir Top",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Tahrir",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Shata Packet",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 3
+            }
+          ]
+        },
+        {
+          "name": "Daqa Packet",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        {
+          "name": "Rice Pudding",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 30
+            }
+          ]
+        },
+        {
+          "name": "Milk Pudding",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Pepsi 400 Ml",
+          "description": "Plastic bottle",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        },
+        {
+          "name": "Mineral Water",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 15
+            },
+            {
+              "size": "Small",
+              "price_egp": 10
+            }
+          ]
+        },
+        {
+          "name": "7up 400 Ml",
+          "description": "Plastic bottle",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mineral Water",
+      "items": [
+        {
+          "name": "Large Mineral Water",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 15
+            }
+          ]
+        },
+        {
+          "name": "Small Mineral Water",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 10
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1035 @@
+{
+  "brand": "Willy's Kitchen",
+  "source": "elmenus.com",
+  "source_label": "Menu source: elmenus.com (demo data, not affiliated)",
+  "restaurant_url": "https://elmenus.com/cairo/willys-kr73",
+  "branch_code": "q972d",
+  "fetched_at": "2026-10-31T12:38:37.198Z",
+  "categories": [
+    {
+      "name": "Value Meals",
+      "items": [
+        {
+          "name": "Double Double Offer",
+          "description": "2 sandwiches 140g of your choice, 2 drinks, and 2 classic fries",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 369
+            }
+          ]
+        },
+        {
+          "name": "Max 200g Offer",
+          "description": "1 sandwich 200g with classic combo",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 257.5
+            }
+          ]
+        },
+        {
+          "name": "Black Truffle Sandwich",
+          "description": "Truffle sauce, Swiss cheese slice and sauteed mushroom",
+          "sizes": [
+            {
+              "size": "140gm",
+              "price_egp": 229
+            },
+            {
+              "size": "200gm",
+              "price_egp": 268.99
+            },
+            {
+              "size": "280G_(140*2)",
+              "price_egp": 345
+            }
+          ]
+        },
+        {
+          "name": "Black Truffle Meal",
+          "description": "Truffle sauce, swiss cheese slice and sauteed mushroom",
+          "sizes": [
+            {
+              "size": "140G_COMBO",
+              "price_egp": 298
+            },
+            {
+              "size": "280G_(140*2)",
+              "price_egp": 420
+            },
+            {
+              "size": "200G_COMBO",
+              "price_egp": 337.99
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Burger Meals",
+      "items": [
+        {
+          "name": "Brooklyn' Shrooms Meal",
+          "description": "Beef patty, mushrooms, American cheese, louisiana sauce, mushroom sauce",
+          "sizes": [
+            {
+              "size": "140G_COMBO",
+              "price_egp": 273.99
+            },
+            {
+              "size": "280G_(140*2)",
+              "price_egp": 348
+            },
+            {
+              "size": "200G_COMBO",
+              "price_egp": 314
+            }
+          ]
+        },
+        {
+          "name": "Chilli Chilli Meal",
+          "description": "Beef patty, beef bacon, chili beef, frizzled fried onions, jalapenos, cheese sauce, jalapeno sauce",
+          "sizes": [
+            {
+              "size": "140G_COMBO",
+              "price_egp": 288
+            },
+            {
+              "size": "280G_(140*2)",
+              "price_egp": 418.98
+            },
+            {
+              "size": "200G_COMBO",
+              "price_egp": 328
+            }
+          ]
+        },
+        {
+          "name": "Smokey Boss Meal",
+          "description": "Beef patty, beef bacon, grilled mushrooms, cheese sauce, big Willy sauce",
+          "sizes": [
+            {
+              "size": "140G_COMBO",
+              "price_egp": 283
+            },
+            {
+              "size": "280G_(140*2)",
+              "price_egp": 348
+            },
+            {
+              "size": "200G_COMBO",
+              "price_egp": 318
+            }
+          ]
+        },
+        {
+          "name": "Smokehouse BBQ Meal",
+          "description": "240g burger patty stuffed with gouda cheese, pickled cucumber, lettuce, gouda cheese, Louisiana sauce",
+          "sizes": [
+            {
+              "size": "140G_COMBO",
+              "price_egp": 288
+            },
+            {
+              "size": "280G_(140*2)",
+              "price_egp": 384
+            },
+            {
+              "size": "200G_COMBO",
+              "price_egp": 328
+            }
+          ]
+        },
+        {
+          "name": "Pepperazzi Meal",
+          "description": "Beef patty, grilled salami, American cheese, peppered grilled mushrooms & onions, cheese sauce, country sauce",
+          "sizes": [
+            {
+              "size": "140G_COMBO",
+              "price_egp": 298
+            },
+            {
+              "size": "280G_(140*2)",
+              "price_egp": 368
+            },
+            {
+              "size": "200G_COMBO",
+              "price_egp": 338
+            }
+          ]
+        },
+        {
+          "name": "Big Willy (Single) Meal",
+          "description": "Beef patty, American cheese, salami with tomato, lettuce, onion, big Willy sauce",
+          "sizes": [
+            {
+              "size": "140G_COMBO",
+              "price_egp": 288
+            },
+            {
+              "size": "280G_(140*2)",
+              "price_egp": 358
+            },
+            {
+              "size": "200G_COMBO",
+              "price_egp": 328
+            }
+          ]
+        },
+        {
+          "name": "Big Willy (Double) Meal",
+          "description": "Beef patty, American cheese, salami with tomato, lettuce, onion, big Willy sauce",
+          "sizes": [
+            {
+              "size": "400G_COMBO",
+              "price_egp": 438
+            }
+          ]
+        },
+        {
+          "name": "Original Cheese Burger Meal",
+          "description": "Beef patty,  cheese sauce, lettuce, tomato, fresh onions",
+          "sizes": [
+            {
+              "size": "140G_COMBO",
+              "price_egp": 224
+            },
+            {
+              "size": "280G_(140*2)",
+              "price_egp": 279
+            },
+            {
+              "size": "200G_COMBO",
+              "price_egp": 248
+            }
+          ]
+        },
+        {
+          "name": "Black Truffle Meal",
+          "description": "Truffle sauce, swiss cheese slice and sauteed mushroom",
+          "sizes": [
+            {
+              "size": "140G_COMBO",
+              "price_egp": 298
+            },
+            {
+              "size": "280G_(140*2)",
+              "price_egp": 368
+            },
+            {
+              "size": "200G_COMBO",
+              "price_egp": 338
+            }
+          ]
+        },
+        {
+          "name": "Real Tasty Meal 140g",
+          "description": "1 beef burger patties, Swiss cheese, lettuce and real tasty sauce with classic fries and willy's drink",
+          "sizes": [
+            {
+              "size": "140G_COMBO",
+              "price_egp": 254
+            }
+          ]
+        },
+        {
+          "name": "Real Tasty Meal 280g",
+          "description": "2 beef burger patties, Swiss cheese, lettuce and real tasty sauce with classic fries and willy's drink",
+          "sizes": [
+            {
+              "size": "280G_(140*2)",
+              "price_egp": 324
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Burger ",
+      "items": [
+        {
+          "name": "Brooklyn' Shrooms",
+          "description": "Beef patty, mushrooms, American cheese, country sauce, mushroom sauce",
+          "sizes": [
+            {
+              "size": "200g",
+              "price_egp": 239
+            },
+            {
+              "size": "280G_(140*2)",
+              "price_egp": 279
+            },
+            {
+              "size": "140G",
+              "price_egp": 199
+            }
+          ]
+        },
+        {
+          "name": "Chilli Chilli",
+          "description": "Beef patty, beef bacon, chili beef, frizzled fried onions, jalapenos, cheese sauce, jalapeno sauce",
+          "sizes": [
+            {
+              "size": "200g",
+              "price_egp": 259
+            },
+            {
+              "size": "280G_(140*2)",
+              "price_egp": 289
+            },
+            {
+              "size": "140G",
+              "price_egp": 219
+            }
+          ]
+        },
+        {
+          "name": "Smokey Boss",
+          "description": "Beef patty, beef bacon, grilled mushrooms, cheese sauce, big Willy sauce",
+          "sizes": [
+            {
+              "size": "200g",
+              "price_egp": 249
+            },
+            {
+              "size": "280G_(140*2)",
+              "price_egp": 279
+            },
+            {
+              "size": "140G",
+              "price_egp": 209
+            }
+          ]
+        },
+        {
+          "name": "Smokehouse BBQ",
+          "description": "Beef patty, beef bacon, frizzled fried onions, American cheese, hickory  BBQ sauce, lettuce, tomato and Louisiana sauce",
+          "sizes": [
+            {
+              "size": "200g",
+              "price_egp": 259
+            },
+            {
+              "size": "280G_(140*2)",
+              "price_egp": 289
+            },
+            {
+              "size": "140G",
+              "price_egp": 219
+            }
+          ]
+        },
+        {
+          "name": "Pepperazzi",
+          "description": "Beef patty, grilled salami, American cheese, peppered grilled mushrooms & onions, cheese sauce, country sauce",
+          "sizes": [
+            {
+              "size": "200g",
+              "price_egp": 269
+            },
+            {
+              "size": "280G_(140*2)",
+              "price_egp": 299
+            },
+            {
+              "size": "140G",
+              "price_egp": 229
+            }
+          ]
+        },
+        {
+          "name": "Big Willy (Single)",
+          "description": "Beef patty, American cheese, salami with tomato, lettuce, onion, big Willy sauce",
+          "sizes": [
+            {
+              "size": "200g",
+              "price_egp": 259
+            },
+            {
+              "size": "280G_(140*2)",
+              "price_egp": 289
+            },
+            {
+              "size": "140G",
+              "price_egp": 219
+            }
+          ]
+        },
+        {
+          "name": "Big Willy (Double)",
+          "description": "Beef patty, American cheese, salami with tomato, lettuce, onion, big Willy sauce",
+          "sizes": [
+            {
+              "size": "400gm",
+              "price_egp": 369
+            }
+          ]
+        },
+        {
+          "name": "Original Cheese Burger",
+          "description": "Beef patty,  cheese sauce, lettuce, tomato, fresh onions",
+          "sizes": [
+            {
+              "size": "200g",
+              "price_egp": 179
+            },
+            {
+              "size": "280G_(140*2)",
+              "price_egp": 209
+            },
+            {
+              "size": "140G",
+              "price_egp": 149
+            }
+          ]
+        },
+        {
+          "name": "Black Truffle",
+          "description": "Truffle sauce, Swiss cheese slice and sauteed mushroom",
+          "sizes": [
+            {
+              "size": "200g",
+              "price_egp": 269
+            },
+            {
+              "size": "280G_(140*2)",
+              "price_egp": 299
+            },
+            {
+              "size": "140G",
+              "price_egp": 229
+            }
+          ]
+        },
+        {
+          "name": "Real Tasty 140g Sandwich",
+          "description": "1 or 2 beef burger patties, Swiss cheese, lettuce and real tasty sauce",
+          "sizes": [
+            {
+              "size": "140G",
+              "price_egp": 179
+            }
+          ]
+        },
+        {
+          "name": "Real Tasty 280g Sandwich",
+          "description": "1 or 2 beef burger patties, Swiss cheese, lettuce and real tasty sauce",
+          "sizes": [
+            {
+              "size": "280G_(140*2)",
+              "price_egp": 249
+            }
+          ]
+        },
+        {
+          "name": "Real Tasty 200g Sandwich",
+          "description": "1 or 2 beef burger patties, Swiss cheese, lettuce and real tasty sauce",
+          "sizes": [
+            {
+              "size": "200g",
+              "price_egp": 219
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chicken Meals ",
+      "items": [
+        {
+          "name": "Crispy Fried Chicken Meal",
+          "description": "Fried chicken breast, smoked turkey, pickled cucumber, cheese sauce, lettuce, tomato, Original sauce",
+          "sizes": [
+            {
+              "size": "Regular Combo",
+              "price_egp": 288
+            }
+          ]
+        },
+        {
+          "name": "Wild West Chicken Meal",
+          "description": "Buffalo coated fried chicken, American cheese, lettuce, blue cheese sauce",
+          "sizes": [
+            {
+              "size": "Regular Combo",
+              "price_egp": 288
+            }
+          ]
+        },
+        {
+          "name": "Ranchie Crunch Meal",
+          "description": "Fried chicken breast, American cheese, lettuce, ranch sauce",
+          "sizes": [
+            {
+              "size": "Regular Combo",
+              "price_egp": 288
+            }
+          ]
+        },
+        {
+          "name": "BBQ Chicken Meal",
+          "description": "Fried chicken breasts, lettuce, American cheese, beef bacon, Louisiana sauce, BBQ brioche bread.",
+          "sizes": [
+            {
+              "size": "Regular Combo",
+              "price_egp": 288
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chicken",
+      "items": [
+        {
+          "name": "Crispy Fried Chicken",
+          "description": "Fried chicken breast, smoked turkey, pickled cucumber, cheese sauce, lettuce, tomato, country sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 219
+            }
+          ]
+        },
+        {
+          "name": "Wild West Chicken",
+          "description": "Buffalo coated fried chicken, American cheese, lettuce, blue cheese sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 219
+            }
+          ]
+        },
+        {
+          "name": "Ranchie Crunch",
+          "description": "Fried chicken breast, smoked turkey, American cheese, lettuce, ranch sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 219
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Nacho Meals ",
+      "items": [
+        {
+          "name": "Willy's Nacho Burger Meal",
+          "description": "Beef patty, beef bacon, chili beef, caramelized onions, cheese sauce, jalapeno, jalapeno sauce, deep fried tortilla bread",
+          "sizes": [
+            {
+              "size": "Regular Combo",
+              "price_egp": 298
+            },
+            {
+              "size": "MEGA_COMBO",
+              "price_egp": 434
+            }
+          ]
+        },
+        {
+          "name": "Nacho Pizza Burger Combo Sandwich",
+          "description": "Beef patty, pepperoni, mozzarella cheese, green peppers, onions, olives, pizza sauce, deep fried tortilla bread",
+          "sizes": [
+            {
+              "size": "Regular Combo",
+              "price_egp": 294
+            }
+          ]
+        },
+        {
+          "name": "Nacho Hickory BBQ Meal",
+          "description": "Beef patty, beef bacon, mozzarella, frizzled grilled onions, hickory BBQ sauce, Louisiana sauce, deep fried tortilla bread",
+          "sizes": [
+            {
+              "size": "Regular Combo",
+              "price_egp": 294
+            }
+          ]
+        },
+        {
+          "name": "Willy's Nacho Chicken Meal",
+          "description": "Grilled chicken breast, smoked turkey, caramelized onions, cheese sauce, chili beef, jalapenos, jalapenos sauce, deep fried tortilla bread",
+          "sizes": [
+            {
+              "size": "Regular Combo",
+              "price_egp": 302
+            },
+            {
+              "size": "MEGA_COMBO",
+              "price_egp": 426
+            }
+          ]
+        },
+        {
+          "name": "Buffalo Nacho Chicken Meal",
+          "description": "Buffalo coated fried chicken\nbreast, mozzarella, blue cheese sauce, deep fried tortilla bread",
+          "sizes": [
+            {
+              "size": "Regular Combo",
+              "price_egp": 298
+            }
+          ]
+        },
+        {
+          "name": "Double Nacho Chili Hot Dog Combo Sandwich",
+          "description": "2 hot dog, chili beef, cheese sauce, jalapeno, jalapeno sauce, deep fried tortilla bread",
+          "sizes": [
+            {
+              "size": "Regular Combo",
+              "price_egp": 268
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Nacho ",
+      "items": [
+        {
+          "name": "Willy's Nacho Burger",
+          "description": "Beef patty, beef bacon, chili beef, caramelized onions, cheese sauce, jalapeno, jalapeno sauce, deep fried tortilla bread",
+          "sizes": [
+            {
+              "size": "Mega",
+              "price_egp": 359
+            },
+            {
+              "size": "Regular",
+              "price_egp": 229
+            }
+          ]
+        },
+        {
+          "name": "Nacho Pizza Burger Sandwich",
+          "description": "Beef patty, pepperoni, mozzarella cheese, green peppers, onions, olives, pizza sauce, deep fried tortilla bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 219
+            }
+          ]
+        },
+        {
+          "name": "Nacho Hickory BBQ",
+          "description": "Beef patty, beef bacon, mozzarella, frizzled grilled onions, hickory BBQ sauce, Louisiana sauce, deep fried tortilla bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 219
+            }
+          ]
+        },
+        {
+          "name": "Willy's Nacho Chicken",
+          "description": "Grilled chicken breast, smoked turkey, caramelized\nonions, cheese sauce, chili\nbeef, jalapenos, jalapenos sauce, deep fried tortilla bread",
+          "sizes": [
+            {
+              "size": "Mega",
+              "price_egp": 357
+            },
+            {
+              "size": "Regular",
+              "price_egp": 227
+            }
+          ]
+        },
+        {
+          "name": "Buffalo Nacho Chicken",
+          "description": "Buffalo coated fried chicken\nbreast, mozzarella, blue cheese sauce,\ndeep fried tortilla bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 229
+            }
+          ]
+        },
+        {
+          "name": "Double Nacho Chili Hot Dog Sandwich",
+          "description": "2 hot dog, chili beef, cheese sauce, jalapeno, jalapeno sauce, deep fried tortilla bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 199
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "1/3 Kilo Jumbo Cheese Cup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 119
+            }
+          ]
+        },
+        {
+          "name": "1/3 Kilo Jumbo Chili Cup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 119
+            }
+          ]
+        },
+        {
+          "name": "1/3 Kilo Jumbo Real Tasty Cup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 109
+            }
+          ]
+        },
+        {
+          "name": "Jalapeno Fire Bites",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 49
+            }
+          ]
+        },
+        {
+          "name": "Willy's Chips",
+          "description": "Served with cheese dip and chili beef dip",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 99
+            }
+          ]
+        },
+        {
+          "name": "Willy's Chips Gang",
+          "description": "Served with cheese dip and chili beef dip",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 269
+            }
+          ]
+        },
+        {
+          "name": "Chicken Strips",
+          "description": "Served with original  sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Buffalo Chicken Strips",
+          "description": "Served with blue cheese sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 139
+            }
+          ]
+        },
+        {
+          "name": "Onion Rings BBQ",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 49
+            }
+          ]
+        },
+        {
+          "name": "Chili Cheese Fries",
+          "description": "Chili beef, cheese, jalapeno",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 99
+            }
+          ]
+        },
+        {
+          "name": "Friskies Fries",
+          "description": "Served with Thousand Island sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Cheesy Fries",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 79
+            }
+          ]
+        },
+        {
+          "name": "French Fries",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Curly Fries",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Waffle Fries Cheese",
+          "description": "Served with cheese cup",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 79
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sauces ",
+      "items": [
+        {
+          "name": "Big Willy's Sauce Cup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        },
+        {
+          "name": "Ranch Sauce Cup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        },
+        {
+          "name": "Thousand Island Sauce Cup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        },
+        {
+          "name": "Cheese Sauce Cup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 30
+            }
+          ]
+        },
+        {
+          "name": "Chili Beef Sauce Cup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 30
+            }
+          ]
+        },
+        {
+          "name": "Blue Cheese Sauce Cup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 30
+            }
+          ]
+        },
+        {
+          "name": "Garlic Mayo Sauce Cup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        },
+        {
+          "name": "BBQ Sauce Cup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        },
+        {
+          "name": "Jalapeno Sauce Cup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        },
+        {
+          "name": "Real Tasty Sauce",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        },
+        {
+          "name": "Buffalo Sauce",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        {
+          "name": "Nachos Twisted Puff (Marshmallow)",
+          "description": "Marshmallow with nutella wrapped in deep fried tortilla",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 119
+            }
+          ]
+        },
+        {
+          "name": "Nacho Twisted Puff (Banana)",
+          "description": "Bananas with nutella wrapped in deep fried tortilla",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 119
+            }
+          ]
+        },
+        {
+          "name": "Puff & Fly",
+          "description": "Choice of nacho toasted banana or marshmallow puff, served with Black bolt",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 139
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Willy's Cream Soda",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 28
+            }
+          ]
+        },
+        {
+          "name": "Willy's Premium Cola",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 28
+            }
+          ]
+        },
+        {
+          "name": "Mineral Water",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 15
+            }
+          ]
+        },
+        {
+          "name": "Original Red Bull",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Blue Passion",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 28
+            }
+          ]
+        },
+        {
+          "name": "Lemonade",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 28
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1909 @@
+{
+  "brand": "La Poire",
+  "source": "elmenus.com",
+  "source_label": "Menu source: elmenus.com (demo data, not affiliated)",
+  "restaurant_url": "https://elmenus.com/cairo/la-poire-y6ma",
+  "branch_code": "wl3z",
+  "fetched_at": "2026-10-31T12:38:37.305Z",
+  "categories": [
+    {
+      "name": "New Summer Menu",
+      "items": [
+        {
+          "name": "Tropicana Torte",
+          "description": "Soft vanilla sponge layered with fresh cream and fruity filling, covered with pineapple flambe on the sides and topped with fresh seasonal fruits",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 450
+            }
+          ]
+        },
+        {
+          "name": "Choco Crunch Cake",
+          "description": "Rich chocolate fudge layered with nutella cream and dark chocolate ganache, finished with crunchy chocolate feuilletine",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 600
+            }
+          ]
+        },
+        {
+          "name": "Le Misu",
+          "description": "Ladyfingers layered with blueberry filling, syrup, tiramisu cream, and lemon pastry cream, topped with fresh blueberries and lemon flambe",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 950
+            }
+          ]
+        },
+        {
+          "name": "Pina Colada Torte",
+          "description": "Vanilla sponge layered with pina colada cream and caramelized pineapple filling, finished with pineapple flambe",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 650
+            }
+          ]
+        },
+        {
+          "name": "Tiramisu Torte",
+          "description": "Chocolate fudge cake soaked with coffee syrup, layered with tiramisu cream and lady fingers, finished with cocoa powder",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 425
+            }
+          ]
+        },
+        {
+          "name": "Raspberry Mousse Gateaux",
+          "description": "Sable base layered with raspberry mousse cream, raspberry filling",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Lemon Mousse Gateaux",
+          "description": "Sable base layered with lemon panna cotta cream and fresh lemon pastry cream",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mango Lovers",
+      "items": [
+        {
+          "name": "Half Chocolate Half Mango Torte",
+          "description": "1/2 chocolate torte, chocolate sponge cake filled with chocolate cream,1/2 mango torte, vanilla sponge cake filled with fresh mango and fresh cream in filling and topping",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 625
+            }
+          ]
+        },
+        {
+          "name": "Four Seasons Mango Torte",
+          "description": "La poire offers you four kinds of tortes in just one torte, 1/4 caramel, 1/4 black forest, 1/4 mango and 1/4 chocolate",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 875
+            }
+          ]
+        },
+        {
+          "name": "La Poirette Mango Torte",
+          "description": "1/2 chocolate three layers of chocolate sponge cake filled with rich chocolate cream, half vanilla three layers of white sponge cake filled with La Poire's signature cream and decorated with mango pieces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 850
+            }
+          ]
+        },
+        {
+          "name": "Mango Baba Torte",
+          "description": "Baba cake filled with fresh cream and topped with fresh mango slices",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 950
+            }
+          ]
+        },
+        {
+          "name": "Mango Flambe Torte",
+          "description": "Vanilla sponge cake filled with mango cream, topped with fresh mango bites & meringue",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 725
+            }
+          ]
+        },
+        {
+          "name": "Mango Torte",
+          "description": "Vanilla sponge cake filled with mango cream and topped with fresh mango slices",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 850
+            }
+          ]
+        },
+        {
+          "name": "Amido Mango Torte",
+          "description": "Layers of white sponge cake stuffed with cream and mango serve from 10 to 12 person",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 750
+            }
+          ]
+        },
+        {
+          "name": "Mango Tres Leches Bowl",
+          "description": "Tres leches cake soaked in milk syrup, fresh cream, topped with mango pieces and meringue",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 690
+            }
+          ]
+        },
+        {
+          "name": "Trifle Mango Bowl",
+          "description": "A layer of vanilla swiss roll stuffed with mango jam with mango cream and fresh mango bites",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 850
+            }
+          ]
+        },
+        {
+          "name": "Mango Baba Gateaux",
+          "description": "Baba cake filled with fresh cream and topped with fresh mango slices",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 80
+            }
+          ]
+        },
+        {
+          "name": "Mango Tart",
+          "description": "Vanilla tartlet filled with white chocolate, mango cream and topped with fresh mango bites",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Tutti Mango Cup",
+          "description": "Vanilla swiss roll with mango cream & fresh mango bites",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Glazed Mango Torte",
+          "description": "Vanilla sponge layered with mango cream and fresh mango filling, finished with mango glaze and dried mango",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 450
+            }
+          ]
+        },
+        {
+          "name": "Mango Mousse Gateaux",
+          "description": "Sable base layered with vanilla sponge, mango mousse cream and mango filling",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Konafa with Mango & Chocolate Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 450
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Adha Items ",
+      "items": [
+        {
+          "name": "Sheep  Chocolate Carriage",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 950
+            }
+          ]
+        },
+        {
+          "name": "Sheep  Chocolate Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 950
+            }
+          ]
+        },
+        {
+          "name": "Eid Sheep Chocolate Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1250
+            }
+          ]
+        },
+        {
+          "name": "Large Adha Tray",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 3250
+            }
+          ]
+        },
+        {
+          "name": "Choco Sheep Cookie",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Golden Crescent Cookie",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Snowy Sheep Cookie",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Sheepish Chocolate Cupcake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Sheepish Vanilla Cupcake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Adha Chocolate Cupcake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Sheepish Sweetness Chocolate 1",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Sheepish Sweetness Chocolate  2",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 225
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Easter Products ",
+      "items": [
+        {
+          "name": "Easter Chocolate Egg",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Large Easter Bunny Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1000
+            }
+          ]
+        },
+        {
+          "name": "Large Easter Egg Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 900
+            }
+          ]
+        },
+        {
+          "name": "Mini Easter Egg Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 300
+            }
+          ]
+        },
+        {
+          "name": "Medium Easter Bunny Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 335
+            }
+          ]
+        },
+        {
+          "name": "Mini Easter Bunny Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Mini Easter Egg Chocolate Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Large Easter Egg Chocolate Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 200
+            }
+          ]
+        },
+        {
+          "name": "Easter Milk Chocolate Bar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 200
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Hazelnut Easter Brioche Pie",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 425
+            }
+          ]
+        },
+        {
+          "name": "Vanilla & Dried Fruits  Easter Brioche Pie",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 300
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kahk Boxes",
+      "items": [
+        {
+          "name": "Medium Assorted Petit Four Box",
+          "description": "Twix, chocolate sables, nutella tart, crunchy tart, jam sables",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 350
+            }
+          ]
+        },
+        {
+          "name": "Plain Kahk Pack with Sugar  7 pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Ajwa Kahk Pack with Sugar  7 pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Walnut & Malban Kahk Pack with Sugar 7 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Walnut Kahk Pack with Sugar 7 pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Petit Four Eid Chocolate Pack 9 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Petit Four Eid Assorted Pack 9 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Plain Kahk Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 495
+            }
+          ]
+        },
+        {
+          "name": "Kahk with Agwa Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 495
+            }
+          ]
+        },
+        {
+          "name": "Walnut & Malban Kahk Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 495
+            }
+          ]
+        },
+        {
+          "name": "Petit Four Eid Chocolate Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 625
+            }
+          ]
+        },
+        {
+          "name": "Petit Four Eid Vanilla Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 625
+            }
+          ]
+        },
+        {
+          "name": "Plain Ghorayeba",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 550
+            }
+          ]
+        },
+        {
+          "name": "Ghorayeba Pistachio",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 750
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 375
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Kahk Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 425
+            }
+          ]
+        },
+        {
+          "name": "Small Plain Kahk Shbak Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 285
+            }
+          ]
+        },
+        {
+          "name": "Large Plain Kahk Shbak Box",
+          "description": "Plain, dates, walnut & malban",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 575
+            }
+          ]
+        },
+        {
+          "name": "Mini Plain Kahk",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 495
+            }
+          ]
+        },
+        {
+          "name": "Mini Kahk with Cinnamon & Walnuts Saj Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 650
+            }
+          ]
+        },
+        {
+          "name": "Kahk with Agameya Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 495
+            }
+          ]
+        },
+        {
+          "name": "Kahk with Walnuts Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 675
+            }
+          ]
+        },
+        {
+          "name": "Kahk  with Pistachio",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 860
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Oriental Boxes ",
+      "items": [
+        {
+          "name": "Basbousa 4*1 Plate",
+          "description": "Basbousa with ghee, hazelnuts, almonds and cashews",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 600
+            }
+          ]
+        },
+        {
+          "name": "Hazelnut Basbousa Plate",
+          "description": "Basbousa with ghee and hazelnuts",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 550
+            }
+          ]
+        },
+        {
+          "name": "Original Oriental Box",
+          "description": "Mixed oriental sweetBasbousa 4*1s box konafa with nuts, nutella and hazelnut asawer, konafa fingers, baklava, dates konafa and basbousa",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 485
+            }
+          ]
+        },
+        {
+          "name": "Konafa with Cream Plate",
+          "description": "Konafa with cream and pistachios",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 465
+            },
+            {
+              "size": "1 Kilo",
+              "price_egp": 300
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 150
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Imperial Oriental Box",
+          "description": "Baklava, konafa borma with pistachio, konafa lux (almonds and cashews), baklava kol w oshkor, chocolate baklava fingers, konafa with nuts, yabrak, nutella asawer konafa, baklava fingers, dates konafa",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1900
+            }
+          ]
+        },
+        {
+          "name": "Elite Oriental  Box",
+          "description": "Plain konafa fingers, nutella asawer, baklava, konafa lux (almonds and cashews), konafa borma with pistachio, yabrak, konafa with nuts, baklava kol w oshkor and basbousa",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 800
+            }
+          ]
+        },
+        {
+          "name": "Assorted Oriental Box (Low Sugar)",
+          "description": "Light delight oriental box (low sugar) low sugar Aish El ghurab baklava, hazelnut asawer kunafa low sugar, low sugar baklava fingers , almond asawer kunafa low sugar,  low sugar yabrak, low sugar baklava kol woshkor",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 550
+            }
+          ]
+        },
+        {
+          "name": "Mini Oriental Box",
+          "description": "A delightful assortment featuring 2 kunafa fingers, 2 pieces of kol w ashkor baklava, 1 nutella kunafa bracelet, 1 basbousa, 1 baklava nest, 1 yabrek baklava bracelet, and 1 mixed nuts baklava",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Mini Plain Basboussa",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 155
+            }
+          ]
+        },
+        {
+          "name": "Mini Baklawa Nuts",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 250
+            }
+          ]
+        },
+        {
+          "name": "Mini Plain Eish El Saraya",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Mini Baklava Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Mini Basbousa Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Plain Eish Saraya Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 220
+            }
+          ]
+        },
+        {
+          "name": "Plain Basbousa Plate",
+          "description": "Basbousa with baladi ghee",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 295
+            }
+          ]
+        },
+        {
+          "name": "Mixed Oriental Sweets Box (Small)",
+          "description": "Basbousa, baklava, konafa fingers, nutella asawer",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 300
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Boxes",
+      "items": [
+        {
+          "name": "Mini Pan Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 750
+            },
+            {
+              "size": "Small",
+              "price_egp": 475
+            }
+          ]
+        },
+        {
+          "name": "Mini Club Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 750
+            },
+            {
+              "size": "Small",
+              "price_egp": 475
+            }
+          ]
+        },
+        {
+          "name": "Mixed Salizon Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 700
+            },
+            {
+              "size": "Small",
+              "price_egp": 375
+            }
+          ]
+        },
+        {
+          "name": "Mini Donuts Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Small",
+              "price_egp": 325
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Gateaux ",
+      "items": [
+        {
+          "name": "Special Gateaux Soiree",
+          "description": "Pistachio kunafa, lotus nutella, choux nutella, chocolate ball, fruit tart",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 350
+            },
+            {
+              "size": "Regular",
+              "price_egp": 650
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Boules",
+      "items": [
+        {
+          "name": "Crunchoco Boule",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 685
+            }
+          ]
+        },
+        {
+          "name": "Creme Brulee with Sweet Potatoes Boule",
+          "description": "A layer of potatoe puree and creme brulee with caramelized sugar",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 675
+            }
+          ]
+        },
+        {
+          "name": "Flambe Tres Leches Boule",
+          "description": "Vanilla tree lychee cake, milk sherbet made of (condensed milk, fresh milk,\ndecoration from the outside: maring (flambe)",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 575
+            }
+          ]
+        },
+        {
+          "name": "Plain Om Ali",
+          "description": "Layers of millefeuille dipped in milk, stuffed with raisins and covered with cream.",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 550
+            },
+            {
+              "size": "Medium",
+              "price_egp": 550
+            }
+          ]
+        },
+        {
+          "name": "Om Ali  with Nuts",
+          "description": "Layers of millefeuille quenched with milk, covered with cream and sprinkled with crushed almonds.",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 775
+            },
+            {
+              "size": "Medium",
+              "price_egp": 675
+            }
+          ]
+        },
+        {
+          "name": "Tiramisu Bowl",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 325
+            }
+          ]
+        },
+        {
+          "name": "Rice Pudding with Caramel Toffee Boule",
+          "description": "Rice pudding bowl with a vanilla sponge layer and cream, topped with caramel toffee and caramelized hazelnut",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 530
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chocolate Box",
+      "items": [
+        {
+          "name": "Choco Fun Box",
+          "description": "Digestive biscuit covered with chocolate stuffed with salted caramel",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 500
+            }
+          ]
+        },
+        {
+          "name": "Kunafa Pistachio Majdol Dates Box",
+          "description": "It consists of medjool dates stuffed with pistachio kunafa, a box of 9 pieces",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 1000
+            },
+            {
+              "size": "Regular",
+              "price_egp": 550
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Delicacies Box",
+          "description": "Mastic, dark chocolate ganache, brittle, pistachio, almond croquant, gianduja, nutella dark chocolate, halawa shaar, coffee, caramel, runny caramel, toffee, coconut",
+          "sizes": [
+            {
+              "size": "15 Pieces",
+              "price_egp": 495
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Bites Box",
+          "description": "21 pieces:milk chocolate kunafa pistachio, bueno kunafa chocolate, dark chocolate kunafa pistachio, cinnamon biscuit spread kunafa chocolate, halawat shaer chocolate, salted caramel filled chocolate bites, digestive filled chocolate bites",
+          "sizes": [
+            {
+              "size": "21 Pieces",
+              "price_egp": 1100
+            }
+          ]
+        },
+        {
+          "name": "Special Chocolate Box 1 KG",
+          "description": "31 pieces, feuilletine, plain chocolate, hazelnuts & raisins, salted caramel",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1895
+            }
+          ]
+        },
+        {
+          "name": "Large Chocolate Delicacies Box",
+          "description": "60 pieces of mastic",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1895
+            }
+          ]
+        },
+        {
+          "name": "Small Chocolate Delicacies Box",
+          "description": "30 pieces of mastic",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 850
+            }
+          ]
+        },
+        {
+          "name": "Special Large Chocolate Box",
+          "description": "Hazelnuts & raisins, lotus, salted caramel, milk chocolate, feuilletine, praline & feuilletine, pistachio praline",
+          "sizes": [
+            {
+              "size": "1_KILO_AND_HALF",
+              "price_egp": 2495
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Dates Box",
+          "description": "The finest dates stuffed with almonds and covered with a layer of Belgian chocolate and crispy 800g",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 900
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Box 31 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1195
+            }
+          ]
+        },
+        {
+          "name": "Premium Chocolate Dates Box",
+          "description": "The finest dates with luxurious chocolate in different flavors: caramel, peanut butter, dried fruits, lotus, almonds, walnuts, nutella, pistachios, and maltesers",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1100
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Delicacy Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1865
+            }
+          ]
+        },
+        {
+          "name": "Stuffed Chocolate Bites Box",
+          "description": "21 pieces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1200
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Delicacy Summer Edition",
+          "description": "3 lemon filling, 3 raspberry yogurt filling, 3 passion fruit filling, 4 honeycomb filling, 3 raspberry filling, 4 creamy cherry cheese filling, 4 mixed berry filling, 3 pineapple filling, 3 matcha filling",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 935
+            }
+          ]
+        },
+        {
+          "name": "Jumbo Chocolate Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "75 pieces ",
+              "price_egp": 2200
+            }
+          ]
+        },
+        {
+          "name": "Special Medium Chocolate Box",
+          "description": "Hazelnuts & raisins, lotus, salted caramel, milk chocolate, feuilletine, praline & feuilletine",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 2085
+            }
+          ]
+        },
+        {
+          "name": "Delicate Chocolate Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "30_PIECES",
+              "price_egp": 900
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chocolate Bar",
+      "items": [
+        {
+          "name": "Milk Chocolate Bar Sugar Free",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 295
+            }
+          ]
+        },
+        {
+          "name": "Hazelnut Milk Chocolate Bar Sugar Free",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 335
+            }
+          ]
+        },
+        {
+          "name": "Dark Chocolate Bar Sugar Free",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 325
+            }
+          ]
+        },
+        {
+          "name": "Almond Dark Chocolate Bar Sugar Free",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 345
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Can Cakes",
+      "items": [
+        {
+          "name": "Krunchoko Can",
+          "description": "Bowl consists of a fudge layer, chocolate mix, pastry cream, a crispy chocolate cocoa layer",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Profiterole Can",
+          "description": "Chocolate sauce with pieces of choux stuffed with cream and topped with grated chocolate",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Caramel Mousse Can",
+          "description": "White fluffly sponge cake with a layer of caramel mousse, caramelized walnuts, covered with caramel glaze",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Dubai Chocolate",
+          "description": "Layers of chocolate fudge sponge stuffed with nutella cream, the famous trendy pistachio praline, kunafa topped with nutella chocolate",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Biscuits ",
+      "items": [
+        {
+          "name": "Plain Tea Biscuit Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 600
+            }
+          ]
+        },
+        {
+          "name": "Tea Biscuit Box 500gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 325
+            }
+          ]
+        },
+        {
+          "name": "Mix Tea Biscuit Box 500gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 350
+            }
+          ]
+        },
+        {
+          "name": "VanillaTea Biscuit Box 125gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Coffee",
+      "items": [
+        {
+          "name": "Dark Blended Coffee",
+          "description": "The finest types of freshly ground coffee special blend with cardamom",
+          "sizes": [
+            {
+              "size": "200gm",
+              "price_egp": 345
+            }
+          ]
+        },
+        {
+          "name": "Dark Plain Coffee",
+          "description": "The finest freshly ground coffee plain dark blend",
+          "sizes": [
+            {
+              "size": "200gm",
+              "price_egp": 300
+            }
+          ]
+        },
+        {
+          "name": "Light Plain Coffee",
+          "description": "The finest freshly ground coffee plain light blend",
+          "sizes": [
+            {
+              "size": "200gm",
+              "price_egp": 300
+            }
+          ]
+        },
+        {
+          "name": "Medium Blended Coffee",
+          "description": "The finest types of freshly ground coffee special blend with cardamom",
+          "sizes": [
+            {
+              "size": "200gm",
+              "price_egp": 345
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tortes",
+      "items": [
+        {
+          "name": "White Chocolate Torte",
+          "description": "Vanilla sponge cake filled with white forest cream, topped with grated white chocolate and meringue",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 475
+            }
+          ]
+        },
+        {
+          "name": "Amido Chocolate Torte",
+          "description": "2 layers of chocolate fudge cake, filled with Nutella cream, chocolate and crispy, topped with special cream from La Poire decorated with chocolate glaze and crispy",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 725
+            }
+          ]
+        },
+        {
+          "name": "Baba Fruits Torte",
+          "description": "Baba dough filled with fresh cream, fruits, topped with peach and pineapple",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 900
+            }
+          ]
+        },
+        {
+          "name": "Sugar Mille Feuille Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 795
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Mille Feuilles Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 795
+            }
+          ]
+        },
+        {
+          "name": "Mini Caramel Mousse Torte",
+          "description": "Two layers of white sponge cake with caramel mousse and crushed caramelized walnuts with caramel glaze",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 650
+            }
+          ]
+        },
+        {
+          "name": "Molten Cake Torte",
+          "description": "Layers of white sponge stuffed with Nutella and caramel cream with the inside molten chocolate fondue topped with fudge chocolate and almond croquant",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 625
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Caramel Torte",
+          "description": "Fudge stuffed with nutella cream, chocolate pieces, cream caramel, caramelized hazelnut, chocolate ganache, nutella, maltesers chocolate, white crispy, hazelnut",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 750
+            }
+          ]
+        },
+        {
+          "name": "Fudge Maltesers Torte",
+          "description": "Fudge cake filled with the delicious nutella cream, covered with chocolate glaze, decorated with maltesers",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 825
+            }
+          ]
+        },
+        {
+          "name": "Lemon Tart",
+          "description": "Vanilla tartlet filled with white chocolate and lemon cream, topped with meringue flambe",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 575
+            }
+          ]
+        },
+        {
+          "name": "Potato with Cream Burlee Bram",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 675
+            }
+          ]
+        },
+        {
+          "name": "20*30 Fruits Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1650
+            }
+          ]
+        },
+        {
+          "name": "Rainbow Cake",
+          "description": "Layers of colorful sponge cake stuffed with La Poire's delicious cream",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 725
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cakes",
+      "items": [
+        {
+          "name": "Almond Cake",
+          "description": "English cake with almond and apricot jam, topped with powdered sugar and crushed almond",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 300
+            }
+          ]
+        },
+        {
+          "name": "Date Cake with Cinnamon",
+          "description": "English cake with date and cinnamon",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 275
+            }
+          ]
+        },
+        {
+          "name": "Marble Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 250
+            }
+          ]
+        },
+        {
+          "name": "Panda Cake",
+          "description": "Layers of cocoa digestive biscuit, pudding, fresh cream, and chocolate ganache",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Summer Products C",
+      "items": [
+        {
+          "name": "Mini La Poirette Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 450
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Fudge with Nutella Torte",
+          "description": "Layers of chocolate fudge cake with nutella cream garnished with maltesers",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 825
+            }
+          ]
+        },
+        {
+          "name": "Mille Feuille 4x1 Torte",
+          "description": "Four kinds of mille feuille: jam, chocolate, caramel and sugar",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 795
+            }
+          ]
+        },
+        {
+          "name": "Jam Mille Feuille without Cream Torte",
+          "description": "Classic mille feuille torte with jam",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 695
+            }
+          ]
+        },
+        {
+          "name": "Profiterole Bowl",
+          "description": "Profiterole with caramelized show stuffed with pastry cream",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 450
+            }
+          ]
+        },
+        {
+          "name": "1/2 Chocolate & 1/2 Fruit Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 625
+            }
+          ]
+        },
+        {
+          "name": "Lotus Torte",
+          "description": "White sponge cake, lotus butter cream, lotus, lotus biscuits and maltesers",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 395
+            }
+          ]
+        },
+        {
+          "name": "Raspberry Cheesecake",
+          "description": "Layer of crushed biscuits with butter topped with a layer of cream cheese and raspberries",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 780
+            }
+          ]
+        },
+        {
+          "name": "1/2 Strawberry & 1/2 Chocolate Torte",
+          "description": "The strawberry half consists of white sponge cake, cream, strawberry and the chocolate half consists of chocolate sponge cake, chocolate cream",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 485
+            }
+          ]
+        },
+        {
+          "name": "Maltesers Chocolate Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 350
+            }
+          ]
+        },
+        {
+          "name": "80*60 Half and Half Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 4500
+            }
+          ]
+        },
+        {
+          "name": "Arlequin Tart",
+          "description": "Pistachio dough covered with chocolate and crushed pistachio, topped with caramelized almonds",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 400
+            }
+          ]
+        },
+        {
+          "name": "20*30 Chocolate Torte",
+          "description": "Layers of chocolate sponge cake with layers of rich chocolate cream covered with chocolate glaze and crispy",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1195
+            }
+          ]
+        },
+        {
+          "name": "Half & Half 40*60 Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 2500
+            }
+          ]
+        },
+        {
+          "name": "Half & Half 20*30 Inside Out Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 800
+            }
+          ]
+        },
+        {
+          "name": "Half & Half 30*40 Inside Out Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1300
+            }
+          ]
+        },
+        {
+          "name": "Half & Half 40*60 Inside Out Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 2200
+            }
+          ]
+        },
+        {
+          "name": "Half & Half 30*40 Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1500
+            }
+          ]
+        },
+        {
+          "name": "Half & Half Round Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 2600
+            }
+          ]
+        },
+        {
+          "name": "Rainbow 40*60 Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 3000
+            }
+          ]
+        },
+        {
+          "name": "Cherry White Chocolate Torte",
+          "description": "Vanilla fudge cake filled with cherry cream and bites, decorated with white chocolate and fresh cherry bites, enough for 8 persons",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 475
+            }
+          ]
+        },
+        {
+          "name": "Hazelnut Choco Caramel Torte",
+          "description": "Fudge cake filled with nutella cream, chocolate, caramel cream and caramelized hazelnut, decorated with hazelnut, nutella, maltesers chocolate and white crisps",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 395
+            }
+          ]
+        },
+        {
+          "name": "60*40 Chocolate Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 3000
+            }
+          ]
+        },
+        {
+          "name": "60*40 2 Halves Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 3200
+            }
+          ]
+        },
+        {
+          "name": "Round 2 Halves Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 3300
+            }
+          ]
+        },
+        {
+          "name": "40*30 Fruits Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 2000
+            }
+          ]
+        },
+        {
+          "name": "60*40 Fruits Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 2800
+            }
+          ]
+        },
+        {
+          "name": "Round Chocolate Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1700
+            }
+          ]
+        },
+        {
+          "name": "Round Rainbow Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1700
+            }
+          ]
+        },
+        {
+          "name": "Sugar Mille Feuilles Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 450
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Mille Feuilles Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 425
+            }
+          ]
+        },
+        {
+          "name": "Fruits  Mille Feuilles Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 550
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

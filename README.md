@@ -117,13 +117,13 @@ pnpm build       # production build
 
 Everything in this repository was written during the hackathon (Oct 26 – Nov 4, 2026), starting from an empty `create-next-app` scaffold. No prior code, data or assets were reused. The git history is the record.
 
-- Video pipeline (scripts/run-unit.ts): keyframes -> specs -> bilingual listing -> AI empty -> 3 fit renders (startup/clinic/training) on 3 real units. SAM 3.1 dropped (no callable endpoint; prompt-guided edits passed) — future consideration.
+- Video pipeline (originally scripts/run-unit.ts, now the QStash pipeline in lib/pipeline/jobs.ts): keyframes -> specs -> bilingual listing -> AI empty -> 3 fit renders (startup/clinic/training) on 3 real units. SAM 3.1 dropped (no callable endpoint; prompt-guided edits passed) — future consideration.
 - 3-track catalog: furnished=daily+monthly (800 EGP/day demo), semifinished=long-term only.
 - Booking: daily day-slots (hourly underneath), atomic double-book protection, Egyptian-Arabic chat agent with cafe add-ons.
 - Option A add-ons: curated cafe menu (public Elmenus prices), order sent to the cafe WhatsApp line (CAFE_WHATSAPP_NUMBER).
 - Payments (test mode): hosted checkout + signature-verified webhook; booking confirms only on webhook. Set the payment keys in .env.local (see .env.example).
 - Live payment run verified 2026-10-29: approved test card auto-confirmed a booking via webhook, declined card stayed unconfirmed; judge instructions + test card in [Testing (for judges)](#testing-for-judges).
 - Built with Muse models and Claude, about 50/50: `muse-wonder-1.0` planning, `muse-spark-1.3-contributor` implementors/testers/reviewers on synthetic data only, Claude models alongside; `muse-spark-1.3` + `muse-image-1.0` in the product. See [How it was built](#how-it-was-built-muse-models-and-claude).
-- Run: pnpm dev (or pnpm build && pnpm start). Data: Neon Postgres (DATABASE_URL_POOLED for app, DATABASE_URL direct for migrations; pnpm migrate && pnpm seed on a new project).
-- Media on Vercel Blob: demo assets via `pnpm upload-demo`, browser-direct uploads via `/api/blob/upload`, listing photos served from the `media` table (Blob URLs only).
-- Homepage: decorative muse-image-1.0 paper-collage illustrations (`pnpm generate-home-art`, in `public/home/`, always labelled decorative) kept separate from real listing photos.
+- Run: pnpm dev (or pnpm build && pnpm start). Data: Neon Postgres (DATABASE_URL_POOLED for app, DATABASE_URL direct for migrations; `pnpm migrate` on a new project; demo units are generated/re-modelled with `pnpm generate-units` / `pnpm remodel-filmed`, then `pnpm stage-units`, `pnpm backfill-locations` and `pnpm import-brand-menus`).
+- Media on Vercel Blob: demo frames and renders written by the generation scripts, browser-direct uploads via `/api/blob/upload`, listing photos served from the `media` table (Blob URLs only).
+- Homepage: decorative muse-image-1.0 paper-collage illustrations (generated once by a since-removed one-off script, in `public/home/`, always labelled decorative) kept separate from real listing photos.

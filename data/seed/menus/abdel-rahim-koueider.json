@@ -1,0 +1,3116 @@
+{
+  "brand": "Abdel Rahim Koueider",
+  "source": "elmenus.com",
+  "source_label": "Menu source: elmenus.com (demo data, not affiliated)",
+  "restaurant_url": "https://elmenus.com/cairo/abdel-rahim-koueider-yx26",
+  "branch_code": "2rqv",
+  "fetched_at": "2026-10-31T12:38:37.312Z",
+  "categories": [
+    {
+      "name": "Yamesh Ramadan",
+      "items": [
+        {
+          "name": "Small Yamish Ramadan Box",
+          "description": "A box of semi-dried dates, a box of jumbo apricots, a box of pitted qarasiya, a box of soft coconut, a box of raisins, 1 premium qamar el din, a box of raw peeled almonds, a box of raw peeled walnuts, a jar of honey, a bag of chocolate dates, a bag of date jam",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1650
+            }
+          ]
+        },
+        {
+          "name": "Medium Yamish Ramadan Box",
+          "description": "1 box of semi-dried dates, 2 boxes of jumbo apricots, 2 boxes of pitted prunes, 1 box of soft coconut, 2 boxes of raisins, 1 premium Qamar al-Din, 1 box of raw peeled hazelnuts, 1 box of raw peeled almonds, 1 box of raw peeled walnuts, 1 box of roasted cashews, 1 jar of plain honey, 1 bag of date chocolates, 1 bag of almond date chocolates, 1 bag of almond nougat, 1 box of date maamoul, 1 bag of 6 nut bars (pretzel, raisin, coconut), 1 jar of honey, 1 box of chocolate biscuits",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 3000
+            }
+          ]
+        },
+        {
+          "name": "Large Yamish Ramadan Box",
+          "description": "1 box of semi-dried dates, 1 box of jumbo apricots, 2 boxes of prunes, 1 box of soft coconut, 2 boxes of raisins, 2 boxes of premium apricot paste, 2 boxes of raw shelled hazelnuts, 2 boxes of raw shelled almonds, 2 boxes of raw shelled walnuts, 1 box of roasted cashews, 1 box of roasted pistachios, 1 bag of date chocolates, 1 bag of almond date chocolates, 2 bags of almond nougat, 1 bag of date maamoul, 1 box of fakhours, 1 bag of 6 net bars (pretzel, raisin, coconut), 1 jar of honey, 1 jar of honey syrup, 1 date-filled pastry, 1 box of braided dates, 1 box of date biscuits, 1 box of chocolate biscuits, 1 box of vanilla cookies",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 4700
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kahk  ",
+      "items": [
+        {
+          "name": "Plain Kahk Box 24 Pc",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 240
+            }
+          ]
+        },
+        {
+          "name": "Malban Kahk Box 24 Pc",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 240
+            }
+          ]
+        },
+        {
+          "name": "Ajwa Kahk Box 24 Pc",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 240
+            }
+          ]
+        },
+        {
+          "name": "Walnut Kahk Box 24 Pc",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 300
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Kahk Box 24 Pc",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 440
+            }
+          ]
+        },
+        {
+          "name": "Plain Ghorayeba Box 36 Pc",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 220
+            }
+          ]
+        },
+        {
+          "name": "Nashader Biscuit Box 36 Pc",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 220
+            }
+          ]
+        },
+        {
+          "name": "Orange Biscuits Box 36 pc",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 220
+            }
+          ]
+        },
+        {
+          "name": "Nashader Biscuits with Chocolate Box 24 pc",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "Date Maamoul Box 12 pc",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Ajwa Biscuit Box 24 pc",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Small Mix Kahk Box 42 Pc",
+          "description": "8 pieces of plain kahk, 6 pieces of plain ghorayeba, 6 pieces of chocolate sable noqta, 6 pieces of chocolate sable, 6 pieces of nashader biscuits, 6 pieces of orange biscuits, 4 pieces of chocolate and vanilla biscuits",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 260
+            }
+          ]
+        },
+        {
+          "name": "Medium Mix Kahk Box 56 Pc",
+          "description": "8 pieces of plain kahk, 6 pieces of plain ghorayeba, 6 pieces of chocolate sable, 6 pieces of nashader biscuits, 6 pieces of nashader biscuits with chocolate, 6 pieces of orange biscuits, 7 pieces of white petit four with nuts, 7 pieces of chocolate petit four with nuts, 4 pieces of chocolate and vanilla biscuits",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 375
+            }
+          ]
+        },
+        {
+          "name": "Mix Kahk Box 1 Kilo",
+          "description": "8 pieces of plain kahk, 4 pieces of malban kahk, 6 pieces of plain ghorayeba, 6 pieces of chocolate sable noqta, 6 pieces of apricot jam sable, 6 pieces of chocolate saple, 6 pieces of nashader biscuits, 6 pieces of nashader biscuits with chocolate, 6 pieces of orange biscuits, 7 pieces of white petit four with nuts, 7 pieces of chocolate petit four with nuts, 4 pieces of chocolate and vanilla biscuits",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 475
+            }
+          ]
+        },
+        {
+          "name": "Mix Kahk Box 1.5 Kilo",
+          "description": "12 pieces of plain kahk, 8 pieces of malban kahk, 12 pieces of plain ghorayeba, 6 pieces of chocolate sable noqta, 6 pieces of raspberry jam sable, 6 pieces of apricot jam sable, 6 pieces of chocolate sable, 18 pieces of nashader biscuits, 6 pieces of nashader biscuits with chocolate, 6 pieces of orange biscuits, 7 pieces of white petit four with nuts, 7 pieces of chocolate petit four with nuts, 4 pieces of chocolate and vanilla biscuits",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 675
+            }
+          ]
+        },
+        {
+          "name": "Mix Kahk Box 2 Kilo",
+          "description": "16 pieces of plain kahk, 8 pieces of malban kahk, 4 pieces of walnut kahk, 12 pieces of pistachio ghorayeba, 6 pieces of plain ghorayeba, 6 pieces of raspberry jam sable, 6 pieces of apricot jam sable, 12 pieces of chocolate sable noqta, 12 pieces of chocolate sable, 24 pieces of nashader biscuits, 6 pieces of nashader biscuits with chocolate, 6 pieces of orange biscuits, 7 pieces of white petit four with nut, 7 pieces of chocolate nuts petit four, 4 pieces of chocolate and vanilla biscuits, 4 pieces of date maamoul",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 875
+            }
+          ]
+        },
+        {
+          "name": "Mix Kahk Box 4 Kilo",
+          "description": "24 pieces of plain kahk, 16 pieces of malban kahk, 8 pieces of walnut kahk, 8 pieces of pistachio kahk, 12 pieces of plain ghorayeba, 18 pieces of pistachio ghorayeba, 12 pieces of raspberry jam sable, 12 pieces of apricot jam sable, 18 pieces of chocolate sable, 12 pieces of chocolate sable noqta, 24 pieces of nashader biscuits, 18 pieces of nashader biscuits with chocolate, 18 pieces of orange biscuits, 21 pieces of white petit four with nuts, 21 pieces of chocolate nuts petit four, 12 pieces of chocolate and vanilla biscuits, 12 pieces of date maamoul",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 2000
+            }
+          ]
+        },
+        {
+          "name": "Mix Petit Four with Nuts Box 42 Pc",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 250
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Signature Line",
+      "items": [
+        {
+          "name": "Salted Pretzel and Almond Nut Bar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Coconut and Almond Nut Bar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Red Raisin and Almond Nut Bar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Cookies",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Chocolate with Dates",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Chocolate and Almond Dates",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 145
+            }
+          ]
+        },
+        {
+          "name": "Al Fahors",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 125
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Basbousa & Konafa",
+      "items": [
+        {
+          "name": "Plain Basbousa",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 300
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 150
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Nutella Asawer Konafa",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 600
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 300
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Konafa with Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 400
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 200
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Konafa with Nuts",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 600
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 300
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Basma Konafa with Cheese",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 600
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 300
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Hazelnut Borma Konafa",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 1200
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 600
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 300
+            }
+          ]
+        },
+        {
+          "name": "Basbousa with Hazelnut Tray",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 485
+            }
+          ]
+        },
+        {
+          "name": "Plain Basbousa Tray",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 340
+            }
+          ]
+        },
+        {
+          "name": "Basbousa with Qeshta",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 430
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 215
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 107.5
+            }
+          ]
+        },
+        {
+          "name": "Basbousa with Hazelnut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 440
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 220
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Haresa El Basha with Pistachio",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 485
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 330
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 121.25
+            }
+          ]
+        },
+        {
+          "name": "Plain Konafa",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 260
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 130
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Othmanlia Konafa",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 440
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 220
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Konafa with Cream Tray",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 460
+            }
+          ]
+        },
+        {
+          "name": "Konafa with Nuts Tray",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 550
+            }
+          ]
+        },
+        {
+          "name": "Othmanlia Konafa Tray",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 475
+            }
+          ]
+        },
+        {
+          "name": "Basma Kunafa with Cheese Tray  Size 1",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 750
+            },
+            {
+              "size": "Regular",
+              "price_egp": 715
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 375
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 187.5
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Borma Konafa",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 1800
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 900
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 450
+            }
+          ]
+        },
+        {
+          "name": "Basma Honey",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 15
+            }
+          ]
+        },
+        {
+          "name": "Red Belloria Konafa",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 1200
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 600
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 300
+            }
+          ]
+        },
+        {
+          "name": "Eish El Asfour",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 1050
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 525
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 262.5
+            }
+          ]
+        },
+        {
+          "name": "Meshalela with Cheese",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 420
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 210
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Eish",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 1045
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 522.5
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 261.25
+            }
+          ]
+        },
+        {
+          "name": "Basma Konafa with Cheese Size 2",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 825
+            }
+          ]
+        },
+        {
+          "name": "Meshalela Konafa with Cheese Tray 1",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 530
+            }
+          ]
+        },
+        {
+          "name": "Meshalela Konafa with Cheese Tray 2",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 750
+            }
+          ]
+        },
+        {
+          "name": "Meshalela Konafa with Cheese Tray 3",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 860
+            }
+          ]
+        },
+        {
+          "name": "White Belloria Konafa",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 1200
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 600
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 300
+            }
+          ]
+        },
+        {
+          "name": "Plain Panorama Basbousa Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 385
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 192.5
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 96.25
+            }
+          ]
+        },
+        {
+          "name": "Panorama hazelnut basbousa box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 440
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 220
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 110
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Baklava",
+      "items": [
+        {
+          "name": "Namora Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 400
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 200
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Namora Cream Tray",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 540
+            }
+          ]
+        },
+        {
+          "name": "Hazelnut Baklava Tray",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 750
+            }
+          ]
+        },
+        {
+          "name": "Baklava Kol w Ashkor",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 600
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 300
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Baklava Esh El Bolbol",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 600
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 300
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Baklava Sticks",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 700
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 350
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Arabesk Baklava",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 420
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 210
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Turkish Baklava with Pistachio",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 1000
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 500
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 250
+            }
+          ]
+        },
+        {
+          "name": "Turkish Baklava Sticks with Pistachio",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 2600
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 1300
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 650
+            }
+          ]
+        },
+        {
+          "name": "Ayon Safia Baklava",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 780
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 390
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 195
+            }
+          ]
+        },
+        {
+          "name": "Baklava Hazelnut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 660
+            },
+            {
+              "size": "Order",
+              "price_egp": 35
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 330
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Plain Baklava",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 490
+            },
+            {
+              "size": "Order",
+              "price_egp": 30
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 245
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 122.5
+            }
+          ]
+        },
+        {
+          "name": "Sakina Pistachio Baklava",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 1940
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 970
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 485
+            }
+          ]
+        },
+        {
+          "name": "A'yon El Sultan Baklava",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 460
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 230
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "Cream Warbat",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 520
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 260
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Warbat El Basha",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 330
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 165
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 82.5
+            }
+          ]
+        },
+        {
+          "name": "Baklava with Coconut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 380
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 190
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 95
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Oriental Desserts",
+      "items": [
+        {
+          "name": "Baladi Qeshta",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 450
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 225
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 113
+            }
+          ]
+        },
+        {
+          "name": "Maamoul Mad with Qeshta",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 625
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 312.5
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 156.25
+            }
+          ]
+        },
+        {
+          "name": "Balah El Sham",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 400
+            },
+            {
+              "size": "Large",
+              "price_egp": 100
+            },
+            {
+              "size": "Order",
+              "price_egp": 25
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 200
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Loqmet El Qady",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 260
+            },
+            {
+              "size": "Order",
+              "price_egp": 25
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 130
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Swabe' Zeinab",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 320
+            },
+            {
+              "size": "Order",
+              "price_egp": 25
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 160
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 80
+            }
+          ]
+        },
+        {
+          "name": "Plain Eish El Saraya",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 265
+            }
+          ]
+        },
+        {
+          "name": "Honey Bee",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Majdool Dates",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 330
+            }
+          ]
+        },
+        {
+          "name": "Eish El Saraya Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 265
+            }
+          ]
+        },
+        {
+          "name": "Malban with Qeshta",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 350
+            },
+            {
+              "size": "Order",
+              "price_egp": 35
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 175
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 87.5
+            }
+          ]
+        },
+        {
+          "name": "Ein El Set",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 360
+            },
+            {
+              "size": "Order",
+              "price_egp": 35
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 180
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Halawa El Jebn",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 380
+            },
+            {
+              "size": "Order",
+              "price_egp": 35
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 190
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Rawany",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 250
+            },
+            {
+              "size": "Order",
+              "price_egp": 25
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 125
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 62.5
+            }
+          ]
+        },
+        {
+          "name": "Large Balah El Sham with Qeshta",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 485
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 242.5
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 121.25
+            }
+          ]
+        },
+        {
+          "name": "Eish El Saraya with Cream & Pistachio",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 495
+            },
+            {
+              "size": "Regular",
+              "price_egp": 545
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 247.5
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 123.75
+            }
+          ]
+        },
+        {
+          "name": "Balah El Sham with Qeshta",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 450
+            },
+            {
+              "size": "Large",
+              "price_egp": 40
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 225
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 112.5
+            }
+          ]
+        },
+        {
+          "name": "Swiss Roll Hazelnut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "MOLD",
+              "price_egp": 200
+            },
+            {
+              "size": "Order",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Honey Halawat Al-Jibn",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 15
+            }
+          ]
+        },
+        {
+          "name": "Al Fakhouris",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Box",
+              "price_egp": 130
+            },
+            {
+              "size": "1 Piece",
+              "price_egp": 13
+            },
+            {
+              "size": "BAG_.",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Peanut Nougat",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Box",
+              "price_egp": 45
+            },
+            {
+              "size": "Kilo",
+              "price_egp": 200
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 100
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Nougat",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 500
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 250
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "Almond Nougat",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Box",
+              "price_egp": 95
+            },
+            {
+              "size": "Kilo",
+              "price_egp": 400
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 200
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Peanut Malban",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Box",
+              "price_egp": 60
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Oriental Desserts Boxes",
+      "items": [
+        {
+          "name": "Small Oriental Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 695
+            }
+          ]
+        },
+        {
+          "name": "Lux Oriental Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1090
+            }
+          ]
+        },
+        {
+          "name": "Halabi Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 1600
+            },
+            {
+              "size": "Small",
+              "price_egp": 1200
+            }
+          ]
+        },
+        {
+          "name": "Oriental El Sultan Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 485
+            }
+          ]
+        },
+        {
+          "name": "Oriental Metal Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 330
+            }
+          ]
+        },
+        {
+          "name": "Oriental Moov Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 600
+            }
+          ]
+        },
+        {
+          "name": "Oriental Cashew with Honey Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 525
+            }
+          ]
+        },
+        {
+          "name": "Large Oriental Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 880
+            }
+          ]
+        },
+        {
+          "name": "Light Oriental Box",
+          "description": "80% less sugar",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 640
+            }
+          ]
+        },
+        {
+          "name": "Oriental Pistachio with Honey Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 780
+            }
+          ]
+        },
+        {
+          "name": "Plain Oriental Sushi Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Safeh Oriental Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1450
+            }
+          ]
+        },
+        {
+          "name": "Lux Petit Four Sushi Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Sable Sushi Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Plain Sushi Basbousa Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Hazelnut Sushi Basbousa Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Mix Turkish Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 880
+            }
+          ]
+        },
+        {
+          "name": "Carrefour Nuts Oriental Platter",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 340
+            },
+            {
+              "size": "Small",
+              "price_egp": 200
+            }
+          ]
+        },
+        {
+          "name": "Tamrya with Nuts Bites",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "Small Plain Carrefour Oriental Platter",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Baklava Sushi Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Loqmat El Qady Sushi Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Plain Ghorayba Sushi Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Oriental Sushi Box with Nuts",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Dates with Chocolate Sushi Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "Baklava Fingers Sushi Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 200
+            }
+          ]
+        },
+        {
+          "name": "Baklava Mix Sushi Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 155
+            }
+          ]
+        },
+        {
+          "name": "Qeshta Malban Sushi Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Nuts Qatayf Sushi Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Cream Qatayf Sushi Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "Nutella Qatayf Sushi Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Panorama Light Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 825
+            }
+          ]
+        },
+        {
+          "name": "Panorama Halabi Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 990
+            }
+          ]
+        },
+        {
+          "name": "Panorama Elite Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 660
+            }
+          ]
+        },
+        {
+          "name": "Panorama Mix Box 1",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 550
+            }
+          ]
+        },
+        {
+          "name": "Panorama Mix Box 2",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 440
+            }
+          ]
+        },
+        {
+          "name": "Panorama Honey Cashew Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 660
+            }
+          ]
+        },
+        {
+          "name": "Shakallama Sushi Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Hazelnut Cookies Bites",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "Petit Four with Nuts Sushi Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Malban & Nougat Bites",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "Meshmsheya & Tamreya Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "Chocolate with Almond & Dates Bites",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Jam Sable Sushi Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ice Cream Torte",
+      "items": [
+        {
+          "name": "Strawberry Ice Cream Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 440
+            }
+          ]
+        },
+        {
+          "name": "Berries Yogurt Ice Cream Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 640
+            }
+          ]
+        },
+        {
+          "name": "Nutella Ice Cream Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 605
+            }
+          ]
+        },
+        {
+          "name": "Ferrero Rocher Ice Cream Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 715
+            }
+          ]
+        },
+        {
+          "name": "Mastic Ice Cream Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 990
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Ice Cream Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1045
+            }
+          ]
+        },
+        {
+          "name": "Four Season Ice Cream Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 605
+            }
+          ]
+        },
+        {
+          "name": "Salted Caramel Ice Cream Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1650
+            }
+          ]
+        },
+        {
+          "name": "Mango Ice Cream Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 440
+            }
+          ]
+        },
+        {
+          "name": "Salted Caramel Ice Cream Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1650
+            }
+          ]
+        },
+        {
+          "name": "Crocant Pistachio Ice Cream Torte",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1695
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ice Cream",
+      "items": [
+        {
+          "name": "Al-Fakhours Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 120
+            },
+            {
+              "size": "Kilo",
+              "price_egp": 540
+            },
+            {
+              "size": "Single",
+              "price_egp": 65
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 270
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Yogurt Berries Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 120
+            },
+            {
+              "size": "Kilo",
+              "price_egp": 540
+            },
+            {
+              "size": "Single",
+              "price_egp": 65
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 270
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 120
+            },
+            {
+              "size": "Kilo",
+              "price_egp": 450
+            },
+            {
+              "size": "Single",
+              "price_egp": 65
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 225
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 112.5
+            }
+          ]
+        },
+        {
+          "name": "Vanilla Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 120
+            },
+            {
+              "size": "Kilo",
+              "price_egp": 540
+            },
+            {
+              "size": "Single",
+              "price_egp": 65
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 270
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 120
+            },
+            {
+              "size": "Kilo",
+              "price_egp": 450
+            },
+            {
+              "size": "Single",
+              "price_egp": 65
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 225
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 112.5
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 940
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 470
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 235
+            }
+          ]
+        },
+        {
+          "name": "Ferrero Rocher Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 120
+            },
+            {
+              "size": "Kilo",
+              "price_egp": 540
+            },
+            {
+              "size": "Single",
+              "price_egp": 65
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 270
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Cassata Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 450
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 225
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 112.5
+            }
+          ]
+        },
+        {
+          "name": "Caramel Latte Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 120
+            },
+            {
+              "size": "Kilo",
+              "price_egp": 540
+            },
+            {
+              "size": "Single",
+              "price_egp": 65
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 270
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Gum Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 120
+            },
+            {
+              "size": "Kilo",
+              "price_egp": 540
+            },
+            {
+              "size": "Single",
+              "price_egp": 65
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 270
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Milk Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 120
+            },
+            {
+              "size": "Kilo",
+              "price_egp": 450
+            },
+            {
+              "size": "Single",
+              "price_egp": 65
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 225
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 112.5
+            }
+          ]
+        },
+        {
+          "name": "Lemon Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 120
+            },
+            {
+              "size": "Kilo",
+              "price_egp": 450
+            },
+            {
+              "size": "Single",
+              "price_egp": 65
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 225
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 112.5
+            }
+          ]
+        },
+        {
+          "name": "Mastic Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 120
+            },
+            {
+              "size": "Kilo",
+              "price_egp": 540
+            },
+            {
+              "size": "Single",
+              "price_egp": 65
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 270
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Raspberry Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 120
+            },
+            {
+              "size": "Kilo",
+              "price_egp": 1210
+            },
+            {
+              "size": "Single",
+              "price_egp": 65
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 265
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 132.5
+            }
+          ]
+        },
+        {
+          "name": "Salted Caramel Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 120
+            },
+            {
+              "size": "Kilo",
+              "price_egp": 1100
+            },
+            {
+              "size": "Single",
+              "price_egp": 110
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 265
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 132.5
+            }
+          ]
+        },
+        {
+          "name": "Biscuit Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 15
+            }
+          ]
+        },
+        {
+          "name": "Mango Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 120
+            },
+            {
+              "size": "Kilo",
+              "price_egp": 450
+            },
+            {
+              "size": "Single",
+              "price_egp": 65
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 225
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 112.5
+            }
+          ]
+        },
+        {
+          "name": "Nutella Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 120
+            },
+            {
+              "size": "Kilo",
+              "price_egp": 540
+            },
+            {
+              "size": "Single",
+              "price_egp": 65
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 270
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Salted Caramel Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 120
+            },
+            {
+              "size": "Kilo",
+              "price_egp": 440
+            },
+            {
+              "size": "Single",
+              "price_egp": 110
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 220
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Lotus Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 120
+            },
+            {
+              "size": "Kilo",
+              "price_egp": 530
+            },
+            {
+              "size": "Single",
+              "price_egp": 65
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 265
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 132.5
+            }
+          ]
+        },
+        {
+          "name": "Cheesecake Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 120
+            },
+            {
+              "size": "Kilo",
+              "price_egp": 530
+            },
+            {
+              "size": "Single",
+              "price_egp": 65
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 265
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 132.5
+            }
+          ]
+        },
+        {
+          "name": "Churros Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 120
+            },
+            {
+              "size": "Kilo",
+              "price_egp": 530
+            },
+            {
+              "size": "Single",
+              "price_egp": 65
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 265
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 132.5
+            }
+          ]
+        },
+        {
+          "name": "Soft Milk Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 80
+            },
+            {
+              "size": "Kilo",
+              "price_egp": 365
+            },
+            {
+              "size": "Single",
+              "price_egp": 40
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 220
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Soft Chocolate Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 80
+            },
+            {
+              "size": "Kilo",
+              "price_egp": 365
+            },
+            {
+              "size": "Single",
+              "price_egp": 40
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 220
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Prickly Pear Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 120
+            },
+            {
+              "size": "Kilo",
+              "price_egp": 530
+            },
+            {
+              "size": "Single",
+              "price_egp": 65
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 220
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 110
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chocolate ",
+      "items": [
+        {
+          "name": "Chocolate Con with Dates and Almond",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Con with Dates",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 145
+            }
+          ]
+        },
+        {
+          "name": "Crispy Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 380
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 190
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Crocand with Cashew Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 560
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 280
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "Crocand with Almonds Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 560
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 280
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "Plain Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 1000
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 500
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 250
+            }
+          ]
+        },
+        {
+          "name": "Raisin Ball Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 650
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 325
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 162.5
+            }
+          ]
+        },
+        {
+          "name": "Lotus Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 1100
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 550
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 275
+            }
+          ]
+        },
+        {
+          "name": "Sbika Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 1100
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 550
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 275
+            }
+          ]
+        },
+        {
+          "name": "Hazelnut Square Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 1100
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 550
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 275
+            }
+          ]
+        },
+        {
+          "name": "Ferrero Rocher Chocolate Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 320
+            }
+          ]
+        },
+        {
+          "name": "Belgian Chocolate Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "360gm",
+              "price_egp": 490
+            },
+            {
+              "size": "Regular",
+              "price_egp": 950
+            }
+          ]
+        },
+        {
+          "name": "Deluxe Belgian Chocolate Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1100
+            }
+          ]
+        },
+        {
+          "name": "Coconut Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 400
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 200
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Dates with Almonds Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 440
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 210
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Dates Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 400
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 200
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Hazelnut Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 1050
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 525
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 262.5
+            }
+          ]
+        },
+        {
+          "name": "Hazelnut Rocher Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 1050
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 525
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 262.5
+            }
+          ]
+        },
+        {
+          "name": "Crocand with Hazelnut Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 650
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 325
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Crocand with Pistachio Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 700
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 350
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Caramel Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 800
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 400
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 200
+            }
+          ]
+        },
+        {
+          "name": "Balata Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 1100
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 550
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 275
+            }
+          ]
+        },
+        {
+          "name": "Super Lux Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Kilo",
+              "price_egp": 900
+            },
+            {
+              "size": "1/2 Kilo",
+              "price_egp": 450
+            },
+            {
+              "size": "1/4 Kilo",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Kunafa Pistachio Bar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 220
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Halawa Crunch Bar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 220
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Baklava Bar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Pretzel Bar",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Pretzel Bar Bag",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 200
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

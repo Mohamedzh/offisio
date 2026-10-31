@@ -1,0 +1,1459 @@
+{
+  "brand": "McDonald's",
+  "source": "elmenus.com",
+  "source_label": "Menu source: elmenus.com (demo data, not affiliated)",
+  "restaurant_url": "https://elmenus.com/cairo/mcdonalds-3q54",
+  "branch_code": "p78n",
+  "fetched_at": "2026-10-31T12:38:37.210Z",
+  "categories": [
+    {
+      "name": "Bundle Meals ",
+      "items": [
+        {
+          "name": "Mix 2 Meal",
+          "description": "Pick two! Choose among the tasty Cheeseburger, the delicious Chicken MacDo or the juicy Beefburger + Small Fries + Regular Drink",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 255
+            },
+            {
+              "size": "Regular",
+              "price_egp": 215
+            },
+            {
+              "size": "Small",
+              "price_egp": 175
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Breakfast",
+      "items": [
+        {
+          "name": "Big Breakfast - Regular Bun",
+          "description": "Wake up with a warm Sausage McMuffin, fluffy scrambled eggs and hash browns (might be unavailable)",
+          "sizes": [
+            {
+              "size": "WITH_DRINK",
+              "price_egp": 170
+            },
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "McFalafel",
+          "description": "Three pieces of falafel garnished with tomatoes, lettuce, onion, pickles and topped with Tehina sauce, all wrapped inside a freshly backed tortilla wrap",
+          "sizes": [
+            {
+              "size": "WITH_DRINK",
+              "price_egp": 65
+            },
+            {
+              "size": "Regular",
+              "price_egp": 40
+            },
+            {
+              "size": "WITH_DRINK_&_HASH_BROWNS",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Eggs & Cheese Wrap",
+          "description": "A good day starts with scrambled eggs, one piece of chicken roll and one slice of cheddar cheese all wrapped in a toasted tortilla",
+          "sizes": [
+            {
+              "size": "WITH_DRINK",
+              "price_egp": 100
+            },
+            {
+              "size": "WITH_DRINK_&_HASH_BROWNS",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "Sausage & Egg Wrap",
+          "description": "The ultimate breakfast wrap! Scrambled eggs, a piece of sausage and a slice of cheddar cheese in a toasted tortilla wrap",
+          "sizes": [
+            {
+              "size": "WITH_DRINK",
+              "price_egp": 110
+            },
+            {
+              "size": "Regular",
+              "price_egp": 85
+            },
+            {
+              "size": "WITH_DRINK_&_HASH_BROWNS",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Egg McMuffin - Regular Bun",
+          "description": "A freshly-cracked Grade A egg, with a slice of melty cheese and chicken roll, all between our famous toasted English muffins. It's perfect to enjoy on the go",
+          "sizes": [
+            {
+              "size": "WITH_DRINK",
+              "price_egp": 105
+            },
+            {
+              "size": "Regular",
+              "price_egp": 80
+            },
+            {
+              "size": "WITH_DRINK_&_HASH_BROWNS",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Sausage McMuffin - Regular Bun",
+          "description": "Sizzled Perfection. Sausage McMuffin features a warm, freshly toasted English muffin, topped with savory hot sausage and a slice of melty American cheese",
+          "sizes": [
+            {
+              "size": "WITH_DRINK",
+              "price_egp": 110
+            },
+            {
+              "size": "Regular",
+              "price_egp": 85
+            },
+            {
+              "size": "WITH_DRINK_&_HASH_BROWNS",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Sausage Egg McMuffin - Regular Bun",
+          "description": "Hot & toasty! Sausage Egg McMuffin features a savory hot sausage, a slice of melty American cheese, and a delicious egg all on a freshly toasted English muffin",
+          "sizes": [
+            {
+              "size": "WITH_DRINK",
+              "price_egp": 145
+            },
+            {
+              "size": "Regular",
+              "price_egp": 95
+            },
+            {
+              "size": "WITH_DRINK_&_HASH_BROWNS",
+              "price_egp": 145
+            }
+          ]
+        },
+        {
+          "name": "Chicken McMuffin - Regular Bun",
+          "description": "A breakfast delight is all about a warm, freshly toasted English muffin, topped with chicken, shredded lettuce and mayonnaise",
+          "sizes": [
+            {
+              "size": "WITH_DRINK",
+              "price_egp": 130
+            },
+            {
+              "size": "Regular",
+              "price_egp": 85
+            },
+            {
+              "size": "WITH_DRINK_&_HASH_BROWNS",
+              "price_egp": 145
+            }
+          ]
+        },
+        {
+          "name": "Spicy Chicken McMuffin - Regular Bun",
+          "description": "A breakfast delight is all about a warm, freshly toasted English muffin, topped with gently spiced chicken, shredded lettuce and mayonnaise",
+          "sizes": [
+            {
+              "size": "WITH_DRINK",
+              "price_egp": 115
+            },
+            {
+              "size": "Regular",
+              "price_egp": 90
+            },
+            {
+              "size": "WITH_DRINK_&_HASH_BROWNS",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "Chicken McMuffin with Egg - Regular Bun",
+          "description": "Crispy chicken served on a breakfast favorite - a hot toasted English muffin. Add to it a delicious steamed cooked round egg, a slice of cheese and creamy mayonnaise and you are ready to go!",
+          "sizes": [
+            {
+              "size": "WITH_DRINK",
+              "price_egp": 120
+            },
+            {
+              "size": "Regular",
+              "price_egp": 95
+            },
+            {
+              "size": "WITH_DRINK_&_HASH_BROWNS",
+              "price_egp": 145
+            }
+          ]
+        },
+        {
+          "name": "Spicy Chicken McMuffin with Egg - Regular Bun",
+          "description": "Gently spiced crispy chicken served on a breakfast favorite - a hot toasted English muffin. Add to it a delicious steamed cooked round egg, a slice of cheese and creamy mayonnaise and you are ready to go!",
+          "sizes": [
+            {
+              "size": "WITH_DRINK",
+              "price_egp": 125
+            },
+            {
+              "size": "Regular",
+              "price_egp": 100
+            },
+            {
+              "size": "WITH_DRINK_&_HASH_BROWNS",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Hash Browns",
+          "description": "Deliciously tasty hash browns. Fluffy on the inside, crispy and toasty on the outside",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "McMuffin",
+          "description": "If Muffin isn't available, it will be replaced with normal bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "McSalads",
+      "items": [
+        {
+          "name": "Green Salad",
+          "description": "A fresh and vibrant medley of crisp lettuce, flavorful carrots, and juicy tomato slices",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Chicken Caesar Salad",
+          "description": "crispy iceberg lettuce, with a kick of freshly grilled all-white chicken meat,parmesan cheese & your choice of one of our creamy ranch dressings,free dressing sauce; caesar, light Italian or thousand Islands. ((Similar item: Garden Salad))",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 200
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Beef ",
+      "items": [
+        {
+          "name": "Beef Burger",
+          "description": "A simply delicious grilled beef patty with onions, pickles, mustard and a dollop of tomato ketchup, all in a soft bun. A classic every time",
+          "sizes": [
+            {
+              "size": "Sandwich",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Cheese Burger",
+          "description": "A legendary combination of our juicy beef, melty cheese, chopped onions, pickles, ketchup and mustard, all in a soft burger bun",
+          "sizes": [
+            {
+              "size": "Sandwich",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Cheese Burger Deluxe",
+          "description": "The same juicy beef patty covered with a slice of cheese and ketchup, mustard, mayonnaise, fresh onions and pickles all wrapped in a fresh bun but with an extra slice of tomato and crunchy lettuce",
+          "sizes": [
+            {
+              "size": "Sandwich",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "McDouble",
+          "description": "Two pure beef patties seasoned with a pinch of salt and pepper and topped with tangy pickles, chopped onions, ketchup, mustard and a slice of melty American cheese",
+          "sizes": [
+            {
+              "size": "Sandwich",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Big Mac",
+          "description": "Mouthwatering perfection is all about two 100% beef patties, that unbeatably tasty Big Mac sauce, melting signature cheese, crisp shredded lettuce, onions, pickles and a bun in the middle all between a toasted sesame seed bun. You know you want to",
+          "sizes": [
+            {
+              "size": "LARGE_MEAL",
+              "price_egp": 240
+            },
+            {
+              "size": "MEDIUM_MEAL",
+              "price_egp": 200
+            },
+            {
+              "size": "Sandwich",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "McRoyale",
+          "description": "A juicy beef patty accompanied by cheese, covered with our special McRoyale sauce, crispy lettuce, fresh tomatoes, zesty onions and pickles all wrapped in a sesame seed bun",
+          "sizes": [
+            {
+              "size": "LARGE_MEAL",
+              "price_egp": 410
+            },
+            {
+              "size": "MEDIUM_MEAL",
+              "price_egp": 370
+            },
+            {
+              "size": "Sandwich",
+              "price_egp": 275
+            }
+          ]
+        },
+        {
+          "name": "Big Tasty",
+          "description": "What makes our Big Tasty so tasty? It's the juicy beef patty smothered in three extraordinary slices of Emmental cheese, and topped with sliced tomato, shredded lettuce, onions and that special Big Tasty sauce",
+          "sizes": [
+            {
+              "size": "LARGE_MEAL",
+              "price_egp": 420
+            },
+            {
+              "size": "MEDIUM_MEAL",
+              "price_egp": 390
+            },
+            {
+              "size": "Sandwich",
+              "price_egp": 285
+            }
+          ]
+        },
+        {
+          "name": "Double Beef Burger",
+          "description": "Two simply delicious grilled beef patties with onions, pickles, mustard and a dollop of tomato ketchup, all in a soft bun",
+          "sizes": [
+            {
+              "size": "LARGE_MEAL",
+              "price_egp": 280
+            },
+            {
+              "size": "MEDIUM_MEAL",
+              "price_egp": 240
+            },
+            {
+              "size": "Sandwich",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Double Cheese Burger",
+          "description": "Two juicy beef patties, two slices melty cheese, chopped onions, pickles, ketchup and mustard, all in a soft burger bun",
+          "sizes": [
+            {
+              "size": "LARGE_MEAL",
+              "price_egp": 265
+            },
+            {
+              "size": "MEDIUM_MEAL",
+              "price_egp": 225
+            },
+            {
+              "size": "Sandwich",
+              "price_egp": 155
+            }
+          ]
+        },
+        {
+          "name": "Little Tasty",
+          "description": "Two juicy beef patties wrapped in layers of Emmental cheese, covered with a slice of tomato, shredded lettuce, silvered onions and special Big Tasty sauce, A little goes a long way",
+          "sizes": [
+            {
+              "size": "LARGE_MEAL",
+              "price_egp": 265
+            },
+            {
+              "size": "MEDIUM_MEAL",
+              "price_egp": 225
+            },
+            {
+              "size": "Sandwich",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Double McRoyale",
+          "description": "Two juicy beef patties between slices of cheese covered with our special McRoyale sauce, crispy lettuce, fresh tomatoes and zesty onions and pickles all wrapped in a sesame seed bun",
+          "sizes": [
+            {
+              "size": "LARGE_MEAL",
+              "price_egp": 490
+            },
+            {
+              "size": "MEDIUM_MEAL",
+              "price_egp": 440
+            },
+            {
+              "size": "Sandwich",
+              "price_egp": 355
+            }
+          ]
+        },
+        {
+          "name": "Double Big Tasty",
+          "description": "When one Big Tasty just isn't enough, go for the Double Big Tasty. It's not only one but two juicy beef patties smothered between slices of emmental cheese, topped with sliced tomato, shredded lettuce, onions and that special Big Tasty sauce",
+          "sizes": [
+            {
+              "size": "LARGE_MEAL",
+              "price_egp": 500
+            },
+            {
+              "size": "MEDIUM_MEAL",
+              "price_egp": 460
+            },
+            {
+              "size": "Sandwich",
+              "price_egp": 375
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chicken ",
+      "items": [
+        {
+          "name": "Chicken MACDO",
+          "description": "Delicious and simple burgers are all about a breaded chicken patty with crunchy lettuce and mayo, all wrapped in a fresh bun and that's it",
+          "sizes": [
+            {
+              "size": "Sandwich",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Spicy Chicken MACDO Deluxe",
+          "description": "A gently spiced breaded chicken patty garnished with freshly cut lettuce, one slice of melty cheese, a fresh tomato slice and mayonnaise all wrapped in a freshly baked bun",
+          "sizes": [
+            {
+              "size": "Sandwich",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Spicy Chicken MACDO",
+          "description": "Delicious and simple burgers are all about a gently spiced breaded chicken patty with crunchy lettuce and mayo, all wrapped in a fresh bun and that's it",
+          "sizes": [
+            {
+              "size": "Sandwich",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "McChicken",
+          "description": "Deliciously crispy chicken topped with mayonnaise, shredded lettuce, and served on a perfectly toasty bun",
+          "sizes": [
+            {
+              "size": "LARGE_MEAL",
+              "price_egp": 240
+            },
+            {
+              "size": "MEDIUM_MEAL",
+              "price_egp": 200
+            },
+            {
+              "size": "Sandwich",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Big Mac Chicken",
+          "description": "A delicious combination of breaded chicken patties, crisp lettuce, melting cheese, onions, pickles, and our special sauce, all framed between a toasted sesame seed bun",
+          "sizes": [
+            {
+              "size": "LARGE_MEAL",
+              "price_egp": 370
+            },
+            {
+              "size": "MEDIUM_MEAL",
+              "price_egp": 340
+            },
+            {
+              "size": "Sandwich",
+              "price_egp": 245
+            }
+          ]
+        },
+        {
+          "name": "Chicken Fillet",
+          "description": "A juicy white chicken breast encased in our special crispy coating with cool mustard mayo sauce, fresh tomatoes and onions, crispy lettuce, all wrapped in a fresh sesame seed bun",
+          "sizes": [
+            {
+              "size": "LARGE_MEAL",
+              "price_egp": 370
+            },
+            {
+              "size": "MEDIUM_MEAL",
+              "price_egp": 330
+            },
+            {
+              "size": "Sandwich",
+              "price_egp": 250
+            }
+          ]
+        },
+        {
+          "name": "Spicy Chicken Fillet",
+          "description": "A juice gently spaced white chicken breast encased in our special crispy coating with cool mustard mayo sauce, fresh tomatoes and onions, crispy lettuce, all wrapped in a fresh sesame seed bun",
+          "sizes": [
+            {
+              "size": "LARGE_MEAL",
+              "price_egp": 380
+            },
+            {
+              "size": "MEDIUM_MEAL",
+              "price_egp": 340
+            },
+            {
+              "size": "Sandwich",
+              "price_egp": 260
+            }
+          ]
+        },
+        {
+          "name": "Big Tasty Chicken",
+          "description": "What's best about our Big Tasty Chicken? The grand chicken patty topped with our delicious Big Tasty Sauce? The fresh tomatoes, crispy lettuce, fresh onions and three slices of Emmental cheese? Or all of it served in a fresh sesame bun",
+          "sizes": [
+            {
+              "size": "LARGE_MEAL",
+              "price_egp": 420
+            },
+            {
+              "size": "MEDIUM_MEAL",
+              "price_egp": 380
+            },
+            {
+              "size": "Sandwich",
+              "price_egp": 285
+            }
+          ]
+        },
+        {
+          "name": "Grand Chicken Premier",
+          "description": "A deliciously grand chicken patty topped with our special deluxe sauce, two fresh tomato slices, crispy lettuce, two slices of Emmental cheese and a piece of chicken roll served in a 5 inch bun",
+          "sizes": [
+            {
+              "size": "LARGE_MEAL",
+              "price_egp": 420
+            },
+            {
+              "size": "MEDIUM_MEAL",
+              "price_egp": 390
+            },
+            {
+              "size": "Sandwich",
+              "price_egp": 285
+            }
+          ]
+        },
+        {
+          "name": "Grand Chicken Spicy",
+          "description": "A delicious gently spiced grand chicken patty topped with our special deluxe sauce, two fresh tomato slices, crispy lettuce and two slices of Emmental cheese served in a 5 inch bun",
+          "sizes": [
+            {
+              "size": "LARGE_MEAL",
+              "price_egp": 430
+            },
+            {
+              "size": "MEDIUM_MEAL",
+              "price_egp": 400
+            },
+            {
+              "size": "Sandwich",
+              "price_egp": 295
+            }
+          ]
+        },
+        {
+          "name": "McNuggets - 4 Pieces",
+          "description": "Everything's better when it's bite-sized, Like our nuggets made with tender juicy chicken breast in a crisp tempura coating. Start the fun with our delicious dipping sauces, in BBQ or Sweet 'n Sour",
+          "sizes": [
+            {
+              "size": "Box",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "McNuggets - 6 Pieces",
+          "description": "Our nuggets made with tender juicy chicken breast in a crisp tempura coating. Start the fun with our delicious dipping sauces, in BBQ or Sweet 'n Sour",
+          "sizes": [
+            {
+              "size": "Box",
+              "price_egp": 165
+            },
+            {
+              "size": "LARGE_MEAL",
+              "price_egp": 295
+            },
+            {
+              "size": "MEDIUM_MEAL",
+              "price_egp": 255
+            }
+          ]
+        },
+        {
+          "name": "McNuggets - 9 Pieces",
+          "description": "Our nuggets made with tender juicy chicken breast in a crisp tempura coating. Start the fun with our delicious dipping sauces, in BBQ or Sweet 'n Sour",
+          "sizes": [
+            {
+              "size": "Box",
+              "price_egp": 210
+            },
+            {
+              "size": "LARGE_MEAL",
+              "price_egp": 340
+            },
+            {
+              "size": "MEDIUM_MEAL",
+              "price_egp": 300
+            }
+          ]
+        },
+        {
+          "name": "Chicken MACDO Deluxe",
+          "description": "A breaded chicken patty garnished with freshly cut lettuce, one slice of melty cheese, a fresh tomato slice and mayonnaise all wrapped in a freshly baked bun",
+          "sizes": [
+            {
+              "size": "LARGE_MEAL",
+              "price_egp": 275
+            },
+            {
+              "size": "MEDIUM_MEAL",
+              "price_egp": 235
+            },
+            {
+              "size": "Sandwich",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Double McChicken",
+          "description": "Are you ready for double the taste? Two delicious crispy chicken patties topped with mayonnaise, shredded lettuce, and served in a perfectly toasty sesame seed bun",
+          "sizes": [
+            {
+              "size": "LARGE_MEAL",
+              "price_egp": 410
+            },
+            {
+              "size": "MEDIUM_MEAL",
+              "price_egp": 370
+            },
+            {
+              "size": "Sandwich",
+              "price_egp": 300
+            }
+          ]
+        },
+        {
+          "name": "Chicken Mac",
+          "description": "A delicious combination of breaded chicken patties, crisp lettuce, melting cheese, onions, pickles, and our special sauce, all framed between a toasted sesame seed bun",
+          "sizes": [
+            {
+              "size": "LARGE_MEAL",
+              "price_egp": 360
+            },
+            {
+              "size": "MEDIUM_MEAL",
+              "price_egp": 330
+            },
+            {
+              "size": "Sandwich",
+              "price_egp": 245
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fish ",
+      "items": [
+        {
+          "name": "Fillet-O-Fish",
+          "description": "Delicious breaded fish filet with tartar sauce and melty cheese served in a steamed bun",
+          "sizes": [
+            {
+              "size": "LARGE_MEAL",
+              "price_egp": 300
+            },
+            {
+              "size": "MEDIUM_MEAL",
+              "price_egp": 260
+            },
+            {
+              "size": "Sandwich",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "Double Fillet-O-Fish",
+          "description": "Delicious gently spiced breaded fish filet with tartar sauce and melty cheese served in a steamed bun",
+          "sizes": [
+            {
+              "size": "LARGE_MEAL",
+              "price_egp": 370
+            },
+            {
+              "size": "MEDIUM_MEAL",
+              "price_egp": 330
+            },
+            {
+              "size": "Sandwich",
+              "price_egp": 245
+            }
+          ]
+        },
+        {
+          "name": "Fillet-O-Fish Seyami",
+          "description": "Delicious breaded fish filet with tartar sauce and melty cheese served in a steamed bun",
+          "sizes": [
+            {
+              "size": "LARGE_MEAL",
+              "price_egp": 305
+            },
+            {
+              "size": "MEDIUM_MEAL",
+              "price_egp": 265
+            },
+            {
+              "size": "Sandwich",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Double Fillet-O-Fish Seyami",
+          "description": "Delicious gently spiced breaded fish filet with tartar sauce and melty cheese served in a steamed bun",
+          "sizes": [
+            {
+              "size": "LARGE_MEAL",
+              "price_egp": 370
+            },
+            {
+              "size": "MEDIUM_MEAL",
+              "price_egp": 330
+            },
+            {
+              "size": "Sandwich",
+              "price_egp": 225
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Chicken Strips",
+          "description": "3 pieces, served with your choice of sauce (hot mustard, BBQ or sweet & sour)",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "McFries",
+          "description": "Get them while they're hot. Our legendary super-tasty French fries are the perfect side to any meal. We only use the highest quality potatoes to create those delicious strands of crispy fluffy fries you love",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 90
+            },
+            {
+              "size": "Medium",
+              "price_egp": 80
+            },
+            {
+              "size": "Regular",
+              "price_egp": 70
+            },
+            {
+              "size": "Small",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Potato Wedges",
+          "description": "Served with Buttermilk Ranch dipping sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 80
+            }
+          ]
+        },
+        {
+          "name": "Chicken McNuggets",
+          "description": "Everything's better when it's bite-sized. Like our nuggets made with tender juicy chicken breast in a crisp tempura coating. Start the fun with our delicious dipping sauces, in BBQ or Sweet 'n Sour",
+          "sizes": [
+            {
+              "size": "4_PIECES",
+              "price_egp": 110
+            },
+            {
+              "size": "6_PIECES",
+              "price_egp": 160
+            },
+            {
+              "size": "9_PIECES",
+              "price_egp": 215
+            }
+          ]
+        },
+        {
+          "name": "Chicken Caesar Salad",
+          "description": "Crisp lettuce topped with crispy tender chicken strips, shredded parmesan cheese, and a tangy Caesar dressing. Guaranteed enjoyment in every bite",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 200
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dips & Dressings",
+      "items": [
+        {
+          "name": "Italian Dressing",
+          "description": "A flavorful blend of oil, vinegar and Italian spices for salad perfection",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Caesar Dressing",
+          "description": "The famous caesar dressing is the best for the delicious caesar salad",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Thousand Island Dressing",
+          "description": "The perfect dressing for your salad with the famous Thousand Island taste",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Barbecue Sauce",
+          "description": "Sizzling smokey flavor. Give your meals a zesty edge",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Hot Mustard Sauce",
+          "description": "Smooth? Tangy? Savour it all, with this perfect blend of mustard, vinegar and spices",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Sweet N Sour Sauce",
+          "description": "Sweet and sour sauce with savory spices and slight lingering heat",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Big Tasty Sauce",
+          "description": "The distinctive flavour of Big Tasty sauce comes from smoke flavourings, spices and garlic",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "McRoyale Sauce",
+          "description": "The perfect combination of mayo, mustard and tomato sauces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Tartar Sauce",
+          "description": "Love the Filet O Fish? It's mostly about that tartar sauce!",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Mayonnaise",
+          "description": "Cool, creamy condiment. The perfect companion for chicken",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Mustard Mayo Sauce",
+          "description": "Creamy mayo with Mustard. It's simply an unforgettable taste",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        {
+          "name": "Apple Pie",
+          "description": "Delicious apples, lightly spiced with cinnamon, baked in a flaky pastry",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Fudge Sundae",
+          "description": "Vanilla soft serve, smothered in chocolaty fudge sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Caramel Sundae",
+          "description": "Cool and creamy vanilla soft serve meets rich and buttery caramel",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Sundae",
+          "description": "Sweet, tart and oh so creamy. STRAWBERRY SUNDAE. Creamy vanilla soft serve topped with a sweet strawberry sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Oreo McFlurry",
+          "description": "Vanilla soft serve with OREO Cookies mixed in",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Beverages",
+      "items": [
+        {
+          "name": "Chocolate Milkshake",
+          "description": "Our Chocolate Milkshake is an indulgence in a cup. Stir it, slurp it, love it",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 120
+            },
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Milkshake",
+          "description": "Our deliciously thick Strawberry Milkshake is a treat whatever the time of day",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 120
+            },
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Vanilla Milkshake",
+          "description": "Made with creamy, fresh milk ingredients in a sweet vanilla flavor, it's so thick it barely makes it up the straw",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 120
+            },
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Coca Cola",
+          "description": "Coca-Cola, a cold and refreshing complement to all of our menu items",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 95
+            },
+            {
+              "size": "Medium",
+              "price_egp": 85
+            },
+            {
+              "size": "Regular",
+              "price_egp": 75
+            },
+            {
+              "size": "Small",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Coca Cola Zero",
+          "description": "Zero calories, zero sugar, same great Coca-Cola taste. Perfect with your meal, or as a refreshing drink",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 95
+            },
+            {
+              "size": "Medium",
+              "price_egp": 85
+            },
+            {
+              "size": "Regular",
+              "price_egp": 75
+            },
+            {
+              "size": "Small",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Sprite",
+          "description": "Delicious lemon-lime taste with no caffeine",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 95
+            },
+            {
+              "size": "Medium",
+              "price_egp": 85
+            },
+            {
+              "size": "Regular",
+              "price_egp": 75
+            },
+            {
+              "size": "Small",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Fanta Orange",
+          "description": "Refreshing, fruity, tangy, and tempting",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 95
+            },
+            {
+              "size": "Medium",
+              "price_egp": 85
+            },
+            {
+              "size": "Regular",
+              "price_egp": 75
+            },
+            {
+              "size": "Small",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Coca Cola Can",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Sprite Can",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Sprite Zero Can",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Fanta Orange Can",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Water",
+          "description": "Perfectly refreshing bottled mineral water, so you can keep it for later",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Orange Juice",
+          "description": "ORANGE JUICE. Pure orange juice, Vitamin C doesn't get as natural as this",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            },
+            {
+              "size": "Small",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Mix Juhayna",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "McFizz® Strawberry",
+          "description": "A refreshing Sprite drink, mixed with indulging strawberry-flavored syrup",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 80
+            }
+          ]
+        },
+        {
+          "name": "McFizz® Blue Pation",
+          "description": "A refreshing Sprite drink, mixed with indulging Blue Curacao & Passion Fruit-flavored syrup",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 80
+            }
+          ]
+        },
+        {
+          "name": "American Coffee",
+          "description": "Our coffee is made with freshly ground Arabica beans and blended with hot water for a rich taste",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 65
+            },
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Latte",
+          "description": "Warm up with a rich Latte",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 95
+            },
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Cappuccino",
+          "description": "Our cappuccinos are made with sustainable Arabica coffee beans, blended with steamed milk and topped lightly with coco-dusted powder for the finishing touch!",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 95
+            },
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Hot Tea",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Espresso",
+          "description": "Served in a single shot, nothing else is needed",
+          "sizes": [
+            {
+              "size": "Double",
+              "price_egp": 32
+            },
+            {
+              "size": "Regular",
+              "price_egp": 25
+            }
+          ]
+        },
+        {
+          "name": "Mixology Strawberry",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 80
+            }
+          ]
+        },
+        {
+          "name": "Mixology Blue Curacao",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 80
+            }
+          ]
+        },
+        {
+          "name": "Mixology Passion Fruit",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 80
+            }
+          ]
+        },
+        {
+          "name": "Moccachino",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 60
+            },
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Happy Meals",
+      "items": [
+        {
+          "name": "Beef Burger",
+          "description": "Hamburger made with a beef patty, onions, pickles, mustard and a dollop of tomato ketchup, all in a soft bun. Add to that a side of small fries and their favorite drink with a choice of milk, or orange juice",
+          "sizes": [
+            {
+              "size": "Small",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "Cheese Burger",
+          "description": "Cheeseburger made with a beef patty, melty cheese, chopped onions, pickles, ketchup and mustard, all in a soft burger bun. Add to that a side of small fries and their favorite drink with a choice of milk, or orange juice",
+          "sizes": [
+            {
+              "size": "Small",
+              "price_egp": 155
+            }
+          ]
+        },
+        {
+          "name": "McNuggets - 4 Pieces",
+          "description": "Four pieces of Chicken McNuggets made with tender juicy chicken breast in a crisp tempura coating. Add to that your child's favorite dipping sauce, a side of small fries and a drink with a choice of milk, or orange juice",
+          "sizes": [
+            {
+              "size": "Small",
+              "price_egp": 155
+            }
+          ]
+        },
+        {
+          "name": "Chicken MACDO",
+          "description": "A delicious burger with a breaded chicken patty, crunchy lettuce and mayo, all wrapped in a fresh bun. Add to that a side of small fries and your child's favorite drink with a choice of milk, or orange juice",
+          "sizes": [
+            {
+              "size": "Small",
+              "price_egp": 155
+            }
+          ]
+        },
+        {
+          "name": "Double Beef Burger",
+          "description": "Two simply delicious grilled beef patties with onions, pickles, mustard and a dollop of tomato ketchup, all in a soft bun. Add to that a side of small fries and their favorite drink with a choice of milk, or orange juice",
+          "sizes": [
+            {
+              "size": "Small",
+              "price_egp": 185
+            }
+          ]
+        },
+        {
+          "name": "Double Cheese Burger",
+          "description": "Double Cheeseburger made with not one but two beef patties, 2 slices melty cheese, chopped onions, pickles, ketchup and mustard, all in a soft burger bun. Add to that a side of small fries and their favorite drink with a choice of milk, or orange juice",
+          "sizes": [
+            {
+              "size": "Small",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "McNuggets - 6 Pieces",
+          "description": "Six pieces of Chicken McNuggets made with tender juicy chicken breast in a crisp tempura coating. Add to that your child's favorite dipping sauce, a side of small fries and a drink with a choice of milk, or orange juice",
+          "sizes": [
+            {
+              "size": "Small",
+              "price_egp": 205
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

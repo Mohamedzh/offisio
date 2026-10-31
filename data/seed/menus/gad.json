@@ -1,0 +1,3050 @@
+{
+  "brand": "Gad",
+  "source": "elmenus.com",
+  "source_label": "Menu source: elmenus.com (demo data, not affiliated)",
+  "restaurant_url": "https://elmenus.com/cairo/gad-w2a7",
+  "branch_code": "gqq8g",
+  "fetched_at": "2026-10-31T12:38:37.154Z",
+  "categories": [
+    {
+      "name": "Kheir Meals",
+      "items": [
+        {
+          "name": "5x 1/4 Grilled Chicken Meal",
+          "description": "1\\4 chicken, basmati rice, pickles, 2 bread, juice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 800
+            }
+          ]
+        },
+        {
+          "name": "5X Shish and Kofta Meal",
+          "description": "2 pieces of kofta, 2 pieces of shish kebab, basmati rice, pickles, 2 bread, juice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 950
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Soups",
+      "items": [
+        {
+          "name": "Orzo Soup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Salads",
+      "items": [
+        {
+          "name": "Pickles Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 13
+            }
+          ]
+        },
+        {
+          "name": "Lux Pickles Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        },
+        {
+          "name": "Pickled Eggplant Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 28
+            }
+          ]
+        },
+        {
+          "name": "Pickled Beetroot Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Green Salad Box",
+          "description": "Tomato, cucumber, capuchi, carrot",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 27
+            }
+          ]
+        },
+        {
+          "name": "Coleslaw Box",
+          "description": "Mayonnaise, carrots, cabbage, milk",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Tehina Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Garlic Dip Box",
+          "description": "Garlic, fries, mayonnaise",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Marinated Tomatoes Box",
+          "description": "Marinated tomato slices, garlic",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 33
+            }
+          ]
+        },
+        {
+          "name": "Hummus Box",
+          "description": "Hummus, tahini",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 42
+            }
+          ]
+        },
+        {
+          "name": "Baba Ghanoug Box",
+          "description": "Grilled eggplant, tahini",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Fried Pepper Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 27
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Appetizers ",
+      "items": [
+        {
+          "name": "Cheese Sambousek",
+          "description": "Sambousek dough 3 pieces, white cheese",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Foul Sandwiches",
+      "items": [
+        {
+          "name": "Foul with Khalta Sandwich",
+          "description": "Foul, green salad, tahini, oil",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 15
+            }
+          ]
+        },
+        {
+          "name": "Dynamite Foul Sandwich",
+          "description": "Foul, eggs, fried eggplant, potatoes, tahini, green salad",
+          "sizes": [
+            {
+              "size": "French Bread",
+              "price_egp": 37
+            }
+          ]
+        },
+        {
+          "name": "Foul with Olive Oil Sandwich",
+          "description": "Foul, olive oil, green salad, tahini",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 23
+            }
+          ]
+        },
+        {
+          "name": "Foul with Flaxseed Oil Sandwich",
+          "description": "Foul, flaxseed oil, green salad, tahini",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 21
+            }
+          ]
+        },
+        {
+          "name": "Foul with  Hummus Sandwich",
+          "description": "Foul, hummus salad, green salad, tahini",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 25
+            }
+          ]
+        },
+        {
+          "name": "Foul with Salsa Sandwich",
+          "description": "Foul, salsa, tomato, bell pepper, onion",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 21
+            }
+          ]
+        },
+        {
+          "name": "Foul with Omelette Sandwich",
+          "description": "Foul, omelette, green salad, tahini",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 26
+            }
+          ]
+        },
+        {
+          "name": "Foul with Boiled Egg Sandwich",
+          "description": "Foul, boiled egg, green salad, tahina",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 25
+            }
+          ]
+        },
+        {
+          "name": "Foul with Sojouk Sandwich",
+          "description": "Foul, salsa, tomato, pepper, sojouk, onion",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 46
+            }
+          ]
+        },
+        {
+          "name": "Alexandrian Foul Sandwich",
+          "description": "Foul, salad, tahina, spices, oil",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 22
+            }
+          ]
+        },
+        {
+          "name": "Mix Foul Sandwich",
+          "description": "Foul and falafel",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 23
+            }
+          ]
+        },
+        {
+          "name": "Foul with Eggplant Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 25
+            }
+          ]
+        },
+        {
+          "name": "Foul with Saffron Lemon Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 22
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Falafel Sandwiches",
+      "items": [
+        {
+          "name": "Falafel Sandwich",
+          "description": "Falafel piece, green salad, tahini salad",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 15
+            }
+          ]
+        },
+        {
+          "name": "Stuffed Falafel Sandwich",
+          "description": "Stuffed falafel piece, green salad, tahini salad",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 19
+            }
+          ]
+        },
+        {
+          "name": "Falafel with Hummus Sandwich",
+          "description": "Falafel piece, hummus salad, green salad, tahini salad",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 25
+            }
+          ]
+        },
+        {
+          "name": "Falafel with Boiled Egg Sandwich",
+          "description": "Falafel piece, boiled egg, green salad, tahini salad",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 25
+            }
+          ]
+        },
+        {
+          "name": "Falafel with Omelette Sandwich",
+          "description": "Plain falafel piece, omelette",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 26
+            }
+          ]
+        },
+        {
+          "name": "Dynamite Falafel Sandwich",
+          "description": "Falafel piece, eggplant, egg, fries, tahini, green salad",
+          "sizes": [
+            {
+              "size": "French Bread",
+              "price_egp": 37
+            }
+          ]
+        },
+        {
+          "name": "Falafel with Eggplant Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 25
+            }
+          ]
+        },
+        {
+          "name": "Falafel with Saffron Lemon Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 22
+            }
+          ]
+        },
+        {
+          "name": "Falafel with Kiri Cheese Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 28
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fries Sandwiches",
+      "items": [
+        {
+          "name": "Fries Sandwich",
+          "description": "Fries, green salad, tahini salad",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 27
+            },
+            {
+              "size": "French Bread",
+              "price_egp": 29
+            }
+          ]
+        },
+        {
+          "name": "Chips Sandwich",
+          "description": "Potato chips, green salad and your choice of plain or tahini served in shami bread",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 22
+            }
+          ]
+        },
+        {
+          "name": "Potato Puree Sandwich",
+          "description": "Plain mashed potatoes",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 22
+            }
+          ]
+        },
+        {
+          "name": "Fries with Boiled Eggs Sandwich",
+          "description": "Fries, boiled egg, green salad, tahini salad",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Fries with Omelette Sandwich",
+          "description": "Bread, butter, fries, omelette and spices",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 36
+            }
+          ]
+        },
+        {
+          "name": "Fries with Ketchup and Mayonnaise Sandwich",
+          "description": "Plain fries, ketchup and mayonnaise",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 30
+            },
+            {
+              "size": "French Bread",
+              "price_egp": 33
+            }
+          ]
+        },
+        {
+          "name": "Fries with Eggplant Sandwich",
+          "description": "Potato, eggplant, green salad, tahini salad",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 31
+            }
+          ]
+        },
+        {
+          "name": "Fries with Baba Ghanoug Sandwich",
+          "description": "Plain fries, baba ghanoug",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 31
+            }
+          ]
+        },
+        {
+          "name": "Fries with Falafel Sandwich",
+          "description": "Fries, falafel, green salad, tahini salad",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 31
+            }
+          ]
+        },
+        {
+          "name": "Puree with Boiled Eggs Sandwich",
+          "description": "Mashed potato, boiled egg",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Puree with Omelette Sandwich",
+          "description": "Plain mashed potatoes, omelette",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 33
+            }
+          ]
+        },
+        {
+          "name": "Fries with Ketchup Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 27
+            }
+          ]
+        },
+        {
+          "name": "Fries with Mayonnaise Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 29
+            }
+          ]
+        },
+        {
+          "name": "Fries with Coleslaw",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 39
+            }
+          ]
+        },
+        {
+          "name": "Fries with Ranch Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Fries with Mozzarella Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 42
+            }
+          ]
+        },
+        {
+          "name": "Fries with Cheddar Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 40
+            },
+            {
+              "size": "French Bread",
+              "price_egp": 44
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Egg Sandwiches",
+      "items": [
+        {
+          "name": "Boiled Egg Sandwich",
+          "description": "Boiled eggs, green salad, tahini salad",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 21
+            }
+          ]
+        },
+        {
+          "name": "Omelette Sandwich",
+          "description": "Plain omelette eggs",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 23
+            }
+          ]
+        },
+        {
+          "name": "Omelette with Pastrami Sandwich",
+          "description": "Egg omelette, pastrami",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 36
+            }
+          ]
+        },
+        {
+          "name": "Shakshouka Sandwich",
+          "description": "Eggs, tomato sauce, onions, peppers, tomatoes",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 29
+            }
+          ]
+        },
+        {
+          "name": "Egga Sandwich",
+          "description": "Eggs, peppers, parsley, onions, tomato",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 31
+            }
+          ]
+        },
+        {
+          "name": "Pizza Omelette Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 36
+            }
+          ]
+        },
+        {
+          "name": "Omelette with Roomi Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 54
+            },
+            {
+              "size": "French Bread",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Omelette with Cheddar Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 35
+            },
+            {
+              "size": "French Bread",
+              "price_egp": 39
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cheese & Fries Sandwiches ",
+      "items": [
+        {
+          "name": "Roumi Omelette Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "French",
+              "price_egp": 50
+            },
+            {
+              "size": "Shami",
+              "price_egp": 43
+            }
+          ]
+        },
+        {
+          "name": "Fried Roumi Cheese Sandwich",
+          "description": "Fried roumi cheese, tomatoes, pepper, olives, ketchup and mayonnaise",
+          "sizes": [
+            {
+              "size": "French",
+              "price_egp": 51
+            },
+            {
+              "size": "Shami",
+              "price_egp": 39
+            },
+            {
+              "size": "Syrian",
+              "price_egp": 61.56
+            }
+          ]
+        },
+        {
+          "name": "Fried Roumi Cheese with Fries Sandwich",
+          "description": "Fried roumi cheese, fries, tomatoes, pepper, olives, ketchup and mayonnaise",
+          "sizes": [
+            {
+              "size": "French",
+              "price_egp": 50
+            },
+            {
+              "size": "Shami",
+              "price_egp": 44
+            }
+          ]
+        },
+        {
+          "name": "Omelette Cheddar Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "French",
+              "price_egp": 39
+            },
+            {
+              "size": "Shami",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Panne Roumi Cheese Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "French",
+              "price_egp": 51
+            },
+            {
+              "size": "Shami",
+              "price_egp": 39
+            }
+          ]
+        },
+        {
+          "name": "Cheddar Fries Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "French",
+              "price_egp": 44
+            },
+            {
+              "size": "Shami",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Panne Roumi Omelette Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "French",
+              "price_egp": 50
+            },
+            {
+              "size": "Regular",
+              "price_egp": 51
+            },
+            {
+              "size": "Shami",
+              "price_egp": 44
+            }
+          ]
+        },
+        {
+          "name": "Fries with Shredded Roumi Cheese Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 42
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Meat Sandwiches",
+      "items": [
+        {
+          "name": "Kofta Sandwich",
+          "description": "Grilled kofta, tahini salad, green salad",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 74
+            },
+            {
+              "size": "French Bread",
+              "price_egp": 92
+            }
+          ]
+        },
+        {
+          "name": "Liver Sandwich",
+          "description": "Liver, garlic, lemon, spicy pepper",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 58
+            },
+            {
+              "size": "French Bread",
+              "price_egp": 65
+            },
+            {
+              "size": "Shami Bread",
+              "price_egp": 62
+            }
+          ]
+        },
+        {
+          "name": "Hot Dog Sandwich",
+          "description": "Hot dog, mayonnaise, pickled cucumber, tomato, iceberg lettuce",
+          "sizes": [
+            {
+              "size": "French Bread",
+              "price_egp": 72
+            }
+          ]
+        },
+        {
+          "name": "Beef Burger Sandwich",
+          "description": "Beef burger, onions, peppers, mayonnaise, tomatoes, iceberg lettuce",
+          "sizes": [
+            {
+              "size": "Kaiser",
+              "price_egp": 68
+            }
+          ]
+        },
+        {
+          "name": "Cheese Beef Burger Sandwich",
+          "description": "Beef burger, onions, peppers, mayonnaise, tomatoes, iceberg lettuce, cheese",
+          "sizes": [
+            {
+              "size": "Kaiser",
+              "price_egp": 80
+            }
+          ]
+        },
+        {
+          "name": "Beef Burger with Eggs Sandwich",
+          "description": "Beef burger, onions, peppers, mayonnaise, tomatoes, iceberg lettuce, eggs",
+          "sizes": [
+            {
+              "size": "Kaiser",
+              "price_egp": 80
+            }
+          ]
+        },
+        {
+          "name": "Mix Beef Burger Sandwich",
+          "description": "Beef burger, onions, peppers, mayonnaise, tomatoes, iceberg lettuce, eggs, cheese",
+          "sizes": [
+            {
+              "size": "Kaiser",
+              "price_egp": 86
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chicken Sandwiches",
+      "items": [
+        {
+          "name": "Chicken Panne Sandwich",
+          "description": "2 chicken panne, ketchup, mayonnaise, pickled cucumber, tomato",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 77
+            },
+            {
+              "size": "French Bread",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Shish Tawook Sandwich",
+          "description": "3 shish tawook, ketchup, mayonnaise, onions, peppers, tomatoes",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 74
+            },
+            {
+              "size": "French Bread",
+              "price_egp": 92
+            }
+          ]
+        },
+        {
+          "name": "Chicken Fajita Sandwich",
+          "description": "Chicken fajita, ketchup, mayonnaise, onion, pepper, olive",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 74
+            },
+            {
+              "size": "French Bread",
+              "price_egp": 92
+            }
+          ]
+        },
+        {
+          "name": "Crispy Chicken Sandwich",
+          "description": "Crispy chicken, ketchup, mayonnaise, lettuce, pickled cucumber",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 77
+            },
+            {
+              "size": "French Bread",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Spanish Fajita",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Zinger Chicken Panne Sandwich",
+          "description": "Crispy with zinger spicy khalta, mayonnaise",
+          "sizes": [
+            {
+              "size": "French Bread",
+              "price_egp": 91
+            }
+          ]
+        },
+        {
+          "name": "Mexican Fajita",
+          "description": "Fajita, Mexican khalta, mayonnaise, mozzarella cheese",
+          "sizes": [
+            {
+              "size": "French Bread",
+              "price_egp": 80
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Roll Sandwiches",
+      "items": [
+        {
+          "name": "Falafel Roll Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 36
+            }
+          ]
+        },
+        {
+          "name": "Fries Roll Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 54
+            }
+          ]
+        },
+        {
+          "name": "Fries with Cheddar Roll Sandwich",
+          "description": "Fries, cheddar cheese, ketchup, mayonnaise or garlic dip, pickled cucumber",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 66
+            }
+          ]
+        },
+        {
+          "name": "Fries with Mozzarella Roll Sandwich",
+          "description": "Fries, mozzarella cheese, ketchup, mayonnaise or garlic dip, pickled cucumber",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Fries with Roomi Roll Sandwich",
+          "description": "Fries, roomi cheese, ketchup, mayonnaise or garlic dip, pickled cucumber",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Omelette Roll Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 46
+            }
+          ]
+        },
+        {
+          "name": "Omelette with Hot Dog Roll Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 78
+            }
+          ]
+        },
+        {
+          "name": "Kofta Roll Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Panne Roll Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Crispy Panne Roll Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Shish Tawook Roll Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Mexican Fajita Roll Sandwich",
+          "description": "Fajita, Mexican khalta, mayonnaise and mozzarella cheese",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Alexandrian Liver Roll Sandwich",
+          "description": "Liver, tahina",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Seafood Sandwiches",
+      "items": [
+        {
+          "name": "Shrimp Panne Sandwich",
+          "description": "Shrimp panne pieces, tartar sauce and served in French bread",
+          "sizes": [
+            {
+              "size": "French",
+              "price_egp": 145
+            }
+          ]
+        },
+        {
+          "name": "Shrimp Fajita Sandwich",
+          "description": "Shrimp, onion, pepper, spicy sauce, tartar sauce, shredded carrot",
+          "sizes": [
+            {
+              "size": "French",
+              "price_egp": 145
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Varieties  ",
+      "items": [
+        {
+          "name": "White Cheese with Tomatoes Sandwich",
+          "description": "Feta cheese, tomato, cucumber",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 24
+            }
+          ]
+        },
+        {
+          "name": "Moussaka'a Sandwich",
+          "description": "Eggplant, potatoes, tomatoes, peppers, onions, tomato sauce",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 24
+            }
+          ]
+        },
+        {
+          "name": "Sojouk Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "French Bread",
+              "price_egp": 66
+            }
+          ]
+        },
+        {
+          "name": "Fried Eggplant Sandwich",
+          "description": "Fried eggplant, garlic, vinegar",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 24
+            }
+          ]
+        },
+        {
+          "name": "Baba Ghanoug Sandwich",
+          "description": "Grilled eggplant, tahini, tomato slices",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 26
+            }
+          ]
+        },
+        {
+          "name": "Hummus Sandwich",
+          "description": "Mashed hummus, tahini",
+          "sizes": [
+            {
+              "size": "Shami",
+              "price_egp": 27
+            }
+          ]
+        },
+        {
+          "name": "Fries Packet",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Oriental Boxes",
+      "items": [
+        {
+          "name": "Plain Foul Qedra Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Foul with Khalta Box",
+          "description": "Foul box, tahini, oil, green salad",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 44
+            }
+          ]
+        },
+        {
+          "name": "Falafel with Sesame",
+          "description": "Per piece, crispy falafel patty rolled in sesame seeds for extra crunch",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 9
+            }
+          ]
+        },
+        {
+          "name": "Stuffed Falafel",
+          "description": "Per piece, a spicy falafel patty filled with flavorful ingredients",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 10
+            }
+          ]
+        },
+        {
+          "name": "Falafel Stuffed with Kiri",
+          "description": "Per piece",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        },
+        {
+          "name": "Fried Eggplant Box",
+          "description": "Fried eggplant, garlic, vinegar",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 28
+            }
+          ]
+        },
+        {
+          "name": "Eggs with Pastrami Plate",
+          "description": "2 eggs, pastrami",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "1 Boiled Egg",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 14
+            }
+          ]
+        },
+        {
+          "name": "Omelette Plate",
+          "description": "Large omelette 2 eggs",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Foul with Olive Oil Box",
+          "description": "Foul box, olive oil, green salad, tahini",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 51
+            }
+          ]
+        },
+        {
+          "name": "Foul with Flaxseed Oil Box",
+          "description": "Foul box, flaxseed oil, green salad, tahini",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 47
+            }
+          ]
+        },
+        {
+          "name": "Foul with Salsa Box",
+          "description": "Foul box, salsa, pepper, onion, tomato",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 47
+            }
+          ]
+        },
+        {
+          "name": "Bread",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 18
+            }
+          ]
+        },
+        {
+          "name": "Falafel Paste",
+          "description": "Falafel dough, coriander, sesame",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Moussaka'a Box",
+          "description": "Onion, potato, eggplant, tomato, pepper, sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Foul with Sojouk Box",
+          "description": "Foul, tomato sauce, pepper, tomato, sojouk, onion",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 82
+            }
+          ]
+        },
+        {
+          "name": "Plain Puree Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 49
+            }
+          ]
+        },
+        {
+          "name": "Cheese with Tomato Box",
+          "description": "Feta cheese, tomato, cucumber",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 48
+            }
+          ]
+        },
+        {
+          "name": "Alexandrian Foul Box",
+          "description": "Foul, tomato sauce, pepper, tomato, sojouk, onion",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Foul with Hummus Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 54
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Eggs, Cheese & Fries Plate ",
+      "items": [
+        {
+          "name": "Boiled Eggs Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 28
+            }
+          ]
+        },
+        {
+          "name": "Omelette Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Egg with Pastrami Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "Egg with Sojouk Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 114
+            }
+          ]
+        },
+        {
+          "name": "Shakshouka Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 66
+            }
+          ]
+        },
+        {
+          "name": "Egga Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 66
+            }
+          ]
+        },
+        {
+          "name": "Omelette with Roomi Cheese Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 86
+            }
+          ]
+        },
+        {
+          "name": "Pommes Frites  Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 36
+            }
+          ]
+        },
+        {
+          "name": "Plain Puree Tagen Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 49
+            }
+          ]
+        },
+        {
+          "name": "Pizza Omelette Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "Fried Roomi Cheese Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "Mix Cheese Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 74
+            }
+          ]
+        },
+        {
+          "name": "Cheese with Tomatoes Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 48
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Gad's Special Plates",
+      "items": [
+        {
+          "name": "Liver Plate",
+          "description": "Liver platter, spicy pepper only",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "Molokhia Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Chicken Panne Plate",
+          "description": "4 pieces of panne, 250 gm, fries",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Meat Shawerma Plate",
+          "description": "Meat shawerma platter 200gm",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "Chicken Shawerma Plate",
+          "description": "Chicken shawerma platter 200gm",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "Plain Okra Tagen",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Skewer Shawerma Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 300
+            }
+          ]
+        },
+        {
+          "name": "Chicken Panne Plate & Pasta",
+          "description": "Chicken panne plate, pasta, salad, bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Meat Shawarma Plate Tharwat",
+          "description": "200 gm",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "Chicken Shawarma Plate Tharwat",
+          "description": "200 gm",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 195
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Meals ",
+      "items": [
+        {
+          "name": "Shish Tawook Meal",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "1/2 Grilled Chicken Meal",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "Chicken Panne Meal",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Mix Grill Meal",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 360
+            }
+          ]
+        },
+        {
+          "name": "Chicken Shawerma Fattah Meal",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 185
+            }
+          ]
+        },
+        {
+          "name": "Meat Shawerma Fattah Meal",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 185
+            }
+          ]
+        },
+        {
+          "name": "Grilled Kofta Meal",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "Kebab and Kofta Meal",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 310
+            }
+          ]
+        },
+        {
+          "name": "1/4 Chicken Thigh Meal",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "1/4 Chicken Breast Meal",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Lamb Mouza Fattah Meal",
+          "description": "Mouza, biryani and salad",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 220
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pizza",
+      "items": [
+        {
+          "name": "Margherita Pizza",
+          "description": "Margherita, mozzarella cheese, pepper, olives, tomato, sauce",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Sojouk Pizza",
+          "description": "Sojouk, mozzarella cheese, pepper, olives, tomato, sauce",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Hot Dog Pizza",
+          "description": "Hot dog, mozzarella cheese, pepper, olives, tomato, sauce",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Meat Shawerma Pizza",
+          "description": "Meat shawerma, mozzarella cheese, pepper, olives, tomato, sauce",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "Chicken Shawerma Pizza",
+          "description": "Chicken shawerma, mozzarella cheese, pepper, olives, tomato, sauce",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 195
+            }
+          ]
+        },
+        {
+          "name": "Shrimp Pizza",
+          "description": "Shrimp, mozzarella cheese, pepper, olives, tomato, sauce",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 210
+            }
+          ]
+        },
+        {
+          "name": "Supreme Pizza",
+          "description": "Minced meat, pastrami, sojouk, mozzarella cheese, pepper, olives, tomato, sauce",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 185
+            }
+          ]
+        },
+        {
+          "name": "Mix Cheese Pizza",
+          "description": "Cheddar cheese, roomy cheese, mozzarella cheese, pepper, olives, tomato, sauce",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "Mushroom Pizza",
+          "description": "Mushroom, mozzarella cheese, pepper, olives, tomato, sauce",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Minced Meat Pizza",
+          "description": "Minced meat, mozzarella cheese, peppe, olives, tomato, sauce",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Pastrami Kiri Pizza",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 245
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Saroukh",
+      "items": [
+        {
+          "name": "Olives & Vegetables Saroukh",
+          "description": "Feteer dough, olive, samn, pepper, tomatoes, olives, ketchup, mozzarella cheese, shredded cheese, meat shawerma and vegetables",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Roumi Cheese Saroukh",
+          "description": "Feteer dough, olive, samn, pepper, tomatoes, olives, ketchup, mozzarella cheese, shredded cheese, meat shawerma and vegetables",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "Sojouk Saroukh",
+          "description": "Feteer dough, olive, samn, pepper, tomatoes, olives, ketchup, mozzarella cheese, shredded cheese, meat shawerma and vegetables",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "Hot Dog Saroukh",
+          "description": "Feteer dough, olive, samn, pepper, tomatoes, olives, ketchup, mozzarella cheese, shredded cheese, meat shawerma and vegetables",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "Mix Meat Saroukh",
+          "description": "Feteer dough, olive, samn, pepper, tomatoes, olives, ketchup, mozzarella cheese, shredded cheese, meat shawerma and vegetables",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 200
+            }
+          ]
+        },
+        {
+          "name": "Mix Cheese Saroukh",
+          "description": "Feteer dough, olive, samn, pepper, tomatoes, olives, ketchup, mozzarella cheese, shredded cheese, meat shawerma and vegetables",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "Pastrami Saroukh",
+          "description": "Feteer dough, olive, samn, pepper, tomatoes, olives, ketchup, mozzarella cheese, shredded cheese, meat shawerma and vegetables",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "Tuna Saroukh",
+          "description": "Feteer dough, olive, samn, pepper, tomatoes, olives, ketchup, mozzarella cheese, shredded cheese, meat shawerma and vegetables",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 195
+            }
+          ]
+        },
+        {
+          "name": "Meat Shawerma Saroukh",
+          "description": "Feteer dough, olive, samn, pepper, tomatoes, olives, ketchup, mozzarella cheese, shredded cheese, meat shawerma and vegetables",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "Chicken Shawerma Saroukh",
+          "description": "Feteer dough, olive, samn, pepper, tomatoes, olives, ketchup, mozzarella cheese, shredded cheese, meat shawerma and vegetables",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "Minced Meat Saroukh",
+          "description": "Feteer dough, olive, samn, pepper, tomatoes, olives, ketchup, mozzarella cheese, shredded cheese, meat shawerma and vegetables",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 185
+            }
+          ]
+        },
+        {
+          "name": "Super Gad Saroukh",
+          "description": "Feteer dough, olive, samn, pepper, tomatoes, olives, ketchup, mozzarella cheese, shredded cheese, meat shawerma and vegetables",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 195
+            }
+          ]
+        },
+        {
+          "name": "Mushroom Saroukh",
+          "description": "Feteer dough, olive, samn, pepper, tomatoes, olives, ketchup, mozzarella cheese, shredded cheese, meat shawerma and vegetables",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 185
+            }
+          ]
+        },
+        {
+          "name": "Kiri Pastrami Saroukh",
+          "description": "Feteer dough, olive, samn, pepper, tomatoes, olives, ketchup, mozzarella cheese, shredded cheese, meat shawerma and vegetables",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 296
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Crepe",
+      "items": [
+        {
+          "name": "Burger Crepe",
+          "description": "Burger, mozzarella, pickled cucumber, onion, lettuce, tomatoes, ketchup and mayonnaise",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Mexican Hot Dog Crepe",
+          "description": "Hot dog, mozzarella, pickled cucumber, ketchup, mayonnaise and lettuce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Grilled Kofta Crepe",
+          "description": "Kofta, mozzarella, tomatoes and tahina",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Sojouk Crepe",
+          "description": "Sojouk, mozzarella, ketchup,  mayonnaise and lettuce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Pastrami with Kiri Crepe",
+          "description": "Kiri with pastrami, mozzarella, pickled cucumber, ketchup and mayonnaise",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Meat Shawerma Crepe",
+          "description": "Meat shawerma, vegetables, mozzarella and tahina",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 155
+            }
+          ]
+        },
+        {
+          "name": "Chicken Shawerma Crepe",
+          "description": "Chicken shawerma, vegetables, mozzarella and garlic dip",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 155
+            }
+          ]
+        },
+        {
+          "name": "Chicken Panne Crepe",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Super Crunchy Crepe",
+          "description": "Crispy chicken, mozzarella, ketchup and mayonnise",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "Shish Tawook Crepe",
+          "description": "Shish tawook, mozzarella, pickled cucumber, onion, pepper, ketchup and mayonnaise",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Chicken Fajita Crepe",
+          "description": "Chicken fajita, mozzarella, pickled cucumber, onion, pepper, fajita sauce, ketchup and mayonnaise",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Chicken BBQ Crepe",
+          "description": "Panne, BBQ, mozzarella, onion, pepper and mayonnise",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Fries Crepe",
+          "description": "Fries, mozzarella, pickled cucumber, ketchup, mayonnaise and lettuce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Mix Cheese Crepe",
+          "description": "Cheddar cheese, mozzarella and roomi",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "NuCrema Nutella Crepe",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 130
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Shawerma ",
+      "items": [
+        {
+          "name": "Meat Shawerma Sandwich",
+          "description": "Meat shawarma, onion, tomato, parsley, pepper, tahini",
+          "sizes": [
+            {
+              "size": "Kaiser",
+              "price_egp": 95
+            },
+            {
+              "size": "Medium",
+              "price_egp": 95
+            },
+            {
+              "size": "French Bread",
+              "price_egp": 119.7
+            },
+            {
+              "size": "Shami Bread",
+              "price_egp": 105
+            },
+            {
+              "size": "Syrian Bread",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "Chicken Shawerma Sandwich",
+          "description": "Chicken shawerma, tomatoes, peppers, garlic dip, pickled cucumber",
+          "sizes": [
+            {
+              "size": "Kaiser",
+              "price_egp": 95
+            },
+            {
+              "size": "Medium",
+              "price_egp": 95
+            },
+            {
+              "size": "French Bread",
+              "price_egp": 105
+            },
+            {
+              "size": "Shami Bread",
+              "price_egp": 105
+            },
+            {
+              "size": "Syrian Bread",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "Meat Shawerma Fattah",
+          "description": "Basmati rice, bread, fattah sauce and meat slices, tahini",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 185
+            }
+          ]
+        },
+        {
+          "name": "Chicken Shawerma Fattah",
+          "description": "Basmati rice, bread, fattah  sauce and chicken slices, garlic dip",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 185
+            }
+          ]
+        },
+        {
+          "name": "Mix Shawerma Fattah",
+          "description": "Basmati rice, bread, fattah  sauce, meat  slices and chicken slices",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 185
+            }
+          ]
+        },
+        {
+          "name": "Meat Shawerma Fattah with Foul Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 145
+            }
+          ]
+        },
+        {
+          "name": "Chicken Shawerma Fattah with Foul Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Medium",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Meat Shawerma Plate",
+          "description": "200gm",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "Chicken Shawerma Plate",
+          "description": "200gm",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "Shawarma Skewer Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 270
+            },
+            {
+              "size": "Shami",
+              "price_egp": 270
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Savory Feteer",
+      "items": [
+        {
+          "name": "Olives and Vegetables Feteer",
+          "description": "Olives, peppers, tomato, roomi cheese",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Roomi Cheese Feteer",
+          "description": "Roumi cheese, olives, pepper, tomato, mozzarella",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "Sojouk Feteer",
+          "description": "Sojouk, roumi cheese, olives, pepper, tomato, mozzarella",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "Hot Dog Feteer",
+          "description": "Hot dog, roumi cheese, olives, pepper, tomato, mozzarella",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "Mix Meat Feteer",
+          "description": "Sojouk, pastrami, minced meat, hot dog, roumi cheese, olives, pepper, tomato, mozzarella",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 200
+            }
+          ]
+        },
+        {
+          "name": "Mix Cheese Feteer",
+          "description": "Cheddar cheese, mozzarella cheese, roumi cheese, olives, pepper, tomato, mozzarella",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "Feteer Meshalteet with Baladi Samna",
+          "description": "Feteer Meshalteet with Baladi Samna  \nPreparation time ranges from 90 to 120 minutes",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 210
+            }
+          ]
+        },
+        {
+          "name": "Pastrami Feteer",
+          "description": "Pastrami, roomy cheese, pepper, olives, tomato, mozzarella",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "Tuna Feteer",
+          "description": "Tuna, roomy cheese, pepper, olives, tomato, mozzarella",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 195
+            }
+          ]
+        },
+        {
+          "name": "Meat Shawerma Feteer",
+          "description": "Meat shawerma, roomy cheese, pepper, olives, tomato, mozzarella",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "Chicken Shawerma Feteer",
+          "description": "Chicken shawerma, roomy cheese, pepper, olives, tomato, mozzarella",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "Minced Meat Feteer",
+          "description": "Minced meat, roumi cheese, pepper, olives, tomato, sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 185
+            }
+          ]
+        },
+        {
+          "name": "Super Gad Feteer",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 195
+            }
+          ]
+        },
+        {
+          "name": "Mushroom Feteer",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 185
+            }
+          ]
+        },
+        {
+          "name": "Kiri Pastrami Feteer",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 260
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Charcoal Grills ",
+      "items": [
+        {
+          "name": "1/4 Grilled Chicken Thigh",
+          "description": "1/4 chicken, tahini salad or green salad, 3 bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "1/4 Grilled Chicken Breast",
+          "description": "1/4 chicken, tahini salad or green salad, 2 bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "1/2 Grilled Chicken",
+          "description": "1/2 chicken, tahini salad or green salad, 3 bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Shish Tawook Plate",
+          "description": "6 shish pieces, tahini salad or green salad, bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Mix Grill Plate",
+          "description": "3 pieces of kofta, 3 pieces of kebab, 1/4 chicken or 3 pieces of shish, green salad or tahini, bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 360
+            }
+          ]
+        },
+        {
+          "name": "Grilled Kofta Plate",
+          "description": "6 pieces of kofta, tahini salad or green salad, 3 bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Kofta & Kebab Plate",
+          "description": "3 pieces of kofta, 3 pieces of kebab, tahini salad or green salad, 3 bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 285
+            }
+          ]
+        },
+        {
+          "name": "Veal Kebab Plate",
+          "description": "6 kebab pieces, tahini salad or green salad, 3 bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 390
+            }
+          ]
+        },
+        {
+          "name": "Hawawshi",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Mozzarella Cheese Hawawshi",
+          "description": "Meat hawawshi and mozzarella cheese, served in shami bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Cheddar Cheese Hawawshi",
+          "description": "Hawawshi meat and 2 pieces of cheddar cheese, served in shami bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Mix Grill Meal",
+          "description": "3 shish pieces, 3 kofta pieces, tahini salad or green salad, 3 bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Liver Turbo",
+          "description": "Kabsa rice box, 100 gm of liver, tahini sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Sojouk Turbo",
+          "description": "Kabsa rice box, mix sojouk , tahini sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Panne Turbo",
+          "description": "Kabsa rice box, 3 pieces of panne, mayonnaise sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Kofta Turbo",
+          "description": "Kabsa rice box, 3 grilled kofta pieces, tahini sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Mix Turbo",
+          "description": "Kabsa rice box, 2 grilled kofta pieces, 1 shish piece, tahini sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Meat Shawerma Turbo",
+          "description": "Kabsa rice box, 100 gm meat shawerma with salad, tahini sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Chicken Shawerma Turbo",
+          "description": "Kabsa rice box, 100 gm chicken shawerma with salad, tahini sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Shrimp Turbo",
+          "description": "Kabsa rice box, 5 pieces of shrimp, tahini sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "1/2 Grilled Chicken with Red Sauce Pasta",
+          "description": "1/2 chicken, tahini salad or green salad, 3 bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "1/2 Grilled Chicken with Rice",
+          "description": "1/2 chicken, tahini salad or green salad, 3 bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "Kofta with Red Sauce Pasta",
+          "description": "Served with tahini salad or green salad, 3 bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "Kofta with Rice",
+          "description": "Served with tahini salad or green salad, 3 bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pastries",
+      "items": [
+        {
+          "name": "White Rice",
+          "description": "Plain white rice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 39
+            }
+          ]
+        },
+        {
+          "name": "Rice with Liver",
+          "description": "Red rice, liver, onions, peppers",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Rice with Shrimp",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "Sayadia Rice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Oven Pasta",
+          "description": "Penne pasta, milk, mozzarella cheese, minced meat",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Spaghetti Bolognese",
+          "description": "Spaghetti, minced meat, shredded roumi cheese and tomato sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Vine Leaves",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Negresco Pasta",
+          "description": "Alfredo pasta, chicken, milk, pepper, mozzarella cheese, dairy cream",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "Biryani Rice",
+          "description": "Plain basmati rice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Spaghetti Pasta",
+          "description": "Spaghetti with tomato sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Mix Dolma",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sweet Feteer",
+      "items": [
+        {
+          "name": "Sugar Feteer",
+          "description": "Sugar, milk, samna",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Custard Feteer",
+          "description": "Custard, sugar, milk, samna",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Qeshta and Honey Feteer",
+          "description": "Honey, qeshta, sugar, milk, samna",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 185
+            }
+          ]
+        },
+        {
+          "name": "Nuts Feteer",
+          "description": "Nuts, custard, sugar, milk, samna",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 210
+            }
+          ]
+        },
+        {
+          "name": "Nuts, Qeshta & Honey Feteer",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 245
+            }
+          ]
+        },
+        {
+          "name": "Nutella Feteer",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "Nutella & Nuts Feteer",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 240
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Soft Drinks",
+      "items": [
+        {
+          "name": "Coca Cola Can",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        },
+        {
+          "name": "Coca Cola Diet",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        },
+        {
+          "name": "Sprite",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        },
+        {
+          "name": "Sprite Diet",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        },
+        {
+          "name": "Fanta Orange",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        },
+        {
+          "name": "Small Mineral Water",
+          "description": "Stay hydrated and refreshed with our mineral water",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 10
+            }
+          ]
+        },
+        {
+          "name": "Lemon Mint Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Mango Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        {
+          "name": "Tea",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Nescafe",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

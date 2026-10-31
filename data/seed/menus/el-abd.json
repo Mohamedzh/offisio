@@ -1,0 +1,4520 @@
+{
+  "brand": "El Abd",
+  "source": "elmenus.com",
+  "source_label": "Menu source: elmenus.com (demo data, not affiliated)",
+  "restaurant_url": "https://elmenus.com/cairo/el-abd-2zpy",
+  "branch_code": "w22lz",
+  "fetched_at": "2026-10-31T12:38:37.121Z",
+  "categories": [
+    {
+      "name": "Oriental",
+      "items": [
+        {
+          "name": "Round Momtaz",
+          "description": "A luxurious selection of fresh oriental sweets, this momtaz round platter is the perfect choice for family gatherings, feasts, and happy occasions that bring loved ones together, plain kunafa, plain basbousa, hazelnut basbousa, kol w oshkor and ghawayesh hazelnut kunafa",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 450
+            }
+          ]
+        },
+        {
+          "name": "Potato and Kunafa Cream Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 347
+            }
+          ]
+        },
+        {
+          "name": "Potato Creme Brulee Tagen",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 415
+            }
+          ]
+        },
+        {
+          "name": "1/2 Classic and 1/2 Mango Mille Feuille",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 368
+            }
+          ]
+        },
+        {
+          "name": "Hazelnut Basbousa",
+          "description": "El Abd hazelnut basbousa is your favorite oriental sweet delight, complemented with crunchy roasted hazelnut",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 220
+            }
+          ]
+        },
+        {
+          "name": "Plain Basbousa",
+          "description": "El Abd Plain Basbousa is a sweet semolina cake with ghee and soaked in delicious syrup. The perfect treat for every occasion that will take your breath away.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 187
+            }
+          ]
+        },
+        {
+          "name": "Lotus And Nutella Konafa Asawer Plate Small",
+          "description": "A mix of Konafa bites filled with Nutella and Lotus. A flavor that caters to every taste.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 250
+            }
+          ]
+        },
+        {
+          "name": "Lotus And Nutella Konafa Asawer Plate Large",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 420
+            }
+          ]
+        },
+        {
+          "name": "Small Plain Basbousa Forma",
+          "description": "El Abd plain basbousa Plate is a sweet semolina cake that is soaked in delicious syrup",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 291.5
+            }
+          ]
+        },
+        {
+          "name": "Large Plain Basbousa Box",
+          "description": "El Abd Plain Basbousa is a sweet semolina cake with ghee and soaked in delicious syrup. The perfect treat for every occasion that will take your breath away.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 319
+            }
+          ]
+        },
+        {
+          "name": "Large Hazelnut Basbousa Box",
+          "description": "El Abd Hazelnut Basbousa is your favorite oriental sweet delight, complemented with crunchy roasted hazelnuts. You'll fall in love from the first bite.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 412.5
+            }
+          ]
+        },
+        {
+          "name": "Small Konafa with Nuts Box",
+          "description": "This Kunafa merges between the authentic flavor of Al Abd and the delicious nuts that will give you the best taste ever.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 236.5
+            }
+          ]
+        },
+        {
+          "name": "Small Remoush El Set Box",
+          "description": "Remoush Al-Sit El Abd is an oriental Arabic dessert. It is a sweet dough that is fried in oil, then honey is added to it.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 181.5
+            }
+          ]
+        },
+        {
+          "name": "Small Balah El Sham Box",
+          "description": "El Abd Balah El Sham is a sugary dessert that is adored by Egyptians. Crunchy on the outside, squishy and soft on the inside, and dipped in flavourful oriental syrup.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 88
+            }
+          ]
+        },
+        {
+          "name": "Small Zalabeya Box",
+          "description": "Sprinkled with powdered sugar, El Abd Zalabia is fried to golden perfection. Crisp and crunch on the outside, sweet and soft on the inside.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Mix Oriental Nus Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 540
+            }
+          ]
+        },
+        {
+          "name": "Small Cream-Filled Balah El Sham Box",
+          "description": "The fresh cream will add a flavorful taste to the delicious Balah El Sham from Al Abd to steal your heart away.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Medium Plain Basbousa Forma",
+          "description": "El Abd Plain Basbousa Plate is a sweet semolina cake that is soaked in delicious syrup. The perfect treat for every occasion that will take your breath away.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 396
+            }
+          ]
+        },
+        {
+          "name": "Rice Pudding with Caramel",
+          "description": "A creamy dessert, topped with a delicious sauce. El Abd rice pudding with caramel",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 63
+            }
+          ]
+        },
+        {
+          "name": "Cream Konafa",
+          "description": "Al Abd kunafa with the freshest cream, honey",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 258.5
+            }
+          ]
+        },
+        {
+          "name": "Remoush El Set Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Konafa with Nuts Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 302.5
+            }
+          ]
+        },
+        {
+          "name": "Qatayef with Cream",
+          "description": "Qatayef Al-Abd is one of the sweets that are widely spread in the Levant and Egypt. It consists of dough and can be stuffed with many delicious fillings, such as cream.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "Konafa Rolls Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 192.5
+            }
+          ]
+        },
+        {
+          "name": "Small Mix Baklava Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 185
+            }
+          ]
+        },
+        {
+          "name": "Rice Pudding",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Meshabek - 6 Pieces",
+          "description": "Enjoy the taste of tradition with our crispy Meshabek. Golden-fried dough rings soaked in rich syrup, delivering the perfect balance of crunch and sweetness.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Large Mix Nuts Box",
+          "description": "Hazelnut berk, baklava, konafa rolls",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 715
+            }
+          ]
+        },
+        {
+          "name": "Small Mix Nuts Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 250
+            }
+          ]
+        },
+        {
+          "name": "Sawabe' Zeinab",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Qamoura Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 250
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "El Abd Snacks",
+      "items": [
+        {
+          "name": "Chocolate Delights Box Small",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 495
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Delights Box Large",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 715
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Peanuts 125Gram",
+          "description": "Crunchy peanuts coated in rich chocolate for a delicious taste in every bite",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 62
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Peanuts 250 Gram",
+          "description": "Crunchy peanuts coated in rich chocolate for a delicious taste in every bite",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 107
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Peanuts 45 gm",
+          "description": "Peanuts coated with chocolate",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 27
+            }
+          ]
+        },
+        {
+          "name": "Dark Chocolate Peanuts 45 gm",
+          "description": "Peanuts coated with dark chocolate",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 27
+            }
+          ]
+        },
+        {
+          "name": "Coffee Chocolate Peanuts 45 gm",
+          "description": "Peanuts coated with coffe-flavored chocolate",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 27
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kahk & Biscuits",
+      "items": [
+        {
+          "name": "Chewy Cookies",
+          "description": "Soft, rich, and perfectly chewy cookies with a generous size that satisfies every craving. A melt-in-your-mouth treat for any time of the day.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Biscuits Mix 1 Kg",
+          "description": "15 chocolate cookies, 36 plain biscuits, 12 chocolate coated biscuits",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 370
+            }
+          ]
+        },
+        {
+          "name": "Petits Fours with Nuts 32 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 280
+            }
+          ]
+        },
+        {
+          "name": "Petits Fours with Nuts 64 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 555
+            }
+          ]
+        },
+        {
+          "name": "Petits-fours Original 32pcs",
+          "description": "El Abd Plain Petit Four is a bite-size dessert made of fine flour, butter, and sugar.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 220
+            }
+          ]
+        },
+        {
+          "name": "Petits-fours Original 64pcs",
+          "description": "El Abd Plain Petit Four is a bite-size dessert made of fine flour, butter, and sugar.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 420
+            }
+          ]
+        },
+        {
+          "name": "Mixed Tin Box",
+          "description": "Pieces: 154 pieces, weight: 3.5 kg (approximately), 14 plain kahk, 14 kahk with walnuts, 28 premium beit el-four, 28 beit el-four with nuts, 24 almond ghraybeh, 24 chocolate cookies, 36 plain biscuits",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1650
+            }
+          ]
+        },
+        {
+          "name": "4 Kilo Mix Box",
+          "description": "36 pieces plain biscuits, 30 pieces chocolate cookies with chocolate chips, 32 pieces plain petits fours, 32 pieces petits fours with nuts,16 pieces plain kahk,16 pieces kahk with loukoum, 16 pieces kahk with walnuts, 36 pieces ghorayeba with almonds",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1900
+            }
+          ]
+        },
+        {
+          "name": "Mix Pack - 3 Kilo",
+          "description": "36 pieces plain biscuits, 30 pieces chocolate cookies with chocolate chips, 32 pieces plain petits fours,16 pieces petits fours with nuts, 16 pieces plain kahk, 8 pieces kahk with loukoum, 8 pieces kahk with walnuts, 18 pieces ghorayeba with almonds",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1300
+            }
+          ]
+        },
+        {
+          "name": "2 Kilo Mix Box",
+          "description": "36 pieces plain biscuits,15 pieces chocolate cookies with chocolate chips, 28 pieces plain petits fours, 8 pieces plain kahk, 8 pieces kahk with malban,18 pieces ghorayeba",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 849.6
+            }
+          ]
+        },
+        {
+          "name": "1.5 Kilo Mix Box",
+          "description": "18 pieces plain biscuits, 32 pieces plain petits fours, 8 pieces plain kahk, 8 pieces kahk with malban, 18 pieces ghorayeba",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 660.8
+            }
+          ]
+        },
+        {
+          "name": "1 Kilo Mix Biscuit Box",
+          "description": "15 chocolate cookies, 36 plain biscuits, 12 chocolate-coated biscuits",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 390
+            }
+          ]
+        },
+        {
+          "name": "Ghorayeba With Almonds 36 Pieces",
+          "description": "An Egyptian staple made from traditional ghee, sugar, flour. El Abd ghorayeba with Almonds is an incredible treat that is loved for its mouthwatering taste.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 290
+            }
+          ]
+        },
+        {
+          "name": "Ghorayeba With Almonds 72 Pieces",
+          "description": "An Egyptian staple made from traditional ghee, sugar, and flour. El Abd ghorayeba with Almonds is an incredible treat that is loved for its mouthwatering taste.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 570
+            }
+          ]
+        },
+        {
+          "name": "Meneen Agwa 26 Pieces",
+          "description": "Meneen Al Abd is one of the most delicious traditional and simple baked goods known in Egypt and the arab world for its delicious ingredients such as dough, sugar, in addition to the agwa that adds to its tastiness.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 200
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Biscuits 36 Pieces",
+          "description": "You can never go wrong with chocolate! El Abd chocolate biscuit box will fulfill all your sugar cravings.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 210
+            }
+          ]
+        },
+        {
+          "name": "Plain Meneen 32 Pieces",
+          "description": "Meneen Al Abd is one of the most delicious traditional and simple baked goods known in Egypt and the Arab world for its delicious ingredients such as dough, and sugar.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Kahk with Walnuts 32 Pieces",
+          "description": "Crispy, crunchy, and incredibly tasty! El Abd kahk with walnuts is full of roasted goodies that melt right into your mouth. A wholesome mixture of ghee, sugar, and sesame seeds - complemented with premium nuts.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 445
+            }
+          ]
+        },
+        {
+          "name": "Kahk with Malban 16 Pieces",
+          "description": "The perfect pair! El Abd Kahk blends so well with traditional malban, giving you the best taste, with a golden roast that will crunch right into your mouth, it is an incredible Eid delight. El Abd kahk is generally mouthwatering, but our kahk with malban is something else.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "Kahk with Malban 32 Pieces",
+          "description": "The perfect pair! El Abd kahk blends so well with traditional Malban, giving you the best taste. With a golden roast that will crunch right into your mouth, it is an incredible Eid delight. El Abd kahk is generally mouthwatering, but our kahk with malban is something else.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 345
+            }
+          ]
+        },
+        {
+          "name": "Plain Kahk 16 Pieces",
+          "description": "A timeless Egyptian tradition, El Abd plain kahk box is made from the highest quality of ghee, sugar, and sesame seeds. baked and roasted to perfection, shaped with passion, sprinkled with delicious powdered sugar, an incredible Eid delight",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Plain Kahk 32 Pieces",
+          "description": "A timeless Egyptian tradition, El Abd plain kahk box is made from the highest quality of ghee, sugar, sesame seeds. Baked and roasted to perfection, shaped with passion, sprinkled with delicious powdered sugar. An incredible Eid delight.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 290
+            }
+          ]
+        },
+        {
+          "name": "El Abd Cookies Chocolate 30 Pieces",
+          "description": "El Abd chocolate chip cookie is a dough composed of flour, butter, both brown and white sugar, semi-sweet chocolate chips, eggs, vanilla",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Biscuits with Coconut 36 Pieces",
+          "description": "A tropical delight with your afternoon tea! El Abd Coconut Biscuits are made from premium ingredients to ensure satisfying your palate",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Biscuits with Orange 36 Pieces",
+          "description": "A citrus twist on a traditional favorite! El Abd Orange Biscuit are crunchy and fruity all at the same time. They make the perfect pair for your hot drinks",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Biscuits with Orange 72 Pieces",
+          "description": "A citrus twist on a traditional favorite! El Abd Orange Biscuit are crunchy and fruity all at the same time. They make the perfect pair for your hot drinks",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 320
+            }
+          ]
+        },
+        {
+          "name": "Plain Biscuits 36 Pieces",
+          "description": "The perfect companion for tea, coffee, and milk! El Abd Plain Biscuits are made from top-grade flour, sugar, and premium ingredients that are all oven baked to perfection.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Plain Biscuits 72 Pieces",
+          "description": "The perfect companion for tea, coffee, and milk! El Abd Plain Biscuits are made from top-grade flour, sugar, and premium ingredients that are all oven baked to perfection.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 290
+            }
+          ]
+        },
+        {
+          "name": "6 Kilo Mix Box",
+          "description": "54 pieces plain biscuits, 45 pieces chocolate cookies with chocolate chips, 12 pieces chocolate-coated biscuits, 18 pieces chocolate biscuits, 64 pieces plain petits fours, 32 pieces petits fours with nuts, 16 pieces plain kahk, 16 pieces kahk with malban,16 pieces kahk with walnuts, 16 pieces kahk with agameya, 36 pieces ghorayeba with almonds",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 3000
+            }
+          ]
+        },
+        {
+          "name": "5.25 Kilo Mix Box",
+          "description": "72 pieces plain biscuits, 30 pieces chocolate cookies with chocolate chips, 64 pieces plain petits fours, 32 pieces petits fours with nuts, 16 pieces plain kahk,16 pieces kahk with malban, 16 pieces kahk with walnuts, 36 pieces ghorayeba with almonds, 12 pieces chocolate-coated biscuits",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 2100
+            }
+          ]
+        },
+        {
+          "name": "Kahk with Pistachio 16 Pieces",
+          "description": "El Abd Kahk with Pistachios combines the love for Eid delicacies with the passion for roasted nuts in one dessert",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 275
+            }
+          ]
+        },
+        {
+          "name": "2.5 Kilo Mix Box",
+          "description": "36 pieces plain biscuits, 15 pieces chocolate cookies with chocolate chips, 32 pieces plain petits fours, 16 pieces plain kahk, 8 pieces kahk with loukoum, 8 pieces kahk with walnuts, 18 pieces ghorayeba",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 900
+            }
+          ]
+        },
+        {
+          "name": "1 Kilo Mix Kahk Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 414
+            }
+          ]
+        },
+        {
+          "name": "1/2 Kilo Mix Pack",
+          "description": "8 plain kahk pieces, 18 plain biscuit pieces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Sable Pack",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 330
+            }
+          ]
+        },
+        {
+          "name": "Kahk with Loukoum and Pistachios 16 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 275
+            }
+          ]
+        },
+        {
+          "name": "Kahk with Walnuts Agamia 16 pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 230
+            }
+          ]
+        },
+        {
+          "name": "Kahk with Loukoum and Mastic 16 pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "Turkish Coffee Mixed Pack",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Kahk with Loukoum and Pistachios 32 pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 535
+            }
+          ]
+        },
+        {
+          "name": "Kahk with Pistachio 32 Pieces",
+          "description": "El Abd kahk with pistachios combines the love for Eid delicacies with the passion for roasted nuts in one dessert.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 535
+            }
+          ]
+        },
+        {
+          "name": "Plain Meneen 64 Pieces",
+          "description": "Meneen Al Abd is one of the most delicious traditional and simple baked goods known in Egypt, the Arab world for its delicious ingredients such as dough, sugar",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 330
+            }
+          ]
+        },
+        {
+          "name": "Kahk with Walnuts 16 Pieces",
+          "description": "Crispy, crunchy, and incredibly tasty! El Abd kahk with walnuts is full of roasted goodies that melt right into your mouth, awholesome mixture of ghee, sugar, sesame seeds, complemented with premium nuts.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 225
+            }
+          ]
+        },
+        {
+          "name": "Biscuits with Coconut 72 Pieces",
+          "description": "A tropical delight with your afternoon tea! El Abd coconut biscuits are made from premium ingredients to ensure satisfying your palate.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 335
+            }
+          ]
+        },
+        {
+          "name": "Meneen with Agwa 52 Pieces",
+          "description": "Meneen Al Abd is one of the most delicious traditional and simple baked goods known in Egypt and the Arab world for its delicious ingredients such as dough, sugar, in addition to the agwa that adds to its tastiness",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 390
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Coated Biscuits 24 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 220
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Coated Biscuits 48 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 430
+            }
+          ]
+        },
+        {
+          "name": "El Abd Cookies Chocolate 60 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 335
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Coated Kahk Box 16 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 195
+            }
+          ]
+        },
+        {
+          "name": "Kahk with Agamia 16 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "Maamoul Agwa Box 20 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "El Abd Cookies Vanilla 30 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Kahk with Agwa 16 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Coated Twist Cookies Box 30 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 220
+            }
+          ]
+        },
+        {
+          "name": "Coated Twist Biscuits Box 24 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "Segafredo Spanish Latte Sable 35 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 702
+            }
+          ]
+        },
+        {
+          "name": "Maamoul with Malban Box 20 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 168
+            }
+          ]
+        },
+        {
+          "name": "Maamoul Agwa Box 40 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 310
+            }
+          ]
+        },
+        {
+          "name": "El Abd Cookies Vanilla 60 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 335
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Shaklama Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 185
+            }
+          ]
+        },
+        {
+          "name": "Shaklma Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Coated Kahk Box 32 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 450
+            }
+          ]
+        },
+        {
+          "name": "Kahk with Agamia 32 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 345
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Biscuits 72 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 410
+            }
+          ]
+        },
+        {
+          "name": "El Abd Cookies Chocolate 2 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 10
+            }
+          ]
+        },
+        {
+          "name": "El Abd Cookies Chocolate 6 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 30
+            }
+          ]
+        },
+        {
+          "name": "El Abd Cookies Vanilla 2 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 10
+            }
+          ]
+        },
+        {
+          "name": "El Abd Cookies Vanilla 6 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 30
+            }
+          ]
+        },
+        {
+          "name": "Maamoul with Agwa & Cinnamon",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 10
+            }
+          ]
+        },
+        {
+          "name": "Maamoul 1 Piece",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bakery",
+      "items": [
+        {
+          "name": "Tandoori Chicken Sandwich",
+          "description": "Our tandoori chicken Italian Sojok Pizza\nsandwich, made with carefully marinated chicken tikka breasts, features a tantalizing combination of spicy hot sauce, creamy mayonnaise, topped with fresh arugula leaves and the rich flavor of sundried tomatoes, all nestled within a soft and light white soft bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Tuna Sandwich",
+          "description": "We bring you the finest protein rich tuna mix with smooth, creamy mayonnaise, served inside fresh and fiber rich vienna brown bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "Smoked Turkey Sandwich",
+          "description": "Carefully selected smoked turkey slices meet the richness of yellow cheddar cheese and the unique creaminess of kiri cheese, with the refreshing crunch of fresh cabbage lettuce leaves, all wrapped in soft and fluffy white soft bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Smoked Salmon Sandwich",
+          "description": "The premium smoked salmon sandwich features slices of salmon rich in omega-3, blended with creamy kiri cheese, a vibrant touch of arugula, capers, aromatic dill, a distinctive crunch of orma pickled onions",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "Roast Beef Sandwich",
+          "description": "The rich, flavorful roast beef slices harmonize beautifully with the distinctive tang of mustard, classic red cheddar cheese, the combination completed by the crispness of fresh cabbage leaves and slices of succulent gherkin",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Roast Chicken Sandwich",
+          "description": "The roast chicken sandwich offers gently grilled, protein packed chicken breast slices, perfectly balanced with rich yellow cheddar cheese, uniquely flavored fresh arugula leaves and all wrapped in a fresh white soft bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Turkey Bacon Sandwich",
+          "description": "The turkish bacon sandwich combines the richness of smoked turkey with the strength of crispy, distinctive beef bacon slices, this legendary combination is completed with the sweet taste of fresh cherry tomato slices, crisp cabbage lettuce, and a smooth touch of rich mayonnaise",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Honey Mustard Chicken Sandwich",
+          "description": "The honey mustard chicken sandwich features tender, marinated roasted chicken breasts drizzled with our signature honey mustard sauce, known for its balanced flavor, the sandwich is finished with fresh green arugula leaves inside a white vienna bread",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Danish Chocolate Hazelnut Diamond",
+          "description": "Danish pastry filled with chocolate and hazelnut, with a smooth rich layer and a distinctive flavor, fresh and perfect any time.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Danish Fruit & Cream",
+          "description": "Danish filled with smooth cream and fresh fruit pieces for a light and refreshing taste.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Chips Brownies",
+          "description": "Rich brownies loaded with chocolate chips, soft inside with an intense chocolate flavor.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Apple Pie",
+          "description": "Apple pie with rich cooked apple filling and light spices in a golden flaky crust.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "Danish Cream Diamond",
+          "description": "A danish pastry filled with smooth cream. sweet, fresh, great for any time",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Jalapeno Cheese Pate",
+          "description": "Pate filled with cheese, spicy jalapeno, tasty and filling",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Kinder Filled Doughnut",
+          "description": "Soft donut filled with rich kinder cream for a smooth chocolate taste.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Raspberry Cheesecake Filled Doughnut",
+          "description": "Soft donut filled with raspberry cheesecake for a sweet and tangy taste.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Almond Croissant",
+          "description": "Buttery croissant filled with almond flavor and topped for a crunchy rich taste.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Smoked Beef Croissant",
+          "description": "Croissant filled with smoked beef slices and cheddar cheese, offering a rich taste for smoked meat lovers.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Chocolate & Cream Twist Croissant",
+          "description": "Croissant filled with chocolate and cream for a rich indulgent taste.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Kinder Croissant",
+          "description": "Soft croissant filled with smooth kinder cream for a rich chocolate flavor.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Kinder Filled Doughnut",
+          "description": "Soft donut filled with rich Kinder cream for a smooth chocolate taste.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 43
+            }
+          ]
+        },
+        {
+          "name": "Raspberry Cheesecake Filled Doughnut",
+          "description": "Soft donut filled with raspberry cheesecake for a sweet and tangy taste.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 37
+            }
+          ]
+        },
+        {
+          "name": "Almond Croissant",
+          "description": "Buttery croissant filled with almond flavor and topped for a crunchy rich taste.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Chocolate & Cream Twist Croissant",
+          "description": "Croissant filled with chocolate and cream for a rich indulgent taste.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 48
+            }
+          ]
+        },
+        {
+          "name": "Kinder Croissant",
+          "description": "Soft croissant filled with smooth Kinder cream for a rich chocolate flavor.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 48
+            }
+          ]
+        },
+        {
+          "name": "Mega Plain Croissant",
+          "description": "A flaky and crispy texture with a buttery taste! El Abd plain croissant is mouthwatering and flavorful.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Mega Fruit Danish",
+          "description": "El Abd Fruit Danish is a puff pastry that is sweet, crunchy, and flakey which will level up your energy.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Mega Chocolate Doughnut",
+          "description": "Fresh donuts filled with the delicious chocolate from Al Abd and will make you enjoy every bite.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Mega Cream Danish",
+          "description": "A crunchy danish made of sweet puff pastry and filled with rich creme that can\\t be missed",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Filled Doughnut",
+          "description": "Soft doughnut filled with rich pistachio spread and topped with pistachio pieces.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Labneh & Zaatar Manoucheh",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Turkey & Kiri Manoucheh",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "Pastrami & Kiri Croissant",
+          "description": "Fresh, flaky croissant filled with Kiri cheese and pastrami slices, perfect for breakfast or an anytime snack.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "Turkey & Cheddar Croissant",
+          "description": "Golden croissant filled with turkey and melted cheddar cheese, a rich and satisfying option with bold flavor.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Tiramisu Cinnamon Roll",
+          "description": "A fluffy cinnamon roll with coffee cream, cocoa dust inspired by classic tiramisu",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Labneh & Zaatar Croissant",
+          "description": "Flaky croissant filled with creamy labneh and zaatar, a light oriental blend ideal for breakfast.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Cookie Filled Doughnut",
+          "description": "A special donut filled with smooth chocolate spread and topped with cookie pieces.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Raspberry Pink Doughnut",
+          "description": "Special doughnut coated with a layer of raspberry cream.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Lotus Filled Doughnut",
+          "description": "Premium doughnut filled with creamy Lotus spread and topped with biscuit pieces.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Cookies n Cream Filled Doughnut",
+          "description": "Doughnut filled with rich cookies and cream spread then topped with pieces of chocolate biscuit.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 37
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Hazelnut Filled Doughnut",
+          "description": "Irresistible Chocolate Hazelnut Filled Doughnut A Perfect Blend of Rich Chocolate and Nutty Hazelnut Flavor.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Mega Cream Danish",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Kiri Pastrami Pate",
+          "description": "Tasty pate filled with Kiri cheese and creamy pastrami.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Chicken Fajita Sandwich",
+          "description": "A sandwich filled with tender fajita chicken, green peppers, and onions",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Sausage Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 69
+            }
+          ]
+        },
+        {
+          "name": "Chicken Pizza",
+          "description": "Pizza topped with chicken pane, green pepper, tomato sauce, and mozzarella cheese",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Trend Dubai Filled Doughnut",
+          "description": "Experience luxury with a donut inspired by Dubai vibes! Made with soft dough and filled with pistachio cream and kunafa.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Cinnamon Roll",
+          "description": "It is a perfect blend of warm cinnamon and rich pistachio, with soft, flaky dough that melts in your mouth.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Vegetable Pizza",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Mega Doughnut Filled With Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Mega Doughnut Filled with Strawberry",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Mega White Cheese Croissant",
+          "description": "The most tasteful croissant with feta cheese is from Al Abd. It's made of the most fresh ingredients and its taste is yummy",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Cheddar Cheese Croissant",
+          "description": "Fresh croissant filled with cheddar cheese, a classic and comforting choice loved by everyone.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Mega Pastrami With Cheddar Cheese Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Mega White Cheese with Olives Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Mega Chicken Fajita Sandwich",
+          "description": "Grilled chicken, fresh onions, and bell peppers and the freshest bun",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Mega Sprinkled Chocolate Doughnut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Mega Sprinkled White Doughnut",
+          "description": "El Abd white donuts with sprinkles is ring-shaped are covered with white icing and topped with bright sprinkles for a pop of color and crunch often filled with custard or a flavor.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Mega Boghasha",
+          "description": "El Abd Boghasha is a fried pastry dessert that is drenched in delicious sugar syrup.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Mega Sugar Danish",
+          "description": "El Abd Danish sugar pastry, is a multi layered sugar coated pastry.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Mega Roomi Cheese Pate",
+          "description": "An easy and delicious breakfast from Al Abd. Buttery baked croissant filled with the tasteful rumi cheese.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Mega White Cheese Pate",
+          "description": "El Abd white cheese pate, a filled pastry stuffed with white cheese to fill your tummy up.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Mega Chocolate Croissant",
+          "description": "Fresh croissant filled with Al Abd signature chocolate to boost your energy at the beginning of the day.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Classic Cinnamon Roll",
+          "description": "A classic cinnamon roll with fresh cinnamon and soft dough, a perfect indulgence for cinnamon lovers.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Croissant",
+          "description": "Fresh croissant filled with smooth pistachio cream for a rich and unique flavor.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Italian Manaqesh",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Sojouk Manaqesh",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Chicken Strips Manaqesh",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "Pepperoni & Kiri Manaqesh",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "Italian Pizza",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Italian Mega Pizza with Natural Mozzarella",
+          "description": "Italian Mega Pizza features a soft, rich crust topped with flavorful tomato sauce, melted natural cheese prepared the Italian way, and fresh colorful bell peppers for an extra burst of flavor and freshness. The perfect choice for a delicious, satisfying, and unique snack.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Italian Sojok Pizza",
+          "description": "Italian pizza topped with pizza sauce, natural mozzarella cheese, and sliced sojok",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Italian Chicken Ranch Pizza",
+          "description": "Italian pizza topped with pizza sauce, natural mozzarella cheese, chicken pieces, and ranch sauce",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Mini Savory Croissant Box",
+          "description": "2 Plain Croissants  2 White Cheese Croissants  2 Roumy Cheese Croissants",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Mini Sweet Croissant Box",
+          "description": "3 Chocolate Croissants  3 Hazelnut Chocolate Croissants",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Mini Donuts Box",
+          "description": "15 Pieces of Mini Italian Pizza",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Mini Italian Pizza Box",
+          "description": "Crispy millefeuille layers filled with smooth pastry cream and finished with powdered sugar.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Doughnut",
+          "description": "Delicious doughnut topped with pistachio.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Hazelnut Doughnut",
+          "description": "Rich doughnut topped with creamy hazelnut chocolate.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Lotus Doughnut",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Roumy Cheese Croissant",
+          "description": "The perfect choice for cheese lovers. With its flaky dough and rich filling of premium Roman cheese.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Caramel Cinnamon Roll",
+          "description": "A caramel cinnamon roll, combining the sweetness of caramel with the warmth of cinnamon. Soft and indulgent, a perfect treat for any occasion.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Cinnamon Roll",
+          "description": "A cinnamon roll filled with rich chocolate, blending the warmth of cinnamon with the indulgence of chocolate. A perfect treat!",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Hazelnut Croissant",
+          "description": "A chocolate hazelnut croissant filled with rich chocolate and crunchy hazelnuts. A delicious, indulgent pastry.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Filled Doughnut Heart",
+          "description": "Enjoy rich chocolate filling inside a fresh donut, perfect for Valentine's day",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 34
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Yameish & Nuts",
+      "items": [
+        {
+          "name": "Peeled Hazelnut 300 Gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 460
+            }
+          ]
+        },
+        {
+          "name": "Peeled Hazelnut 150 Gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 230
+            }
+          ]
+        },
+        {
+          "name": "Roasted Hazelnut 300 Gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 495
+            }
+          ]
+        },
+        {
+          "name": "Halawani Peanut 250gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Qamar Al-Din Al Ahlam",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Salted Peanut 250 Gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Qamar El-Din Zahra Al-Ghouta 400 Gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Al Mutawakel Dates 1 Kilo",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Roasted Pistachio 300 Gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 440
+            }
+          ]
+        },
+        {
+          "name": "Raisin 300gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Raisin 150gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Coconut 300 Gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Roasted Hazelnut 150 Gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 250
+            }
+          ]
+        },
+        {
+          "name": "Prunes without Pitted 150 Gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Dried Figs 150 gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Prunes Pitted 300 Gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Medjool Dates Azad 1 Kilo",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 420
+            }
+          ]
+        },
+        {
+          "name": "Crushed Carob 400 grams",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Prunes Pitted 150 Gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Prunes without Pitted 300 Gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 210
+            }
+          ]
+        },
+        {
+          "name": "Apricot 300 Gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 275
+            }
+          ]
+        },
+        {
+          "name": "Apricot 150 Gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Dried Figs 300 gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 275
+            }
+          ]
+        },
+        {
+          "name": "Peeled Almonds 150 Gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "Roasted Spanish  Almonds 150 gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Roasted Cashew 300 Gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 380
+            }
+          ]
+        },
+        {
+          "name": "Roasted Pistachio 150 Gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 220
+            }
+          ]
+        },
+        {
+          "name": "Peeled Almonds 300 Gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 275
+            }
+          ]
+        },
+        {
+          "name": "Walnuts 150 gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Coconut 150 Gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Walnut 300 Gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 284
+            }
+          ]
+        },
+        {
+          "name": "Roasted Cashew 150 Gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 195
+            }
+          ]
+        },
+        {
+          "name": "Hibiscus 200 Gram",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "Peanut with Chocolate 150gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 69
+            }
+          ]
+        },
+        {
+          "name": "Peanut with Chocolate 220 Gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Walnuts 300 gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 295
+            }
+          ]
+        },
+        {
+          "name": "Sugar Pretzel Cup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Coconut Pretzel Cup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Cinnamon Pretzel Cup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Peeled Hazelnut 75 Gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "Walnuts 250 gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Peeled Almonds 75 Gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "Saudi Sukkary Dates 800 gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 330
+            }
+          ]
+        },
+        {
+          "name": "Scotty Dates 750 gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Walnut 75 Gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 74
+            }
+          ]
+        },
+        {
+          "name": "Walnuts 75 gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Apricot 400 gm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Qamar El-Din Rolls",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 170
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Western ",
+      "items": [
+        {
+          "name": "Mango Torte 20 Cm",
+          "description": "Soft sponge, filled with mango cream and topped with a layer of fresh mango",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 415
+            }
+          ]
+        },
+        {
+          "name": "Rocher Cake 20",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 505
+            }
+          ]
+        },
+        {
+          "name": "Eight Seasons Cake 26",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 680
+            }
+          ]
+        },
+        {
+          "name": "Kinder Cake 20",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 505
+            }
+          ]
+        },
+        {
+          "name": "Fudge with Hazelnut Chocolate Cup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Red Velvet Cup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "Caramel Cup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Crispy Ball",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Honey Cake Slice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 82.5
+            }
+          ]
+        },
+        {
+          "name": "Crispy Chocolate Sable",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Raspberry Pistachio Swiss Roll",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Molten Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 140
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Wafer Cone",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 77
+            }
+          ]
+        },
+        {
+          "name": "Om Ali Tagine",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Cookies and cream cone",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Fudge",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "Trend Dubai Cup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Mango Othmanleya Cup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Othmanleya Cup",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Orange Cake Large",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 205
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Cake Large",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 215
+            }
+          ]
+        },
+        {
+          "name": "Macron Box 12 Pieces",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 180
+            }
+          ]
+        },
+        {
+          "name": "Marshmallow Stick",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Tart",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Eclair Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Duetto Fruits & Flamenco 24",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 610
+            }
+          ]
+        },
+        {
+          "name": "Mango Cake 24 Cm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 572
+            }
+          ]
+        },
+        {
+          "name": "Duetto Choco Mango Cake (20 cm)",
+          "description": "A balanced combination of rich chocolate and fresh mango in one elegant cake, offering both chocolate richness and mango freshness.\nServes up to 5 people",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 429
+            }
+          ]
+        },
+        {
+          "name": "Classic Millefeuille",
+          "description": "Crispy millefeuille layers filled with smooth pastry cream and finished with powdered sugar.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Nutella Fudge",
+          "description": "Layers of chocolate whipped cream, rich fudge, crispy crunch, and hazelnut Nutella.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Peanut Butter Crispy",
+          "description": "A crunchy peanut butter crispy mix layered with rich chocolate ganache.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Tres Leches",
+          "description": "Soft tres leches cake soaked in a rich milk mixture and topped with rich whipped cream.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 80
+            }
+          ]
+        },
+        {
+          "name": "Mango Tres Leches",
+          "description": "Soft tres leches cake soaked in a rich milk mixture, topped with whipped cream and fresh mango pieces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Gateaux ",
+      "items": [
+        {
+          "name": "Chocolate Mousse Gateaux",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Swiss Roll Gateau",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Peach Gateaux",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60.5
+            }
+          ]
+        },
+        {
+          "name": "Fudge Gateaux",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 66
+            }
+          ]
+        },
+        {
+          "name": "Black Forest Gateaux",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60.5
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Mille-Feuille",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Jam Mille-Feuille",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Cream Swiss Roll Gateau",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60.5
+            }
+          ]
+        },
+        {
+          "name": "Red Velvet Mousse Gateaux",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 71.5
+            }
+          ]
+        },
+        {
+          "name": "White Wave Gateaux",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Crispy Chocolate Mousse Gateaux",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Sponge Gateaux",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60.5
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Magic Gateaux",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60.5
+            }
+          ]
+        },
+        {
+          "name": "Caramel Mille-Feuille",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Mango Gateaux",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60.5
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Cafe Mousse Gateaux",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 66
+            }
+          ]
+        },
+        {
+          "name": "Sugar Mille-Feuille",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Mille Feuille Gateau",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Lotus Mille Feuille Gateau",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Hazelnut Eclair",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Gateaux",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60.5
+            }
+          ]
+        },
+        {
+          "name": "Babah Gateaux",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Eclair",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "Lotus Eclair",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "Cinnamon Walnut Swiss Roll",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Eclair",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Raspberry Pistachio Swiss Roll",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Gateaux Soiree Box",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 515
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cakes",
+      "items": [
+        {
+          "name": "Duetto Kinder & Rocher Cake",
+          "description": "Duetto Kinder & Rocher cake, Kinder half features soft vanilla sponge layers filled with Kinder cream, hazelnut cream, and white chocolate. While Rocher half is made of soft chocolate sponge layers filled with rich chocolate cream chocolate hazelnut, and crunchy biscuit pieces inside. A delicious mix of flavors with an irresistible taste.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 505
+            }
+          ]
+        },
+        {
+          "name": "Four Season Cake 26 Cm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 690
+            }
+          ]
+        },
+        {
+          "name": "Duetto Fruits & Choco Sponge Cake 20 Cm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 429
+            }
+          ]
+        },
+        {
+          "name": "Duetto Fruits & Choco Sponge Cake 24 Cm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 632.5
+            }
+          ]
+        },
+        {
+          "name": "Duetto Fruits & Flamenco Cake 28 Cm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 765
+            }
+          ]
+        },
+        {
+          "name": "Duetto Fruits & Flamenco Cake 24 Cm",
+          "description": "El Abd Duetto Fruits and Flamenco cake brings you the best of both worlds, with cream, fruits, and creamy chocolate in one cake.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 638
+            }
+          ]
+        },
+        {
+          "name": "Duetto Fruits & Choco Sponge Cake 28 Cm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 765
+            }
+          ]
+        },
+        {
+          "name": "Flamenco Cake 20 cm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 434.5
+            }
+          ]
+        },
+        {
+          "name": "Choco Sponge Cake 26 Cm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 599.5
+            }
+          ]
+        },
+        {
+          "name": "Duetto Fruits & Flamenco Cake 20 Cm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 434.5
+            }
+          ]
+        },
+        {
+          "name": "Duetto Fruits & Choco Sponge Cake 30*30 Cm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 968
+            }
+          ]
+        },
+        {
+          "name": "Flamenco Cake 26 Cm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 638
+            }
+          ]
+        },
+        {
+          "name": "Choco Sponge Cake 30*30 Cm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 836
+            }
+          ]
+        },
+        {
+          "name": "Crispy Chocolate Cake 16",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 310
+            }
+          ]
+        },
+        {
+          "name": "Lotus Chocolate Cake 20 cm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 489.5
+            }
+          ]
+        },
+        {
+          "name": "Duetto Heart Fruits & Choco Sponge Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 610
+            }
+          ]
+        },
+        {
+          "name": "Duetto Pistachio & Chocolate Cake 20",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 470
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Mix Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 715
+            }
+          ]
+        },
+        {
+          "name": "Fruits Cake 20 cm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 425
+            }
+          ]
+        },
+        {
+          "name": "White Raspberry Cake 16",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 268
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Chateau Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 748
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Genoise Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 770
+            }
+          ]
+        },
+        {
+          "name": "Duetto Pistachio & Lotus Cake 20",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 470
+            }
+          ]
+        },
+        {
+          "name": "Four Seasons Cake 30x30",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 968
+            }
+          ]
+        },
+        {
+          "name": "Duetto Chocolate Strawberry Cake 20",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 455
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Cake 24",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 682
+            }
+          ]
+        },
+        {
+          "name": "Honey Cake 20*20",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 434.5
+            }
+          ]
+        },
+        {
+          "name": "Black Forest Cake 24",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 610
+            }
+          ]
+        },
+        {
+          "name": "Rocher Cake 20",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 505
+            }
+          ]
+        },
+        {
+          "name": "Kinder Cake 20",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 505
+            }
+          ]
+        },
+        {
+          "name": "White Strawberry Cake 16 Cm",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 275
+            }
+          ]
+        },
+        {
+          "name": "Large Orange Pound Cake",
+          "description": "Made with fresh orange juice, El Abd orange cake packs a punch of citrus in every bite",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 215
+            }
+          ]
+        },
+        {
+          "name": "Large Chocolate Pound Cake",
+          "description": "El Abd chocolate cake is your one-to-go dessert when you crave something sweet and fulfilling with its appetizing taste",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 215
+            }
+          ]
+        },
+        {
+          "name": "Almond White Chocolate Torte 20",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 460
+            }
+          ]
+        },
+        {
+          "name": "Spanish Latte Torte 20",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 460
+            }
+          ]
+        },
+        {
+          "name": "Four Seasons Torte 20x20",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 460
+            }
+          ]
+        },
+        {
+          "name": "Trend Dubai Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 535
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ice Cream Cakes",
+      "items": [
+        {
+          "name": "Choco Mango Duetto Ice Cream Cake 20*5",
+          "description": "Indulge in the choco mango duetto ice-cream cake, a delectable fusion of creamy ice cream with the sweetness of mango and the timeless richness of chocolate, perfect for celebrations, this cake delivers an exquisite, mouthwatering experience",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 450
+            }
+          ]
+        },
+        {
+          "name": "Honeycomb Ice Cream Cake 20*5",
+          "description": "Savor the honeycomb ice cream cake, a luscious blend of creamy ice cream and crunchy honeycomb layers, perfect for celebrations, this cake offers a delightful, sweet experience",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 395
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Swiss Roll Ice Cream Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 250
+            }
+          ]
+        },
+        {
+          "name": "Lotus Swiss Roll Ice Cream Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 320
+            }
+          ]
+        },
+        {
+          "name": "Classic Four Seasons Ice Cream Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 385
+            }
+          ]
+        },
+        {
+          "name": "Large Chocolate Cassata Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 460
+            }
+          ]
+        },
+        {
+          "name": "Large Fruits Cassata Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 440
+            }
+          ]
+        },
+        {
+          "name": "Small Fruits Ice Cream Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 350
+            }
+          ]
+        },
+        {
+          "name": "Small Chocolate Ice Cream Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 350
+            }
+          ]
+        },
+        {
+          "name": "Small Fruits Cassata Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 255
+            }
+          ]
+        },
+        {
+          "name": "Small Chocolate Cassata Ice Cream",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 285
+            }
+          ]
+        },
+        {
+          "name": "Large Fruits Ice Cream Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 515
+            }
+          ]
+        },
+        {
+          "name": "Large Chocolate  Ice Cream Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 530
+            }
+          ]
+        },
+        {
+          "name": "Mix Four Season Ice Cream Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 450
+            }
+          ]
+        },
+        {
+          "name": "Cookies & Cream Ice Cream Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 350
+            }
+          ]
+        },
+        {
+          "name": "Lotus Ice Cream Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 485
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halawet El Mouled ",
+      "items": [
+        {
+          "name": "Mouled Bites Box (6 Pieces)",
+          "description": "1 mix nuts bites, 1 fouleya bites, 1 semsemeya bites, 1 ladeda hamam bites, 1 mixed malban bites, 1 hummuseya  and hazelnut nougat bites\n6 pieces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 450
+            }
+          ]
+        },
+        {
+          "name": "Large Tin Box (51 Pieces)",
+          "description": "Fostoqeya qors, cashew qors, lozeya qors, 2 bondoqeya qors, 10 mini fouleya fingers, 8 mini semsemeya fingers, 5 mini hummuseya fingers, ladida, hamam, pistachio malban, small hazelnut malban, 4 walnut malban, 4 mini plain malban, 4 mini jelly malban, 2 hummuseya qors, hazelnut basema, 2 mini hazelnut domeya, hazelnut nougat, chocolate peanut nougat and chocolate peanut \n51 pieces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 2700
+            }
+          ]
+        },
+        {
+          "name": "Tin Box (51 Pieces)",
+          "description": "3 mini fostoqeya fingers, 3 mini louzeya fingers, 2 mini bondouqeya fingers, 5 mini fouleya fingers, 2 mini hummuseya fingers, 3 mini ladeda, 3 mini hamam, mini mix malban, 2 mini walnut malban, 3 mini plain malban, 3 mini jelly malban, mini hummuseya qors, 2 mini alaf qors, 2 mini hazelnut basima, 2 mini hazelnut doumeya, 4 hazelnut nougat pieces and 5 chocolate peanuts",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1700
+            }
+          ]
+        },
+        {
+          "name": "Mouled Box 6 (24 Pieces)",
+          "description": "3 mini fouleya fingers, 2 mini semsemeya fingers, mini hummuseya fingers, mini ladeda, mini hamam, 3 mini plain malban, 2 mini peanut malban, 2 mini jelly malban, mini hummuseya qors, mini alaf qors, mini plain basema, 2 peanut nougat pieces, 2 chocolate peanut nougat pieces and 2 chocolate peanuts",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 250
+            }
+          ]
+        },
+        {
+          "name": "Mouled Box 7 (15 Pieces)",
+          "description": "3 mini fouleya fingers, 2 mini semsemeya fingers, mini hummuseya fingers, mini ladeda, mini hamam, 2 mini plain malban, 2 mini peanut malban, 2 mini huumuseya qors and 1 mini alaf qors",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Mouled Box 3 (48 Pieces)",
+          "description": "Mini cashew fingers, mini louzeya fingers, mini bondoqeya fingers, 4 mini fouleya fingers, 4 mini semsemeya fingers, 4 mini hummuseya fingers, 4 mini ladeda, 4 mini hamam, 2 walnut malban, 4 mini plain malban, 4 mini jelly malban, 3 mini hummuseya qors, 3 mini alaf qors, 2 mini hazelnut basema, 2 hazelnut nougat pieces, 2 chocolate peanut nougat pieces and 3 chocolate peanuts\n48 pieces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 750
+            }
+          ]
+        },
+        {
+          "name": "Burgundy Gift Box (86 Pieces)",
+          "description": "4 mini fostoqeya, 4 mini cashew fingers, 3 mini lozeya, 4 mini bondoqeya, 8 mini fouleya, 8 mini semsemeya, 4 mini hummuseya, 6 mini ladeda, 6 mini hamam, small pistachio malban, small hazelnut malban, 6 walnut malban, 4 mini jelly malban, 3 mini hummuseya qors, 3 mini alaf qors, 2 mini hazelnut basema, 2 mini hazelnut domeya, 5 hazelnut nougat pieces, 5 chocolate peanut nougat pieces and 7 chocolate peanuts\n86 pieces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 2200
+            }
+          ]
+        },
+        {
+          "name": "Silver Gift Box (53 Pieces)",
+          "description": "Fostoqeya qors, cashew qors, lozeya qors, bondoqeya qors, 8 mini fouleya fingers, 6 mini semsemeya fingers, 4 mini hummuseya fingers, 2 ladeda, hamam, pistachio malban, mini hazelnut malban, 4 walnut malban, 6 mini plain malban, 6 mini jelly malban, 2 hummuseya malban, alaf nut qors, 2 hazelnut basema, 2 mini hazelnut domeya, hazelnut qeshta, hazelnut nougat, chocolate peanut nougat and chocolate chutney\n53 pieces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 2900
+            }
+          ]
+        },
+        {
+          "name": "Blue Gift Box (73 Pieces)",
+          "description": "3 mini fostoqeya fingers, 3 mini lozeya fingers, 4 mini bondoqeya fingers, 9 mini foleya fingers, 6 mini semsemeya fingers, 3 mini hummuseya fingers, 6 mini ladeda, 6 mini hamam, pistachio malban, mini hazelnut malban, 4 mini walnut malban, 4 mini jelly malban, 3 mini hummuseya qors, 3 mini special alaf qors, 2 mini hazelnut basema, 2 mini hazelnut domeya, 4 hazelnut nougat pieces, 4 chocolate peanut nougat pieces and 5 chocolate peanuts\n73 pieces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1800
+            }
+          ]
+        },
+        {
+          "name": "Mouled Box 5 (31 Pieces)",
+          "description": "Mini lozeya fingers, mini bondoqeya fingers, 3 mini fouleya fingers, 3 mini semsemeya fingers, 2 mini hummuseya fingers, 2 mini ladeda, 2 mini hamam, 4 mini plain malban, 2 mini peanut malban, 2 mini hummuseya qors, 1 mini alaf, mini plain basema, peanut nougat, chocolate peanut nougat and chocolate peanut nougat\n31 pieces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 400
+            }
+          ]
+        },
+        {
+          "name": "Mouled Box 1 (63 Pieces)",
+          "description": "2 mini fostoqeya fingers, 2 mini cashew fingers, mini lozeya fingers, mini bondoqeya fingers, 9 mini fouleya fingers, 6 mini semsemeya fingers, 3 mini hummuseya fingers, 4 mini ladeda, 4 mini hamam, small mix malban, 4 plain malban, 4 mini jelly nougat, 2 mini hummuseya qors, 2 mini special alaf qors, 2 mini hazelnut basema, 2 mini hazelnut domeya, 4 hazelnut nougat pieces, 4 chocolate peanut nougat pieces and 4 chocolate peanuts\n63 pieces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1250
+            }
+          ]
+        },
+        {
+          "name": "Mouled Box 2 (54 Pieces)",
+          "description": "Mini fostoqeya fingers, mini cashew fingers, mini lozeya fingers, mini bondoqeya fingers, 4 mini fouleya fingers, 4 mini semsemeya fingers, 3 mini hummuseya  fingers, 4 mini ladeda, 4 mini hamam, mini mixed malban, 2 walnut malban, 4 plain malban, 4 mini jelly malban, 2 mini hummuseya qors, mini special alaf qors, 2 mini hazelnut basema, 2 mini hazelnut domeya, 4 hazelnut nougat pieces, 5 chocolate peanut nougat pieces and 4 chocolate peanuts\n54 pieces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1000
+            }
+          ]
+        },
+        {
+          "name": "Mouled Box 4 (38 Pieces)",
+          "description": "Mini lozeya fingers, mini bondoqeya fingers, 3 mini fouleya fingers, 3 mini semsemeya fingers, 3 mini hummuseya fingers, 4 mini ladeda, 4 mini hamam, walnut malban, 4 mini plain malban, 4 mini jelly malban, 2 mini hummuseya qors, 1 mini alaf, 2 mini plain basema, 2 peanut nougat and 2 chocolate peanuts\n38 pieces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 570
+            }
+          ]
+        },
+        {
+          "name": "Green Gift Box (71 Pieces)",
+          "description": "Fostoqeya qors, cashew qors, lozeya qors, 4 bondoqeya qors, 12 fouleya qors, 12 semsemeya qors, 8 hummuseya qors, 2 mini ladeda, mini hamam, pistachio malban, mini hazelnut malban, 6 walnut malban, 6 mini jelly malban, 2 mini hummuseya qors, 1 mini alaf makhsous disc, mini hazelnut basrma, 2 mini hazelnut domeya, 2 hazelnut nougat pieces, 2 chocolate peanut nougat pieces and 2 chocolate peanuts\n71 pieces",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 3600
+            }
+          ]
+        },
+        {
+          "name": "Foleya Large",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Semsemeya Large",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 155
+            }
+          ]
+        },
+        {
+          "name": "Malban Ein Gamal Large",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 200
+            }
+          ]
+        },
+        {
+          "name": "Foleya",
+          "description": "Roasted peanut fingers, held together with a sweet honey syrup, each crunchy bite is packed with rich peanuts and a light honey that sweetens it to the sweetest taste",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "Fosdokeya",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 220
+            }
+          ]
+        },
+        {
+          "name": "Malban Ein Gamal",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Semsemeya",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Basema Bondok",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "Ladida",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Hamam",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Mix Qors",
+          "description": "Fouleya, semsemeya and hummuseya",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Hummuseya Large",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 135
+            }
+          ]
+        },
+        {
+          "name": "Lozeya",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 155
+            }
+          ]
+        },
+        {
+          "name": "Pistachio Bars",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 572
+            }
+          ]
+        },
+        {
+          "name": "Cashew",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 190
+            }
+          ]
+        },
+        {
+          "name": "Bondokeya",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Shaklama",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Hazelnut Qeshta",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Domeya Bondok",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "Basema",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Meshabak",
+          "description": "Enjoy the taste of the crispy meshbek qors, carefully prepared from a golden fried dough dipped in a delicious syrup",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Hummuseya",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Hazelnut Qeshta",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Malban Fosdok",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 145
+            }
+          ]
+        },
+        {
+          "name": "Meshmsheya Mekasarat",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 110
+            }
+          ]
+        },
+        {
+          "name": "Jelly",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Malban",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Malban Bondok",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Qeshta Zebeb",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 80
+            }
+          ]
+        },
+        {
+          "name": "Fosdok X Loz X Bondok",
+          "description": "Roasted pistachios, almonds, and hazelnuts with raisins, held together in honey syrup, form round qors bursting with crunch and a rich taste that blends the sweetness of honey with the deliciousness of nuts in every bite",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 137.5
+            }
+          ]
+        },
+        {
+          "name": "Almond Bars",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 290
+            }
+          ]
+        },
+        {
+          "name": "Cahew Bars",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 330
+            }
+          ]
+        },
+        {
+          "name": "Meshmsheya Goz Hend",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Hummuseya",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Goz Hend Fosdok",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "Domeya Sodany",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 55
+            }
+          ]
+        },
+        {
+          "name": "Mixed Nuts Bites",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 175
+            }
+          ]
+        },
+        {
+          "name": "Hazelnut Bars",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 300
+            }
+          ]
+        },
+        {
+          "name": "Nougat Bondok",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Qeshta Lotus",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 85
+            }
+          ]
+        },
+        {
+          "name": "Basema Bondok Large",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 230
+            }
+          ]
+        },
+        {
+          "name": "Malban Fosdok Large",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 270
+            }
+          ]
+        },
+        {
+          "name": "Qeshta Kinder & Nutella",
+          "description": "Soft, spongy pieces, each filled and half covered with nutella or kinder for a rich creamy",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 70
+            }
+          ]
+        },
+        {
+          "name": "Shaklama Nutella & Lotus",
+          "description": "Soft pieces of coconut, covered in nutella or lotus, with a smooth taste that combines the sweetness of coconut, the creaminess of nutella or lotus in one bite",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Shaklama Meshaklata",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Malban Bondok Large",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 195
+            }
+          ]
+        },
+        {
+          "name": "Hummuseya Mini",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Choco Coco",
+          "description": "A soft piece of shredded coconut covered in chocolate, with a touch of coconut on top, a smooth texture inside, and a rich chocolate coating for a delicious taste in every bite",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Foulya",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Sokareya",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        },
+        {
+          "name": "Semsemeya Loz (Alaf)",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Nougat Sodany",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "6 Mini Mixed Qors",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 80
+            }
+          ]
+        },
+        {
+          "name": "Maksosa Mekasarat",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "Choco Nougat",
+          "description": "Peanut nougat with a caramel layer topped with chocolate, every bite is a mix of chocolate and caramel sweetness",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 66
+            }
+          ]
+        },
+        {
+          "name": "Sweet Hummus Qors",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Semsemeya Bites",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Fouleya Bites Plate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "1 Alaf & 2 Hummuseya",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Nougat with Peanuts",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Toffee Bites Mix",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Coconut with Raisins",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Small Mixed Malban",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 95
+            }
+          ]
+        },
+        {
+          "name": "Sodany Meshaklat",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 66
+            }
+          ]
+        },
+        {
+          "name": "Mixed Malban",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 40
+            }
+          ]
+        },
+        {
+          "name": "Honeycomb Meshaklat",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 60
+            }
+          ]
+        },
+        {
+          "name": "Foleya Peanut Butter Spread",
+          "description": "Crunchy peanut butter spread with peanut pieces for extra texture and flavor.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "Peanut Butter Spread",
+          "description": "Smooth peanut butter spread, perfect for bread, desserts, and snacks.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "Hazelnut Chocolate Spread",
+          "description": "Creamy hazelnut chocolate spread, perfect for breakfast and desserts.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Almond X Raisin X Chocolate Bar",
+          "description": "A delicious bar combining almonds, raisins, and chocolate.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Sesame X Almond X Medjool Date Bar",
+          "description": "A wholesome bar made with sesame, almonds, and Medjool dates.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Cashew X Almond X Coconut Bar",
+          "description": "A nutritious bar with cashews, almonds, and coconut.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Peanut X Caramel X Chocolate Bar",
+          "description": "A peanut and caramel bar coated in chocolate for a rich flavor and satisfying texture.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "Mix Mekasarat 4 Bars",
+          "description": "A pack of four assorted nut bars.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 160
+            }
+          ]
+        },
+        {
+          "name": "Foleya Zero Sugar",
+          "description": "No Added Sugar peanut bar with a rich flavor and satisfying texture.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 25
+            }
+          ]
+        },
+        {
+          "name": "Semsemeya Zero Sugar",
+          "description": "No Added Sugar sesame bar with a rich flavor and crispy texture.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 25
+            }
+          ]
+        },
+        {
+          "name": "Zero Sugar 4 Bars",
+          "description": "A pack of four assorted no added sugar bars.",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 90
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

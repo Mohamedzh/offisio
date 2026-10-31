@@ -1,0 +1,1130 @@
+{
+  "brand": "Subway",
+  "source": "elmenus.com",
+  "source_label": "Menu source: elmenus.com (demo data, not affiliated)",
+  "restaurant_url": "https://elmenus.com/cairo/subway-z6mo",
+  "branch_code": "aqpy",
+  "fetched_at": "2026-10-31T12:38:37.277Z",
+  "categories": [
+    {
+      "name": "Ramadan Offer",
+      "items": [
+        {
+          "name": "Iftar Offers",
+          "description": "Any sandwich 6 inch, veggie delite salad, cookie, soft drink",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 488
+            }
+          ]
+        },
+        {
+          "name": "Double Iftar Offer",
+          "description": "Any 2 6 inch sandwiches, 2 veggie delite salads, 2 cookies, 2 soft drinks",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 984
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Offers",
+      "items": [
+        {
+          "name": "Duo Offer",
+          "description": "2 6 inch hero and 2 soft drink",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 519
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hero Subs ",
+      "items": [
+        {
+          "name": "Peri Peri Chicken Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Wrap",
+              "price_egp": 259
+            },
+            {
+              "size": "12 Inch",
+              "price_egp": 399
+            },
+            {
+              "size": "6 Inch",
+              "price_egp": 259
+            },
+            {
+              "size": "6_INCH_COMBO",
+              "price_egp": 259
+            },
+            {
+              "size": "WRAP_COMBO",
+              "price_egp": 259
+            },
+            {
+              "size": "12_INCH_COMBO",
+              "price_egp": 399
+            }
+          ]
+        },
+        {
+          "name": "Tuna Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Wrap",
+              "price_egp": 259
+            },
+            {
+              "size": "12 Inch",
+              "price_egp": 399
+            },
+            {
+              "size": "6 Inch",
+              "price_egp": 259
+            },
+            {
+              "size": "6_INCH_COMBO",
+              "price_egp": 259
+            },
+            {
+              "size": "WRAP_COMBO",
+              "price_egp": 259
+            },
+            {
+              "size": "12_INCH_COMBO",
+              "price_egp": 399
+            }
+          ]
+        },
+        {
+          "name": "Steak & Cheese Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Wrap",
+              "price_egp": 259
+            },
+            {
+              "size": "12 Inch",
+              "price_egp": 399
+            },
+            {
+              "size": "6 Inch",
+              "price_egp": 259
+            },
+            {
+              "size": "6_INCH_COMBO",
+              "price_egp": 259
+            },
+            {
+              "size": "WRAP_COMBO",
+              "price_egp": 259
+            },
+            {
+              "size": "12_INCH_COMBO",
+              "price_egp": 399
+            }
+          ]
+        },
+        {
+          "name": "Chicken Teriyaki Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Wrap",
+              "price_egp": 259
+            },
+            {
+              "size": "12 Inch",
+              "price_egp": 399
+            },
+            {
+              "size": "6 Inch",
+              "price_egp": 259
+            },
+            {
+              "size": "6_INCH_COMBO",
+              "price_egp": 259
+            },
+            {
+              "size": "WRAP_COMBO",
+              "price_egp": 259
+            },
+            {
+              "size": "12_INCH_COMBO",
+              "price_egp": 399
+            }
+          ]
+        },
+        {
+          "name": "Roast Beef Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Wrap",
+              "price_egp": 279
+            },
+            {
+              "size": "12 Inch",
+              "price_egp": 439
+            },
+            {
+              "size": "6 Inch",
+              "price_egp": 279
+            },
+            {
+              "size": "6_INCH_COMBO",
+              "price_egp": 279
+            },
+            {
+              "size": "WRAP_COMBO",
+              "price_egp": 279
+            },
+            {
+              "size": "12_INCH_COMBO",
+              "price_egp": 439
+            }
+          ]
+        },
+        {
+          "name": "Crispy Chicken Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Wrap",
+              "price_egp": 259
+            },
+            {
+              "size": "12 Inch",
+              "price_egp": 399
+            },
+            {
+              "size": "6 Inch",
+              "price_egp": 259
+            },
+            {
+              "size": "6_INCH_COMBO",
+              "price_egp": 259
+            },
+            {
+              "size": "WRAP_COMBO",
+              "price_egp": 259
+            },
+            {
+              "size": "12_INCH_COMBO",
+              "price_egp": 399
+            }
+          ]
+        },
+        {
+          "name": "Roasted Chicken Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Wrap",
+              "price_egp": 259
+            },
+            {
+              "size": "12 Inch",
+              "price_egp": 399
+            },
+            {
+              "size": "6 Inch",
+              "price_egp": 259
+            },
+            {
+              "size": "6_INCH_COMBO",
+              "price_egp": 259
+            },
+            {
+              "size": "WRAP_COMBO",
+              "price_egp": 259
+            },
+            {
+              "size": "12_INCH_COMBO",
+              "price_egp": 399
+            }
+          ]
+        },
+        {
+          "name": "Submelts Steak & Cheese",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Wrap",
+              "price_egp": 319
+            },
+            {
+              "size": "12 Inch",
+              "price_egp": 499
+            },
+            {
+              "size": "6 Inch",
+              "price_egp": 319
+            },
+            {
+              "size": "6_INCH_COMBO",
+              "price_egp": 319
+            },
+            {
+              "size": "WRAP_COMBO",
+              "price_egp": 319
+            },
+            {
+              "size": "12_INCH_COMBO",
+              "price_egp": 499
+            }
+          ]
+        },
+        {
+          "name": "Roast Beef Melt",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Wrap",
+              "price_egp": 319
+            },
+            {
+              "size": "12 Inch",
+              "price_egp": 499
+            },
+            {
+              "size": "6 Inch",
+              "price_egp": 319
+            },
+            {
+              "size": "6_INCH_COMBO",
+              "price_egp": 319
+            },
+            {
+              "size": "WRAP_COMBO",
+              "price_egp": 319
+            },
+            {
+              "size": "12_INCH_COMBO",
+              "price_egp": 499
+            }
+          ]
+        },
+        {
+          "name": "Submelts Chicken & Mushroom Supreme",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Wrap",
+              "price_egp": 319
+            },
+            {
+              "size": "12 Inch",
+              "price_egp": 499
+            },
+            {
+              "size": "6 Inch",
+              "price_egp": 319
+            },
+            {
+              "size": "6_INCH_COMBO",
+              "price_egp": 319
+            },
+            {
+              "size": "WRAP_COMBO",
+              "price_egp": 319
+            },
+            {
+              "size": "12_INCH_COMBO",
+              "price_egp": 499
+            }
+          ]
+        },
+        {
+          "name": "Smoked Chicken Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Wrap",
+              "price_egp": 229
+            },
+            {
+              "size": "12 Inch",
+              "price_egp": 359
+            },
+            {
+              "size": "6 Inch",
+              "price_egp": 209
+            },
+            {
+              "size": "6_INCH_COMBO",
+              "price_egp": 229
+            },
+            {
+              "size": "WRAP_COMBO",
+              "price_egp": 229
+            },
+            {
+              "size": "12_INCH_COMBO",
+              "price_egp": 359
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Make Your Own Wrap ",
+      "items": [
+        {
+          "name": "Make Your Own Wrap",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 149
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Make Your Own Subs ",
+      "items": [
+        {
+          "name": "Make Your Own Sub",
+          "description": "",
+          "sizes": [
+            {
+              "size": "12 Inch",
+              "price_egp": 399
+            },
+            {
+              "size": "6 Inch",
+              "price_egp": 249
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Make Your Own Salad ",
+      "items": [
+        {
+          "name": "Make Your Own Salad",
+          "description": "Lettuce is required",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 269
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sub Melts",
+      "items": [
+        {
+          "name": "The Big Cheese & Steak Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "12 Inch",
+              "price_egp": 459
+            },
+            {
+              "size": "6 Inch",
+              "price_egp": 289
+            },
+            {
+              "size": "6_INCH_COMBO",
+              "price_egp": 289
+            },
+            {
+              "size": "12_INCH_COMBO",
+              "price_egp": 459
+            }
+          ]
+        },
+        {
+          "name": "Chicken Mushroom Supreme Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "12 Inch",
+              "price_egp": 459
+            },
+            {
+              "size": "6 Inch",
+              "price_egp": 289
+            },
+            {
+              "size": "6_INCH_COMBO",
+              "price_egp": 289
+            },
+            {
+              "size": "12_INCH_COMBO",
+              "price_egp": 459
+            }
+          ]
+        },
+        {
+          "name": "Roast Beef Supreme  Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "12 Inch",
+              "price_egp": 459
+            },
+            {
+              "size": "6 Inch",
+              "price_egp": 289
+            },
+            {
+              "size": "6_INCH_COMBO",
+              "price_egp": 289
+            },
+            {
+              "size": "12_INCH_COMBO",
+              "price_egp": 459
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Salads",
+      "items": [
+        {
+          "name": "Veggie Delite Salad",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 199
+            },
+            {
+              "size": "Regular Combo",
+              "price_egp": 199
+            }
+          ]
+        },
+        {
+          "name": "Chicken Teriyaki Salad",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 249
+            },
+            {
+              "size": "Regular Combo",
+              "price_egp": 249
+            }
+          ]
+        },
+        {
+          "name": "Peri Peri Chicken Salad",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 249
+            },
+            {
+              "size": "Regular Combo",
+              "price_egp": 249
+            }
+          ]
+        },
+        {
+          "name": "Steak & Cheese Salad",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 249
+            },
+            {
+              "size": "Regular Combo",
+              "price_egp": 249
+            }
+          ]
+        },
+        {
+          "name": "Tuna Salad",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 249
+            },
+            {
+              "size": "Regular Combo",
+              "price_egp": 249
+            }
+          ]
+        },
+        {
+          "name": "Smoked Chicken Salad",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 249
+            },
+            {
+              "size": "Regular Combo",
+              "price_egp": 249
+            }
+          ]
+        },
+        {
+          "name": "Roasted Chicken Salad",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 249
+            },
+            {
+              "size": "Regular Combo",
+              "price_egp": 249
+            }
+          ]
+        },
+        {
+          "name": "Italian B.M.T Salad",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 219
+            },
+            {
+              "size": "Regular Combo",
+              "price_egp": 219
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Favorite Subs ",
+      "items": [
+        {
+          "name": "Chicken Pane Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Wrap",
+              "price_egp": 219
+            },
+            {
+              "size": "12 Inch",
+              "price_egp": 309
+            },
+            {
+              "size": "6 Inch",
+              "price_egp": 219
+            },
+            {
+              "size": "6_INCH_COMBO",
+              "price_egp": 219
+            },
+            {
+              "size": "WRAP_COMBO",
+              "price_egp": 219
+            },
+            {
+              "size": "12_INCH_COMBO",
+              "price_egp": 309
+            }
+          ]
+        },
+        {
+          "name": "Smoked Turkey Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Wrap",
+              "price_egp": 219
+            },
+            {
+              "size": "12 Inch",
+              "price_egp": 309
+            },
+            {
+              "size": "6 Inch",
+              "price_egp": 219
+            },
+            {
+              "size": "6_INCH_COMBO",
+              "price_egp": 219
+            },
+            {
+              "size": "WRAP_COMBO",
+              "price_egp": 219
+            },
+            {
+              "size": "12_INCH_COMBO",
+              "price_egp": 309
+            }
+          ]
+        },
+        {
+          "name": "Veggie Delite Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Wrap",
+              "price_egp": 149
+            },
+            {
+              "size": "12 Inch",
+              "price_egp": 219
+            },
+            {
+              "size": "6 Inch",
+              "price_egp": 149
+            },
+            {
+              "size": "6_INCH_COMBO",
+              "price_egp": 149
+            },
+            {
+              "size": "WRAP_COMBO",
+              "price_egp": 149
+            },
+            {
+              "size": "12_INCH_COMBO",
+              "price_egp": 219
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Iconic Subs ",
+      "items": [
+        {
+          "name": "Crunchy Chicken Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Wrap",
+              "price_egp": 239
+            },
+            {
+              "size": "12 Inch",
+              "price_egp": 369
+            },
+            {
+              "size": "6 Inch",
+              "price_egp": 239
+            },
+            {
+              "size": "6_INCH_COMBO",
+              "price_egp": 239
+            },
+            {
+              "size": "WRAP_COMBO",
+              "price_egp": 239
+            },
+            {
+              "size": "12_INCH_COMBO",
+              "price_egp": 369
+            }
+          ]
+        },
+        {
+          "name": "Spicy Italian Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Wrap",
+              "price_egp": 239
+            },
+            {
+              "size": "12 Inch",
+              "price_egp": 369
+            },
+            {
+              "size": "6 Inch",
+              "price_egp": 239
+            },
+            {
+              "size": "6_INCH_COMBO",
+              "price_egp": 239
+            },
+            {
+              "size": "WRAP_COMBO",
+              "price_egp": 239
+            },
+            {
+              "size": "12_INCH_COMBO",
+              "price_egp": 369
+            }
+          ]
+        },
+        {
+          "name": "Subway Club Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Wrap",
+              "price_egp": 239
+            },
+            {
+              "size": "12 Inch",
+              "price_egp": 369
+            },
+            {
+              "size": "6 Inch",
+              "price_egp": 239
+            },
+            {
+              "size": "6_INCH_COMBO",
+              "price_egp": 239
+            },
+            {
+              "size": "WRAP_COMBO",
+              "price_egp": 239
+            },
+            {
+              "size": "12_INCH_COMBO",
+              "price_egp": 369
+            }
+          ]
+        },
+        {
+          "name": "Subway Melt Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Wrap",
+              "price_egp": 239
+            },
+            {
+              "size": "12 Inch",
+              "price_egp": 369
+            },
+            {
+              "size": "6 Inch",
+              "price_egp": 239
+            },
+            {
+              "size": "6_INCH_COMBO",
+              "price_egp": 239
+            },
+            {
+              "size": "WRAP_COMBO",
+              "price_egp": 239
+            },
+            {
+              "size": "12_INCH_COMBO",
+              "price_egp": 369
+            }
+          ]
+        },
+        {
+          "name": "Italian B.M.T Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Wrap",
+              "price_egp": 239
+            },
+            {
+              "size": "12 Inch",
+              "price_egp": 369
+            },
+            {
+              "size": "6 Inch",
+              "price_egp": 239
+            },
+            {
+              "size": "6_INCH_COMBO",
+              "price_egp": 239
+            },
+            {
+              "size": "WRAP_COMBO",
+              "price_egp": 369
+            },
+            {
+              "size": "12_INCH_COMBO",
+              "price_egp": 319
+            }
+          ]
+        },
+        {
+          "name": "Turkey Breast Sandwich",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Wrap",
+              "price_egp": 239
+            },
+            {
+              "size": "12 Inch",
+              "price_egp": 369
+            },
+            {
+              "size": "6 Inch",
+              "price_egp": 239
+            },
+            {
+              "size": "6_INCH_COMBO",
+              "price_egp": 239
+            },
+            {
+              "size": "WRAP_COMBO",
+              "price_egp": 239
+            },
+            {
+              "size": "12_INCH_COMBO",
+              "price_egp": 369
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sub Boxes ",
+      "items": [
+        {
+          "name": "Sub Mega Box",
+          "description": "Choose 4 sandwiches",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 1249
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Toasties ",
+      "items": [
+        {
+          "name": "Veggie & Cheese Toast",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 89
+            }
+          ]
+        },
+        {
+          "name": "Pepperoni & Cheese Toast",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 109
+            }
+          ]
+        },
+        {
+          "name": "Chicken & Cheese Toast",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 139
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Snacks",
+      "items": [
+        {
+          "name": "Chips",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 49
+            }
+          ]
+        },
+        {
+          "name": "Potato Wedges",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 109
+            }
+          ]
+        },
+        {
+          "name": "Dipper",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 139
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        {
+          "name": "Cookies",
+          "description": "",
+          "sizes": [
+            {
+              "size": "1 Piece",
+              "price_egp": 119
+            },
+            {
+              "size": "12 Pieces",
+              "price_egp": 1099
+            },
+            {
+              "size": "3 Pieces",
+              "price_egp": 289
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Mango Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 99
+            }
+          ]
+        },
+        {
+          "name": "Guava Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 99
+            }
+          ]
+        },
+        {
+          "name": "Orange Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 99
+            }
+          ]
+        },
+        {
+          "name": "Lemon Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 99
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 99
+            }
+          ]
+        },
+        {
+          "name": "Coca Cola",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 59
+            }
+          ]
+        },
+        {
+          "name": "Coca Cola Diet",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 59
+            }
+          ]
+        },
+        {
+          "name": "Sprite",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 59
+            }
+          ]
+        },
+        {
+          "name": "Fanta Orange",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 59
+            }
+          ]
+        },
+        {
+          "name": "Mineral Water",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 39
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Catering",
+      "items": [
+        {
+          "name": "Sandwich Platter",
+          "description": "",
+          "sizes": [
+            {
+              "size": "16 Pieces",
+              "price_egp": 1399
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

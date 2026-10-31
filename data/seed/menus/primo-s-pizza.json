@@ -1,0 +1,691 @@
+{
+  "brand": "Primo's Pizza",
+  "source": "elmenus.com",
+  "source_label": "Menu source: elmenus.com (demo data, not affiliated)",
+  "restaurant_url": "https://elmenus.com/cairo/primos-pizza-p5gz",
+  "branch_code": "knqn4",
+  "fetched_at": "2026-10-31T12:38:37.390Z",
+  "categories": [
+    {
+      "name": "Salads",
+      "items": [
+        {
+          "name": "Coleslaw",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 30
+            }
+          ]
+        },
+        {
+          "name": "Potato Mayo Salad",
+          "description": "Cubes potatoes, mayonnaise dressing consists of yogurt, mayonnaise, sugar, celery and pickles",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 30
+            }
+          ]
+        },
+        {
+          "name": "Green Bean Salad",
+          "description": "Green beans, red onions, dill and celery",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 25
+            }
+          ]
+        },
+        {
+          "name": "Russian Salad",
+          "description": "Diced potatoes, peas, carrot, sweet corn and mayo dressing (yogurt, mayonnaise, celery and pickled cucumber)",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 35
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pizza",
+      "items": [
+        {
+          "name": "Vegetables Pizza",
+          "description": "Mozzarella, green pepper, black olives with pizza sauce",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 195
+            },
+            {
+              "size": "Medium",
+              "price_egp": 135
+            },
+            {
+              "size": "Small",
+              "price_egp": 100
+            }
+          ]
+        },
+        {
+          "name": "Mushroom Pizza",
+          "description": "Mushroom, mozzarella, green pepper, black olives with pizza sauce",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 210
+            },
+            {
+              "size": "Medium",
+              "price_egp": 150
+            },
+            {
+              "size": "Small",
+              "price_egp": 105
+            }
+          ]
+        },
+        {
+          "name": "Margherita Pizza",
+          "description": "Mozzarella with pizza sauce",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 190
+            },
+            {
+              "size": "Medium",
+              "price_egp": 130
+            },
+            {
+              "size": "Small",
+              "price_egp": 98
+            }
+          ]
+        },
+        {
+          "name": "Cheese Lovers Pizza",
+          "description": "Mozzarella, roomi, gouda, blue cheese with pizza sauce",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 220
+            },
+            {
+              "size": "Medium",
+              "price_egp": 155
+            },
+            {
+              "size": "Small",
+              "price_egp": 115
+            }
+          ]
+        },
+        {
+          "name": "Chicken Ranch Pizza",
+          "description": "Chicken breasts, mozzarella, green pepper, black olives with pizza sauce, ranch sauce",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 270
+            },
+            {
+              "size": "Medium",
+              "price_egp": 200
+            },
+            {
+              "size": "Small",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Chicken BBQ Pizza",
+          "description": "Chicken breasts, hot dog, mozzarella, green pepper, black olives, pizza sauce with BBQ sauce",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 270
+            },
+            {
+              "size": "Medium",
+              "price_egp": 200
+            },
+            {
+              "size": "Small",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Chicken Duck Pizza",
+          "description": "Tomatoes sauce, chicken popcorn, smoked duck bacon, mozzarella, green pepper and buffalo ranch sauce",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 300
+            },
+            {
+              "size": "Medium",
+              "price_egp": 225
+            },
+            {
+              "size": "Small",
+              "price_egp": 165
+            }
+          ]
+        },
+        {
+          "name": "Smoked Pizza",
+          "description": "Smoked beef, smoked turkey, mozzarella, green pepper, black olives with pizza sauce",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 245
+            },
+            {
+              "size": "Medium",
+              "price_egp": 175
+            },
+            {
+              "size": "Small",
+              "price_egp": 125
+            }
+          ]
+        },
+        {
+          "name": "Beijing Pizza",
+          "description": "Beijing hot dog, mozzarella and bbq sauce",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 270
+            },
+            {
+              "size": "Medium",
+              "price_egp": 200
+            },
+            {
+              "size": "Small",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Double Pepperoni Pizza",
+          "description": "Beef pepperoni, mozzarella, green pepper, black olives with pizza sauce",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 270
+            },
+            {
+              "size": "Medium",
+              "price_egp": 200
+            },
+            {
+              "size": "Small",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Super Supreme Pizza",
+          "description": "Tomato sauce, pepperoni, pure ground beef, fresh mushrooms, mozzarella, onions, green peppers and black olives",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 270
+            },
+            {
+              "size": "Medium",
+              "price_egp": 200
+            },
+            {
+              "size": "Small",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Pastrami Pizza",
+          "description": "Pastrami, mozzarella, pepper, black olives with pizza sauce",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 230
+            },
+            {
+              "size": "Medium",
+              "price_egp": 165
+            },
+            {
+              "size": "Small",
+              "price_egp": 120
+            }
+          ]
+        },
+        {
+          "name": "Truffle Mushroom Burger Pizza",
+          "description": "Tomato sauce, mini burger, cheese, mushroom, pickled cucumber, truffle mayo sauce, green pepper",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 330
+            },
+            {
+              "size": "Medium",
+              "price_egp": 240
+            },
+            {
+              "size": "Small",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Smoky Burger Pizza",
+          "description": "Burger, American cheese, mozzarella, green pepper, pickled cucumber, smoked sauce",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 270
+            },
+            {
+              "size": "Medium",
+              "price_egp": 200
+            },
+            {
+              "size": "Small",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Sweet & Sour Pizza",
+          "description": "Labneh, mozzarella and honey",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 220
+            },
+            {
+              "size": "Medium",
+              "price_egp": 155
+            }
+          ]
+        },
+        {
+          "name": "Tuna Pizza",
+          "description": "Tuna, mozzarella, green pepper, black olives with pizza sauce",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 270
+            },
+            {
+              "size": "Medium",
+              "price_egp": 200
+            },
+            {
+              "size": "Small",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Sea Ranch Pizza",
+          "description": "Shrimp, crab, mozzarella, green pepper, black olives, pizza sauce with ranch sauce",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 320
+            },
+            {
+              "size": "Medium",
+              "price_egp": 240
+            },
+            {
+              "size": "Small",
+              "price_egp": 175
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pizza Additions",
+      "items": [
+        {
+          "name": "Extra Meat",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 23
+            },
+            {
+              "size": "Medium",
+              "price_egp": 20
+            },
+            {
+              "size": "Small",
+              "price_egp": 15
+            }
+          ]
+        },
+        {
+          "name": "Extra Cheese",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 23
+            },
+            {
+              "size": "Medium",
+              "price_egp": 20
+            },
+            {
+              "size": "Small",
+              "price_egp": 15
+            }
+          ]
+        },
+        {
+          "name": "ExtraTuna",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 23
+            },
+            {
+              "size": "Medium",
+              "price_egp": 20
+            },
+            {
+              "size": "Small",
+              "price_egp": 15
+            }
+          ]
+        },
+        {
+          "name": "Extra Mushroom",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 23
+            },
+            {
+              "size": "Medium",
+              "price_egp": 20
+            },
+            {
+              "size": "Small",
+              "price_egp": 15
+            }
+          ]
+        },
+        {
+          "name": "Extra Crab",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 25
+            },
+            {
+              "size": "Medium",
+              "price_egp": 22
+            },
+            {
+              "size": "Small",
+              "price_egp": 17
+            }
+          ]
+        },
+        {
+          "name": "Extra Chicken",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 25
+            },
+            {
+              "size": "Medium",
+              "price_egp": 22
+            },
+            {
+              "size": "Small",
+              "price_egp": 17
+            }
+          ]
+        },
+        {
+          "name": "Extra Jalapeno",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 10
+            },
+            {
+              "size": "Medium",
+              "price_egp": 8
+            },
+            {
+              "size": "Small",
+              "price_egp": 6
+            }
+          ]
+        },
+        {
+          "name": "Extra Vegetables",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Large",
+              "price_egp": 10
+            },
+            {
+              "size": "Medium",
+              "price_egp": 8
+            },
+            {
+              "size": "Small",
+              "price_egp": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sauces",
+      "items": [
+        {
+          "name": "Ranch Sauce",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        },
+        {
+          "name": "BBQ Sauce",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        },
+        {
+          "name": "Smoked Sauce",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Side Dishes",
+      "items": [
+        {
+          "name": "Fries",
+          "description": "Served wit sauce of your choice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 50
+            }
+          ]
+        },
+        {
+          "name": "Buffalo Chicken Wings",
+          "description": "Chicken wings with spicy buffalo sauce and served with blue cheese sauce",
+          "sizes": [
+            {
+              "size": "6 Pieces",
+              "price_egp": 75
+            }
+          ]
+        },
+        {
+          "name": "Potato Wedges",
+          "description": "Served wit sauce of your choice",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 65
+            }
+          ]
+        },
+        {
+          "name": "BBQ Chicken Wings",
+          "description": "Chicken wings with BBQ sauce and served with ranch sauce",
+          "sizes": [
+            {
+              "size": "6 Pieces",
+              "price_egp": 65
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        {
+          "name": "Orange Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 30
+            }
+          ]
+        },
+        {
+          "name": "Mango Juice",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 45
+            }
+          ]
+        },
+        {
+          "name": "V7 Cola",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 25
+            }
+          ]
+        },
+        {
+          "name": "Small Mineral Water",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dessert",
+      "items": [
+        {
+          "name": "Blueberry Mille Feuille & Milk Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Raspberry Mille Feuille & Milk Cake",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 130
+            }
+          ]
+        },
+        {
+          "name": "Brownies with Cookie & Belgian Chocolate",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 170
+            }
+          ]
+        },
+        {
+          "name": "Mango & Coconut Tiramisu",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 150
+            }
+          ]
+        },
+        {
+          "name": "Lemon Tiramisu",
+          "description": "",
+          "sizes": [
+            {
+              "size": "Regular",
+              "price_egp": 80
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -93,7 +93,7 @@ At every session start: read this file, [docs/PLAN.md](docs/PLAN.md), and the ac
 pnpm dev         # local dev server
 pnpm lint        # lint
 pnpm typecheck   # tsc --noEmit (add at scaffold if missing)
-pnpm seed        # seed demo units (add at scaffold)
+pnpm import-brand-menus  # brand menus -> brand_menus (--dry first)
 ```
 
 Run lint and typecheck before each commit.
