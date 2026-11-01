@@ -23,14 +23,15 @@ export function haversineM(a: LatLng, b: LatLng): number {
   return Math.round(2 * R * Math.asin(Math.sqrt(h)));
 }
 
-export async function searchNearby(at: LatLng): Promise<NearbyPlace[]> {
+export type Rank = "DISTANCE" | "POPULARITY";
+export async function searchNearby(at: LatLng, rank: Rank = "DISTANCE"): Promise<NearbyPlace[]> {
   const key = process.env.GOOGLE_PLACES_API_KEY;
   if (!key) throw new Error("GOOGLE_PLACES_API_KEY missing");
   const r = await fetch("https://places.googleapis.com/v1/places:searchNearby", {
     method: "POST",
     headers: { "Content-Type": "application/json", "X-Goog-Api-Key": key, "X-Goog-FieldMask": FIELD_MASK },
     body: JSON.stringify({
-      includedTypes: TYPES, maxResultCount: 20, rankPreference: "DISTANCE", languageCode: "en",
+      includedTypes: TYPES, maxResultCount: 20, rankPreference: rank, languageCode: "en",
       locationRestriction: { circle: { center: { latitude: at.lat, longitude: at.lng }, radius: RADIUS_M } },
     }),
   });
@@ -83,7 +84,11 @@ export async function loadBrands(): Promise<Brand[]> {
   return rows;
 }
 
-// Keep up to KEEP places: matched chains first (nearest), then the nearest others.
+// Unmatched picks must be a food place (no supply shops, buildings or play areas).
+const FOOD = /cafe|coffee|restaurant|bakery|dessert|ice_cream|sandwich|juice|tea_house|confectionery|food/;
+const isFood = (p: NearbyPlace) => !!p.primary_type && FOOD.test(p.primary_type) && !/supplier|store$/.test(p.primary_type);
+
+// Keep up to KEEP places: matched chains first (nearest), then the nearest other food places.
 // Model calls stop once KEEP chains are matched.
 export async function pickPlaces(found: NearbyPlace[], brands: Brand[]): Promise<(NearbyPlace & { brand: string | null })[]> {
   const matched: (NearbyPlace & { brand: string })[] = [];
@@ -92,7 +97,7 @@ export async function pickPlaces(found: NearbyPlace[], brands: Brand[]): Promise
     const brand = await matchBrand(p, brands);
     if (brand && !matched.some((m) => m.brand === brand)) matched.push({ ...p, brand });
   }
-  const rest = found.filter((p) => !matched.some((m) => m.place_id === p.place_id)).map((p) => ({ ...p, brand: null }));
+  const rest = found.filter((p) => isFood(p) && !matched.some((m) => m.place_id === p.place_id)).map((p) => ({ ...p, brand: null }));
   return [...matched, ...rest].slice(0, KEEP).sort((a, b) => a.distance_m - b.distance_m);
 }
 
@@ -111,8 +116,18 @@ export async function savePlaces(unitId: string, places: (NearbyPlace & { brand:
   finally { client.release(); }
 }
 
-export async function refreshPlaces(unitId: string, at: LatLng): Promise<(NearbyPlace & { brand: string | null })[]> {
-  const picked = await pickPlaces(await searchNearby(at), await loadBrands());
+// Nearest 20 first; when none of them is a known chain, one more search ranked by
+// popularity within the same radius (owner 2026-11-01), which surfaces chains in busy areas.
+// `ranks` lets a re-run skip a pass that already ran (scripts/places-units.ts --fallback-only).
+export async function refreshPlaces(unitId: string, at: LatLng, ranks: Rank[] = ["DISTANCE", "POPULARITY"]): Promise<(NearbyPlace & { brand: string | null })[]> {
+  const brands = await loadBrands();
+  const seen = new Map<string, NearbyPlace>();
+  let picked: (NearbyPlace & { brand: string | null })[] = [];
+  for (const rank of ranks) {
+    for (const p of await searchNearby(at, rank)) if (!seen.has(p.place_id)) seen.set(p.place_id, p);
+    picked = await pickPlaces([...seen.values()].sort((a, b) => a.distance_m - b.distance_m), brands);
+    if (picked.some((p) => p.brand)) break;
+  }
   await savePlaces(unitId, picked);
   return picked;
 }
