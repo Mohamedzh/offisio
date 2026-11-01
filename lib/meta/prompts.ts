@@ -91,3 +91,10 @@ Pick 10 to 15 items that suit an office: drinks, pastries, breakfast, sandwiches
 For each pick give: "id" (copied exactly), "size" (copied exactly from that item's sizes; prefer the regular or single-person size), "name_en" (clean English name), "name_ar" (natural Egyptian Arabic name, Arabic script), "category" (one of coffee, tea, cold_drink, bakery, breakfast, sandwich, meal, dessert, snack).
 Also give "aliases": names people or map listings use for this brand, in English and Arabic (for example "Costa", "كوستا", "Costa Coffee"), at most 8.
 Never write prices. Reply ONLY with JSON: {"aliases": ["..."], "items": [{"id": "...", "size": "...", "name_en": "...", "name_ar": "...", "category": "..."}]}`;
+
+// Nearby places (plan/06 6.7 step 4). Public place names only, via meta.public.
+export const PLACE_MATCH_VERSION = "PLACE_MATCH_V1";
+export const PLACE_MATCH_V1 = `You match a place from Google Maps in Egypt to a known cafe/restaurant chain.
+You get the place name as listed on Maps, its type, and a few candidate chains with their known names.
+Answer with the chain only when the place is clearly a branch of it (a branch suffix like "- Zamalek" or "فرع التجمع" is fine). A similar but different business, a franchise of another brand, or any doubt means none.
+Reply ONLY with JSON: {"brand": "<exact candidate brand>"} or {"brand": null}`;

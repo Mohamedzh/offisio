@@ -118,3 +118,18 @@ create table if not exists brand_menus (
   prompt_version text not null,
   normalised_at timestamptz not null default now()
 );
+-- Nearby places (plan/06 6.7 step 4): up to 2 cafes/restaurants within ~1 km of
+-- a unit, from Google Places Nearby Search. We keep only what we display (Places
+-- terms): place_id, name, distance, Maps link; brand = matched brand_menus row or null.
+create table if not exists unit_places (
+  unit_id uuid not null references units(id) on delete cascade,
+  place_id text not null,
+  name text not null,
+  primary_type text,
+  distance_m int not null,
+  maps_url text not null,
+  brand text references brand_menus(brand) on delete set null,
+  menu_source text,
+  fetched_at timestamptz not null default now(),
+  primary key (unit_id, place_id)
+);

@@ -62,7 +62,7 @@ export async function POST(req: Request) {
     created = true;
     await replaceKeyframes(unitId, (frameUrls as string[]).map((url, i) => ({ url, meta: { t: frameTimes?.[i] ?? i, frame: i } })));
     if (videoUrl) await addMedia(unitId, "video", videoUrl, null, {});
-    await enqueue(unitId, slug, ["analyze"]);
+    await enqueue(unitId, slug, ["analyze", "places"]);
     return Response.json({ slug }, { status: 202 });
   } catch (e) {
     if (created) { try { await setUnitStatus(slug, "failed"); } catch { /* keep original error */ } }

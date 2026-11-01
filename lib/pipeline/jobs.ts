@@ -3,7 +3,8 @@
 // isolated: a failed render never blocks the listing or the other renders.
 //   upload -> analyze -> listing (unit goes live)
 //                     -> stage:<style> (one per planned render)
-// places / menus join in 6.7 steps 4-5.
+//        -> places (nearby cafes, needs only the location)
+// menus joins in 6.7 step 5.
 import { claimJob, finishJob, generateAvailability, queueJobs, saveListing, setUnitStatus, uploadInputs, type UploadInputs } from "../db/store";
 import { analyzeSpecs, saveKeyframesAndSpecs } from "./ingest";
 import { generateListingV2, type UploadOwner } from "./specs-listing";
@@ -12,11 +13,12 @@ import type { Survey } from "./survey";
 import type { UseVerdict } from "./rubric";
 import { spendBlocked } from "../guard";
 import { publish, qstashEnabled } from "../qstash";
+import { refreshPlaces } from "../places";
 
 // A failure that retrying cannot fix (quota, missing input): marked failed, no QStash retry.
 export class PermanentError extends Error {}
 
-export const ROUTES = ["analyze", "listing", "stage"] as const;
+export const ROUTES = ["analyze", "listing", "stage", "places"] as const;
 export type Route = (typeof ROUTES)[number];
 export interface StepMsg { slug: string; step: string }
 export const routeOf = (step: string): Route | null => {
@@ -56,6 +58,11 @@ async function execute(u: UploadInputs, step: string): Promise<string[]> {
     const job = planStaging(survey, uses).find((j) => `stage:${j.style}` === step);
     if (!job) throw new PermanentError("STYLE_NOT_IN_PLAN");
     await stageOne({ id: u.id, slug: u.slug, kind: u.kind }, job);
+    return [];
+  }
+  if (route === "places") {
+    if (u.lat === null || u.lng === null) throw new PermanentError("unit has no location");
+    await refreshPlaces(u.id, { lat: u.lat, lng: u.lng });
     return [];
   }
   throw new PermanentError(`unknown step ${step}`);

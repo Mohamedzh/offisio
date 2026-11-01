@@ -285,10 +285,11 @@ export async function jobsOf(unitId: string): Promise<Job[]> {
 export interface UploadInputs {
   id: string; slug: string; kind: Unit["kind"]; district: string; rent_egp: number; daily_egp: number | null;
   floor_text: string; available_from: string; frames: { url: string; t: number }[]; specs: Record<string, unknown> | null;
+  lat: number | null; lng: number | null;
 }
 export async function uploadInputs(slug: string): Promise<UploadInputs | null> {
   const { rows } = await pool().query<Omit<UploadInputs, "frames"> & { frames: { url: string; t: number | null }[] | null }>(
-    `select u.id, u.slug, u.kind, u.district, u.rent_egp, u.daily_egp, u.floor_text, u.available_from::text as available_from, s.data as specs,
+    `select u.id, u.slug, u.kind, u.district, u.rent_egp, u.daily_egp, u.floor_text, u.available_from::text as available_from, s.data as specs, u.lat::float as lat, u.lng::float as lng,
             (select json_agg(json_build_object('url', m.url, 't', (m.meta->>'t')::float) order by (m.meta->>'frame')::int nulls last, m.created_at)
              from media m where m.unit_id = u.id and m.kind = 'keyframe' and m.is_current) as frames
      from units u left join specs s on s.unit_id = u.id where u.slug = $1`, [slug]);

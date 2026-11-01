@@ -154,7 +154,10 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       <footer className="mt-14 border-t-2 border-ink pt-4 flex flex-wrap justify-between gap-2 text-sm text-ink/75">
         <Logo locale={locale} size="sm" />
         <span>{t("home.decorative")}</span>
-        <Link href={localeHref("/privacy", locale)} className="underline underline-offset-2">{t("nav.privacy")}</Link>
+        <span className="flex gap-3">
+          <Link href={localeHref("/privacy", locale)} className="underline underline-offset-2">{t("nav.privacy")}</Link>
+          <Link href={localeHref("/terms", locale)} className="underline underline-offset-2">{t("nav.terms")}</Link>
+        </span>
       </footer>
     </main>
   );

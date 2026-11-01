@@ -1,14 +1,13 @@
-import Link from "next/link";
-import LangToggle from "@/components/LangToggle";
-import { getT, localeHref, type Locale } from "@/lib/i18n";
+import LegalPage, { type LegalCopy } from "@/components/LegalPage";
+import type { Locale } from "@/lib/i18n";
 import { localeFromParam } from "@/lib/i18n/server";
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/metadata";
 
 // Privacy policy: required to publish the Meta app for the WhatsApp channel
-// (docs/plan/06 6.8). Long-form copy lives here, not in the UI dictionaries.
+// (docs/plan/06 6.8). #delete is the app's data deletion instructions URL.
 const UPDATED = "2026-10-31";
-const COPY: Record<Locale, { title: string; intro: string; updated: string; sections: { h: string; p: string[] }[] }> = {
+const COPY: Record<Locale, LegalCopy> = {
   en: {
     title: "Privacy policy",
     updated: "Last updated",
@@ -27,7 +26,7 @@ const COPY: Record<Locale, { title: string; intro: string; updated: string; sect
       { h: "Who processes it", p: [
         "Meta (model API and WhatsApp Business Platform), Vercel (hosting and media storage), Neon (database), XPay (payments, test mode only; card details go to XPay, never to us) and Upstash (background jobs).",
       ] },
-      { h: "Retention and deletion", p: [
+      { id: "delete", h: "Retention and deletion", p: [
         "This is a demo. Chat history keeps only the most recent messages of a conversation, and demo bookings and chats are deleted after the hackathon.",
         "To have your data deleted earlier, open an issue at github.com/Mohamedzh/offisio asking us to contact you (do not post personal details there), and we will remove your chats and bookings.",
       ] },
@@ -51,7 +50,7 @@ const COPY: Record<Locale, { title: string; intro: string; updated: string; sect
       { h: "مين بيعالجها", p: [
         "Meta (واجهة النماذج ومنصة WhatsApp Business)، وVercel (الاستضافة وتخزين الميديا)، وNeon (قاعدة البيانات)، وXPay (الدفع، وضع تجريبي بس؛ بيانات الكارت بتروح لـXPay ومش بتوصلنا)، وUpstash (المهام في الخلفية).",
       ] },
-      { h: "مدة الحفظ والمسح", p: [
+      { id: "delete", h: "مدة الحفظ والمسح", p: [
         "دي نسخة تجريبية. سجل الشات بيحتفظ بآخر الرسائل بس، والحجوزات والمحادثات التجريبية بتتمسح بعد الهاكاثون.",
         "لو عايز نمسح بياناتك قبل كده، افتح issue على github.com/Mohamedzh/offisio واطلب إننا نتواصل معاك (من غير ما تكتب بياناتك الشخصية هناك)، وهنمسح محادثاتك وحجوزاتك.",
       ] },
@@ -66,28 +65,5 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/privacy">)
 
 export default async function PrivacyPage({ params }: PageProps<"/[lang]/privacy">) {
   const locale = localeFromParam((await params).lang);
-  const t = getT(locale);
-  const c = COPY[locale];
-  return (
-    <main className="mx-auto w-full max-w-2xl px-4 py-8">
-      <div className="flex items-center justify-between">
-        <Link href={localeHref("/", locale)} className="link-back"><span className="arr" aria-hidden>←</span>{t("nav.allOffices")}</Link>
-        <LangToggle locale={locale} />
-      </div>
-      <article className="mt-4 border border-ink bg-sheet ink-offset">
-        <div className="torn-b" aria-hidden />
-        <div className="p-5">
-          <h1 className="font-display text-3xl font-black tracking-[-0.02em] mb-1">{c.title}</h1>
-          <p className="text-xs text-ink/60 mb-4">{c.updated}: <time dateTime={UPDATED}>{UPDATED}</time></p>
-          <p className="text-sm leading-relaxed text-ink/80">{c.intro}</p>
-          {c.sections.map((s) => (
-            <section key={s.h} className="mt-6">
-              <h2 className="font-display text-xl font-black tracking-[-0.02em] mb-2">{s.h}</h2>
-              {s.p.map((p) => <p key={p} className="text-sm leading-relaxed text-ink/80 mt-2">{p}</p>)}
-            </section>
-          ))}
-        </div>
-      </article>
-    </main>
-  );
+  return <LegalPage locale={locale} copy={COPY[locale]} updated={UPDATED} />;
 }
