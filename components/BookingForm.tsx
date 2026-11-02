@@ -2,10 +2,9 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { errorText, formatEgp, getT, localeHref, type Locale } from "@/lib/i18n";
-import { formatDistance } from "./NearbyPlaces";
 
 interface Day { date: string; day_free: boolean }
-interface Addon { id: string; name_ar: string; name_en: string; price_egp: number; source: string; place?: { name: string; distance_m: number; brand: string; brand_ar: string | null } }
+interface Addon { id: string; name_ar: string; name_en: string; price_egp: number; daily_only?: boolean }
 
 export default function BookingForm({ slug, dailyEgp, locale }: { slug: string; dailyEgp: number | null; locale: Locale }) {
   const router = useRouter(); const t = getT(locale);
@@ -18,8 +17,8 @@ export default function BookingForm({ slug, dailyEgp, locale }: { slug: string; 
     fetch(`/api/addons?unit=${slug}`).then((r) => r.json()).then((d) => setAddons(d.items ?? []));
   }, [slug]);
 
-  // One collapsible group per nearby chain, then the venue items.
-  const groups = [...addons.reduce((m, a) => m.set(a.place?.brand ?? "", [...(m.get(a.place?.brand ?? "") ?? []), a]), new Map<string, Addon[]>())];
+  // Two collapsible groups, both provided by the venue: house coffee & snacks, then room extras.
+  const groups = ([["house", addons.filter((a) => a.daily_only)], ["venue", addons.filter((a) => !a.daily_only)]] as const).filter(([, items]) => items.length);
   const addonsTotal = addons.reduce((s, a) => s + (picked[a.id] ?? 0) * a.price_egp, 0);
   const total = (dailyEgp ?? 0) + addonsTotal;
 
@@ -44,14 +43,14 @@ export default function BookingForm({ slug, dailyEgp, locale }: { slug: string; 
       <input value={phone} onChange={(e) => setPhone(e.target.value)} placeholder={t("booking.phone")} className="field" dir="ltr" />
       <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder={t("booking.email")} className="field" dir="ltr" autoComplete="email" />
       <div>
-        <p className="text-sm font-bold mb-1">{t("booking.addons")}</p>
+        <p className="text-sm font-bold">{t("booking.addons")}</p>
+        <p className="text-xs text-ink/75 mb-1">{t("booking.addonsNote")}</p>
         {groups.map(([key, items]) => {
-          const p = items[0].place;
           const count = items.reduce((n, a) => n + (picked[a.id] ?? 0), 0);
           return (
             <details key={key} className="border-b border-ink/25 py-1 text-sm">
               <summary className="cursor-pointer py-1 font-bold">
-                {p ? <><span dir="auto">{locale === "ar" ? p.brand_ar ?? p.brand : p.brand}</span> <span className="tnum font-normal text-ink/75">· {formatDistance(locale, p.distance_m)}</span></> : t("booking.venueAddons")}
+                {t(key === "house" ? "booking.houseAddons" : "booking.venueAddons")}
                 {count > 0 && <span className="tnum ms-2 bg-ink text-sheet px-1.5 text-xs">{count}</span>}
               </summary>
               {items.map((a) => (

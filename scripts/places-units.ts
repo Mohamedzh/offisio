@@ -1,12 +1,9 @@
 // Nearby places for existing units (plan/06 6.7 step 4); new uploads get the same
-// thing from the pipeline `places` step. One Places Nearby Search (Pro SKU) per unit,
-// plus a meta.public match call only for places whose name passes the alias pre-filter.
+// thing from the pipeline `places` step. One Places Nearby Search (Pro SKU) per unit.
 //   pnpm places-units --dry          units, locations, call count and cost; no API calls
-//   pnpm places-units [--only full,gen-zamalek] [--fallback-only]
-//   --fallback-only runs just the popularity pass (for units whose distance pass found no chain)
+//   pnpm places-units [--only full,gen-zamalek]
 import { pool } from "../lib/db/pg";
-import { publicModel } from "../lib/meta/client";
-import { KEEP, RADIUS_M, refreshPlaces, type Rank } from "../lib/places";
+import { KEEP, RADIUS_M, refreshPlaces } from "../lib/places";
 
 // Google list price for Nearby Search Pro (USD per 1000 calls, before the monthly free usage).
 const PRO_PER_1000 = 32;
@@ -14,7 +11,6 @@ const arg = (n: string) => { const i = process.argv.indexOf(n); return i > 0 ? p
 
 async function main() {
   const dry = process.argv.includes("--dry");
-  const ranks: Rank[] = process.argv.includes("--fallback-only") ? ["POPULARITY"] : ["DISTANCE", "POPULARITY"];
   const only = arg("--only")?.split(",").map((s) => s.trim());
   const { rows } = await pool().query<{ id: string; slug: string; lat: number | null; lng: number | null; location_approx: boolean }>(
     "select id, slug, lat::float as lat, lng::float as lng, location_approx from units where status = 'ready' order by created_at");
@@ -23,16 +19,15 @@ async function main() {
   for (const u of units.filter((x) => !located.includes(x))) console.log(`skip ${u.slug}: no location`);
   if (dry) {
     for (const u of located) console.log(`${u.slug}: ${u.lat}, ${u.lng}${u.location_approx ? " (approximate)" : " (exact)"}`);
-    console.log(`\nwould make ${ranks.length > 1 ? `${located.length}-${located.length * 2} (popularity fallback only where no chain is found)` : located.length} Places Nearby Search calls (Pro SKU, radius ${RADIUS_M} m, keep ${KEEP} per unit): ~$${(located.length * ranks.length * PRO_PER_1000 / 1000).toFixed(2)} max at list price, before Google's monthly free usage`);
-    console.log(`plus up to ${located.length * KEEP * 2} brand-match calls on ${publicModel()} (only for places whose name matches a brand alias; cached)`);
+    console.log(`\nwould make ${located.length} Places Nearby Search calls (Pro SKU, radius ${RADIUS_M} m, keep ${KEEP} per unit): ~$${(located.length * PRO_PER_1000 / 1000).toFixed(2)} at list price, before Google's monthly free usage`);
     await pool().end(); return;
   }
   let ok = 0;
   for (const u of located) {
     try {
-      const picked = await refreshPlaces(u.id, { lat: u.lat!, lng: u.lng! }, ranks);
+      const picked = await refreshPlaces(u.id, { lat: u.lat!, lng: u.lng! });
       ok++;
-      console.log(`${u.slug}: ${picked.length ? picked.map((p) => `${p.name} (${p.distance_m} m${p.brand ? `, menu: ${p.brand}` : ", no menu"})`).join("; ") : "no cafes/restaurants within " + RADIUS_M + " m"}`);
+      console.log(`${u.slug}: ${picked.length ? picked.map((p) => `${p.name} (${p.distance_m} m)`).join("; ") : "no cafes/restaurants within " + RADIUS_M + " m"}`);
     } catch (e) { console.log(`FAIL ${u.slug}: ${(e as Error).message}`); }
   }
   console.log(`\n${ok}/${located.length} units done`);

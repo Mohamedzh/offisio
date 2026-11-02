@@ -47,7 +47,7 @@ create table if not exists booking_addons (
   booking_id uuid not null references bookings(id) on delete cascade,
   item_id text not null, name_ar text not null, name_en text not null,
   qty int not null, unit_price_egp int not null, deliver_at timestamptz,
-  cafe_status text not null default 'pending_cafe', -- sent_to_cafe via WhatsApp line
+  cafe_status text not null default 'pending_cafe', -- unused since 2026-11-02 (no third-party orders)
   created_at timestamptz not null default now()
 );
 create table if not exists payments (
@@ -90,7 +90,7 @@ alter table units add column if not exists lat numeric(9,6);
 alter table units add column if not exists lng numeric(9,6);
 alter table units add column if not exists location_approx boolean not null default false;
 -- Pipeline jobs (plan/06 6.7 step 2): one row per unit and step
--- (analyze | listing | stage:<style> | places | menus), driven by QStash.
+-- (analyze | listing | stage:<style> | places), driven by QStash.
 create table if not exists pipeline_jobs (
   unit_id uuid not null references units(id) on delete cascade,
   step text not null,
@@ -100,27 +100,9 @@ create table if not exists pipeline_jobs (
   updated_at timestamptz not null default now(),
   primary key (unit_id, step)
 );
--- Brand menus (plan/06 6.7 step 3): one row per chain, normalised from the
--- one-off elmenus capture in data/seed/menus/ (AGENTS rule 2 exception).
--- items: 8-15 office add-on picks; every price_egp is copied from the source file.
-create table if not exists brand_menus (
-  brand text primary key,
-  name_ar text not null,
-  kind text not null,
-  source text not null default 'elmenus.com',
-  source_label text not null,
-  restaurant_url text not null,
-  fetched_at timestamptz not null,
-  aliases jsonb not null default '[]',
-  items jsonb not null default '[]',
-  source_items int not null,
-  model text not null,
-  prompt_version text not null,
-  normalised_at timestamptz not null default now()
-);
 -- Nearby places (plan/06 6.7 step 4): up to 2 cafes/restaurants within ~1 km of
 -- a unit, from Google Places Nearby Search. We keep only what we display (Places
--- terms): place_id, name, distance, Maps link; brand = matched brand_menus row or null.
+-- terms): place_id, name, type, distance, Maps link.
 create table if not exists unit_places (
   unit_id uuid not null references units(id) on delete cascade,
   place_id text not null,
@@ -128,8 +110,6 @@ create table if not exists unit_places (
   primary_type text,
   distance_m int not null,
   maps_url text not null,
-  brand text references brand_menus(brand) on delete set null,
-  menu_source text,
   fetched_at timestamptz not null default now(),
   primary key (unit_id, place_id)
 );
@@ -161,3 +141,10 @@ create table if not exists owner_epochs (
   wa_id text primary key,
   epoch int not null default 0
 );
+
+-- 2026-11-02: third-party menu data removed (organizer guidance). Nearby places keep
+-- only Google Places fields; add-ons are the venue's own (lib/addons/catalog.ts).
+alter table unit_places drop column if exists brand;
+alter table unit_places drop column if exists menu_source;
+drop table if exists brand_menus;
+delete from ai_cache where kind in ('brand_menu', 'place_match');

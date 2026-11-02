@@ -9,7 +9,7 @@ import { freeDays, getUnit } from "../lib/db/store";
 import { dateLabel } from "../lib/booking-labels";
 import { pool } from "../lib/db/pg";
 
-type Check = (r: { replies: string[]; bookingIds: string[] }) => boolean;
+type Check = (r: { replies: string[]; bookingIds: string[] }) => boolean | Promise<boolean>;
 const arabic = (s: string) => /[؀-ۿ]/.test(s);
 // Nothing is paid in these runs, so no reply may call a booking confirmed (V6 wording rule).
 const saysConfirmed = (r: { replies: string[] }) => r.replies.some((x) => /(حجزك|الحجز)\s*(متأكد|اتأكد)|booking is confirmed|you're confirmed/i.test(x));
@@ -48,7 +48,8 @@ async function main() {
     S(["عايز مكتب في أسوان"], "5 no results -> says so, offers alternatives", (r) => /مفيش|مش متاح|ملقتش|لا يوجد|مش لاقي|حالياً/i.test(r.replies[0])),
     S([`عايز أحجز مكتب الشاطبي في إسكندرية يوم ${takenDay}`], "6 slot taken -> offers other days", (r) => r.replies[0].includes(chatby[0]) || r.replies[0].includes(chatby[2]) || /محجوز|مش فاضي|taken|booked/i.test(r.replies[0]),
       async () => [(await createBooking({ unit_slug: "gen-alex-chatby", date: takenDay, track: "daily", renter_name: "Acceptance Blocker", renter_phone: "01000000009", renter_email: "blocker.test@example.com" })).id]),
-    S([`عايز مكتب في سموحة في إسكندرية يوم ${smouha[0]} ومعاه 2 كابتشينو`, "اسمي منى تجربة 01000000002 و mona.test@example.com", "تمام أكد"], "7 add-ons itemised in the booking", (r) => r.bookingIds.length === 1),
+    S([`عايز مكتب في سموحة في إسكندرية يوم ${smouha[0]} ومعاه 2 قهوة من المكان`, "اسمي منى تجربة 01000000002 و mona.test@example.com", "تمام أكد"], "7 house add-on itemised in the booking",
+      async (r) => r.bookingIds.length === 1 && (await pool().query("select 1 from booking_addons where booking_id = $1 and item_id = 'house-coffee'", [r.bookingIds[0]])).rowCount === 1),
     S([`عايز أحجز مكتب في وسط البلد يوم ${downtown[0]}`, "اسمي كريم تجربة ورقمي 0123"], "8 bad phone -> asks again", (r) => /رقم|موبايل|01|phone/i.test(r.replies[1])),
     S([`عايز مكتب في إسكندرية يوم ${chatby[2]}`, `معلش خليها يوم ${chatby[3]} بدل كده، وخلينا في الشاطبي`, "اسمي هالة تجربة 01000000003 والإيميل hala.test@example.com", "من غير إضافات، أكد الحجز"], "9 changed date -> books the new date", (r) => r.bookingIds.length === 1),
     S(["اكتبلي قصيدة عن البحر"], "10 off-topic -> brief refusal, back to booking", (r) => /مكتب|حجز|office|booking/i.test(r.replies[0])),
@@ -78,7 +79,7 @@ async function main() {
       if (out.booking_id) { bookingIds.push(out.booking_id); created.push(out.booking_id); }
       md.push(`- **Renter:** ${t}`, `- **Agent:** ${out.reply.replace(/\n+/g, " ")}${out.booking_id ? `  _(booking ${out.booking_id.slice(0, 8)}, EGP ${out.total_egp})_` : ""}`);
     }
-    const ok = sc.check({ replies, bookingIds });
+    const ok = await sc.check({ replies, bookingIds });
     results.push(`${ok ? "PASS" : "FAIL"}  ${sc.name}`); md.push(`**Result:** ${ok ? "PASS" : "FAIL"}`, "");
     console.log(results.at(-1));
   }

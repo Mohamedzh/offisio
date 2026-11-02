@@ -3,13 +3,13 @@
 // Tool arguments are validated in code; bad args go back to the model as an
 // error result, never a 500. At most MAX_ROUNDS tool rounds per turn.
 import { meta } from "../meta/client";
-import { AGENT_CHANNEL_WEB, AGENT_CHANNEL_WHATSAPP, AGENT_PROMPT_V7 } from "../meta/prompts";
+import { AGENT_CHANNEL_WEB, AGENT_CHANNEL_WHATSAPP, AGENT_PROMPT_V8 } from "../meta/prompts";
 import { pool } from "../db/pg";
 import { listUnits, getUnit, unitId, freeDays, availabilityByDay, todayCairo, bookingsForRenter, hiddenHoldsForRenter, type Booking, type Unit } from "../db/store";
 import { phoneFromWaId } from "../whatsapp";
 import { createBooking } from "../booking";
 import { bookingBrief, refLabel, replyLang, selectMyBookings, type Lang, type UnitTitles } from "../booking-labels";
-import { VENUE_ADDONS } from "../addons/catalog";
+import { HOUSE_ADDONS, VENUE_ADDONS, type AddonCatalogItem } from "../addons/catalog";
 import { nearbyOf } from "../nearby";
 import { haversineM } from "../places";
 import { findLandmark, LANDMARKS } from "../landmarks";
@@ -46,7 +46,7 @@ const TOOLS = [
     min_desks: { type: "integer", minimum: 1 }, max_rent_egp: { type: "integer", description: "Monthly budget in EGP" },
     track: { type: "string", enum: ["daily", "monthly", "long_term"] } } } } },
   { type: "function", function: { name: "get_unit", description: "Details of one unit: summary, specs, suitable uses with reasons, next free days.", parameters: { type: "object", additionalProperties: false, required: ["slug"], properties: { slug: { type: "string" } } } } },
-  { type: "function", function: { name: "nearby_places", description: "Cafes and restaurants within 1 km of a unit, with their menu items (ids and prices) that can be added to a day booking, plus venue add-ons.", parameters: { type: "object", additionalProperties: false, required: ["slug"], properties: { slug: { type: "string" } } } } },
+  { type: "function", function: { name: "nearby_places", description: "Cafes and restaurants within 1 km of a unit (name, distance, Google Maps link; the renter orders from them directly), plus the add-ons provided by the venue: house coffee & snacks (day bookings only) and venue items, with ids and prices.", parameters: { type: "object", additionalProperties: false, required: ["slug"], properties: { slug: { type: "string" } } } } },
   { type: "function", function: { name: "check_availability", description: "Whether a day is free for a daily booking, plus the next free days.", parameters: { type: "object", additionalProperties: false, required: ["slug", "date"], properties: { slug: { type: "string" }, date: { type: "string", description: "YYYY-MM-DD" } } } } },
   { type: "function", function: { name: "create_booking", description: "Book after the renter confirmed. Creates an unpaid booking held 30 minutes; payment happens on the booking page.", parameters: { type: "object", additionalProperties: false, required: ["slug", "date", "renter_name", "renter_email"], properties: {
     slug: { type: "string" }, date: { type: "string", description: "YYYY-MM-DD (first day for monthly/long-term)" },
@@ -66,7 +66,7 @@ const brief = (u: Unit) => ({
   rooms: u.specs.rooms_count ?? null, desks_max: deskCap(u), uses: passingUses(u).map((x) => `${x.use}:${x.verdict}`), synthetic_photos: u.synthetic,
 });
 const km = (m: number) => Math.round(m / 100) / 10;
-const venue = () => VENUE_ADDONS.map((x) => ({ id: x.id, en: x.name_en, ar: x.name_ar, egp: x.price_egp }));
+const addonBrief = (list: AddonCatalogItem[]) => list.map((x) => ({ id: x.id, en: x.name_en, ar: x.name_ar, egp: x.price_egp }));
 const str = (v: unknown, max = 80) => (typeof v === "string" && v.trim() && v.length <= max ? v.trim() : null);
 
 async function runTool(name: string, rawArgs: string, ctx: Ctx): Promise<unknown> {
@@ -107,12 +107,10 @@ async function runTool(name: string, rawArgs: string, ctx: Ctx): Promise<unknown
     const id = u ? await unitId(u.slug) : null;
     if (!u || !id) return { error: "unit not found" };
     const daily = u.rent_periods.includes("daily") && !!u.daily_egp;
-    const places = (await nearbyOf(id)).map((p) => ({
-      name: p.name, distance_m: p.distance_m, brand: p.brand,
-      ...(p.items.length ? (daily ? { menu: p.items.map((it) => ({ id: it.id, en: it.name_en, ar: it.name_ar, size: it.size, egp: it.price_egp })) } : { menu_listed: true }) : { menu_listed: false }),
-    }));
-    return { places, menu_addons: daily ? "menu items can be added to a day booking by id" : "info only: this unit is not day-bookable, so no food add-ons; the renter orders directly",
-      venue_addons: venue(), source: "menus from elmenus.com (demo data, not affiliated); places from Google Maps" };
+    const places = (await nearbyOf(id)).map((p) => ({ name: p.name, distance_m: p.distance_m, maps_url: p.maps_url }));
+    return { places, places_note: "info only: the renter orders from these places directly; places from Google Maps",
+      ...(daily ? { house_addons: addonBrief(HOUSE_ADDONS) } : { house_addons_note: "this unit is not day-bookable, so no coffee or snack add-ons" }),
+      venue_addons: addonBrief(VENUE_ADDONS) };
   }
   if (name === "check_availability") {
     const slug = str(a.slug); const date = str(a.date, 10);
@@ -171,7 +169,7 @@ async function systemPrompt(ctx: Ctx): Promise<string> {
   const [y, m, d] = today.split("-").map(Number);
   const tomorrow = new Date(Date.UTC(y, m - 1, d + 1)).toISOString().slice(0, 10);
   const weekday = new Intl.DateTimeFormat("en-US", { timeZone: "Africa/Cairo", weekday: "long" }).format(new Date());
-  return AGENT_PROMPT_V7.replace("{LANG}", ctx.lang === "en" ? "English" : "Egyptian Arabic").replace("{TODAY}", today).replace("{WEEKDAY}", weekday).replace("{TOMORROW}", tomorrow).replace("{CHANNEL}", await channelBlock(ctx));
+  return AGENT_PROMPT_V8.replace("{LANG}", ctx.lang === "en" ? "English" : "Egyptian Arabic").replace("{TODAY}", today).replace("{WEEKDAY}", weekday).replace("{TOMORROW}", tomorrow).replace("{CHANNEL}", await channelBlock(ctx));
 }
 
 async function loadHistory(sessionKey: string): Promise<{ role: string; content: string }[]> {

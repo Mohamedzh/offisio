@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { errorText, formatEgp, getT, type Locale, type TranslationKey } from "@/lib/i18n";
 
-interface Booking { id: string; status: string; track: string; date: string | null; total_egp: number; rent_egp_total: number; cafe_whatsapp_url: string | null; whatsapp_linked: boolean; whatsapp_link_url: string | null; unit_slug: string; addons: { name_en: string; name_ar: string; qty: number; unit_price_egp: number }[] }
+interface Booking { id: string; status: string; track: string; date: string | null; total_egp: number; rent_egp_total: number; whatsapp_linked: boolean; whatsapp_link_url: string | null; unit_slug: string; addons: { name_en: string; name_ar: string; qty: number; unit_price_egp: number }[] }
 
 // "2026-11-03" -> "Tue, 3 Nov" / Arabic equivalent; parsed as UTC so the day never shifts.
 function formatDay(locale: Locale, iso: string): string {
@@ -42,9 +42,6 @@ export default function BookingActions({ id, locale }: { id: string; locale: Loc
       </div>
       {msg && <p className="text-sm font-bold text-ink bg-mustard/40 border border-ink p-3">{msg}</p>}
       {b.status === "awaiting_payment" && <button disabled={busy} onClick={pay} className="btn btn-brick btn-lg w-full">{t("bookingCard.pay")}</button>}
-      {b.status === "confirmed" && b.cafe_whatsapp_url && (
-        <a href={b.cafe_whatsapp_url} target="_blank" rel="noreferrer" className="btn btn-chalk btn-lg w-full">{t("bookingCard.whatsapp")}</a>
-      )}
       {b.whatsapp_link_url && (
         <div className="border border-ink p-4 bg-sheet">
           <a href={b.whatsapp_link_url} target="_blank" rel="noreferrer" className="btn btn-chalk btn-md w-full">{t("bookingCard.waLink")}</a>

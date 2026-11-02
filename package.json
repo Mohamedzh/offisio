@@ -18,7 +18,6 @@
     "stage-units": "tsx scripts/stage-units.ts",
     "reassess-units": "tsx scripts/reassess-units.ts",
     "backfill-locations": "tsx scripts/backfill-locations.ts",
-    "import-brand-menus": "tsx scripts/import-brand-menus.ts",
     "places-units": "tsx scripts/places-units.ts"
   },
   "dependencies": {

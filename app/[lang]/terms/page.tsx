@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/metadata";
 
 // Terms of service: the Meta app's Terms of Service URL (docs/plan/06 6.8).
-const UPDATED = "2026-11-01";
+const UPDATED = "2026-11-02";
 const COPY: Record<Locale, LegalCopy> = {
   en: {
     title: "Terms of service",
@@ -14,7 +14,7 @@ const COPY: Record<Locale, LegalCopy> = {
     sections: [
       { h: "A demo, not a live marketplace", p: [
         "Payments run in XPay test mode only: no real money is charged and a booking here does not reserve a real office. Some listings and photos are synthetic or AI-restyled and are labelled as such.",
-        "Nearby cafe menus are demo data from public listings (source: elmenus.com, not affiliated) and may be out of date.",
+        "Nearby places come from Google Maps; order from them directly. Add-on prices are the venue's own demo prices.",
       ] },
       { h: "The booking assistant", p: [
         "Our assistant uses AI and can make mistakes. Check the unit page, dates and total before you pay. Unpaid bookings are held for 30 minutes and then released.",
@@ -36,7 +36,7 @@ const COPY: Record<Locale, LegalCopy> = {
     sections: [
       { h: "نسخة تجريبية، مش سوق حقيقي", p: [
         "الدفع شغال على وضع XPay التجريبي بس: مفيش فلوس حقيقية بتتخصم، والحجز هنا مش بيحجز مكتب حقيقي. بعض الإعلانات والصور اصطناعية أو متعدّلة بالذكاء الاصطناعي ومكتوب عليها كده.",
-        "منيو الكافيهات القريبة بيانات تجريبية من قوائم منشورة (المصدر: elmenus.com، من غير أي شراكة) وممكن تكون قديمة.",
+        "الأماكن القريبة من Google Maps، والطلب منها بيكون مباشرة. أسعار الإضافات أسعار تجريبية بتاعة المكان نفسه.",
       ] },
       { h: "مساعد الحجز", p: [
         "المساعد بيستخدم الذكاء الاصطناعي وممكن يغلط. راجع صفحة المكتب والتواريخ والإجمالي قبل ما تدفع. الحجز اللي مش مدفوع بيفضل محجوز ٣٠ دقيقة وبعدين بيتلغي.",

@@ -128,7 +128,7 @@ export default async function UnitPage({ params }: PageProps<"/[lang]/units/[slu
           )}
         </aside>
       </div>
-      {unit.location && <NearbyPlaces places={nearby} daily={unit.rent_periods.includes("daily") && !!unit.daily_egp} locale={locale} />}
+      {unit.location && <NearbyPlaces places={nearby} locale={locale} />}
     </main>
   );
 }

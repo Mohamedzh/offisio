@@ -130,7 +130,7 @@ function sniffImage(buf: Uint8Array): { type: string; ext: string } {
   return { type: "image/jpeg", ext: "jpg" };
 }
 
-// Public data (synthetic tests, brand menus): Modal when configured locally, else contributor.
+// Public data (synthetic tests): Modal when configured locally, else contributor.
 export const publicModel = () => (!process.env.VERCEL && process.env.MODAL_SPARK_URL ? MODELS.sparkOpen : MODELS.sparkContributor);
 
 // Voice note -> text (dev.meta.ai/docs/speech-to-text). The API only takes
