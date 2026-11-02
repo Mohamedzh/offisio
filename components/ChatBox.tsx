@@ -2,7 +2,7 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { errorText, formatEgp, getT, localeHref, type Locale } from "@/lib/i18n";
-import ChatText from "./ChatText";
+import ChatText, { textDir } from "./ChatText";
 
 interface Card { slug: string; title_en: string; title_ar: string; district: string; rent_egp: number; daily_egp: number | null; image: string; synthetic: boolean }
 interface Msg { role: "user" | "assistant"; content: string; units?: Card[] }
@@ -21,7 +21,7 @@ export default function ChatBox({ locale }: { locale: Locale }) {
     const text = input; setInput(""); setBusy(true);
     setMsgs((m) => [...m, { role: "user", content: text }]);
     try {
-      const res = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ session_id: session, message: text }) });
+      const res = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ session_id: session, message: text, locale }) });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
       setSession(data.session_id);
@@ -36,20 +36,21 @@ export default function ChatBox({ locale }: { locale: Locale }) {
       <div ref={listRef} className="flex-1 overflow-y-auto p-4 space-y-3">
         {msgs.map((m, i) => (
           <Fragment key={i}>
-          <div className={`max-w-[85%] px-3 py-2 text-sm leading-relaxed ${m.role === "user" ? "ms-auto bg-chalk text-white whitespace-pre-line" : "me-auto bg-sheet border border-ink text-ink"}`}>{m.role === "assistant" ? <ChatText text={m.content} /> : m.content}</div>
+          <div className={`max-w-[85%] px-3 py-2 text-sm leading-relaxed ${m.role === "user" ? "ms-auto bg-chalk text-white whitespace-pre-line" : "me-auto bg-sheet border border-ink text-ink"}`}>{m.role === "assistant" ? <ChatText text={m.content} /> : <span dir={textDir(m.content)} className="block">{m.content}</span>}</div>
           {m.units && m.units.length > 0 && (
             <div className="me-auto grid w-full max-w-[85%] grid-cols-1 gap-2 sm:grid-cols-3">
-              {m.units.map((u) => (
-                <Link key={u.slug} href={localeHref(`/units/${u.slug}`, locale)} target="_blank" className="block border border-ink bg-sheet text-ink transition-transform hover:-translate-y-0.5">
+              {m.units.map((u) => { const cl: Locale = textDir(m.content) === "rtl" ? "ar" : "en"; const ct = getT(cl); return (
+                // Card language follows the reply (an Arabic reply on the English page gets Arabic cards).
+                <Link key={u.slug} dir={cl === "ar" ? "rtl" : "ltr"} href={localeHref(`/units/${u.slug}`, locale)} target="_blank" className="block border border-ink bg-sheet text-ink transition-transform hover:-translate-y-0.5">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={u.image} alt={locale === "ar" ? u.title_ar : u.title_en} loading="lazy" onLoad={() => listRef.current?.scrollTo({ top: listRef.current.scrollHeight })} className="aspect-[4/3] w-full object-cover" />
+                  <img src={u.image} alt={cl === "ar" ? u.title_ar : u.title_en} loading="lazy" onLoad={() => listRef.current?.scrollTo({ top: listRef.current.scrollHeight })} className="aspect-[4/3] w-full object-cover" />
                   <div className="p-2 text-xs">
-                    <p className="font-bold line-clamp-2">{locale === "ar" ? u.title_ar : u.title_en}</p>
-                    <p className="tnum text-ink/75 mt-0.5">{u.daily_egp ? `${formatEgp(locale, u.daily_egp)}${t("unit.perDay")}` : `${formatEgp(locale, u.rent_egp)}${t("unit.perMonth")}`}</p>
-                    {u.synthetic && <p className="mt-1 text-[10px] text-ink/60">{t("chat.aiPhotos")}</p>}
+                    <p className="font-bold line-clamp-2">{cl === "ar" ? u.title_ar : u.title_en}</p>
+                    <p className="tnum text-ink/75 mt-0.5">{u.daily_egp ? `${formatEgp(cl, u.daily_egp)}${ct("unit.perDay")}` : `${formatEgp(cl, u.rent_egp)}${ct("unit.perMonth")}`}</p>
+                    {u.synthetic && <p className="mt-1 text-[10px] text-ink/60">{ct("chat.aiPhotos")}</p>}
                   </div>
                 </Link>
-              ))}
+              ); })}
             </div>
           )}
           </Fragment>

@@ -13,10 +13,14 @@ function inline(text: string): ReactNode[] {
   });
 }
 
+// Direction from the message itself (an Arabic reply on the English page is still RTL).
+export const textDir = (text: string): "rtl" | "ltr" =>
+  (text.match(/[؀-ۿ]/g)?.length ?? 0) > (text.match(/[A-Za-z]/g)?.length ?? 0) ? "rtl" : "ltr";
+
 export default function ChatText({ text }: { text: string }) {
   const lines = text.replace(/^#{1,6}\s+/gm, "").split("\n");
   return (
-    <div className="space-y-1">
+    <div dir={textDir(text)} className="space-y-1">
       {lines.map((line, i) => {
         const t = line.trim();
         if (!t) return null;

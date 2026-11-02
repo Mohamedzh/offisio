@@ -3,7 +3,7 @@
 // Tool arguments are validated in code; bad args go back to the model as an
 // error result, never a 500. At most MAX_ROUNDS tool rounds per turn.
 import { meta } from "../meta/client";
-import { AGENT_CHANNEL_WEB, AGENT_CHANNEL_WHATSAPP, AGENT_PROMPT_V4 } from "../meta/prompts";
+import { AGENT_CHANNEL_WEB, AGENT_CHANNEL_WHATSAPP, AGENT_PROMPT_V5 } from "../meta/prompts";
 import { pool } from "../db/pg";
 import { listUnits, getUnit, unitId, freeDays, availabilityByDay, todayCairo, bookingsForRenter, type Booking, type Unit } from "../db/store";
 import { phoneFromWaId } from "../whatsapp";
@@ -20,7 +20,7 @@ export type Channel = "chat" | "whatsapp";
 export interface Sender { waId: string; name: string | null }
 // A unit the agent looked at this turn, for photo cards under the reply (web) or image messages (WhatsApp).
 export interface UnitCard { slug: string; title_en: string; title_ar: string; district: string; rent_egp: number; daily_egp: number | null; image: string; synthetic: boolean }
-type Ctx = { bookingId?: string; total?: number; channel: Channel; sender?: Sender; cards: Map<string, UnitCard> };
+type Ctx = { bookingId?: string; total?: number; channel: Channel; sender?: Sender; cards: Map<string, UnitCard>; lang: "ar" | "en" };
 const cardOf = (u: Unit): UnitCard | null => {
   const image = u.images.real || u.images.staged[0]?.url || "";
   return image ? { slug: u.slug, title_en: u.title_en, title_ar: u.title_ar, district: u.district, rent_egp: u.rent_egp, daily_egp: u.daily_egp, image, synthetic: u.synthetic } : null;
@@ -162,7 +162,7 @@ async function systemPrompt(ctx: Ctx): Promise<string> {
   const [y, m, d] = today.split("-").map(Number);
   const tomorrow = new Date(Date.UTC(y, m - 1, d + 1)).toISOString().slice(0, 10);
   const weekday = new Intl.DateTimeFormat("en-US", { timeZone: "Africa/Cairo", weekday: "long" }).format(new Date());
-  return AGENT_PROMPT_V4.replace("{TODAY}", today).replace("{WEEKDAY}", weekday).replace("{TOMORROW}", tomorrow).replace("{CHANNEL}", await channelBlock(ctx));
+  return AGENT_PROMPT_V5.replace("{LANG}", ctx.lang === "en" ? "English" : "Egyptian Arabic").replace("{TODAY}", today).replace("{WEEKDAY}", weekday).replace("{TOMORROW}", tomorrow).replace("{CHANNEL}", await channelBlock(ctx));
 }
 
 async function loadHistory(sessionKey: string): Promise<{ role: string; content: string }[]> {
@@ -182,9 +182,10 @@ export async function sessionTurns(sessionKey: string): Promise<number> {
   return rows[0]?.turns ?? 0;
 }
 
-export async function chatTurn(sessionId: string, message: string, channel: Channel = "chat", sender?: Sender): Promise<{ reply: string; booking_id?: string; total_egp?: number; units: UnitCard[] }> {
+// lang: the page language for web chat (default reply language); WhatsApp starts in Arabic.
+export async function chatTurn(sessionId: string, message: string, channel: Channel = "chat", sender?: Sender, lang: "ar" | "en" = "ar"): Promise<{ reply: string; booking_id?: string; total_egp?: number; units: UnitCard[] }> {
   const history = (await loadHistory(sessionId)).slice(-10);
-  const ctx: Ctx = { channel, cards: new Map(), ...(channel === "whatsapp" && sender ? { sender } : {}) };
+  const ctx: Ctx = { channel, cards: new Map(), lang: channel === "whatsapp" ? "ar" : lang, ...(channel === "whatsapp" && sender ? { sender } : {}) };
   const msgs: Msg[] = [{ role: "system", content: await systemPrompt(ctx) }, ...history, { role: "user", content: message }];
   const trace: unknown[] = [];
   let reply = "";
