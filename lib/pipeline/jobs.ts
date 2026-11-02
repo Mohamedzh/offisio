@@ -4,7 +4,7 @@
 //   upload -> analyze -> listing (unit goes live)
 //                     -> stage:<style> (one per planned render)
 //        -> places (nearby cafes, needs only the location)
-// menus joins in 6.7 step 5.
+// (A `menus` step for owner menu photos was planned as 6.7 step 5; parked 2026-11-02.)
 import { claimJob, finishJob, generateAvailability, queueJobs, saveListing, setUnitStatus, uploadInputs, type UploadInputs } from "../db/store";
 import { analyzeSpecs, saveKeyframesAndSpecs } from "./ingest";
 import { generateListingV2, type UploadOwner } from "./specs-listing";

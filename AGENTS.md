@@ -48,7 +48,7 @@ In scope: the demo loop (upload → specs → listing → removal/restaging → 
 - payments in **XPay test mode only** (booking confirms on a signed webhook);
 - owner sign-in with **Clerk** (Google), with renters staying guests (stretch, [06](docs/plan/06-judge-ready.md) 6.9; cut if time runs out);
 - a **required** per-unit location (`units.lat/lng`) and "near X" search for the agent (planned, 6.7);
-- nearby cafes/restaurants per unit via the **Google Places API**, matched to a chain-brand menu catalogue (one-off demo import, see rule 2) or read from an owner's menu photo by Muse; long post-upload steps chained with **QStash** (planned, 6.7, owner decision 2026-10-31);
+- nearby cafes/restaurants per unit via the **Google Places API**, matched to a chain-brand menu catalogue (one-off demo import, see rule 2; reading an owner's menu photo is parked, owner 2026-11-02); long post-upload steps chained with **QStash** (planned, 6.7, owner decision 2026-10-31);
 - curated cafe add-ons with a WhatsApp order link (built); menu items become add-ons for **daily** bookings;
 - **renter booking over WhatsApp** via the Meta WhatsApp Cloud API (owner's own number), same agent and tools, XPay test-mode payment links (planned, 6.8).
 

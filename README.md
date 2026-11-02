@@ -87,7 +87,7 @@ After clicking Pay, a 3D Secure emulator appears: leave **(Y) Authentication Suc
 1. **Book + pay (approved).** On a unit page, pick a free day, enter any name and an `01…` mobile number, Confirm & pay, then Pay now. Use expiry `01/39`. You return to the booking page; within a few seconds the status flips to **confirmed**. Confirmation comes only from the payment webhook, never from the redirect — refreshing before it lands still shows `awaiting_payment`.
 2. **Declined card.** Same flow with expiry `05/39`. The checkout shows "Payment declined" and the booking stays **unconfirmed** (`awaiting_payment`). The checkout stays open, so retrying with expiry `01/39` on the same session succeeds.
 3. **Chat booking.** Open Chat and write in Egyptian Arabic, e.g. `عايز مكتب في الزمالك ليوم واحد` or `I want an office in Zamalek for one day`. The agent searches real availability, quotes the total, and takes name + phone.
-4. **Cafe add-ons.** Add cappuccino/croissant quantities in the booking form; they are itemised on the same payment.
+4. **Nearby cafes and add-ons.** Each unit page lists the nearest cafes/restaurants within 1 km (Google Places), with the matched chain's menu and prices (source: elmenus.com, demo data, not affiliated). On a day booking, those menu items (plus venue items like a whiteboard) are add-ons itemised on the same payment.
 5. **Owner upload.** `/upload`: add a short office video; the app extracts frames, generates specs and a bilingual listing, and publishes a bookable unit.
 6. **Language / RTL.** Toggle عربي (top corner) — every page mirrors to RTL; English is LTR. Check both.
 
@@ -119,8 +119,8 @@ Everything in this repository was written during the hackathon (Oct 26 – Nov 4
 
 - Video pipeline (originally scripts/run-unit.ts, now the QStash pipeline in lib/pipeline/jobs.ts): keyframes -> specs -> bilingual listing -> AI empty -> 3 fit renders (startup/clinic/training) on 3 real units. SAM 3.1 dropped (no callable endpoint; prompt-guided edits passed) — future consideration.
 - 3-track catalog: furnished=daily+monthly (800 EGP/day demo), semifinished=long-term only.
-- Booking: daily day-slots (hourly underneath), atomic double-book protection, Egyptian-Arabic chat agent with cafe add-ons.
-- Option A add-ons: curated cafe menu (public Elmenus prices), order sent to the cafe WhatsApp line (CAFE_WHATSAPP_NUMBER).
+- Booking: daily day-slots (hourly underneath), atomic double-book protection, Egyptian-Arabic chat agent with nearby-cafe add-ons, "what's near to eat" (`nearby_places`) and "near AUC"-style landmark search.
+- Add-ons: menus of the unit's matched nearby chains (`brand_menus`, prices copied from the elmenus source, checked in code), daily bookings only; the paid order goes to the demo WhatsApp line (CAFE_WHATSAPP_NUMBER).
 - Payments (test mode): hosted checkout + signature-verified webhook; booking confirms only on webhook. Set the payment keys in .env.local (see .env.example).
 - Live payment run verified 2026-10-29: approved test card auto-confirmed a booking via webhook, declined card stayed unconfirmed; judge instructions + test card in [Testing (for judges)](#testing-for-judges).
 - Built with Muse models and Claude, about 50/50: `muse-wonder-1.0` planning, `muse-spark-1.3-contributor` implementors/testers/reviewers on synthetic data only, Claude models alongside; `muse-spark-1.3` + `muse-image-1.0` in the product. See [How it was built](#how-it-was-built-muse-models-and-claude).

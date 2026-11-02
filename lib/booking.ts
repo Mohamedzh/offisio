@@ -1,6 +1,7 @@
 import { pool } from "./db/pg";
 import { getUnit, unitId, getBooking, releaseStaleHolds, todayCairo, type Booking, type RentPeriod } from "./db/store";
-import { ADDON_CATALOG, cafeWhatsAppUrl } from "./addons/catalog";
+import { addonsForUnit, cafeWhatsAppUrl } from "./addons/catalog";
+import { isMenuItemId } from "./nearby";
 
 export interface AddonRequest { item_id: string; qty: number; deliver_at?: string }
 export interface CreateBookingInput {
@@ -21,6 +22,8 @@ export async function createBooking(input: CreateBookingInput): Promise<Booking>
   if (!unit.rent_periods.includes(track)) throw new Error("TRACK_NOT_AVAILABLE");
   const uId = await unitId(unit.slug);
   if (!uId) throw new Error("UNIT_NOT_FOUND");
+  // Add-on prices come from this unit's catalogue, never from the request; menu items are daily-only.
+  const catalog = (input.addons ?? []).length ? await addonsForUnit(uId, track === "daily") : [];
 
   const client = await pool().connect();
   try {
@@ -39,9 +42,10 @@ export async function createBooking(input: CreateBookingInput): Promise<Booking>
       rent = unit.rent_egp; // first month due at booking; longer reservation confirmed offline
     }
     const addons = (input.addons ?? []).map((a) => {
-      const item = ADDON_CATALOG.find((i) => i.id === a.item_id);
-      if (!item) throw new Error("ADDON_NOT_FOUND");
-      return { item_id: item.id, name_en: item.name_en, name_ar: item.name_ar, qty: Math.max(1, a.qty || 1), unit_price_egp: item.price_egp, deliver_at: a.deliver_at ?? null };
+      const item = catalog.find((i) => i.id === a.item_id);
+      if (!item) throw new Error(isMenuItemId(String(a.item_id)) && track !== "daily" ? "ADDON_DAILY_ONLY" : "ADDON_NOT_FOUND");
+      const at = item.place ? { en: ` · ${item.place.brand}`, ar: ` · ${item.place.brand_ar ?? item.place.brand}` } : { en: "", ar: "" };
+      return { item_id: item.id, name_en: item.name_en + at.en, name_ar: item.name_ar + at.ar, qty: Math.min(20, Math.max(1, a.qty || 1)), unit_price_egp: item.price_egp, deliver_at: a.deliver_at ?? null };
     });
     const total = rent + addons.reduce((s, a) => s + a.qty * a.unit_price_egp, 0);
     const ins = await client.query<{ id: string; created_at: string }>(
@@ -65,7 +69,7 @@ export async function createBooking(input: CreateBookingInput): Promise<Booking>
 
 export function attachCafeUrl(b: Booking): Booking {
   if (b.status !== "confirmed") return b;
-  const cafeItems = b.addons.filter((a) => ADDON_CATALOG.find((i) => i.id === a.item_id)?.source === "cafe");
+  const cafeItems = b.addons.filter((a) => isMenuItemId(a.item_id));
   if (cafeItems.length) {
     b.cafe_whatsapp_url = cafeWhatsAppUrl([
       `New Offisio add-on order — booking ${b.id}`,
@@ -103,7 +107,7 @@ export async function confirmBooking(bookingId: string): Promise<Booking | null>
   } catch (e) { try { await client.query("rollback"); } catch { /* noop */ } throw e; }
   finally { client.release(); }
   if (next === "confirmed") await pool().query(
-    `update booking_addons set cafe_status = 'sent_to_cafe' where booking_id = $1 and item_id in (select id from (values ('cappuccino'),('espresso'),('tea'),('croissant')) as v(id))`,
+    `update booking_addons set cafe_status = 'sent_to_cafe' where booking_id = $1 and item_id like 'm:%'`,
     [bookingId]);
   const b = await getBooking(bookingId);
   return b ? attachCafeUrl(b) : null;

@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { connection } from "next/server";
-import { getUnit } from "@/lib/db/store";
+import { getUnit, unitId } from "@/lib/db/store";
+import { nearbyOf } from "@/lib/nearby";
+import NearbyPlaces from "@/components/NearbyPlaces";
 import UnitViewer from "@/components/UnitViewer";
 import StageButtons from "@/components/StageButtons";
 import { planStaging } from "@/lib/pipeline/staging";
@@ -42,6 +44,8 @@ export default async function UnitPage({ params }: PageProps<"/[lang]/units/[slu
   const t = getT(locale);
   const unit = await getUnit(slug);
   if (!unit) notFound();
+  const id = await unitId(unit.slug);
+  const nearby = id ? await nearbyOf(id) : [];
   const specs = unit.specs as Record<string, unknown>;
   // Passing uses first; rubric verdicts come from docs/RUBRIC.md.
   const order = { fits: 0, fits_after_fitout: 1, not_suitable: 2 } as const;
@@ -115,6 +119,7 @@ export default async function UnitPage({ params }: PageProps<"/[lang]/units/[slu
           )}
         </aside>
       </div>
+      {unit.location && <NearbyPlaces places={nearby} daily={unit.rent_periods.includes("daily") && !!unit.daily_egp} locale={locale} />}
     </main>
   );
 }
