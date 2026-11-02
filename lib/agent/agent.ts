@@ -65,6 +65,15 @@ const brief = (u: Unit) => ({
   rent_egp_month: u.rent_egp, daily_egp: u.daily_egp, tracks: u.rent_periods, area_m2: u.specs.area_m2_estimate ?? null,
   rooms: u.specs.rooms_count ?? null, desks_max: deskCap(u), uses: passingUses(u).map((x) => `${x.use}:${x.verdict}`), synthetic_photos: u.synthetic,
 });
+// "Downtown Cairo" or "Smouha, Alexandria" must still match "Downtown" / "Smouha": try the whole
+// phrase, then the phrase without a city/country word (but "New Cairo" keeps "cairo" when alone).
+const PLACE_NOISE = /\b(cairo|giza|alexandria|alex|egypt)\b|[,،]/g;
+function districtMatches(haystack: string, district: string): boolean {
+  const h = haystack.toLowerCase();
+  if (h.includes(district)) return true;
+  const core = district.replace(PLACE_NOISE, " ").replace(/\s+/g, " ").trim();
+  return core.length >= 3 && core !== "new" && h.includes(core);
+}
 const km = (m: number) => Math.round(m / 100) / 10;
 const addonBrief = (list: AddonCatalogItem[]) => list.map((x) => ({ id: x.id, en: x.name_en, ar: x.name_ar, egp: x.price_egp }));
 const str = (v: unknown, max = 80) => (typeof v === "string" && v.trim() && v.length <= max ? v.trim() : null);
@@ -80,7 +89,7 @@ async function runTool(name: string, rawArgs: string, ctx: Ctx): Promise<unknown
     const maxRent = Number.isInteger(a.max_rent_egp) ? (a.max_rent_egp as number) : null;
     const track = ["daily", "monthly", "long_term"].find((x) => x === a.track);
     const matches = (await listUnits()).filter((u) =>
-      (!district || `${u.district} ${u.title_en}`.toLowerCase().includes(district)) &&
+      (!district || districtMatches(`${u.district} ${u.title_en}`, district)) &&
       // Units not yet assessed by the rubric stay eligible for plain office/meeting searches only.
       (!use || passingUses(u).some((x) => x.use === use) || (!Array.isArray(u.specs.uses) && (use === "office" || use === "meeting"))) &&
       (!minDesks || (deskCap(u) ?? 0) >= minDesks) && (!maxRent || u.rent_egp <= maxRent));
