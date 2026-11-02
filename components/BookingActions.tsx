@@ -9,6 +9,19 @@ function formatDay(locale: Locale, iso: string): string {
   return new Date(`${iso}T00:00:00Z`).toLocaleDateString(locale === "ar" ? "ar-EG" : "en-GB", { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" });
 }
 
+// XPay's public sandbox card (also in README "Testing"); the expiry picks the outcome.
+function TestCard({ t }: { t: ReturnType<typeof getT> }) {
+  const code = "tnum font-mono font-bold";
+  return (
+    <div className="border border-dashed border-ink p-4 bg-mustard/20 text-sm space-y-1">
+      <p className="font-bold">{t("bookingCard.testCard")}</p>
+      <p>{t("bookingCard.testCardNumber")}: <span dir="ltr" className={`${code} select-all`}>5123 4500 0000 0008</span> · CVV <span dir="ltr" className={code}>100</span></p>
+      <p>{t("bookingCard.testCardExpiry")}: <span dir="ltr" className={code}>01/39</span> {t("bookingCard.testCardApproved")} · <span dir="ltr" className={code}>05/39</span> {t("bookingCard.testCardDeclined")} · {t("bookingCard.testCardName")}</p>
+      <p className="text-xs text-ink/75">{t("bookingCard.testCard3ds")}</p>
+    </div>
+  );
+}
+
 export default function BookingActions({ id, locale }: { id: string; locale: Locale }) {
   const t = getT(locale);
   const [b, setB] = useState<Booking | null>(null); const [msg, setMsg] = useState(""); const [busy, setBusy] = useState(false);
@@ -41,6 +54,7 @@ export default function BookingActions({ id, locale }: { id: string; locale: Loc
         <p className="tnum mt-3 bg-ink text-sheet font-display text-2xl font-black px-3 py-2 flex justify-between"><span>{t("bookingCard.total")}</span><span>{formatEgp(locale, b.total_egp)}</span></p>
       </div>
       {msg && <p className="text-sm font-bold text-ink bg-mustard/40 border border-ink p-3">{msg}</p>}
+      {b.status === "awaiting_payment" && <TestCard t={t} />}
       {b.status === "awaiting_payment" && <button disabled={busy} onClick={pay} className="btn btn-brick btn-lg w-full">{t("bookingCard.pay")}</button>}
       {b.whatsapp_link_url && (
         <div className="border border-ink p-4 bg-sheet">
