@@ -1,6 +1,6 @@
 # Offisio — Implementation Plan (index)
 
-Status: **Segment 6 (judge-ready) in progress — 6.1–6.6 done and committed through `d58d02a` (2026-10-31: review rounds 3–4, multi-room fits, styling pass); 6.7 steps 1–2 (location, QStash pipeline jobs) done 2026-10-31, deployed and verified on production; 6.7 step 3 (59 brand menus captured and normalised into `brand_menus`) done 2026-10-31; next session starts at [plan/06-judge-ready.md](plan/06-judge-ready.md) Handoff (6.7 step 4 nearby places done 2026-11-01; next steps 5-7), then 6.8 (WhatsApp channel: live on production 2026-11-01, send + receive verified; remaining: payment confirmation over WhatsApp + two-phone verify), 6.9 (Clerk, stretch).** Segment 5 steps 1–3 are done; its steps 4–8 are superseded by Segment 6.
+Status: **Segment 6 (judge-ready) in progress — 6.1–6.6 done and committed through `d58d02a` (2026-10-31: review rounds 3–4, multi-room fits, styling pass); 6.7 steps 1–2 (location, QStash pipeline jobs) done 2026-10-31, deployed and verified on production; 6.7 step 3 (59 brand menus captured and normalised into `brand_menus`) done 2026-10-31; 6.7 steps 4 and 6 (nearby places, Nearby section, menu add-ons, agent `nearby_places` + `near`) committed through `38668a1`, step 5 parked; **6.7 closed 2026-11-02** (chat acceptance 10/10, "near AUC" live check); next session starts at [plan/06-judge-ready.md](plan/06-judge-ready.md) Handoff: 6.8 (WhatsApp channel live on production 2026-11-01; remaining: confirmation message after the XPay payment webhook, not built yet, + two-phone verify), 6.9 (Clerk, stretch).** Segment 5 steps 1–3 are done; its steps 4–8 are superseded by Segment 6.
 
 Work is split into segments so each runs in a fresh chat session with a small context. Protocol: [plan/README.md](plan/README.md).
 
@@ -12,7 +12,7 @@ Work is split into segments so each runs in a fresh chat session with a small co
 | 3. Staging: removal + restyle | [plan/03-staging.md](plan/03-staging.md) | **done** | 1 |
 | 4. Booking agent + chat (+ payments, add-ons) | [plan/04-booking-agent.md](plan/04-booking-agent.md) | **done** (demo scope) | 2 |
 | 5. Seed, polish, demo, submit | [plan/05-demo-polish.md](plan/05-demo-polish.md) | steps 1–3 done; rest superseded by 6 | 2–4 |
-| 6. Judge-ready: demo data, staging, agent, guardrails, ship | [plan/06-judge-ready.md](plan/06-judge-ready.md) | **in progress**: 6.1–6.6 done (docs, dates, guardrails, rubric, agent, staging and v3 demo data); 6.7 steps 1–4 done, step 5 (owner menu photo) parked; step 6 built; next is 6.7 step 7 (verify) | 2–5 |
+| 6. Judge-ready: demo data, staging, agent, guardrails, ship | [plan/06-judge-ready.md](plan/06-judge-ready.md) | **in progress**: 6.1–6.6 done (docs, dates, guardrails, rubric, agent, staging and v3 demo data); 6.7 done 2026-11-02 (step 5 owner menu photo parked); next is 6.8 WhatsApp payment confirmation | 2–5 |
 
 Done 2026-10-27 to 10-29 (evidence in [plan/05-demo-polish.md](plan/05-demo-polish.md)):
 - Hosted payment checkout: built 2026-10-27 on Paymob, **switched to XPay 2026-10-29** (`lib/xpay.ts`, Checkout Sessions API, test key; `payments.xpay_session_id` migrated on Neon 2026-10-29). Booking confirms only on signature-verified payment webhook. Locally verified: paid -> confirmed, failed -> payment_failed + slots released, bad/stale signature 401.
