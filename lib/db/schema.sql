@@ -133,3 +133,9 @@ create table if not exists unit_places (
   fetched_at timestamptz not null default now(),
   primary key (unit_id, place_id)
 );
+
+-- 6.8 renter identity (owner 2026-11-02): WhatsApp sender id on WhatsApp bookings
+-- (confirmation message, "my bookings"), and the renter's email. Both PII; nullable for old rows.
+alter table bookings add column if not exists wa_id text;
+alter table bookings add column if not exists renter_email text;
+create index if not exists bookings_wa_id_idx on bookings (wa_id);

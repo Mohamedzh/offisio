@@ -1,6 +1,8 @@
 import { verifyXPaySignature, sessionFromEvent } from "@/lib/xpay";
 import { confirmBooking, failBooking } from "@/lib/booking";
 import { pool } from "@/lib/db/pg";
+import { notifyPaid } from "@/lib/whatsapp";
+import { firstSeen } from "@/lib/guard";
 
 // Booking confirms ONLY here, on a signature-verified XPay webhook — never on redirect.
 export async function POST(req: Request) {
@@ -27,6 +29,8 @@ export async function POST(req: Request) {
   if (!bookingId) return Response.json({ ok: true, booking_id: "", status: "unmatched" });
   if (paid) {
     const booking = await confirmBooking(bookingId);
+    // XPay may redeliver the event: one WhatsApp notice per booking outcome.
+    if (booking?.wa_id && (await firstSeen("wa_paid", `${booking.id}:${booking.status}`))) await notifyPaid(booking);
     return Response.json({ ok: true, booking_id: bookingId, status: booking?.status ?? "unknown" });
   }
   if (failed) {

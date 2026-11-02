@@ -3,9 +3,10 @@
 // Tool arguments are validated in code; bad args go back to the model as an
 // error result, never a 500. At most MAX_ROUNDS tool rounds per turn.
 import { meta } from "../meta/client";
-import { AGENT_PROMPT_V3 } from "../meta/prompts";
+import { AGENT_CHANNEL_WEB, AGENT_CHANNEL_WHATSAPP, AGENT_PROMPT_V4 } from "../meta/prompts";
 import { pool } from "../db/pg";
-import { listUnits, getUnit, unitId, freeDays, availabilityByDay, todayCairo, type Unit } from "../db/store";
+import { listUnits, getUnit, unitId, freeDays, availabilityByDay, todayCairo, bookingsForRenter, type Booking, type Unit } from "../db/store";
+import { phoneFromWaId } from "../whatsapp";
 import { createBooking } from "../booking";
 import { VENUE_ADDONS } from "../addons/catalog";
 import { nearbyOf } from "../nearby";
@@ -15,7 +16,9 @@ import { USES, type UseVerdict } from "../pipeline/rubric";
 
 const MAX_ROUNDS = 6;
 export type Channel = "chat" | "whatsapp";
-type Ctx = { bookingId?: string; total?: number; channel: Channel };
+// WhatsApp only: the verified sender (wa_id from the signed webhook) and their profile name.
+export interface Sender { waId: string; name: string | null }
+type Ctx = { bookingId?: string; total?: number; channel: Channel; sender?: Sender };
 type Msg = { role: string; content: string | null; tool_calls?: ToolCall[]; tool_call_id?: string };
 interface ToolCall { id: string; type: "function"; function: { name: string; arguments: string } }
 
@@ -29,11 +32,15 @@ const TOOLS = [
   { type: "function", function: { name: "get_unit", description: "Details of one unit: summary, specs, suitable uses with reasons, next free days.", parameters: { type: "object", additionalProperties: false, required: ["slug"], properties: { slug: { type: "string" } } } } },
   { type: "function", function: { name: "nearby_places", description: "Cafes and restaurants within 1 km of a unit, with their menu items (ids and prices) that can be added to a day booking, plus venue add-ons.", parameters: { type: "object", additionalProperties: false, required: ["slug"], properties: { slug: { type: "string" } } } } },
   { type: "function", function: { name: "check_availability", description: "Whether a day is free for a daily booking, plus the next free days.", parameters: { type: "object", additionalProperties: false, required: ["slug", "date"], properties: { slug: { type: "string" }, date: { type: "string", description: "YYYY-MM-DD" } } } } },
-  { type: "function", function: { name: "create_booking", description: "Book after the renter confirmed. Creates an unpaid booking held 30 minutes; payment happens on the booking page.", parameters: { type: "object", additionalProperties: false, required: ["slug", "date", "renter_name", "renter_phone"], properties: {
+  { type: "function", function: { name: "create_booking", description: "Book after the renter confirmed. Creates an unpaid booking held 30 minutes; payment happens on the booking page.", parameters: { type: "object", additionalProperties: false, required: ["slug", "date", "renter_name", "renter_email"], properties: {
     slug: { type: "string" }, date: { type: "string", description: "YYYY-MM-DD (first day for monthly/long-term)" },
-    track: { type: "string", enum: ["daily", "monthly", "long_term"] }, renter_name: { type: "string" }, renter_phone: { type: "string", description: "Egyptian mobile 01xxxxxxxxx" },
+    track: { type: "string", enum: ["daily", "monthly", "long_term"] }, renter_name: { type: "string" },
+    renter_phone: { type: "string", description: "Egyptian mobile 01xxxxxxxxx (website chat only; omit on WhatsApp)" }, renter_email: { type: "string" },
     addons: { type: "array", items: { type: "object", additionalProperties: false, required: ["item_id", "qty"], properties: { item_id: { type: "string" }, qty: { type: "integer", minimum: 1, maximum: 20 } } } } } } } },
 ];
+
+const MY_BOOKINGS = { type: "function", function: { name: "my_bookings", description: "The renter's own bookings (newest first) with status and, for unpaid ones, the payment link. WhatsApp only.", parameters: { type: "object", additionalProperties: false, properties: {} } } };
+const toolsFor = (ctx: Ctx) => (ctx.sender ? [...TOOLS, MY_BOOKINGS] : TOOLS);
 
 const passingUses = (u: Unit) => ((u.specs.uses as UseVerdict[] | undefined) ?? []).filter((x) => x.verdict !== "not_suitable");
 const deskCap = (u: Unit) => passingUses(u).find((x) => x.use === "office")?.capacity?.desks_max ?? (u.specs.desk_capacity as number | null) ?? null;
@@ -103,7 +110,8 @@ async function runTool(name: string, rawArgs: string, ctx: Ctx): Promise<unknown
     try {
       const b = await createBooking({
         unit_slug: String(a.slug ?? ""), date: String(a.date ?? ""), track: ["daily", "monthly", "long_term"].find((x) => x === a.track) as Unit["rent_periods"][number] | undefined,
-        renter_name: String(a.renter_name ?? ""), renter_phone: String(a.renter_phone ?? "").replace(/\D/g, ""),
+        renter_name: String(a.renter_name ?? "").trim() || ctx.sender?.name || "", renter_email: String(a.renter_email ?? ""),
+        ...(ctx.sender ? { wa_id: ctx.sender.waId } : { renter_phone: String(a.renter_phone ?? "").replace(/\D/g, "") }),
         addons: Array.isArray(a.addons) ? (a.addons as { item_id: string; qty: number }[]).slice(0, 10) : [],
         created_via: ctx.channel,
       });
@@ -111,15 +119,35 @@ async function runTool(name: string, rawArgs: string, ctx: Ctx): Promise<unknown
       return { booking_ref: b.id.slice(0, 8), status: b.status, total_egp: b.total_egp, hold_minutes: 30 };
     } catch (e) { return { error: (e as Error).message }; }
   }
+  if (name === "my_bookings") {
+    if (!ctx.sender) return { error: "only available on WhatsApp" };
+    return { bookings: (await senderBookings(ctx.sender)).map(bookingBrief) };
+  }
   return { error: `unknown tool ${name}` };
 }
 
-function systemPrompt(): string {
+const senderBookings = (s: Sender) => bookingsForRenter(s.waId, phoneFromWaId(s.waId));
+const appUrl = () => process.env.NEXT_PUBLIC_APP_URL ?? "";
+function bookingBrief(b: Booking) {
+  return { ref: b.id.slice(0, 8), unit: b.unit_slug, track: b.track, date: b.date, status: b.status, total_egp: b.total_egp,
+    addons: b.addons.map((x) => `${x.qty} x ${x.name_en}`), ...(b.status === "awaiting_payment" && appUrl() ? { pay_link: `${appUrl()}/ar/booking/${b.id}` } : {}) };
+}
+// Upcoming bookings that still matter: unpaid (held) or confirmed, today or later.
+const ACTIVE = new Set(["awaiting_payment", "confirmed", "paid_conflict"]);
+async function channelBlock(ctx: Ctx): Promise<string> {
+  if (!ctx.sender) return AGENT_CHANNEL_WEB;
+  const today = todayCairo();
+  const upcoming = (await senderBookings(ctx.sender)).filter((b) => ACTIVE.has(b.status) && (!b.date || b.date >= today)).map(bookingBrief);
+  return AGENT_CHANNEL_WHATSAPP.replace("{PHONE}", phoneFromWaId(ctx.sender.waId) ?? ctx.sender.waId)
+    .replace("{NAME}", ctx.sender.name ?? "unknown, ask for it").replace("{BOOKINGS}", upcoming.length ? JSON.stringify(upcoming) : "none upcoming");
+}
+
+async function systemPrompt(ctx: Ctx): Promise<string> {
   const today = todayCairo();
   const [y, m, d] = today.split("-").map(Number);
   const tomorrow = new Date(Date.UTC(y, m - 1, d + 1)).toISOString().slice(0, 10);
   const weekday = new Intl.DateTimeFormat("en-US", { timeZone: "Africa/Cairo", weekday: "long" }).format(new Date());
-  return AGENT_PROMPT_V3.replace("{TODAY}", today).replace("{WEEKDAY}", weekday).replace("{TOMORROW}", tomorrow);
+  return AGENT_PROMPT_V4.replace("{TODAY}", today).replace("{WEEKDAY}", weekday).replace("{TOMORROW}", tomorrow).replace("{CHANNEL}", await channelBlock(ctx));
 }
 
 async function loadHistory(sessionKey: string): Promise<{ role: string; content: string }[]> {
@@ -139,16 +167,16 @@ export async function sessionTurns(sessionKey: string): Promise<number> {
   return rows[0]?.turns ?? 0;
 }
 
-export async function chatTurn(sessionId: string, message: string, channel: Channel = "chat"): Promise<{ reply: string; booking_id?: string; total_egp?: number }> {
+export async function chatTurn(sessionId: string, message: string, channel: Channel = "chat", sender?: Sender): Promise<{ reply: string; booking_id?: string; total_egp?: number }> {
   const history = (await loadHistory(sessionId)).slice(-10);
-  const msgs: Msg[] = [{ role: "system", content: systemPrompt() }, ...history, { role: "user", content: message }];
-  const ctx: Ctx = { channel };
+  const ctx: Ctx = { channel, ...(channel === "whatsapp" && sender ? { sender } : {}) };
+  const msgs: Msg[] = [{ role: "system", content: await systemPrompt(ctx) }, ...history, { role: "user", content: message }];
   const trace: unknown[] = [];
   let reply = "";
   for (let round = 0; round <= MAX_ROUNDS; round++) {
     const r = (await meta.product.chat({
       messages: msgs, temperature: 0.3, reasoning_effort: "low",
-      ...(round < MAX_ROUNDS ? { tools: TOOLS, tool_choice: "auto" } : {}), // last round: force a text answer
+      ...(round < MAX_ROUNDS ? { tools: toolsFor(ctx), tool_choice: "auto" } : {}), // last round: force a text answer
     })) as { choices?: { finish_reason?: string; message?: { content?: string | null; tool_calls?: ToolCall[] } }[] };
     const m = r.choices?.[0]?.message;
     if (m?.tool_calls?.length) {

@@ -2,16 +2,29 @@ import { pool } from "./db/pg";
 import { getUnit, unitId, getBooking, releaseStaleHolds, todayCairo, type Booking, type RentPeriod } from "./db/store";
 import { addonsForUnit, cafeWhatsAppUrl } from "./addons/catalog";
 import { isMenuItemId } from "./nearby";
+import { phoneFromWaId } from "./whatsapp";
 
 export interface AddonRequest { item_id: string; qty: number; deliver_at?: string }
 export interface CreateBookingInput {
   unit_slug: string; date: string; track?: RentPeriod;
-  renter_name: string; renter_phone: string; addons?: AddonRequest[];
+  renter_name: string; renter_phone?: string; renter_email: string; addons?: AddonRequest[];
   created_via?: "chat" | "whatsapp";
+  wa_id?: string; // WhatsApp sender: the phone comes from it, never from the chat text
 }
 
+const EMAIL = /^[^\s@]{1,64}@[^\s@]{1,190}\.[a-z]{2,24}$/i;
+
 export async function createBooking(input: CreateBookingInput): Promise<Booking> {
-  if (!/^01[0125]\d{8}$/.test(input.renter_phone)) throw new Error("INVALID_PHONE"); // Egyptian mobile
+  const phone = input.wa_id ? phoneFromWaId(input.wa_id) : input.renter_phone?.replace(/\D/g, "") ?? "";
+  if (!phone) throw new Error("INVALID_PHONE");
+  // Typed numbers must be Egyptian mobiles; a WhatsApp number is already verified by Meta.
+  if (!input.wa_id && !/^01[0125]\d{8}$/.test(phone)) throw new Error("INVALID_PHONE");
+  const email = input.renter_email?.trim().toLowerCase() ?? "";
+  if (!EMAIL.test(email)) throw new Error("INVALID_EMAIL");
+  return insertBooking({ ...input, renter_phone: phone, renter_email: email });
+}
+
+async function insertBooking(input: CreateBookingInput & { renter_phone: string }): Promise<Booking> {
   if (!input.renter_name?.trim()) throw new Error("NAME_REQUIRED");
   if (!/^\d{4}-\d{2}-\d{2}$/.test(input.date ?? "")) throw new Error("INVALID_DATE");
   if (input.date < todayCairo()) throw new Error("DATE_IN_PAST");
@@ -49,9 +62,9 @@ export async function createBooking(input: CreateBookingInput): Promise<Booking>
     });
     const total = rent + addons.reduce((s, a) => s + a.qty * a.unit_price_egp, 0);
     const ins = await client.query<{ id: string; created_at: string }>(
-      `insert into bookings (unit_id, availability_ids, track, renter_name, renter_phone, rent_egp_total, total_egp, created_via)
-       values ($1,$2,$3,$4,$5,$6,$7,$8) returning id, created_at`,
-      [uId, slotIds, track, input.renter_name.trim(), input.renter_phone, rent, total, input.created_via ?? "chat"]);
+      `insert into bookings (unit_id, availability_ids, track, renter_name, renter_phone, renter_email, wa_id, rent_egp_total, total_egp, created_via)
+       values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) returning id, created_at`,
+      [uId, slotIds, track, input.renter_name.trim(), input.renter_phone, input.renter_email, input.wa_id ?? null, rent, total, input.created_via ?? "chat"]);
     const bookingId = ins.rows[0].id;
     for (const a of addons)
       await client.query(

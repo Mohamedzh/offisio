@@ -1,34 +1,51 @@
-// Segment acceptance: 10 scripted Egyptian-Arabic/English booking conversations
+// Segment acceptance: 13 scripted Egyptian-Arabic/English booking conversations (11-13 on the WhatsApp channel)
 // against the real agent (muse-spark-1.3, owner-approved run). Synthetic renters
 // only. Writes transcripts to .scratch/chat-transcripts.md, cleans up after.
 // Run: pnpm chat-acceptance
 import { writeFileSync } from "node:fs";
-import { chatTurn } from "../lib/agent/agent";
+import { chatTurn, type Sender } from "../lib/agent/agent";
 import { createBooking } from "../lib/booking";
 import { freeDays } from "../lib/db/store";
 import { pool } from "../lib/db/pg";
 
 type Check = (r: { replies: string[]; bookingIds: string[] }) => boolean;
 const arabic = (s: string) => /[؀-ۿ]/.test(s);
-const S = (turns: string[], name: string, check: Check, setup?: () => Promise<string[]>) => ({ name, turns, check, setup });
+const S = (turns: string[], name: string, check: Check, setup?: () => Promise<string[]>, sender?: Sender) => ({ name, turns, check, setup, sender });
+// WhatsApp scenarios (6.8): a synthetic Egyptian sender; the phone comes from wa_id.
+const WA: Sender = { waId: "201000000012", name: "Wael Test" };
 
 async function main() {
   const chatby = await freeDays("gen-alex-chatby", 5);
   const smouha = await freeDays("gen-alex-smouha", 3);
   const downtown = await freeDays("gen-downtown", 3);
   const takenDay = chatby[1];
+  const zamalek = await freeDays("gen-zamalek", 4);
+  // A paid booking for the WhatsApp sender (status set directly; payment is not under test here).
+  const confirmedFor = async (s: Sender, slug: string, date: string) => {
+    const b = await createBooking({ unit_slug: slug, date, track: "daily", renter_name: s.name ?? "WA Test", renter_email: "wa.test@example.com", wa_id: s.waId, created_via: "whatsapp" });
+    await pool().query("update bookings set status = 'confirmed' where id = $1", [b.id]);
+    return b.id;
+  };
   const scenarios = [
-    S(["عايز مكتب في الزمالك ليوم بكرة لـ 3 أشخاص", "تمام، أول واحد", "اسمي سامي تجربة ورقمي 01000000001", "أيوه أكد الحجز من غير إضافات"], "1 Zamalek day booking, happy path (AR)", (r) => r.bookingIds.length === 1),
+    S(["عايز مكتب في الزمالك ليوم بكرة لـ 3 أشخاص", "تمام، أول واحد", "اسمي سامي تجربة ورقمي 01000000001 والإيميل sami.test@example.com", "أيوه أكد الحجز من غير إضافات"], "1 Zamalek day booking, happy path (AR)", (r) => r.bookingIds.length === 1),
     S(["عايز مكان ينفع عيادة أسنان في القاهرة، إيه المتاح؟"], "2 dental clinic search uses the rubric", (r) => /nasr|new cairo|heliopolis|zayed|مدينة نصر|التجمع|القاهرة الجديدة|مصر الجديدة|زايد|empty/i.test(r.replies.join(" "))),
     S(["عايز أحجز المكتب اللي في مدينة نصر ليوم واحد بكرة"], "3 bare unit asked for a day -> long-term only", (r) => /طويل|شهر|long|تشطيب|يومي/i.test(r.replies[0])),
     S(["Hi, I need a meeting or training room in Maadi or New Cairo for one day next week. What do you have?"], "4 English mirror", (r) => !arabic(r.replies[0])),
     S(["عايز مكتب في أسوان"], "5 no results -> says so, offers alternatives", (r) => /مفيش|مش متاح|ملقتش|لا يوجد|مش لاقي|حالياً/i.test(r.replies[0])),
     S([`عايز أحجز مكتب الشاطبي في إسكندرية يوم ${takenDay}`], "6 slot taken -> offers other days", (r) => r.replies[0].includes(chatby[0]) || r.replies[0].includes(chatby[2]) || /محجوز|مش فاضي|taken|booked/i.test(r.replies[0]),
-      async () => [(await createBooking({ unit_slug: "gen-alex-chatby", date: takenDay, track: "daily", renter_name: "Acceptance Blocker", renter_phone: "01000000009" })).id]),
-    S([`عايز مكتب في سموحة في إسكندرية يوم ${smouha[0]} ومعاه 2 كابتشينو`, "اسمي منى تجربة 01000000002", "تمام أكد"], "7 add-ons itemised in the booking", (r) => r.bookingIds.length === 1),
+      async () => [(await createBooking({ unit_slug: "gen-alex-chatby", date: takenDay, track: "daily", renter_name: "Acceptance Blocker", renter_phone: "01000000009", renter_email: "blocker.test@example.com" })).id]),
+    S([`عايز مكتب في سموحة في إسكندرية يوم ${smouha[0]} ومعاه 2 كابتشينو`, "اسمي منى تجربة 01000000002 و mona.test@example.com", "تمام أكد"], "7 add-ons itemised in the booking", (r) => r.bookingIds.length === 1),
     S([`عايز أحجز مكتب في وسط البلد يوم ${downtown[0]}`, "اسمي كريم تجربة ورقمي 0123"], "8 bad phone -> asks again", (r) => /رقم|موبايل|01|phone/i.test(r.replies[1])),
-    S([`عايز مكتب في إسكندرية يوم ${chatby[2]}`, `معلش خليها يوم ${chatby[3]} بدل كده، وخلينا في الشاطبي`, "اسمي هالة تجربة 01000000003", "من غير إضافات، أكد الحجز"], "9 changed date -> books the new date", (r) => r.bookingIds.length === 1),
+    S([`عايز مكتب في إسكندرية يوم ${chatby[2]}`, `معلش خليها يوم ${chatby[3]} بدل كده، وخلينا في الشاطبي`, "اسمي هالة تجربة 01000000003 والإيميل hala.test@example.com", "من غير إضافات، أكد الحجز"], "9 changed date -> books the new date", (r) => r.bookingIds.length === 1),
     S(["اكتبلي قصيدة عن البحر"], "10 off-topic -> brief refusal, back to booking", (r) => /مكتب|حجز|office|booking/i.test(r.replies[0])),
+    S([`عايز مكتب في الزمالك يوم ${zamalek[1]}`, "تمام احجزه، الإيميل wael.test@example.com", "أكد"], "11 WhatsApp booking: email only, phone from the sender",
+      (r) => r.bookingIds.length === 1 && !/رقم (الموبايل|تليفونك|موبايلك)|phone number/i.test(r.replies.join(" ")), undefined, WA),
+    S([`عايز أحجز مكتب في سموحة يوم ${smouha[1]}`], "12 WhatsApp: existing confirmed booking mentioned first",
+      (r) => r.replies[0].includes(zamalek[2]) || /عندك حجز|حجز مؤكد|already have|existing booking/i.test(r.replies[0]),
+      async () => [await confirmedFor(WA, "gen-zamalek", zamalek[2])], WA),
+    S(["إيه الحجوزات اللي عندي؟"], "13 WhatsApp: my_bookings lists the sender's booking",
+      (r) => r.replies[0].includes(zamalek[3]) || /الزمالك|zamalek/i.test(r.replies[0]),
+      async () => [await confirmedFor(WA, "gen-zamalek", zamalek[3])], WA),
   ];
   const md: string[] = ["# Chat acceptance transcripts (synthetic renters)", `Run ${new Date().toISOString()} on muse-spark-1.3`, ""];
   const created: string[] = []; const sessions: string[] = []; const results: string[] = [];
@@ -41,7 +58,7 @@ async function main() {
     const replies: string[] = []; const bookingIds: string[] = [];
     md.push(`## ${sc.name}`);
     for (const t of sc.turns) {
-      const out = await chatTurn(session, t);
+      const out = await chatTurn(session, t, sc.sender ? "whatsapp" : "chat", sc.sender);
       replies.push(out.reply);
       if (out.booking_id) { bookingIds.push(out.booking_id); created.push(out.booking_id); }
       md.push(`- **Renter:** ${t}`, `- **Agent:** ${out.reply.replace(/\n+/g, " ")}${out.booking_id ? `  _(booking ${out.booking_id.slice(0, 8)}, EGP ${out.total_egp})_` : ""}`);

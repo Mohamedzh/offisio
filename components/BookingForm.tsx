@@ -10,7 +10,7 @@ interface Addon { id: string; name_ar: string; name_en: string; price_egp: numbe
 export default function BookingForm({ slug, dailyEgp, locale }: { slug: string; dailyEgp: number | null; locale: Locale }) {
   const router = useRouter(); const t = getT(locale);
   const [days, setDays] = useState<Day[]>([]); const [addons, setAddons] = useState<Addon[]>([]);
-  const [date, setDate] = useState(""); const [name, setName] = useState(""); const [phone, setPhone] = useState("");
+  const [date, setDate] = useState(""); const [name, setName] = useState(""); const [phone, setPhone] = useState(""); const [email, setEmail] = useState("");
   const [picked, setPicked] = useState<Record<string, number>>({}); const [msg, setMsg] = useState(""); const [busy, setBusy] = useState(false);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function BookingForm({ slug, dailyEgp, locale }: { slug: string; 
   async function book() {
     setBusy(true); setMsg("");
     try {
-      const res = await fetch("/api/bookings", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ unit_slug: slug, date, track: "daily", renter_name: name, renter_phone: phone, addons: Object.entries(picked).filter(([, q]) => q > 0).map(([item_id, qty]) => ({ item_id, qty, deliver_at: `${date}T10:00:00+02:00` })) }) });
+      const res = await fetch("/api/bookings", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ unit_slug: slug, date, track: "daily", renter_name: name, renter_phone: phone, renter_email: email, addons: Object.entries(picked).filter(([, q]) => q > 0).map(([item_id, qty]) => ({ item_id, qty, deliver_at: `${date}T10:00:00+02:00` })) }) });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
       router.push(localeHref(`/booking/${data.booking.id}`, locale));
@@ -42,6 +42,7 @@ export default function BookingForm({ slug, dailyEgp, locale }: { slug: string; 
         </select></label>
       <input value={name} onChange={(e) => setName(e.target.value)} placeholder={t("booking.name")} className="field" />
       <input value={phone} onChange={(e) => setPhone(e.target.value)} placeholder={t("booking.phone")} className="field" dir="ltr" />
+      <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder={t("booking.email")} className="field" dir="ltr" autoComplete="email" />
       <div>
         <p className="text-sm font-bold mb-1">{t("booking.addons")}</p>
         {groups.map(([key, items]) => {
@@ -65,7 +66,7 @@ export default function BookingForm({ slug, dailyEgp, locale }: { slug: string; 
       </div>
       <p className="tnum bg-ink text-sheet px-3 py-2 font-display font-black flex justify-between"><span>{t("booking.total")}</span><span>{formatEgp(locale, total)}</span></p>
       {msg && <p className="text-sm font-bold text-brick">{msg}</p>}
-      <button disabled={busy || !date || !name || !phone} onClick={book} className="btn btn-brick btn-md w-full">{busy ? "..." : t("booking.confirmPay")}</button>
+      <button disabled={busy || !date || !name || !phone || !email} onClick={book} className="btn btn-brick btn-md w-full">{busy ? "..." : t("booking.confirmPay")}</button>
     </div>
   );
 }
