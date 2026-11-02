@@ -18,7 +18,21 @@ const MAX_ROUNDS = 6;
 export type Channel = "chat" | "whatsapp";
 // WhatsApp only: the verified sender (wa_id from the signed webhook) and their profile name.
 export interface Sender { waId: string; name: string | null }
-type Ctx = { bookingId?: string; total?: number; channel: Channel; sender?: Sender };
+// A unit the agent looked at this turn, for photo cards under the reply (web) or image messages (WhatsApp).
+export interface UnitCard { slug: string; title_en: string; title_ar: string; district: string; rent_egp: number; daily_egp: number | null; image: string; synthetic: boolean }
+type Ctx = { bookingId?: string; total?: number; channel: Channel; sender?: Sender; cards: Map<string, UnitCard> };
+const cardOf = (u: Unit): UnitCard | null => {
+  const image = u.images.real || u.images.staged[0]?.url || "";
+  return image ? { slug: u.slug, title_en: u.title_en, title_ar: u.title_ar, district: u.district, rent_egp: u.rent_egp, daily_egp: u.daily_egp, image, synthetic: u.synthetic } : null;
+};
+const addCards = (ctx: Ctx, units: Unit[]) => { for (const u of units) { const c = cardOf(u); if (c && !ctx.cards.has(c.slug)) ctx.cards.set(c.slug, c); } };
+// Cards for the units the reply names (district or price), else the first results; at most 3.
+function cardsFor(reply: string, cards: UnitCard[]): UnitCard[] {
+  const text = reply.toLowerCase().replace(/[,٬]/g, "");
+  const named = cards.filter((c) => text.includes(c.district.split("(")[0].trim().toLowerCase()) || text.includes(c.slug)
+    || [c.daily_egp, c.rent_egp].some((n) => n && text.includes(String(n))));
+  return (named.length ? named : cards).slice(0, 3);
+}
 type Msg = { role: string; content: string | null; tool_calls?: ToolCall[]; tool_call_id?: string };
 interface ToolCall { id: string; type: "function"; function: { name: string; arguments: string } }
 
@@ -74,12 +88,13 @@ async function runTool(name: string, rawArgs: string, ctx: Ctx): Promise<unknown
     // Units that match everything but the rental track, so the agent can explain (e.g. long-term only).
     const otherTrack = matches.filter((u) => !onTrack(u)).slice(0, 3).map((u) => ({ slug: u.slug, district: u.district, kind: u.kind, tracks: u.rent_periods, rent_egp_month: u.rent_egp }));
     return { count: units.length, ...(landmark ? { near: landmark.name_en, distance: "straight line, approximate" } : {}),
-      units: units.slice(0, 5).map((u) => ({ ...brief(u), ...(landmark ? { km_from_landmark: km(dist(u)) } : {}) })),
+      units: (addCards(ctx, units.slice(0, 5)), units.slice(0, 5).map((u) => ({ ...brief(u), ...(landmark ? { km_from_landmark: km(dist(u)) } : {}) }))),
       ...(otherTrack.length ? { matching_other_tracks: otherTrack } : {}) };
   }
   if (name === "get_unit") {
     const u = str(a.slug) ? await getUnit(a.slug as string) : null;
     if (!u) return { error: "unit not found" };
+    addCards(ctx, [u]);
     return { ...brief(u), summary_en: u.summary_en, summary_ar: u.summary_ar, highlights_en: u.highlights_en,
       specs: { area_m2: u.specs.area_m2_estimate, rooms: u.specs.rooms_count, bathrooms: u.specs.bathrooms_count, natural_light: u.specs.natural_light, condition: u.specs.condition },
       use_reasons: passingUses(u).map((x) => ({ use: x.use, verdict: x.verdict, why: x.reasons_en.join(" ") })),
@@ -167,9 +182,9 @@ export async function sessionTurns(sessionKey: string): Promise<number> {
   return rows[0]?.turns ?? 0;
 }
 
-export async function chatTurn(sessionId: string, message: string, channel: Channel = "chat", sender?: Sender): Promise<{ reply: string; booking_id?: string; total_egp?: number }> {
+export async function chatTurn(sessionId: string, message: string, channel: Channel = "chat", sender?: Sender): Promise<{ reply: string; booking_id?: string; total_egp?: number; units: UnitCard[] }> {
   const history = (await loadHistory(sessionId)).slice(-10);
-  const ctx: Ctx = { channel, ...(channel === "whatsapp" && sender ? { sender } : {}) };
+  const ctx: Ctx = { channel, cards: new Map(), ...(channel === "whatsapp" && sender ? { sender } : {}) };
   const msgs: Msg[] = [{ role: "system", content: await systemPrompt(ctx) }, ...history, { role: "user", content: message }];
   const trace: unknown[] = [];
   let reply = "";
@@ -193,5 +208,7 @@ export async function chatTurn(sessionId: string, message: string, channel: Chan
   }
   if (!reply) reply = "معلش، حصلت مشكلة صغيرة. ممكن تعيد اللي كنت بتقوله؟";
   await saveHistory(sessionId, [...history, { role: "user", content: message }, { role: "assistant", content: reply }], trace);
-  return { reply, ...(ctx.bookingId ? { booking_id: ctx.bookingId, total_egp: ctx.total } : {}) };
+  // No cards once a booking is made: the reply is about payment then.
+  const units = ctx.bookingId ? [] : cardsFor(reply, [...ctx.cards.values()]);
+  return { reply, units, ...(ctx.bookingId ? { booking_id: ctx.bookingId, total_egp: ctx.total } : {}) };
 }

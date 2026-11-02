@@ -2,7 +2,7 @@ import { after } from "next/server";
 import { chatTurn, sessionTurns } from "@/lib/agent/agent";
 import { CAPS, firstSeen, limitKey } from "@/lib/guard";
 import { bookingIdsByRef, getBooking, setBookingWaId, todayCairo } from "@/lib/db/store";
-import { incomingMessages, linkCodeMatches, parseLinkMessage, sendText, senderKey, sessionKeyFor, verifyWhatsAppSignature, type IncomingMessage } from "@/lib/whatsapp";
+import { incomingMessages, linkCodeMatches, sendImage, parseLinkMessage, sendText, senderKey, sessionKeyFor, verifyWhatsAppSignature, type IncomingMessage } from "@/lib/whatsapp";
 
 // WhatsApp booking channel (docs/plan/06 6.8): same agent, limits and spend
 // breaker as web chat. Meta needs a fast 200, so the agent turn runs in after().
@@ -33,6 +33,8 @@ export async function POST(req: Request) {
   return Response.json({ ok: true });
 }
 
+// WhatsApp formatting: *bold* (single stars), no markdown headings.
+const toWhatsApp = (s: string) => s.replace(/\*\*([^*\n]+)\*\*/g, "*$1*").replace(/^#{1,6}\s+/gm, "");
 const isArabic = (s: string) => /[؀-ۿ]/.test(s);
 const FIXED = {
   textOnly: { ar: "معلش، بقرا الرسائل المكتوبة بس دلوقتي. اكتبلي محتاج مكتب فين ولإمتى.", en: "Sorry, I can only read text messages for now. Tell me where and when you need an office." },
@@ -67,5 +69,14 @@ async function handle(m: IncomingMessage) {
   const out = await chatTurn(session, m.text, "whatsapp", { waId: m.from, name: m.name });
   const payLink = out.booking_id && process.env.NEXT_PUBLIC_APP_URL
     ? `\n\n${FIXED.booking[lang]}\n${process.env.NEXT_PUBLIC_APP_URL}/${lang}/booking/${out.booking_id}` : "";
-  await sendText(m.from, out.reply + payLink);
+  await sendText(m.from, toWhatsApp(out.reply) + payLink);
+  // Photo of each unit the reply names; best effort, a failed image never fails the turn.
+  const app = process.env.NEXT_PUBLIC_APP_URL ?? "";
+  for (const u of out.units) {
+    const image = u.image.startsWith("http") ? u.image : app ? `${app}${u.image}` : "";
+    if (!image.startsWith("https://")) continue;
+    const price = u.daily_egp ? `${u.daily_egp} ${lang === "ar" ? "جنيه/اليوم" : "EGP/day"}` : `${u.rent_egp} ${lang === "ar" ? "جنيه/الشهر" : "EGP/month"}`;
+    const caption = `*${lang === "ar" ? u.title_ar : u.title_en}*\n${u.district} · ${price}${u.synthetic ? (lang === "ar" ? "\n(صور مولّدة بالذكاء الاصطناعي)" : "\n(AI-generated photos)") : ""}${app ? `\n${app}/${lang}/units/${u.slug}` : ""}`;
+    await sendImage(m.from, image, caption).catch((e) => console.error("[whatsapp] image failed", u.slug, (e as Error).message));
+  }
 }

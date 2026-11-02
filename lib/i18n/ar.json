@@ -210,5 +210,6 @@
   "error.INVALID_EMAIL": "اكتب إيميل صحيح من فضلك.",
   "bookingCard.waLink": "استلم التحديثات على واتساب (اختياري)",
   "bookingCard.waLinkNote": "ابعت الرسالة الجاهزة عشان توصلك تحديثات الحجز وتسأل عن حجوزاتك.",
-  "bookingCard.waLinked": "تحديثات واتساب شغالة"
+  "bookingCard.waLinked": "تحديثات واتساب شغالة",
+  "chat.aiPhotos": "صور مولّدة بالذكاء الاصطناعي"
 }

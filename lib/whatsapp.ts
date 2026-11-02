@@ -41,6 +41,16 @@ export function sessionKeyFor(waId: string, day: string): string {
 export const senderKey = (session: string) => `wa:${session.split("_")[1]}`;
 
 // Free-form text reply; only valid inside the 24-hour customer-service window.
+// One photo with a caption (unit cards after a search reply). Link must be public https.
+export async function sendImage(to: string, link: string, caption: string): Promise<void> {
+  const res = await fetch(`${GRAPH}/${process.env.WHATSAPP_PHONE_NUMBER_ID}/messages`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${process.env.WHATSAPP_TOKEN}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ messaging_product: "whatsapp", to, type: "image", image: { link, caption: caption.slice(0, 1024) } }),
+  });
+  if (!res.ok) throw new Error(`WHATSAPP_SEND_${res.status}: ${(await res.text()).slice(0, 300)}`);
+}
+
 export async function sendText(to: string, body: string): Promise<void> {
   const res = await fetch(`${GRAPH}/${process.env.WHATSAPP_PHONE_NUMBER_ID}/messages`, {
     method: "POST",

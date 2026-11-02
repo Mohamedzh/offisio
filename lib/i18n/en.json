@@ -210,5 +210,6 @@
   "error.INVALID_EMAIL": "Please enter a valid email address.",
   "bookingCard.waLink": "Get updates on WhatsApp (optional)",
   "bookingCard.waLinkNote": "Send the ready message to get updates on this booking and ask about your bookings.",
-  "bookingCard.waLinked": "WhatsApp updates are on"
+  "bookingCard.waLinked": "WhatsApp updates are on",
+  "chat.aiPhotos": "AI-generated photos"
 }
