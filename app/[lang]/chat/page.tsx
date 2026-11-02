@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ChatBox from "@/components/ChatBox";
 import LangToggle from "@/components/LangToggle";
+import WhatsAppButton, { renterWaUrl } from "@/components/WhatsAppButton";
 import { getT, localeHref } from "@/lib/i18n";
 import { localeFromParam } from "@/lib/i18n/server";
 import type { Metadata } from "next";
@@ -19,7 +20,11 @@ export default async function ChatPage({ params }: PageProps<"/[lang]/chat">) {
     <main className="mx-auto w-full max-w-2xl px-4 py-8">
       <div className="flex items-center justify-between">
         <Link href={localeHref("/", locale)} className="link-back"><span className="arr" aria-hidden>←</span>{t("nav.allOffices")}</Link>
-        <LangToggle locale={locale} />
+        <div className="flex items-center gap-2">
+          {/* Inline here, not floating: a fixed button would sit on the chat input. */}
+          <WhatsAppButton href={renterWaUrl(locale)} locale={locale} variant="inline" />
+          <LangToggle locale={locale} />
+        </div>
       </div>
       <div className="mt-4 border border-ink bg-sheet ink-offset">
         <div className="torn-b" aria-hidden />

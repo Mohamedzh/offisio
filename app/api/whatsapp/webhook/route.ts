@@ -34,7 +34,7 @@ export async function POST(req: Request) {
     for (const m of messages) {
       // Meta retries deliveries: handle each message id once.
       if (!(await firstSeen("wa_msg", m.id))) continue;
-      try { await handle(m); } catch (e) { console.error("[whatsapp] turn failed", m.id, (e as Error).message); }
+      try { await handle(m); } catch (e) { console.error("[whatsapp] turn failed", m.id, /^[A-Z0-9_]+/.exec((e as Error).message)?.[0] ?? (e as Error).name); }
     }
   });
   return Response.json({ ok: true });

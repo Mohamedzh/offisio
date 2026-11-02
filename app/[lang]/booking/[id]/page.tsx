@@ -1,6 +1,7 @@
 import Link from "next/link";
 import BookingActions from "@/components/BookingActions";
 import LangToggle from "@/components/LangToggle";
+import WhatsAppButton, { renterWaUrl } from "@/components/WhatsAppButton";
 import { getT, localeHref } from "@/lib/i18n";
 import { localeFromParam } from "@/lib/i18n/server";
 import type { Metadata } from "next";
@@ -33,6 +34,7 @@ export default async function BookingPage({ params }: PageProps<"/[lang]/booking
           <p className="text-xs text-ink/75 mt-4">{t("bookingPage.note")}</p>
         </div>
       </div>
+      <WhatsAppButton href={renterWaUrl(locale)} locale={locale} />
     </main>
   );
 }

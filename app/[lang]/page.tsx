@@ -7,6 +7,7 @@ import { localeFromParam } from "@/lib/i18n/server";
 import LangToggle from "@/components/LangToggle";
 import Logo from "@/components/Logo";
 import { currentOwner } from "@/lib/owner";
+import WhatsAppButton, { renterWaUrl } from "@/components/WhatsAppButton";
 
 export const instant = false;
 
@@ -20,6 +21,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
   const locale = localeFromParam((await params).lang);
   const t = getT(locale);
   const [units, owner] = await Promise.all([listUnits(), currentOwner()]);
+  const waHref = renterWaUrl(locale);
   const featured = units.find((u) => u.images.empty) ?? units[0];
   const rest = units.filter((u) => u !== featured);
   // One comparable spec line per card: area · desks · floor (from specs JSON).
@@ -58,6 +60,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             <a href="#real-offices" className="btn btn-brick btn-lg">{t("home.browse")}</a>
             <Link href={localeHref("/chat", locale)} className="link">{t("nav.chatToBook")}</Link>
           </div>
+          {waHref && <p className="mt-4 text-sm text-ink/85">{t("home.waPrompt")} <a href={waHref} target="_blank" rel="noopener noreferrer" className="link font-bold">{t("home.waLink")}<span className="sr-only"> {t("wa.newTab")}</span></a></p>}
         </div>
         <figure className="md:col-span-7 rotate-[-0.7deg]">
           <div className="relative aspect-3/2 overflow-hidden border border-ink bg-sheet ink-offset">
@@ -161,6 +164,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           <Link href={localeHref("/terms", locale)} className="underline underline-offset-2">{t("nav.terms")}</Link>
         </span>
       </footer>
+      <WhatsAppButton href={waHref} locale={locale} />
     </main>
   );
 }

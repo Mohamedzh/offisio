@@ -259,5 +259,12 @@
   "preview.stageNote": "Only the owner can render new looks for this listing. Upload your own office to try them.",
   "preview.retryNote": "Only the owner can re-run these steps. Upload your own office to try them.",
   "error.SIGN_IN_REQUIRED": "Sign in with WhatsApp to list your office.",
-  "error.WHATSAPP_NOT_CONFIGURED": "WhatsApp sign-in isn't available right now. Please try again later."
+  "error.WHATSAPP_NOT_CONFIGURED": "WhatsApp sign-in isn't available right now. Please try again later.",
+  "wa.button": "Book on WhatsApp",
+  "wa.aria": "Book on WhatsApp (opens WhatsApp in a new tab)",
+  "wa.prefill": "Hi, I'm looking for an office",
+  "wa.prefillUnit": "Hi, I'm interested in {title}",
+  "wa.newTab": "(opens WhatsApp in a new tab)",
+  "home.waPrompt": "Prefer WhatsApp?",
+  "home.waLink": "Search, book and send voice notes there."
 }

@@ -6,7 +6,7 @@
 import { randomBytes } from "node:crypto";
 import { bumpOwnerEpoch, clearLoginPending, confirmPendingYes, hasPendingYes, markLoginPending } from "./db/auth";
 import { limitKey } from "./guard";
-import { sendText } from "./whatsapp";
+import { sendText, waChatUrl } from "./whatsapp";
 
 const CROCKFORD = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
 
@@ -22,10 +22,7 @@ export function newLoginCode(): string {
 export const newBrowserNonce = () => randomBytes(24).toString("base64url");
 export const displayCode = (code: string) => `${code.slice(0, 4)}-${code.slice(4)}`;
 
-export function loginLinkUrl(code: string): string | null {
-  const num = (process.env.WHATSAPP_NUMBER ?? "").replace(/\D/g, "");
-  return num ? `https://wa.me/${num}?text=${encodeURIComponent(`Offisio login ${displayCode(code)}`)}` : null;
-}
+export const loginLinkUrl = (code: string): string | null => waChatUrl(`Offisio login ${displayCode(code)}`);
 
 // Normalized code (no dash) when the text is a login message, else null.
 // Crockford decoding is forgiving: O -> 0, I/L -> 1.

@@ -14,6 +14,7 @@ import { isDemoUnit, readSpecsPreview } from "@/lib/demo-units";
 import { editMode } from "@/lib/owner";
 import { enumLabel } from "@/lib/specs-edit";
 import LangToggle from "@/components/LangToggle";
+import WhatsAppButton, { renterWaUrl } from "@/components/WhatsAppButton";
 import { formatEgp, getT, localeHref, type TranslationKey } from "@/lib/i18n";
 import type { UseVerdict } from "@/lib/pipeline/rubric";
 import { localeFromParam } from "@/lib/i18n/server";
@@ -118,7 +119,7 @@ export default async function UnitPage({ params }: PageProps<"/[lang]/units/[slu
             </div>
           </div>
         </section>
-        <aside>
+        <aside data-wa-avoid>
           {unit.rent_periods.includes("daily") && unit.daily_egp ? <BookingForm slug={unit.slug} dailyEgp={unit.daily_egp} locale={locale} /> : (
             <div className="border border-ink bg-sheet p-5 ink-offset-sm">
               <h3 className="font-display font-black text-lg">{t("booking.longTermOnly")}</h3>
@@ -129,6 +130,7 @@ export default async function UnitPage({ params }: PageProps<"/[lang]/units/[slu
         </aside>
       </div>
       {unit.location && <NearbyPlaces places={nearby} locale={locale} />}
+      <WhatsAppButton href={renterWaUrl(locale, locale === "en" ? unit.title_en : unit.title_ar)} locale={locale} />
     </main>
   );
 }

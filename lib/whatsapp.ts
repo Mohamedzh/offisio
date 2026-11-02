@@ -94,7 +94,7 @@ export async function notifyPaid(b: PaidBooking): Promise<void> {
   if (!b.wa_id || (b.status !== "confirmed" && b.status !== "paid_conflict")) return;
   const unit = await getUnit(b.unit_slug).catch(() => null);
   const text = paidNoticeText(b, unit, process.env.NEXT_PUBLIC_APP_URL ?? "");
-  try { await sendText(b.wa_id, text); } catch (e) { console.error("[whatsapp] paid notice failed", refLabel(b.id), (e as Error).message); }
+  try { await sendText(b.wa_id, text); } catch (e) { console.error("[whatsapp] paid notice failed", refLabel(b.id), /^[A-Z0-9_]+/.exec((e as Error).message)?.[0] ?? (e as Error).name); }
 }
 // Bilingual paid notice: unit title and weekday date label per language, ref in backticks.
 export function paidNoticeText(b: PaidBooking, unit: UnitTitles | null, app: string, now = new Date()): string {
@@ -106,6 +106,12 @@ export function paidNoticeText(b: PaidBooking, unit: UnitTitles | null, app: str
   return b.status === "confirmed"
     ? `✅ تم الدفع وحجزك اتأكد: ${where("ar")}. الإجمالي ${egpLabel(b.total_egp, "ar")}. رقم الحجز ${ref}\nPaid and confirmed: ${where("en")}. Total ${egpLabel(b.total_egp, "en")}. Booking ${ref}${link}`
     : `وصلنا الدفع، بس اليوم (${where("ar")}) اتحجز قبل ما الدفع يوصل. هنرجعلك ${egpLabel(b.total_egp, "ar")}. رقم الحجز ${ref}\nPayment received but the day (${where("en")}) was taken before it arrived; we will refund ${egpLabel(b.total_egp, "en")}. Booking ${ref}`;
+}
+
+// wa.me chat link to our number with a prefilled first message; null when WHATSAPP_NUMBER is unset.
+export function waChatUrl(text: string): string | null {
+  const num = (process.env.WHATSAPP_NUMBER ?? "").replace(/\D/g, "");
+  return num ? `https://wa.me/${num}?text=${encodeURIComponent(text)}` : null;
 }
 
 // Optional "Get updates on WhatsApp" for website bookings (6.8, owner 2026-11-02):
