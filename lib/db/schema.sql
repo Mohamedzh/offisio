@@ -139,3 +139,25 @@ create table if not exists unit_places (
 alter table bookings add column if not exists wa_id text;
 alter table bookings add column if not exists renter_email text;
 create index if not exists bookings_wa_id_idx on bookings (wa_id);
+
+-- Owner sign-in with WhatsApp (owner-approved 2026-11-02, replaces the Clerk plan):
+-- the owner sends "Offisio login XXXX-XXXX" from WhatsApp; the signed webhook
+-- confirms the code and the browser holding browser_nonce gets the session.
+-- wa_id / owner_wa_id are PII (phone numbers). Codes are single use, 10 min.
+alter table units add column if not exists owner_wa_id text;
+create table if not exists login_codes (
+  code text primary key,
+  browser_nonce text not null unique,
+  wa_id text,
+  created_at timestamptz not null default now(),
+  confirmed_at timestamptz
+);
+create index if not exists idx_usage_kind_key on usage_counters(kind, key);
+-- Owner sign-in step 2 (owner-approved 2026-11-02): the code message only marks the
+-- row pending; a YES from the same sender within 2 minutes confirms it.
+alter table login_codes add column if not exists pending_at timestamptz;
+-- Remote sign-out: "Offisio logout" bumps the epoch; sessions from older epochs are rejected.
+create table if not exists owner_epochs (
+  wa_id text primary key,
+  epoch int not null default 0
+);

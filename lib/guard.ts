@@ -4,14 +4,20 @@
 import { createHash } from "node:crypto";
 import { pool } from "./db/pg";
 import { todayCairo } from "./db/store";
+import { guardSalt } from "./salt";
 
-export type LimitKind = "chat" | "upload" | "image_edit" | "booking" | "blob_token";
+export type LimitKind = "chat" | "upload" | "image_edit" | "booking" | "blob_token" | "wa_link" | "spec_edit" | "login" | "wa_login" | "wa_logout";
 const DEFAULTS: Record<LimitKind, { ip: number; global: number }> = {
   chat: { ip: 40, global: 1000 },
   upload: { ip: 3, global: 20 },
   image_edit: { ip: 4, global: 40 },
   booking: { ip: 5, global: 100 },
   blob_token: { ip: 100, global: 1000 }, // up to 31 tokens per upload (frames + video)
+  wa_link: { ip: 5, global: 200 }, // "Offisio <ref>-<code>" attempts per WhatsApp sender
+  spec_edit: { ip: 30, global: 500 }, // owner spec saves (demo units: preview only)
+  login: { ip: 10, global: 300 }, // "Sign in with WhatsApp" codes per browser IP (checked per-IP only)
+  wa_login: { ip: 10, global: 300 }, // login code and YES messages per WhatsApp sender (per-sender only)
+  wa_logout: { ip: 20, global: 300 }, // "Offisio logout" per sender (per-sender only; own bucket, never blocked by login attempts)
 };
 export const CAPS = {
   chatChars: 800,
@@ -35,7 +41,7 @@ function limitsFor(kind: LimitKind) {
 // Hashed client IP: counters never store a raw address.
 export function clientKey(req: Request): string {
   const ip = req.headers.get("x-real-ip") ?? req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "local";
-  return createHash("sha256").update(`${process.env.GUARD_SALT ?? "offisio-dev-salt"}:${ip}`).digest("hex").slice(0, 16);
+  return createHash("sha256").update(`${guardSalt()}:${ip}`).digest("hex").slice(0, 16);
 }
 
 async function bump(kind: string, key: string, by = 1): Promise<number> {
@@ -47,18 +53,22 @@ async function bump(kind: string, key: string, by = 1): Promise<number> {
 }
 
 export type Denied = { ok: false; code: "RATE_LIMITED" | "DEMO_QUOTA" };
-export async function limit(kind: LimitKind, req: Request): Promise<{ ok: true } | Denied> {
-  return limitKey(kind, `ip:${clientKey(req)}`);
+// opts.global false: per-caller cap only (e.g. demo previews that write nothing).
+export async function limit(kind: LimitKind, req: Request, opts?: { global?: boolean }): Promise<{ ok: true } | Denied> {
+  return limitKey(kind, `ip:${clientKey(req)}`, opts);
 }
 // Same caps keyed by any hashed caller id (e.g. a WhatsApp sender); the "ip" cap applies per key.
-export async function limitKey(kind: LimitKind, key: string): Promise<{ ok: true } | Denied> {
+export async function limitKey(kind: LimitKind, key: string, opts?: { global?: boolean }): Promise<{ ok: true } | Denied> {
   const lim = limitsFor(kind);
   if ((await bump(kind, key)) > lim.ip) return { ok: false, code: "RATE_LIMITED" };
-  if ((await bump(kind, "global")) > lim.global) return { ok: false, code: "DEMO_QUOTA" };
+  if (opts?.global !== false && (await bump(kind, "global")) > lim.global) return { ok: false, code: "DEMO_QUOTA" };
   return { ok: true };
 }
-// True only the first time (kind, key) is seen today: dedupes webhook retries.
+// True only the first time (kind, key) is ever seen: dedupes webhook retries,
+// including a redelivery that lands after Cairo midnight.
 export async function firstSeen(kind: string, key: string): Promise<boolean> {
+  const seen = await pool().query("select 1 from usage_counters where kind = $1 and key = $2 and day < $3 limit 1", [kind, key, todayCairo()]);
+  if (seen.rowCount) return false;
   return (await bump(kind, key)) === 1;
 }
 export const deny = (code: string, status = 429) => Response.json({ error: code }, { status });
@@ -73,13 +83,16 @@ const CHAT_PRICES: Record<string, { IN: number; CACHED: number; OUT: number }> =
   SPARK_CONTRIBUTOR: { IN: 0.10, CACHED: 0.002, OUT: 0.20 },
 };
 const IMAGE_PER_IMAGE = 0.01;
+const ASR_PER_HOUR = 0.18; // muse-voice-transcribe-1.0: per audio hour, floored to whole seconds
 const family = (model: string) => (model.includes("contributor") ? "SPARK_CONTRIBUTOR" : "SPARK");
 const chatPrice = (model: string, dir: "IN" | "CACHED" | "OUT") =>
   envNum(`META_PRICE_${family(model)}_${dir}_PER_M`, CHAT_PRICES[family(model)][dir]);
 
-// Estimated cost in micro-USD of one model response (images = outputs returned).
-export function costMicroUsd(model: string, usage: Usage | undefined, images = 0): number {
+// Estimated cost in micro-USD of one model response (images = outputs returned,
+// audioMs = audioDurationMs of a successful transcription).
+export function costMicroUsd(model: string, usage: Usage | undefined, images = 0, audioMs = 0): number {
   if (model.startsWith("meta-models/")) return 0; // own Modal deployment: Modal credits, not Meta spend
+  if (model.startsWith("muse-voice")) return Math.round(Math.floor(audioMs / 1000) * envNum("META_PRICE_ASR_PER_HOUR", ASR_PER_HOUR) / 3600 * 1e6);
   if (model.startsWith("muse-image")) return Math.round(images * envNum("META_PRICE_IMAGE_PER_IMAGE", IMAGE_PER_IMAGE) * 1e6);
   if (!usage) return 0;
   const inTok = usage.prompt_tokens ?? usage.input_tokens ?? 0;
@@ -89,10 +102,10 @@ export function costMicroUsd(model: string, usage: Usage | undefined, images = 0
   return Math.round((inTok - cachedTok) * chatPrice(model, "IN") + cachedTok * chatPrice(model, "CACHED") + outTok * chatPrice(model, "OUT"));
 }
 
-export async function recordUsage(model: string, usage: Usage | undefined, images = 0): Promise<void> {
+export async function recordUsage(model: string, usage: Usage | undefined, images = 0, audioMs = 0): Promise<void> {
   const tokens = (usage?.prompt_tokens ?? usage?.input_tokens ?? 0) + (usage?.completion_tokens ?? usage?.output_tokens ?? 0);
   if (tokens) await bump("tokens", model, tokens);
-  const micro = costMicroUsd(model, usage, images);
+  const micro = costMicroUsd(model, usage, images, audioMs);
   if (micro) await bump("spend_micro_usd", "global", micro);
 }
 

@@ -308,7 +308,9 @@ Owner decisions 2026-10-31: location is **required**; nearby places come from th
   - A bad signature returns 401.
   - Web chat is unaffected.
 
-### 6.9 Owner auth with Clerk (stretch; only if 6.7–6.8 are done by Nov 2) — 5 / O2 / O3
+### 6.9 Owner auth — **built 2026-11-02 as WhatsApp sign-in (Clerk dropped, owner decision)** — 5 / O2 / O3
+- As built: `/[lang]/login` (and inline on upload) issues a one-time code (`login_codes`, 10 min, bound to the browser by an httpOnly nonce); the owner sends "Offisio login XXXX-XXXX" from WhatsApp, gets a warning, and replies YES within 2 minutes; the page then sets an HMAC-signed 24 h `offisio_owner` cookie carrying a per-number epoch (`owner_epochs`); "Offisio logout" bumps the epoch and deletes pending codes. Upload + blob token need sign-in and set `units.owner_wa_id`; specs/stage/pipeline write only for the owner, everyone else (and the 13 demo units always) get the cookie preview. Reviewed twice (security), fixes applied. Verified locally EN + AR with a signed fake webhook; **not yet** from a real phone or on Vercel.
+- Original Clerk plan (kept for history):
 - As planned earlier: Clerk dev instance via the Vercel Marketplace, Google sign-in, `clerkMiddleware` around the locale redirect, protect upload/edit/specs/stage/blob-token, and `units.owner_user_id`. Renters stay guests.
 - If cut: the existing per-IP limits and spend breaker remain the abuse controls. Say so in the README judge notes.
 
@@ -318,7 +320,7 @@ Owner decisions 2026-10-31: location is **required**; nearby places come from th
   - The WhatsApp number for testing (only allow-listed numbers if still in test mode).
   - The elmenus source note: demo data, not affiliated; production = authorized integration.
 - Cold run on prod by someone other than the builder, AR RTL and EN LTR, recorded here. Record the 3-minute demo on Nov 3 (show WhatsApp booking and the nearby menu). Submit Nov 4.
-- Voice notes (old 6.9): **cut** (owner, 2026-10-31).
+- Voice notes (old 6.9): cut 2026-10-31, **reopened and built 2026-11-02** (owner): `lib/audio.ts` (ffmpeg-static, Meta's command `-ac 1 -ar 24000 -c:a pcm_s16le`, bitexact, 10 s kill), `meta.product.transcribe` -> `POST /v1/asr/transcribe` (multipart `request` JSON + `audio` WAV; the documented endpoint, `/v1/audio/transcriptions` 404s), 1 MB cap, limits before cost, spend $0.18 per audio hour. One real OGG probe returned 200 locally; the build traces the binary into the webhook. Not yet: Vercel runtime, real Egyptian-Arabic notes.
 
 **Step 4 done 2026-11-01 (uncommitted).** `unit_places` migrated (place_id, name, type, distance, Maps link, matched brand; only what we display, per Places terms). [lib/places.ts](../../lib/places.ts): Places Nearby Search (New), Pro SKU fields only, radius **1 km** (owner 2026-11-01, was 500 m), 20 nearest by distance; alias pre-filter (Arabic/English normalised) then one `PLACE_MATCH_V1` call via `meta.public` (Modal locally) only for names that pass; keep 2 per unit, matched chains first. Pipeline step `places` queued on upload with `analyze`; `pnpm places-units [--dry] [--only]` for existing units. Run: 13 Places calls (~$0.42 list), 13/13 units stored, 26 places, 12 matched. **Owner check passed:** `full` (Pioneer Plaza) -> "Second cup new capital golden tower", 227 m, Second Cup menu (plus R3 Dunkin' at 903 m because of the 1 km radius). Units with a menu: 8/13 (full, empty2, gen-zamalek, gen-new-cairo, gen-downtown, gen-alex-chatby, gen-alex-louran, gen-october); none yet: empty1, gen-heliopolis, gen-sheikh-zayed, gen-alex-smouha, gen-nasr-city (their 20 nearest within 1 km are independents; all five use approximate district centres). Plan target was 10/13.
 - **Popularity fallback (owner 2026-11-01).** When the 20 nearest contain no known chain, `refreshPlaces` runs one more Nearby Search ranked by POPULARITY in the same 1 km and picks again; unmatched picks must be a food place type (drops supply shops, buildings, play areas). Built into the pipeline `places` step, so new listings get it automatically (1 call, or 2 when no chain is near). Ran `pnpm places-units --fallback-only` on the 5 units: 5 Places calls (~$0.16 list). **Now 13/13 units have a chain menu nearby, 22 of 26 stored places matched**: empty1 Tseppas + Sale Sucre; gen-heliopolis PAUL + Second Cup Korba; gen-sheikh-zayed Costa + Pizza Hut (Gate Plaza); gen-alex-smouha Caribou + Buffalo Burger; gen-nasr-city Second Cup Makram Ebid + Costa.
@@ -334,18 +336,21 @@ Owner decisions 2026-10-31: location is **required**; nearby places come from th
 **Cleanup 2026-10-31 (owner request).** Removed obsolete seeding/one-off files: `scripts/seed.ts`, `scripts/upload-demo.ts`, `data/seed/blob-urls.json` and the six `full`/`empty1`/`empty2` specs/listing JSONs (Oct 27 seeding; superseded by `remodel-filmed`/`reassess-units`, and a re-run would have overwritten live listings), `scripts/run-unit.ts` (replaced by the pipeline jobs), `scripts/generate-home-art.ts` (art done), `scripts/probe-elmenus.ts`, plus ignored test leftovers (`.scratch/` contents, legacy `.data/`). Kept the re-runnable tools: migrate, chat-acceptance, check-rubric, generate-units (+ synthetic briefs), remodel-filmed, reassess-units, stage-units, topup-availability, backfill-locations, brand-assets, import-brand-menus, save-elmenus-menu. README/AGENTS/DESIGN references updated.
 
 ## Handoff
-6.1–6.6 are committed (through `d58d02a`). **6.7 steps 1–2 are done: committed (`a573708`), deployed, and verified end to end on production through QStash** (2026-10-31; detail under 6.7 "Status"). The edit-page specs form fix is committed; 6.7 steps 3, 4 and 6 are committed (through `38668a1`); step 5 is parked.
+State on 2026-11-02 (end of session 2). Committed and pushed through `1eef773`; **this session's work is uncommitted** (owner reviews and commits). Lint 0 errors, typecheck clean, `pnpm build` passes. Migrations run on Neon: `units.owner_wa_id`, `login_codes` (+ `pending_at`), `owner_epochs`, `idx_usage_kind_key`.
 
-Next session, in this order:
-1. 6.7 is closed (2026-11-02, step 7 verify above). After the next deploy: open a unit page on production (Nearby section, EN + AR) and, if a fresh upload is done, confirm its `places` step finishes.
-2. 6.8: build the owner decision of 2026-11-02 (option b: `wa_id` + `renter_email` migration, email-only ask on WhatsApp, `my_bookings`, proactive existing-booking check, confirmation after the XPay webhook), then the two-phone AR + EN booking.
-3. 6.9 Clerk: past its Nov 2 cut-off; cut unless the owner says otherwise.
-4. 6.10 ship: README pass, cold run, demo video (Nov 3), submit (Nov 4).
+Done this session (each part reviewed by a separate agent, fixes applied):
+- **Review fixes (item 1 of the previous handoff):** booking GET no longer returns renter name/phone/email/wa_id and the cafe order link has no name/phone; web chat rejects `wa_` session ids and uses random UUIDs; `GUARD_SALT` fails closed on Vercel (`lib/salt.ts`); `getBooking` returns 404 for malformed ids; link-code messages are rate limited (`wa_link`) and only link held/paid bookings; dedupe survives Cairo midnight; `deliver_at` validated; booking links follow the renter's language.
+- **Demo listings preview-only:** 13 seeded slugs (`lib/demo-units.ts`); edits validated against 9 allowlisted fields (`lib/specs-edit.ts`), stored in one `offisio_preview` cookie (3000-char cap), "Your edit" marks + Reset bar; stage/pipeline return preview on them; localized enum labels. Browser-checked EN + AR + 390 px.
+- **Voice notes:** see the 6.10 note above. `ffmpeg-static` added by the owner (allowBuilds in pnpm-workspace.yaml).
+- **WhatsApp bookings list:** `lib/booking-labels.ts`, `AGENT_PROMPT_V7` (unit title, district, weekday date, status, ref last in backticks; expired holds hidden), friendlier paid and linked notices.
+- **6.9 owner sign-in:** see 6.9 above.
+- Chat acceptance on V7: **12/13**. Scenario 8 (bad phone, web) failed: it used today's date and the agent answered about availability instead of asking for the phone; likely the same-day date, not V7. Fix idea: make the script skip today, then re-run 8 (paid, ask the owner).
 
-6.8 WhatsApp: setup done and the channel is live on production (2026-11-01, see 6.8 Status). Remaining: payment confirmation over WhatsApp + the two-phone AR/EN verify.
+Next session:
+1. Owner: commit (suggested split: review fixes / demo preview / voice notes, with the dependency reason "Meta ASR accepts only 16/24 kHz mono PCM WAV; WhatsApp sends OGG/Opus" / bookings list V7 / owner sign-in / docs); set `OWNER_SESSION_SECRET` and check `GUARD_SALT` in Vercel **Production and Preview**; deploy through a Vercel remote build (not from Windows: the Linux ffmpeg binary must be installed there).
+2. Production check: build log shows the ffmpeg-static install ran; one ~3 s voice note gives `[meta] /asr/transcribe 200`; sign in from a real phone (code, YES, signed in; then "Offisio logout"); "what are my bookings"; unit page Nearby (EN + AR); booking-page WhatsApp button.
+3. Egyptian-Arabic voice quality: the owner records 2–3 notes, then `pnpm tsx scripts/test-transcribe.ts <file>`.
+4. Organizers' answer on the elmenus menus (asked 2026-11-02): if it is not a clear yes, remove `data/seed/menus/` and the `brand_menus` rows, keep Places names and venue add-ons. Keep menus out of the video either way.
+5. 6.10 ship: README pass, cold run AR + EN, 3-minute video on Nov 3 (depth story: survey -> rubric -> "Suitable for" -> staging; no SAM beat), submit Nov 4, 9 pm ET.
 
-Owner actions before the next deploy:
-- Set `GUARD_SALT` in Vercel (copy the value from `.env.local`).
-- Optionally set `DEMO_DAILY_SPEND_USD` in Vercel (the code default is 15).
-- Do not set `OFFISIO_DEV_MODELS` or `MODAL_*` in Vercel.
-- `NEXT_PUBLIC_APP_URL` in Vercel must be the production https origin (QStash posts there; protected previews reject it).
+Known nits: the Arabic location line mixes English ("Zamalek, Cairo · أدوار 4th"); the browser's own validation bubble is English on /ar; districts are stored in English only (the agent translates); code-relay phishing is mitigated by the YES warning, not eliminated.

@@ -22,8 +22,9 @@ export async function GET(req: Request) {
   const id = new URL(req.url).searchParams.get("id") ?? "";
   const booking = await getBooking(id);
   if (!booking) return Response.json({ error: "NOT_FOUND" }, { status: 404 });
-  // Never echo the WhatsApp id or email; say only whether updates are on, and offer the link while off.
-  const { wa_id, renter_email: _email, ...pub } = attachCafeUrl(booking); // eslint-disable-line @typescript-eslint/no-unused-vars
+  // Anyone with the link can call this: no renter contact details (the page doesn't use them).
+  // Say only whether WhatsApp updates are on, and offer the link while off.
+  const { wa_id, renter_email: _email, renter_name: _name, renter_phone: _phone, ...pub } = attachCafeUrl(booking); // eslint-disable-line @typescript-eslint/no-unused-vars
   const active = ["awaiting_payment", "confirmed"].includes(booking.status);
   return Response.json({ booking: { ...pub, whatsapp_linked: Boolean(wa_id), whatsapp_link_url: !wa_id && active ? waLinkUrl(booking.id) : null } });
 }

@@ -10,7 +10,7 @@ const POLL_MS = 3000;
 
 export default function PipelineStatus({ slug, initial, locale }: { slug: string; initial: Job[]; locale: Locale }) {
   const router = useRouter(); const t = getT(locale);
-  const [jobs, setJobs] = useState(initial); const [busy, setBusy] = useState<string | null>(null); const [msg, setMsg] = useState("");
+  const [jobs, setJobs] = useState(initial); const [busy, setBusy] = useState<string | null>(null); const [msg, setMsg] = useState(""); const [calm, setCalm] = useState(false);
   const doneCount = useRef(initial.filter((j) => j.status === "done").length);
   const active = jobs.some((j) => j.status === "queued" || j.status === "running");
 
@@ -30,11 +30,13 @@ export default function PipelineStatus({ slug, initial, locale }: { slug: string
   }, [active, load]);
 
   async function retry(step: string) {
-    setBusy(step); setMsg("");
+    setBusy(step); setMsg(""); setCalm(false);
     const res = await fetch(`/api/units/${slug}/pipeline`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ step }) });
     const data = await res.json().catch(() => ({}));
     setBusy(null);
     if (!res.ok) { setMsg(errorText(t, data.error ?? "upload.failed")); return; }
+    // Demo listing: nothing was re-run; explain calmly instead of polling.
+    if (data.preview) { setCalm(true); setMsg(t(data.demo === false ? "preview.retryNote" : "demo.retryNote")); return; }
     await load();
   }
 
@@ -62,7 +64,7 @@ export default function PipelineStatus({ slug, initial, locale }: { slug: string
           </li>
         ))}
       </ul>
-      {msg && <p className="text-sm font-bold text-brick mt-2">{msg}</p>}
+      {msg && <p className={`text-sm mt-2 ${calm ? "text-ink/75" : "font-bold text-brick"}`}>{msg}</p>}
     </section>
   );
 }

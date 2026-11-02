@@ -8,7 +8,7 @@
 > **As built (updated 2026-10-30, doc unify in [plan/06](plan/06-judge-ready.md) 6.1).** Where this sketch and the build differ, the build wins:
 > - **No segmentation step.** SAM 3.1 was dropped on 2026-10-27 (no callable endpoint), and staging is prompt-guided `muse-image-1.0` edits ([plan/01](plan/01-capability-tests.md)).
 > - **The source video is stored on Vercel Blob** for playback. The browser extracts keyframes and uploads them directly to Blob, which avoids the 4.5 MB function body limit; only frames reach the model.
-> - **Payments are in scope in XPay test mode.** Owner sign-in (Clerk) and a per-unit location pin are planned in plan/06.
+> - **Payments are in scope in XPay test mode.** Owner sign-in (WhatsApp code + YES, built 2026-11-02; Clerk dropped) and a per-unit location pin are in, see plan/06.
 > - **The booking agent** currently returns one validated JSON action per turn; the tool loop below is planned (plan/06 6.5).
 > - **Default locale is English**, with a full Arabic RTL variant.
 
@@ -24,7 +24,7 @@ Offisio — turn any office into a bookable, furnished-looking listing from a 30
 4. **Restage.** Furniture is removed and the room is restaged in a few styles (startup office, clinic, training room), keeping walls and windows consistent.
 5. **Book.** A renter chats in Egyptian Arabic (stretch: voice note); an agent searches units, checks availability, books a slot, and confirms.
 
-Everything outside this loop is out of scope (~~payments, real auth~~ — now XPay test-mode payments and Clerk owner sign-in, see note; reviews, map search, host analytics, mobile apps).
+Everything outside this loop is out of scope (~~payments, real auth~~ — now XPay test-mode payments and WhatsApp owner sign-in, see note; reviews, map search, host analytics, mobile apps).
 
 ## 3. System overview
 
@@ -110,7 +110,7 @@ AGENTS.md            instructions for coding agents
 
 ## 9. Stack
 
-Next.js (App Router, TypeScript), Postgres on Neon, Vercel, Vercel Blob. Keyframes extracted in the browser with `<video>` + canvas and uploaded straight to Blob (client uploads); the source video is stored on Blob too. ~~SAM clips uploaded once through the Files API~~ (SAM dropped). Payments: XPay hosted checkout (test mode), signed webhook. Owner auth: Clerk development instance (planned).
+Next.js (App Router, TypeScript), Postgres on Neon, Vercel, Vercel Blob. Keyframes extracted in the browser with `<video>` + canvas and uploaded straight to Blob (client uploads); the source video is stored on Blob too. ~~SAM clips uploaded once through the Files API~~ (SAM dropped). Payments: XPay hosted checkout (test mode), signed webhook. Owner auth: WhatsApp sign-in (`lib/login.ts`, `lib/owner.ts`): one-time code + YES from the same number, HMAC-signed 24 h cookie carrying a per-number epoch (`owner_epochs`) so "Offisio logout" ends every session; uploads need sign-in and set `units.owner_wa_id`; edits write only for the owner, everyone else gets the cookie preview (`lib/demo-units.ts`).
 
 ## 10. Milestones (original; the live schedule is in [plan/06](plan/06-judge-ready.md))
 

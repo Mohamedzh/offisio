@@ -3,6 +3,7 @@
 import { handleUpload, type HandleUploadBody } from "@vercel/blob/client";
 import { unitId } from "@/lib/db/store";
 import { CAPS, deny, limit } from "@/lib/guard";
+import { currentOwner } from "@/lib/owner";
 
 const IMAGE_TYPES = ["image/jpeg"];
 const VIDEO_TYPES = ["video/mp4", "video/quicktime", "video/webm"];
@@ -14,6 +15,8 @@ export async function POST(request: Request): Promise<Response> {
   const body = (await request.json()) as HandleUploadBody;
   // Rate-limit every token/URL request; only Vercel's upload-completed callback is exempt.
   if (body.type !== "blob.upload-completed") {
+    // Upload tokens for signed-in owners only (WhatsApp sign-in).
+    if (!(await currentOwner())) return deny("SIGN_IN_REQUIRED", 401);
     const allowed = await limit("blob_token", request);
     if (!allowed.ok) return deny(allowed.code);
   }

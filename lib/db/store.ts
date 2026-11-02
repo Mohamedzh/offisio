@@ -84,12 +84,13 @@ export async function listUnits(): Promise<Unit[]> {
 export interface CreateUploadedUnitInput {
   slug: string; kind: Unit["kind"]; district: string; rent_egp: number; daily_egp: number | null;
   floor_text: string; available_from: string; rent_periods: RentPeriod[]; lat: number; lng: number; location_approx?: boolean;
+  owner_wa_id?: string | null; // signed-in owner (PII); null for seeded/generated units
 }
 export async function createUploadedUnit(input: CreateUploadedUnitInput): Promise<string> {
   const { rows } = await pool().query<{ id: string }>(
-    `insert into units (slug, kind, status, district, rent_egp, daily_egp, floor_text, available_from, rent_periods, lat, lng, location_approx)
-     values ($1,$2,'processing',$3,$4,$5,$6,$7,$8,$9,$10,$11) returning id`,
-    [input.slug, input.kind, input.district, input.rent_egp, input.daily_egp, input.floor_text, input.available_from, input.rent_periods, input.lat, input.lng, input.location_approx ?? false]);
+    `insert into units (slug, kind, status, district, rent_egp, daily_egp, floor_text, available_from, rent_periods, lat, lng, location_approx, owner_wa_id)
+     values ($1,$2,'processing',$3,$4,$5,$6,$7,$8,$9,$10,$11,$12) returning id`,
+    [input.slug, input.kind, input.district, input.rent_egp, input.daily_egp, input.floor_text, input.available_from, input.rent_periods, input.lat, input.lng, input.location_approx ?? false, input.owner_wa_id ?? null]);
   return rows[0].id;
 }
 export async function addMedia(unitId: string, kind: string, url: string, style: string | null = null, meta: Record<string, unknown> = {}): Promise<void> {
@@ -244,7 +245,9 @@ const BOOKING_SQL = `
          coalesce((select json_agg(json_build_object('id', a.id, 'item_id', a.item_id, 'name_en', a.name_en, 'name_ar', a.name_ar, 'qty', a.qty, 'unit_price_egp', a.unit_price_egp, 'deliver_at', a.deliver_at, 'cafe_status', a.cafe_status)) from booking_addons a where a.booking_id = b.id), '[]') as addons
   from bookings b join units u on u.id = b.unit_id`;
 
+const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 export async function getBooking(id: string): Promise<Booking | null> {
+  if (typeof id !== "string" || !UUID.test(id)) return null; // malformed id is "not found", not a pg error
   const { rows } = await pool().query<BookingRow>(`${BOOKING_SQL} where b.id = $1`, [id]);
   if (!rows[0]) return null;
   const pay = await pool().query<{ id: string }>("select id from payments where booking_id = $1 order by created_at desc limit 1", [id]);
@@ -253,12 +256,21 @@ export async function getBooking(id: string): Promise<Booking | null> {
 }
 
 // A WhatsApp sender's bookings (6.8): matched by wa_id, or by the Egyptian mobile
-// derived from it (web bookings made with the same number). Newest first.
+// derived from it (web bookings made with the same number). Newest first. Expired and
+// failed holds are left out so they never push real bookings past the limit; they are
+// only counted (hiddenHoldsForRenter).
+const RENTER_WHERE = "(b.wa_id = $1 or ($2::text is not null and b.renter_phone = $2))";
+const HIDDEN_STATUSES = "('expired', 'payment_failed')";
 export async function bookingsForRenter(waId: string, phone: string | null, limit = 10): Promise<Booking[]> {
   await releaseStaleHolds();
   const { rows } = await pool().query<BookingRow>(
-    `${BOOKING_SQL} where b.wa_id = $1 or ($2::text is not null and b.renter_phone = $2) order by b.created_at desc limit $3`, [waId, phone, limit]);
+    `${BOOKING_SQL} where ${RENTER_WHERE} and b.status not in ${HIDDEN_STATUSES} order by b.created_at desc limit $3`, [waId, phone, limit]);
   return rows.map((r) => rowToBooking(r, null, null));
+}
+export async function hiddenHoldsForRenter(waId: string, phone: string | null): Promise<number> {
+  const { rows } = await pool().query<{ n: number }>(
+    `select count(*)::int as n from bookings b where ${RENTER_WHERE} and b.status in ${HIDDEN_STATUSES}`, [waId, phone]);
+  return rows[0]?.n ?? 0;
 }
 
 // Link a website booking to the WhatsApp sender who sent its signed code (6.8).

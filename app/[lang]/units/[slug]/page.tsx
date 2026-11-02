@@ -9,6 +9,10 @@ import StageButtons from "@/components/StageButtons";
 import { planStaging } from "@/lib/pipeline/staging";
 import type { Survey } from "@/lib/pipeline/survey";
 import BookingForm from "@/components/BookingForm";
+import SpecsPreviewBar from "@/components/SpecsPreviewBar";
+import { isDemoUnit, readSpecsPreview } from "@/lib/demo-units";
+import { editMode } from "@/lib/owner";
+import { enumLabel } from "@/lib/specs-edit";
 import LangToggle from "@/components/LangToggle";
 import { formatEgp, getT, localeHref, type TranslationKey } from "@/lib/i18n";
 import type { UseVerdict } from "@/lib/pipeline/rubric";
@@ -46,7 +50,9 @@ export default async function UnitPage({ params }: PageProps<"/[lang]/units/[slu
   if (!unit) notFound();
   const id = await unitId(unit.slug);
   const nearby = id ? await nearbyOf(id) : [];
-  const specs = unit.specs as Record<string, unknown>;
+  // Visitors who aren't this unit's owner: their previewed edits (cookie), shown to them only.
+  const preview = await readSpecsPreview(unit.slug, await editMode(unit.slug));
+  const specs = { ...unit.specs, ...preview } as Record<string, unknown>;
   // Passing uses first; rubric verdicts come from docs/RUBRIC.md.
   const order = { fits: 0, fits_after_fitout: 1, not_suitable: 2 } as const;
   const uses = ((specs.uses as UseVerdict[] | undefined) ?? []).slice().sort((a, b) => order[a.verdict] - order[b.verdict]);
@@ -54,13 +60,15 @@ export default async function UnitPage({ params }: PageProps<"/[lang]/units/[slu
   const rendered = new Set(unit.images.staged.map((s) => s.style));
   // Synthetic units are staged by script to their brief's target uses only.
   const missingStyles = !unit.synthetic && specs.survey && specs.uses ? planStaging(specs.survey as Survey, specs.uses as UseVerdict[]).map((j) => j.style).filter((s) => !rendered.has(s)) : [];
-  const specRows: [string, string][] = [
-    [t("spec.area"), specs.area_m2_estimate ? `~${specs.area_m2_estimate} m²` : "—"],
-    ...(specs.rooms_count != null ? [[t("spec.rooms"), String(specs.rooms_count)], [t("spec.bathrooms"), String(specs.bathrooms_count ?? 0)]] as [string, string][] : []),
-    [t("spec.deskCapacity"), specs.desk_capacity != null ? String(specs.desk_capacity) : "—"],
-    [t("spec.condition"), String(specs.condition ?? "—")],
-    [t("spec.naturalLight"), String(specs.natural_light ?? "—")],
-    [t("spec.flooring"), String(specs.flooring ?? "—")],
+  // Rows this visitor changed in a demo preview are marked (lib/demo-units).
+  const edited = (k: string) => !!preview && k in preview && String(specs[k] ?? "") !== String(unit.specs[k] ?? "");
+  const specRows: [string, string, boolean][] = [
+    [t("spec.area"), specs.area_m2_estimate ? `~${specs.area_m2_estimate} m²` : "—", edited("area_m2_estimate")],
+    ...(specs.rooms_count != null ? [[t("spec.rooms"), String(specs.rooms_count), false], [t("spec.bathrooms"), String(specs.bathrooms_count ?? 0), false]] as [string, string, boolean][] : []),
+    [t("spec.deskCapacity"), specs.desk_capacity != null ? String(specs.desk_capacity) : "—", edited("desk_capacity")],
+    [t("spec.condition"), enumLabel(t, "condition", specs.condition), edited("condition")],
+    [t("spec.naturalLight"), enumLabel(t, "natural_light", specs.natural_light), edited("natural_light")],
+    [t("spec.flooring"), enumLabel(t, "flooring", specs.flooring), edited("flooring")],
   ];
   return (
     <main className="mx-auto w-full max-w-5xl px-4 py-8">
@@ -70,6 +78,7 @@ export default async function UnitPage({ params }: PageProps<"/[lang]/units/[slu
       </div>
       <h1 className="font-display text-4xl sm:text-5xl font-black mt-4 leading-[1.02] tracking-[-0.02em]">{locale === "en" ? unit.title_en : unit.title_ar}</h1>
       <p className="mt-3 flex flex-wrap items-center gap-2 text-ink/75"><span className="w-full sm:w-auto">{unit.district} · {t("unit.floors")} {unit.floor_text}</span>{unit.location && <a href={mapsUrl(unit.location)} target="_blank" rel="noopener noreferrer" className="link text-sm">{t("unit.openInMaps")}{unit.location.approx && ` (${t("unit.approxArea")})`}</a>}<span className="tnum bg-brick text-white font-display font-black px-3 py-1 ink-offset-sm">{formatEgp(locale, unit.rent_egp)}{t("unit.perMonth")}</span></p>
+      {preview && <SpecsPreviewBar slug={unit.slug} locale={locale} demo={isDemoUnit(unit.slug)} />}
       {unit.synthetic && <p className="mt-3"><span className="bg-mustard text-ink border border-ink text-[11px] font-bold px-2 py-0.5">{t("unit.synthetic")}</span></p>}
       <div className="mt-5 border border-ink bg-sheet p-3 ink-offset"><UnitViewer images={unit.images} locale={locale} synthetic={unit.synthetic} /><StageButtons slug={unit.slug} styles={missingStyles} locale={locale} /></div>
       {unit.video && (
@@ -87,7 +96,7 @@ export default async function UnitPage({ params }: PageProps<"/[lang]/units/[slu
             <div className="torn-t" aria-hidden /><div className="torn-b" aria-hidden />
             <div className="p-5">
               <h3 className="font-display font-black text-xl tracking-[-0.02em] mb-2">{t("unit.specsTitle")}</h3>
-              <dl className="text-sm">{specRows.map(([k, v]) => <div key={k} className="flex justify-between gap-4 border-b border-ink/25 py-2"><dt className="text-[11px] uppercase tracking-wide text-ink/75 pt-0.5">{k}</dt><dd className="tnum font-bold">{v}</dd></div>)}</dl>
+              <dl className="text-sm">{specRows.map(([k, v, mine]) => <div key={k} className={`flex justify-between gap-4 border-b border-ink/25 py-2 ${mine ? "bg-mustard/30 px-1" : ""}`}><dt className="text-[11px] uppercase tracking-wide text-ink/75 pt-0.5">{k}</dt><dd className="tnum font-bold inline-flex items-center gap-1.5">{mine && <span className="size-2 rounded-full bg-brick" role="img" aria-label={t("demo.yourEdit")} title={t("demo.yourEdit")} />}{v}</dd></div>)}</dl>
               <p className="text-xs text-ink/75 mt-3">{t("unit.specsNote")}</p>
               {uses.length > 0 && (
                 <div className="mt-6">

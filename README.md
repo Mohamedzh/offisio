@@ -117,10 +117,13 @@ pnpm build       # production build
 
 Everything in this repository was written during the hackathon (Oct 26 – Nov 4, 2026), starting from an empty `create-next-app` scaffold. No prior code, data or assets were reused. The git history is the record.
 
-- Video pipeline (originally scripts/run-unit.ts, now the QStash pipeline in lib/pipeline/jobs.ts): keyframes -> specs -> bilingual listing -> AI empty -> 3 fit renders (startup/clinic/training) on 3 real units. SAM 3.1 dropped (no callable endpoint; prompt-guided edits passed) — future consideration.
+- Video pipeline (originally scripts/run-unit.ts, now the QStash pipeline in lib/pipeline/jobs.ts): keyframes -> specs -> bilingual listing -> AI empty -> 3 fit renders (startup/clinic/training) on 3 real units. SAM 3.1 is not used: prompt-guided edits passed our tests (Meta's docs show SAM callable via `/v1/responses`; we found that after choosing edits and did not test it).
 - 3-track catalog: furnished=daily+monthly (800 EGP/day demo), semifinished=long-term only.
 - Booking: daily day-slots (hourly underneath), atomic double-book protection, Egyptian-Arabic chat agent with nearby-cafe add-ons, "what's near to eat" (`nearby_places`) and "near AUC"-style landmark search.
 - Add-ons: menus of the unit's matched nearby chains (`brand_menus`, prices copied from the elmenus source, checked in code), daily bookings only; the paid order goes to the demo WhatsApp line (CAFE_WHATSAPP_NUMBER).
+- WhatsApp channel: the same booking agent on WhatsApp (email-only booking, "what are my bookings", paid notice after the payment webhook) plus **voice notes**: ffmpeg converts the OGG/Opus note to WAV and `muse-voice-transcribe-1.0` transcribes it; the reply shows what we heard.
+- Owner sign-in with WhatsApp: the site gives a one-time code, the owner sends it from WhatsApp and confirms with YES; uploads need sign-in, only the owner can save edits, and "Offisio logout" signs out everywhere.
+- Demo listings are preview-only: any visitor can try the edit form, changes show only in their own browser and the real listing (and the agent) never changes.
 - Payments (test mode): hosted checkout + signature-verified webhook; booking confirms only on webhook. Set the payment keys in .env.local (see .env.example).
 - Live payment run verified 2026-10-29: approved test card auto-confirmed a booking via webhook, declined card stayed unconfirmed; judge instructions + test card in [Testing (for judges)](#testing-for-judges).
 - Built with Muse models and Claude, about 50/50: `muse-wonder-1.0` planning, `muse-spark-1.3-contributor` implementors/testers/reviewers on synthetic data only, Claude models alongside; `muse-spark-1.3` + `muse-image-1.0` in the product. See [How it was built](#how-it-was-built-muse-models-and-claude).

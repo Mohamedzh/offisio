@@ -7,6 +7,7 @@ import { enqueue } from "@/lib/pipeline/jobs";
 import { resolveLocation } from "@/lib/geo";
 import type { UnitKind } from "@/lib/meta/prompts";
 import { CAPS, deny, limit, spendBlocked } from "@/lib/guard";
+import { currentOwner } from "@/lib/owner";
 
 const bad = (error: string) => Response.json({ error }, { status: 400 });
 const SLUG_RE = /^[A-Za-z0-9_-]{1,64}$/;
@@ -21,6 +22,9 @@ function isUploadsUrl(url: string, slug: string): boolean {
 }
 
 export async function POST(req: Request) {
+  // Owners only (WhatsApp sign-in); the new unit is theirs.
+  const owner = await currentOwner();
+  if (!owner) return deny("SIGN_IN_REQUIRED", 401);
   let body: Record<string, unknown>;
   try { body = (await req.json()) as Record<string, unknown>; } catch { return bad("expected JSON body"); }
   if (await spendBlocked()) return deny("DEMO_QUOTA");
@@ -58,7 +62,7 @@ export async function POST(req: Request) {
   const rent_periods: RentPeriod[] = kind === "furnished" ? ["daily", "monthly"] : ["long_term"];
   let created = false;
   try {
-    const unitId = await createUploadedUnit({ slug, kind: kind as UnitKind, district, rent_egp, daily_egp, floor_text, available_from, rent_periods, ...location });
+    const unitId = await createUploadedUnit({ slug, kind: kind as UnitKind, district, rent_egp, daily_egp, floor_text, available_from, rent_periods, ...location, owner_wa_id: owner.waId });
     created = true;
     await replaceKeyframes(unitId, (frameUrls as string[]).map((url, i) => ({ url, meta: { t: frameTimes?.[i] ?? i, frame: i } })));
     if (videoUrl) await addMedia(unitId, "video", videoUrl, null, {});

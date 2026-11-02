@@ -3,11 +3,12 @@
 // Tool arguments are validated in code; bad args go back to the model as an
 // error result, never a 500. At most MAX_ROUNDS tool rounds per turn.
 import { meta } from "../meta/client";
-import { AGENT_CHANNEL_WEB, AGENT_CHANNEL_WHATSAPP, AGENT_PROMPT_V6 } from "../meta/prompts";
+import { AGENT_CHANNEL_WEB, AGENT_CHANNEL_WHATSAPP, AGENT_PROMPT_V7 } from "../meta/prompts";
 import { pool } from "../db/pg";
-import { listUnits, getUnit, unitId, freeDays, availabilityByDay, todayCairo, bookingsForRenter, type Booking, type Unit } from "../db/store";
+import { listUnits, getUnit, unitId, freeDays, availabilityByDay, todayCairo, bookingsForRenter, hiddenHoldsForRenter, type Booking, type Unit } from "../db/store";
 import { phoneFromWaId } from "../whatsapp";
 import { createBooking } from "../booking";
+import { bookingBrief, refLabel, replyLang, selectMyBookings, type Lang, type UnitTitles } from "../booking-labels";
 import { VENUE_ADDONS } from "../addons/catalog";
 import { nearbyOf } from "../nearby";
 import { haversineM } from "../places";
@@ -20,7 +21,8 @@ export type Channel = "chat" | "whatsapp";
 export interface Sender { waId: string; name: string | null }
 // A unit the agent looked at this turn, for photo cards under the reply (web) or image messages (WhatsApp).
 export interface UnitCard { slug: string; title_en: string; title_ar: string; district: string; rent_egp: number; daily_egp: number | null; image: string; synthetic: boolean }
-type Ctx = { bookingId?: string; total?: number; channel: Channel; sender?: Sender; cards: Map<string, UnitCard>; lang: "ar" | "en" };
+// lang: default reply language; pageLang: language of booking-page links (follows the message on WhatsApp).
+type Ctx = { bookingId?: string; total?: number; channel: Channel; sender?: Sender; cards: Map<string, UnitCard>; lang: "ar" | "en"; pageLang: "ar" | "en" };
 const cardOf = (u: Unit): UnitCard | null => {
   const image = u.images.real || u.images.staged[0]?.url || "";
   return image ? { slug: u.slug, title_en: u.title_en, title_ar: u.title_ar, district: u.district, rent_egp: u.rent_egp, daily_egp: u.daily_egp, image, synthetic: u.synthetic } : null;
@@ -131,28 +133,35 @@ async function runTool(name: string, rawArgs: string, ctx: Ctx): Promise<unknown
         created_via: ctx.channel,
       });
       ctx.bookingId = b.id; ctx.total = b.total_egp;
-      return { booking_ref: b.id.slice(0, 8), status: b.status, total_egp: b.total_egp, hold_minutes: 30 };
+      return { booking_ref: refLabel(b.id), status: b.status, total_egp: b.total_egp, hold_minutes: 30 };
     } catch (e) { return { error: (e as Error).message }; }
   }
   if (name === "my_bookings") {
     if (!ctx.sender) return { error: "only available on WhatsApp" };
-    return { bookings: (await senderBookings(ctx.sender)).map(bookingBrief) };
+    const [v, hidden] = await Promise.all([myBookings(ctx.sender, ctx.pageLang), hiddenHoldsForRenter(ctx.sender.waId, phoneFromWaId(ctx.sender.waId))]);
+    return { bookings: v.upcoming, recent_past: v.past, hidden_expired: hidden };
   }
   return { error: `unknown tool ${name}` };
 }
 
 const senderBookings = (s: Sender) => bookingsForRenter(s.waId, phoneFromWaId(s.waId));
 const appUrl = () => process.env.NEXT_PUBLIC_APP_URL ?? "";
-function bookingBrief(b: Booking) {
-  return { ref: b.id.slice(0, 8), unit: b.unit_slug, track: b.track, date: b.date, status: b.status, total_egp: b.total_egp,
-    addons: b.addons.map((x) => `${x.qty} x ${x.name_en}`), ...(b.status === "awaiting_payment" && appUrl() ? { pay_link: `${appUrl()}/ar/booking/${b.id}` } : {}) };
+// Unit titles for a renter's bookings (one lookup per unit).
+async function titlesFor(bookings: Booking[]): Promise<Map<string, UnitTitles | null>> {
+  const slugs = [...new Set(bookings.map((b) => b.unit_slug))];
+  const units = await Promise.all(slugs.map((s) => getUnit(s)));
+  return new Map(slugs.map((s, i) => [s, units[i]]));
 }
-// Upcoming bookings that still matter: unpaid (held) or confirmed, today or later.
-const ACTIVE = new Set(["awaiting_payment", "confirmed", "paid_conflict"]);
+// Friendly view of the sender's bookings in the reply language (lib/booking-labels.ts).
+async function myBookings(s: Sender, lang: Lang) {
+  const { upcoming, past } = selectMyBookings(await senderBookings(s), todayCairo());
+  const titles = await titlesFor([...upcoming, ...past]);
+  const brief = (b: Booking) => bookingBrief(b, titles.get(b.unit_slug) ?? null, lang, appUrl());
+  return { upcoming: upcoming.map(brief), past: past.map(brief) };
+}
 async function channelBlock(ctx: Ctx): Promise<string> {
   if (!ctx.sender) return AGENT_CHANNEL_WEB;
-  const today = todayCairo();
-  const upcoming = (await senderBookings(ctx.sender)).filter((b) => ACTIVE.has(b.status) && (!b.date || b.date >= today)).map(bookingBrief);
+  const { upcoming } = await myBookings(ctx.sender, ctx.pageLang);
   return AGENT_CHANNEL_WHATSAPP.replace("{PHONE}", phoneFromWaId(ctx.sender.waId) ?? ctx.sender.waId)
     .replace("{NAME}", ctx.sender.name ?? "unknown, ask for it").replace("{BOOKINGS}", upcoming.length ? JSON.stringify(upcoming) : "none upcoming");
 }
@@ -162,7 +171,7 @@ async function systemPrompt(ctx: Ctx): Promise<string> {
   const [y, m, d] = today.split("-").map(Number);
   const tomorrow = new Date(Date.UTC(y, m - 1, d + 1)).toISOString().slice(0, 10);
   const weekday = new Intl.DateTimeFormat("en-US", { timeZone: "Africa/Cairo", weekday: "long" }).format(new Date());
-  return AGENT_PROMPT_V6.replace("{LANG}", ctx.lang === "en" ? "English" : "Egyptian Arabic").replace("{TODAY}", today).replace("{WEEKDAY}", weekday).replace("{TOMORROW}", tomorrow).replace("{CHANNEL}", await channelBlock(ctx));
+  return AGENT_PROMPT_V7.replace("{LANG}", ctx.lang === "en" ? "English" : "Egyptian Arabic").replace("{TODAY}", today).replace("{WEEKDAY}", weekday).replace("{TOMORROW}", tomorrow).replace("{CHANNEL}", await channelBlock(ctx));
 }
 
 async function loadHistory(sessionKey: string): Promise<{ role: string; content: string }[]> {
@@ -183,9 +192,11 @@ export async function sessionTurns(sessionKey: string): Promise<number> {
 }
 
 // lang: the page language for web chat (default reply language); WhatsApp starts in Arabic.
-export async function chatTurn(sessionId: string, message: string, channel: Channel = "chat", sender?: Sender, lang: "ar" | "en" = "ar"): Promise<{ reply: string; booking_id?: string; total_egp?: number; units: UnitCard[] }> {
+export async function chatTurn(sessionId: string, message: string, channel: Channel = "chat", sender?: Sender, lang: "ar" | "en" = "ar"): Promise<{ reply: string; lang: "ar" | "en"; booking_id?: string; total_egp?: number; units: UnitCard[] }> {
   const history = (await loadHistory(sessionId)).slice(-10);
-  const ctx: Ctx = { channel, cards: new Map(), lang: channel === "whatsapp" ? "ar" : lang, ...(channel === "whatsapp" && sender ? { sender } : {}) };
+  // WhatsApp: follow the renter's message; "ok" or a bare email keeps the session's language.
+  const pageLang = channel === "whatsapp" ? replyLang(message, history, "ar") : lang;
+  const ctx: Ctx = { channel, cards: new Map(), lang: channel === "whatsapp" ? "ar" : lang, pageLang, ...(channel === "whatsapp" && sender ? { sender } : {}) };
   const msgs: Msg[] = [{ role: "system", content: await systemPrompt(ctx) }, ...history, { role: "user", content: message }];
   const trace: unknown[] = [];
   let reply = "";
@@ -211,5 +222,5 @@ export async function chatTurn(sessionId: string, message: string, channel: Chan
   await saveHistory(sessionId, [...history, { role: "user", content: message }, { role: "assistant", content: reply }], trace);
   // No cards once a booking is made: the reply is about payment then.
   const units = ctx.bookingId ? [] : cardsFor(reply, [...ctx.cards.values()]);
-  return { reply, units, ...(ctx.bookingId ? { booking_id: ctx.bookingId, total_egp: ctx.total } : {}) };
+  return { reply, lang: pageLang, units, ...(ctx.bookingId ? { booking_id: ctx.bookingId, total_egp: ctx.total } : {}) };
 }

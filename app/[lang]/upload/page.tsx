@@ -5,6 +5,12 @@ import { getT, localeHref } from "@/lib/i18n";
 import { localeFromParam } from "@/lib/i18n/server";
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/metadata";
+import { connection } from "next/server";
+import OwnerBar from "@/components/OwnerBar";
+import WhatsAppLogin from "@/components/WhatsAppLogin";
+import { currentOwner, maskWaId } from "@/lib/owner";
+
+export const instant = false;
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/upload">): Promise<Metadata> {
   const locale = localeFromParam((await params).lang);
@@ -13,6 +19,8 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/upload">):
 }
 
 export default async function UploadPage({ params }: PageProps<"/[lang]/upload">) {
+  await connection();
+  const owner = await currentOwner();
   const locale = localeFromParam((await params).lang);
   const t = getT(locale);
   return (
@@ -25,7 +33,15 @@ export default async function UploadPage({ params }: PageProps<"/[lang]/upload">
         <div className="torn-b" aria-hidden />
         <div className="p-5">
           <h1 className="font-display text-3xl font-black tracking-[-0.02em] mb-4">{t("upload.title")}</h1>
-          <UploadForm locale={locale} />
+          {/* Owners sign in with WhatsApp first; the uploaded unit is theirs. */}
+          {owner ? (
+            <>
+              <OwnerBar phone={maskWaId(owner.waId)} locale={locale} className="-mt-2 mb-4" />
+              <UploadForm locale={locale} />
+            </>
+          ) : (
+            <WhatsAppLogin locale={locale} />
+          )}
         </div>
       </div>
     </main>

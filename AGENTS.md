@@ -46,7 +46,9 @@ Enforcement, not convention:
 
 In scope: the demo loop (upload → specs → listing → removal/restaging → chat booking), plus these owner-approved additions:
 - payments in **XPay test mode only** (booking confirms on a signed webhook);
-- owner sign-in with **Clerk** (Google), with renters staying guests (stretch, [06](docs/plan/06-judge-ready.md) 6.9; cut if time runs out);
+- owner sign-in with **WhatsApp** (built 2026-11-02, replaces the Clerk plan): one-time code + YES confirmation, signed 24 h session, "Offisio logout" signs out everywhere; renters stay guests ([06](docs/plan/06-judge-ready.md) 6.9);
+- WhatsApp **voice notes** (built 2026-11-02): OGG/Opus converted to WAV with `ffmpeg-static` (Meta's documented command), transcribed by `muse-voice-transcribe-1.0` on `meta.product`, then the same text path;
+- seeded demo listings are **preview-only**: visitor edits show only in their own browser (cookie), real data never changes;
 - a **required** per-unit location (`units.lat/lng`) and "near X" search for the agent (planned, 6.7);
 - nearby cafes/restaurants per unit via the **Google Places API**, matched to a chain-brand menu catalogue (one-off demo import, see rule 2; reading an owner's menu photo is parked, owner 2026-11-02); long post-upload steps chained with **QStash** (planned, 6.7, owner decision 2026-10-31);
 - curated cafe add-ons with a WhatsApp order link (built); menu items become add-ons for **daily** bookings;

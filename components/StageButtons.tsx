@@ -6,13 +6,15 @@ import { errorText, getT, type Locale, type TranslationKey } from "@/lib/i18n";
 
 export default function StageButtons({ slug, styles, locale }: { slug: string; styles: string[]; locale: Locale }) {
   const router = useRouter(); const t = getT(locale);
-  const [busy, setBusy] = useState<string | null>(null); const [msg, setMsg] = useState("");
+  const [busy, setBusy] = useState<string | null>(null); const [msg, setMsg] = useState(""); const [calm, setCalm] = useState(false);
   async function render(style: string) {
-    setBusy(style); setMsg("");
+    setBusy(style); setMsg(""); setCalm(false);
     const res = await fetch(`/api/units/${slug}/stage`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ style }) });
     const data = await res.json().catch(() => ({}));
     setBusy(null);
     if (!res.ok) { setMsg(errorText(t, data.error ?? "upload.failed")); return; }
+    // Demo listing: nothing was rendered; explain calmly instead of refreshing.
+    if (data.preview) { setCalm(true); setMsg(t(data.demo === false ? "preview.stageNote" : "demo.stageNote")); return; }
     router.refresh();
   }
   if (!styles.length) return null;
@@ -27,7 +29,7 @@ export default function StageButtons({ slug, styles, locale }: { slug: string; s
           </button>
         ))}
       </div>
-      {msg && <p className="text-sm font-bold text-brick mt-2">{msg}</p>}
+      {msg && <p className={`text-sm mt-2 ${calm ? "text-ink/75" : "font-bold text-brick"}`}>{msg}</p>}
     </div>
   );
 }

@@ -12,6 +12,7 @@ export interface CreateBookingInput {
   wa_id?: string; // WhatsApp sender: the phone comes from it, never from the chat text
 }
 
+const DELIVER_AT = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?(Z|[+-]\d{2}:\d{2})?$/;
 const EMAIL = /^[^\s@]{1,64}@[^\s@]{1,190}\.[a-z]{2,24}$/i;
 
 export async function createBooking(input: CreateBookingInput): Promise<Booking> {
@@ -58,7 +59,7 @@ async function insertBooking(input: CreateBookingInput & { renter_phone: string 
       const item = catalog.find((i) => i.id === a.item_id);
       if (!item) throw new Error(isMenuItemId(String(a.item_id)) && track !== "daily" ? "ADDON_DAILY_ONLY" : "ADDON_NOT_FOUND");
       const at = item.place ? { en: ` · ${item.place.brand}`, ar: ` · ${item.place.brand_ar ?? item.place.brand}` } : { en: "", ar: "" };
-      return { item_id: item.id, name_en: item.name_en + at.en, name_ar: item.name_ar + at.ar, qty: Math.min(20, Math.max(1, a.qty || 1)), unit_price_egp: item.price_egp, deliver_at: a.deliver_at ?? null };
+      return { item_id: item.id, name_en: item.name_en + at.en, name_ar: item.name_ar + at.ar, qty: Math.min(20, Math.max(1, a.qty || 1)), unit_price_egp: item.price_egp, deliver_at: typeof a.deliver_at === "string" && DELIVER_AT.test(a.deliver_at) && !Number.isNaN(Date.parse(a.deliver_at)) ? a.deliver_at : null };
     });
     const total = rent + addons.reduce((s, a) => s + a.qty * a.unit_price_egp, 0);
     const ins = await client.query<{ id: string; created_at: string }>(
@@ -86,7 +87,8 @@ export function attachCafeUrl(b: Booking): Booking {
   if (cafeItems.length) {
     b.cafe_whatsapp_url = cafeWhatsAppUrl([
       `New Offisio add-on order — booking ${b.id}`,
-      `Unit: ${b.unit_slug} | Renter: ${b.renter_name} (${b.renter_phone})`,
+      // No renter name/phone: the renter sends this from their own WhatsApp, so the cafe sees the sender.
+      `Unit: ${b.unit_slug}`,
       ...cafeItems.map((a) => `- ${a.qty} x ${a.name_en} @ EGP ${a.unit_price_egp}${a.deliver_at ? ` at ${a.deliver_at}` : ""}`),
       `Total add-ons: EGP ${cafeItems.reduce((s, a) => s + a.qty * a.unit_price_egp, 0)} (paid via Offisio)`,
       "Please confirm prep time. Thank you!",

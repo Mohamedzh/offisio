@@ -6,6 +6,7 @@ import { formatEgp, getT, localeHref } from "@/lib/i18n";
 import { localeFromParam } from "@/lib/i18n/server";
 import LangToggle from "@/components/LangToggle";
 import Logo from "@/components/Logo";
+import { currentOwner } from "@/lib/owner";
 
 export const instant = false;
 
@@ -18,7 +19,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
   await connection();
   const locale = localeFromParam((await params).lang);
   const t = getT(locale);
-  const units = await listUnits();
+  const [units, owner] = await Promise.all([listUnits(), currentOwner()]);
   const featured = units.find((u) => u.images.empty) ?? units[0];
   const rest = units.filter((u) => u !== featured);
   // One comparable spec line per card: area · desks · floor (from specs JSON).
@@ -41,6 +42,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         <Link href={localeHref("/", locale)} aria-label={t("brand")}><Logo locale={locale} /></Link>
         <div className="flex flex-wrap gap-1.5 sm:gap-2 text-[13px] sm:text-sm items-center">
           <Link href={localeHref("/upload", locale)} className="px-1.5 py-2 link">{t("nav.listOffice")}</Link>
+          <Link href={localeHref("/login", locale)} className="px-1.5 py-2 link">{t(owner ? "nav.signedIn" : "nav.signIn")}</Link>
           <Link href={localeHref("/chat", locale)} className="btn btn-brick px-3 py-2 sm:px-4">{t("nav.chatToBook")}</Link>
           <LangToggle locale={locale} />
         </div>

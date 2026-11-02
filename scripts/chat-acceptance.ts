@@ -5,7 +5,8 @@
 import { writeFileSync } from "node:fs";
 import { chatTurn, type Sender } from "../lib/agent/agent";
 import { createBooking } from "../lib/booking";
-import { freeDays } from "../lib/db/store";
+import { freeDays, getUnit } from "../lib/db/store";
+import { dateLabel } from "../lib/booking-labels";
 import { pool } from "../lib/db/pg";
 
 type Check = (r: { replies: string[]; bookingIds: string[] }) => boolean;
@@ -15,6 +16,10 @@ const saysConfirmed = (r: { replies: string[] }) => r.replies.some((x) => /(حج
 const S = (turns: string[], name: string, check: Check, setup?: () => Promise<string[]>, sender?: Sender) => ({ name, turns, check, setup, sender });
 // WhatsApp scenarios (6.8): a synthetic Egyptian sender; the phone comes from wa_id.
 const WA: Sender = { waId: "201000000012", name: "Wael Test" };
+// V7 shows dates as weekday labels ("Sun 8 Nov", "الأحد ٨ نوفمبر"), never ISO. Accept the
+// full label, the label without the weekday (the model may drop it), or the ISO day.
+const mentionsDay = (text: string, d: string) =>
+  [dateLabel(d, "ar"), dateLabel(d, "en")].some((l) => text.includes(l) || text.includes(l.split(" ").slice(1).join(" "))) || text.includes(d);
 
 async function main() {
   const chatby = await freeDays("gen-alex-chatby", 5);
@@ -22,6 +27,9 @@ async function main() {
   const downtown = await freeDays("gen-downtown", 3);
   const takenDay = chatby[1];
   const zamalek = await freeDays("gen-zamalek", 6);
+  const zUnit = await getUnit("gen-zamalek");
+  const zTitles = [zUnit?.title_ar, zUnit?.title_en].filter((t): t is string => !!t);
+  const mentionsZamalek = (text: string) => zTitles.some((t) => text.includes(t)) || /الزمالك|zamalek/i.test(text);
   // A paid booking for the WhatsApp sender on a day still free at setup time (earlier
   // scenarios book days too). Status set directly; payment is not under test here.
   const waDates: string[] = [];
@@ -47,10 +55,10 @@ async function main() {
     S([`عايز مكتب في الزمالك يوم ${zamalek[3]}`, "تمام احجزه، الإيميل wael.test@example.com", "أكد"], "11 WhatsApp booking: email only, phone from the sender",
       (r) => r.bookingIds.length === 1 && !saysConfirmed(r) && !/رقم (الموبايل|تليفونك|موبايلك)|phone number/i.test(r.replies.join(" ")), undefined, WA),
     S([`عايز أحجز مكتب في سموحة يوم ${smouha[1]}`], "12 WhatsApp: existing confirmed booking mentioned first",
-      (r) => waDates.some((d) => r.replies[0].includes(d)) || /عندك حجز|حجز مؤكد|already have|existing booking/i.test(r.replies[0]),
+      (r) => waDates.some((d) => mentionsDay(r.replies[0], d)) || mentionsZamalek(r.replies[0]) || /عندك حجز|حجز مؤكد|already have|existing booking/i.test(r.replies[0]),
       async () => [await confirmedFor(WA, "gen-zamalek")], WA),
     S(["إيه الحجوزات اللي عندي؟"], "13 WhatsApp: my_bookings lists the sender's booking",
-      (r) => waDates.some((d) => r.replies[0].includes(d)) || /الزمالك|zamalek/i.test(r.replies[0]),
+      (r) => waDates.some((d) => mentionsDay(r.replies[0], d)) || mentionsZamalek(r.replies[0]),
       async () => [await confirmedFor(WA, "gen-zamalek")], WA),
   ];
   const md: string[] = ["# Chat acceptance transcripts (synthetic renters)", `Run ${new Date().toISOString()} on muse-spark-1.3`, ""];

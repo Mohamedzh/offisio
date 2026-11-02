@@ -8,6 +8,8 @@ export const MODELS = {
   spark: "muse-spark-1.3",
   sparkContributor: "muse-spark-1.3-contributor",
   image: "muse-image-1.0",
+  // Speech-to-text for WhatsApp voice notes (PII path only, never contributor).
+  transcribe: "muse-voice-transcribe-1.0",
   // NOTE: SAM 3.1 dropped 2026-10-27 — listed in /models but no callable
   // segmentation endpoint in the OpenAI-shaped API. Prompt-guided edits
   // passed on furnished + 2 bare units. Revisit if removal quality fails.
@@ -15,6 +17,8 @@ export const MODELS = {
   // Open-weight Muse Spark served on our Modal deployment (dev only).
   sparkOpen: "meta-models/Muse-Spark-Open-816B-A42B",
 } as const;
+// Speech-to-text endpoint (dev.meta.ai/docs/api-reference/voice/transcribe).
+export const TRANSCRIBE_PATH = "/asr/transcribe";
 
 const BASE = "https://api.meta.ai/v1";
 
@@ -57,13 +61,22 @@ export interface ImageEditOpts { imagePath: string; prompt: string; maskPath?: s
 // module free of DB imports at load time; a failed write never fails the call.
 async function track(model: string, json: unknown): Promise<void> {
   try {
-    const j = json as { usage?: Record<string, number>; data?: unknown[] } | null;
+    const j = json as { usage?: Record<string, number>; data?: unknown[]; audioDurationMs?: unknown } | null;
     const images = model.startsWith("muse-image") ? j?.data?.length ?? 0 : 0;
-    if (j?.usage || images) await (await import("../guard")).recordUsage(model, j?.usage, images);
+    const audioMs = typeof j?.audioDurationMs === "number" ? j.audioDurationMs : 0; // ASR: billed per audio second
+    if (j?.usage || images || audioMs) await (await import("../guard")).recordUsage(model, j?.usage, images, audioMs);
   } catch (e) { console.warn("[meta] usage not recorded:", (e as Error).message); }
 }
 
-async function call<T = Record<string, unknown>>(path: string, init: RequestInit, model: string, tries = 3): Promise<T> {
+// HTTP error from call(). Non-retryable (4xx except 429, bad JSON) is rethrown at once.
+export class MetaError extends Error {
+  constructor(readonly status: number, message: string, readonly retryable = false) { super(message); this.name = "MetaError"; }
+}
+// redactBody: keep response bodies out of error messages (PII paths such as transcription).
+interface CallOpts { tries?: number; timeoutMs?: number; redactBody?: boolean }
+
+async function call<T = Record<string, unknown>>(path: string, init: RequestInit, model: string, opts: CallOpts = {}): Promise<T> {
+  const { tries = 3, timeoutMs, redactBody = false } = opts;
   const ep = endpointFor(model);
   const key = ep.auth();
   if (!ep.base) throw new Error("MODAL_SPARK_URL missing in .env.local");
@@ -71,21 +84,21 @@ async function call<T = Record<string, unknown>>(path: string, init: RequestInit
   for (let i = 0; i < tries; i++) {
     const t0 = Date.now();
     try {
-      const res = await fetch(ep.base + path, { ...init, headers: { Authorization: `Bearer ${key}`, ...(init.headers ?? {}) } });
+      const res = await fetch(ep.base + path, { ...init, headers: { Authorization: `Bearer ${key}`, ...(init.headers ?? {}) }, ...(timeoutMs ? { signal: AbortSignal.timeout(timeoutMs) } : {}) });
       const text = await res.text();
       console.log(`[meta] ${ep === META ? "" : "modal "}${path} ${res.status} ${Date.now() - t0}ms`);
-      if (res.status === 429 || res.status >= 500) {
-        last = new Error(text.slice(0, 500));
-        await new Promise((r) => setTimeout(r, [2000, 8000][i] ?? 8000));
-        continue;
-      }
-      if (!res.ok) throw new Error(`Meta ${path} ${res.status}: ${text.slice(0, 800)}`);
-      const json = (text ? JSON.parse(text) : {}) as T;
+      const body = (n: number) => (redactBody ? "" : `: ${text.slice(0, n)}`);
+      if (res.status === 429 || res.status >= 500) throw new MetaError(res.status, `Meta ${path} ${res.status}${body(500)}`, true);
+      if (!res.ok) throw new MetaError(res.status, `Meta ${path} ${res.status}${body(800)}`);
+      let json: T;
+      try { json = (text ? JSON.parse(text) : {}) as T; } catch { throw new MetaError(res.status, `Meta ${path} ${res.status}: non-JSON response`); }
       await track(model, json);
       return json;
     } catch (e) {
       last = e as Error;
-      if (i < tries - 1) await new Promise((r) => setTimeout(r, 2000));
+      if (e instanceof MetaError && !e.retryable) throw e;
+      // 429/5xx back off longer; network errors and timeouts retry after 2 s.
+      if (i < tries - 1) await new Promise((r) => setTimeout(r, e instanceof MetaError ? [2000, 8000][i] ?? 8000 : 2000));
     }
   }
   throw last;
@@ -120,9 +133,24 @@ function sniffImage(buf: Uint8Array): { type: string; ext: string } {
 // Public data (synthetic tests, brand menus): Modal when configured locally, else contributor.
 export const publicModel = () => (!process.env.VERCEL && process.env.MODAL_SPARK_URL ? MODELS.sparkOpen : MODELS.sparkContributor);
 
+// Voice note -> text (dev.meta.ai/docs/speech-to-text). The API only takes
+// RIFF/WAVE mono 16-bit PCM at 16 or 24 kHz (see lib/audio.ts). Audio and
+// transcript are PII: this hangs off meta.product only, never logs either, and
+// errors carry the HTTP status only. Billed per audio second (no token usage):
+// track() records audioDurationMs. One try: a retry would blow the webhook's time budget.
+export interface Transcription { text: string; durationMs: number | null; raw: Record<string, unknown> }
+async function transcribe(wav: Uint8Array, languageBias: string[] = ["Arabic", "English"]): Promise<Transcription> {
+  const form = new FormData();
+  const request = { mode: "PUSH_TO_TALK", model: MODELS.transcribe, audioEncoding: "WAV", languageBias };
+  form.append("request", new Blob([JSON.stringify(request)], { type: "application/json" }));
+  form.append("audio", new Blob([new Uint8Array(wav)], { type: "audio/wav" }), "voice.wav");
+  const raw = await call<Record<string, unknown>>(TRANSCRIBE_PATH, { method: "POST", headers: { Accept: "application/json" }, body: form }, MODELS.transcribe, { tries: 1, timeoutMs: 20_000, redactBody: true });
+  return { text: typeof raw.transcript === "string" ? raw.transcript.trim() : "", durationMs: typeof raw.audioDurationMs === "number" ? raw.audioDurationMs : null, raw };
+}
+
 export const meta = {
   // PII-safe path: never contributor (AGENTS.md routing table).
-  product: { chat: chat(MODELS.spark) },
+  product: { chat: chat(MODELS.spark), transcribe },
   // Non-PII product data (specs, listing): spark, or contributor in local dev.
   nonPii: { chat: (body: ChatBody) => chat(nonPiiModel())(body) },
   // Public/synthetic test calls: Modal when configured locally, else contributor.
