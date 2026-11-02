@@ -1,0 +1,84 @@
+# Offisio
+
+> Offisio is an office listing and booking agent for Egypt, built solo for the Meta Global AI Developer Hackathon (Indie track). An owner uploads a short walkthrough video of an office; the app surveys every space, decides which uses the layout suits (office, coworking, training, clinic, dental clinic, law office), writes a bilingual Arabic/English listing, and renders the room empty and fitted out. Renters book by chatting in Egyptian Arabic or English, on the website or on WhatsApp (text or voice notes), and pay in XPay test mode. Every AI call in the product goes to the Meta Model API (`https://api.meta.ai/v1`). Everything was written during the hackathon (Oct 26 - Nov 4, 2026); the git history is the record of work.
+
+- [Live site (English, LTR)](https://offisio.vercel.app) and [Arabic, RTL](https://offisio.vercel.app/ar)
+- [Source on GitHub](https://github.com/Mohamedzh/offisio)
+- [llms-full.txt](https://offisio.vercel.app/llms-full.txt): longer version of this file
+
+## Demo loop
+
+1. Owner uploads a short office video (sign-in with WhatsApp required for real uploads).
+2. The browser extracts frames; `muse-spark-1.3` surveys every space (type, size, windows, plumbing, adjacency).
+3. Deterministic code rules (not model text) decide which uses the layout suits, with reasons in Arabic and English.
+4. `muse-spark-1.3` writes specs and a bilingual listing; `muse-image-1.0` renders the room empty, then fitted out for each passing use.
+5. A renter chats (web or WhatsApp); the agent searches real availability, quotes, creates a 30-minute hold and sends a payment link. The booking confirms only on the signed XPay webhook.
+
+## Meta models and where they are used
+
+- `muse-spark-1.3` via `meta.product` (never contributor): booking agent on web chat and WhatsApp. This is the PII path (names, phones, emails, chat text).
+- `muse-spark-1.3` via `meta.nonPii`: space survey, specs and bilingual listing copy (non-PII product data).
+- `muse-image-1.0`: prompt-guided edits for empty-room and fit-out renders; text-to-image for the AI-generated demo listings (badged as such) and decorative homepage art.
+- `muse-voice-transcribe-1.0` via `meta.product.transcribe`: WhatsApp voice notes, `POST /v1/asr/transcribe` after ffmpeg converts OGG/Opus to 24 kHz mono PCM WAV.
+- `muse-spark-1.3-contributor`: only for public or synthetic data during development (for example a QA gate on synthetic demo units). Never PII.
+- Muse Spark Open (open-weight Meta model on our own Modal deployment): only for local, non-PII development runs; ignored whenever `VERCEL` is set, so production never uses it.
+- `sam-3.1`: not used (see Known limitations).
+
+## How to test
+
+- Browse: https://offisio.vercel.app/en and https://offisio.vercel.app/ar. Bookable daily unit: https://offisio.vercel.app/en/units/gen-alex-chatby. The first three units are filmed real offices; the rest are badged "Demo listing — AI-generated photos, not a filmed office".
+- Book + pay: pick a free day, enter any name, an `01...` mobile and an email, then pay with the XPay test card `5123 4500 0000 0008`, CVV `100`, any name. Expiry `01/39` approves, `05/39` declines, `01/27` insufficient funds, `04/27` expired. On the 3D Secure emulator keep "(Y) Authentication Successful" and Submit. Status flips to confirmed only when the webhook lands.
+- Chat: open Chat and write, for example, `عايز مكتب في الزمالك ليوم واحد` or `I want an office near AUC`.
+- WhatsApp: message the Offisio WhatsApp number shown on the site, in text or as a voice note. Same agent and tools, plus "what are my bookings".
+- Owner sign-in: on /login (or the upload page) get a one-time code, send "Offisio login XXXX-XXXX" from WhatsApp, reply YES within 2 minutes. "Offisio logout" signs out everywhere.
+- Demo listings are preview-only: anyone can try the edit form; changes show only in your own browser and never change the real listing or the agent.
+- No real money moves; test bookings are demo data.
+
+## Key files
+
+- [README](https://github.com/Mohamedzh/offisio/blob/master/README.md): what was built, judge testing steps, how it was built
+- [AGENTS.md](https://github.com/Mohamedzh/offisio/blob/master/AGENTS.md): hard rules, model routing and PII table, scope
+- [ARCHITECTURE](https://github.com/Mohamedzh/offisio/blob/master/docs/ARCHITECTURE.md): system overview and as-built notes
+- [DESIGN](https://github.com/Mohamedzh/offisio/blob/master/docs/DESIGN.md): pipeline, data model, agent design, decision log
+- [RUBRIC](https://github.com/Mohamedzh/offisio/blob/master/docs/RUBRIC.md): survey + deterministic use rubric and desk capacity
+- [lib/meta/client.ts](https://github.com/Mohamedzh/offisio/blob/master/lib/meta/client.ts): the only place model IDs live; `meta.product` / `meta.nonPii` / `meta.public`
+- [lib/meta/prompts.ts](https://github.com/Mohamedzh/offisio/blob/master/lib/meta/prompts.ts): all versioned prompts (agent prompt V8)
+- [lib/agent/agent.ts](https://github.com/Mohamedzh/offisio/blob/master/lib/agent/agent.ts): booking agent with native tool calling
+- [lib/pipeline/](https://github.com/Mohamedzh/offisio/tree/master/lib/pipeline): survey, rubric, specs/listing, staging, QStash jobs
+- [lib/audio.ts](https://github.com/Mohamedzh/offisio/blob/master/lib/audio.ts): voice-note conversion for transcription
+- [lib/login.ts](https://github.com/Mohamedzh/offisio/blob/master/lib/login.ts): WhatsApp sign-in codes and YES confirmation
+- [lib/owner.ts](https://github.com/Mohamedzh/offisio/blob/master/lib/owner.ts): signed owner session cookie with sign-out epoch
+- [lib/guard.ts](https://github.com/Mohamedzh/offisio/blob/master/lib/guard.ts): rate limits, caps and daily spend breaker
+
+## Data & rights
+
+- Filmed units: phone walkthroughs shot by the owner, stored on Vercel Blob (not in the repo).
+- All other listing photos and homepage illustrations are generated by `muse-image-1.0` and labelled.
+- Brand assets (logo, wordmark, app icons) are our own hand-drawn sources in `public/brand`, rendered by `scripts/brand-assets.ts`.
+- Nearby places come from the Google Places API (official API), with "Places from Google Maps" attribution; only the fields we display are stored (place ID, name, type, distance, Maps link).
+- No third-party menu data. An early demo used menu data collected from a public site; it was removed on 2026-11-02 after organizer guidance, from the app and the repo's current tree. It is still visible in the git history; the owner chose not to rewrite history so the commit record stays intact. Add-ons are the venue's own items at our demo prices.
+- All tests use synthetic renters. No secrets in the repo; keys are environment variables only (names in `.env.example`).
+
+## Safety & limits
+
+- PII routing: anything with a name, phone, email, chat text or audio goes only to `muse-spark-1.3` (or `muse-voice-transcribe-1.0` for audio), never the contributor model. Enforced in `lib/meta/client.ts`.
+- Model output that feeds code is structured JSON and validated; agent tool arguments are validated in code.
+- Rate limits per hashed IP or WhatsApp sender, plus global daily caps (chat, upload, image edits, bookings); sign-in is capped per IP and per sender; 800 characters per message, 20 turns per session.
+- Audio, transcripts, phone numbers and login codes are never logged; errors log only a code.
+- Daily spend breaker (default USD 15) blocks uploads and staging; browsing, booking and payment keep working.
+- Payments in XPay test mode only. Bookings confirm only on an HMAC-verified XPay webhook; WhatsApp webhooks are verified with `X-Hub-Signature-256` and deduplicated.
+
+## Known limitations
+
+- Owner sign-in can be abused by code-relay phishing; the YES warning mitigates this but does not eliminate it.
+- Districts are stored in English only; the agent translates them in Arabic replies, and the Arabic location line on unit pages still mixes English.
+- The browser's own form validation bubble is English on /ar.
+- SAM 3.1 is not used: prompt-guided image edits passed our tests. Meta's docs show SAM callable via `/v1/responses`; we found that after choosing edits and did not test it.
+- Space sizes, uses and desk capacity are AI estimates of the layout, not a licensing check.
+- Voice-note quality on real Egyptian-Arabic notes is not yet measured beyond a few probes.
+
+## Optional
+
+- [plan/06 judge-ready](https://github.com/Mohamedzh/offisio/blob/master/docs/plan/06-judge-ready.md): guardrails, WhatsApp, sign-in, verification evidence, handoff
+- [scripts/chat-acceptance.ts](https://github.com/Mohamedzh/offisio/blob/master/scripts/chat-acceptance.ts): 13 scripted booking conversations against the real agent
+- [Commit history](https://github.com/Mohamedzh/offisio/commits/master): the record of work, Oct 26 - Nov 4, 2026

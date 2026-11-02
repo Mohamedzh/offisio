@@ -9,7 +9,9 @@
 > - **No segmentation step.** SAM 3.1 was dropped on 2026-10-27 (no callable endpoint), and staging is prompt-guided `muse-image-1.0` edits ([plan/01](plan/01-capability-tests.md)).
 > - **The source video is stored on Vercel Blob** for playback. The browser extracts keyframes and uploads them directly to Blob, which avoids the 4.5 MB function body limit; only frames reach the model.
 > - **Payments are in scope in XPay test mode.** Owner sign-in (WhatsApp code + YES, built 2026-11-02; Clerk dropped) and a per-unit location pin are in, see plan/06.
-> - **The booking agent** currently returns one validated JSON action per turn; the tool loop below is planned (plan/06 6.5).
+> - **The booking agent uses native tool calling** (since 2026-10-30, `AGENT_PROMPT_V2` onward, now V8) in [lib/agent/agent.ts](../lib/agent/agent.ts). Tools: `search_units`, `get_unit`, `nearby_places`, `check_availability`, `create_booking`, plus `my_bookings` on WhatsApp only. Tool arguments are validated in code.
+> - **Staging is rubric-driven** (`STAGE_PROMPTS_V3`, [RUBRIC.md](RUBRIC.md)): one fit-out render per passing use and room role, not three fixed styles; semifinished shells are rendered finished.
+> - **Channels:** web chat and WhatsApp (text and voice notes, `muse-voice-transcribe-1.0`).
 > - **Default locale is English**, with a full Arabic RTL variant.
 
 ## 1. Product in one line
@@ -44,8 +46,8 @@ Everything outside this loop is out of scope (~~payments, real auth~~ — now XP
  Listing page  ◄── Postgres (units, specs, media, styles, availability, bookings)
 
  Renter chat ──────────────────────────►   Booking agent (tool loop) ─────────────────────────►  Muse Spark 1.3
- (web chat, WhatsApp-styled;                 tools: search_units, get_unit,                       (tool calls)
-  stretch: voice note) ──────────────────►   check_availability, create_booking   ─────────────►  Muse Voice Transcribe
+ (web chat + WhatsApp                        tools: search_units, get_unit, nearby_places,        (tool calls)
+  text / voice notes) ───────────────────►   check_availability, create_booking, my_bookings ───►  Muse Voice Transcribe
 ```
 
 ## 4. Components
@@ -69,7 +71,7 @@ Everything outside this loop is out of scope (~~payments, real auth~~ — now XP
 - **Specs**: unit_id, JSON (area_m2_estimate, windows, ac, desk_capacity, condition, confidence)
 - **Style**: id, name, prompt (startup office, clinic, training room, empty)
 - **Availability**: unit_id, date, slots
-- **Booking**: unit_id, renter_name, phone, date, slot, created_via (chat / voice)
+- **Booking**: unit_id, renter_name, phone, email, date, slot, created_via (`chat` = web chat and web form, `whatsapp`; voice notes arrive on WhatsApp and are stored as `whatsapp`)
 - **ChatSession**: id, messages, tool_calls (kept for the demo and debugging)
 
 ## 6. Key design decisions

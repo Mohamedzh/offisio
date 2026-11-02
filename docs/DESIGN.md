@@ -84,7 +84,7 @@ bookings(
   id uuid PK, unit_id uuid NOT NULL REFERENCES units(id),
   availability_id uuid UNIQUE NOT NULL REFERENCES availability(id), -- UNIQUE prevents double-book
   renter_name text NOT NULL, renter_phone text NOT NULL,  -- PII: product model only, never contributor
-  created_via text NOT NULL DEFAULT 'chat',  -- chat|voice
+  created_via text NOT NULL DEFAULT 'chat',  -- as built: chat (web chat + web form) | whatsapp (incl. voice notes)
   created_at timestamptz NOT NULL DEFAULT now()
 )
 chat_sessions(
@@ -140,9 +140,9 @@ Listing step (S4) reuses the pattern: JSON schema `{title_ar,title_en,summary_ar
 
 ## 5. Booking agent
 
-> **As built (2026-10-30):** [lib/agent/agent.ts](../lib/agent/agent.ts) sends unit and free-day data in the prompt and gets back one validated JSON action (`none` | `create_booking`) per turn. The tool loop below is the target, planned in [plan/06](plan/06-judge-ready.md) 6.5 behind a one-call tool-calling test (U4). Bookings are created `awaiting_payment` and confirm only on a signed XPay webhook.
+> **As built (updated 2026-11-02):** [lib/agent/agent.ts](../lib/agent/agent.ts) runs a native tool-calling loop on `muse-spark-1.3` via `meta.product` (since 2026-10-30, `AGENT_PROMPT_V2` onward, now `AGENT_PROMPT_V8`). Tools: `search_units`, `get_unit`, `nearby_places`, `check_availability`, `create_booking`, and `my_bookings` (WhatsApp only); arguments are validated in code. Contact details: on the web, name, Egyptian mobile and email (`AGENT_CHANNEL_WEB`); on WhatsApp, an email only, the phone is the sender (`AGENT_CHANNEL_WHATSAPP`). Voice notes arrive on WhatsApp and go to `muse-voice-transcribe-1.0` (`POST /v1/asr/transcribe`, 24 kHz mono PCM WAV after ffmpeg; the API accepts 16 or 24 kHz); the transcript becomes the user message and the booking is stored with `created_via='whatsapp'`. Bookings are created `awaiting_payment` (30-minute hold) and confirm only on a signed XPay webhook. The design below is the original plan; where it differs, the code wins.
 
-Transport: `POST /app/api/chat` with `{session_id?, unit_id?, message}` → server runs the loop, persists to `chat_sessions`, returns `{session_id, reply, booking?}`. Model: `muse-spark-1.3` via `meta.product` only (chat contains PII). Voice (stretch): client records audio → `muse-voice-transcribe-1.0` (`POST /v1/audio/transcriptions`, shape unverified U5) → transcript becomes the user message with `created_via='voice'`; transcript text is shown to the renter for correction before sending if transcription confidence is exposed, else sent directly with the raw transcript visible in the bubble.
+Transport: `POST /app/api/chat` with `{session_id?, unit_id?, message}` → server runs the loop, persists to `chat_sessions`, returns `{session_id, reply, booking?}`. Model: `muse-spark-1.3` via `meta.product` only (chat contains PII). ~~Voice (stretch): client records audio → `muse-voice-transcribe-1.0` (`POST /v1/audio/transcriptions`, shape unverified U5) → transcript becomes the user message with `created_via='voice'`; transcript text is shown to the renter for correction before sending if transcription confidence is exposed, else sent directly with the raw transcript visible in the bubble.~~ (superseded 2026-11-02, see the as-built note above)
 
 System prompt outline (`AGENT_PROMPT_V1`):
 

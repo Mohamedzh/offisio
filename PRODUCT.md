@@ -36,7 +36,7 @@ The fit-visualization is the mechanism a neighboring listing site cannot copy: b
 
 - Next.js 16 App Router, TypeScript strict, Tailwind 4, Postgres on Neon, deployed on Vercel.
 - Every model call goes to the Meta Model API via `lib/meta/` only (`muse-spark-1.3` for product/PII, `muse-image-1.0` for renders). No other AI provider.
-- Out of scope by decision: accounts beyond owner sign-in (Clerk, planned), reviews, map search UI (a per-unit pin is planned), host analytics, mobile apps, payments beyond XPay test mode. Parked: QStash order status, Overpass nearby cafes.
+- Out of scope by decision: accounts beyond owner sign-in (WhatsApp owner sign-in, built 2026-11-02), reviews, map search UI (a per-unit pin is planned), host analytics, mobile apps, payments beyond XPay test mode. Parked: QStash order status, Overpass nearby cafes.
 - Only owned or generated assets; no stock imagery or unlicensed fonts.
 - Unit pages must work with partial media (uploaded units may initially have keyframes only, no staged renders).
 

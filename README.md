@@ -14,21 +14,30 @@ An owner uploads a short video of an office. Offisio produces room specs, a bili
 4. App produces restaged photos: furniture removed, then restyled.
 5. Renter books through a chat agent in Egyptian Arabic.
 
-Out of scope: real auth, reviews, map search, host analytics, mobile apps. Payments are in scope in test mode only (no real money — see Testing).
+Built beyond the core loop: owner sign-in with WhatsApp (renters stay guests), renter booking and voice notes on WhatsApp, and payments in test mode only (no real money — see Testing). Out of scope: renter accounts, reviews, map search UI, host analytics, mobile apps.
 
 ## AI
 
 All product model calls go to the Meta Model API (`https://api.meta.ai/v1`) only. No other AI provider or SDK is used in any request path.
 
-- Public / synthetic content (test prompts, demo footage we shot, style prompts): `muse-spark-1.3` or `muse-spark-1.3-contributor`
-- Product data without PII (keyframes, specs JSON, listing copy): `muse-spark-1.3`, `muse-image-1.0` (`sam-3.1` was evaluated and dropped: no callable segmentation endpoint, and prompt-guided edits passed)
-- PII (names, phones, chat transcripts, voice notes): `muse-spark-1.3` only — never the contributor model
+### Meta models used
+
+| Model | Where | Data class |
+|---|---|---|
+| `muse-spark-1.3` via `meta.product` (never contributor) | Booking agent on web chat and WhatsApp | PII (names, phones, emails, chat text) |
+| `muse-spark-1.3` via `meta.nonPii` | Space survey, specs, bilingual listing copy | Product data, no PII |
+| `muse-image-1.0` | Empty-room and fit-out edits; text-to-image for badged demo listings and decorative homepage art | Product data, no PII |
+| `muse-voice-transcribe-1.0` via `meta.product.transcribe` | WhatsApp voice notes (`POST /v1/asr/transcribe`) | PII (audio) |
+| `muse-spark-1.3-contributor` via `meta.public` | Development only: tests and QA on public or synthetic data | Public / synthetic only, never PII |
+| Muse Spark Open (our Modal deployment) | Local non-PII dev runs only; ignored whenever `VERCEL` is set | Non-PII, dev only |
+
+`sam-3.1` is not used: prompt-guided `muse-image-1.0` edits passed our tests.
 
 Model IDs and prompts live only in `lib/meta/`. See [AGENTS.md](AGENTS.md).
 
 ### How it was built: Muse models and Claude
 
-Offisio was *built* with Muse models, not just powered by them. Development was split roughly  between the Muse workflow below and Claude models, which the owner used alongside it:
+Offisio was *built* with Muse models, not just powered by them. Development was split roughly half and half between the Muse workflow below and Claude models, which the owner used alongside it:
 
 - **Architecture & planning** — the main session runs on `muse-wonder-1.0`: it writes the segment briefs under [docs/plan/](docs/plan/), reviews every diff, and makes the final ship/fix calls.
 - **Implementation, tests & review** — cheaper `muse-spark-1.3-contributor` agents implement one brief at a time, write and run the tests, and review diffs against the project rules. Contributor agents only ever touch synthetic data.
@@ -84,12 +93,17 @@ After clicking Pay, a 3D Secure emulator appears: leave **(Y) Authentication Suc
 
 ### Flows to try
 
-1. **Book + pay (approved).** On a unit page, pick a free day, enter any name and an `01…` mobile number, Confirm & pay, then Pay now. Use expiry `01/39`. You return to the booking page; within a few seconds the status flips to **confirmed**. Confirmation comes only from the payment webhook, never from the redirect — refreshing before it lands still shows `awaiting_payment`.
+1. **Book + pay (approved).** On a unit page, pick a free day, enter any name, an `01…` mobile number and an email, Confirm & pay, then Pay now. Use expiry `01/39`. You return to the booking page; within a few seconds the status flips to **confirmed**. Confirmation comes only from the payment webhook, never from the redirect — refreshing before it lands still shows `awaiting_payment`.
 2. **Declined card.** Same flow with expiry `05/39`. The checkout shows "Payment declined" and the booking stays **unconfirmed** (`awaiting_payment`). The checkout stays open, so retrying with expiry `01/39` on the same session succeeds.
-3. **Chat booking.** Open Chat and write in Egyptian Arabic, e.g. `عايز مكتب في الزمالك ليوم واحد` or `I want an office in Zamalek for one day`. The agent searches real availability, quotes the total, and takes name + phone.
+3. **Chat booking.** Open Chat and write in Egyptian Arabic, e.g. `عايز مكتب في الزمالك ليوم واحد` or `I want an office in Zamalek for one day`. The agent searches real availability, quotes the total, and asks for name, Egyptian mobile and email, then sends a payment link (30-minute hold).
 4. **Nearby places and add-ons.** Each unit page lists the two nearest cafes/restaurants within 1 km (Google Places: name, distance, Maps link; you order from them directly). Add-ons are provided by the venue at our own demo prices: house coffee & snacks (day bookings only) and room extras like a whiteboard, itemised on the same payment.
 5. **Owner upload.** `/upload`: add a short office video; the app extracts frames, generates specs and a bilingual listing, and publishes a bookable unit.
 6. **Language / RTL.** Toggle عربي (top corner) — every page mirrors to RTL; English is LTR. Check both.
+7. **WhatsApp booking.** Tap **Book on WhatsApp** on the site to message the Offisio number. Ask for an office as in flow 3; on WhatsApp the agent asks only for an email (your phone is the WhatsApp sender) and replies with a payment link. You get a paid notice after the webhook lands.
+8. **Voice note.** On WhatsApp, record a voice note (e.g. "عايز مكتب بكرة في مدينة نصر"). The reply shows what we heard, then answers.
+9. **My bookings.** On WhatsApp, ask "what are my bookings". The agent lists your bookings with status and, for unpaid ones, the payment link.
+10. **Owner sign-in.** On `/login` (or the upload page), get a one-time code and send `Offisio login XXXX-XXXX` from WhatsApp (the button pre-fills it), then reply **YES** within 2 minutes. The page signs you in. Send `Offisio logout` to sign out everywhere.
+11. **Demo-listing preview editing.** Add `/edit` to a demo listing URL (e.g. [/en/units/gen-alex-chatby/edit](https://offisio.vercel.app/en/units/gen-alex-chatby/edit)) and change the specs. Your edits show only in your own browser; the real listing and the agent never change.
 
 ### Local checks
 
@@ -106,19 +120,31 @@ pnpm build       # production build
 - Footage: the three filmed units (`full`, `empty1`, `empty2`) are phone walkthroughs shot by the owner, not stock. The files live on Vercel Blob, not in this repo (`public/demo` is gitignored). Every other listing image is generated by `muse-image-1.0` and badged as such.
 - Payment evidence from the 2026-10-29 live run (approved → `confirmed`, declined → stayed unconfirmed) is recorded in [docs/plan/05-demo-polish.md](docs/plan/05-demo-polish.md).
 
+## Data & rights
+
+- Filmed units: phone walkthroughs shot by the owner, stored on Vercel Blob (not in the repo).
+- All other listing photos and the homepage illustrations are generated by `muse-image-1.0` and labelled.
+- Brand assets (logo, wordmark, app icons) are our own hand-drawn sources in `public/brand`, rendered by `scripts/brand-assets.ts`.
+- Nearby places come from the Google Places API (official API), with "Places from Google Maps" attribution; only the fields we display are stored (place ID, name, type, distance, Maps link).
+- Add-ons are the venue's own items at prices we set for the demo.
+- All tests use synthetic renters. No secrets in the repo; keys are environment variables only (names in [.env.example](.env.example)).
+- An early demo used menu data collected from a public site; it was removed on 2026-11-02 after organizer guidance, from the app and from the repo's current tree. It is still visible in the git history (added in `2f0f0fa`, removed in `35c37e1`); the owner chose not to rewrite history so the commit record stays intact.
+
 ## Docs
 
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — structure (read before structural changes)
 - [docs/DESIGN.md](docs/DESIGN.md) — product design, incl. unknown-capability list
 - [docs/PLAN.md](docs/PLAN.md) — build plan and segment index
 - [AGENTS.md](AGENTS.md) — contributor and agent rules
+- [public/llms.txt](public/llms.txt) and [public/llms-full.txt](public/llms-full.txt) — project summary for AI readers (served at [/llms.txt](https://offisio.vercel.app/llms.txt) and [/llms-full.txt](https://offisio.vercel.app/llms-full.txt))
 
 ## What we built
 
-Everything in this repository was written during the hackathon (Oct 26 – Nov 4, 2026), starting from an empty `create-next-app` scaffold. No prior code, data or assets were reused. The git history is the record.
+Everything in this repository was written during the hackathon (Oct 26 – Nov 4, 2026), starting from an empty `create-next-app` scaffold. No prior code or assets were reused; the only outside data (demo menu data) was removed on 2026-11-02, see [Data & rights](#data--rights). The git history is the record.
 
-- Video pipeline (originally scripts/run-unit.ts, now the QStash pipeline in lib/pipeline/jobs.ts): keyframes -> specs -> bilingual listing -> AI empty -> 3 fit renders (startup/clinic/training) on 3 real units. SAM 3.1 is not used: prompt-guided edits passed our tests (Meta's docs show SAM callable via `/v1/responses`; we found that after choosing edits and did not test it).
-- 3-track catalog: furnished=daily+monthly (800 EGP/day demo), semifinished=long-term only.
+- Video pipeline (originally scripts/run-unit.ts, now the QStash pipeline in lib/pipeline/jobs.ts): frames -> space survey -> use rubric -> specs -> bilingual listing -> AI empty -> fit-out renders. Staging is rubric-driven (`STAGE_PROMPTS_V3`): one render per passing use and room role, with desk/seat counts from the rubric's capacity; semifinished shells are rendered finished (floor, ceiling, paint), because the renter fits them out.
+- Use rubric ([docs/RUBRIC.md](docs/RUBRIC.md)): `muse-spark-1.3` surveys every space in the walkthrough (type, size, windows, plumbing, adjacency), then deterministic code rules decide which uses fit (office, coworking, training, clinic, dental clinic, law office), with reasons in Arabic and English and desk capacity. Only passing uses get renders. SAM 3.1 is not used: prompt-guided edits passed our tests (Meta's docs show SAM callable via `/v1/responses`; we found that after choosing edits and did not test it).
+- 3-track catalog: furnished=daily+monthly (daily price set per unit, e.g. `full` EGP 800/day, `gen-alex-chatby` EGP 600/day), semifinished=long-term only.
 - Booking: daily day-slots (hourly underneath), atomic double-book protection, Egyptian-Arabic chat agent with venue add-ons, "what's near to eat" (`nearby_places`) and "near AUC"-style landmark search.
 - Add-ons: provided by the venue at our own demo prices (`lib/addons/catalog.ts`; prices always come from the catalogue, never the request): house coffee, tea, water, croissants and a sandwich tray on day bookings only, plus room extras (chair, whiteboard, printing).
 - WhatsApp channel: the same booking agent on WhatsApp (email-only booking, "what are my bookings", paid notice after the payment webhook) plus **voice notes**: ffmpeg converts the OGG/Opus note to WAV and `muse-voice-transcribe-1.0` transcribes it; the reply shows what we heard.
