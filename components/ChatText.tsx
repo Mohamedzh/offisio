@@ -26,8 +26,8 @@ export default function ChatText({ text }: { text: string }) {
         if (!t) return null;
         const bullet = t.match(/^[-*•]\s+(.*)$/);
         const num = t.match(/^(\d+)[.)]\s+(.*)$/);
-        if (bullet) return <p key={i} className="ps-4 relative"><span className="absolute start-0" aria-hidden>•</span>{inline(bullet[1])}</p>;
-        if (num) return <p key={i} className="ps-5 relative"><span className="absolute start-0 tnum">{num[1]}.</span>{inline(num[2])}</p>;
+        if (bullet) return <p key={i} className="ps-4 relative"><span className="absolute inset-s-0" aria-hidden>•</span>{inline(bullet[1])}</p>;
+        if (num) return <p key={i} className="ps-5 relative"><span className="absolute inset-s-0 tnum">{num[1]}.</span>{inline(num[2])}</p>;
         return <p key={i}>{inline(t)}</p>;
       })}
     </div>

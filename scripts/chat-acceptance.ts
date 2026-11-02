@@ -10,6 +10,8 @@ import { pool } from "../lib/db/pg";
 
 type Check = (r: { replies: string[]; bookingIds: string[] }) => boolean;
 const arabic = (s: string) => /[؀-ۿ]/.test(s);
+// Nothing is paid in these runs, so no reply may call a booking confirmed (V6 wording rule).
+const saysConfirmed = (r: { replies: string[] }) => r.replies.some((x) => /(حجزك|الحجز)\s*(متأكد|اتأكد)|booking is confirmed|you're confirmed/i.test(x));
 const S = (turns: string[], name: string, check: Check, setup?: () => Promise<string[]>, sender?: Sender) => ({ name, turns, check, setup, sender });
 // WhatsApp scenarios (6.8): a synthetic Egyptian sender; the phone comes from wa_id.
 const WA: Sender = { waId: "201000000012", name: "Wael Test" };
@@ -19,15 +21,19 @@ async function main() {
   const smouha = await freeDays("gen-alex-smouha", 3);
   const downtown = await freeDays("gen-downtown", 3);
   const takenDay = chatby[1];
-  const zamalek = await freeDays("gen-zamalek", 4);
-  // A paid booking for the WhatsApp sender (status set directly; payment is not under test here).
-  const confirmedFor = async (s: Sender, slug: string, date: string) => {
+  const zamalek = await freeDays("gen-zamalek", 6);
+  // A paid booking for the WhatsApp sender on a day still free at setup time (earlier
+  // scenarios book days too). Status set directly; payment is not under test here.
+  const waDates: string[] = [];
+  const confirmedFor = async (s: Sender, slug: string) => {
+    const date = (await freeDays(slug, 1))[0];
+    waDates.push(date);
     const b = await createBooking({ unit_slug: slug, date, track: "daily", renter_name: s.name ?? "WA Test", renter_email: "wa.test@example.com", wa_id: s.waId, created_via: "whatsapp" });
     await pool().query("update bookings set status = 'confirmed' where id = $1", [b.id]);
     return b.id;
   };
   const scenarios = [
-    S(["عايز مكتب في الزمالك ليوم بكرة لـ 3 أشخاص", "تمام، أول واحد", "اسمي سامي تجربة ورقمي 01000000001 والإيميل sami.test@example.com", "أيوه أكد الحجز من غير إضافات"], "1 Zamalek day booking, happy path (AR)", (r) => r.bookingIds.length === 1),
+    S(["عايز مكتب في الزمالك ليوم بكرة لـ 3 أشخاص", "تمام، أول واحد", "اسمي سامي تجربة ورقمي 01000000001 والإيميل sami.test@example.com", "أيوه أكد الحجز من غير إضافات"], "1 Zamalek day booking, happy path (AR)", (r) => r.bookingIds.length === 1 && !saysConfirmed(r)),
     S(["عايز مكان ينفع عيادة أسنان في القاهرة، إيه المتاح؟"], "2 dental clinic search uses the rubric", (r) => /nasr|new cairo|heliopolis|zayed|مدينة نصر|التجمع|القاهرة الجديدة|مصر الجديدة|زايد|empty/i.test(r.replies.join(" "))),
     S(["عايز أحجز المكتب اللي في مدينة نصر ليوم واحد بكرة"], "3 bare unit asked for a day -> long-term only", (r) => /طويل|شهر|long|تشطيب|يومي/i.test(r.replies[0])),
     S(["Hi, I need a meeting or training room in Maadi or New Cairo for one day next week. What do you have?"], "4 English mirror", (r) => !arabic(r.replies[0])),
@@ -38,18 +44,19 @@ async function main() {
     S([`عايز أحجز مكتب في وسط البلد يوم ${downtown[0]}`, "اسمي كريم تجربة ورقمي 0123"], "8 bad phone -> asks again", (r) => /رقم|موبايل|01|phone/i.test(r.replies[1])),
     S([`عايز مكتب في إسكندرية يوم ${chatby[2]}`, `معلش خليها يوم ${chatby[3]} بدل كده، وخلينا في الشاطبي`, "اسمي هالة تجربة 01000000003 والإيميل hala.test@example.com", "من غير إضافات، أكد الحجز"], "9 changed date -> books the new date", (r) => r.bookingIds.length === 1),
     S(["اكتبلي قصيدة عن البحر"], "10 off-topic -> brief refusal, back to booking", (r) => /مكتب|حجز|office|booking/i.test(r.replies[0])),
-    S([`عايز مكتب في الزمالك يوم ${zamalek[1]}`, "تمام احجزه، الإيميل wael.test@example.com", "أكد"], "11 WhatsApp booking: email only, phone from the sender",
-      (r) => r.bookingIds.length === 1 && !/رقم (الموبايل|تليفونك|موبايلك)|phone number/i.test(r.replies.join(" ")), undefined, WA),
+    S([`عايز مكتب في الزمالك يوم ${zamalek[3]}`, "تمام احجزه، الإيميل wael.test@example.com", "أكد"], "11 WhatsApp booking: email only, phone from the sender",
+      (r) => r.bookingIds.length === 1 && !saysConfirmed(r) && !/رقم (الموبايل|تليفونك|موبايلك)|phone number/i.test(r.replies.join(" ")), undefined, WA),
     S([`عايز أحجز مكتب في سموحة يوم ${smouha[1]}`], "12 WhatsApp: existing confirmed booking mentioned first",
-      (r) => r.replies[0].includes(zamalek[2]) || /عندك حجز|حجز مؤكد|already have|existing booking/i.test(r.replies[0]),
-      async () => [await confirmedFor(WA, "gen-zamalek", zamalek[2])], WA),
+      (r) => waDates.some((d) => r.replies[0].includes(d)) || /عندك حجز|حجز مؤكد|already have|existing booking/i.test(r.replies[0]),
+      async () => [await confirmedFor(WA, "gen-zamalek")], WA),
     S(["إيه الحجوزات اللي عندي؟"], "13 WhatsApp: my_bookings lists the sender's booking",
-      (r) => r.replies[0].includes(zamalek[3]) || /الزمالك|zamalek/i.test(r.replies[0]),
-      async () => [await confirmedFor(WA, "gen-zamalek", zamalek[3])], WA),
+      (r) => waDates.some((d) => r.replies[0].includes(d)) || /الزمالك|zamalek/i.test(r.replies[0]),
+      async () => [await confirmedFor(WA, "gen-zamalek")], WA),
   ];
   const md: string[] = ["# Chat acceptance transcripts (synthetic renters)", `Run ${new Date().toISOString()} on muse-spark-1.3`, ""];
   const created: string[] = []; const sessions: string[] = []; const results: string[] = [];
   const only = process.argv[2]?.split(",").map(Number);
+  try {
   for (const [i, sc] of scenarios.entries()) {
     if (only && !only.includes(i + 1)) continue;
     const extra = sc.setup ? await sc.setup() : [];
@@ -67,6 +74,9 @@ async function main() {
     results.push(`${ok ? "PASS" : "FAIL"}  ${sc.name}`); md.push(`**Result:** ${ok ? "PASS" : "FAIL"}`, "");
     console.log(results.at(-1));
   }
+  } catch (e) {
+    results.push(`FAIL  crashed: ${(e as Error).message}`); console.log(results.at(-1));
+  } finally {
   const trace = await pool().query<{ n: number }>("select coalesce(sum(jsonb_array_length(tool_calls)),0)::int n from chat_sessions where session_key = any($1)", [sessions]);
   md.push(`Tool calls across all scenarios: ${trace.rows[0].n}`);
   writeFileSync(".scratch/chat-transcripts.md", md.join("\n"));
@@ -79,5 +89,6 @@ async function main() {
   await pool().query("delete from chat_sessions where session_key = any($1)", [sessions]);
   console.log(`${results.filter((r) => r.startsWith("PASS")).length}/${results.length} passed; tool calls ${trace.rows[0].n}; cleaned ${created.length} bookings, ${sessions.length} sessions`);
   await pool().end();
+  }
 }
 main().catch((e) => { console.error("FAIL", (e as Error).message); process.exit(1); });

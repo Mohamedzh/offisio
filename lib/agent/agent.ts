@@ -3,7 +3,7 @@
 // Tool arguments are validated in code; bad args go back to the model as an
 // error result, never a 500. At most MAX_ROUNDS tool rounds per turn.
 import { meta } from "../meta/client";
-import { AGENT_CHANNEL_WEB, AGENT_CHANNEL_WHATSAPP, AGENT_PROMPT_V5 } from "../meta/prompts";
+import { AGENT_CHANNEL_WEB, AGENT_CHANNEL_WHATSAPP, AGENT_PROMPT_V6 } from "../meta/prompts";
 import { pool } from "../db/pg";
 import { listUnits, getUnit, unitId, freeDays, availabilityByDay, todayCairo, bookingsForRenter, type Booking, type Unit } from "../db/store";
 import { phoneFromWaId } from "../whatsapp";
@@ -162,7 +162,7 @@ async function systemPrompt(ctx: Ctx): Promise<string> {
   const [y, m, d] = today.split("-").map(Number);
   const tomorrow = new Date(Date.UTC(y, m - 1, d + 1)).toISOString().slice(0, 10);
   const weekday = new Intl.DateTimeFormat("en-US", { timeZone: "Africa/Cairo", weekday: "long" }).format(new Date());
-  return AGENT_PROMPT_V5.replace("{LANG}", ctx.lang === "en" ? "English" : "Egyptian Arabic").replace("{TODAY}", today).replace("{WEEKDAY}", weekday).replace("{TOMORROW}", tomorrow).replace("{CHANNEL}", await channelBlock(ctx));
+  return AGENT_PROMPT_V6.replace("{LANG}", ctx.lang === "en" ? "English" : "Egyptian Arabic").replace("{TODAY}", today).replace("{WEEKDAY}", weekday).replace("{TOMORROW}", tomorrow).replace("{CHANNEL}", await channelBlock(ctx));
 }
 
 async function loadHistory(sessionKey: string): Promise<{ role: string; content: string }[]> {
