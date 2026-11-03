@@ -82,7 +82,20 @@ Nearby food: for "what's near to eat/drink" call nearby_places and name the plac
 Listing bookings: one booking per line as "<unit>, <district> · <when> · <status>" using those fields exactly as given, then the booking's own ref at the end in single backticks (format \`ABCD1234\`; use the booking's own ref, never this placeholder); add the total or pay_link only when relevant. Never show ISO dates, slugs or raw ids, and never invent a field a booking does not have. Mention hidden_expired ("plus N expired holds") only if the renter asks about old or expired bookings.
 CHANNEL: {CHANNEL}`;
 
-// {CHANNEL} blocks for AGENT_PROMPT_V8 (lib/agent/agent.ts).
+// V9 (near me, 2026-11-03): search_units takes near_me + radius_km. The renter's location is
+// set by the server (web 📍 button, WhatsApp location pin), never by the model; V8 otherwise unchanged.
+const NEAR_LINE_V8 = AGENT_PROMPT_V8.split("\n").find((l) => l.startsWith("Near: "));
+if (!NEAR_LINE_V8) throw new Error("AGENT_PROMPT_V9: V8 has no 'Near:' line to extend");
+const NEAR_ME_RULES_V9 = `Near me: "near me", "close to me", "قريب مني", "جنبي", "حواليا" (or a renter message "📍 ..." that shares a location) means search_units with near_me true, keeping any other filters already known (district, use, desks, budget, track). Never guess, ask for or write the renter's coordinates; the server knows the location. If search_units returns NO_LOCATION, ask in one short line following its ask text, and don't call search_units with near_me again until the renter shares a location (a "📍 ..." message). A different radius ("within 5 km", "في حدود ٥ كيلو") goes in radius_km (1-50); the default is 10 km.
+Distances from near_me are straight-line and approximate: say "about 3.2 km" / "حوالي ٣٫٢ كيلو"; under 0.5 km, say it is right in their area ("right in your area" / "في منطقتك") instead of a number. If a unit has location_approx, say its location is an approximate area. List options nearest first. If in_radius is 0, say clearly that nothing is within that many km (e.g. "nothing within 10 km" / "مفيش حاجة في حدود ١٠ كيلو"), then give the nearest options with their distance and offer to widen the radius or pick a district. If no_units_match_filters is set, say which filter excluded everything and offer to drop it. Use a bullet list only for 2 or more options.`;
+export const AGENT_PROMPT_V9 = AGENT_PROMPT_V8.replace(NEAR_LINE_V8, `${NEAR_LINE_V8}\n${NEAR_ME_RULES_V9}`);
+// search_units NO_LOCATION ask text per channel (the model phrases it in the reply language).
+export const NEAR_ME_ASK_WEB = "Ask the renter to tap the 📍 button next to the mic to share their location, or to type the area or district instead.";
+export const NEAR_ME_ASK_WHATSAPP = "Ask the renter to share their location: tap 📎 (or + on iPhone), then Location, then Send your current location (Arabic: \"دوس على 📎 (أو + على الآيفون)، وبعدين الموقع، وبعدين ابعت موقعك الحالي\"). Or type the area or district instead.";
+// User text for a turn that only shares a location (WhatsApp pin, or 📍 with an empty input).
+export const NEAR_ME_MARKER = { ar: "📍 [بعتّ موقعي]", en: "📍 [shared my location]" } as const;
+
+// {CHANNEL} blocks for AGENT_PROMPT_V8/V9 (lib/agent/agent.ts).
 export const AGENT_CHANNEL_WEB = `website chat. Contact details for create_booking: renter name, Egyptian mobile (01 + 9 digits) and email. You cannot look up a renter's earlier bookings here; if asked, say the booking page link has the status, or they can message Offisio on WhatsApp.`;
 export const AGENT_CHANNEL_WHATSAPP = `WhatsApp. The renter's mobile is their WhatsApp number ({PHONE}); never ask for a phone number and leave renter_phone out of create_booking. Renter name: {NAME}. Contact details for create_booking: the name (ask only if unknown) and an email; ask for the email once, when the renter is ready to book.
 Their bookings (refreshed every message): {BOOKINGS}

@@ -1,19 +1,34 @@
-// Segment acceptance: 13 scripted Egyptian-Arabic/English booking conversations (11-13 on the WhatsApp channel)
+// Segment acceptance: 18 scripted Egyptian-Arabic/English booking conversations (11-13 and 17 on the WhatsApp channel; 14-18 near me)
 // against the real agent (muse-spark-1.3, owner-approved run). Synthetic renters
 // only. Writes transcripts to .scratch/chat-transcripts.md, cleans up after.
-// Run: pnpm chat-acceptance
+// Run: pnpm chat-acceptance            (all)   pnpm chat-acceptance 14,15,16,17,18   (only those)
 import { writeFileSync } from "node:fs";
 import { chatTurn, type Sender } from "../lib/agent/agent";
 import { createBooking } from "../lib/booking";
-import { freeDays, getUnit } from "../lib/db/store";
+import { freeDays, getUnit, listUnits } from "../lib/db/store";
+import { haversineM } from "../lib/places";
 import { dateLabel } from "../lib/booking-labels";
 import { pool } from "../lib/db/pg";
+import { renterLocation } from "../lib/geo";
 
-type Check = (r: { replies: string[]; bookingIds: string[] }) => boolean | Promise<boolean>;
+// trace: this session's tool calls ({ tool, args, ok }) as stored in chat_sessions.tool_calls.
+type Trace = { tool: string; args: string; ok: boolean }[];
+// cards: per turn, the slugs of the unit cards under the reply (in the tool's result order).
+type Check = (r: { replies: string[]; bookingIds: string[]; trace: Trace; cards: string[][] }) => boolean | Promise<boolean>;
+// "2.3 km", "٢٫٣ كيلو", or the whole number ("حوالي ٢ كيلو").
+const AR_DIGITS = (s: string) => s.replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[Number(d)]);
+const saysDistance = (text: string, km?: number) => km !== undefined && [String(km), String(Math.round(km))]
+  .flatMap((s) => [s, AR_DIGITS(s), AR_DIGITS(s).replace(".", "٫")])
+  .some((s) => new RegExp(`(^|[^\\d٠-٩.٫])${s.replace(".", "\\.")}\\s*(km|كم|كيلو)`, "i").test(text));
 const arabic = (s: string) => /[؀-ۿ]/.test(s);
 // Nothing is paid in these runs, so no reply may call a booking confirmed (V6 wording rule).
 const saysConfirmed = (r: { replies: string[] }) => r.replies.some((x) => /(حجزك|الحجز)\s*(متأكد|اتأكد)|booking is confirmed|you're confirmed/i.test(x));
-const S = (turns: string[], name: string, check: Check, setup?: () => Promise<string[]>, sender?: Sender) => ({ name, turns, check, setup, sender });
+// A turn may carry a near-me location, injected like the routes do (renterLocation, then chatTurn).
+type Turn = string | { text: string; location: unknown };
+const S = (turns: Turn[], name: string, check: Check, setup?: () => Promise<string[]>, sender?: Sender, lang: "ar" | "en" = "ar") => ({ name, turns, check, setup, sender, lang });
+const serverLoc = (raw: unknown) => { const v = renterLocation(raw); if (!v.ok) throw new Error(v.code); return v.loc; };
+const nearMeCalls = (t: Trace) => t.filter((c) => c.tool === "search_units" && /"near_me"\s*:\s*true/.test(c.args));
+const saysKm = (s: string) => /\d[\d.,٫]*\s*(km|كم|كيلو)|[٠-٩][٠-٩٫,]*\s*(كم|كيلو)/i.test(s);
 // WhatsApp scenarios (6.8): a synthetic Egyptian sender; the phone comes from wa_id.
 const WA: Sender = { waId: "201000000012", name: "Wael Test" };
 // V7 shows dates as weekday labels ("Sun 8 Nov", "الأحد ٨ نوفمبر"), never ISO. Accept the
@@ -30,6 +45,13 @@ async function main() {
   const zUnit = await getUnit("gen-zamalek");
   const zTitles = [zUnit?.title_ar, zUnit?.title_en].filter((t): t is string => !!t);
   const mentionsZamalek = (text: string) => zTitles.some((t) => text.includes(t)) || /الزمالك|zamalek/i.test(text);
+  if (!zUnit?.location) throw new Error("gen-zamalek has no location; run pnpm backfill-locations");
+  const zLoc = { lat: zUnit.location.lat, lng: zUnit.location.lng };
+  // Expected near-me order from the Zamalek point, computed from the DB (not from the agent).
+  const zPoint = serverLoc(zLoc);
+  const nearZ = (await listUnits()).filter((u) => u.location).map((u) => ({ slug: u.slug, m: haversineM(zPoint, u.location!) }))
+    .sort((a, b) => a.m - b.m).map((u) => ({ slug: u.slug, km: Math.round(u.m / 100) / 10 }));
+  const WA2: Sender = { waId: "201000000013", name: "Nour Test" }; // no bookings: near-me only
   // A paid booking for the WhatsApp sender on a day still free at setup time (earlier
   // scenarios book days too). Status set directly; payment is not under test here.
   const waDates: string[] = [];
@@ -61,6 +83,21 @@ async function main() {
     S(["إيه الحجوزات اللي عندي؟"], "13 WhatsApp: my_bookings lists the sender's booking",
       (r) => waDates.some((d) => mentionsDay(r.replies[0], d)) || mentionsZamalek(r.replies[0]),
       async () => [await confirmedFor(WA, "gen-zamalek")], WA),
+    // Near me (14-18). The Zamalek point is the demo unit's own stored location; Aswan is far from every unit.
+    S([{ text: "عايز مكتب قريب مني", location: zLoc }], "14 near me (web, AR): in-radius results nearest first, with distances",
+      // Result order: the reply's cards follow the tool's distance order; the first is the nearest unit
+      // (computed here independently) and the second unit's distance appears in the reply.
+      (r) => nearMeCalls(r.trace).some((c) => c.ok) && r.cards[0]?.[0] === nearZ[0]?.slug
+        && (!r.cards[0]?.[1] || r.cards[0][1] === nearZ[1]?.slug) && saysDistance(r.replies[0], nearZ[1]?.km)),
+    S(["عايز مكتب قريب مني"], "15 near me without a location: asks for 📍 once, no near-me result",
+      (r) => /📍|موقعك|location/i.test(r.replies[0]) && !nearMeCalls(r.trace).some((c) => c.ok)),
+    S([{ text: "عايز مكتب قريب مني", location: { lat: 24.09, lng: 32.9 } }], "16 near me far away (Aswan): nothing within 10 km, nearest options",
+      (r) => /(مفيش|ملقتش|مش لاقي|لا يوجد).{0,40}(10|١٠)|nothing within 10|no offices? within 10/i.test(r.replies[0]) && saysKm(r.replies[0])),
+    S([{ text: "", location: zLoc }, "عايز مكتب بكرة"], "17 WhatsApp pin then 'tomorrow': near results for tomorrow",
+      (r) => nearMeCalls(r.trace).some((c) => c.ok) && (mentionsZamalek(r.replies[1]) || /وسط البلد|downtown/i.test(r.replies[1]))
+        && !/📎|شارك.{0,10}موقع|share your location/i.test(r.replies[1]), undefined, WA2),
+    S([{ text: "Any offices within 5 km of me?", location: zLoc }], "18 'within 5 km' in English",
+      (r) => !arabic(r.replies[0]) && nearMeCalls(r.trace).some((c) => /"radius_km"\s*:\s*5\b/.test(c.args)) && saysKm(r.replies[0]), undefined, undefined, "en"),
   ];
   const md: string[] = ["# Chat acceptance transcripts (synthetic renters)", `Run ${new Date().toISOString()} on muse-spark-1.3`, ""];
   const created: string[] = []; const sessions: string[] = []; const results: string[] = [];
@@ -71,15 +108,19 @@ async function main() {
     const extra = sc.setup ? await sc.setup() : [];
     created.push(...extra);
     const session = `acceptance-${Date.now()}-${i}`; sessions.push(session);
-    const replies: string[] = []; const bookingIds: string[] = [];
+    const replies: string[] = []; const bookingIds: string[] = []; const cards: string[][] = [];
     md.push(`## ${sc.name}`);
-    for (const t of sc.turns) {
-      const out = await chatTurn(session, t, sc.sender ? "whatsapp" : "chat", sc.sender);
-      replies.push(out.reply);
+    for (const turn of sc.turns) {
+      const t = typeof turn === "string" ? turn : turn.text;
+      const loc = typeof turn === "string" ? undefined : serverLoc(turn.location);
+      const out = await chatTurn(session, t, sc.sender ? "whatsapp" : "chat", sc.sender, sc.lang, loc);
+      replies.push(out.reply); cards.push(out.units.map((u) => u.slug));
       if (out.booking_id) { bookingIds.push(out.booking_id); created.push(out.booking_id); }
-      md.push(`- **Renter:** ${t}`, `- **Agent:** ${out.reply.replace(/\n+/g, " ")}${out.booking_id ? `  _(booking ${out.booking_id.slice(0, 8)}, EGP ${out.total_egp})_` : ""}`);
+      // Coordinates are never written to the transcript.
+      md.push(`- **Renter:** ${loc ? "📍 (location) " : ""}${t}`, `- **Agent:** ${out.reply.replace(/\n+/g, " ")}${out.booking_id ? `  _(booking ${out.booking_id.slice(0, 8)}, EGP ${out.total_egp})_` : ""}`);
     }
-    const ok = await sc.check({ replies, bookingIds });
+    const tr = await pool().query<{ t: Trace }>("select tool_calls t from chat_sessions where session_key = $1", [session]);
+    const ok = await sc.check({ replies, bookingIds, trace: tr.rows[0]?.t ?? [], cards });
     results.push(`${ok ? "PASS" : "FAIL"}  ${sc.name}`); md.push(`**Result:** ${ok ? "PASS" : "FAIL"}`, "");
     console.log(results.at(-1));
   }

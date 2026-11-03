@@ -19,7 +19,15 @@ export function verifyWhatsAppSignature(rawBody: string, header: string | null):
 }
 
 export interface IncomingAudio { id: string; mimeType: string; voice: boolean }
-export interface IncomingMessage { id: string; from: string; type: string; text: string | null; name: string | null; audio: IncomingAudio | null }
+// A shared location pin (type "location"). Raw coordinates: the webhook validates and rounds
+// them (lib/geo renterLocation) before use; never logged. A pin's name/address are not kept.
+// null on a location message means its coordinates were missing or unreadable.
+export interface IncomingLocation { lat: number; lng: number }
+export interface IncomingMessage { id: string; from: string; type: string; text: string | null; name: string | null; audio: IncomingAudio | null; location: IncomingLocation | null }
+const locationOf = (l: { latitude?: unknown; longitude?: unknown } | undefined): IncomingLocation | null => {
+  const lat = Number(l?.latitude), lng = Number(l?.longitude);
+  return l?.latitude == null || l?.longitude == null || !Number.isFinite(lat) || !Number.isFinite(lng) ? null : { lat, lng };
+};
 
 // Messages from a webhook payload; delivery/read statuses are ignored.
 export function incomingMessages(payload: unknown): IncomingMessage[] {
@@ -28,12 +36,13 @@ export function incomingMessages(payload: unknown): IncomingMessage[] {
   for (const e of entries) for (const c of e.changes ?? []) {
     if (c.field !== "messages") continue;
     for (const raw of c.value?.messages ?? []) {
-      const m = raw as { id?: string; from?: string; type?: string; text?: { body?: string }; audio?: { id?: string; mime_type?: string; voice?: boolean } };
+      const m = raw as { id?: string; from?: string; type?: string; text?: { body?: string }; audio?: { id?: string; mime_type?: string; voice?: boolean }; location?: { latitude?: unknown; longitude?: unknown } };
       if (!m.id || !m.from) continue;
       const name = c.value?.contacts?.find((x) => x.wa_id === m.from)?.profile?.name?.trim() || null;
       const audio = m.type === "audio" && m.audio?.id
         ? { id: m.audio.id, mimeType: (m.audio.mime_type ?? "audio/ogg").split(";")[0].trim(), voice: m.audio.voice === true } : null;
-      out.push({ id: m.id, from: m.from, type: m.type ?? "unknown", text: m.type === "text" ? m.text?.body ?? null : null, name, audio });
+      const location = m.type === "location" ? locationOf(m.location) : null;
+      out.push({ id: m.id, from: m.from, type: m.type ?? "unknown", text: m.type === "text" ? m.text?.body ?? null : null, name, audio, location });
     }
   }
   return out;

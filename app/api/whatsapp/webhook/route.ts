@@ -5,6 +5,7 @@ import { bookingIdsByRef, getBooking, getUnit, setBookingWaId, todayCairo } from
 import { egpLabel, refLabel, unitTitle, whenLabel } from "@/lib/booking-labels";
 import { toTranscribableWav } from "@/lib/audio";
 import { MetaError, meta } from "@/lib/meta/client";
+import { renterLocation, type LatLng } from "@/lib/geo";
 import { handleOwnerMessage } from "@/lib/login";
 import { downloadMedia, incomingMessages, linkCodeMatches, sendImage, parseLinkMessage, sendText, senderKey, sessionKeyFor, verifyWhatsAppSignature, type IncomingMessage } from "@/lib/whatsapp";
 
@@ -44,13 +45,16 @@ export async function POST(req: Request) {
 const toWhatsApp = (s: string) => s.replace(/\*\*([^*\n]+)\*\*/g, "*$1*").replace(/^#{1,6}\s+/gm, "");
 const isArabic = (s: string) => /[؀-ۿ]/.test(s);
 const FIXED = {
-  textOnly: { ar: "معلش، بفهم الرسائل المكتوبة والفويس نوت بس. اكتبلي أو ابعتلي فويس: محتاج مكتب فين ولإمتى؟", en: "Sorry, I can only read text messages and voice notes. Tell me where and when you need an office." },
+  textOnly: { ar: "معلش، بفهم الرسايل المكتوبة والفويس نوت والموقع (📍) بس. اكتبلي، ابعتلي فويس، أو ابعتلي موقعك: محتاج مكتب فين ولإمتى؟", en: "Sorry, I can only read text messages, voice notes and location pins. Tell me where and when you need an office, or share your location." },
   // Voice replies: we don't know the renter's language before transcribing, so AR then EN.
   voiceFailed: "معلش، مقدرتش أسمع الفويس كويس. ممكن تبعته تاني أو تكتبلي؟\nSorry, I couldn't make out that voice note. Could you resend it or type your message?",
   voiceTooLong: "الفويس طويل شوية، ممكن تبعت رسالة أقصر أو تكتبها؟\nThat voice note is a bit long. Could you send a shorter one or type it?",
-  voiceLimited: "وصلنا للحد اليومي للمحادثة. جرب تاني بكرة أو احجز من الموقع.\nWe've reached today's chat limit. Try again tomorrow or book on the website.",
+  limitedBilingual: "وصلنا للحد اليومي للمحادثة. جرب تاني بكرة أو احجز من الموقع.\nWe've reached today's chat limit. Try again tomorrow or book on the website.",
   tooLong: { ar: "الرسالة طويلة شوية، ممكن تختصرها؟", en: "That message is a bit long. Could you shorten it?" },
   limited: { ar: "وصلنا للحد اليومي للمحادثة. جرب تاني بكرة أو احجز من الموقع.", en: "We've reached today's chat limit. Try again tomorrow or book on the website." },
+  // Location pins: language unknown (no text), so AR then EN.
+  locationOutside: "الموقع ده برّه مصر، وكل مكاتبنا في مصر. ابعت موقعك من جوّه مصر أو اكتبلي المنطقة.\nThat location is outside Egypt, and all our offices are in Egypt. Share a location in Egypt or type the area.",
+  locationBad: "مقدرتش أقرا الموقع ده. ابعته تاني أو اكتبلي المنطقة.\nI couldn't read that location. Please send it again or type the area.",
   booking: { ar: "كمّل الدفع من هنا (الحجز محجوز ٣٠ دقيقة):", en: "Complete payment here (held for 30 minutes):" },
   linked: "✅ تمام، هنبعتلك هنا تحديثات حجزك ({ref}). وتقدر تسألني عن حجوزاتك في أي وقت.\n✅ Done: we'll send updates on booking {ref} here, and you can ask me about your bookings any time.",
   linkTaken: "الحجز ده متربط برقم واتساب تاني.\nThis booking is already linked to another WhatsApp number.",
@@ -73,6 +77,7 @@ async function linkBooking(m: IncomingMessage, ref: string, code: string) {
 
 async function handle(m: IncomingMessage) {
   if (m.audio) return handleVoice(m, m.audio);
+  if (m.type === "location") return m.location ? handleLocation(m, m.location) : sendText(m.from, FIXED.locationBad);
   const lang = m.text && isArabic(m.text) ? "ar" : m.text ? "en" : "ar";
   if (!m.text?.trim()) return sendText(m.from, FIXED.textOnly[lang]);
   const session = sessionKeyFor(m.from, todayCairo());
@@ -101,7 +106,7 @@ async function handleVoice(m: IncomingMessage, audio: NonNullable<IncomingMessag
   // Forwarded audio files (not recorded voice notes) are not supported.
   if (!audio.voice) return sendText(m.from, FIXED.textOnly.ar);
   const session = sessionKeyFor(m.from, todayCairo());
-  if (!(await turnAllowed(session))) return sendText(m.from, FIXED.voiceLimited);
+  if (!(await turnAllowed(session))) return sendText(m.from, FIXED.limitedBilingual);
   let text = "";
   try {
     const media = await downloadMedia(audio.id);
@@ -118,9 +123,19 @@ async function handleVoice(m: IncomingMessage, audio: NonNullable<IncomingMessag
   return agentReply(m, session, text, lang, `🎙️ "${text}"\n\n`);
 }
 
-async function agentReply(m: IncomingMessage, session: string, text: string, lang: "ar" | "en", prefix: string) {
+// Location pin (near me): validated and rounded to ~100 m, then a normal agent turn whose text is
+// a neutral 📍 marker; the point becomes the session's location. Same caps as text. Never logged.
+async function handleLocation(m: IncomingMessage, pin: NonNullable<IncomingMessage["location"]>) {
+  const v = renterLocation({ lat: pin.lat, lng: pin.lng });
+  if (!v.ok) return sendText(m.from, v.code === "LOCATION_OUTSIDE_EGYPT" ? FIXED.locationOutside : FIXED.locationBad);
+  const session = sessionKeyFor(m.from, todayCairo());
+  if (!(await turnAllowed(session))) return sendText(m.from, FIXED.limitedBilingual);
+  return agentReply(m, session, "", "ar", "", v.loc);
+}
+
+async function agentReply(m: IncomingMessage, session: string, text: string, lang: "ar" | "en", prefix: string, location?: LatLng) {
   // The sender comes from the signed webhook, so the agent can use it as the renter's identity.
-  const out = await chatTurn(session, text, "whatsapp", { waId: m.from, name: m.name });
+  const out = await chatTurn(session, text, "whatsapp", { waId: m.from, name: m.name }, "ar", location);
   lang = out.lang; // the agent's reply language (stays Arabic on "ok"/an email) for the pay link and captions
   const payLink = out.booking_id && process.env.NEXT_PUBLIC_APP_URL
     ? `\n\n${FIXED.booking[lang]}\n${process.env.NEXT_PUBLIC_APP_URL}/${lang}/booking/${out.booking_id}` : "";

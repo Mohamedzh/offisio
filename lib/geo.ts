@@ -52,6 +52,22 @@ export async function resolveLocation(input: string): Promise<LatLng | null> {
   return expanded ? parseLatLng(decodeURIComponent(expanded)) : null;
 }
 
+// Renter "near me" location (web 📍 or a WhatsApp pin). Set by the server only, never by
+// the model. Rounded to 3 decimals (about 100 m) before any use or storage; never logged.
+// Coarse bounding box around Egypt (also admits bits of neighbours); the catalogue is Egypt-only.
+export const RENTER_EGYPT = { lat: [22, 32], lng: [24, 37] } as const;
+export const roundLoc = (p: LatLng): LatLng => ({ lat: Math.round(p.lat * 1000) / 1000, lng: Math.round(p.lng * 1000) / 1000 });
+export type RenterLocation = { ok: true; loc: LatLng } | { ok: false; code: "LOCATION_BAD" | "LOCATION_OUTSIDE_EGYPT" };
+export function renterLocation(raw: unknown): RenterLocation {
+  const r = raw as { lat?: unknown; lng?: unknown } | null;
+  const lat = typeof r?.lat === "number" ? r.lat : NaN, lng = typeof r?.lng === "number" ? r.lng : NaN;
+  if (!Number.isFinite(lat) || !Number.isFinite(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) return { ok: false, code: "LOCATION_BAD" };
+  const loc = roundLoc({ lat, lng });
+  const [la0, la1] = RENTER_EGYPT.lat, [ln0, ln1] = RENTER_EGYPT.lng;
+  if (loc.lat < la0 || loc.lat > la1 || loc.lng < ln0 || loc.lng > ln1) return { ok: false, code: "LOCATION_OUTSIDE_EGYPT" };
+  return { ok: true, loc };
+}
+
 export const mapsUrl = (p: LatLng) => `https://www.google.com/maps/search/?api=1&query=${p.lat},${p.lng}`;
 
 // Approximate district centres for seeded units (labelled "approximate area"

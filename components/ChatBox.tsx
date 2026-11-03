@@ -14,6 +14,10 @@ const REC_MIMES = ["audio/webm;codecs=opus", "audio/ogg;codecs=opus", "audio/mp4
 const noSubscribe = () => () => {};
 const micSupported = () => typeof MediaRecorder !== "undefined" && !!navigator.mediaDevices?.getUserMedia;
 interface Rec { rec: MediaRecorder; stream: MediaStream; timer: number }
+// Near me: browser location, rounded to ~100 m before it leaves the page (the server rounds again).
+const geoSupported = () => typeof navigator !== "undefined" && !!navigator.geolocation && window.isSecureContext;
+const round3 = (n: number) => Math.round(n * 1000) / 1000;
+const GEO_ERRORS: Record<number, TranslationKey> = { 1: "nearme.denied", 3: "nearme.timeout" };
 // A proxy 413/504 page is not JSON: map it to a fixed code instead of a parse error.
 async function readReply(res: Response, fallback: (status: number) => string): Promise<Reply> {
   try { return await res.json() as Reply; } catch { return { error: fallback(res.status) } as Reply; }
@@ -32,24 +36,34 @@ export default function ChatBox({ locale }: { locale: Locale }) {
   const startingRef = useRef(false); // getUserMedia pending: ignore extra taps
   const [recSec, setRecSec] = useState<number | null>(null); // null: not recording
   const [listening, setListening] = useState(false);
+  const canLocate = useSyncExternalStore(noSubscribe, geoSupported, () => false);
+  const [locating, setLocating] = useState(false);
+  const inputRef = useRef(""); // the input at the moment the location arrives
+  const locatingRef = useRef(false); // a reading is pending: ignore rapid extra taps before the re-render
   // Release the mic if the page unmounts mid-recording (nothing is sent).
   useEffect(() => () => { const r = recRef.current; if (!r) return; r.rec.onstop = null; clearInterval(r.timer); if (r.rec.state !== "inactive") r.rec.stop(); r.stream.getTracks().forEach((k) => k.stop()); }, []);
 
   const say = (content: string) => setMsgs((m) => [...m, { role: "assistant", content }]);
   // Voice codes have their own friendly lines; others reuse the shared error dictionary.
-  const failText = (code: string) => code.startsWith("VOICE_") ? t(`voice.error.${code}` as TranslationKey) : `${t("chat.errorPrefix")}${errorText(t, code)}`;
+  const failText = (code: string) => code.startsWith("VOICE_") ? t(`voice.error.${code}` as TranslationKey)
+    : code.startsWith("LOCATION_") ? errorText(t, code) : `${t("chat.errorPrefix")}${errorText(t, code)}`;
   function applyReply(data: Reply) {
     setSession(data.session_id);
     setMsgs((m) => [...m, ...(data.transcript ? [{ role: "user" as const, content: `🎙️ ${data.transcript}` }] : []), { role: "assistant", content: data.reply, units: data.units ?? [] }]);
     if (data.booking_id) setBookingId(data.booking_id);
   }
 
+  const setText = (v: string) => { inputRef.current = v; setInput(v); };
   async function send() {
-    if (!input.trim() || busy || recSec !== null) return;
-    const text = input; setInput(""); setBusy(true);
-    setMsgs((m) => [...m, { role: "user", content: text }]);
+    if (!input.trim() || busy || recSec !== null || locating) return;
+    const text = input; setText("");
+    await post(text);
+  }
+  async function post(text: string, location?: { lat: number; lng: number }) {
+    setBusy(true);
+    setMsgs((m) => [...m, { role: "user", content: location ? `📍 ${text}` : text }]);
     try {
-      const res = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ session_id: session, message: text, locale }) });
+      const res = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ session_id: session, message: text, locale, ...(location ? { location } : {}) }) });
       const data = await readReply(res, (st) => (st === 413 ? "MESSAGE_TOO_LONG" : `HTTP_${st}`));
       if (!res.ok) throw new Error(data.error);
       applyReply(data);
@@ -74,11 +88,27 @@ export default function ChatBox({ locale }: { locale: Locale }) {
     setBusy(false); setListening(false);
   }
 
+  // 📍: one location reading, sent with the typed text or the default near-me request.
+  function locate() {
+    if (busy || locating || locatingRef.current || recRef.current || startingRef.current) return;
+    locatingRef.current = true; setLocating(true);
+    const done = () => { locatingRef.current = false; setLocating(false); };
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        done();
+        const text = inputRef.current.trim() ? inputRef.current : t("nearme.defaultMessage");
+        setText("");
+        void post(text, { lat: round3(pos.coords.latitude), lng: round3(pos.coords.longitude) });
+      },
+      (err) => { done(); say(t(GEO_ERRORS[err.code] ?? "nearme.unavailable")); },
+      { timeout: 10_000, maximumAge: 5 * 60_000, enableHighAccuracy: false });
+  }
+
   // Tap to record, tap again to stop and send; auto-stops at the cap.
   async function toggleMic() {
     const cur = recRef.current;
     if (cur) { if (cur.rec.state !== "inactive") cur.rec.stop(); return; }
-    if (busy || startingRef.current) return;
+    if (busy || locating || startingRef.current) return;
     startingRef.current = true;
     let stream: MediaStream;
     try { stream = await navigator.mediaDevices.getUserMedia({ audio: true }); }
@@ -133,22 +163,29 @@ export default function ChatBox({ locale }: { locale: Locale }) {
           </Fragment>
         ))}
         {busy && <p className="text-xs text-ink/75">{listening ? t("voice.transcribing") : t("chat.typing")}</p>}
+        {locating && <p role="status" className="text-xs text-ink/75">{t("nearme.locating")}</p>}
       </div>
       {bookingId && <Link href={localeHref(`/booking/${bookingId}`, locale)} className="btn btn-chalk btn-sm mx-4 mb-2">{t("chat.completePayment")}</Link>}
       <div className="border-t border-ink bg-sheet">
         {recording && <p role="status" className="px-3 pt-2 text-xs font-bold text-brick"><span aria-hidden="true" className="me-1 inline-block size-2 animate-pulse rounded-full bg-brick" />{t("voice.recording", { s: recSec, max: VOICE_MAX_S })}</p>}
         <div className="flex gap-2 p-3">
-          <input value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => e.key === "Enter" && send()} placeholder={t("chat.placeholder")} className="field flex-1 w-auto!" />
+          <input value={input} onChange={(e) => setText(e.target.value)} onKeyDown={(e) => e.key === "Enter" && send()} placeholder={t("chat.placeholder")} className="field flex-1 w-auto!" />
+          {canLocate && (
+            // Busy state uses chalk (not paper) so it keeps contrast on hover.
+            <button type="button" onClick={locate} disabled={(busy || recording) && !locating} aria-busy={locating} aria-label={t("nearme.button")} title={t("nearme.button")} className={`btn px-3 ${locating ? "btn-chalk" : "btn-paper"}`}>
+              <span aria-hidden="true" className={`text-base leading-none ${locating ? "animate-pulse" : (busy || recording) ? "opacity-45" : ""}`}>📍</span>
+            </button>
+          )}
           {canRecord && (
-            <button type="button" onClick={toggleMic} disabled={busy && !recording} aria-pressed={recording} aria-label={recording ? t("voice.stop") : t("voice.record")} title={recording ? t("voice.stop") : t("voice.record")} className={`btn px-3 ${recording ? "btn-brick" : "btn-paper"}`}>
+            <button type="button" onClick={toggleMic} disabled={(busy || locating) && !recording} aria-pressed={recording} aria-label={recording ? t("voice.stop") : t("voice.record")} title={recording ? t("voice.stop") : t("voice.record")} className={`btn px-3 ${recording ? "btn-brick" : "btn-paper"}`}>
               {recording
                 ? <svg aria-hidden="true" viewBox="0 0 24 24" className="size-5 fill-current"><rect x="6" y="6" width="12" height="12" /></svg>
                 : <svg aria-hidden="true" viewBox="0 0 24 24" className="size-5 fill-none stroke-current" strokeWidth="2" strokeLinecap="round"><rect x="9" y="3" width="6" height="11" rx="3" /><path d="M5 11a7 7 0 0 0 14 0M12 18v3" /></svg>}
             </button>
           )}
-          <button onClick={send} disabled={busy || recording} className="btn btn-brick px-4">{t("chat.send")}</button>
+          <button onClick={send} disabled={busy || recording || locating} className="btn btn-brick px-4">{t("chat.send")}</button>
         </div>
-        {canRecord && <p className="px-3 pb-2 -mt-1 text-xs text-ink/70">{t("voice.hint")}</p>}
+        {canRecord && <p className="px-3 pb-2 -mt-1 text-xs text-ink/70">{t(canLocate ? "voice.hint" : "voice.hintNoGeo")}</p>}
       </div>
     </div>
   );
