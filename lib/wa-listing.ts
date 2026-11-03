@@ -13,7 +13,7 @@
 // publish, typically < 2 s): about 15 s of reserve. Measured locally: ffmpeg ~1 s.
 // A turn killed anyway leaves a draft without video: after 3 min it is treated as dead.
 import { randomBytes } from "node:crypto";
-import { putPublic } from "./blob";
+import { deleteUploads, putPublic } from "./blob";
 import { egpLabel } from "./booking-labels";
 import { publishDraft, unitOwnerWaId } from "./db/auth";
 import { todayCairo } from "./db/store";
@@ -171,6 +171,18 @@ const codeOf = (e: unknown): string => {
   const err = e as Error | null;
   return /^[A-Z][A-Z0-9_]{2,}\b/.exec(err?.message ?? "")?.[0] ?? err?.name ?? "ERROR";
 };
+
+// A collecting draft has no unit yet, so nothing else uses its uploads/<slug>/ files: delete
+// them on expiry. Best effort, never fails the turn. Uploads still in flight when the draft
+// expires (withDeadline does not abort them) can land afterwards and stay orphaned.
+async function dropDraftMedia(slug: string): Promise<void> {
+  try { await deleteUploads(slug); } catch (e) { console.error("[wa-listing] media delete failed", slug, codeOf(e)); }
+}
+async function expireCollecting(draft: WaDraft): Promise<boolean> {
+  const ok = await setDraftStatus(draft.id, "expired", ["collecting"]);
+  if (ok) await dropDraftMedia(draft.slug);
+  return ok;
+}
 async function reply(m: { id: string; from: string }, body: string, opts?: { preview?: boolean }): Promise<void> {
   try { await sendText(m.from, body, opts); } catch (e) { console.error("[wa-listing] send failed", m.id, codeOf(e)); }
 }
@@ -202,7 +214,7 @@ export async function handleOwnerVideo(m: IncomingMessage): Promise<void> {
   if (!(await limitKey("wa_video", sessionOf(m.from))).ok) return reply(m, say("videoLimited", lang));
   if (!(VIDEO_MIMES as readonly string[]).includes(m.video.mimeType)) return reply(m, say("videoBad", lang));
   // The draft exists before the slow part, so a pin or details sent meanwhile land in it.
-  await expireStaleDrafts(m.from);
+  for (const old of await expireStaleDrafts(m.from)) await dropDraftMedia(old);
   const slug = randomBytes(12).toString("base64url");
   const draft = await createDraft({ waId: m.from, slug, guestId: randomBytes(18).toString("base64url"), lang });
   let stored: WaDraft | null;
@@ -219,8 +231,7 @@ export async function handleOwnerVideo(m: IncomingMessage): Promise<void> {
   } catch (e) {
     const code = codeOf(e);
     console.error("[wa-listing] video failed", m.id, code);
-    // Uploaded files (if any) stay in storage: lib/blob has no delete helper.
-    await setDraftStatus(draft.id, "expired", ["collecting"]);
+    await expireCollecting(draft); // also deletes any files already uploaded
     return reply(m, say(code === "VIDEO_TOO_LONG" ? "videoTooLong" : code === "WHATSAPP_MEDIA_TOO_LARGE" ? "videoTooBig" : "videoBad", lang));
   }
   if (!stored) return; // cancelled while the video was processing
@@ -255,7 +266,7 @@ export async function handleDraftMessage(m: IncomingMessage, draft: WaDraft): Pr
   if (draft.status !== "collecting") return false;
   // The video turn never stored the video (killed or crashed): drop the draft, ask again.
   if (!draft.video_url && Date.now() - new Date(draft.created_at).getTime() > DEAD_VIDEO_MS) {
-    if (await setDraftStatus(draft.id, "expired", ["collecting"])) await reply(m, say("videoLost", null));
+    if (await expireCollecting(draft)) await reply(m, say("videoLost", null));
     return true;
   }
   if (m.type === "location") {
@@ -267,7 +278,7 @@ export async function handleDraftMessage(m: IncomingMessage, draft: WaDraft): Pr
   if (m.audio) { await applyVoice(m, draft, m.audio); return true; }
   if (!text) { await reply(m, say("gotVideo", draft.lang)); return true; }
   const lang = langOf(text);
-  if (isCancel(text)) { await setDraftStatus(draft.id, "expired", ["collecting"]); await reply(m, say("cancelled", lang)); return true; }
+  if (isCancel(text)) { await expireCollecting(draft); await reply(m, say("cancelled", lang)); return true; }
   await applyText(m, draft, text, lang, "", false);
   return true;
 }
@@ -298,7 +309,7 @@ async function applyVoice(m: IncomingMessage, draft: WaDraft, audio: NonNullable
   } catch (e) { console.error("[wa-listing] voice failed", m.id, codeOf(e)); }
   if (!text) return reply(m, say("voiceFailed", draft.lang));
   const lang = langOf(text);
-  if (isCancel(text)) { await setDraftStatus(draft.id, "expired", ["collecting"]); return reply(m, say("cancelled", lang)); }
+  if (isCancel(text)) { await expireCollecting(draft); return reply(m, say("cancelled", lang)); }
   // The voice extraction shares the chat cap already counted above.
   return applyText(m, draft, text, lang, `🎙️ "${text}"\n\n`, true);
 }

@@ -30,10 +30,12 @@ export async function draftBySlug(slug: string): Promise<WaDraft | null> {
   return rows[0] ?? null;
 }
 // A new video replaces this sender's unfinished draft; anyone's stale collecting rows expire.
-export async function expireStaleDrafts(waId: string): Promise<void> {
-  await pool().query(
+// Returns the expired slugs (collecting drafts have no unit yet, so their media can be deleted).
+export async function expireStaleDrafts(waId: string): Promise<string[]> {
+  const { rows } = await pool().query<{ slug: string }>(
     `update wa_listing_drafts set status = 'expired', updated_at = now()
-     where status = 'collecting' and (updated_at < now() - interval '24 hours' or wa_id = $1)`, [waId]);
+     where status = 'collecting' and (updated_at < now() - interval '24 hours' or wa_id = $1) returning slug`, [waId]);
+  return rows.map((r) => r.slug);
 }
 // Created as soon as the video passes the limits (video_url null until storage finishes),
 // so a pin or details sent meanwhile land in this draft.

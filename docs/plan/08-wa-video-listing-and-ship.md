@@ -71,7 +71,7 @@ Tests (gitignored `.scratch/wa-video/`, synthetic data and our own footage only)
 
 Open items:
 - Owner phone run after deploy (video, pin, details, link, publish); it also measures the real Graph download and Blob upload times against the ~105 s budget.
-- Blob cleanup on expiry: expired or cancelled drafts keep their video and frames (`lib/blob` has no delete helper).
+- Blob cleanup on expiry: done 2026-11-04 (`deleteUploads(slug)` in `lib/blob.ts`: Blob `list` + `del` by prefix `uploads/<slug>/`, or `rm` under `public/uploads` locally). Runs when a collecting draft expires (no unit exists yet); best effort, logs slug + code only. Local test `.scratch/wa-video/del.test.ts` (run from `.scratch/wa-video/run`, 7 checks); Blob mode is typechecked but not run against the real store. Uploads still in flight at expiry can stay orphaned.
 - QStash final retry: if analyze/listing fails on its last QStash retry, the owner is not told; only "status" finds the failed unit and expires the draft.
 
 ## 8.2 UI/UX and translation polish (before recording)

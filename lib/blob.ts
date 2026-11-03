@@ -3,9 +3,9 @@
 // Local media fallback (plan/07 7.1): with no BLOB_READ_WRITE_TOKEN and not on
 // Vercel, files go to gitignored public/uploads/<slug>/... and are served by Next
 // from /uploads/<slug>/...; never active on Vercel.
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { put } from "@vercel/blob";
+import { del, list, put } from "@vercel/blob";
 
 export const BLOB_HOST_SUFFIX = ".public.blob.vercel-storage.com";
 
@@ -62,6 +62,22 @@ export async function mediaBytes(url: string): Promise<Buffer> {
   const r = await fetch(src);
   if (!r.ok) throw new Error(`fetch media failed: ${r.status}`);
   return Buffer.from(await r.arrayBuffer());
+}
+
+/** Delete every file under uploads/<slug>/ (Blob, or public/uploads/<slug> in local mode). Throws on failure; callers treat it as best effort. */
+export async function deleteUploads(slug: string): Promise<void> {
+  if (!new RegExp(`^${SEG}$`).test(slug)) throw new Error("BAD_SLUG");
+  if (localMediaMode()) {
+    const root = LOCAL_ROOT(); const dir = path.resolve(root, slug);
+    if (dir.startsWith(root + path.sep)) await rm(dir, { recursive: true, force: true });
+    return;
+  }
+  let cursor: string | undefined;
+  do {
+    const page = await list({ prefix: `uploads/${slug}/`, cursor, limit: 1000 });
+    if (page.blobs.length) await del(page.blobs.map((b) => b.url));
+    cursor = page.hasMore ? page.cursor : undefined;
+  } while (cursor);
 }
 
 /** Upload bytes publicly at an exact pathname (no random suffix). Returns the Blob URL (local URL in fallback mode). */

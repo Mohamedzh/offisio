@@ -382,7 +382,7 @@ Payments: XPay test mode only; no real money.
 - Voice is validated on one real Egyptian-Arabic WhatsApp note (2026-11-02, exact transcript, correct reply; section 7) and the web mic on a synthetic text-to-speech clip; there is no broad accuracy study.
 - A guest draft is tied to one browser's cookie (7 days); clearing cookies or switching browsers loses edit and publish rights to it.
 - A WhatsApp paid notice can only be sent inside the 24-hour customer-service window (a just-paid booking normally is).
-- WhatsApp listing: an expired or cancelled draft keeps its uploaded video and frames in storage (no cleanup yet); if the pipeline's last QStash retry fails, the owner is not told until they send "status".
+- WhatsApp listing: uploads still in flight when a draft expires can stay in storage (expired collecting drafts are otherwise deleted); if the pipeline's last QStash retry fails, the owner is not told until they send "status".
 - Chat acceptance runs use paid model calls and are run on owner approval; the latest results and any open failures are recorded in `docs/plan/06-judge-ready.md`.
 
 ## 13. Key files
