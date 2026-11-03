@@ -140,7 +140,7 @@ export default function ChatBox({ locale }: { locale: Locale }) {
         <div className="flex gap-2 p-3">
           <input value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => e.key === "Enter" && send()} placeholder={t("chat.placeholder")} className="field flex-1 w-auto!" />
           {canRecord && (
-            <button type="button" onClick={toggleMic} disabled={busy && !recording} aria-pressed={recording} aria-label={recording ? t("voice.stop") : t("voice.record")} title={recording ? t("voice.stop") : t("voice.record")} className="btn btn-paper px-3">
+            <button type="button" onClick={toggleMic} disabled={busy && !recording} aria-pressed={recording} aria-label={recording ? t("voice.stop") : t("voice.record")} title={recording ? t("voice.stop") : t("voice.record")} className={`btn px-3 ${recording ? "btn-brick" : "btn-paper"}`}>
               {recording
                 ? <svg aria-hidden="true" viewBox="0 0 24 24" className="size-5 fill-current"><rect x="6" y="6" width="12" height="12" /></svg>
                 : <svg aria-hidden="true" viewBox="0 0 24 24" className="size-5 fill-none stroke-current" strokeWidth="2" strokeLinecap="round"><rect x="9" y="3" width="6" height="11" rx="3" /><path d="M5 11a7 7 0 0 0 14 0M12 18v3" /></svg>}
