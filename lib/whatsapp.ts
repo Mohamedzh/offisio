@@ -23,7 +23,9 @@ export interface IncomingAudio { id: string; mimeType: string; voice: boolean }
 // them (lib/geo renterLocation) before use; never logged. A pin's name/address are not kept.
 // null on a location message means its coordinates were missing or unreadable.
 export interface IncomingLocation { lat: number; lng: number }
-export interface IncomingMessage { id: string; from: string; type: string; text: string | null; name: string | null; audio: IncomingAudio | null; location: IncomingLocation | null }
+// A video (8.1 owner listing). The caption is owner text (PII): never logged.
+export interface IncomingVideo { id: string; mimeType: string; caption: string | null }
+export interface IncomingMessage { id: string; from: string; type: string; text: string | null; name: string | null; audio: IncomingAudio | null; location: IncomingLocation | null; video?: IncomingVideo | null }
 const locationOf = (l: { latitude?: unknown; longitude?: unknown } | undefined): IncomingLocation | null => {
   const lat = Number(l?.latitude), lng = Number(l?.longitude);
   return l?.latitude == null || l?.longitude == null || !Number.isFinite(lat) || !Number.isFinite(lng) ? null : { lat, lng };
@@ -36,13 +38,15 @@ export function incomingMessages(payload: unknown): IncomingMessage[] {
   for (const e of entries) for (const c of e.changes ?? []) {
     if (c.field !== "messages") continue;
     for (const raw of c.value?.messages ?? []) {
-      const m = raw as { id?: string; from?: string; type?: string; text?: { body?: string }; audio?: { id?: string; mime_type?: string; voice?: boolean }; location?: { latitude?: unknown; longitude?: unknown } };
+      const m = raw as { id?: string; from?: string; type?: string; text?: { body?: string }; audio?: { id?: string; mime_type?: string; voice?: boolean }; location?: { latitude?: unknown; longitude?: unknown }; video?: { id?: string; mime_type?: string; caption?: string } };
       if (!m.id || !m.from) continue;
       const name = c.value?.contacts?.find((x) => x.wa_id === m.from)?.profile?.name?.trim() || null;
       const audio = m.type === "audio" && m.audio?.id
         ? { id: m.audio.id, mimeType: (m.audio.mime_type ?? "audio/ogg").split(";")[0].trim(), voice: m.audio.voice === true } : null;
       const location = m.type === "location" ? locationOf(m.location) : null;
-      out.push({ id: m.id, from: m.from, type: m.type ?? "unknown", text: m.type === "text" ? m.text?.body ?? null : null, name, audio, location });
+      const video = m.type === "video" && m.video?.id
+        ? { id: m.video.id, mimeType: (m.video.mime_type ?? "video/mp4").split(";")[0].trim(), caption: m.video.caption?.trim() || null } : null;
+      out.push({ id: m.id, from: m.from, type: m.type ?? "unknown", text: m.type === "text" ? m.text?.body ?? null : null, name, audio, location, video });
     }
   }
   return out;
@@ -51,21 +55,24 @@ export function incomingMessages(payload: unknown): IncomingMessage[] {
 // Voice notes (6.8): fetch the media URL, then the bytes, both with the bearer token
 // and an 8 s timeout each. Size is checked before the bytes are downloaded; the bytes are PII and never logged.
 export const MAX_MEDIA_BYTES = 1024 * 1024; // ~1 min of Opus voice; keeps transcription cost and time small
-export async function downloadMedia(mediaId: string): Promise<{ bytes: Uint8Array; mimeType: string }> {
+// Walkthrough videos (8.1): WhatsApp's own limit for videos is 16 MB; the bytes get a longer timeout.
+export const VIDEO_MEDIA = { maxBytes: 16 * 1024 * 1024, timeoutMs: 20_000 } as const;
+export async function downloadMedia(mediaId: string, opts: { maxBytes?: number; timeoutMs?: number } = {}): Promise<{ bytes: Uint8Array; mimeType: string }> {
+  const cap = opts.maxBytes ?? MAX_MEDIA_BYTES;
   if (!process.env.WHATSAPP_TOKEN) throw new Error("WHATSAPP_NOT_CONFIGURED");
   const auth = { Authorization: `Bearer ${process.env.WHATSAPP_TOKEN}` };
   const metaRes = await fetch(`${GRAPH}/${encodeURIComponent(mediaId)}`, { headers: auth, signal: AbortSignal.timeout(8_000) });
   if (!metaRes.ok) throw new Error(`WHATSAPP_MEDIA_${metaRes.status}`);
   const info = (await metaRes.json()) as { url?: string; mime_type?: string; file_size?: number | string };
   const size = Number(info.file_size ?? 0);
-  if (size > MAX_MEDIA_BYTES) throw new Error("WHATSAPP_MEDIA_TOO_LARGE");
+  if (size > cap) throw new Error("WHATSAPP_MEDIA_TOO_LARGE");
   if (!info.url?.startsWith("https://")) throw new Error("WHATSAPP_MEDIA_NO_URL");
-  const res = await fetch(info.url, { headers: auth, signal: AbortSignal.timeout(8_000) });
+  const res = await fetch(info.url, { headers: auth, signal: AbortSignal.timeout(opts.timeoutMs ?? 8_000) });
   if (!res.ok) throw new Error(`WHATSAPP_MEDIA_GET_${res.status}`);
   const declared = Number(res.headers.get("content-length") ?? 0);
-  if (declared > MAX_MEDIA_BYTES) throw new Error("WHATSAPP_MEDIA_TOO_LARGE");
+  if (declared > cap) throw new Error("WHATSAPP_MEDIA_TOO_LARGE");
   const bytes = new Uint8Array(await res.arrayBuffer());
-  if (bytes.byteLength > MAX_MEDIA_BYTES) throw new Error("WHATSAPP_MEDIA_TOO_LARGE");
+  if (bytes.byteLength > cap) throw new Error("WHATSAPP_MEDIA_TOO_LARGE");
   const mime = info.mime_type ?? res.headers.get("content-type") ?? "audio/ogg";
   return { bytes, mimeType: mime.split(";")[0].trim() };
 }
@@ -107,12 +114,14 @@ export async function sendImage(to: string, link: string, caption: string): Prom
   if (!res.ok) throw await sendError(res);
 }
 
-export async function sendText(to: string, body: string): Promise<void> {
+// preview false: no link preview (a single-use link must not be fetched by a preview crawler).
+export async function sendText(to: string, body: string, opts: { preview?: boolean } = {}): Promise<void> {
   requireWhatsApp();
   const res = await fetch(`${GRAPH}/${process.env.WHATSAPP_PHONE_NUMBER_ID}/messages`, {
     method: "POST",
     headers: { Authorization: `Bearer ${process.env.WHATSAPP_TOKEN}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ messaging_product: "whatsapp", to, type: "text", text: { preview_url: true, body: body.slice(0, 4096) } }),
+    body: JSON.stringify({ messaging_product: "whatsapp", to, type: "text", text: { preview_url: opts.preview ?? true, body: body.slice(0, 4096) } }),
+    signal: AbortSignal.timeout(10_000), // webhook turns run on a fixed time budget
   });
   if (!res.ok) throw await sendError(res);
 }

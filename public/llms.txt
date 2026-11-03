@@ -8,7 +8,7 @@
 
 ## Demo loop
 
-1. Owner uploads a short office video, no sign-in needed; it becomes a private draft until published with WhatsApp sign-in.
+1. Owner uploads a short office video on the web (no sign-in needed) or sends it to the Offisio WhatsApp number; it becomes a private draft until published with WhatsApp sign-in (or "publish" on WhatsApp).
 2. The browser extracts frames; `muse-spark-1.3` surveys every space (type, size, windows, plumbing, adjacency).
 3. Deterministic code rules (not model text) decide which uses the layout suits, with reasons in Arabic and English.
 4. `muse-spark-1.3` writes specs and a bilingual listing; `muse-image-1.0` renders the room empty, then fitted out for each passing use.
@@ -16,7 +16,7 @@
 
 ## Meta models and where they are used
 
-- `muse-spark-1.3` via `meta.product` (never contributor): booking agent on web chat and WhatsApp. This is the PII path (names, phones, emails, chat text).
+- `muse-spark-1.3` via `meta.product` (never contributor): booking agent on web chat and WhatsApp, and owner details from WhatsApp listing messages. This is the PII path (names, phones, emails, chat text).
 - `muse-spark-1.3` via `meta.nonPii`: space survey, specs and bilingual listing copy (non-PII product data).
 - `muse-image-1.0`: prompt-guided edits for empty-room and fit-out renders; text-to-image for the AI-generated demo listings (badged as such) and decorative homepage art.
 - `muse-voice-transcribe-1.0` via `meta.product.transcribe`: WhatsApp voice notes and the web chat mic (`POST /api/chat/voice`), `POST /v1/asr/transcribe` after ffmpeg converts the audio to 24 kHz mono PCM WAV.
@@ -32,6 +32,7 @@
 - Voice: tap the mic in web chat (up to 60 s); the transcript shows as your message, then the agent answers. Validated 2026-11-02 on a real 6-second Egyptian-Arabic WhatsApp note: transcript exact, reply correct (an available unit in the New Administrative Capital).
 - WhatsApp: message the Offisio WhatsApp number shown on the site, in text or as a voice note. Same agent and tools, plus "what are my bookings".
 - Upload (no sign-in): on /upload add a video or tap "Try it with a sample walkthrough" (our own 20 s filmed video, real pipeline, editable pre-filled details). The result is a private draft: not listed, not bookable, invisible to the agent, editable only from your browser. "Publish with WhatsApp" signs you in and lists it; a local copy without WhatsApp offers a labelled local demo publish.
+- List from WhatsApp: send a walkthrough video (up to 45 s) to the Offisio WhatsApp number, then the location pin (or a Maps link), monthly rent, floor and district in text or a voice note. The bot asks for what is missing, runs the same pipeline and sends a single-use link (30 min) to the draft; reply "publish" / "انشر" to list it under your number ("cancel", "link", "status" also work).
 - Owner sign-in: on /login get a one-time code, send "Offisio login XXXX-XXXX" from WhatsApp, reply YES within 2 minutes. "Offisio logout" signs out everywhere.
 - Demo listings are preview-only: anyone can try the edit form; changes show only in your own browser and never change the real listing or the agent.
 - No real money moves; test bookings are demo data.

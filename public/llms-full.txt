@@ -52,6 +52,7 @@ Features (from the README "What we built" section):
 - AI listing review: after the listing step, a `review` step (`muse-spark-1.3` via `meta.nonPii`, `LISTING_REVIEW_PROMPT_V2`, validated JSON, cached in `ai_cache` by text) proofreads the bilingual title and description: typos, natural Egyptian Arabic, English mixed into Arabic, claims the specs don't back (wrong numbers are corrected to the spec value), Arabic/English disagreement, contact details, pushy tone. The owner sees the issues on the draft and edit pages and can apply the fixes in one click (`POST /api/units/<slug>/review/apply`, owner only, writes only the cached corrected text) or run it again after a specs edit (`POST /api/units/<slug>/review`). Advisory only: publishing is never blocked. Upload also refuses contact details typed into district or floor (`CONTACT_INFO_NOT_ALLOWED`).
 - Near me: tap 📍 in web chat (browser location) or share a location pin on WhatsApp, then ask for an office near you. The server validates and rounds the location (about 100 m, coarse Egypt box, fixed codes `LOCATION_BAD` / `LOCATION_OUTSIDE_EGYPT`), keeps it in the chat session only (`loc` on user messages in `chat_sessions.messages`, no migration), never logs it and never sends coordinates to the model. `search_units` gains `near_me` + `radius_km` (default 10 km, 1-50): results nearest first with approximate straight-line distances; if nothing is in range the agent says so and offers the 3 nearest. With no location yet, the agent asks for a pin (WhatsApp) or the 📍 button (web). Booking agent prompt `AGENT_PROMPT_V9`. Acceptance scenarios 14-18 pass.
 - Owner sign-in with WhatsApp: the site gives a one-time code, the owner sends it from WhatsApp and confirms with YES; sign-in is needed to publish a draft, only the owner can save edits, and "Offisio logout" signs out everywhere.
+- List an office from WhatsApp (section 7): the owner sends a walkthrough video to the Offisio number, the bot collects the missing details by chat (text, voice note or location pin), creates the same guest draft as a web upload, runs the same pipeline and sends a single-use link to the draft; "publish" / "انشر" lists it under the sender's number.
 - Run from the repo: `docker-compose.yml` (Postgres 16), `pnpm seed` loads the 13 demo units from `data/seed/demo-snapshot.json`, local media in `public/uploads/` without a Blob token, and fixed `*_NOT_CONFIGURED` codes for missing integrations (section 2, Run locally).
 - Demo listings are preview-only: any visitor can try the edit form; changes show only in their own browser and the real listing (and the agent) never changes.
 - Payments (test mode): XPay hosted checkout plus a signature-verified webhook; a booking confirms only on the webhook.
@@ -60,7 +61,7 @@ Features (from the README "What we built" section):
 
 ### Scope
 
-In scope: the demo loop above, plus these owner-approved additions: payments in XPay test mode only (booking confirms on a signed webhook); owner sign-in (built as WhatsApp sign-in; renters stay guests); a required per-unit location and "near X" search for the agent; nearby cafes/restaurants per unit via the Google Places API; long post-upload steps chained with QStash; venue add-ons; renter booking over WhatsApp via the Meta WhatsApp Cloud API with XPay test-mode payment links; WhatsApp voice notes; guest uploads as private drafts (publishing needs WhatsApp sign-in); the web chat mic (`muse-voice-transcribe-1.0` on `meta.product`).
+In scope: the demo loop above, plus these owner-approved additions: payments in XPay test mode only (booking confirms on a signed webhook); owner sign-in (built as WhatsApp sign-in; renters stay guests); a required per-unit location and "near X" search for the agent; nearby cafes/restaurants per unit via the Google Places API; long post-upload steps chained with QStash; venue add-ons; renter booking over WhatsApp via the Meta WhatsApp Cloud API with XPay test-mode payment links; WhatsApp voice notes; guest uploads as private drafts (publishing needs WhatsApp sign-in); the web chat mic (`muse-voice-transcribe-1.0` on `meta.product`); listing an office by sending a video on WhatsApp.
 
 Out of scope (not built, even partially): live payments, cash on delivery, partial payments, standalone food orders, accounts beyond owner sign-in, reviews, map search UI, host analytics, mobile apps, a separate backend service, live scraping of any third-party site.
 
@@ -107,6 +108,7 @@ After clicking Pay, a 3D Secure emulator appears: leave "(Y) Authentication Succ
 7. WhatsApp. Message the Offisio WhatsApp number shown on the site, in text or as a voice note. Ask for an office, book, then ask "what are my bookings". In web Chat, tap the mic, speak up to 60 s and tap again; the transcript appears as your message, then the agent replies.
 8. Owner sign-in. See section 8.
 9. Demo edits. On a demo listing, try the owner edit form: your changes show only in your browser (with a Reset bar), and the real listing never changes.
+10. List from WhatsApp. Send a walkthrough video (up to 45 s) to the Offisio WhatsApp number, then the location pin (or a Maps link), monthly rent, floor and district in text or a voice note. The bot asks only for what is missing, analyzes the video and sends a single-use link to your draft; reply "publish" / "انشر" to list it under your number.
 
 ### Local checks
 
@@ -153,6 +155,8 @@ Web chat ------------------------> booking agent (native tool calling) -------->
 Web mic -> /api/chat/voice ------> ffmpeg -> transcription -> same agent ------>  muse-voice-transcribe-1.0
 WhatsApp (text / voice note) ----> webhook -> ffmpeg -> transcription ---------->  muse-voice-transcribe-1.0
                                            -> same booking agent ------------->  muse-spark-1.3
+WhatsApp owner video ------------> webhook -> ffmpeg frames + Blob -> owner details ->  muse-spark-1.3 (meta.product)
+                                           -> guest draft -> same pipeline -> single-use link
 XPay hosted checkout ------------> signed webhook -> confirm booking -> WhatsApp paid notice
 ```
 
@@ -163,7 +167,7 @@ Layout:
 - `lib/meta/`: the Meta client and all prompts (the only place model IDs and prompts live).
 - `lib/pipeline/`: `survey.ts`, `rubric.ts`, `specs-listing.ts`, `staging.ts`, `ingest.ts`, `jobs.ts`, `cache.ts`. Each step is an idempotent `pipeline_jobs` row and one QStash message; a failed render never blocks the listing or other renders.
 - `lib/agent/agent.ts`: booking agent; `lib/booking.ts`: booking creation and confirmation; `lib/db/`: schema and queries.
-- `lib/whatsapp.ts`, `lib/audio.ts`, `lib/web-chat.ts`, `lib/login.ts`, `lib/owner.ts`, `lib/xpay.ts`, `lib/places.ts`, `lib/guard.ts`, `lib/blob.ts` (Blob or local media).
+- `lib/whatsapp.ts`, `lib/audio.ts`, `lib/web-chat.ts`, `lib/wa-listing.ts` + `lib/video-frames.ts` + `lib/wa-link.ts` + `lib/upload-unit.ts` (WhatsApp video listing), `lib/login.ts`, `lib/owner.ts`, `lib/xpay.ts`, `lib/places.ts`, `lib/guard.ts`, `lib/blob.ts` (Blob or local media).
 
 Key design decisions:
 
@@ -191,6 +195,7 @@ Key design decisions:
 - `usage_counters`: daily counters for rate limits, token usage and estimated spend (hashed keys).
 - `ai_cache`: cached model results keyed by input content and prompt version.
 - `login_codes`, `owner_epochs`: owner sign-in codes and per-number sign-out epochs.
+- `wa_listing_drafts`: one row per WhatsApp listing video: sender WhatsApp id (PII, never logged), unit slug, random guest id, video and frame URLs, collected fields (JSON), language, status (`collecting` / `processing` / `ready` / `published` / `expired`).
 
 ### Decision log highlights (from `docs/DESIGN.md` and `docs/plan/06-judge-ready.md`)
 
@@ -213,7 +218,7 @@ All product model calls go to `https://api.meta.ai/v1`. Model IDs are defined on
 
 | Path | Model | Used for |
 |---|---|---|
-| `meta.product.chat` | `muse-spark-1.3` (never contributor) | Booking agent, web chat and WhatsApp (PII) |
+| `meta.product.chat` | `muse-spark-1.3` (never contributor) | Booking agent, web chat and WhatsApp; owner details from WhatsApp listing messages (`chatOnce`: one try, 20 s) (PII) |
 | `meta.product.transcribe` | `muse-voice-transcribe-1.0` | WhatsApp voice notes and the web chat mic, `POST /v1/asr/transcribe` (multipart `request` JSON + `audio` WAV) |
 | `meta.nonPii.chat` | `muse-spark-1.3` in production | Space survey, specs, bilingual listing |
 | `meta.imageEdit` | `muse-image-1.0` | Empty-room and fit-out renders (`/v1/images/edits`) |
@@ -296,6 +301,7 @@ Acceptance: `scripts/chat-acceptance.ts` runs 13 scripted Egyptian-Arabic/Englis
 - Paid notice: after the signed XPay webhook confirms a booking (or marks it `paid_conflict`) and the booking has a WhatsApp sender, a short Arabic + English message goes out. Send failures are logged and never fail the webhook.
 - Website bookings can opt in with "Get updates on WhatsApp": wa.me with a prefilled `Offisio <ref>-<code>`, where the code is an HMAC of the booking id; the webhook verifies it and links the sender, only if unlinked or the same sender.
 - Limits: the same character, turn and per-sender rate limits as web chat.
+- Owner listing by video: a video (mp4/3gp, up to 45 s and 16 MB; `wa_video` limit 3 per sender per day, plus the spend breaker) creates a `collecting` draft at once, then is downloaded (20 s timeout), cut into up to 20 JPEG keyframes by ffmpeg (input and protocol whitelists, 25 s) and stored under `uploads/<slug>/` like a web upload (15 s storage deadline). Details arrive as a location pin (Egypt box), a Maps link or "lat, lng", and rent / daily price / floor / district / kind / start date from text, a caption or a voice note, extracted by one `meta.product` call (`OWNER_DETAILS_PROMPT_V1`, one try, 20 s timeout, validated JSON, contact details refused). The bot confirms what it understood and asks only for what is missing. Complete: the unit is created as a guest draft (same path as the web upload) and the pipeline runs; after the review step the bot sends a single-use link (`/api/auth/wa-link`, HMAC-signed, 30 min, no phone number in the token, preview crawlers refused) that sets the guest and owner cookies and opens the draft page. Keywords: "publish" / "انشر", "cancel" / "إلغاء" (while collecting), "link" / "رابط", "status" / "حالة". Collecting and processing drafts expire after 24 h, ready drafts after 7 days. Worst-case video turn: about 105 s within the webhook's 120 s (a caption's short Maps link is not expanded; the bot asks for a pin or the full link).
 
 ## 8. Owner sign-in with WhatsApp
 
@@ -352,6 +358,7 @@ Rate limits and caps (`lib/guard.ts`, defaults, each overridable by env), per ha
 | blob_token | 100 | 1000 |
 | blob_video (video upload tokens, guests allowed) | 3 | 20 |
 | voice (web mic; also counts as a chat turn) | 15 | 300 |
+| wa_video (WhatsApp listing videos, per sender) | 3 | 30 |
 | wa_link | 5 | 200 |
 | spec_edit | 30 | 500 |
 | login (per IP) / wa_login (per sender) | 10 | - (per caller only) |
@@ -375,6 +382,7 @@ Payments: XPay test mode only; no real money.
 - Voice is validated on one real Egyptian-Arabic WhatsApp note (2026-11-02, exact transcript, correct reply; section 7) and the web mic on a synthetic text-to-speech clip; there is no broad accuracy study.
 - A guest draft is tied to one browser's cookie (7 days); clearing cookies or switching browsers loses edit and publish rights to it.
 - A WhatsApp paid notice can only be sent inside the 24-hour customer-service window (a just-paid booking normally is).
+- WhatsApp listing: an expired or cancelled draft keeps its uploaded video and frames in storage (no cleanup yet); if the pipeline's last QStash retry fails, the owner is not told until they send "status".
 - Chat acceptance runs use paid model calls and are run on owner approval; the latest results and any open failures are recorded in `docs/plan/06-judge-ready.md`.
 
 ## 13. Key files
@@ -399,6 +407,7 @@ Payments: XPay test mode only; no real money.
 - [lib/demo-units.ts](https://github.com/Mohamedzh/offisio/blob/master/lib/demo-units.ts): preview-only demo listings
 - [lib/xpay.ts](https://github.com/Mohamedzh/offisio/blob/master/lib/xpay.ts) and [app/api/payments/webhook/route.ts](https://github.com/Mohamedzh/offisio/blob/master/app/api/payments/webhook/route.ts): checkout and signed webhook
 - [app/api/whatsapp/webhook/route.ts](https://github.com/Mohamedzh/offisio/blob/master/app/api/whatsapp/webhook/route.ts): WhatsApp webhook
+- [lib/wa-listing.ts](https://github.com/Mohamedzh/offisio/blob/master/lib/wa-listing.ts), [lib/video-frames.ts](https://github.com/Mohamedzh/offisio/blob/master/lib/video-frames.ts) and [app/api/auth/wa-link/route.ts](https://github.com/Mohamedzh/offisio/blob/master/app/api/auth/wa-link/route.ts): list an office by sending a video on WhatsApp
 - [lib/guard.ts](https://github.com/Mohamedzh/offisio/blob/master/lib/guard.ts): rate limits, caps, spend breaker
 - [lib/addons/catalog.ts](https://github.com/Mohamedzh/offisio/blob/master/lib/addons/catalog.ts): add-on catalogue and prices
 - [lib/places.ts](https://github.com/Mohamedzh/offisio/blob/master/lib/places.ts): Google Places nearby search
@@ -429,7 +438,7 @@ API routes (`app/api`):
 - `chat`, `chat/voice` (web mic), `bookings`, `availability`, `addons`
 - `payments/checkout`, `payments/webhook`
 - `whatsapp/webhook`
-- `auth/login`, `auth/logout`, `auth/status`
+- `auth/login`, `auth/logout`, `auth/status`, `auth/wa-link` (single-use link from a WhatsApp listing)
 - `units`, `units/upload`, `units/specs`, `units/[slug]/stage`, `units/[slug]/pipeline`, `units/[slug]/publish`
 - `blob/upload` (client upload tokens), `blob/local` (local media mode only; 404 otherwise), `pipeline/[step]` (QStash step handler)
 

@@ -7,12 +7,15 @@ import { toTranscribableWav } from "@/lib/audio";
 import { MetaError, meta } from "@/lib/meta/client";
 import { renterLocation, type LatLng } from "@/lib/geo";
 import { handleOwnerMessage } from "@/lib/login";
+import { routeOwnerListing } from "@/lib/wa-listing";
 import { downloadMedia, incomingMessages, linkCodeMatches, sendImage, parseLinkMessage, sendText, senderKey, sessionKeyFor, verifyWhatsAppSignature, type IncomingMessage } from "@/lib/whatsapp";
 
 // WhatsApp booking channel (docs/plan/06 6.8): same agent, limits and spend
 // breaker as web chat. Meta needs a fast 200, so the agent turn runs in after().
 // Voice turns add media lookup + download (8 s each), ffmpeg (10 s) and
 // transcription (20 s) before the agent turn; after() work counts toward this.
+// Owner listing videos (plan/08 8.1): Graph lookup 8 s + download (<= 16 MB) 20 s + ffmpeg 5 + 25 s
+// + storage 15 s + caption extraction 20 s + reply 10 s = 103 s worst case: budget in lib/wa-listing.ts.
 export const maxDuration = 120;
 
 // Webhook verification handshake (Meta > WhatsApp > Configuration).
@@ -76,18 +79,22 @@ async function linkBooking(m: IncomingMessage, ref: string, code: string) {
 }
 
 async function handle(m: IncomingMessage) {
+  const session = sessionKeyFor(m.from, todayCairo());
+  // Owner sign-in ("Offisio login XXXX-XXXX", then YES; "Offisio logout") comes first.
+  if (m.text?.trim() && (await handleOwnerMessage(m.from, m.text, senderKey(session)))) return;
+  // "Offisio <ref>-<code>" from a booking page: before the listing flow, so a draft can't swallow it.
+  const link = m.text ? parseLinkMessage(m.text) : null;
+  if (link) {
+    if (!(await limitKey("wa_link", senderKey(session))).ok) return sendText(m.from, FIXED.limited[isArabic(m.text ?? "") ? "ar" : "en"]);
+    return linkBooking(m, link.ref, link.code);
+  }
+  // Owner listing (8.1): a video starts a draft; while the sender has one collecting details
+  // (or ready to publish), its text / voice / pin messages go there before the renter agent.
+  if (await routeOwnerListing(m)) return;
   if (m.audio) return handleVoice(m, m.audio);
   if (m.type === "location") return m.location ? handleLocation(m, m.location) : sendText(m.from, FIXED.locationBad);
   const lang = m.text && isArabic(m.text) ? "ar" : m.text ? "en" : "ar";
   if (!m.text?.trim()) return sendText(m.from, FIXED.textOnly[lang]);
-  const session = sessionKeyFor(m.from, todayCairo());
-  // Owner sign-in ("Offisio login XXXX-XXXX", then YES; "Offisio logout") comes first.
-  if (await handleOwnerMessage(m.from, m.text, senderKey(session))) return;
-  const link = parseLinkMessage(m.text);
-  if (link) {
-    if (!(await limitKey("wa_link", senderKey(session))).ok) return sendText(m.from, FIXED.limited[lang]);
-    return linkBooking(m, link.ref, link.code);
-  }
   if (m.text.length > CAPS.chatChars) return sendText(m.from, FIXED.tooLong[lang]);
   if (!(await turnAllowed(session))) return sendText(m.from, FIXED.limited[lang]);
   return agentReply(m, session, m.text, lang, "");

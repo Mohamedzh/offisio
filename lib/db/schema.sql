@@ -159,3 +159,20 @@ alter table unit_places alter column name drop not null;
 -- Vercel) sets owner_wa_id = 'local-demo' (non-numeric sentinel, never a real owner)
 -- and keeps guest_owner so the uploading browser can still edit.
 alter table units add column if not exists guest_owner text;
+
+-- 8.1 list an office by WhatsApp video (owner-approved 2026-11-03): one row per video
+-- while the bot collects the missing details by chat. wa_id is PII (never logged).
+-- fields: rent_egp, daily_egp, floor_text, kind, available_from, district, lat, lng.
+-- lang: the owner's language from their last text ('ar' | 'en'), null until known.
+create table if not exists wa_listing_drafts (
+  id uuid primary key default gen_random_uuid(),
+  wa_id text not null,
+  slug text not null unique,
+  guest_id text not null,
+  video_url text, frame_urls text[] not null default '{}',
+  fields jsonb not null default '{}',
+  status text not null default 'collecting' check (status in ('collecting','processing','ready','published','expired')),
+  created_at timestamptz not null default now(), updated_at timestamptz not null default now()
+);
+create index if not exists idx_wa_listing_drafts_wa on wa_listing_drafts(wa_id, status);
+alter table wa_listing_drafts add column if not exists lang text;

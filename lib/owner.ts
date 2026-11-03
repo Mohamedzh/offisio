@@ -27,6 +27,9 @@ export const cookieOptions = (maxAge: number) => ({
 });
 
 const sign = (body: string) => createHmac("sha256", sessionSecret()).update(body).digest();
+// A separate key per token purpose (e.g. "wa-link"), derived from the session secret, so
+// such tokens can never verify as an owner or guest token (or the other way round).
+export const purposeKey = (purpose: string): Buffer => createHmac("sha256", sessionSecret()).update(`offisio-purpose:${purpose}`).digest();
 
 export function signOwnerToken(waId: string, epoch: number, now = Date.now()): string {
   const body = Buffer.from(JSON.stringify({ sub: waId, exp: Math.floor(now / 1000) + OWNER_MAX_AGE, ep: epoch }), "utf8").toString("base64url");

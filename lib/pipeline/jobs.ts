@@ -79,6 +79,13 @@ async function execute(u: UploadInputs, step: string): Promise<string[]> {
 
 export type RunResult = "done" | "skipped" | "failed" | "failed_permanent";
 
+// WhatsApp listing drafts (plan/08 8.1): tell the owner when the listing is ready (after
+// review, done or failed: the listing itself is live by then) or when analyze/listing failed
+// for good (permanent, or no QStash retry locally). Best effort; never throws here.
+async function notifyOwner(slug: string, outcome: "ready" | "failed"): Promise<void> {
+  try { await (await import("../wa-listing")).notifyDraftPipeline(slug, outcome); } catch { /* best effort */ }
+}
+
 // Claim -> execute -> record. Throws nothing: the route maps "failed" to a 500
 // so QStash retries, and everything else to 200.
 export async function runStep(slug: string, step: string): Promise<RunResult> {
@@ -89,13 +96,17 @@ export async function runStep(slug: string, step: string): Promise<RunResult> {
     const next = await execute(u, step);
     await finishJob(u.id, step);
     await enqueue(u.id, slug, next);
+    if (step === "review") await notifyOwner(slug, "ready");
     return "done";
   } catch (e) {
     const msg = (e as Error).message || "error";
     console.error(`[pipeline] ${slug} ${step}: ${msg}`);
     await finishJob(u.id, step, msg);
     if (step === "analyze" || step === "listing") await setUnitStatus(slug, "failed").catch(() => {});
-    return e instanceof PermanentError ? "failed_permanent" : "failed";
+    const permanent = e instanceof PermanentError;
+    if (step === "review") await notifyOwner(slug, "ready");
+    else if ((step === "analyze" || step === "listing") && (permanent || !qstashEnabled())) await notifyOwner(slug, "failed");
+    return permanent ? "failed_permanent" : "failed";
   }
 }
 

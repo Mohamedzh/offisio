@@ -81,10 +81,12 @@ export class JsonValidationError extends Error {}
 
 // One validation-feedback retry: parse/validate failures are fed back to
 // the model once; a second failure throws JsonValidationError.
-export async function chatJson<T>(messages: Msg[], validate: (raw: unknown) => T): Promise<T> {
+// `chat` defaults to the non-PII client; PII callers pass a meta.product chat.
+// attempts 1 = no feedback retry (callers with a tight time budget).
+export async function chatJson<T>(messages: Msg[], validate: (raw: unknown) => T, chat: (body: Record<string, unknown>) => Promise<unknown> = meta.nonPii.chat, attempts = 2): Promise<T> {
   let err = "";
-  for (let i = 0; i < 2; i++) {
-    const r = (await meta.nonPii.chat({
+  for (let i = 0; i < attempts; i++) {
+    const r = (await chat({
       messages: err ? [...messages, { role: "user", content: `Previous reply failed validation: ${err}. Reply with valid JSON only.` }] : messages,
       temperature: 0.2,
     })) as { choices?: { message?: { content?: string } }[] };

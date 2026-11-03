@@ -1,6 +1,6 @@
 # 08 — WhatsApp video listing, then ship polish
 
-Status: **not started** (opened 2026-11-03). Deadline: submit **Wed Nov 4, 9:00 PM ET**; the 3-minute demo video is recorded before that. Start a fresh session with this file, `AGENTS.md` and `docs/PLAN.md` only (plus files named below).
+Status: **8.1 built (2026-11-03)**: `wa_listing_drafts` migration approved by the owner and run on Neon; reviewed once and the fixes applied. Uncommitted at handoff (owner commits). 8.2-8.4 not started (opened 2026-11-03). Deadline: submit **Wed Nov 4, 9:00 PM ET**; the 3-minute demo video is recorded before that. Start a fresh session with this file, `AGENTS.md` and `docs/PLAN.md` only (plus files named below).
 
 Order of work: **8.1 build (time-boxed)** -> 8.2 polish -> 8.3 reviews -> 8.4 video prep. If 8.1 is not working end to end by **Nov 4, 12:00 Cairo**, stop it, leave it uncommitted or behind a flag, and move to 8.2; the video then shows web upload as the owner path and names WhatsApp listing as "next".
 
@@ -53,7 +53,26 @@ Stop conditions: any need for a second migration, a new dependency, or reverse g
 
 Fallback (no migration): owner sends the video with a caption containing all details ("Zamalek, 2nd floor, 15000/month, 800/day, furnished, pin: <maps link>"); one structured extraction; missing details -> reply with an example caption and ask to resend. Nothing stored between messages.
 
-Docs when done: README "What we built" + Testing flow, `public/llms*.txt`, ARCHITECTURE (route, table, flow), AGENTS scope line, this file's status, PLAN.md row.
+Docs when done: README "What we built" + Testing flow, `public/llms*.txt`, ARCHITECTURE (route, table, flow), AGENTS scope line, this file's status, PLAN.md row. (Done 2026-11-03.)
+
+### 8.1 result (2026-11-03)
+
+Built as planned, with the migration (no fallback). As built: the `collecting` draft is created as soon as the video passes the limits, so a pin or details sent while the video is still processing land in it; details come by text, caption, voice note, location pin, Maps link or "lat, lng", extracted on `meta.product` (`OWNER_DETAILS_PROMPT_V1`, `meta.product.chatOnce`: one try, 20 s timeout; a caption skips the validation retry). Keywords: publish/انشر, cancel/إلغاء/الغاء (only while collecting), link/رابط, status/حالة. Magic link: 30 min, single use, the token carries no phone number (the route takes the owner from the draft), sets the guest and owner cookies, sent without a link preview. Limit `wa_video` 3 per sender per day. Drafts: collecting/processing stop after 24 h, ready after 7 days. Frames: up to 20 from a video of at most 45 s and 16 MB. Worst-case video turn: about 105 s within `maxDuration` 120 (Graph lookup 8 s, download 20 s, ffmpeg 5 + 25 s, storage 15 s, caption extraction 20 s with no short-link hops, reply 10 s, plus DB and enqueue; budget in `lib/wa-listing.ts`); a draft still without video 3 min after the video arrived is treated as dead (expired, owner asked to resend). "status"/"link" expire a processing draft only after its unit has been failed for 10 min (past QStash retries); own limit `wa_listing_link` 10 per sender per day. Kind defaults to furnished (the survey runs after the unit is created), editable on the draft page.
+
+Files:
+- New: `lib/wa-listing.ts` (flow, texts, keywords, details validation, pipeline notify), `lib/wa-link.ts` (token sign/verify), `app/api/auth/wa-link/route.ts` (single-use link), `lib/db/wa-drafts.ts` (draft queries, compare-and-set status), `lib/video-frames.ts` (ffmpeg keyframes), `lib/upload-unit.ts` (create path shared with the web upload).
+- Changed: `app/api/whatsapp/webhook/route.ts` (routing before the renter agent), `app/api/units/upload/route.ts` (uses `lib/upload-unit.ts`), `lib/whatsapp.ts` (video parsing, `VIDEO_MEDIA` cap, `preview` option), `lib/guard.ts` (`wa_video`), `lib/geo.ts` (`ownerLocation`), `lib/meta/client.ts` (`meta.product.chatOnce`), `lib/meta/prompts.ts` (`OWNER_DETAILS_PROMPT_V1`), `lib/owner.ts` (`purposeKey`), `lib/pipeline/specs-listing.ts` (`chatJson` client and attempts), `lib/pipeline/jobs.ts` (notify after `review`, or on a final analyze/listing failure), `lib/db/schema.sql` (`wa_listing_drafts`).
+
+Tests (gitignored `.scratch/wa-video/`, synthetic data and our own footage only), one test file per area:
+- `npx tsx .scratch/wa-video/frames.test.ts` (repo root): frame extraction on our own footage: 20 frames, size caps, over 45 s rejected, non-video rejected.
+- `npx tsx .scratch/wa-video/units.test.ts` (repo root): details validation, missing fields, keywords, link sign/verify/expiry/tamper, token domain separation, single use via `firstSeen` (DB).
+- `cd .scratch/wa-video/run && npx tsx ../flow.test.ts`: route-level flow with HMAC-signed synthetic webhook payloads; Graph, the Meta API and pipeline model calls are stubbed. Must run from `.scratch/wa-video/run` (create it if missing) so `.env.local` is not auto-loaded and media lands in `run/public/uploads`. `KEEP=1` keeps one unit and writes `run/link.txt`; `npx tsx .scratch/wa-video/cleanup.ts` (repo root) removes it.
+- Helpers (repo root): `sign.ts` (fresh link for the kept unit; `expire` checks a cancelled draft's link fails), `count.ts` (draft counts, stray units), `frames-time.ts` (ffmpeg timing), `live-extract.ts` (one real paid `meta.product` call on a synthetic message).
+
+Open items:
+- Owner phone run after deploy (video, pin, details, link, publish); it also measures the real Graph download and Blob upload times against the ~105 s budget.
+- Blob cleanup on expiry: expired or cancelled drafts keep their video and frames (`lib/blob` has no delete helper).
+- QStash final retry: if analyze/listing fails on its last QStash retry, the owner is not told; only "status" finds the failed unit and expires the draft.
 
 ## 8.2 UI/UX and translation polish (before recording)
 
@@ -78,4 +97,4 @@ Story (depth over breadth): owner films an office -> AI survey, rubric "Suitable
 
 ## Handoff
 
-Next session starts at 8.1: ask the owner to approve the `wa_listing_drafts` migration (or choose the caption-only fallback), then brief an implementor with 8.1 and this file's rules.
+8.1 is built (2026-11-03, uncommitted). Next: the owner commits, deploys and runs the phone check (8.1 Open items), then 8.2 polish.

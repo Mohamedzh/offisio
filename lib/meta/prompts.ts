@@ -134,3 +134,16 @@ export const STYLE_PROMPTS_V1: Record<"startup" | "clinic" | "training", string>
   clinic: `Fit out this office as a clean medical clinic consult room that physically fits the room: white exam desk, waiting chairs along one wall, medical cabinet, soft clinical light. Keep walls, windows, doors, floor, ceiling and camera angle EXACTLY unchanged. Photorealistic.`,
   training: `Fit out this office as a training room that physically fits the room: rows of simple tables facing one wall, stackable chairs, a whiteboard on the wall. Keep walls, windows, doors, floor, ceiling and camera angle EXACTLY unchanged. Photorealistic.`,
 };
+
+// WhatsApp listing (plan/08 8.1): owner details from one owner message (text or a voice
+// transcript). Owner messages are PII: meta.product only. Output validated in lib/wa-listing.ts.
+export const OWNER_DETAILS_PROMPT_V1 = `You read one WhatsApp message from an office owner in Egypt who is listing an office. Extract only what the message states; anything not stated is null. The message may be Egyptian Arabic, English or both. You get TODAY (YYYY-MM-DD) and MESSAGE.
+Fields:
+- rent_egp: monthly rent in EGP as an integer ("15k", "15 الف", "١٥ ألف في الشهر" -> 15000).
+- daily_egp: price per day in EGP as an integer, only when a daily price is stated.
+- floor_text: the floor, short, in the owner's words ("2nd", "ground", "الدور التاني", "أرضي").
+- kind: "furnished" when it has desks/furniture ("مفروش"), "semifinished" for a bare or semi-finished shell ("نص تشطيب", "على المحارة"); else null.
+- available_from: "YYYY-MM-DD"; resolve relative dates ("from next month", "من أول الشهر", "بكرة") against TODAY; "now"/"متاح دلوقتي" -> TODAY.
+- district: the area or neighbourhood name only ("Zamalek", "التجمع الخامس", "Nasr City").
+Never put phone numbers, emails, links, prices or people's names in floor_text or district.
+Reply ONLY with JSON: {"rent_egp": int|null, "daily_egp": int|null, "floor_text": string|null, "kind": "furnished"|"semifinished"|null, "available_from": string|null, "district": string|null}`;

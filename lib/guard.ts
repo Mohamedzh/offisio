@@ -6,7 +6,7 @@ import { pool } from "./db/pg";
 import { todayCairo } from "./db/store";
 import { guardSalt } from "./salt";
 
-export type LimitKind = "chat" | "upload" | "image_edit" | "booking" | "blob_token" | "wa_link" | "spec_edit" | "login" | "wa_login" | "wa_logout" | "voice" | "blob_video";
+export type LimitKind = "chat" | "upload" | "image_edit" | "booking" | "blob_token" | "wa_link" | "spec_edit" | "login" | "wa_login" | "wa_logout" | "voice" | "blob_video" | "wa_video" | "wa_listing_link";
 const DEFAULTS: Record<LimitKind, { ip: number; global: number }> = {
   chat: { ip: 40, global: 1000 },
   upload: { ip: 3, global: 20 },
@@ -19,6 +19,8 @@ const DEFAULTS: Record<LimitKind, { ip: number; global: number }> = {
   wa_login: { ip: 10, global: 300 }, // login code and YES messages per WhatsApp sender (per-sender only)
   wa_logout: { ip: 20, global: 300 }, // "Offisio logout" per sender (per-sender only; own bucket, never blocked by login attempts)
   blob_video: { ip: 3, global: 20 }, // walkthrough video upload tokens (one per upload; guests allowed)
+  wa_listing_link: { ip: 10, global: 300 }, // listing "link" / "status" requests per WhatsApp sender (8.1)
+  wa_video: { ip: 3, global: 30 }, // WhatsApp listing videos per sender (8.1: download + ffmpeg + storage)
   voice: { ip: 15, global: 300 }, // web mic turns per IP (each one is a paid transcription; also counts as a chat turn)
 };
 export const CAPS = {

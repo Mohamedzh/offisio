@@ -104,8 +104,8 @@ async function call<T = Record<string, unknown>>(path: string, init: RequestInit
   throw last;
 }
 
-const chat = (model: string) => (body: ChatBody) =>
-  call("/chat/completions", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ model, ...body }) }, model);
+const chat = (model: string, opts?: CallOpts) => (body: ChatBody) =>
+  call("/chat/completions", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ model, ...body }) }, model, opts);
 
 // Dev switch (AGENTS.md): local runs on our own/synthetic footage may send
 // NON-PII calls to Muse Spark Open on Modal ("modal", preferred: own
@@ -150,7 +150,8 @@ async function transcribe(wav: Uint8Array, languageBias: string[] = ["Arabic", "
 
 export const meta = {
   // PII-safe path: never contributor (AGENTS.md routing table).
-  product: { chat: chat(MODELS.spark), transcribe },
+  // chatOnce: one try, 20 s timeout, body kept out of errors (webhook turns with a fixed time budget).
+  product: { chat: chat(MODELS.spark), chatOnce: chat(MODELS.spark, { tries: 1, timeoutMs: 20_000, redactBody: true }), transcribe },
   // Non-PII product data (specs, listing): spark, or contributor in local dev.
   nonPii: { chat: (body: ChatBody) => chat(nonPiiModel())(body) },
   // Public/synthetic test calls: Modal when configured locally, else contributor.

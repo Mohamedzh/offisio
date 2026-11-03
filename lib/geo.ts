@@ -26,7 +26,7 @@ export function parseLatLng(text: string): LatLng | null {
 }
 
 // Short links carry no coordinates; follow their redirects (Google hosts only, no SSRF).
-const SHORT_HOSTS = new Set(["maps.app.goo.gl", "goo.gl"]);
+export const SHORT_HOSTS = new Set(["maps.app.goo.gl", "goo.gl"]);
 async function expandShortLink(url: URL): Promise<string | null> {
   let current = url;
   for (let hop = 0; hop < 4; hop++) {
@@ -40,7 +40,8 @@ async function expandShortLink(url: URL): Promise<string | null> {
 }
 
 // Owner input: a Google Maps link (full or short) or "lat, lng".
-export async function resolveLocation(input: string): Promise<LatLng | null> {
+// opts.expand false: short links are not followed (no redirect hops; e.g. a time-boxed webhook turn).
+export async function resolveLocation(input: string, opts: { expand?: boolean } = {}): Promise<LatLng | null> {
   const text = input.trim();
   if (!text || text.length > 2000) return null;
   const direct = parseLatLng(text);
@@ -48,6 +49,7 @@ export async function resolveLocation(input: string): Promise<LatLng | null> {
   let url: URL;
   try { url = new URL(text); } catch { return null; }
   if (url.protocol !== "https:") return null;
+  if (SHORT_HOSTS.has(url.hostname) && opts.expand === false) return null;
   const expanded = SHORT_HOSTS.has(url.hostname) ? await expandShortLink(url).catch(() => null) : text;
   return expanded ? parseLatLng(decodeURIComponent(expanded)) : null;
 }
@@ -66,6 +68,16 @@ export function renterLocation(raw: unknown): RenterLocation {
   const [la0, la1] = RENTER_EGYPT.lat, [ln0, ln1] = RENTER_EGYPT.lng;
   if (loc.lat < la0 || loc.lat > la1 || loc.lng < ln0 || loc.lng > ln1) return { ok: false, code: "LOCATION_OUTSIDE_EGYPT" };
   return { ok: true, loc };
+}
+
+// Owner pin for a unit (8.1 WhatsApp location): finite, inside the same Egypt box as
+// parseLatLng, kept at the column's 6 decimals (unit location, not a renter's). Never logged.
+export function ownerLocation(raw: unknown): LatLng | null {
+  const r = raw as { lat?: unknown; lng?: unknown } | null;
+  const lat = typeof r?.lat === "number" ? r.lat : NaN, lng = typeof r?.lng === "number" ? r.lng : NaN;
+  if (!Number.isFinite(lat) || !Number.isFinite(lng)) return null;
+  const p = { lat: Math.round(lat * 1e6) / 1e6, lng: Math.round(lng * 1e6) / 1e6 };
+  return inEgypt(p) ? p : null;
 }
 
 export const mapsUrl = (p: LatLng) => `https://www.google.com/maps/search/?api=1&query=${p.lat},${p.lng}`;
