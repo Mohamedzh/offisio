@@ -65,6 +65,7 @@ Everything outside this loop is out of scope (~~payments, real auth~~ — now XP
 | Booking agent | Multi-turn chat in Egyptian Arabic with tool calls against the DB | Muse Spark 1.3 |
 | Voice (built 2026-11-02) | WhatsApp voice note or web mic recording → ffmpeg WAV → text before it reaches the agent (`lib/audio.ts`, `lib/web-chat.ts`) | Muse Voice Transcribe |
 | Listing review (built 2026-11-03) | Proofread the generated listing before publish: typos, Egyptian Arabic, language mix, unsupported claims, contact info; one-click fixes, advisory | Muse Spark (`meta.nonPii`) |
+| Near me (built 2026-11-03) | Renter location from web 📍 or a WhatsApp pin (server-held, rounded, never sent to the model); `search_units` `near_me` + `radius_km`, nearest-3 fallback; prompt `AGENT_PROMPT_V9`. `chat_sessions` keeps the rounded location with the transcript (no retention job yet, same as transcripts) | Muse Spark (`meta.product`) |
 | Listing UI | Unit page, before/after slider, style switcher, specs card | — |
 
 ## 5. Data model (sketch)

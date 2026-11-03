@@ -52,7 +52,7 @@ In scope: the demo loop (upload → specs → listing → removal/restaging → 
 - **guest uploads** (built 2026-11-02, [07](docs/plan/07-judge-access.md) 7.2): upload without sign-in creates a private draft (`units.guest_owner`, signed `offisio_guest` cookie): not listed, not bookable, invisible to the agent. Publishing needs WhatsApp sign-in (local mock publish only when WhatsApp is not configured and not on Vercel). Renters stay guests;
 - **run from the repo** ([07](docs/plan/07-judge-access.md) 7.1): `docker-compose.yml` Postgres, `pnpm seed` demo snapshot, local media in `public/uploads/` without a Blob token;
 - seeded demo listings are **preview-only**: visitor edits show only in their own browser (cookie), real data never changes;
-- a **required** per-unit location (`units.lat/lng`) and "near X" search for the agent (planned, 6.7);
+- a **required** per-unit location (`units.lat/lng`) and "near X" search for the agent (landmarks), plus **near me** (built 2026-11-03, [07](docs/plan/07-judge-access.md) 7.6): web 📍 or WhatsApp location pin, server-held rounded location, never sent to the model or logged, 10 km default with nearest fallback;
 - nearby cafes/restaurants per unit via the **Google Places API** (name, distance and Maps link only; the renter orders from the place directly); long post-upload steps chained with **QStash** (planned, 6.7, owner decision 2026-10-31);
 - venue add-ons with our own demo prices (built): room extras, plus house coffee & snacks on **daily** bookings only;
 - **renter booking over WhatsApp** via the Meta WhatsApp Cloud API (owner's own number), same agent and tools, XPay test-mode payment links (planned, 6.8).

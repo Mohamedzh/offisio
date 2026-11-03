@@ -66,6 +66,12 @@ README, `public/llms.txt`, `public/llms-full.txt` (curl walkthrough: units -> ch
 - Checked locally 2026-11-03: sample upload -> survey -> listing -> review "Looks good"; after a specs edit (area 40 m2 vs 12 in the text) "Review again" found 5 issues; "Use the fixes" changed only the flagged text; EN and AR panels. V2 prompt corrects wrong numbers to the spec value and writes plain-language notes (synthetic check: area 60 -> 90, rent 15,000 -> 12,000, phone removed, "2nd" -> "التاني"). About 50-90 s per review.
 - Same session: Arabic floor and district labels (`floorLabel`, `districtLabel`), localized validation message on the specs form, one shared distance rounding for page and agent, photo tabs hidden when there is only one view, local limits x10 when not on Vercel, `.vercelignore`.
 
+## 7.6 Near me (owner request 2026-11-03)
+
+**Built.** Near me: tap 📍 in web chat (browser location) or share a location pin on WhatsApp, then ask for an office near you. The server validates and rounds the location (about 100 m, coarse Egypt box, fixed codes `LOCATION_BAD` / `LOCATION_OUTSIDE_EGYPT`), keeps it in the chat session only (`loc` on user messages in `chat_sessions.messages`, no migration), never logs it and never sends coordinates to the model. `search_units` gains `near_me` + `radius_km` (default 10 km, 1-50): results nearest first with approximate straight-line distances; if nothing is in range the agent says so and offers the 3 nearest. With no location yet, the agent asks for a pin (WhatsApp) or the 📍 button (web). Booking agent prompt `AGENT_PROMPT_V9`. Acceptance scenarios 14-18 pass.
+- Reviewed (approve after fixes, all applied): UUID-only web session ids, WhatsApp texts mention location pins (Android 📎 / iPhone +), no `no_units_match_filters` when empty, rapid-tap guard, 📍 hidden on insecure origins.
+- Checked locally 2026-11-03: AR web pin near Zamalek -> Zamalek "في منطقتك" then Downtown "حوالي ٢٫٤ كيلو"; EN two-turn session near Downtown; timeout message; acceptance 14-18 pass 5/5. WhatsApp pin still to test on a phone.
+
 ## Log
 
 - 2026-11-02: segment opened; 7.1 (seed/compose), 7.2 and 7.3 voice endpoint run as parallel subagents with a reviewer each.

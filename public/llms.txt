@@ -37,6 +37,7 @@
 - No real money moves; test bookings are demo data.
 - curl walkthrough for agents (units, chat AR/EN, booking, voice, guest upload, publish, preview edit): section 15 of llms-full.txt.
 - AI listing review: after the listing step, a `review` step (`muse-spark-1.3` via `meta.nonPii`, `LISTING_REVIEW_PROMPT_V2`, validated JSON, cached in `ai_cache` by text) proofreads the bilingual title and description: typos, natural Egyptian Arabic, English mixed into Arabic, claims the specs don't back (wrong numbers are corrected to the spec value), Arabic/English disagreement, contact details, pushy tone. The owner sees the issues before publishing and can apply the fixes in one click; advisory only.
+- Near me: tap 📍 in web chat or share a WhatsApp location pin; offices within 10 km nearest first, or the nearest options if none. The location stays in the session, is never logged and never reaches the model.
 
 ## Run locally
 
