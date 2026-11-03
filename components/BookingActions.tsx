@@ -33,8 +33,8 @@ export default function BookingActions({ id, locale }: { id: string; locale: Loc
     setBusy(true); setMsg("");
     const res = await fetch("/api/payments/checkout", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ booking_id: id, locale }) });
     const data = await res.json();
-    if (res.status === 503) { setMsg(data.setup); setBusy(false); return; }
-    if (!res.ok) { setMsg(data.error ? errorText(t, data.error) : t("bookingCard.checkoutFailed")); setBusy(false); return; }
+    // Codes like XPAY_SESSION_FAILED_502 map to their prefix key (error.XPAY_SESSION_FAILED).
+    if (!res.ok) { setMsg(errorText(t, String(data.error ?? "CHECKOUT_FAILED").replace(/_\d+$/, ""))); setBusy(false); return; }
     window.location.assign(data.checkout_url);
   }
 

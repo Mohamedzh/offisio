@@ -7,10 +7,12 @@ import { errorText, getT, type Locale, type TranslationKey } from "@/lib/i18n";
 import type { Job } from "@/lib/db/store";
 
 const POLL_MS = 3000;
+const STUCK_MS = 6 * 60_000; // same as the retry route: queued/running this long = delivery lost
 
 export default function PipelineStatus({ slug, initial, locale }: { slug: string; initial: Job[]; locale: Locale }) {
   const router = useRouter(); const t = getT(locale);
   const [jobs, setJobs] = useState(initial); const [busy, setBusy] = useState<string | null>(null); const [msg, setMsg] = useState(""); const [calm, setCalm] = useState(false);
+  const [now, setNow] = useState(0); // set by the poll, so a stuck step shows its retry button
   const doneCount = useRef(initial.filter((j) => j.status === "done").length);
   const active = jobs.some((j) => j.status === "queued" || j.status === "running");
 
@@ -25,7 +27,7 @@ export default function PipelineStatus({ slug, initial, locale }: { slug: string
 
   useEffect(() => {
     if (!active) return;
-    const id = setInterval(load, POLL_MS);
+    const id = setInterval(() => { setNow(Date.now()); void load(); }, POLL_MS);
     return () => clearInterval(id);
   }, [active, load]);
 
@@ -57,7 +59,7 @@ export default function PipelineStatus({ slug, initial, locale }: { slug: string
               <span className="flex items-center gap-2">
                 {j.attempts > 1 && <span className="text-xs text-ink/75">{t("pipeline.attempts", { n: j.attempts })}</span>}
                 <span className={`text-[11px] font-bold uppercase tracking-wide px-2 py-0.5 border border-ink ${badge[j.status]}`}>{t(`pipeline.status.${j.status}` as TranslationKey)}</span>
-                {j.status === "failed" && <button disabled={!!busy} onClick={() => retry(j.step)} className="btn btn-brick btn-sm">{t("pipeline.retry")}</button>}
+                {(j.status === "failed" || (now > 0 && j.status !== "done" && now - Date.parse(j.updated_at) > STUCK_MS)) && <button disabled={!!busy} onClick={() => retry(j.step)} className="btn btn-brick btn-sm">{t("pipeline.retry")}</button>}
               </span>
             </div>
             {j.status === "failed" && j.last_error && <p className="text-xs text-ink/75 mt-1 break-words">{errorText(t, j.last_error)}</p>}

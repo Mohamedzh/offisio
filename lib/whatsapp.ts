@@ -43,6 +43,7 @@ export function incomingMessages(payload: unknown): IncomingMessage[] {
 // and an 8 s timeout each. Size is checked before the bytes are downloaded; the bytes are PII and never logged.
 export const MAX_MEDIA_BYTES = 1024 * 1024; // ~1 min of Opus voice; keeps transcription cost and time small
 export async function downloadMedia(mediaId: string): Promise<{ bytes: Uint8Array; mimeType: string }> {
+  if (!process.env.WHATSAPP_TOKEN) throw new Error("WHATSAPP_NOT_CONFIGURED");
   const auth = { Authorization: `Bearer ${process.env.WHATSAPP_TOKEN}` };
   const metaRes = await fetch(`${GRAPH}/${encodeURIComponent(mediaId)}`, { headers: auth, signal: AbortSignal.timeout(8_000) });
   if (!metaRes.ok) throw new Error(`WHATSAPP_MEDIA_${metaRes.status}`);
@@ -67,24 +68,44 @@ export function sessionKeyFor(waId: string, day: string): string {
 }
 export const senderKey = (session: string) => `wa:${session.split("_")[1]}`;
 
+// Send failures throw a fixed code (WHATSAPP_SEND_<status>). The Graph body can echo the
+// recipient number (PII), so only Graph's numeric error code and type are logged.
+async function sendError(res: Response): Promise<Error> {
+  let info = "";
+  try {
+    const e = ((await res.json()) as { error?: { code?: unknown; type?: unknown } }).error;
+    info = ` code=${typeof e?.code === "number" ? e.code : "?"} type=${typeof e?.type === "string" ? e.type.replace(/[^A-Za-z]/g, "").slice(0, 40) : "?"}`;
+  } catch { /* not JSON */ }
+  console.error(`[whatsapp] send ${res.status}${info}`);
+  return new Error(`WHATSAPP_SEND_${res.status}`);
+}
+
+// Optional integration: without these the web app runs and sends fail with a fixed code.
+export const whatsappConfigured = (): boolean => Boolean(process.env.WHATSAPP_TOKEN && process.env.WHATSAPP_PHONE_NUMBER_ID);
+function requireWhatsApp(): void {
+  if (!whatsappConfigured()) throw new Error("WHATSAPP_NOT_CONFIGURED");
+}
+
 // Free-form text reply; only valid inside the 24-hour customer-service window.
 // One photo with a caption (unit cards after a search reply). Link must be public https.
 export async function sendImage(to: string, link: string, caption: string): Promise<void> {
+  requireWhatsApp();
   const res = await fetch(`${GRAPH}/${process.env.WHATSAPP_PHONE_NUMBER_ID}/messages`, {
     method: "POST",
     headers: { Authorization: `Bearer ${process.env.WHATSAPP_TOKEN}`, "Content-Type": "application/json" },
     body: JSON.stringify({ messaging_product: "whatsapp", to, type: "image", image: { link, caption: caption.slice(0, 1024) } }),
   });
-  if (!res.ok) throw new Error(`WHATSAPP_SEND_${res.status}: ${(await res.text()).slice(0, 300)}`);
+  if (!res.ok) throw await sendError(res);
 }
 
 export async function sendText(to: string, body: string): Promise<void> {
+  requireWhatsApp();
   const res = await fetch(`${GRAPH}/${process.env.WHATSAPP_PHONE_NUMBER_ID}/messages`, {
     method: "POST",
     headers: { Authorization: `Bearer ${process.env.WHATSAPP_TOKEN}`, "Content-Type": "application/json" },
     body: JSON.stringify({ messaging_product: "whatsapp", to, type: "text", text: { preview_url: true, body: body.slice(0, 4096) } }),
   });
-  if (!res.ok) throw new Error(`WHATSAPP_SEND_${res.status}: ${(await res.text()).slice(0, 300)}`);
+  if (!res.ok) throw await sendError(res);
 }
 
 // After the signed XPay webhook (6.8): tell a WhatsApp renter the outcome, in AR + EN.

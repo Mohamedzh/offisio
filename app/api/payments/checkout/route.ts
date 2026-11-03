@@ -19,6 +19,10 @@ export async function POST(req: Request) {
       [b.id, sessionId, b.total_egp * 100]);
     return Response.json({ checkout_url: checkoutUrl, payment_id: pay.rows[0].id });
   } catch (e) {
-    return Response.json({ error: (e as Error).message }, { status: 502 });
+    // Only our fixed XPAY_* codes reach the client; anything else (DB, network) is logged.
+    const msg = (e as Error).message;
+    if (/^XPAY_[A-Z_0-9]+$/.test(msg)) return Response.json({ error: msg }, { status: 502 });
+    console.error("[checkout] failed", (e as Error).name, msg.slice(0, 200));
+    return Response.json({ error: "CHECKOUT_FAILED" }, { status: 502 });
   }
 }

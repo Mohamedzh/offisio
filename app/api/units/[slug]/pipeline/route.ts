@@ -21,7 +21,8 @@ export async function POST(req: Request, { params }: { params: Promise<{ slug: s
   const { step } = (await req.json().catch(() => ({}))) as { step?: string };
   const job = (await jobsOf(ref.id)).find((j) => j.step === step);
   if (!job || !routeOf(job.step)) return Response.json({ error: "NOT_FOUND" }, { status: 404 });
-  const stuck = job.status === "running" && Date.now() - Date.parse(job.updated_at) > STUCK_MS;
+  // Stuck = running too long, or queued too long (delivery lost).
+  const stuck = (job.status === "running" || job.status === "queued") && Date.now() - Date.parse(job.updated_at) > STUCK_MS;
   if (job.status !== "failed" && !stuck) return Response.json({ error: "NOT_RETRYABLE" }, { status: 409 });
   // Only the owner retries; demo and other listings stay as they are: no re-run, no model call.
   if ((await editMode(ref.slug)) !== "owner") return Response.json({ ok: true, preview: true, demo: isDemoUnit(ref.slug) });

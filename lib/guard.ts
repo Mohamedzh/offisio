@@ -6,7 +6,7 @@ import { pool } from "./db/pg";
 import { todayCairo } from "./db/store";
 import { guardSalt } from "./salt";
 
-export type LimitKind = "chat" | "upload" | "image_edit" | "booking" | "blob_token" | "wa_link" | "spec_edit" | "login" | "wa_login" | "wa_logout";
+export type LimitKind = "chat" | "upload" | "image_edit" | "booking" | "blob_token" | "wa_link" | "spec_edit" | "login" | "wa_login" | "wa_logout" | "voice" | "blob_video";
 const DEFAULTS: Record<LimitKind, { ip: number; global: number }> = {
   chat: { ip: 40, global: 1000 },
   upload: { ip: 3, global: 20 },
@@ -18,6 +18,8 @@ const DEFAULTS: Record<LimitKind, { ip: number; global: number }> = {
   login: { ip: 10, global: 300 }, // "Sign in with WhatsApp" codes per browser IP (checked per-IP only)
   wa_login: { ip: 10, global: 300 }, // login code and YES messages per WhatsApp sender (per-sender only)
   wa_logout: { ip: 20, global: 300 }, // "Offisio logout" per sender (per-sender only; own bucket, never blocked by login attempts)
+  blob_video: { ip: 3, global: 20 }, // walkthrough video upload tokens (one per upload; guests allowed)
+  voice: { ip: 15, global: 300 }, // web mic turns per IP (each one is a paid transcription; also counts as a chat turn)
 };
 export const CAPS = {
   chatChars: 800,
@@ -27,15 +29,21 @@ export const CAPS = {
   frameBytes: 1024 * 1024,
   framesMin: 3,
   framesMax: 30,
+  voiceBytes: 1024 * 1024, // web mic upload (32 kbps opus: ~4 min, so the duration cap bites first)
+  voiceSeconds: 60,
 } as const;
 
 const envNum = (name: string, fallback: number) => {
   const v = Number(process.env[name]);
   return process.env[name] !== undefined && Number.isFinite(v) ? v : fallback;
 };
+// Local runs (not on Vercel) spend the runner's own key and DB: defaults x10 so
+// testing isn't capped at 3 uploads a day. LIMIT_* env vars and the spend breaker still apply.
+const LOCAL_FACTOR = process.env.VERCEL ? 1 : 10;
 function limitsFor(kind: LimitKind) {
   const k = kind.toUpperCase();
-  return { ip: envNum(`LIMIT_${k}_IP`, DEFAULTS[kind].ip), global: envNum(`LIMIT_${k}_GLOBAL`, DEFAULTS[kind].global) };
+  const d = DEFAULTS[kind];
+  return { ip: envNum(`LIMIT_${k}_IP`, d.ip * LOCAL_FACTOR), global: envNum(`LIMIT_${k}_GLOBAL`, d.global * LOCAL_FACTOR) };
 }
 
 // Hashed client IP: counters never store a raw address.
@@ -110,8 +118,8 @@ export async function recordUsage(model: string, usage: Usage | undefined, image
 }
 
 // True when today's estimated spend is over DEMO_DAILY_SPEND_USD (default $15).
-// Blocks uploads and staging only; browsing, booking, payment and cached
-// units keep working. Chat has its own caps.
+// Blocks uploads, staging and web voice turns (paid transcription); browsing,
+// booking, payment and cached units keep working. Typed chat has its own caps.
 export async function spendBlocked(): Promise<boolean> {
   const { rows } = await pool().query<{ n: string }>(
     "select coalesce(sum(n),0)::text n from usage_counters where day = $1 and kind = 'spend_micro_usd'", [todayCairo()]);

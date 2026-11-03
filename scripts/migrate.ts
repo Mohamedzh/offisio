@@ -2,10 +2,11 @@
 // Run: pnpm migrate
 import { readFileSync } from "node:fs";
 import { Client } from "pg";
-import { directUrl } from "../lib/db/pg";
+import { directUrl, sslFor } from "../lib/db/pg";
 
 async function main() {
-  const client = new Client({ connectionString: directUrl(), ssl: { rejectUnauthorized: false } });
+  const url = directUrl();
+  const client = new Client({ connectionString: url, ssl: sslFor(url) });
   await client.connect();
   try {
     await client.query(readFileSync("lib/db/schema.sql", "utf8"));

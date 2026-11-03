@@ -148,3 +148,14 @@ alter table unit_places drop column if exists brand;
 alter table unit_places drop column if exists menu_source;
 drop table if exists brand_menus;
 delete from ai_cache where kind in ('brand_menu', 'place_match');
+-- 7.1 (Places terms: only place_id may be cached long term): seeded places carry
+-- place_id + our distance only; name stays null until pnpm seed refreshes them with a key.
+alter table unit_places alter column name drop not null;
+
+-- 7.2 guest drafts (owner-approved 2026-11-02): an upload without sign-in stores a
+-- random browser id (offisio_guest cookie, not PII) here and owner_wa_id stays null.
+-- Such a unit is a private draft: not listed, not bookable, until Publish moves it
+-- to owner_wa_id after WhatsApp sign-in. Local mock publish (no WhatsApp, never on
+-- Vercel) sets owner_wa_id = 'local-demo' (non-numeric sentinel, never a real owner)
+-- and keeps guest_owner so the uploading browser can still edit.
+alter table units add column if not exists guest_owner text;

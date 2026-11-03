@@ -2,7 +2,13 @@
 // results (name, distance, Maps link) for the unit page and the agent.
 import { pool } from "./db/pg";
 
-export interface Nearby { place_id: string; name: string; distance_m: number; maps_url: string }
+// name is null for seeded places (data/seed keeps only place_id; Places terms)
+// until pnpm seed fills it with GOOGLE_PLACES_API_KEY set.
+export interface Nearby { place_id: string; name: string | null; distance_m: number; maps_url: string }
+
+// Shown distance, shared by the unit page and the agent so both say the same:
+// nearest 10 m under 1 km, else nearest 100 m.
+export const roundDistanceM = (m: number): number => (m < 1000 ? Math.round(m / 10) * 10 : Math.round(m / 100) * 100);
 
 export async function nearbyOf(unitId: string): Promise<Nearby[]> {
   const { rows } = await pool().query<Nearby>(

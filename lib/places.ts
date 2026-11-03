@@ -18,10 +18,19 @@ export function haversineM(a: LatLng, b: LatLng): number {
   return Math.round(2 * R * Math.asin(Math.sqrt(h)));
 }
 
+// Official Maps URL from a place_id (Maps URLs API; query_place_id wins, query is the label).
+// Used when Google gives no googleMapsUri and for seeded places, which keep only place_id.
+export function mapsUrlFor(placeId: string, name?: string | null): string {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(name || "place")}&query_place_id=${encodeURIComponent(placeId)}`;
+}
+
+// Optional integration: without a key, stored places still show; new lookups fail with a fixed code.
+export const placesConfigured = (): boolean => Boolean(process.env.GOOGLE_PLACES_API_KEY);
+
 // The 20 nearest cafes/restaurants/bakeries within RADIUS_M, nearest first.
 export async function searchNearby(at: LatLng): Promise<NearbyPlace[]> {
   const key = process.env.GOOGLE_PLACES_API_KEY;
-  if (!key) throw new Error("GOOGLE_PLACES_API_KEY missing");
+  if (!key) throw new Error("PLACES_NOT_CONFIGURED");
   const r = await fetch("https://places.googleapis.com/v1/places:searchNearby", {
     method: "POST",
     headers: { "Content-Type": "application/json", "X-Goog-Api-Key": key, "X-Goog-FieldMask": FIELD_MASK },
@@ -30,12 +39,16 @@ export async function searchNearby(at: LatLng): Promise<NearbyPlace[]> {
       locationRestriction: { circle: { center: { latitude: at.lat, longitude: at.lng }, radius: RADIUS_M } },
     }),
   });
-  if (!r.ok) throw new Error(`places ${r.status}: ${(await r.text()).slice(0, 300)}`);
+  // Fixed code to callers; Google's body goes to the server log only.
+  if (!r.ok) {
+    console.error(`[places] searchNearby ${r.status}: ${(await r.text()).slice(0, 300)}`);
+    throw new Error(`PLACES_${r.status}`);
+  }
   const j = (await r.json()) as { places?: { id: string; displayName?: { text?: string }; location?: { latitude: number; longitude: number }; primaryType?: string; googleMapsUri?: string }[] };
   return (j.places ?? []).filter((p) => p.id && p.displayName?.text && p.location).map((p) => ({
     place_id: p.id, name: p.displayName!.text!, primary_type: p.primaryType ?? null,
     distance_m: haversineM(at, { lat: p.location!.latitude, lng: p.location!.longitude }),
-    maps_url: p.googleMapsUri ?? `https://www.google.com/maps/place/?q=place_id:${p.id}`,
+    maps_url: p.googleMapsUri ?? mapsUrlFor(p.id, p.displayName!.text!),
   })).sort((a, b) => a.distance_m - b.distance_m);
 }
 

@@ -1,0 +1,25 @@
+# Local Postgres for running Offisio from a clone (no app container: run pnpm dev).
+# Credentials are for local use only. Matching .env.local:
+#   DATABASE_URL=postgres://offisio:offisio@localhost:5432/offisio
+#   DATABASE_URL_POOLED=postgres://offisio:offisio@localhost:5432/offisio
+# Then: pnpm migrate && pnpm seed && pnpm dev
+services:
+  postgres:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: offisio
+      POSTGRES_PASSWORD: offisio
+      POSTGRES_DB: offisio
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - offisio-pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U offisio -d offisio"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  offisio-pg:

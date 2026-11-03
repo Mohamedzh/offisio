@@ -5,9 +5,10 @@ import { createHash, createHmac, timingSafeEqual } from "node:crypto";
 
 const appUrl = () => (process.env.NEXT_PUBLIC_APP_URL ?? "").replace(/\/+$/, "");
 
-// Off locally: QStash cannot reach localhost, so lib/pipeline/jobs.ts runs steps in-process.
+// Vercel only: locally lib/pipeline/jobs.ts runs steps in-process, even when
+// .env.local carries the production app URL (QStash would deliver there instead).
 export function qstashEnabled(): boolean {
-  return Boolean(process.env.QSTASH_TOKEN) && /^https:\/\//.test(appUrl()) && !/localhost|127\.0\.0\.1/.test(appUrl());
+  return Boolean(process.env.VERCEL) && Boolean(process.env.QSTASH_TOKEN) && /^https:\/\//.test(appUrl()) && !/localhost|127\.0\.0\.1/.test(appUrl());
 }
 
 export const routeUrl = (path: string) => `${appUrl()}${path}`;

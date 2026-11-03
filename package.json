@@ -9,6 +9,8 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "migrate": "tsx scripts/migrate.ts",
+    "seed": "tsx scripts/seed.ts",
+    "export-snapshot": "tsx scripts/export-snapshot.ts",
     "generate-units": "tsx scripts/generate-units.ts",
     "topup-availability": "tsx scripts/topup-availability.ts",
     "check-rubric": "tsx scripts/check-rubric.ts",

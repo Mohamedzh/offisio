@@ -41,9 +41,14 @@ export async function createCheckoutSession(opts: {
     body: JSON.stringify(body),
   });
   const text = await res.text();
-  if (!res.ok) throw new Error(`XPay /checkout/sessions ${res.status}: ${text.slice(0, 400)}`);
-  const data = JSON.parse(text) as { id?: string; url?: string };
-  if (!data.url || !data.id) throw new Error("XPay session response missing id/url");
+  // Fixed codes to the client; XPay's body goes to the server log only.
+  if (!res.ok) {
+    console.error(`[xpay] /checkout/sessions ${res.status}: ${text.slice(0, 400)}`);
+    throw new Error(`XPAY_SESSION_FAILED_${res.status}`);
+  }
+  let data: { id?: string; url?: string };
+  try { data = JSON.parse(text) as { id?: string; url?: string }; } catch { throw new Error("XPAY_SESSION_BAD_RESPONSE"); }
+  if (!data.url || !data.id) throw new Error("XPAY_SESSION_BAD_RESPONSE");
   return { checkoutUrl: data.url, sessionId: data.id };
 }
 

@@ -1,0 +1,7 @@
+# Local-only files: never upload with a CLI deploy (mirrors the secret and media rules in .gitignore)
+.env*
+!.env.example
+public/demo/
+public/uploads/
+.scratch/
+.playwright-mcp/

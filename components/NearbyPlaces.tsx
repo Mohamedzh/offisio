@@ -1,11 +1,12 @@
 // Unit page "Nearby" section (plan/06 6.7 step 6): stored Google Places results
 // (name, distance, Maps link). Places attribution per Google terms.
 import { getT, type Locale } from "@/lib/i18n";
-import type { Nearby } from "@/lib/nearby";
+import { roundDistanceM, type Nearby } from "@/lib/nearby";
 
 export function formatDistance(locale: Locale, m: number): string {
   const t = getT(locale); const nf = (n: number) => n.toLocaleString(locale === "ar" ? "ar-EG" : "en-US");
-  return m < 1000 ? t("nearby.m", { n: nf(Math.round(m / 10) * 10) }) : t("nearby.km", { n: nf(Math.round(m / 100) / 10) });
+  const r = roundDistanceM(m);
+  return r < 1000 ? t("nearby.m", { n: nf(r) }) : t("nearby.km", { n: nf(r / 1000) });
 }
 
 export default function NearbyPlaces({ places, locale }: { places: Nearby[]; locale: Locale }) {
@@ -19,7 +20,7 @@ export default function NearbyPlaces({ places, locale }: { places: Nearby[]; loc
         {places.map((p) => (
           <div key={p.place_id} className="border-t border-ink pt-3">
             <div className="flex flex-wrap items-baseline justify-between gap-2">
-              <span className="font-bold" dir="auto">{p.name}</span>
+              <span className="font-bold" dir="auto">{p.name ?? t("nearby.unnamed")}</span>
               <span className="tnum text-sm text-ink/75">{formatDistance(locale, p.distance_m)}</span>
             </div>
             <a href={p.maps_url} target="_blank" rel="noopener noreferrer" className="link text-sm">{t("unit.openInMaps")}</a>
