@@ -8,7 +8,7 @@
 
 ## Demo loop
 
-1. Owner uploads a short office video (sign-in with WhatsApp required for real uploads).
+1. Owner uploads a short office video, no sign-in needed; it becomes a private draft until published with WhatsApp sign-in.
 2. The browser extracts frames; `muse-spark-1.3` surveys every space (type, size, windows, plumbing, adjacency).
 3. Deterministic code rules (not model text) decide which uses the layout suits, with reasons in Arabic and English.
 4. `muse-spark-1.3` writes specs and a bilingual listing; `muse-image-1.0` renders the room empty, then fitted out for each passing use.
@@ -19,7 +19,7 @@
 - `muse-spark-1.3` via `meta.product` (never contributor): booking agent on web chat and WhatsApp. This is the PII path (names, phones, emails, chat text).
 - `muse-spark-1.3` via `meta.nonPii`: space survey, specs and bilingual listing copy (non-PII product data).
 - `muse-image-1.0`: prompt-guided edits for empty-room and fit-out renders; text-to-image for the AI-generated demo listings (badged as such) and decorative homepage art.
-- `muse-voice-transcribe-1.0` via `meta.product.transcribe`: WhatsApp voice notes, `POST /v1/asr/transcribe` after ffmpeg converts OGG/Opus to 24 kHz mono PCM WAV.
+- `muse-voice-transcribe-1.0` via `meta.product.transcribe`: WhatsApp voice notes and the web chat mic (`POST /api/chat/voice`), `POST /v1/asr/transcribe` after ffmpeg converts the audio to 24 kHz mono PCM WAV.
 - `muse-spark-1.3-contributor`: only for public or synthetic data during development (for example a QA gate on synthetic demo units). Never PII.
 - Muse Spark Open (open-weight Meta model on our own Modal deployment): only for local, non-PII development runs; ignored whenever `VERCEL` is set, so production never uses it.
 - `sam-3.1`: not used (see Known limitations).
@@ -29,10 +29,18 @@
 - Browse: https://offisio.vercel.app/en and https://offisio.vercel.app/ar. Bookable daily unit: https://offisio.vercel.app/en/units/gen-alex-chatby. The first three units are filmed real offices; the rest are badged "Demo listing — AI-generated photos, not a filmed office".
 - Book + pay: pick a free day, enter any name, an `01...` mobile and an email, then pay with the XPay test card `5123 4500 0000 0008`, CVV `100`, any name. Expiry `01/39` approves, `05/39` declines, `01/27` insufficient funds, `04/27` expired. On the 3D Secure emulator keep "(Y) Authentication Successful" and Submit. Status flips to confirmed only when the webhook lands.
 - Chat: open Chat and write, for example, `عايز مكتب في الزمالك ليوم واحد` or `I want an office near AUC`.
+- Voice: tap the mic in web chat (up to 60 s); the transcript shows as your message, then the agent answers. Validated 2026-11-02 on a real 6-second Egyptian-Arabic WhatsApp note: transcript exact, reply correct (an available unit in the New Administrative Capital).
 - WhatsApp: message the Offisio WhatsApp number shown on the site, in text or as a voice note. Same agent and tools, plus "what are my bookings".
-- Owner sign-in: on /login (or the upload page) get a one-time code, send "Offisio login XXXX-XXXX" from WhatsApp, reply YES within 2 minutes. "Offisio logout" signs out everywhere.
+- Upload (no sign-in): on /upload add a video or tap "Try it with a sample walkthrough" (our own 20 s filmed video, real pipeline, editable pre-filled details). The result is a private draft: not listed, not bookable, invisible to the agent, editable only from your browser. "Publish with WhatsApp" signs you in and lists it; a local copy without WhatsApp offers a labelled local demo publish.
+- Owner sign-in: on /login get a one-time code, send "Offisio login XXXX-XXXX" from WhatsApp, reply YES within 2 minutes. "Offisio logout" signs out everywhere.
 - Demo listings are preview-only: anyone can try the edit form; changes show only in your own browser and never change the real listing or the agent.
 - No real money moves; test bookings are demo data.
+- curl walkthrough for agents (units, chat AR/EN, booking, voice, guest upload, publish, preview edit): section 15 of llms-full.txt.
+- AI listing review: after the listing step, a `review` step (`muse-spark-1.3` via `meta.nonPii`, `LISTING_REVIEW_PROMPT_V2`, validated JSON, cached in `ai_cache` by text) proofreads the bilingual title and description: typos, natural Egyptian Arabic, English mixed into Arabic, claims the specs don't back (wrong numbers are corrected to the spec value), Arabic/English disagreement, contact details, pushy tone. The owner sees the issues before publishing and can apply the fixes in one click; advisory only.
+
+## Run locally
+
+`pnpm install`, `docker compose up -d` (Postgres 16 on 127.0.0.1:5432, user/password/db `offisio`; any Postgres 13+ works), copy `.env.example` to `.env.local`, set `META_API_KEY` and `DATABASE_URL`, then `pnpm migrate && pnpm seed && pnpm dev`. The seed loads the 13 demo units (specs, listings, media on public Blob URLs, nearby place ids) and regenerates availability from today; a non-local database needs `pnpm seed --remote`. Everything else is optional: missing integrations return `XPAY_NOT_CONFIGURED`, `WHATSAPP_NOT_CONFIGURED` or `PLACES_NOT_CONFIGURED`, shown translated. Without a Blob token, uploads go to `public/uploads/<slug>/`.
 
 ## Key files
 
@@ -55,7 +63,7 @@
 - Filmed units: phone walkthroughs shot by the owner, stored on Vercel Blob (not in the repo).
 - All other listing photos and homepage illustrations are generated by `muse-image-1.0` and labelled.
 - Brand assets (logo, wordmark, app icons) are our own hand-drawn sources in `public/brand`, rendered by `scripts/brand-assets.ts`.
-- Nearby places come from the Google Places API (official API), with "Places from Google Maps" attribution; only the fields we display are stored (place ID, name, type, distance, Maps link).
+- Nearby places come from the Google Places API (official API), with "Places from Google Maps" attribution; only the fields we display are stored (place ID, name, type, distance, Maps link). The repo's seed snapshot holds only place ids and our distances; `pnpm seed` refetches names when `GOOGLE_PLACES_API_KEY` is set (13 calls), otherwise units show "Place nearby" with a Maps link.
 - No third-party menu data. An early demo used menu data collected from a public site; it was removed on 2026-11-02 after organizer guidance, from the app and the repo's current tree. It is still visible in the git history; the owner chose not to rewrite history so the commit record stays intact. Add-ons are the venue's own items at our demo prices.
 - All tests use synthetic renters. No secrets in the repo; keys are environment variables only (names in `.env.example`).
 
@@ -63,7 +71,7 @@
 
 - PII routing: anything with a name, phone, email, chat text or audio goes only to `muse-spark-1.3` (or `muse-voice-transcribe-1.0` for audio), never the contributor model. Enforced in `lib/meta/client.ts`.
 - Model output that feeds code is structured JSON and validated; agent tool arguments are validated in code.
-- Rate limits per hashed IP or WhatsApp sender, plus global daily caps (chat, upload, image edits, bookings); sign-in is capped per IP and per sender; 800 characters per message, 20 turns per session.
+- Rate limits per hashed IP or WhatsApp sender, plus global daily caps (chat, upload, video upload, voice, image edits, bookings); sign-in is capped per IP and per sender; 800 characters per message, 20 turns per session.
 - Audio, transcripts, phone numbers and login codes are never logged; errors log only a code.
 - Daily spend breaker (default USD 15) blocks uploads and staging; browsing, booking and payment keep working.
 - Payments in XPay test mode only. Bookings confirm only on an HMAC-verified XPay webhook; WhatsApp webhooks are verified with `X-Hub-Signature-256` and deduplicated.
@@ -75,10 +83,11 @@
 - The browser's own form validation bubble is English on /ar.
 - SAM 3.1 is not used: prompt-guided image edits passed our tests. Meta's docs show SAM callable via `/v1/responses`; we found that after choosing edits and did not test it.
 - Space sizes, uses and desk capacity are AI estimates of the layout, not a licensing check.
-- Voice-note quality on real Egyptian-Arabic notes is not yet measured beyond a few probes.
+- Voice is validated on one real Egyptian-Arabic WhatsApp note (2026-11-02, exact transcript) and, for the web mic, a synthetic text-to-speech clip; not a broad accuracy study.
 
 ## Optional
 
 - [plan/06 judge-ready](https://github.com/Mohamedzh/offisio/blob/master/docs/plan/06-judge-ready.md): guardrails, WhatsApp, sign-in, verification evidence, handoff
+- [plan/07 judge access](https://github.com/Mohamedzh/offisio/blob/master/docs/plan/07-judge-access.md): run from the repo, guest drafts, sample walkthrough, web mic
 - [scripts/chat-acceptance.ts](https://github.com/Mohamedzh/offisio/blob/master/scripts/chat-acceptance.ts): 13 scripted booking conversations against the real agent
 - [Commit history](https://github.com/Mohamedzh/offisio/commits/master): the record of work, Oct 26 - Nov 4, 2026

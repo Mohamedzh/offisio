@@ -48,6 +48,9 @@ In scope: the demo loop (upload → specs → listing → removal/restaging → 
 - payments in **XPay test mode only** (booking confirms on a signed webhook);
 - owner sign-in with **WhatsApp** (built 2026-11-02, replaces the Clerk plan): one-time code + YES confirmation, signed 24 h session, "Offisio logout" signs out everywhere; renters stay guests ([06](docs/plan/06-judge-ready.md) 6.9);
 - WhatsApp **voice notes** (built 2026-11-02): OGG/Opus converted to WAV with `ffmpeg-static` (Meta's documented command), transcribed by `muse-voice-transcribe-1.0` on `meta.product`, then the same text path;
+- a **web chat mic** (built 2026-11-02, [07](docs/plan/07-judge-access.md) 7.3): browser recording -> `POST /api/chat/voice` -> ffmpeg -> `muse-voice-transcribe-1.0` on `meta.product` -> the same agent turn as typed chat; limits before any paid call;
+- **guest uploads** (built 2026-11-02, [07](docs/plan/07-judge-access.md) 7.2): upload without sign-in creates a private draft (`units.guest_owner`, signed `offisio_guest` cookie): not listed, not bookable, invisible to the agent. Publishing needs WhatsApp sign-in (local mock publish only when WhatsApp is not configured and not on Vercel). Renters stay guests;
+- **run from the repo** ([07](docs/plan/07-judge-access.md) 7.1): `docker-compose.yml` Postgres, `pnpm seed` demo snapshot, local media in `public/uploads/` without a Blob token;
 - seeded demo listings are **preview-only**: visitor edits show only in their own browser (cookie), real data never changes;
 - a **required** per-unit location (`units.lat/lng`) and "near X" search for the agent (planned, 6.7);
 - nearby cafes/restaurants per unit via the **Google Places API** (name, distance and Maps link only; the renter orders from the place directly); long post-upload steps chained with **QStash** (planned, 6.7, owner decision 2026-10-31);

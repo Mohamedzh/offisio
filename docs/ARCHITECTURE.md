@@ -5,13 +5,15 @@
 >
 > Relocated from the repo root into `docs/` on Oct 26 to match the path `AGENTS.md` already referenced. Content unchanged except this note, the project name, and §9 (Neon chosen as the Postgres provider).
 >
-> **As built (updated 2026-10-30, doc unify in [plan/06](plan/06-judge-ready.md) 6.1).** Where this sketch and the build differ, the build wins:
+> **As built (updated 2026-10-30, doc unify in [plan/06](plan/06-judge-ready.md) 6.1; plan/07 additions 2026-11-03).** Where this sketch and the build differ, the build wins:
 > - **No segmentation step.** SAM 3.1 was dropped on 2026-10-27 (no callable endpoint), and staging is prompt-guided `muse-image-1.0` edits ([plan/01](plan/01-capability-tests.md)).
 > - **The source video is stored on Vercel Blob** for playback. The browser extracts keyframes and uploads them directly to Blob, which avoids the 4.5 MB function body limit; only frames reach the model.
 > - **Payments are in scope in XPay test mode.** Owner sign-in (WhatsApp code + YES, built 2026-11-02; Clerk dropped) and a per-unit location pin are in, see plan/06.
 > - **The booking agent uses native tool calling** (since 2026-10-30, `AGENT_PROMPT_V2` onward, now V8) in [lib/agent/agent.ts](../lib/agent/agent.ts). Tools: `search_units`, `get_unit`, `nearby_places`, `check_availability`, `create_booking`, plus `my_bookings` on WhatsApp only. Tool arguments are validated in code.
 > - **Staging is rubric-driven** (`STAGE_PROMPTS_V3`, [RUBRIC.md](RUBRIC.md)): one fit-out render per passing use and room role, not three fixed styles; semifinished shells are rendered finished.
-> - **Channels:** web chat and WhatsApp (text and voice notes, `muse-voice-transcribe-1.0`).
+> - **Channels:** web chat (text and a mic button, `POST /api/chat/voice`) and WhatsApp (text and voice notes). Both voice paths run ffmpeg to WAV, then `muse-voice-transcribe-1.0` on `meta.product`, then the same agent turn. Built and validated 2026-11-02 ([plan/07](plan/07-judge-access.md)).
+> - **Guest drafts** ([plan/07](plan/07-judge-access.md) 7.2): upload needs no sign-in. A signed `offisio_guest` cookie (random id, 7 days) sets `units.guest_owner`; with `owner_wa_id` null the unit is a draft: not listed, not bookable, invisible to the agent, `noindex`, editable only from that browser. `POST /api/units/[slug]/publish` moves it to the signed-in WhatsApp owner. Local mock publish (no `WHATSAPP_TOKEN`, never on Vercel) sets the `local-demo` sentinel owner.
+> - **Run from the repo** ([plan/07](plan/07-judge-access.md) 7.1): `docker-compose.yml` (Postgres 16), `pnpm seed` from `data/seed/demo-snapshot.json` (13 demo units; nearby places as ids only). Local media mode: with no `BLOB_READ_WRITE_TOKEN` and not on Vercel, the browser PUTs to `/api/blob/local` and files land in gitignored `public/uploads/<slug>/`. Missing integrations return fixed `*_NOT_CONFIGURED` codes.
 > - **Default locale is English**, with a full Arabic RTL variant.
 
 ## 1. Product in one line
@@ -24,7 +26,7 @@ Offisio — turn any office into a bookable, furnished-looking listing from a 30
 2. **Understand.** The system extracts keyframes ~~, segments the room,~~ (segmentation dropped, see note) and produces structured specs (approx. area, windows, AC, desk capacity, condition).
 3. **List.** A bilingual (Arabic / English) listing page is generated from the specs.
 4. **Restage.** Furniture is removed and the room is restaged in a few styles (startup office, clinic, training room), keeping walls and windows consistent.
-5. **Book.** A renter chats in Egyptian Arabic (stretch: voice note); an agent searches units, checks availability, books a slot, and confirms.
+5. **Book.** A renter chats in Egyptian Arabic (or sends a voice note / uses the web mic, built 2026-11-02); an agent searches units, checks availability, books a slot, and confirms.
 
 Everything outside this loop is out of scope (~~payments, real auth~~ — now XPay test-mode payments and WhatsApp owner sign-in, see note; reviews, map search, host analytics, mobile apps).
 
@@ -46,8 +48,8 @@ Everything outside this loop is out of scope (~~payments, real auth~~ — now XP
  Listing page  ◄── Postgres (units, specs, media, styles, availability, bookings)
 
  Renter chat ──────────────────────────►   Booking agent (tool loop) ─────────────────────────►  Muse Spark 1.3
- (web chat + WhatsApp                        tools: search_units, get_unit, nearby_places,        (tool calls)
-  text / voice notes) ───────────────────►   check_availability, create_booking, my_bookings ───►  Muse Voice Transcribe
+ (web chat text / mic,                       tools: search_units, get_unit, nearby_places,        (tool calls)
+  WhatsApp text / voice notes) ──────────►   check_availability, create_booking, my_bookings ───►  Muse Voice Transcribe
 ```
 
 ## 4. Components
@@ -61,17 +63,18 @@ Everything outside this loop is out of scope (~~payments, real auth~~ — now XP
 | Listing generator | Specs → Arabic + English title, summary, highlights | Muse Spark 1.3 |
 | Staging | Remove furniture, then restage per style, consistent across styles | Muse Image 1.0 (edits) |
 | Booking agent | Multi-turn chat in Egyptian Arabic with tool calls against the DB | Muse Spark 1.3 |
-| Voice (stretch) | Voice note → text before it reaches the agent | Muse Voice Transcribe |
+| Voice (built 2026-11-02) | WhatsApp voice note or web mic recording → ffmpeg WAV → text before it reaches the agent (`lib/audio.ts`, `lib/web-chat.ts`) | Muse Voice Transcribe |
+| Listing review (built 2026-11-03) | Proofread the generated listing before publish: typos, Egyptian Arabic, language mix, unsupported claims, contact info; one-click fixes, advisory | Muse Spark (`meta.nonPii`) |
 | Listing UI | Unit page, before/after slider, style switcher, specs card | — |
 
 ## 5. Data model (sketch)
 
-- **Unit**: id, title_ar, title_en, location, price, status (processing / ready / failed)
+- **Unit**: id, title_ar, title_en, location, price, status (processing / ready / failed), owner_wa_id, guest_owner (as built: a draft while guest_owner is set and owner_wa_id is null)
 - **Media**: unit_id, kind (video / keyframe / mask / staged), style, url, source_frame
 - **Specs**: unit_id, JSON (area_m2_estimate, windows, ac, desk_capacity, condition, confidence)
 - **Style**: id, name, prompt (startup office, clinic, training room, empty)
 - **Availability**: unit_id, date, slots
-- **Booking**: unit_id, renter_name, phone, email, date, slot, created_via (`chat` = web chat and web form, `whatsapp`; voice notes arrive on WhatsApp and are stored as `whatsapp`)
+- **Booking**: unit_id, renter_name, phone, email, date, slot, created_via (`chat` = web chat, web mic and web form, `whatsapp`; voice notes arrive on WhatsApp and are stored as `whatsapp`)
 - **ChatSession**: id, messages, tool_calls (kept for the demo and debugging)
 
 ## 6. Key design decisions
@@ -92,7 +95,7 @@ Everything outside this loop is out of scope (~~payments, real auth~~ — now XP
 | SAM 3.1 video API returns tracked masks for text prompts | One 30 s clip with "desk", "chair", "window" | Run SAM on keyframes as images |
 | Muse Spark returns reliable specs JSON from keyframes | 3 units, compare with reality | Fewer fields, show confidence |
 | Agent handles Egyptian Arabic and tool calls well | 10 scripted renter conversations | Narrower tool set, stronger system prompt |
-| Voice Transcribe handles Egyptian Arabic | 5 real voice notes | Drop voice; text chat only |
+| Voice Transcribe handles Egyptian Arabic | 5 real voice notes | Drop voice; text chat only. **Outcome: validated 2026-11-02** on a real 6 s Egyptian-Arabic WhatsApp note (exact transcript, correct unit, prompt reply); web mic checked with a synthetic TTS clip |
 
 ## 8. Repository layout (proposed)
 
@@ -112,7 +115,7 @@ AGENTS.md            instructions for coding agents
 
 ## 9. Stack
 
-Next.js (App Router, TypeScript), Postgres on Neon, Vercel, Vercel Blob. Keyframes extracted in the browser with `<video>` + canvas and uploaded straight to Blob (client uploads); the source video is stored on Blob too. ~~SAM clips uploaded once through the Files API~~ (SAM dropped). Payments: XPay hosted checkout (test mode), signed webhook. Owner auth: WhatsApp sign-in (`lib/login.ts`, `lib/owner.ts`): one-time code + YES from the same number, HMAC-signed 24 h cookie carrying a per-number epoch (`owner_epochs`) so "Offisio logout" ends every session; uploads need sign-in and set `units.owner_wa_id`; edits write only for the owner, everyone else gets the cookie preview (`lib/demo-units.ts`).
+Next.js (App Router, TypeScript), Postgres on Neon, Vercel, Vercel Blob. Keyframes extracted in the browser with `<video>` + canvas and uploaded straight to Blob (client uploads); the source video is stored on Blob too. ~~SAM clips uploaded once through the Files API~~ (SAM dropped). Payments: XPay hosted checkout (test mode), signed webhook. Owner auth: WhatsApp sign-in (`lib/login.ts`, `lib/owner.ts`): one-time code + YES from the same number, HMAC-signed 24 h cookie carrying a per-number epoch (`owner_epochs`) so "Offisio logout" ends every session; a signed-in upload sets `units.owner_wa_id`, a guest upload sets `units.guest_owner` (draft) and publishing it needs sign-in; edits write only for the owner (or the draft's uploading browser), everyone else gets the cookie preview (`lib/demo-units.ts`). New routes in plan/07: `POST /api/chat/voice`, `POST /api/units/[slug]/publish`, `PUT /api/blob/local` (local media mode only).
 
 ## 10. Milestones (original; the live schedule is in [plan/06](plan/06-judge-ready.md))
 

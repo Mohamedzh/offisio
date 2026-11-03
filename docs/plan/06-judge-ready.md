@@ -22,7 +22,7 @@ Supersedes [05-demo-polish.md](05-demo-polish.md) "Final consolidated plan" step
   - **O5:** tool loop, if the one-call tool-calling test passes.
   - **O6:** QStash order status and Overpass nearby cafes are **parked**. They may be re-planned after the hardening work.
   - **O7:** README credits development as about 50/50 Muse models and Claude, without underselling the Muse side.
-  - **O8:** voice stays a stretch goal, go/no-go at the end of Nov 1.
+  - **O8:** voice stays a stretch goal, go/no-go at the end of Nov 1. **Closed 2026-11-02:** built (WhatsApp voice notes here, web mic in [07](07-judge-access.md) 7.3) and validated on a real Egyptian-Arabic WhatsApp note (exact transcript, correct reply).
 - **Space rubric (owner, 2026-10-30), detailed in 6.4:**
   - Uses in v1: private/startup office, open-plan/coworking, meeting/training room, general clinic, dental clinic, accounting/law office.
   - General clinic: exam room + **separate** waiting room + bathroom.
@@ -345,7 +345,7 @@ Done this session (each part reviewed by a separate agent, fixes applied):
 Next session:
 1. Owner: commit (suggested split: review fixes / demo preview / voice notes, with the dependency reason "Meta ASR accepts only 16/24 kHz mono PCM WAV; WhatsApp sends OGG/Opus" / bookings list V7 / owner sign-in / docs); set `OWNER_SESSION_SECRET` and check `GUARD_SALT` in Vercel **Production and Preview**; deploy through a Vercel remote build (not from Windows: the Linux ffmpeg binary must be installed there).
 2. Production check: build log shows the ffmpeg-static install ran; one ~3 s voice note gives `[meta] /asr/transcribe 200`; sign in from a real phone (code, YES, signed in; then "Offisio logout"); "what are my bookings"; unit page Nearby (EN + AR); booking-page WhatsApp button.
-3. Egyptian-Arabic voice quality: the owner records 2–3 notes, then `pnpm tsx scripts/test-transcribe.ts <file>`.
+3. Egyptian-Arabic voice quality: the owner records 2–3 notes, then `pnpm tsx scripts/test-transcribe.ts <file>`. **Done 2026-11-02** on a real WhatsApp note (exact transcript, correct reply); see [07](07-judge-access.md) 7.3.
 4. **Done 2026-11-02:** organizers advised using only data we have rights to, so the third-party menu data is removed (files, scripts, table, UI, agent); Places names and venue add-ons kept, plus house coffee & snacks at our own demo prices.
 5. 6.10 ship: README pass, cold run AR + EN, 3-minute video on Nov 3 (depth story: survey -> rubric -> "Suitable for" -> staging; no SAM beat), submit Nov 4, 9 pm ET.
 
