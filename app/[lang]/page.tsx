@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { connection } from "next/server";
 import { listUnits } from "@/lib/db/store";
-import { formatEgp, getT, localeHref } from "@/lib/i18n";
+import { districtLabel, floorLabel, formatEgp, getT, localeHref } from "@/lib/i18n";
 import { localeFromParam } from "@/lib/i18n/server";
 import LangToggle from "@/components/LangToggle";
 import Logo from "@/components/Logo";
@@ -30,7 +30,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
     const parts: string[] = [];
     if (typeof s.area_m2_estimate === "number") parts.push(`~${s.area_m2_estimate} m²`);
     if (typeof s.desk_capacity === "number") parts.push(t("home.desks", { count: s.desk_capacity }));
-    if (u.floor_text) parts.push(`${t("unit.floors")} ${u.floor_text}`);
+    if (u.floor_text) parts.push(floorLabel(locale, u.floor_text));
     return parts.join(" · ");
   };
   const steps: [string, string][] = [
@@ -61,6 +61,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             <Link href={localeHref("/chat", locale)} className="link">{t("nav.chatToBook")}</Link>
           </div>
           {waHref && <p className="mt-4 text-sm text-ink/85">{t("home.waPrompt")} <a href={waHref} target="_blank" rel="noopener noreferrer" className="link font-bold">{t("home.waLink")}<span className="sr-only"> {t("wa.newTab")}</span></a></p>}
+          {waHref && <p className="mt-1 text-sm text-ink/85">{t("voice.homeHint")}</p>}
         </div>
         <figure className="md:col-span-7 rotate-[-0.7deg]">
           <div className="relative aspect-3/2 overflow-hidden border border-ink bg-sheet ink-offset">
@@ -105,7 +106,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             <div className="p-5 flex flex-wrap items-start justify-between gap-3">
               <div>
                 <h3 className="font-display text-2xl sm:text-3xl font-black tracking-[-0.02em] leading-snug">{locale === "en" ? featured.title_en : featured.title_ar}</h3>
-                <p className="text-sm text-ink/75 mt-1">{featured.district}</p>
+                <p className="text-sm text-ink/75 mt-1">{districtLabel(locale, featured.district)}</p>
                 {specLine(featured) && <p className="tnum text-sm font-bold mt-1">{specLine(featured)}</p>}
                 <p className="text-xs mt-2 flex gap-1 flex-wrap"><span className={chip}>{featured.kind === "furnished" ? t("unit.furnished") : t("unit.semifinished")}</span>{featured.rent_periods.map((r) => <span key={r} className={chip}>{t(`track.${r}` as "track.daily")}</span>)}{featured.synthetic && <span className="bg-mustard text-ink border border-ink text-[11px] font-bold px-2 py-0.5">{t("unit.synthetic")}</span>}</p>
               </div>
@@ -122,7 +123,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
               <div className="flex flex-1 flex-col p-4">
                 <h3 className="font-display font-extrabold text-lg leading-snug tracking-[-0.02em]">{locale === "en" ? u.title_en : u.title_ar}</h3>
                 <p className="tnum mt-2 inline-block bg-brick text-white px-2 py-1 text-sm font-bold">{formatEgp(locale, u.rent_egp)}{t("unit.perMonth")}{u.daily_egp ? ` · ${formatEgp(locale, u.daily_egp)}${t("unit.perDay")}` : ""}</p>
-                <p className="text-sm text-ink/75 mt-2">{u.district}</p>
+                <p className="text-sm text-ink/75 mt-2">{districtLabel(locale, u.district)}</p>
                 {specLine(u) && <p className="tnum text-sm font-bold mt-1">{specLine(u)}</p>}
                 <p className="text-xs mt-auto pt-3 flex gap-1 flex-wrap"><span className={chip}>{u.kind === "furnished" ? t("unit.furnished") : t("unit.semifinished")}</span>{u.rent_periods.map((r) => <span key={r} className={chip}>{t(`track.${r}` as "track.daily")}</span>)}{u.synthetic && <span className="bg-mustard text-ink border border-ink text-[11px] font-bold px-2 py-0.5">{t("unit.synthetic")}</span>}</p>
               </div>

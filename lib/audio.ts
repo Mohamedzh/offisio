@@ -3,6 +3,10 @@
 // are converted with ffmpeg first. Audio bytes and ffmpeg stderr are PII-adjacent:
 // never log them, only fixed error codes.
 import { spawn } from "node:child_process";
+import { randomUUID } from "node:crypto";
+import { rm, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import ffmpegPath from "ffmpeg-static";
 
 export const WAV_RATES = [16000, 24000] as const;
@@ -50,17 +54,25 @@ function fixWavSizes(wav: Uint8Array): Uint8Array {
 // out: its moov atom is often at the end, which needs a seekable input. Voice
 // notes are OGG/Opus anyway.
 export const WHATSAPP_AUDIO_MIMES = ["audio/ogg", "audio/opus", "audio/mpeg", "audio/aac", "audio/amr", "audio/wav"];
+// Browser MediaRecorder output: Chrome/Edge webm+opus, Firefox ogg+opus, Safari mp4 (AAC).
+export const WEB_AUDIO_MIMES = ["audio/webm", "audio/ogg", "audio/opus", "audio/mp4", "audio/x-m4a", "audio/aac", "audio/mpeg", "audio/wav", "audio/x-wav"];
+// MP4 may keep its moov atom at the end, so ffmpeg reads it from a temp file, not a pipe.
+const SEEKABLE_MIMES = ["audio/mp4", "audio/x-m4a"];
 // Meta's documented conversion (dev.meta.ai/docs/speech-to-text): mono, 24 kHz, 16-bit PCM WAV.
 // +bitexact keeps ffmpeg from writing a LIST (encoder) chunk, so data starts at offset 36.
-const FFMPEG_ARGS = ["-hide_banner", "-loglevel", "error", "-i", "pipe:0", "-ac", "1", "-ar", "24000", "-c:a", "pcm_s16le", "-map_metadata", "-1", "-fflags", "+bitexact", "-flags:a", "+bitexact", "-f", "wav", "pipe:1"];
+// Input hardening: no stdin interaction, only local file/pipe protocols (no URLs,
+// concat or playlists), and only the demuxers for the audio types we accept.
+const INPUT_FORMATS = "mov,mp4,m4a,matroska,webm,ogg,mp3,aac,wav,amr,amrnb,amrwb";
+const ffmpegArgs = (input: string) => ["-hide_banner", "-loglevel", "error", "-nostdin", "-protocol_whitelist", "file,pipe", "-format_whitelist", INPUT_FORMATS, "-i", input,"-ac", "1", "-ar", "24000", "-c:a", "pcm_s16le", "-map_metadata", "-1", "-fflags", "+bitexact", "-flags:a", "+bitexact", "-f", "wav", "pipe:1"];
 const FFMPEG_TIMEOUT_MS = 10_000; // inputs are <= 1 MB; keeps the voice turn inside maxDuration
 const MAX_WAV_BYTES = 8 * 1024 * 1024; // inputs are capped at 1 MB, so real output is far smaller
 
-// Any routed WhatsApp audio (OGG/Opus voice notes, mp3, aac, amr) -> supported WAV.
-export function audioToWav(bytes: Uint8Array): Promise<Uint8Array> {
+// Any routed audio (OGG/Opus voice notes, webm, mp3, aac, amr) -> supported WAV.
+// inputPath: read from that file instead of stdin (for formats that need seeking).
+export function audioToWav(bytes: Uint8Array, inputPath?: string): Promise<Uint8Array> {
   return new Promise((resolve, reject) => {
     if (!ffmpegPath) return reject(new Error("FFMPEG_MISSING"));
-    const p = spawn(ffmpegPath, FFMPEG_ARGS, { stdio: ["pipe", "pipe", "ignore"], windowsHide: true });
+    const p = spawn(ffmpegPath, ffmpegArgs(inputPath ?? "pipe:0"), { stdio: ["pipe", "pipe", "ignore"], windowsHide: true });
     const chunks: Buffer[] = [];
     let size = 0;
     let failed: string | null = null;
@@ -80,14 +92,41 @@ export function audioToWav(bytes: Uint8Array): Promise<Uint8Array> {
       resolve(wav);
     });
     p.stdin.on("error", () => {}); // EPIPE when ffmpeg exits early; the exit code reports it
-    p.stdin.end(bytes);
+    p.stdin.end(inputPath ? undefined : bytes);
   });
 }
 
-// WhatsApp media -> WAV bytes for transcription.
-export async function toTranscribableWav(bytes: Uint8Array, mimeType: string): Promise<Uint8Array> {
+// Seekable input: write to a private temp file (never logged), convert, always delete.
+async function fileToWav(bytes: Uint8Array): Promise<Uint8Array> {
+  const path = join(tmpdir(), `offisio-voice-${randomUUID()}`);
+  try {
+    await writeFile(path, bytes, { mode: 0o600 });
+    return await audioToWav(bytes, path);
+  } finally {
+    await rm(path, { force: true }).catch(() => {});
+  }
+}
+
+// Duration of a PCM WAV from its fmt + data chunks (0 when unreadable).
+export function wavDurationMs(wav: Uint8Array): number {
+  if (wav.byteLength < 44) return 0;
+  const v = new DataView(wav.buffer, wav.byteOffset, wav.byteLength);
+  const byteRate = v.getUint32(28, true);
+  if (!byteRate) return 0;
+  for (let at = 12; at + 8 <= wav.byteLength;) {
+    const id = String.fromCharCode(wav[at], wav[at + 1], wav[at + 2], wav[at + 3]);
+    const size = v.getUint32(at + 4, true);
+    if (id === "data") return Math.round(Math.min(size, wav.byteLength - at - 8) / byteRate * 1000);
+    at += 8 + size + (size % 2);
+  }
+  return 0;
+}
+
+// WhatsApp or browser audio -> WAV bytes for transcription. MIME parameters
+// (";codecs=opus") are ignored; `allowed` is the caller's accepted base types.
+export async function toTranscribableWav(bytes: Uint8Array, mimeType: string, allowed: readonly string[] = WHATSAPP_AUDIO_MIMES): Promise<Uint8Array> {
   if (isSupportedWav(bytes)) return bytes;
   const base = mimeType.split(";")[0].trim().toLowerCase();
-  if (!WHATSAPP_AUDIO_MIMES.includes(base)) throw new Error("AUDIO_FORMAT_UNSUPPORTED");
-  return audioToWav(bytes);
+  if (!allowed.includes(base)) throw new Error("AUDIO_FORMAT_UNSUPPORTED");
+  return SEEKABLE_MIMES.includes(base) ? fileToWav(bytes) : audioToWav(bytes);
 }
