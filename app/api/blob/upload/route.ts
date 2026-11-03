@@ -2,8 +2,9 @@
 // Only issues client tokens; files never pass through this route.
 import { handleUpload, type HandleUploadBody } from "@vercel/blob/client";
 import { unitId } from "@/lib/db/store";
-import { CAPS, deny, limit } from "@/lib/guard";
-import { currentOwner } from "@/lib/owner";
+import { CAPS, deny, limit, spendBlocked } from "@/lib/guard";
+import { currentOwner, issueGuest } from "@/lib/owner";
+import { UPLOAD_PATH_RE } from "@/lib/upload-names";
 
 const IMAGE_TYPES = ["image/jpeg"];
 const VIDEO_TYPES = ["video/mp4", "video/quicktime", "video/webm"];
@@ -15,22 +16,26 @@ export async function POST(request: Request): Promise<Response> {
   const body = (await request.json()) as HandleUploadBody;
   // Rate-limit every token/URL request; only Vercel's upload-completed callback is exempt.
   if (body.type !== "blob.upload-completed") {
-    // Upload tokens for signed-in owners only (WhatsApp sign-in).
-    if (!(await currentOwner())) return deny("SIGN_IN_REQUIRED", 401);
+    // Signed-in owners, or guests (the upload becomes a private draft; lib/owner).
+    if (await spendBlocked()) return deny("DEMO_QUOTA");
     const allowed = await limit("blob_token", request);
     if (!allowed.ok) return deny(allowed.code);
+    // Video tokens (up to 80 MB each) have their own tight bucket.
+    const pathname = body.type === "blob.generate-client-token" ? String(body.payload?.pathname ?? "").toLowerCase() : "";
+    if (VIDEO_EXTS.some((e) => pathname.endsWith(e))) {
+      const video = await limit("blob_video", request);
+      if (!video.ok) return deny(video.code);
+    }
+    if (!(await currentOwner())) await issueGuest();
   }
   try {
     const jsonResponse = await handleUpload({
       body,
       request,
       onBeforeGenerateToken: async (pathname) => {
-        // uploads/<slug>/<file> only — slug is client-generated, no traversal.
-        if (!/^uploads\/[A-Za-z0-9_-]{1,64}\/[^/]+$/.test(pathname))
-          throw new Error("invalid pathname");
-        const isVideo = VIDEO_EXTS.some((e) => pathname.toLowerCase().endsWith(e));
-        if (!isVideo && !pathname.toLowerCase().endsWith(".jpg"))
-          throw new Error("only .jpg frames or video files are allowed");
+        // uploads/<slug>/(frame-<i>.jpg|source.<ext>) only (lib/upload-names) — slug is client-generated, no traversal.
+        if (!UPLOAD_PATH_RE.test(pathname)) throw new Error("invalid pathname");
+        const isVideo = VIDEO_EXTS.some((e) => pathname.endsWith(e));
         // Existing units (seeded, generated, or already uploaded) are never writable from here.
         if (await unitId(pathname.split("/")[1])) throw new Error("slug already exists");
         return {

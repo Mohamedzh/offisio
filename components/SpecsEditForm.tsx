@@ -46,7 +46,12 @@ export default function SpecsEditForm({ slug, specs, locale, demo = false }: { s
   async function save() {
     setMsg("");
     const { specs: changed, invalid } = changes();
-    if (invalid) { invalid.reportValidity(); setMsg(errorText(t, "SPECS_INVALID")); return; }
+    if (invalid) {
+      // Our own message: the browser's bubble follows the browser language, not the page.
+      invalid.setCustomValidity(invalid.validity.stepMismatch ? t("form.wholeNumber") : t("form.range", { min: invalid.min, max: invalid.max }));
+      invalid.addEventListener("input", () => invalid.setCustomValidity(""), { once: true });
+      invalid.reportValidity(); setMsg(errorText(t, "SPECS_INVALID")); return;
+    }
     if (!Object.keys(changed).length) { setMsg(t("edit.nothingToSave")); return; }
     setBusy(true);
     try {

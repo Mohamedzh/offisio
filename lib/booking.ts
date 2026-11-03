@@ -30,7 +30,8 @@ async function insertBooking(input: CreateBookingInput & { renter_phone: string 
   if (input.date < todayCairo()) throw new Error("DATE_IN_PAST");
   await releaseStaleHolds();
   const unit = await getUnit(input.unit_slug);
-  if (!unit) throw new Error("UNIT_NOT_FOUND");
+  // Guest drafts are private until published: never bookable.
+  if (!unit || unit.draft) throw new Error("UNIT_NOT_FOUND");
   const track: RentPeriod = input.track ?? unit.rent_periods[0];
   if (!unit.rent_periods.includes(track)) throw new Error("TRACK_NOT_AVAILABLE");
   const uId = await unitId(unit.slug);

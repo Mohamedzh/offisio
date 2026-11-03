@@ -74,11 +74,14 @@ export function validateListing(raw: unknown): Listing {
 
 const parseJson = (t: string): unknown => JSON.parse(t.replace(/^```json\s*|\s*```$/g, "").trim());
 
-type Msg = { role: string; content: unknown };
+export type Msg = { role: string; content: unknown };
+
+// Thrown when the reply fails parse/validation twice (network/HTTP errors pass through).
+export class JsonValidationError extends Error {}
 
 // One validation-feedback retry: parse/validate failures are fed back to
-// the model once; a second failure throws.
-async function chatJson<T>(messages: Msg[], validate: (raw: unknown) => T): Promise<T> {
+// the model once; a second failure throws JsonValidationError.
+export async function chatJson<T>(messages: Msg[], validate: (raw: unknown) => T): Promise<T> {
   let err = "";
   for (let i = 0; i < 2; i++) {
     const r = (await meta.nonPii.chat({
@@ -91,7 +94,7 @@ async function chatJson<T>(messages: Msg[], validate: (raw: unknown) => T): Prom
       return validate(parseJson(content));
     } catch (e) { err = (e as Error).message; }
   }
-  throw new Error("JSON validation failed twice: " + err);
+  throw new JsonValidationError("JSON validation failed twice: " + err);
 }
 
 export async function generateSpecs(frameDataUrls: string[], owner: UploadOwner): Promise<Specs> {

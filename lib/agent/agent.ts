@@ -10,7 +10,7 @@ import { phoneFromWaId } from "../whatsapp";
 import { createBooking } from "../booking";
 import { bookingBrief, refLabel, replyLang, selectMyBookings, type Lang, type UnitTitles } from "../booking-labels";
 import { HOUSE_ADDONS, VENUE_ADDONS, type AddonCatalogItem } from "../addons/catalog";
-import { nearbyOf } from "../nearby";
+import { nearbyOf, roundDistanceM } from "../nearby";
 import { haversineM } from "../places";
 import { findLandmark, LANDMARKS } from "../landmarks";
 import { USES, type UseVerdict } from "../pipeline/rubric";
@@ -78,6 +78,11 @@ const km = (m: number) => Math.round(m / 100) / 10;
 const addonBrief = (list: AddonCatalogItem[]) => list.map((x) => ({ id: x.id, en: x.name_en, ar: x.name_ar, egp: x.price_egp }));
 const str = (v: unknown, max = 80) => (typeof v === "string" && v.trim() && v.length <= max ? v.trim() : null);
 
+// Guest drafts (not published) are invisible to the agent: same as not found.
+async function listedUnit(slug: string): Promise<Unit | null> {
+  const u = await getUnit(slug);
+  return u && !u.draft ? u : null;
+}
 async function runTool(name: string, rawArgs: string, ctx: Ctx): Promise<unknown> {
   let a: Record<string, unknown>;
   try { a = JSON.parse(rawArgs || "{}"); } catch { return { error: "arguments must be JSON" }; }
@@ -103,7 +108,7 @@ async function runTool(name: string, rawArgs: string, ctx: Ctx): Promise<unknown
       ...(otherTrack.length ? { matching_other_tracks: otherTrack } : {}) };
   }
   if (name === "get_unit") {
-    const u = str(a.slug) ? await getUnit(a.slug as string) : null;
+    const u = str(a.slug) ? await listedUnit(a.slug as string) : null;
     if (!u) return { error: "unit not found" };
     addCards(ctx, [u]);
     return { ...brief(u), summary_en: u.summary_en, summary_ar: u.summary_ar, highlights_en: u.highlights_en,
@@ -112,11 +117,11 @@ async function runTool(name: string, rawArgs: string, ctx: Ctx): Promise<unknown
       next_free_days: u.rent_periods.includes("daily") ? await freeDays(u.slug, 10) : "long-term/monthly: starts from available_from" };
   }
   if (name === "nearby_places") {
-    const u = str(a.slug) ? await getUnit(a.slug as string) : null;
+    const u = str(a.slug) ? await listedUnit(a.slug as string) : null;
     const id = u ? await unitId(u.slug) : null;
     if (!u || !id) return { error: "unit not found" };
     const daily = u.rent_periods.includes("daily") && !!u.daily_egp;
-    const places = (await nearbyOf(id)).map((p) => ({ name: p.name, distance_m: p.distance_m, maps_url: p.maps_url }));
+    const places = (await nearbyOf(id)).map((p) => ({ name: p.name ?? "unnamed place (name on the Maps link)", distance_m: roundDistanceM(p.distance_m), maps_url: p.maps_url }));
     return { places, places_note: "info only: the renter orders from these places directly; places from Google Maps",
       ...(daily ? { house_addons: addonBrief(HOUSE_ADDONS) } : { house_addons_note: "this unit is not day-bookable, so no coffee or snack add-ons" }),
       venue_addons: addonBrief(VENUE_ADDONS) };
@@ -125,7 +130,7 @@ async function runTool(name: string, rawArgs: string, ctx: Ctx): Promise<unknown
     const slug = str(a.slug); const date = str(a.date, 10);
     if (!slug || !date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) return { error: "slug and date YYYY-MM-DD required" };
     if (date < todayCairo()) return { error: "date is in the past", today: todayCairo() };
-    const u = await getUnit(slug); if (!u) return { error: "unit not found" };
+    const u = await listedUnit(slug); if (!u) return { error: "unit not found" };
     if (!u.rent_periods.includes("daily")) return { daily_bookable: false, reason: "semifinished units are long-term only" };
     const day = (await availabilityByDay(slug)).find((d) => d.date === date);
     return { date, free: day?.day_free ?? false, daily_egp: u.daily_egp, next_free_days: await freeDays(slug, 5) };

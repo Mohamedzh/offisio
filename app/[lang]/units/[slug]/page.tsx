@@ -11,11 +11,13 @@ import type { Survey } from "@/lib/pipeline/survey";
 import BookingForm from "@/components/BookingForm";
 import SpecsPreviewBar from "@/components/SpecsPreviewBar";
 import { isDemoUnit, readSpecsPreview } from "@/lib/demo-units";
-import { editMode } from "@/lib/owner";
+import { currentOwner, draftPublishMode, editMode } from "@/lib/owner";
+import DraftBanner, { PublishedNotice } from "@/components/DraftBanner";
+import ListingReview from "@/components/ListingReview";
 import { enumLabel } from "@/lib/specs-edit";
 import LangToggle from "@/components/LangToggle";
 import WhatsAppButton, { renterWaUrl } from "@/components/WhatsAppButton";
-import { formatEgp, getT, localeHref, type TranslationKey } from "@/lib/i18n";
+import { districtLabel, floorLabel, formatEgp, getT, localeHref, type TranslationKey } from "@/lib/i18n";
 import type { UseVerdict } from "@/lib/pipeline/rubric";
 import { localeFromParam } from "@/lib/i18n/server";
 import { mapsUrl } from "@/lib/geo";
@@ -36,13 +38,14 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/units/[slu
   const summary = locale === "en" ? unit.summary_en : unit.summary_ar;
   return pageMetadata(locale, {
     title,
-    description: clip(t("meta.unitDescription", { district: unit.district, rent: formatEgp(locale, unit.rent_egp), summary })),
+    description: clip(t("meta.unitDescription", { district: districtLabel(locale, unit.district), rent: formatEgp(locale, unit.rent_egp), summary })),
     path: `/units/${slug}`,
     image: unit.images.real ? { url: unit.images.real, alt: t("meta.unitPhotoAlt", { title }) } : undefined,
+    noindex: unit.draft, // guest drafts: direct link only
   });
 }
 
-export default async function UnitPage({ params }: PageProps<"/[lang]/units/[slug]">) {
+export default async function UnitPage({ params, searchParams }: PageProps<"/[lang]/units/[slug]">) {
   await connection();
   const { slug, lang } = await params;
   const locale = localeFromParam(lang);
@@ -52,7 +55,14 @@ export default async function UnitPage({ params }: PageProps<"/[lang]/units/[slu
   const id = await unitId(unit.slug);
   const nearby = id ? await nearbyOf(id) : [];
   // Visitors who aren't this unit's owner: their previewed edits (cookie), shown to them only.
-  const preview = await readSpecsPreview(unit.slug, await editMode(unit.slug));
+  const owner = await currentOwner();
+  const mode = await editMode(unit.slug, owner);
+  const preview = await readSpecsPreview(unit.slug, mode);
+  // Guest drafts: banner (Publish for the uploader), no booking until published.
+  const publish = unit.draft ? draftPublishMode(unit.slug, mode, owner) : null;
+  // Post-publish notice (?published=...): only for the unit's own owner.
+  const published = unit.draft || mode !== "owner" ? undefined : (await searchParams).published;
+  const unitPath = localeHref(`/units/${unit.slug}`, locale);
   const specs = { ...unit.specs, ...preview } as Record<string, unknown>;
   // Passing uses first; rubric verdicts come from docs/RUBRIC.md.
   const order = { fits: 0, fits_after_fitout: 1, not_suitable: 2 } as const;
@@ -78,10 +88,14 @@ export default async function UnitPage({ params }: PageProps<"/[lang]/units/[slu
         <LangToggle locale={locale} />
       </div>
       <h1 className="font-display text-4xl sm:text-5xl font-black mt-4 leading-[1.02] tracking-[-0.02em]">{locale === "en" ? unit.title_en : unit.title_ar}</h1>
-      <p className="mt-3 flex flex-wrap items-center gap-2 text-ink/75"><span className="w-full sm:w-auto">{unit.district} · {t("unit.floors")} {unit.floor_text}</span>{unit.location && <a href={mapsUrl(unit.location)} target="_blank" rel="noopener noreferrer" className="link text-sm">{t("unit.openInMaps")}{unit.location.approx && ` (${t("unit.approxArea")})`}</a>}<span className="tnum bg-brick text-white font-display font-black px-3 py-1 ink-offset-sm">{formatEgp(locale, unit.rent_egp)}{t("unit.perMonth")}</span></p>
+      <p className="mt-3 flex flex-wrap items-center gap-2 text-ink/75"><span className="w-full sm:w-auto">{districtLabel(locale, unit.district)} · {floorLabel(locale, unit.floor_text)}</span>{unit.location && <a href={mapsUrl(unit.location)} target="_blank" rel="noopener noreferrer" className="link text-sm">{t("unit.openInMaps")}{unit.location.approx && ` (${t("unit.approxArea")})`}</a>}<span className="tnum bg-brick text-white font-display font-black px-3 py-1 ink-offset-sm">{formatEgp(locale, unit.rent_egp)}{t("unit.perMonth")}</span></p>
+      {unit.draft && <DraftBanner slug={unit.slug} locale={locale} publish={publish} loginHref={`${localeHref("/login", locale)}?next=${encodeURIComponent(unitPath)}`} className="mt-3">{mode === "owner" && <ListingReview slug={unit.slug} locale={locale} className="mt-3" />}</DraftBanner>}
+      <PublishedNotice locale={locale} state={published} className="mt-3" />
+      {/* AI listing review: the owner only (never demo units, which are always preview). */}
+      {!unit.draft && mode === "owner" && <ListingReview slug={unit.slug} locale={locale} className="mt-3" />}
       {preview && <SpecsPreviewBar slug={unit.slug} locale={locale} demo={isDemoUnit(unit.slug)} />}
       {unit.synthetic && <p className="mt-3"><span className="bg-mustard text-ink border border-ink text-[11px] font-bold px-2 py-0.5">{t("unit.synthetic")}</span></p>}
-      <div className="mt-5 border border-ink bg-sheet p-3 ink-offset"><UnitViewer images={unit.images} locale={locale} synthetic={unit.synthetic} /><StageButtons slug={unit.slug} styles={missingStyles} locale={locale} /></div>
+      <div className="mt-5 border border-ink bg-sheet p-3 ink-offset"><UnitViewer images={unit.images} locale={locale} synthetic={unit.synthetic} processing={unit.status === "processing"} /><StageButtons slug={unit.slug} styles={missingStyles} locale={locale} /></div>
       {unit.video && (
         <div className="mt-5 border border-ink bg-sheet p-3 ink-offset">
           <video controls playsInline preload="metadata" poster={unit.images.real || undefined} src={unit.video} className="w-full aspect-video bg-ink" />
@@ -120,7 +134,12 @@ export default async function UnitPage({ params }: PageProps<"/[lang]/units/[slu
           </div>
         </section>
         <aside data-wa-avoid>
-          {unit.rent_periods.includes("daily") && unit.daily_egp ? <BookingForm slug={unit.slug} dailyEgp={unit.daily_egp} locale={locale} /> : (
+          {unit.draft ? (
+            <div className="border border-ink bg-sheet p-5 ink-offset-sm">
+              <h3 className="font-display font-black text-lg">{t("draft.badge")}</h3>
+              <p className="text-sm text-ink/75 mt-1">{t("draft.noBooking")}</p>
+            </div>
+          ) : unit.rent_periods.includes("daily") && unit.daily_egp ? <BookingForm slug={unit.slug} dailyEgp={unit.daily_egp} locale={locale} /> : (
             <div className="border border-ink bg-sheet p-5 ink-offset-sm">
               <h3 className="font-display font-black text-lg">{t("booking.longTermOnly")}</h3>
               <p className="text-sm text-ink/75 mt-1">{t("booking.longTermNote")}</p>
@@ -130,7 +149,7 @@ export default async function UnitPage({ params }: PageProps<"/[lang]/units/[slu
         </aside>
       </div>
       {unit.location && <NearbyPlaces places={nearby} locale={locale} />}
-      <WhatsAppButton href={renterWaUrl(locale, locale === "en" ? unit.title_en : unit.title_ar)} locale={locale} />
+      {!unit.draft && <WhatsAppButton href={renterWaUrl(locale, locale === "en" ? unit.title_en : unit.title_ar)} locale={locale} />}
     </main>
   );
 }

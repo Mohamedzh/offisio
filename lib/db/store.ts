@@ -16,6 +16,9 @@ export interface Unit {
   synthetic: boolean;
   // Required for uploads; seeded units carry district centres (approx = true).
   location: { lat: number; lng: number; approx: boolean } | null;
+  // Guest upload not yet published (guest_owner set, owner_wa_id null): not listed, not bookable.
+  draft: boolean;
+  status: "processing" | "ready" | "failed";
 }
 export interface Slot { id: string; unit_slug: string; date: string; starts_at: string; ends_at: string; is_booked: boolean }
 export interface AddonItem { id: string; booking_id: string; item_id: string; name_en: string; name_ar: string; qty: number; unit_price_egp: number; deliver_at: string | null }
@@ -34,7 +37,7 @@ interface UnitRow {
   floor_text: string; available_from: string; rent_periods: RentPeriod[];
   title_ar: string; title_en: string; summary_ar: string; summary_en: string;
   highlights_ar: string[]; highlights_en: string[]; specs: Record<string, unknown> | null;
-  lat: string | null; lng: string | null; location_approx: boolean;
+  lat: string | null; lng: string | null; location_approx: boolean; draft: boolean; status: Unit["status"];
   media: { kind: string; style: string | null; url: string; meta?: Record<string, unknown> }[] | null;
 }
 
@@ -66,18 +69,21 @@ function rowToUnit(r: UnitRow): Unit {
     video: byKind("video"),
     synthetic: media.some((m) => m.meta?.synthetic === true),
     location: r.lat !== null && r.lng !== null ? { lat: Number(r.lat), lng: Number(r.lng), approx: r.location_approx } : null,
+    draft: r.draft === true, status: r.status,
   };
 }
 
+// Guest drafts are reachable by direct link only (lib/owner guest id).
+const DRAFT = "(u.guest_owner is not null and u.owner_wa_id is null)";
 const UNIT_SQL = `
   select u.slug, u.kind, u.district, u.rent_egp, u.daily_egp, u.floor_text, u.available_from,
          u.rent_periods, u.title_ar, u.title_en, u.summary_ar, u.summary_en, u.highlights_ar, u.highlights_en,
-         u.lat, u.lng, u.location_approx, s.data as specs,
+         u.lat, u.lng, u.location_approx, s.data as specs, ${DRAFT} as draft, u.status,
          coalesce((select json_agg(json_build_object('kind', m.kind, 'style', m.style, 'url', m.url, 'meta', m.meta) order by (m.url like 'https://%') desc, m.created_at desc) from media m where m.unit_id = u.id and m.is_current), '[]') as media
   from units u left join specs s on s.unit_id = u.id`;
 
 export async function listUnits(): Promise<Unit[]> {
-  const { rows } = await pool().query<UnitRow>(`${UNIT_SQL} where u.status = 'ready' order by u.created_at`);
+  const { rows } = await pool().query<UnitRow>(`${UNIT_SQL} where u.status = 'ready' and not ${DRAFT} order by u.created_at`);
   return rows.map(rowToUnit);
 }
 
@@ -85,12 +91,13 @@ export interface CreateUploadedUnitInput {
   slug: string; kind: Unit["kind"]; district: string; rent_egp: number; daily_egp: number | null;
   floor_text: string; available_from: string; rent_periods: RentPeriod[]; lat: number; lng: number; location_approx?: boolean;
   owner_wa_id?: string | null; // signed-in owner (PII); null for seeded/generated units
+  guest_owner?: string | null; // guest upload (random browser id, not PII): the unit is a draft
 }
 export async function createUploadedUnit(input: CreateUploadedUnitInput): Promise<string> {
   const { rows } = await pool().query<{ id: string }>(
-    `insert into units (slug, kind, status, district, rent_egp, daily_egp, floor_text, available_from, rent_periods, lat, lng, location_approx, owner_wa_id)
-     values ($1,$2,'processing',$3,$4,$5,$6,$7,$8,$9,$10,$11,$12) returning id`,
-    [input.slug, input.kind, input.district, input.rent_egp, input.daily_egp, input.floor_text, input.available_from, input.rent_periods, input.lat, input.lng, input.location_approx ?? false, input.owner_wa_id ?? null]);
+    `insert into units (slug, kind, status, district, rent_egp, daily_egp, floor_text, available_from, rent_periods, lat, lng, location_approx, owner_wa_id, guest_owner)
+     values ($1,$2,'processing',$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13) returning id`,
+    [input.slug, input.kind, input.district, input.rent_egp, input.daily_egp, input.floor_text, input.available_from, input.rent_periods, input.lat, input.lng, input.location_approx ?? false, input.owner_wa_id ?? null, input.guest_owner ?? null]);
   return rows[0].id;
 }
 export async function addMedia(unitId: string, kind: string, url: string, style: string | null = null, meta: Record<string, unknown> = {}): Promise<void> {
@@ -146,7 +153,16 @@ export const AVAILABILITY_UNTIL = "2026-12-15";
 export function todayCairo(): string {
   return new Intl.DateTimeFormat("en-CA", { timeZone: "Africa/Cairo", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
 }
-// Hourly slots 10:00–17:00 Cairo for every day from max(availableFrom, today) to AVAILABILITY_UNTIL.
+// Last generated day: AVAILABILITY_UNTIL, or AVAILABILITY_HORIZON_DAYS from today if later
+// (uploads after the demo window still get slots).
+export const AVAILABILITY_HORIZON_DAYS = 60;
+export function availabilityUntil(today: string = todayCairo()): string {
+  const d = new Date(`${today}T00:00:00Z`);
+  d.setUTCDate(d.getUTCDate() + AVAILABILITY_HORIZON_DAYS);
+  const horizon = d.toISOString().slice(0, 10);
+  return horizon > AVAILABILITY_UNTIL ? horizon : AVAILABILITY_UNTIL;
+}
+// Hourly slots 10:00–17:00 Cairo for every day from max(availableFrom, today) to availabilityUntil().
 // Idempotent: existing slots are kept as they are.
 export async function generateAvailability(unitId: string, availableFrom: string): Promise<number> {
   const today = todayCairo();
@@ -156,7 +172,7 @@ export async function generateAvailability(unitId: string, availableFrom: string
      select $1, (d::date + h * interval '1 hour') at time zone 'Africa/Cairo', (d::date + (h + 1) * interval '1 hour') at time zone 'Africa/Cairo'
      from generate_series($2::date, $3::date, interval '1 day') d, generate_series(10, 16) h
      on conflict (unit_id, starts_at) do nothing`,
-    [unitId, start, AVAILABILITY_UNTIL]);
+    [unitId, start, availabilityUntil(today)]);
   return rowCount ?? 0;
 }
 

@@ -15,6 +15,11 @@ interface Frame { blob: Blob; url: string; t: number }
 // Mirrors CAPS in lib/guard.ts (server enforces the byte cap via the Blob token).
 const MAX_BYTES = 80 * 1024 * 1024;
 const MAX_SECONDS = 45;
+// "Try it with a sample walkthrough": our own 20 s filmed walkthrough of the furnished
+// demo office ("full"), public on Blob (CORS *). It runs the same flow as a picked file.
+const SAMPLE_VIDEO_URL = process.env.NEXT_PUBLIC_SAMPLE_VIDEO_URL || "https://tadysmzbjdkmgzem.public.blob.vercel-storage.com/demo/full/walkthrough.mp4";
+const SAMPLE_FIELDS = { district: "New Administrative Capital", location: "30.036687, 31.681687", rent: "14500", daily: "800", floor: "2nd", kind: "furnished" };
+const localToday = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; };
 
 async function extractFrames(file: File): Promise<Frame[]> {
   const objectUrl = URL.createObjectURL(file);
@@ -47,13 +52,23 @@ async function extractFrames(file: File): Promise<Frame[]> {
   } finally { URL.revokeObjectURL(objectUrl); }
 }
 
-export default function UploadForm({ locale }: { locale: Locale }) {
+// Browser -> Vercel Blob directly, or (local media fallback, no Blob token) PUT to our
+// local-only route that writes public/uploads/<slug>/. Returns the stored URL.
+async function store(pathname: string, body: Blob, contentType: string, localMedia: boolean, multipart = false): Promise<string> {
+  if (!localMedia) return (await upload(pathname, body, { access: "public", handleUploadUrl: "/api/blob/upload", contentType, multipart })).url;
+  const res = await fetch(`/api/blob/local?pathname=${encodeURIComponent(pathname)}`, { method: "PUT", headers: { "Content-Type": contentType }, body });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || typeof data.url !== "string") throw new Error(data.error ?? "upload.failed");
+  return data.url;
+}
+
+export default function UploadForm({ locale, localMedia = false }: { locale: Locale; localMedia?: boolean }) {
   const router = useRouter(); const t = getT(locale);
   const [frames, setFrames] = useState<Frame[]>([]);
   const [district, setDistrict] = useState(""); const [location, setLocation] = useState(""); const [rent, setRent] = useState(""); const [daily, setDaily] = useState("");
   const [floor, setFloor] = useState(""); const [availableFrom, setAvailableFrom] = useState(""); const [kind, setKind] = useState("furnished");
   const [msg, setMsg] = useState(""); const [extracting, setExtracting] = useState(false); const [busy, setBusy] = useState(false);
-  const [videoFile, setVideoFile] = useState<File | null>(null);
+  const [videoFile, setVideoFile] = useState<File | null>(null); const [sampleLoading, setSampleLoading] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   async function onVideo(file: File | undefined) {
@@ -67,6 +82,21 @@ export default function UploadForm({ locale }: { locale: Locale }) {
     finally { setExtracting(false); }
   }
 
+  // Fetch the sample video as a File, pre-fill editable sample details, then the normal path.
+  async function trySample() {
+    setMsg(""); setSampleLoading(true);
+    try {
+      const res = await fetch(SAMPLE_VIDEO_URL, { signal: AbortSignal.timeout(30_000) });
+      if (!res.ok) throw new Error("sample fetch failed");
+      const file = new File([await res.blob()], "sample-walkthrough.mp4", { type: "video/mp4" });
+      if (inputRef.current) inputRef.current.value = "";
+      setDistrict(SAMPLE_FIELDS.district); setLocation(SAMPLE_FIELDS.location); setRent(SAMPLE_FIELDS.rent); setDaily(SAMPLE_FIELDS.daily);
+      setFloor(SAMPLE_FIELDS.floor); setKind(SAMPLE_FIELDS.kind); setAvailableFrom((v) => v || localToday());
+      setSampleLoading(false);
+      await onVideo(file);
+    } catch { setMsg(t("upload.sampleFailed")); setSampleLoading(false); }
+  }
+
   async function submit() {
     setBusy(true); setMsg("");
     try {
@@ -74,18 +104,12 @@ export default function UploadForm({ locale }: { locale: Locale }) {
       // Browser -> Blob directly; only URLs go to our API (no 4.5 MB limit).
       const frameUrls: string[] = [];
       for (let i = 0; i < frames.length; i++) {
-        const blob = await upload(`uploads/${slug}/frame-${i}.jpg`, frames[i].blob, {
-          access: "public", handleUploadUrl: "/api/blob/upload", contentType: "image/jpeg",
-        });
-        frameUrls.push(blob.url);
+        frameUrls.push(await store(`uploads/${slug}/frame-${i}.jpg`, frames[i].blob, "image/jpeg", localMedia));
       }
       let videoUrl: string | null = null;
       if (videoFile) {
         const ext = videoFile.type === "video/quicktime" ? "mov" : videoFile.type === "video/webm" ? "webm" : "mp4";
-        const v = await upload(`uploads/${slug}/source.${ext}`, videoFile, {
-          access: "public", handleUploadUrl: "/api/blob/upload", contentType: videoFile.type, multipart: true,
-        });
-        videoUrl = v.url;
+        videoUrl = await store(`uploads/${slug}/source.${ext}`, videoFile, videoFile.type, localMedia, true);
       }
       const res = await fetch("/api/units/upload", {
         method: "POST",
@@ -109,6 +133,10 @@ export default function UploadForm({ locale }: { locale: Locale }) {
           <input ref={inputRef} type="file" accept="video/*" onChange={(e) => onVideo(e.target.files?.[0])} className="field mt-1 text-sm" />
         </label>
         <p className="text-xs text-ink/75 mt-1">{t("upload.videoHint")}</p>
+        <div className="mt-2 flex flex-wrap items-center gap-2">
+          <button type="button" onClick={trySample} disabled={busy || extracting || sampleLoading} className="btn btn-sm">{sampleLoading ? t("upload.sampleLoading") : t("upload.sampleButton")}</button>
+          <p className="text-xs text-ink/75">{t("upload.sampleHint")}</p>
+        </div>
       </div>
       {extracting && <p className="inline-block bg-ink text-sheet text-[11px] uppercase tracking-wide px-2 py-0.5">{t("upload.extracting")}</p>}
       {busy && <p className="inline-block bg-ink text-sheet text-[11px] uppercase tracking-wide px-2 py-0.5">{t("upload.processing")}</p>}

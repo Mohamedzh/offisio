@@ -1,18 +1,23 @@
 // Owner upload: validate, store the unit (status processing) with its keyframes
 // and location, then hand off to the pipeline (lib/pipeline/jobs.ts). The
 // survey, listing and renders run as separate QStash steps after this returns.
+// Signed-in owners own the unit; anyone else uploads as a guest and the unit is
+// a private draft (units.guest_owner) until published with WhatsApp sign-in.
 import { addMedia, createUploadedUnit, replaceKeyframes, setUnitStatus, type RentPeriod } from "@/lib/db/store";
-import { isBlobUrl } from "@/lib/blob";
+import { isBlobUrl, isLocalMediaUrl } from "@/lib/blob";
 import { enqueue } from "@/lib/pipeline/jobs";
 import { resolveLocation } from "@/lib/geo";
 import type { UnitKind } from "@/lib/meta/prompts";
 import { CAPS, deny, limit, spendBlocked } from "@/lib/guard";
-import { currentOwner } from "@/lib/owner";
+import { currentOwner, issueGuest } from "@/lib/owner";
+import { hasContactInfo } from "@/lib/pipeline/review";
 
 const bad = (error: string) => Response.json({ error }, { status: 400 });
 const SLUG_RE = /^[A-Za-z0-9_-]{1,64}$/;
 
 function isUploadsUrl(url: string, slug: string): boolean {
+  // Local media fallback (no Blob token, never on Vercel): /uploads/<slug>/<file>.
+  if (isLocalMediaUrl(url)) return url.startsWith(`/uploads/${slug}/`) && !url.slice(`/uploads/${slug}/`.length).includes("/");
   if (!isBlobUrl(url)) return false;
   try {
     return new URL(url).pathname.startsWith(`/uploads/${slug}/`);
@@ -22,14 +27,14 @@ function isUploadsUrl(url: string, slug: string): boolean {
 }
 
 export async function POST(req: Request) {
-  // Owners only (WhatsApp sign-in); the new unit is theirs.
   const owner = await currentOwner();
-  if (!owner) return deny("SIGN_IN_REQUIRED", 401);
   let body: Record<string, unknown>;
   try { body = (await req.json()) as Record<string, unknown>; } catch { return bad("expected JSON body"); }
   if (await spendBlocked()) return deny("DEMO_QUOTA");
   const allowed = await limit("upload", req);
   if (!allowed.ok) return deny(allowed.code);
+  // Same limits for guests; the cookie usually exists already (issued with the Blob token).
+  const ownership = owner ? { owner_wa_id: owner.waId } : { owner_wa_id: null, guest_owner: await issueGuest() };
 
   const slug = String(body.slug ?? "");
   const district = String(body.district ?? "").trim();
@@ -47,6 +52,8 @@ export async function POST(req: Request) {
   if (!SLUG_RE.test(slug)) return bad("slug is invalid");
   if (!district) return bad("district is required");
   if (!floor_text) return bad("floor_text is required");
+  // Owner fields are shown to renters and fed to the listing: no contact details.
+  if (hasContactInfo(district) || hasContactInfo(floor_text)) return bad("CONTACT_INFO_NOT_ALLOWED");
   if (!/^\d{4}-\d{2}-\d{2}$/.test(available_from) || Number.isNaN(Date.parse(available_from))) return bad("available_from must be YYYY-MM-DD");
   if (kind !== "furnished" && kind !== "semifinished") return bad("kind must be furnished|semifinished");
   if (!Number.isInteger(rent_egp) || rent_egp <= 0) return bad("rent_egp must be a positive integer");
@@ -54,7 +61,7 @@ export async function POST(req: Request) {
   if (!Array.isArray(frameUrls) || frameUrls.length < CAPS.framesMin || frameUrls.length > CAPS.framesMax || !frameUrls.every((u) => typeof u === "string"))
     return bad(`expected ${CAPS.framesMin}-${CAPS.framesMax} frame URLs`);
   if (frameTimes && (frameTimes.length !== frameUrls.length || !frameTimes.every((t) => Number.isFinite(t) && t >= 0))) return bad("frameTimes must match frameUrls");
-  for (const u of frameUrls as string[]) if (!isUploadsUrl(u, slug)) return bad("frame URL must be a Blob URL under uploads/<slug>/");
+  for (const u of frameUrls as string[]) if (!isUploadsUrl(u, slug) || !u.endsWith(".jpg")) return bad("frame URL must be a .jpg Blob URL under uploads/<slug>/");
   if (videoUrl !== null && !isUploadsUrl(videoUrl, slug)) return bad("video URL must be a Blob URL under uploads/<slug>/");
   const location = await resolveLocation(locationText);
   if (!location) return bad("LOCATION_INVALID");
@@ -62,7 +69,7 @@ export async function POST(req: Request) {
   const rent_periods: RentPeriod[] = kind === "furnished" ? ["daily", "monthly"] : ["long_term"];
   let created = false;
   try {
-    const unitId = await createUploadedUnit({ slug, kind: kind as UnitKind, district, rent_egp, daily_egp, floor_text, available_from, rent_periods, ...location, owner_wa_id: owner.waId });
+    const unitId = await createUploadedUnit({ slug, kind: kind as UnitKind, district, rent_egp, daily_egp, floor_text, available_from, rent_periods, ...location, ...ownership });
     created = true;
     await replaceKeyframes(unitId, (frameUrls as string[]).map((url, i) => ({ url, meta: { t: frameTimes?.[i] ?? i, frame: i } })));
     if (videoUrl) await addMedia(unitId, "video", videoUrl, null, {});

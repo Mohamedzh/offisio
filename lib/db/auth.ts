@@ -88,7 +88,25 @@ export async function takeLogin(browserNonce: string): Promise<LoginState> {
   return r.pending ? { state: "awaiting_yes" } : { state: "pending" };
 }
 
-export async function unitOwnerWaId(slug: string): Promise<{ owner_wa_id: string | null } | null> {
-  const { rows } = await pool().query<{ owner_wa_id: string | null }>("select owner_wa_id from units where slug = $1", [slug]);
+// guest_owner: the uploading browser's random id while the unit is a draft (not PII).
+export async function unitOwnerWaId(slug: string): Promise<{ owner_wa_id: string | null; guest_owner: string | null } | null> {
+  const { rows } = await pool().query<{ owner_wa_id: string | null; guest_owner: string | null }>(
+    "select owner_wa_id, guest_owner from units where slug = $1", [slug]);
   return rows[0] ?? null;
+}
+// Publish a guest draft: only while it is still a draft held by this guest id.
+// Signed in: owner_wa_id = the owner's wa_id and guest_owner is cleared.
+// waId null = local mock publish (WhatsApp not configured, never on Vercel): owner_wa_id is
+// the non-numeric sentinel 'local-demo' (no number to message or mask; it can never match a
+// signed-in owner because verifyOwnerToken requires digits) and guest_owner is kept, so the
+// uploading browser can still edit it.
+export const LOCAL_DEMO_OWNER = "local-demo";
+// Returns the unit's pipeline status ('processing' | 'ready' | 'failed'), or null when nothing was published.
+export async function publishDraft(slug: string, guestId: string, waId: string | null): Promise<string | null> {
+  // Same rule as lib/owner publishMockAllowed (not imported: lib/owner imports this module).
+  if (waId === null && (process.env.WHATSAPP_TOKEN || process.env.VERCEL)) throw new Error("MOCK_PUBLISH_NOT_ALLOWED");
+  const { rows } = await pool().query<{ status: string }>(
+    `update units set owner_wa_id = coalesce($3::text, $4::text), guest_owner = case when $3::text is null then guest_owner else null end
+     where slug = $1 and guest_owner = $2 and owner_wa_id is null returning status`, [slug, guestId, waId, LOCAL_DEMO_OWNER]);
+  return rows[0]?.status ?? null;
 }

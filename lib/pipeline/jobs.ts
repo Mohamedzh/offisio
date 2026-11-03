@@ -1,23 +1,24 @@
 // Post-upload pipeline (plan/06 6.7 step 2). Each step is one pipeline_jobs row
 // and one QStash message to /api/pipeline/<route>. Steps are idempotent and
 // isolated: a failed render never blocks the listing or the other renders.
-//   upload -> analyze -> listing (unit goes live)
+//   upload -> analyze -> listing (unit goes live) -> review (advisory, never fails the unit)
 //                     -> stage:<style> (one per planned render)
 //        -> places (nearby cafes, needs only the location)
-import { claimJob, finishJob, generateAvailability, queueJobs, saveListing, setUnitStatus, uploadInputs, type UploadInputs } from "../db/store";
+import { claimJob, finishJob, generateAvailability, getUnit, queueJobs, saveListing, setUnitStatus, uploadInputs, type UploadInputs } from "../db/store";
 import { analyzeSpecs, saveKeyframesAndSpecs } from "./ingest";
 import { generateListingV2, type UploadOwner } from "./specs-listing";
 import { planStaging, stageOne } from "./staging";
+import { reviewInputOf, reviewListing, ReviewInvalidError } from "./review";
 import type { Survey } from "./survey";
 import type { UseVerdict } from "./rubric";
 import { spendBlocked } from "../guard";
 import { publish, qstashEnabled } from "../qstash";
-import { refreshPlaces } from "../places";
+import { placesConfigured, refreshPlaces } from "../places";
 
 // A failure that retrying cannot fix (quota, missing input): marked failed, no QStash retry.
 export class PermanentError extends Error {}
 
-export const ROUTES = ["analyze", "listing", "stage", "places"] as const;
+export const ROUTES = ["analyze", "listing", "review", "stage", "places"] as const;
 export type Route = (typeof ROUTES)[number];
 export interface StepMsg { slug: string; step: string }
 export const routeOf = (step: string): Route | null => {
@@ -50,6 +51,14 @@ async function execute(u: UploadInputs, step: string): Promise<string[]> {
     await saveListing(u.id, await generateListingV2(u.specs!, ownerOf(u), uses));
     await generateAvailability(u.id, u.available_from);
     await setUnitStatus(u.slug, "ready");
+    return ["review"];
+  }
+  // Advisory proofread of the listing text: reads the unit, writes only ai_cache.
+  if (route === "review") {
+    const unit = await getUnit(u.slug);
+    if (!unit || !unit.title_en || !unit.summary_en) throw new PermanentError("listing has not finished");
+    try { await reviewListing(reviewInputOf(unit)); }
+    catch (e) { if (e instanceof ReviewInvalidError) throw new PermanentError(e.message); throw e; }
     return [];
   }
   if (route === "stage") {
@@ -61,6 +70,7 @@ async function execute(u: UploadInputs, step: string): Promise<string[]> {
   }
   if (route === "places") {
     if (u.lat === null || u.lng === null) throw new PermanentError("unit has no location");
+    if (!placesConfigured()) throw new PermanentError("PLACES_NOT_CONFIGURED");
     await refreshPlaces(u.id, { lat: u.lat, lng: u.lng });
     return [];
   }

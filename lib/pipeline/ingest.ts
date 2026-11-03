@@ -5,14 +5,14 @@ import { runSurvey, type Frame, type Survey } from "./survey";
 import { assess, deriveSpecs, area, type UseVerdict } from "./rubric";
 import { generateListingV2, type Listing, type UploadOwner } from "./specs-listing";
 import { replaceKeyframes, saveListing, saveSpecs } from "../db/store";
+import { mediaBytes } from "../blob";
 
 export interface Analysis { survey: Survey; uses: UseVerdict[]; specs: Record<string, unknown>; listing: Listing; heroIndex: number }
 
 async function toDataUrl(url: string): Promise<string> {
   if (url.startsWith("data:")) return url;
-  const r = await fetch(url);
-  if (!r.ok) throw new Error(`fetch frame failed: ${r.status}`);
-  return `data:image/jpeg;base64,${Buffer.from(await r.arrayBuffer()).toString("base64")}`;
+  // Blob URL, or a local /uploads/... file in the local media fallback (lib/blob).
+  return `data:image/jpeg;base64,${(await mediaBytes(url)).toString("base64")}`;
 }
 
 // Hero = best frame of the largest usable room, else the first frame.

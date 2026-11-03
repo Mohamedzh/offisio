@@ -5,7 +5,7 @@
 import { createHash } from "node:crypto";
 import { meta, MODELS } from "../meta/client";
 import { EMPTY_PROMPT_V1, STAGE_VERSION, stagePrompt, type UnitKind } from "../meta/prompts";
-import { putPublic } from "../blob";
+import { mediaBytes, mediaSource, putPublic } from "../blob";
 import { cached } from "./cache";
 import { area, deskCapacity, T, usableRooms, type Role, type Use, type UseVerdict } from "./rubric";
 import type { Survey } from "./survey";
@@ -49,17 +49,14 @@ export function planStaging(survey: Survey, uses: UseVerdict[], only?: Use[]): S
   return jobs;
 }
 
-async function bytesOf(url: string): Promise<Buffer> {
-  const r = await fetch(url);
-  if (!r.ok) throw new Error(`fetch ${url} failed: ${r.status}`);
-  return Buffer.from(await r.arrayBuffer());
-}
+// Blob/provider URL, or a local /uploads/... file in the local media fallback (lib/blob).
+const bytesOf = (url: string): Promise<Buffer> => mediaBytes(url);
 
 // One image edit -> Blob URL, cached by (base bytes, prompt).
 async function edit(slug: string, style: string, baseUrl: string, prompt: string): Promise<string> {
   const base = await bytesOf(baseUrl);
   const res = await cached("stage", MODELS.image, STAGE_VERSION, [prompt, base], async () => {
-    const out = await meta.imageEdit({ imagePath: baseUrl, prompt });
+    const out = await meta.imageEdit({ imagePath: mediaSource(baseUrl), prompt }); // https or local file only (BAD_MEDIA_URL)
     const d = out.data?.[0];
     const img = d?.b64_json ? Buffer.from(d.b64_json, "base64") : d?.url ? await bytesOf(d.url) : null;
     if (!img) throw new Error("image edit returned no image");

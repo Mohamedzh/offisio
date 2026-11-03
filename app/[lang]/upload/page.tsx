@@ -7,8 +7,8 @@ import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/metadata";
 import { connection } from "next/server";
 import OwnerBar from "@/components/OwnerBar";
-import WhatsAppLogin from "@/components/WhatsAppLogin";
 import { currentOwner, maskWaId } from "@/lib/owner";
+import { localMediaMode } from "@/lib/blob";
 
 export const instant = false;
 
@@ -33,15 +33,15 @@ export default async function UploadPage({ params }: PageProps<"/[lang]/upload">
         <div className="torn-b" aria-hidden />
         <div className="p-5">
           <h1 className="font-display text-3xl font-black tracking-[-0.02em] mb-4">{t("upload.title")}</h1>
-          {/* Owners sign in with WhatsApp first; the uploaded unit is theirs. */}
+          {/* Signed-in owners own the upload; guests get a private draft and sign in only to publish. */}
           {owner ? (
-            <>
-              <OwnerBar phone={maskWaId(owner.waId)} locale={locale} className="-mt-2 mb-4" />
-              <UploadForm locale={locale} />
-            </>
+            <OwnerBar phone={maskWaId(owner.waId)} locale={locale} className="-mt-2 mb-4" />
           ) : (
-            <WhatsAppLogin locale={locale} />
+            <p className="-mt-2 mb-4 text-sm text-ink/80">
+              {t("guest.uploadNote")} <Link href={localeHref("/login", locale)} className="link">{t("guest.signInLink")}</Link>
+            </p>
           )}
+          <UploadForm locale={locale} localMedia={localMediaMode()} />
         </div>
       </div>
     </main>

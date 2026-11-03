@@ -8,7 +8,7 @@ type Images = { real: string; empty: string | null; staged: { style: string; url
 type Shot = { src: string; label: string; part?: string };
 type View = { key: string; label: string; shots: Shot[] };
 
-export default function UnitViewer({ images, locale, synthetic = false }: { images: Images; locale: Locale; synthetic?: boolean }) {
+export default function UnitViewer({ images, locale, synthetic = false, processing = false }: { images: Images; locale: Locale; synthetic?: boolean; processing?: boolean }) {
   const t = getT(locale);
   const one = (key: string, label: string, src: string | null): View[] => (src ? [{ key, label, shots: [{ src, label }] }] : []);
   // One tab per use; a multi-room fit (clinic, law office, offices) holds all its rooms.
@@ -26,7 +26,9 @@ export default function UnitViewer({ images, locale, synthetic = false }: { imag
   const [active, setActive] = useState({ view: 0, shot: 0 });
   // Layer under the tear: the emptied room on load, else the next view.
   const [prev, setPrev] = useState<Shot | null>(() => (views.find((v) => v.key === "empty") ?? views[1])?.shots[0] ?? null);
-  const view = views[active.view]; const shot = view.shots[active.shot];
+  // No media yet (e.g. an upload still processing): empty frame instead of a crash.
+  if (!views.length) return <div className="aspect-[4/5] sm:aspect-[16/10] border border-ink bg-torn grid place-items-center text-sm text-ink/75">{t(processing ? "upload.processing" : "upload.noPhotos")}</div>;
+  const view = views[active.view] ?? views[0]; const shot = view.shots[active.shot] ?? view.shots[0];
   const under = prev && prev.src !== shot.src ? prev : null; // no layer beneath -> no tear
   function pick(v: number, s = 0) { setPrev(shot); setActive({ view: v, shot: s }); }
   return (
@@ -51,14 +53,15 @@ export default function UnitViewer({ images, locale, synthetic = false }: { imag
         <span className="absolute bottom-3 start-3 bg-ink text-sheet px-2 py-0.5 text-[11px] uppercase tracking-wide">{shot.label}</span>
       </div>
       <div className="torn-b" aria-hidden />
-      <div className="mt-3 flex flex-wrap gap-2">
+      {/* One view only: its label is already on the photo, so no tab row. */}
+      {views.length > 1 && <div className="mt-3 flex flex-wrap gap-2">
         {views.map((v, i) => (
           <button key={v.key} onClick={() => pick(i)} aria-pressed={active.view === i} className="btn btn-paper btn-sm">
             {v.label}
             {v.shots.length > 1 && <span className="grid size-5 place-items-center rounded-full bg-brick text-[11px] text-white">{v.shots.length}</span>}
           </button>
         ))}
-      </div>
+      </div>}
       <p className="mt-2 text-xs text-ink/75">{t("viewer.fitNote")}</p>
     </div>
   );

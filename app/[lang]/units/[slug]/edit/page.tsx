@@ -11,7 +11,9 @@ import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/metadata";
 import { isDemoUnit, readSpecsPreview } from "@/lib/demo-units";
 import OwnerBar from "@/components/OwnerBar";
-import { currentOwner, editMode, maskWaId } from "@/lib/owner";
+import { currentOwner, draftPublishMode, editMode, maskWaId } from "@/lib/owner";
+import DraftBanner, { PublishedNotice } from "@/components/DraftBanner";
+import ListingReview from "@/components/ListingReview";
 
 export const instant = false;
 
@@ -22,15 +24,20 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/units/[slu
   return pageMetadata(locale, { title: getT(locale)("meta.editTitle"), path: `/units/${slug}/edit`, noindex: true });
 }
 
-export default async function EditUnitPage({ params }: PageProps<"/[lang]/units/[slug]/edit">) {
+export default async function EditUnitPage({ params, searchParams }: PageProps<"/[lang]/units/[slug]/edit">) {
   await connection();
   const { slug, lang } = await params;
   const locale = localeFromParam(lang);
   const t = getT(locale);
   const [unit, ref] = await Promise.all([getUnit(slug), unitRef(slug)]);
   if (!unit || !ref) notFound();
-  const [mode, owner] = await Promise.all([editMode(slug), currentOwner()]);
+  const owner = await currentOwner();
+  const mode = await editMode(slug, owner);
   const [jobs, preview] = await Promise.all([jobsOf(ref.id), readSpecsPreview(slug, mode)]);
+  const publish = unit.draft ? draftPublishMode(slug, mode, owner) : null;
+  // Post-publish notice (?published=...): only for the unit's own owner.
+  const published = unit.draft || mode !== "owner" ? undefined : (await searchParams).published;
+  const loginHref = `${localeHref("/login", locale)}?next=${encodeURIComponent(localeHref(`/units/${slug}/edit`, locale))}`;
   // Preview mode (not this unit's owner): the form starts from this visitor's previewed edits, if any.
   const specs = { ...unit.specs, ...preview };
   return (
@@ -44,6 +51,10 @@ export default async function EditUnitPage({ params }: PageProps<"/[lang]/units/
         <div className="p-5">
           <h1 className="font-display text-3xl font-black tracking-[-0.02em] mb-4">{t("edit.title")}</h1>
           {owner && <OwnerBar phone={maskWaId(owner.waId)} locale={locale} className="-mt-2 mb-2" />}
+          {unit.draft && <DraftBanner slug={slug} locale={locale} publish={publish} loginHref={loginHref} className="mb-4">{mode === "owner" && <ListingReview slug={slug} locale={locale} className="mt-3" />}</DraftBanner>}
+          <PublishedNotice locale={locale} state={published} className="mb-4" />
+          {/* AI listing review: the owner only (never demo units, which are always preview). */}
+          {!unit.draft && mode === "owner" && <ListingReview slug={slug} locale={locale} className="mb-4" />}
           {mode === "preview" && (
             <p className="mb-4 text-sm text-ink/75">
               {t(isDemoUnit(slug) ? "demo.editNote" : "preview.editNote")} <Link href={localeHref("/upload", locale)} className="link">{t("demo.uploadLink")}</Link>

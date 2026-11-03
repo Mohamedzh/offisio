@@ -37,6 +37,23 @@ Reply ONLY with JSON:
 export const LISTING_PROMPT_V2 = `${LISTING_PROMPT_V1.split(" Reply ONLY with JSON:")[0]} You also get USES: the uses this unit's layout suits, computed by a rubric. Mention the strongest one or two uses naturally (for example "layout suits a dental clinic: 2 rooms plus a prep area"). Never mention a use that is not in USES, and never claim it is licensed or approved; say the layout suits it. Reply ONLY with JSON:
 {"title_ar":string,"title_en":string,"summary_ar":string,"summary_en":string,"highlights_ar":[3-5 strings],"highlights_en":[3-5 strings]}`;
 
+// Listing review (owner sees it before publishing; advisory only, never blocks).
+// Input: the generated title/description in AR and EN, the specs JSON and the
+// owner fields. Output is validated in lib/pipeline/review.ts.
+export const LISTING_REVIEW_PROMPT_V2 = `You proofread a bilingual office listing before the owner publishes it. You get LISTING (title_ar, title_en, description_ar, description_en), SPECS (JSON from a video survey, plus USES: the uses the layout suits) and OWNER (district, floor, kind, rent_egp monthly, daily_egp or null). SPECS and OWNER are the only facts.
+Check each of the four fields for:
+- "typo": misspellings in Arabic or English.
+- "grammar": broken or unnatural grammar. The Arabic must be natural Egyptian dialect (for example "مكتب واسع ومنوّر"), not formal MSA and not a word-for-word translation.
+- "language_mix": English words, Latin letters or English ordinals ("2nd", "AC", "Downtown") inside the Arabic fields, or Arabic inside the English fields. Numbers alone are fine; write ordinals as words ("الدور التاني"). Proper place names may stay as the owner wrote them in the English fields only.
+- "unsupported_claim": anything not backed by SPECS or OWNER: an amenity that is absent or null in SPECS (AC when has_ac is false or null, parking, internet, elevator, furniture), a wrong price, area, room count, floor or district, a use not in USES, or "licensed/approved" for a use. kind "semifinished" is a bare shell: never "furnished" or "ready to move in"; kind "furnished" includes desks and chairs.
+- "contradiction": the Arabic and English versions disagree with each other, or a field contradicts itself.
+- "contact_info": any phone number, email, URL, social handle or "call/WhatsApp me" line. Always remove it in corrected.
+- "tone": shouting, all caps, excessive punctuation or pushy sales language.
+Rules for corrected: minimal edits only. Fix exactly the issues you list and nothing else; keep every fact identical; never add an amenity, number or claim; a wrong number or fact that SPECS or OWNER states (area, rooms, floor, price, district, kind) is replaced with that value; any other unsupported claim is removed or softened, never replaced with a new one. A field with no issue is copied unchanged, character for character. Keep the meaning and roughly the length.
+List at most 8 issues, the most important first. note_en and note_ar explain the issue to the owner in one short, plain sentence each (note_ar in Egyptian Arabic); say "your specs" or "your details", never "SPECS", "OWNER", "USES" or field names. fix is the corrected phrase (a few words, in the field's language), or "" when the fix is a deletion. ok is true only when issues is empty.
+Reply ONLY with JSON:
+{"ok":boolean,"issues":[{"field":"title_ar"|"title_en"|"description_ar"|"description_en","kind":"typo"|"grammar"|"language_mix"|"unsupported_claim"|"contradiction"|"contact_info"|"tone","note_en":string,"note_ar":string,"fix":string}],"corrected":{"title_ar":string,"title_en":string,"description_ar":string,"description_en":string}}`;
+
 // Booking agent with native tool calling (lib/agent/agent.ts). {TODAY} etc. are
 // filled server-side in Africa/Cairo time. V3 (6.7 step 6): add-ons come from the
 // unit's nearby_places tool (venue items; nearby places are info only since V8) instead of a fixed
