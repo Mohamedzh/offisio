@@ -80,6 +80,8 @@ README, `public/llms.txt`, `public/llms-full.txt` (curl walkthrough: units -> ch
 
 ## Handoff
 
+Continued in [08](08-wa-video-listing-and-ship.md) (2026-11-03): near me (7.6) and the listing review (7.5) are built; the next session starts at 08.
+
 State on 2026-11-03: 7.1–7.4 built, **all uncommitted**. Next:
 1. Owner commits (suggested split: seed + compose + local media / guest drafts + publish / sample walkthrough + web mic / docs).
 2. Browser QA in EN (LTR) and AR (RTL): guest upload and sample walkthrough -> draft banner -> Publish with WhatsApp (and the local mock path); web mic in Chrome, Firefox and Safari; error texts for the `VOICE_*` and `*_NOT_CONFIGURED` codes.
