@@ -326,16 +326,21 @@ export async function handleDraftMessage(m: IncomingMessage, draft: WaDraft): Pr
 }
 
 // "link" / "status" while the pipeline runs: answer from the unit's status. A unit failed for
-// at least 10 min (past QStash's retries) expires the draft (send the video again); a ready
+// at least 10 min (past QStash's retries), or still not live after 20 min (a step died), expires
+// the draft (send the video again); a ready
 // one gets its link now; anything else is still analyzing.
 const FAILED_FOR_GOOD_S = 10 * 60;
 const RENDERS_STUCK_S = 10 * 60;
+// The listing normally goes live in ~2 min; still not live after 20 min means a step died
+// without a retry left: expire the draft and ask for the video again instead of "still working" forever.
+const LISTING_STUCK_S = 20 * 60;
 // `waiting`: the reply while still analyzing ("publish" gets a "then you can publish" hint).
 async function processingStatus(m: IncomingMessage, draft: WaDraft, lang: Lang | null, waiting: "stillAnalyzing" | "publishTooEarly" = "stillAnalyzing"): Promise<void> {
   if (!(await linkAllowed(m.from))) return reply(m, say("limited", lang));
   const unit = await draftUnitStatus(draft.slug, qstashEnabled() ? QSTASH_MAX_DELIVERIES : 0);
   const status = unit?.status ?? null;
-  if (status === "failed" && unit!.failedForS >= FAILED_FOR_GOOD_S) {
+  const stuck = status === "processing" && unit!.processingForS >= LISTING_STUCK_S;
+  if ((status === "failed" && unit!.failedForS >= FAILED_FOR_GOOD_S) || stuck) {
     if (await setDraftStatus(draft.id, "expired", ["processing"])) return reply(m, say("pipelineFailed", lang));
     return;
   }

@@ -16,5 +16,5 @@ export async function POST(req: Request, { params }: { params: Promise<{ step: s
   if (typeof msg.slug !== "string" || typeof msg.step !== "string" || routeOf(msg.step) !== route)
     return Response.json({ error: "bad body" }, { status: 400 });
   const result = await runStep(msg.slug, msg.step);
-  return Response.json({ result }, { status: result === "failed" ? 500 : 200 });
+  return Response.json({ result }, { status: result === "failed" ? 500 : result === "busy" ? 503 : 200 });
 }

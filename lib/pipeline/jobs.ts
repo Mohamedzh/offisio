@@ -4,7 +4,7 @@
 //   upload -> analyze -> listing (unit goes live) -> review (advisory, never fails the unit)
 //                     -> stage:<style> (one per planned render)
 //        -> places (nearby cafes, needs only the location)
-import { claimJob, finishJob, generateAvailability, getUnit, pipelineSettled, queueJobs, saveListing, setUnitStatus, uploadInputs, type UploadInputs } from "../db/store";
+import { claimJob, finishJob, generateAvailability, getUnit, jobRunning, pipelineSettled, queueJobs, saveListing, setUnitStatus, uploadInputs, type UploadInputs } from "../db/store";
 import { analyzeSpecs, saveKeyframesAndSpecs } from "./ingest";
 import { generateListingV2, type UploadOwner } from "./specs-listing";
 import { planStaging, stageOne } from "./staging";
@@ -77,7 +77,9 @@ async function execute(u: UploadInputs, step: string): Promise<string[]> {
   throw new PermanentError(`unknown step ${step}`);
 }
 
-export type RunResult = "done" | "skipped" | "failed" | "failed_permanent";
+// busy: another run holds the step (claimed less than STUCK_MINUTES ago). The route answers
+// 503 so QStash delivers again later: if that run died, the later delivery reclaims it.
+export type RunResult = "done" | "skipped" | "busy" | "failed" | "failed_permanent";
 
 // WhatsApp listing drafts (plan/08 8.1): tell the owner once everything is in (listing live
 // and every step, incl. review and the staged renders, finished: done or failed for good), or when
@@ -98,7 +100,7 @@ export async function runStep(slug: string, step: string): Promise<RunResult> {
   const u = await uploadInputs(slug);
   if (!u) return "failed_permanent";
   const attempts = await claimJob(u.id, step);
-  if (attempts === null) return "skipped";
+  if (attempts === null) return (await jobRunning(u.id, step)) ? "busy" : "skipped";
   try {
     const next = await execute(u, step);
     await finishJob(u.id, step);

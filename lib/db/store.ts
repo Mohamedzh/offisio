@@ -324,7 +324,11 @@ export async function queueJobs(unitId: string, steps: string[]): Promise<void> 
      on conflict (unit_id, step) do update set status = 'queued', attempts = 0, last_error = null, updated_at = now()`, [unitId, steps]);
 }
 // Atomic claim: queued, failed (a QStash retry) or stuck running. Null = already done or in progress.
-const STUCK_MINUTES = 6;
+// A run that died mid-step (function killed or frozen) stays "running": QStash's retries land
+// within ~3 min of the first delivery (seen: +12 s, +2.7 min), so the reclaim window must be
+// shorter than that or every retry is skipped and the step hangs forever. A live run racing a
+// duplicate delivery after 2 min only repeats an idempotent step.
+const STUCK_MINUTES = 2;
 export async function claimJob(unitId: string, step: string): Promise<number | null> {
   const { rows } = await pool().query<{ attempts: number }>(
     `update pipeline_jobs set status = 'running', attempts = attempts + 1, updated_at = now()
@@ -332,6 +336,11 @@ export async function claimJob(unitId: string, step: string): Promise<number | n
        and (status in ('queued','failed') or (status = 'running' and updated_at < now() - make_interval(mins => $3::int)))
      returning attempts`, [unitId, step, STUCK_MINUTES]);
   return rows[0]?.attempts ?? null;
+}
+// True while the step is claimed and not finished (a claim refused for a fresh run).
+export async function jobRunning(unitId: string, step: string): Promise<boolean> {
+  const { rowCount } = await pool().query("select 1 from pipeline_jobs where unit_id = $1 and step = $2 and status = 'running'", [unitId, step]);
+  return rowCount === 1;
 }
 // `finalAt` > 0 marks a failure no retry follows (permanent): attempts is raised to it so
 // pipelineSettled does not wait for a QStash retry that never comes.
