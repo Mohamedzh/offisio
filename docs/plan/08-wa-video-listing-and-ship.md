@@ -69,6 +69,13 @@ Tests (gitignored `.scratch/wa-video/`, synthetic data and our own footage only)
 - `cd .scratch/wa-video/run && npx tsx ../flow.test.ts`: route-level flow with HMAC-signed synthetic webhook payloads; Graph, the Meta API and pipeline model calls are stubbed. Must run from `.scratch/wa-video/run` (create it if missing) so `.env.local` is not auto-loaded and media lands in `run/public/uploads`. `KEEP=1` keeps one unit and writes `run/link.txt`; `npx tsx .scratch/wa-video/cleanup.ts` (repo root) removes it.
 - Helpers (repo root): `sign.ts` (fresh link for the kept unit; `expire` checks a cancelled draft's link fails), `count.ts` (draft counts, stray units), `frames-time.ts` (ffmpeg timing), `live-extract.ts` (one real paid `meta.product` call on a synthetic message).
 
+Owner phone test fixes (2026-11-04):
+- Test runs had used up the shared daily `wa_video` limit (the flow test runs on the real DB): today's counters reset (owner-approved); `flow.test.ts` now gives back its synthetic senders' usage.
+- Videos: an oversized video is rejected from the free Graph size lookup before it counts toward the daily limit; the too-big text says "without HD"; a video sent as a document is accepted with the same caps (over 16 MB: "send it as a video").
+- Shared Google Maps links that name a place but carry no coordinates (`/maps/place/<name>/data=!4m2…`, e.g. O1 New Cairo) are resolved with Places Text Search (Egypt only, one call, 5 s) and the place is named back ("📍 O1 New Cairo ✓"); a link with no readable location gets a "send the pin" text instead of "must be in Egypt". Also used by the web upload's location field.
+- Progress: the start message names the survey, bilingual listing and staged photos (3 to 5 min); the link goes out when every step has finished (renders included), or on "status"/"link" 10 min after the listing went live if a render is stuck.
+- Expired collecting drafts delete their `uploads/<slug>/` files (`deleteUploads` in `lib/blob.ts`).
+
 Open items:
 - Owner phone run after deploy (video, pin, details, link, publish); it also measures the real Graph download and Blob upload times against the ~105 s budget.
 - Blob cleanup on expiry: done 2026-11-04 (`deleteUploads(slug)` in `lib/blob.ts`: Blob `list` + `del` by prefix `uploads/<slug>/`, or `rm` under `public/uploads` locally). Runs when a collecting draft expires (no unit exists yet); best effort, logs slug + code only. Local test `.scratch/wa-video/del.test.ts` (run from `.scratch/wa-video/run`, 7 checks); Blob mode is typechecked but not run against the real store. Uploads still in flight at expiry can stay orphaned.

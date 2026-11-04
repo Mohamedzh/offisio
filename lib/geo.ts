@@ -39,19 +39,44 @@ async function expandShortLink(url: URL): Promise<string | null> {
   return current.toString();
 }
 
-// Owner input: a Google Maps link (full or short) or "lat, lng".
+// Place name in a Google Maps URL with no coordinates: /maps/place/<name>/... or ?q=<name>.
+const MAPS_HOST = /^(www\.)?google\.[a-z.]+$|^maps\.google\.[a-z.]+$/i;
+export function placeNameOf(url: string): string | null {
+  let u: URL;
+  try { u = new URL(url); } catch { return null; }
+  if (!MAPS_HOST.test(u.hostname)) return null;
+  const seg = u.pathname.match(/\/maps\/place\/([^/]+)/)?.[1];
+  const raw = seg ?? u.searchParams.get("q") ?? u.searchParams.get("query");
+  if (!raw) return null;
+  const name = decodeURIComponent(raw.replace(/\+/g, " ")).trim();
+  return name && !parseLatLng(name) ? name : null;
+}
+
+// Owner input: a Google Maps link (full or short) or "lat, lng". label: the place name when
+// the link only named a place (shared links often do) and Google Places found it in Egypt.
 // opts.expand false: short links are not followed (no redirect hops; e.g. a time-boxed webhook turn).
-export async function resolveLocation(input: string, opts: { expand?: boolean } = {}): Promise<LatLng | null> {
+export async function resolveLocationDetailed(input: string, opts: { expand?: boolean } = {}): Promise<{ loc: LatLng; label: string | null } | null> {
   const text = input.trim();
   if (!text || text.length > 2000) return null;
   const direct = parseLatLng(text);
-  if (direct) return direct;
+  if (direct) return { loc: direct, label: null };
   let url: URL;
   try { url = new URL(text); } catch { return null; }
   if (url.protocol !== "https:") return null;
   if (SHORT_HOSTS.has(url.hostname) && opts.expand === false) return null;
   const expanded = SHORT_HOSTS.has(url.hostname) ? await expandShortLink(url).catch(() => null) : text;
-  return expanded ? parseLatLng(decodeURIComponent(expanded)) : null;
+  if (!expanded) return null;
+  const parsed = parseLatLng(decodeURIComponent(expanded));
+  if (parsed) return { loc: parsed, label: null };
+  const name = placeNameOf(expanded);
+  if (!name) return null;
+  const hit = await (await import("./places")).placeByName(name).catch(() => null);
+  if (!hit) return null;
+  const loc = { lat: Math.round(hit.lat * 1e6) / 1e6, lng: Math.round(hit.lng * 1e6) / 1e6 };
+  return inEgypt(loc) ? { loc, label: hit.label } : null;
+}
+export async function resolveLocation(input: string, opts: { expand?: boolean } = {}): Promise<LatLng | null> {
+  return (await resolveLocationDetailed(input, opts))?.loc ?? null;
 }
 
 // Renter "near me" location (web 📍 or a WhatsApp pin). Set by the server only, never by

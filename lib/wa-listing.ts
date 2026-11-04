@@ -18,7 +18,7 @@ import { egpLabel } from "./booking-labels";
 import { publishDraft, unitOwnerWaId } from "./db/auth";
 import { todayCairo } from "./db/store";
 import { activeDraft, createDraft, draftBySlug, draftUnitStatus, expireStaleDrafts, mergeDraftFields, setDraftMedia, setDraftStatus, type DraftFields, type WaDraft } from "./db/wa-drafts";
-import { ownerLocation, resolveLocation, SHORT_HOSTS } from "./geo";
+import { ownerLocation, resolveLocationDetailed, SHORT_HOSTS } from "./geo";
 import { CAPS, limitKey, spendBlocked } from "./guard";
 import { toTranscribableWav } from "./audio";
 import { MetaError, meta } from "./meta/client";
@@ -48,9 +48,9 @@ const T = {
   understood: { ar: "فهمت:", en: "Got it:" },
   stillNeed: { ar: "لسه محتاج:", en: "Still need:" },
   stopHint: { ar: "(ابعت «إلغاء» لو عايز توقف)", en: "(Send \"cancel\" to stop.)" },
-  analyzing: { ar: "تمام، كده عندي كل حاجة 👌 بحلل مكتبك دلوقتي، حوالي دقيقتين…", en: "All set 👌 Analyzing your office, about 2 minutes…" },
-  stillAnalyzing: { ar: "لسه بحلل مكتبك، شوية كمان وهبعتلك الرابط.", en: "Still analyzing your office. I'll send the link in a moment." },
-  ready: { ar: "إعلانك جاهز 👈 {link}\nافتح الرابط عشان تراجعه وتعدّله (بيشتغل مرة واحدة خلال ٣٠ دقيقة)، أو رد بـ «انشر» وهننشره على رقمك. عايز رابط جديد؟ ابعت «رابط».", en: "Your listing is ready 👉 {link}\nOpen it to review and edit (works once, for 30 minutes), or reply \"publish\" to list it under your number. Need a new link? Send \"link\"." },
+  analyzing: { ar: "تمام، كده عندي كل حاجة 👌 بجهز إعلانك دلوقتي: بحلل المكتب من الفيديو، بكتب الإعلان بالعربي والإنجليزي، وبعمل صور للمكتب بعد التجهيز. ده بياخد حوالي ٣ لـ ٥ دقايق، وهبعتلك الرابط أول ما يخلص.", en: "All set 👌 Making your listing now: analyzing the space from your video, writing the Arabic and English listing, and creating the staged photos. This takes about 3 to 5 minutes; I'll send the link as soon as it's done." },
+  stillAnalyzing: { ar: "لسه شغال على إعلانك والصور، شوية كمان وهبعتلك الرابط.", en: "Still working on your listing and photos. I'll send the link as soon as it's done." },
+  ready: { ar: "إعلانك والصور جاهزين 👈 {link}\nافتح الرابط عشان تراجعه وتعدّله (بيشتغل مرة واحدة خلال ٣٠ دقيقة)، أو رد بـ «انشر» وهننشره على رقمك. عايز رابط جديد؟ ابعت «رابط».", en: "Your listing and photos are ready 👉 {link}\nOpen it to review and edit (works once, for 30 minutes), or reply \"publish\" to list it under your number. Need a new link? Send \"link\"." },
   readyNoLink: { ar: "إعلانك جاهز ✅ رد بـ «انشر» وهننشره على رقمك.", en: "Your listing is ready ✅ Reply \"publish\" to list it under your number." },
   published: { ar: "✅ اتنشر على رقمك", en: "✅ Listed under your number" },
   publishFailed: { ar: "مقدرتش أنشر الإعلان ده. ابعت «رابط» وجرب من الصفحة.", en: "I couldn't publish this listing. Send \"link\" and try from the page." },
@@ -65,6 +65,7 @@ const T = {
   videoBad: { ar: "مقدرتش أقرا الفيديو ده. ابعته تاني كفيديو (مش كملف).", en: "I couldn't read that video. Please send it again as a video (not a document)." },
   videoLimited: { ar: "وصلت للحد اليومي للفيديوهات. جرب تاني بكرة أو ارفع من الموقع.", en: "You've reached today's video limit. Try again tomorrow or upload on the website." },
   limited: { ar: "وصلنا للحد اليومي. جرب تاني بكرة.", en: "We've reached today's limit. Please try again tomorrow." },
+  linkNoLocation: { ar: "مقدرتش أطلع موقع من اللينك ده. ابعت موقع المكتب 📍 (من 📎 ← الموقع) أو اكتب الإحداثيات.", en: "I couldn't read a location from that link. Send the office location pin 📍 (📎 → Location) or the coordinates instead." },
   locationBad: { ar: "مقدرتش أستخدم الموقع ده (لازم يكون في مصر). ابعت موقع المكتب 📍 أو لينك جوجل ماب.", en: "I couldn't use that location (it must be in Egypt). Send the office location pin 📍 or a Google Maps link." },
   noContact: { ar: "من غير أرقام تليفون أو لينكات في اسم المنطقة أو الدور لو سمحت.", en: "Please leave phone numbers and links out of the district and floor." },
   tooLong: { ar: "الرسالة طويلة شوية، ممكن تختصرها؟", en: "That message is a bit long. Could you shorten it?" },
@@ -153,7 +154,7 @@ function summaryLine(f: DraftFields, lang: Lang): string {
   if (f.daily_egp) parts.push(`${egpLabel(f.daily_egp, lang)}${lang === "ar" ? " في اليوم" : "/day"}`);
   if (f.kind) parts.push(lang === "ar" ? (f.kind === "furnished" ? "مفروش" : "نص تشطيب") : f.kind);
   if (f.available_from) parts.push(lang === "ar" ? `متاح من ${f.available_from}` : `from ${f.available_from}`);
-  if (typeof f.lat === "number") parts.push("📍 ✓");
+  if (typeof f.lat === "number") parts.push(f.place_label ? `📍 ${f.place_label} ✓` : "📍 ✓");
   return parts.join(" · ");
 }
 function progressText(f: DraftFields, lang: Lang | null): string {
@@ -281,7 +282,7 @@ export async function handleDraftMessage(m: IncomingMessage, draft: WaDraft): Pr
   if (m.type === "location") {
     const loc = m.location ? ownerLocation(m.location) : null;
     if (!loc) { await reply(m, say("locationBad", draft.lang)); return true; }
-    await applyPatch(m, draft, { lat: loc.lat, lng: loc.lng }, draft.lang);
+    await applyPatch(m, draft, { lat: loc.lat, lng: loc.lng, place_label: "" }, draft.lang);
     return true;
   }
   if (m.audio) { await applyVoice(m, draft, m.audio); return true; }
@@ -296,6 +297,7 @@ export async function handleDraftMessage(m: IncomingMessage, draft: WaDraft): Pr
 // at least 10 min (past QStash's retries) expires the draft (send the video again); a ready
 // one gets its link now; anything else is still analyzing.
 const FAILED_FOR_GOOD_S = 10 * 60;
+const RENDERS_STUCK_S = 10 * 60;
 async function processingStatus(m: IncomingMessage, draft: WaDraft, lang: Lang | null): Promise<void> {
   if (!(await linkAllowed(m.from))) return reply(m, say("limited", lang));
   const unit = await draftUnitStatus(draft.slug);
@@ -304,7 +306,10 @@ async function processingStatus(m: IncomingMessage, draft: WaDraft, lang: Lang |
     if (await setDraftStatus(draft.id, "expired", ["processing"])) return reply(m, say("pipelineFailed", lang));
     return;
   }
-  if (status === "ready" && (await setDraftStatus(draft.id, "ready", ["processing"]))) return sendReadyLink(m, draft, lang);
+  // Same moment as the pipeline's own message (renders finished), or 10 min after the listing
+  // went live if a render is stuck: the owner is never left without a link.
+  const linkDue = status === "ready" && (unit!.settled || unit!.listingDoneForS >= RENDERS_STUCK_S);
+  if (linkDue && (await setDraftStatus(draft.id, "ready", ["processing"]))) return sendReadyLink(m, draft, lang);
   return reply(m, say("stillAnalyzing", lang));
 }
 
@@ -333,8 +338,9 @@ async function applyText(m: IncomingMessage, draft: WaDraft, text: string, lang:
   const patch: DraftFields = {};
   // Trailing punctuation is not part of a pasted link ("…/@30.1,31.2,17z).").
   const url = text.match(URL_RE)?.[0].replace(/[)،.,]+$/u, "");
-  const loc = url ? await resolveLocation(url, { expand }) : await resolveLocation(text, { expand });
-  if (loc) { patch.lat = loc.lat; patch.lng = loc.lng; }
+  const found = await resolveLocationDetailed(url ?? text, { expand });
+  const loc = found?.loc ?? null;
+  if (found) { patch.lat = found.loc.lat; patch.lng = found.loc.lng; patch.place_label = found.label?.slice(0, 80) ?? ""; } // "" clears an older label (merge skips nulls)
   let shortSkipped = false;
   if (url && !loc && !expand) { try { shortSkipped = SHORT_HOSTS.has(new URL(url).hostname); } catch { /* not a URL */ } }
   if (shortSkipped) prefix += say("shortLink", lang) + "\n\n";
@@ -354,7 +360,7 @@ async function applyText(m: IncomingMessage, draft: WaDraft, text: string, lang:
     const fresh = await draftBySlug(draft.slug);
     if (fresh?.status === "collecting" && fresh.video_url && !missingFields(fresh.fields).length) return startDraftUnit(m, fresh, lang ?? fresh.lang, prefix);
     if (shortSkipped) return reply(m, prefix.trimEnd());
-    return reply(m, prefix + say(contactRejected ? "noContact" : loc === null && url ? "locationBad" : "notUnderstood", lang));
+    return reply(m, prefix + say(contactRejected ? "noContact" : loc === null && url ? "linkNoLocation" : "notUnderstood", lang));
   }
   return applyPatch(m, draft, patch, lang, prefix + (contactRejected ? `${say("noContact", lang)}\n\n` : ""));
 }

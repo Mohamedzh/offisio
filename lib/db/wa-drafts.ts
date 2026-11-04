@@ -7,6 +7,7 @@ export type DraftStatus = "collecting" | "processing" | "ready" | "published" | 
 export interface DraftFields {
   rent_egp?: number | null; daily_egp?: number | null; floor_text?: string | null; kind?: "furnished" | "semifinished" | null;
   available_from?: string | null; district?: string | null; lat?: number | null; lng?: number | null;
+  place_label?: string | null; // place name when the location came from a shared Maps link (shown back to the owner)
   frame_times?: number[]; // internal: keyframe times in seconds, same order as frame_urls
 }
 export interface WaDraft {
@@ -56,11 +57,16 @@ export async function setDraftMedia(id: string, videoUrl: string, frameUrls: str
 // failedForS: seconds since its latest failed analyze/listing step (the steps that fail a unit;
 // 0 when none failed), so a unit
 // still inside QStash retries is not treated as dead.
-export async function draftUnitStatus(slug: string): Promise<{ status: string; failedForS: number } | null> {
-  const { rows } = await pool().query<{ status: string; failed_for_s: number }>(
-    `select u.status, coalesce(extract(epoch from now() - (select max(j.updated_at) from pipeline_jobs j where j.unit_id = u.id and j.status = 'failed' and j.step in ('analyze','listing'))), 0)::float as failed_for_s
+// settled: no step queued or running (renders done); listingDoneForS: seconds since the listing
+// step finished (0 before), so a render stuck in "running" cannot hold the owner's link forever.
+export async function draftUnitStatus(slug: string): Promise<{ status: string; failedForS: number; settled: boolean; listingDoneForS: number } | null> {
+  const { rows } = await pool().query<{ status: string; failed_for_s: number; settled: boolean; listing_done_for_s: number }>(
+    `select u.status, coalesce(extract(epoch from now() - (select max(j.updated_at) from pipeline_jobs j where j.unit_id = u.id and j.status = 'failed' and j.step in ('analyze','listing'))), 0)::float as failed_for_s,
+            not exists (select 1 from pipeline_jobs j where j.unit_id = u.id and j.status in ('queued','running')) as settled,
+            coalesce(extract(epoch from now() - (select j.updated_at from pipeline_jobs j where j.unit_id = u.id and j.step = 'listing' and j.status = 'done')), 0)::float as listing_done_for_s
      from units u where u.slug = $1`, [slug]);
-  return rows[0] ? { status: rows[0].status, failedForS: rows[0].failed_for_s } : null;
+  const r = rows[0];
+  return r ? { status: r.status, failedForS: r.failed_for_s, settled: r.settled, listingDoneForS: r.listing_done_for_s } : null;
 }
 // Shallow merge into fields (null/undefined values in `patch` are ignored); lang kept when null.
 export async function mergeDraftFields(id: string, patch: DraftFields, lang: "ar" | "en" | null): Promise<WaDraft | null> {

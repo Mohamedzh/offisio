@@ -52,6 +52,24 @@ export async function searchNearby(at: LatLng): Promise<NearbyPlace[]> {
   })).sort((a, b) => a.distance_m - b.distance_m);
 }
 
+// Place name -> coordinates (Text Search (New), restricted to Egypt), for shared Google Maps
+// links that carry only a place name and id (e.g. ".../maps/place/O1+New+Cairo,+.../data=!4m2!3m1!1s0x..").
+// One call, 5 s, first match only; null when not configured or nothing matches.
+const EGYPT_RECT = { low: { latitude: 21.5, longitude: 24.5 }, high: { latitude: 32, longitude: 37 } };
+export async function placeByName(name: string): Promise<{ lat: number; lng: number; label: string } | null> {
+  const key = process.env.GOOGLE_PLACES_API_KEY;
+  const q = name.trim().slice(0, 200);
+  if (!key || !q) return null;
+  const r = await fetch("https://places.googleapis.com/v1/places:searchText", {
+    method: "POST", signal: AbortSignal.timeout(5000),
+    headers: { "Content-Type": "application/json", "X-Goog-Api-Key": key, "X-Goog-FieldMask": "places.displayName,places.location" },
+    body: JSON.stringify({ textQuery: q, pageSize: 1, regionCode: "EG", locationRestriction: { rectangle: EGYPT_RECT } }),
+  });
+  if (!r.ok) { console.error(`[places] searchText ${r.status}`); return null; } // fixed: no query or body in logs
+  const p = ((await r.json()) as { places?: { displayName?: { text?: string }; location?: { latitude: number; longitude: number } }[] }).places?.[0];
+  return p?.location ? { lat: p.location.latitude, lng: p.location.longitude, label: p.displayName?.text ?? q } : null;
+}
+
 // Arabic/English name normalisation (used by lib/landmarks.ts alias matching).
 export function normName(s: string): string {
   return s.toLowerCase().normalize("NFKD").replace(/[̀-ًͯ-ٟ]/g, "")

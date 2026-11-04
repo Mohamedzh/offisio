@@ -323,6 +323,14 @@ export async function finishJob(unitId: string, step: string, error: string | nu
     "update pipeline_jobs set status = $3, last_error = $4, updated_at = now() where unit_id = $1 and step = $2",
     [unitId, step, error === null ? "done" : "failed", error === null ? null : error.slice(0, 500)]);
 }
+// Listing live (unit ready) and no step left queued or running: review, renders and places
+// have all finished (done or failed). Used to tell a WhatsApp owner once everything is in.
+export async function pipelineSettled(unitId: string): Promise<boolean> {
+  const { rows } = await pool().query<{ ok: boolean }>(
+    `select u.status = 'ready' and not exists (select 1 from pipeline_jobs j where j.unit_id = u.id and j.status in ('queued','running')) as ok
+     from units u where u.id = $1`, [unitId]);
+  return rows[0]?.ok === true;
+}
 export async function jobsOf(unitId: string): Promise<Job[]> {
   const { rows } = await pool().query<Job>(
     "select step, status, attempts, last_error, updated_at from pipeline_jobs where unit_id = $1 order by updated_at", [unitId]);

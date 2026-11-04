@@ -4,7 +4,7 @@
 //   upload -> analyze -> listing (unit goes live) -> review (advisory, never fails the unit)
 //                     -> stage:<style> (one per planned render)
 //        -> places (nearby cafes, needs only the location)
-import { claimJob, finishJob, generateAvailability, getUnit, queueJobs, saveListing, setUnitStatus, uploadInputs, type UploadInputs } from "../db/store";
+import { claimJob, finishJob, generateAvailability, getUnit, pipelineSettled, queueJobs, saveListing, setUnitStatus, uploadInputs, type UploadInputs } from "../db/store";
 import { analyzeSpecs, saveKeyframesAndSpecs } from "./ingest";
 import { generateListingV2, type UploadOwner } from "./specs-listing";
 import { planStaging, stageOne } from "./staging";
@@ -79,11 +79,16 @@ async function execute(u: UploadInputs, step: string): Promise<string[]> {
 
 export type RunResult = "done" | "skipped" | "failed" | "failed_permanent";
 
-// WhatsApp listing drafts (plan/08 8.1): tell the owner when the listing is ready (after
-// review, done or failed: the listing itself is live by then) or when analyze/listing failed
-// for good (permanent, or no QStash retry locally). Best effort; never throws here.
+// WhatsApp listing drafts (plan/08 8.1): tell the owner once everything is in (listing live
+// and every step, incl. review and the staged renders, finished: done or failed), or when
+// analyze/listing failed for good (permanent, or no QStash retry locally). Checked after the
+// follow-up steps are queued, so "nothing pending" really means the end. Best effort; never
+// throws here; the draft's compare-and-set status makes it one message even if two steps race.
 async function notifyOwner(slug: string, outcome: "ready" | "failed"): Promise<void> {
   try { await (await import("../wa-listing")).notifyDraftPipeline(slug, outcome); } catch { /* best effort */ }
+}
+async function notifyIfSettled(unitId: string, slug: string): Promise<void> {
+  try { if (await pipelineSettled(unitId)) await notifyOwner(slug, "ready"); } catch { /* best effort */ }
 }
 
 // Claim -> execute -> record. Throws nothing: the route maps "failed" to a 500
@@ -96,7 +101,7 @@ export async function runStep(slug: string, step: string): Promise<RunResult> {
     const next = await execute(u, step);
     await finishJob(u.id, step);
     await enqueue(u.id, slug, next);
-    if (step === "review") await notifyOwner(slug, "ready");
+    await notifyIfSettled(u.id, slug);
     return "done";
   } catch (e) {
     const msg = (e as Error).message || "error";
@@ -104,8 +109,8 @@ export async function runStep(slug: string, step: string): Promise<RunResult> {
     await finishJob(u.id, step, msg);
     if (step === "analyze" || step === "listing") await setUnitStatus(slug, "failed").catch(() => {});
     const permanent = e instanceof PermanentError;
-    if (step === "review") await notifyOwner(slug, "ready");
-    else if ((step === "analyze" || step === "listing") && (permanent || !qstashEnabled())) await notifyOwner(slug, "failed");
+    if ((step === "analyze" || step === "listing") && (permanent || !qstashEnabled())) await notifyOwner(slug, "failed");
+    else await notifyIfSettled(u.id, slug);
     return permanent ? "failed_permanent" : "failed";
   }
 }
