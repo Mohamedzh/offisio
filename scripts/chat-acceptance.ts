@@ -1,4 +1,4 @@
-// Segment acceptance: 18 scripted Egyptian-Arabic/English booking conversations (11-13 and 17 on the WhatsApp channel; 14-18 near me)
+// Segment acceptance: 21 scripted Egyptian-Arabic/English booking conversations (11-13, 17 and 19 on the WhatsApp channel; 14-18 near me; 19-21 owners, V10)
 // against the real agent (muse-spark-1.3, owner-approved run). Synthetic renters
 // only. Writes transcripts to .scratch/chat-transcripts.md, cleans up after.
 // Run: pnpm chat-acceptance            (all)   pnpm chat-acceptance 14,15,16,17,18   (only those)
@@ -21,6 +21,8 @@ const saysDistance = (text: string, km?: number) => km !== undefined && [String(
   .flatMap((s) => [s, AR_DIGITS(s), AR_DIGITS(s).replace(".", "٫")])
   .some((s) => new RegExp(`(^|[^\\d٠-٩.٫])${s.replace(".", "\\.")}\\s*(km|كم|كيلو)`, "i").test(text));
 const arabic = (s: string) => /[؀-ۿ]/.test(s);
+// V10: an Arabic reply has no English words (brand names, links, refs in backticks and "km" are fine).
+const noEnglish = (s: string) => !/[A-Za-z]{3,}/.test(s.replace(/`[^`]*`|https?:\/\/\S+|Offisio|XPay|WhatsApp|HD/gi, ""));
 // Nothing is paid in these runs, so no reply may call a booking confirmed (V6 wording rule).
 const saysConfirmed = (r: { replies: string[] }) => r.replies.some((x) => /(حجزك|الحجز)\s*(متأكد|اتأكد)|booking is confirmed|you're confirmed/i.test(x));
 // A turn may carry a near-me location, injected like the routes do (renterLocation, then chatTurn).
@@ -98,6 +100,13 @@ async function main() {
         && !/📎|شارك.{0,10}موقع|share your location/i.test(r.replies[1]), undefined, WA2),
     S([{ text: "Any offices within 5 km of me?", location: zLoc }], "18 'within 5 km' in English",
       (r) => !arabic(r.replies[0]) && nearMeCalls(r.trace).some((c) => /"radius_km"\s*:\s*5\b/.test(c.args)) && saysKm(r.replies[0]), undefined, undefined, "en"),
+    // Owners (V10, 2026-11-04): listing path instead of a refusal; renters still searched.
+    S(["عندي مكتب في المعادي وعايز أعلن عنه عندكم"], "19 WhatsApp owner (AR): send a video here, no refusal, Arabic only",
+      (r) => /فيديو/.test(r.replies[0]) && !/مقدرش|مش هقدر|can't list/i.test(r.replies[0]) && r.bookingIds.length === 0 && noEnglish(r.replies[0]), undefined, WA2),
+    S(["I own an office in Maadi. How do I list it with you?"], "20 web owner (EN): points to List your office",
+      (r) => !arabic(r.replies[0]) && /list your office/i.test(r.replies[0]) && !/can't list/i.test(r.replies[0]), undefined, undefined, "en"),
+    S(["عايز أأجر مكتب في الزمالك"], "21 'عايز أأجر مكتب' stays a renter search, Arabic only",
+      (r) => r.trace.some((c) => c.tool === "search_units") && !/فيديو/.test(r.replies[0]) && noEnglish(r.replies[0])),
   ];
   const md: string[] = ["# Chat acceptance transcripts (synthetic renters)", `Run ${new Date().toISOString()} on muse-spark-1.3`, ""];
   const created: string[] = []; const sessions: string[] = []; const results: string[] = [];

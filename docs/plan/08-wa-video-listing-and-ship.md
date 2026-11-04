@@ -78,6 +78,7 @@ Open items:
 
 Do a full pass in EN (LTR) and AR (RTL), desktop and phone width (Playwright resize 390x844), on: home, unit page (demo + draft), edit page, upload (incl. sample walkthrough), login, chat (typing, 📍, mic, errors), booking + test-card checkout, booking page after payment, privacy/legal pages. Known items:
 - Arabic replies from the agent sometimes include English words ("layout", "long-term", "meeting"): tighten `AGENT_PROMPT_V9` language rule (prompt bump to V10, rerun `pnpm chat-acceptance` fully once — paid, ask first).
+  **Done 2026-11-04:** `AGENT_PROMPT_V10` (owner-approved) adds an Arabic-words-only rule and an "Owners" rule (someone listing their own office gets the WhatsApp video / "List your office" path instead of "I can't list offices here", seen on the owner's phone). `pnpm chat-acceptance` 21/21 (new 19-21: owner AR on WhatsApp, owner EN on web, "عايز أأجر مكتب" stays a renter search with Arabic-only text).
 - Unit cards in chat show Western digits while replies use Arabic-Indic: pick one per locale.
 - Any remaining English in AR pages (search with a script: lines matching `[A-Za-z]{3,}` in `/ar/*` page text, excluding brand names and the language toggle).
 - Button states: check every `.btn-paper` with `aria-pressed` for the hover-contrast trap (fixed for the mic; the 📍 uses `btn-chalk` while locating).
