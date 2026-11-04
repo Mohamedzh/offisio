@@ -24,7 +24,8 @@ export interface IncomingAudio { id: string; mimeType: string; voice: boolean }
 // null on a location message means its coordinates were missing or unreadable.
 export interface IncomingLocation { lat: number; lng: number }
 // A video (8.1 owner listing). The caption is owner text (PII): never logged.
-export interface IncomingVideo { id: string; mimeType: string; caption: string | null }
+// asDocument: a video file sent as a document (not compressed by WhatsApp); same caps, routed as type "video".
+export interface IncomingVideo { id: string; mimeType: string; caption: string | null; asDocument?: boolean }
 export interface IncomingMessage { id: string; from: string; type: string; text: string | null; name: string | null; audio: IncomingAudio | null; location: IncomingLocation | null; video?: IncomingVideo | null }
 const locationOf = (l: { latitude?: unknown; longitude?: unknown } | undefined): IncomingLocation | null => {
   const lat = Number(l?.latitude), lng = Number(l?.longitude);
@@ -38,15 +39,18 @@ export function incomingMessages(payload: unknown): IncomingMessage[] {
   for (const e of entries) for (const c of e.changes ?? []) {
     if (c.field !== "messages") continue;
     for (const raw of c.value?.messages ?? []) {
-      const m = raw as { id?: string; from?: string; type?: string; text?: { body?: string }; audio?: { id?: string; mime_type?: string; voice?: boolean }; location?: { latitude?: unknown; longitude?: unknown }; video?: { id?: string; mime_type?: string; caption?: string } };
+      const m = raw as { id?: string; from?: string; type?: string; text?: { body?: string }; audio?: { id?: string; mime_type?: string; voice?: boolean }; location?: { latitude?: unknown; longitude?: unknown }; video?: { id?: string; mime_type?: string; caption?: string }; document?: { id?: string; mime_type?: string; caption?: string } };
       if (!m.id || !m.from) continue;
       const name = c.value?.contacts?.find((x) => x.wa_id === m.from)?.profile?.name?.trim() || null;
       const audio = m.type === "audio" && m.audio?.id
         ? { id: m.audio.id, mimeType: (m.audio.mime_type ?? "audio/ogg").split(";")[0].trim(), voice: m.audio.voice === true } : null;
       const location = m.type === "location" ? locationOf(m.location) : null;
+      const docMime = (m.document?.mime_type ?? "").split(";")[0].trim();
+      const videoDoc = m.type === "document" && m.document?.id && docMime.startsWith("video/");
       const video = m.type === "video" && m.video?.id
-        ? { id: m.video.id, mimeType: (m.video.mime_type ?? "video/mp4").split(";")[0].trim(), caption: m.video.caption?.trim() || null } : null;
-      out.push({ id: m.id, from: m.from, type: m.type ?? "unknown", text: m.type === "text" ? m.text?.body ?? null : null, name, audio, location, video });
+        ? { id: m.video.id, mimeType: (m.video.mime_type ?? "video/mp4").split(";")[0].trim(), caption: m.video.caption?.trim() || null }
+        : videoDoc ? { id: m.document!.id!, mimeType: docMime, caption: m.document!.caption?.trim() || null, asDocument: true } : null;
+      out.push({ id: m.id, from: m.from, type: videoDoc ? "video" : m.type ?? "unknown", text: m.type === "text" ? m.text?.body ?? null : null, name, audio, location, video });
     }
   }
   return out;
@@ -57,23 +61,29 @@ export function incomingMessages(payload: unknown): IncomingMessage[] {
 export const MAX_MEDIA_BYTES = 1024 * 1024; // ~1 min of Opus voice; keeps transcription cost and time small
 // Walkthrough videos (8.1): WhatsApp's own limit for videos is 16 MB; the bytes get a longer timeout.
 export const VIDEO_MEDIA = { maxBytes: 16 * 1024 * 1024, timeoutMs: 20_000 } as const;
-export async function downloadMedia(mediaId: string, opts: { maxBytes?: number; timeoutMs?: number } = {}): Promise<{ bytes: Uint8Array; mimeType: string }> {
-  const cap = opts.maxBytes ?? MAX_MEDIA_BYTES;
+export interface MediaInfo { url: string; mimeType: string | null }
+// Graph media lookup (free, 8 s): size checked against the cap before any bytes move.
+export async function mediaInfo(mediaId: string, maxBytes = MAX_MEDIA_BYTES): Promise<MediaInfo> {
   if (!process.env.WHATSAPP_TOKEN) throw new Error("WHATSAPP_NOT_CONFIGURED");
-  const auth = { Authorization: `Bearer ${process.env.WHATSAPP_TOKEN}` };
-  const metaRes = await fetch(`${GRAPH}/${encodeURIComponent(mediaId)}`, { headers: auth, signal: AbortSignal.timeout(8_000) });
+  const metaRes = await fetch(`${GRAPH}/${encodeURIComponent(mediaId)}`, { headers: { Authorization: `Bearer ${process.env.WHATSAPP_TOKEN}` }, signal: AbortSignal.timeout(8_000) });
   if (!metaRes.ok) throw new Error(`WHATSAPP_MEDIA_${metaRes.status}`);
   const info = (await metaRes.json()) as { url?: string; mime_type?: string; file_size?: number | string };
-  const size = Number(info.file_size ?? 0);
-  if (size > cap) throw new Error("WHATSAPP_MEDIA_TOO_LARGE");
+  if (Number(info.file_size ?? 0) > maxBytes) throw new Error("WHATSAPP_MEDIA_TOO_LARGE");
   if (!info.url?.startsWith("https://")) throw new Error("WHATSAPP_MEDIA_NO_URL");
+  return { url: info.url, mimeType: info.mime_type ?? null };
+}
+// opts.info: a lookup already done (the video path checks size before counting the daily limit).
+export async function downloadMedia(mediaId: string, opts: { maxBytes?: number; timeoutMs?: number; info?: MediaInfo } = {}): Promise<{ bytes: Uint8Array; mimeType: string }> {
+  const cap = opts.maxBytes ?? MAX_MEDIA_BYTES;
+  const info = opts.info ?? await mediaInfo(mediaId, cap);
+  const auth = { Authorization: `Bearer ${process.env.WHATSAPP_TOKEN}` };
   const res = await fetch(info.url, { headers: auth, signal: AbortSignal.timeout(opts.timeoutMs ?? 8_000) });
   if (!res.ok) throw new Error(`WHATSAPP_MEDIA_GET_${res.status}`);
   const declared = Number(res.headers.get("content-length") ?? 0);
   if (declared > cap) throw new Error("WHATSAPP_MEDIA_TOO_LARGE");
   const bytes = new Uint8Array(await res.arrayBuffer());
   if (bytes.byteLength > cap) throw new Error("WHATSAPP_MEDIA_TOO_LARGE");
-  const mime = info.mime_type ?? res.headers.get("content-type") ?? "audio/ogg";
+  const mime = info.mimeType ?? res.headers.get("content-type") ?? "audio/ogg";
   return { bytes, mimeType: mime.split(";")[0].trim() };
 }
 

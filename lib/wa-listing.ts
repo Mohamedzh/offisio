@@ -28,7 +28,7 @@ import { hasContactInfo } from "./pipeline/review";
 import { ownerFieldsError, startUploadedUnit } from "./upload-unit";
 import { extractFrames, VIDEO_MIMES, VideoError } from "./video-frames";
 import { listingLinkUrl } from "./wa-link";
-import { downloadMedia, senderKey, sendText, sessionKeyFor, VIDEO_MEDIA, type IncomingMessage } from "./whatsapp";
+import { downloadMedia, mediaInfo, senderKey, sendText, sessionKeyFor, VIDEO_MEDIA, type IncomingMessage, type MediaInfo } from "./whatsapp";
 
 type Lang = "ar" | "en";
 const isArabic = (s: string) => /[؀-ۿ]/.test(s);
@@ -58,7 +58,8 @@ const T = {
   pipelineFailed: { ar: "معلش، مقدرناش نحلل الفيديو ده. ابعت فيديو تاني بيلف على المكتب (لحد ٤٥ ثانية).", en: "Sorry, we couldn't analyze that video. Please send another walkthrough (up to 45 seconds)." },
   createFailed: { ar: "معلش، حصلت مشكلة وإحنا بنجهز الإعلان. ابعت الفيديو تاني.", en: "Sorry, something went wrong preparing the listing. Please send the video again." },
   videoTooLong: { ar: "الفيديو أطول من ٤٥ ثانية. ابعت فيديو أقصر بيلف على المكتب.", en: "That video is over 45 seconds. Please send a shorter walkthrough." },
-  videoTooBig: { ar: "الفيديو كبير أوي (أكتر من ١٦ ميجا). ابعت فيديو أقصر.", en: "That video is too large (over 16 MB). Please send a shorter one." },
+  videoTooBig: { ar: "الفيديو كبير أوي (أكتر من ١٦ ميجا). ابعته تاني من غير HD، أو صوّر فيديو أقصر (٢٠ لـ ٤٥ ثانية كفاية).", en: "That video is too large (over 16 MB). Send it again without HD, or a shorter clip (20 to 45 seconds is plenty)." },
+  videoTooBigDoc: { ar: "الملف ده أكبر من ١٦ ميجا. ابعته كفيديو من الجاليري (مش كملف)، وواتساب هيصغّره لوحده.", en: "That file is over 16 MB. Send it as a video from your gallery (not as a document) and WhatsApp will compress it." },
   videoLost: { ar: "معلش، الفيديو مكملش معايا. ابعته تاني لو سمحت.", en: "Sorry, that video didn't finish processing. Please send it again." },
   shortLink: { ar: "اللينك المختصر مش بيفتح هنا: ابعت موقع المكتب 📍 أو اللينك الكامل من جوجل ماب.", en: "Short links don't open here: send the office location pin 📍 or the full Google Maps link." },
   videoBad: { ar: "مقدرتش أقرا الفيديو ده. ابعته تاني كفيديو (مش كملف).", en: "I couldn't read that video. Please send it again as a video (not a document)." },
@@ -209,17 +210,25 @@ export async function handleOwnerVideo(m: IncomingMessage): Promise<void> {
   const caption = m.video?.caption ?? null;
   const lang = langOf(caption);
   if (!m.video) return reply(m, say("videoBad", lang));
-  // Limits before any download, ffmpeg or storage.
+  const tooBig = m.video.asDocument ? "videoTooBigDoc" : "videoTooBig";
+  // Limits before any download, ffmpeg or storage. Type and size (free Graph lookup) are checked
+  // first so a wrong or oversized file does not use one of the sender's daily videos.
   if (await spendBlocked()) return reply(m, say("limited", lang));
-  if (!(await limitKey("wa_video", sessionOf(m.from))).ok) return reply(m, say("videoLimited", lang));
   if (!(VIDEO_MIMES as readonly string[]).includes(m.video.mimeType)) return reply(m, say("videoBad", lang));
+  let info: MediaInfo;
+  try { info = await mediaInfo(m.video.id, VIDEO_MEDIA.maxBytes); } catch (e) {
+    const code = codeOf(e);
+    console.error("[wa-listing] video lookup failed", m.id, code);
+    return reply(m, say(code === "WHATSAPP_MEDIA_TOO_LARGE" ? tooBig : "videoBad", lang));
+  }
+  if (!(await limitKey("wa_video", sessionOf(m.from))).ok) return reply(m, say("videoLimited", lang));
   // The draft exists before the slow part, so a pin or details sent meanwhile land in it.
   for (const old of await expireStaleDrafts(m.from)) await dropDraftMedia(old);
   const slug = randomBytes(12).toString("base64url");
   const draft = await createDraft({ waId: m.from, slug, guestId: randomBytes(18).toString("base64url"), lang });
   let stored: WaDraft | null;
   try {
-    const media = await downloadMedia(m.video.id, VIDEO_MEDIA);
+    const media = await downloadMedia(m.video.id, { ...VIDEO_MEDIA, info });
     const mime = (VIDEO_MIMES as readonly string[]).includes(media.mimeType) ? media.mimeType : m.video.mimeType;
     const { frames } = await extractFrames(media.bytes, mime);
     // Same storage names as the browser upload (lib/upload-names.ts).
@@ -232,7 +241,7 @@ export async function handleOwnerVideo(m: IncomingMessage): Promise<void> {
     const code = codeOf(e);
     console.error("[wa-listing] video failed", m.id, code);
     await expireCollecting(draft); // also deletes any files already uploaded
-    return reply(m, say(code === "VIDEO_TOO_LONG" ? "videoTooLong" : code === "WHATSAPP_MEDIA_TOO_LARGE" ? "videoTooBig" : "videoBad", lang));
+    return reply(m, say(code === "VIDEO_TOO_LONG" ? "videoTooLong" : code === "WHATSAPP_MEDIA_TOO_LARGE" ? tooBig : "videoBad", lang));
   }
   if (!stored) return; // cancelled while the video was processing
   // Details in the caption: same turn (counts toward the chat cap; one try, no retry, no short-link hops).
