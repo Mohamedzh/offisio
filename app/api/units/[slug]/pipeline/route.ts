@@ -3,16 +3,20 @@
 // Retries only for the unit's signed-in owner (lib/owner editMode).
 import { jobsOf, unitRef } from "@/lib/db/store";
 import { enqueue, routeOf } from "@/lib/pipeline/jobs";
-import { deny, limit, spendBlocked } from "@/lib/guard";
+import { deny, limit, safeErrorCode, spendBlocked } from "@/lib/guard";
 import { isDemoUnit } from "@/lib/demo-units";
 import { editMode } from "@/lib/owner";
 
 const STUCK_MS = 6 * 60_000;
 
+// Step statuses for anyone with the link (the unit page shows the same draft by slug);
+// last_error only for the unit's owner, and only as a fixed code (never provider text).
 export async function GET(_req: Request, { params }: { params: Promise<{ slug: string }> }) {
   const ref = await unitRef((await params).slug);
   if (!ref) return Response.json({ error: "NOT_FOUND" }, { status: 404 });
-  return Response.json({ jobs: await jobsOf(ref.id) });
+  const [jobs, mode] = await Promise.all([jobsOf(ref.id), editMode(ref.slug)]);
+  return Response.json({ jobs: jobs.map((j) => ({ ...j, last_error: mode === "owner" && j.last_error ? safeErrorCode(j.last_error) : null })) },
+    { headers: { "Cache-Control": "private, no-store" } });
 }
 
 export async function POST(req: Request, { params }: { params: Promise<{ slug: string }> }) {

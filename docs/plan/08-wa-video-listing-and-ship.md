@@ -99,10 +99,20 @@ Translations: `lib/i18n/en.json` / `ar.json` identical keys (check with a node o
 - Final head review over the full uncommitted diff before the last commit: secrets, PII routing, logs, line endings (`git diff --stat` vs `--ignore-cr-at-eol`), lint 0 errors, typecheck, `pnpm build`.
 - Prod smoke after deploy: home EN/AR, unit page, chat AR + EN (+ 📍), web mic, sample upload -> draft -> review -> publish (owner phone), test-card payment, WhatsApp text + voice + pin, `/llms.txt`, `/api/blob/local` 404 on prod.
 
+### 8.2 + 8.3 result (2026-11-04, uncommitted)
+
+End-to-end review (security, flow, wording/translations, live UI on prod), then 6 implementor + reviewer pairs (Opus). Final check: typecheck clean, lint 0 errors, `pnpm build` OK, en/ar 400 keys each, no secrets in the diff, reviewers saw 0 CSP violations on a local `next start`.
+- Security: uploads pinned to our Blob store (host from `BLOB_READ_WRITE_TOKEN`, demo store fallback), `mediaBytes` capped at 16 MB, upload path regex; agent `create_booking` 1 per turn + `booking` limit; `spendBlocked()` on web chat and WhatsApp turns; fixed error codes only (`safeErrorCode`), pipeline `last_error` owner-only (GET + edit page); new `checkout` limit kind; CSP + X-Frame-Options/Referrer/Permissions-Policy in `next.config.ts` (static, no nonce; `camera=()` does not affect the native camera from the file input).
+- Booking: polls after the XPay return (stops on a failed payment), not-found state, no same-day booking from 16:00 Cairo (`firstBookableDay`), all booking codes translated, form labels/dates/hints, add-on qty integer, `status = 'ready'` required.
+- WhatsApp: `activeDraft` collecting first; final QStash failure tells the owner (attempts vs `QSTASH_MAX_DELIVERIES`; `queueJobs` resets attempts; failed-with-retries-left is not settled); publish/cancel while processing answered; readable summary/captions; Western digits.
+- UI: chat overflow at 390 px, no repeated cards, slow-reply hints; AR Western digits + "{amount} جنيه", area/seats line; Book CTA + phone sticky bar; fit tab hover; branded 404/error (`[...missing]` catch-all); 2-row phone header; WhatsApp float lifted/faded.
+- Copy: privacy/terms rewritten (cookies, voice, location, owner number, demo wording), "Last updated" fixed to 2026-11-04 (constant in components/LegalPage.tsx, bump when the copy changes; owner decision); terminology office/listing/fit concepts/المحادثة/المساعد.
+Open: `lib/meta/prompts.ts` still asks for Arabic-Indic distances (prompt bump + paid acceptance run needs owner OK); a decline with no failed webhook still waits ~60 s; 404s return HTTP 200 (PPR shell); `lib/blob.ts` whole-project tracing warning in build; no flow test yet for the new WhatsApp keyword routing.
+
 ## 8.4 Video prep (3 minutes, record Nov 3–4)
 
 Story (depth over breadth): owner films an office -> AI survey, rubric "Suitable for", bilingual listing, AI listing review with one-click fixes, staging renders -> publish with WhatsApp -> renter asks "near me" in Egyptian Arabic (voice note on WhatsApp and web mic) -> books and pays in XPay test mode -> confirmation on WhatsApp. Mention: Meta models only (Muse Spark, Muse Image, Muse Voice Transcribe), PII routing, AR/EN RTL. No menus, no SAM. Keep a written shot list in this file before recording; use demo data and the owner's own phone/number only.
 
 ## Handoff
 
-8.1 is built (2026-11-03, uncommitted). Next: the owner commits, deploys and runs the phone check (8.1 Open items), then 8.2 polish.
+8.1 is built (2026-11-03). 8.2 polish and 8.3 reviews done 2026-11-04 (uncommitted, see "8.2 + 8.3 result"). Next: the owner commits, deploys, runs the prod smoke + phone check, then 8.4 video.

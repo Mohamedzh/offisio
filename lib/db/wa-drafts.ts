@@ -16,14 +16,25 @@ export interface WaDraft {
 }
 const COLS = "id, wa_id, slug, guest_id, video_url, frame_urls, fields, status, lang, created_at";
 
-// The sender's latest draft that still takes chat: collecting details (24 h), processing
-// (24 h; answers "link"/"status" only) or ready to publish (7 days).
+// The sender's draft that still takes chat: collecting details (24 h), processing
+// (24 h; answers "link"/"status"/"publish"/"cancel") or ready to publish (7 days).
+// A collecting draft always wins (the details being typed are for the newest video), then
+// the newest video. Not updated_at: the pipeline's ready notice bumps an older draft's
+// updated_at, which would steal the next video's details and its "publish".
+const LIVE = `((status in ('collecting','processing') and updated_at > now() - interval '24 hours')
+         or (status = 'ready' and updated_at > now() - interval '7 days'))`;
 export async function activeDraft(waId: string): Promise<WaDraft | null> {
   const { rows } = await pool().query<WaDraft>(
-    `select ${COLS} from wa_listing_drafts where wa_id = $1
-       and ((status in ('collecting','processing') and updated_at > now() - interval '24 hours')
-         or (status = 'ready' and updated_at > now() - interval '7 days'))
-     order by updated_at desc limit 1`, [waId]);
+    `select ${COLS} from wa_listing_drafts where wa_id = $1 and ${LIVE}
+     order by (status = 'collecting') desc, created_at desc limit 1`, [waId]);
+  return rows[0] ?? null;
+}
+// The sender's newest other live draft in one of `statuses` (e.g. the ready listing a
+// "publish" means while a newer video is still collecting details or processing).
+export async function otherDraft(waId: string, excludeId: string, statuses: DraftStatus[]): Promise<WaDraft | null> {
+  const { rows } = await pool().query<WaDraft>(
+    `select ${COLS} from wa_listing_drafts where wa_id = $1 and id <> $2 and status = any($3::text[]) and ${LIVE}
+     order by created_at desc limit 1`, [waId, excludeId, statuses]);
   return rows[0] ?? null;
 }
 export async function draftBySlug(slug: string): Promise<WaDraft | null> {
@@ -59,12 +70,13 @@ export async function setDraftMedia(id: string, videoUrl: string, frameUrls: str
 // still inside QStash retries is not treated as dead.
 // settled: no step queued or running (renders done); listingDoneForS: seconds since the listing
 // step finished (0 before), so a render stuck in "running" cannot hold the owner's link forever.
-export async function draftUnitStatus(slug: string): Promise<{ status: string; failedForS: number; settled: boolean; listingDoneForS: number } | null> {
+// maxDeliveries: same rule as pipelineSettled (a failed step with QStash retries left is still pending; 0 = failed is final).
+export async function draftUnitStatus(slug: string, maxDeliveries = 0): Promise<{ status: string; failedForS: number; settled: boolean; listingDoneForS: number } | null> {
   const { rows } = await pool().query<{ status: string; failed_for_s: number; settled: boolean; listing_done_for_s: number }>(
     `select u.status, coalesce(extract(epoch from now() - (select max(j.updated_at) from pipeline_jobs j where j.unit_id = u.id and j.status = 'failed' and j.step in ('analyze','listing'))), 0)::float as failed_for_s,
-            not exists (select 1 from pipeline_jobs j where j.unit_id = u.id and j.status in ('queued','running')) as settled,
+            not exists (select 1 from pipeline_jobs j where j.unit_id = u.id and (j.status in ('queued','running') or (j.status = 'failed' and j.attempts < $2::int))) as settled,
             coalesce(extract(epoch from now() - (select j.updated_at from pipeline_jobs j where j.unit_id = u.id and j.step = 'listing' and j.status = 'done')), 0)::float as listing_done_for_s
-     from units u where u.slug = $1`, [slug]);
+     from units u where u.slug = $1`, [slug, maxDeliveries]);
   const r = rows[0];
   return r ? { status: r.status, failedForS: r.failed_for_s, settled: r.settled, listingDoneForS: r.listing_done_for_s } : null;
 }

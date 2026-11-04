@@ -24,14 +24,16 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
   const waHref = renterWaUrl(locale);
   const featured = units.find((u) => u.images.empty) ?? units[0];
   const rest = units.filter((u) => u !== featured);
-  // One comparable spec line per card: area · desks · floor (from specs JSON).
-  const specLine = (u: (typeof units)[number]): string => {
+  // One comparable spec line per card: area · seats · floor (from specs JSON).
+  // Each piece is its own <bdi> so RTL doesn't reorder "~25 m²" across the dots.
+  const specLine = (u: (typeof units)[number]) => {
     const s = u.specs as { area_m2_estimate?: unknown; desk_capacity?: unknown };
     const parts: string[] = [];
-    if (typeof s.area_m2_estimate === "number") parts.push(`~${s.area_m2_estimate} m²`);
+    if (typeof s.area_m2_estimate === "number") parts.push(t("spec.areaValue", { n: s.area_m2_estimate }));
     if (typeof s.desk_capacity === "number") parts.push(t("home.desks", { count: s.desk_capacity }));
     if (u.floor_text) parts.push(floorLabel(locale, u.floor_text));
-    return parts.join(" · ");
+    if (!parts.length) return null;
+    return <p className="tnum text-sm font-bold mt-1">{parts.map((p, i) => <span key={p}>{i > 0 && " · "}<bdi>{p}</bdi></span>)}</p>;
   };
   const steps: [string, string][] = [
     [t("home.step1Title"), t("home.step1Body")],
@@ -40,19 +42,22 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
   ];
   return (
     <main className="mx-auto w-full max-w-5xl px-4 py-8">
-      <header className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2 border border-ink bg-sheet px-3 py-2.5 sm:px-4 sm:py-3 ink-offset-sm mb-8">
+      {/* Phones: logo + language on row 1, links on row 2 (Sign in moves to the footer).
+          sm+: one row, language last. */}
+      <header className="flex flex-wrap items-center gap-x-3 gap-y-2 border border-ink bg-sheet px-3 py-2.5 sm:px-4 sm:py-3 ink-offset-sm mb-8">
         <Link href={localeHref("/", locale)} aria-label={t("brand")}><Logo locale={locale} /></Link>
-        <div className="flex flex-wrap gap-1.5 sm:gap-2 text-[13px] sm:text-sm items-center">
+        <div className="ms-auto sm:ms-0 sm:order-last"><LangToggle locale={locale} /></div>
+        <nav className="flex w-full items-center justify-between gap-1.5 text-[13px] sm:ms-auto sm:w-auto sm:justify-start sm:gap-2 sm:text-sm">
           <Link href={localeHref("/upload", locale)} className="px-1.5 py-2 link">{t("nav.listOffice")}</Link>
-          <Link href={localeHref("/login", locale)} className="px-1.5 py-2 link">{t(owner ? "nav.signedIn" : "nav.signIn")}</Link>
+          <Link href={localeHref("/login", locale)} className="hidden px-1.5 py-2 link sm:inline">{t(owner ? "nav.signedIn" : "nav.signIn")}</Link>
           <Link href={localeHref("/chat", locale)} className="btn btn-brick px-3 py-2 sm:px-4">{t("nav.chatToBook")}</Link>
-          <LangToggle locale={locale} />
-        </div>
+        </nav>
       </header>
 
       {/* Hero: copy + decorative generated illustration (not a listing). */}
       <section className="grid gap-8 md:grid-cols-12 md:items-center">
-        <div className="md:col-span-5">
+        {/* data-wa-avoid: the floating WhatsApp link fades instead of covering this copy (it has its own WhatsApp link). */}
+        <div data-wa-avoid className="md:col-span-5">
           {(() => { const tag = t("home.tagline"); const m = tag.match(/^(.+?[.،])\s*(.*)$/); return (
             <h1 className="font-display font-black tracking-[-0.02em] leading-[1.08] text-4xl sm:text-5xl text-balance"><span className="text-ink">{m ? m[1] : tag}</span>{m?.[2] && <span className="text-chalk"> {m[2]}</span>}</h1> ); })()}
           <p className="mt-4 leading-relaxed text-ink/85">{t("home.sub")}</p>
@@ -73,7 +78,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       </section>
 
       {/* How it works: numbered editorial strip, no cards-in-cards. */}
-      <section className="mt-14 border border-ink bg-sheet ink-offset-sm">
+      <section data-wa-avoid className="mt-14 border border-ink bg-sheet ink-offset-sm">
         <h2 className="font-display font-black text-2xl tracking-[-0.02em] px-5 pt-5">{t("home.howTitle")}</h2>
         <div className="grid sm:grid-cols-3 mt-3">
           {steps.map(([title, body], i) => (
@@ -107,7 +112,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
               <div>
                 <h3 className="font-display text-2xl sm:text-3xl font-black tracking-[-0.02em] leading-snug">{locale === "en" ? featured.title_en : featured.title_ar}</h3>
                 <p className="text-sm text-ink/75 mt-1">{districtLabel(locale, featured.district)}</p>
-                {specLine(featured) && <p className="tnum text-sm font-bold mt-1">{specLine(featured)}</p>}
+                {specLine(featured)}
                 <p className="text-xs mt-2 flex gap-1 flex-wrap"><span className={chip}>{featured.kind === "furnished" ? t("unit.furnished") : t("unit.semifinished")}</span>{featured.rent_periods.map((r) => <span key={r} className={chip}>{t(`track.${r}` as "track.daily")}</span>)}{featured.synthetic && <span className="bg-mustard text-ink border border-ink text-[11px] font-bold px-2 py-0.5">{t("unit.synthetic")}</span>}</p>
               </div>
               <span className="tnum bg-brick text-white font-display font-black text-xl px-3 py-1.5 ink-offset-sm">{formatEgp(locale, featured.rent_egp)}{t("unit.perMonth")}</span>
@@ -124,7 +129,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                 <h3 className="font-display font-extrabold text-lg leading-snug tracking-[-0.02em]">{locale === "en" ? u.title_en : u.title_ar}</h3>
                 <p className="tnum mt-2 inline-block bg-brick text-white px-2 py-1 text-sm font-bold">{formatEgp(locale, u.rent_egp)}{t("unit.perMonth")}{u.daily_egp ? ` · ${formatEgp(locale, u.daily_egp)}${t("unit.perDay")}` : ""}</p>
                 <p className="text-sm text-ink/75 mt-2">{districtLabel(locale, u.district)}</p>
-                {specLine(u) && <p className="tnum text-sm font-bold mt-1">{specLine(u)}</p>}
+                {specLine(u)}
                 <p className="text-xs mt-auto pt-3 flex gap-1 flex-wrap"><span className={chip}>{u.kind === "furnished" ? t("unit.furnished") : t("unit.semifinished")}</span>{u.rent_periods.map((r) => <span key={r} className={chip}>{t(`track.${r}` as "track.daily")}</span>)}{u.synthetic && <span className="bg-mustard text-ink border border-ink text-[11px] font-bold px-2 py-0.5">{t("unit.synthetic")}</span>}</p>
               </div>
             </Link>
@@ -160,6 +165,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       <footer className="mt-14 border-t-2 border-ink pt-4 flex flex-wrap justify-between gap-2 text-sm text-ink/75">
         <Logo locale={locale} size="sm" />
         <span className="flex gap-3">
+          <Link href={localeHref("/login", locale)} className="underline underline-offset-2 sm:hidden">{t(owner ? "nav.signedIn" : "nav.signIn")}</Link>
           <Link href={localeHref("/privacy", locale)} className="underline underline-offset-2">{t("nav.privacy")}</Link>
           <Link href={localeHref("/terms", locale)} className="underline underline-offset-2">{t("nav.terms")}</Link>
         </span>

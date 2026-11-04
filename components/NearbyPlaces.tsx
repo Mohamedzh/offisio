@@ -1,10 +1,10 @@
 // Unit page "Nearby" section (plan/06 6.7 step 6): stored Google Places results
 // (name, distance, Maps link). Places attribution per Google terms.
-import { getT, type Locale } from "@/lib/i18n";
+import { formatNumber, getT, type Locale } from "@/lib/i18n";
 import { roundDistanceM, type Nearby } from "@/lib/nearby";
 
 export function formatDistance(locale: Locale, m: number): string {
-  const t = getT(locale); const nf = (n: number) => n.toLocaleString(locale === "ar" ? "ar-EG" : "en-US");
+  const t = getT(locale); const nf = (n: number) => formatNumber(locale, n);
   const r = roundDistanceM(m);
   return r < 1000 ? t("nearby.m", { n: nf(r) }) : t("nearby.km", { n: nf(r / 1000) });
 }

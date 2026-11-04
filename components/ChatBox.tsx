@@ -18,6 +18,11 @@ interface Rec { rec: MediaRecorder; stream: MediaStream; timer: number }
 const geoSupported = () => typeof navigator !== "undefined" && !!navigator.geolocation && window.isSecureContext;
 const round3 = (n: number) => Math.round(n * 1000) / 1000;
 const GEO_ERRORS: Record<number, TranslationKey> = { 1: "nearme.denied", 3: "nearme.timeout" };
+const sameSlugs = (a: Card[], b: Card[]) => a.length === b.length && b.every((u) => a.some((x) => x.slug === u.slug));
+// Input problems read as plain guidance, without the "Something went wrong" prefix.
+const PLAIN_ERRORS = new Set(["EMPTY_MESSAGE", "BAD_REQUEST", "MESSAGE_TOO_LONG"]);
+// Slow-reply hints: after ~10 s, then ~25 s of waiting.
+const SLOW_HINTS: [number, TranslationKey][] = [[10_000, "chat.stillWorking"], [25_000, "chat.almostThere"]];
 // A proxy 413/504 page is not JSON: map it to a fixed code instead of a parse error.
 async function readReply(res: Response, fallback: (status: number) => string): Promise<Reply> {
   try { return await res.json() as Reply; } catch { return { error: fallback(res.status) } as Reply; }
@@ -43,13 +48,27 @@ export default function ChatBox({ locale }: { locale: Locale }) {
   // Release the mic if the page unmounts mid-recording (nothing is sent).
   useEffect(() => () => { const r = recRef.current; if (!r) return; r.rec.onstop = null; clearInterval(r.timer); if (r.rec.state !== "inactive") r.rec.stop(); r.stream.getTracks().forEach((k) => k.stop()); }, []);
 
+  const [slowHint, setSlowHint] = useState<TranslationKey | null>(null);
+  useEffect(() => {
+    if (!busy) return;
+    const timers = SLOW_HINTS.map(([ms, key]) => window.setTimeout(() => setSlowHint(key), ms));
+    return () => timers.forEach((id) => clearTimeout(id));
+  }, [busy]);
+  const startBusy = () => { setSlowHint(null); setBusy(true); };
+
   const say = (content: string) => setMsgs((m) => [...m, { role: "assistant", content }]);
   // Voice codes have their own friendly lines; others reuse the shared error dictionary.
   const failText = (code: string) => code.startsWith("VOICE_") ? t(`voice.error.${code}` as TranslationKey)
-    : code.startsWith("LOCATION_") ? errorText(t, code) : `${t("chat.errorPrefix")}${errorText(t, code)}`;
+    : code.startsWith("LOCATION_") || PLAIN_ERRORS.has(code) ? errorText(t, code) : `${t("chat.errorPrefix")}${errorText(t, code)}`;
   function applyReply(data: Reply) {
     setSession(data.session_id);
-    setMsgs((m) => [...m, ...(data.transcript ? [{ role: "user" as const, content: `🎙️ ${data.transcript}` }] : []), { role: "assistant", content: data.reply, units: data.units ?? [] }]);
+    setMsgs((m) => {
+      // The agent often re-sends the cards it just showed: skip a set identical to the last one shown.
+      const units = data.units ?? [];
+      const last = [...m].reverse().find((x) => x.units && x.units.length > 0)?.units;
+      const repeat = !!last && sameSlugs(last, units);
+      return [...m, ...(data.transcript ? [{ role: "user" as const, content: `🎙️ ${data.transcript}` }] : []), { role: "assistant", content: data.reply, units: repeat ? [] : units }];
+    });
     if (data.booking_id) setBookingId(data.booking_id);
   }
 
@@ -60,7 +79,7 @@ export default function ChatBox({ locale }: { locale: Locale }) {
     await post(text);
   }
   async function post(text: string, location?: { lat: number; lng: number }) {
-    setBusy(true);
+    startBusy();
     setMsgs((m) => [...m, { role: "user", content: location ? `📍 ${text}` : text }]);
     try {
       const res = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ session_id: session, message: text, locale, ...(location ? { location } : {}) }) });
@@ -73,7 +92,7 @@ export default function ChatBox({ locale }: { locale: Locale }) {
 
   async function sendVoice(blob: Blob) {
     if (blob.size === 0) { say(t("voice.error.VOICE_EMPTY")); return; }
-    setBusy(true); setListening(true);
+    startBusy(); setListening(true);
     const fd = new FormData();
     const ext = blob.type.includes("mp4") ? "m4a" : blob.type.includes("ogg") ? "ogg" : "webm";
     fd.append("audio", blob, `voice.${ext}`);
@@ -139,11 +158,12 @@ export default function ChatBox({ locale }: { locale: Locale }) {
   const recording = recSec !== null;
 
   return (
-    <div className="flex flex-col border border-ink bg-board/40 h-[70vh]">
+    // Phones: 70dvh. Desktop: fill the viewport below the page title, never under 36rem.
+    <div className="flex flex-col border border-ink bg-board/40 h-[70dvh] min-h-[24rem] md:h-[calc(100dvh-17rem)] md:min-h-[36rem]">
       <div ref={listRef} className="flex-1 overflow-y-auto p-4 space-y-3">
         {msgs.map((m, i) => (
           <Fragment key={i}>
-          <div className={`max-w-[85%] px-3 py-2 text-sm leading-relaxed ${m.role === "user" ? "ms-auto bg-chalk text-white whitespace-pre-line" : "me-auto bg-sheet border border-ink text-ink"}`}>{m.role === "assistant" ? <ChatText text={m.content} /> : <span dir={textDir(m.content)} className="block">{m.content}</span>}</div>
+          <div className={`max-w-[85%] px-3 py-2 text-sm leading-relaxed ${m.role === "user" ? "ms-auto bg-chalk text-white whitespace-pre-line" : "me-auto bg-sheet border border-ink text-ink"}`}>{m.role === "assistant" ? <ChatText text={m.content} /> : <span dir={textDir(m.content)} className="block wrap-break-word">{m.content}</span>}</div>
           {m.units && m.units.length > 0 && (
             <div className="me-auto grid w-full max-w-[85%] grid-cols-1 gap-2 sm:grid-cols-3">
               {m.units.map((u) => { const cl: Locale = textDir(m.content) === "rtl" ? "ar" : "en"; const ct = getT(cl); return (
@@ -162,28 +182,28 @@ export default function ChatBox({ locale }: { locale: Locale }) {
           )}
           </Fragment>
         ))}
-        {busy && <p className="text-xs text-ink/75">{listening ? t("voice.transcribing") : t("chat.typing")}</p>}
+        {busy && <p role="status" className="text-xs text-ink/75">{listening ? t("voice.transcribing") : t("chat.typing")}{slowHint && <span className="ms-2 text-ink/60">{t(slowHint)}</span>}</p>}
         {locating && <p role="status" className="text-xs text-ink/75">{t("nearme.locating")}</p>}
       </div>
       {bookingId && <Link href={localeHref(`/booking/${bookingId}`, locale)} className="btn btn-chalk btn-sm mx-4 mb-2">{t("chat.completePayment")}</Link>}
       <div className="border-t border-ink bg-sheet">
         {recording && <p role="status" className="px-3 pt-2 text-xs font-bold text-brick"><span aria-hidden="true" className="me-1 inline-block size-2 animate-pulse rounded-full bg-brick" />{t("voice.recording", { s: recSec, max: VOICE_MAX_S })}</p>}
         <div className="flex gap-2 p-3">
-          <input value={input} onChange={(e) => setText(e.target.value)} onKeyDown={(e) => e.key === "Enter" && send()} placeholder={t("chat.placeholder")} className="field flex-1 w-auto!" />
+          <input value={input} onChange={(e) => setText(e.target.value)} onKeyDown={(e) => e.key === "Enter" && send()} placeholder={t("chat.placeholder")} className="field flex-1 w-auto! min-w-0" />
           {canLocate && (
             // Busy state uses chalk (not paper) so it keeps contrast on hover.
-            <button type="button" onClick={locate} disabled={(busy || recording) && !locating} aria-busy={locating} aria-label={t("nearme.button")} title={t("nearme.button")} className={`btn px-3 ${locating ? "btn-chalk" : "btn-paper"}`}>
+            <button type="button" onClick={locate} disabled={(busy || recording) && !locating} aria-busy={locating} aria-label={t("nearme.button")} title={t("nearme.button")} className={`btn shrink-0 px-3 ${locating ? "btn-chalk" : "btn-paper"}`}>
               <span aria-hidden="true" className={`text-base leading-none ${locating ? "animate-pulse" : (busy || recording) ? "opacity-45" : ""}`}>📍</span>
             </button>
           )}
           {canRecord && (
-            <button type="button" onClick={toggleMic} disabled={(busy || locating) && !recording} aria-pressed={recording} aria-label={recording ? t("voice.stop") : t("voice.record")} title={recording ? t("voice.stop") : t("voice.record")} className={`btn px-3 ${recording ? "btn-brick" : "btn-paper"}`}>
+            <button type="button" onClick={toggleMic} disabled={(busy || locating) && !recording} aria-pressed={recording} aria-label={recording ? t("voice.stop") : t("voice.record")} title={recording ? t("voice.stop") : t("voice.record")} className={`btn shrink-0 px-3 ${recording ? "btn-brick" : "btn-paper"}`}>
               {recording
                 ? <svg aria-hidden="true" viewBox="0 0 24 24" className="size-5 fill-current"><rect x="6" y="6" width="12" height="12" /></svg>
                 : <svg aria-hidden="true" viewBox="0 0 24 24" className="size-5 fill-none stroke-current" strokeWidth="2" strokeLinecap="round"><rect x="9" y="3" width="6" height="11" rx="3" /><path d="M5 11a7 7 0 0 0 14 0M12 18v3" /></svg>}
             </button>
           )}
-          <button onClick={send} disabled={busy || recording || locating} className="btn btn-brick px-4">{t("chat.send")}</button>
+          <button onClick={send} disabled={busy || recording || locating} className="btn btn-brick shrink-0 px-4">{t("chat.send")}</button>
         </div>
         {canRecord && <p className="px-3 pb-2 -mt-1 text-xs text-ink/70">{t(canLocate ? "voice.hint" : "voice.hintNoGeo")}</p>}
       </div>

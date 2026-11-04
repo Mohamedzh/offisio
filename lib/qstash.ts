@@ -13,7 +13,11 @@ export function qstashEnabled(): boolean {
 
 export const routeUrl = (path: string) => `${appUrl()}${path}`;
 
-export async function publish(path: string, body: unknown, retries = 2): Promise<void> {
+// Default retries per message: QStash delivers it at most QSTASH_RETRIES + 1 times.
+export const QSTASH_RETRIES = 2;
+export const QSTASH_MAX_DELIVERIES = QSTASH_RETRIES + 1;
+
+export async function publish(path: string, body: unknown, retries = QSTASH_RETRIES): Promise<void> {
   const base = (process.env.QSTASH_URL ?? "https://qstash.upstash.io").replace(/\/+$/, "");
   const r = await fetch(`${base}/v2/publish/${routeUrl(path)}`, {
     method: "POST",

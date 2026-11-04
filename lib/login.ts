@@ -40,9 +40,9 @@ export const isLogout = (text: string) =>
   /^offisio\s+(log\s*out|sign\s*out)[\s.!]*$/i.test(text.trim()) || text.trim() === "تسجيل خروج";
 
 const REPLY = {
-  askYes: "في حد بيسجّل دخول على Offisio من جهاز. رد بـ «نعم» خلال دقيقتين بس لو ده إنت دلوقتي. أوعى ترد بـ «نعم» لو حد بعتلك الكود ده.\nSomeone is signing in to Offisio on another device. Reply YES within 2 minutes only if that's you, right now. Never reply YES if someone sent you this code.",
-  ok: "✅ تم تسجيل الدخول. عشان تخرج من كل الأجهزة، ابعت: Offisio logout\n✅ Signed in. To sign out everywhere, send: Offisio logout",
-  loggedOut: "تم تسجيل خروجك من Offisio على كل الأجهزة.\nSigned out of Offisio on all devices.",
+  askYes: "في حد بيسجّل دخول على أوفيسيو من جهاز. رد بـ «نعم» خلال دقيقتين بس لو ده إنت دلوقتي. أوعى ترد بـ «نعم» لو حد بعتلك الكود ده.\nSomeone is signing in to Offisio on another device. Reply YES within 2 minutes only if that's you, right now. Never reply YES if someone sent you this code.",
+  ok: "✅ تم تسجيل الدخول. عشان تخرج من كل الأجهزة، ابعت «تسجيل خروج».\n✅ Signed in. To sign out everywhere, send: Offisio logout",
+  loggedOut: "تم تسجيل خروجك من أوفيسيو على كل الأجهزة.\nSigned out of Offisio on all devices.",
   bad: "الكود ده انتهى أو مش صحيح. ارجع للموقع ودوس على زرار «سجّل دخول بواتساب» تاني.\nThat code has expired or isn't valid. Go back to the website and tap \"Sign in with WhatsApp\" again.",
   limited: "محاولات كتير النهارده. جرب تاني بكرة.\nToo many sign-in attempts today. Please try again tomorrow.",
 };

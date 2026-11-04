@@ -1,11 +1,12 @@
 import { after } from "next/server";
 import { chatTurn, sessionTurns } from "@/lib/agent/agent";
-import { CAPS, firstSeen, limitKey } from "@/lib/guard";
+import { CAPS, firstSeen, limitKey, spendBlocked } from "@/lib/guard";
 import { bookingIdsByRef, getBooking, getUnit, setBookingWaId, todayCairo } from "@/lib/db/store";
 import { egpLabel, refLabel, unitTitle, whenLabel } from "@/lib/booking-labels";
 import { toTranscribableWav } from "@/lib/audio";
 import { MetaError, meta } from "@/lib/meta/client";
 import { renterLocation, type LatLng } from "@/lib/geo";
+import { districtLabel } from "@/lib/i18n";
 import { handleOwnerMessage } from "@/lib/login";
 import { routeOwnerListing } from "@/lib/wa-listing";
 import { downloadMedia, incomingMessages, linkCodeMatches, sendImage, parseLinkMessage, sendText, senderKey, sessionKeyFor, verifyWhatsAppSignature, type IncomingMessage } from "@/lib/whatsapp";
@@ -58,7 +59,7 @@ const FIXED = {
   // Location pins: language unknown (no text), so AR then EN.
   locationOutside: "الموقع ده برّه مصر، وكل مكاتبنا في مصر. ابعت موقعك من جوّه مصر أو اكتبلي المنطقة.\nThat location is outside Egypt, and all our offices are in Egypt. Share a location in Egypt or type the area.",
   locationBad: "مقدرتش أقرا الموقع ده. ابعته تاني أو اكتبلي المنطقة.\nI couldn't read that location. Please send it again or type the area.",
-  booking: { ar: "كمّل الدفع من هنا (الحجز محجوز ٣٠ دقيقة):", en: "Complete payment here (held for 30 minutes):" },
+  booking: { ar: "كمّل الدفع من هنا (الحجز محجوز 30 دقيقة):", en: "Complete payment here (held for 30 minutes):" },
   linked: "✅ تمام، هنبعتلك هنا تحديثات حجزك ({ref}). وتقدر تسألني عن حجوزاتك في أي وقت.\n✅ Done: we'll send updates on booking {ref} here, and you can ask me about your bookings any time.",
   linkTaken: "الحجز ده متربط برقم واتساب تاني.\nThis booking is already linked to another WhatsApp number.",
   linkBad: "الكود ده مش صحيح. افتح صفحة الحجز ودوس على زرار واتساب تاني.\nThat code isn't valid. Open the booking page and tap the WhatsApp button again.",
@@ -100,9 +101,10 @@ async function handle(m: IncomingMessage) {
   return agentReply(m, session, m.text, lang, "");
 }
 
-// Same per-sender caps as text; checked before any paid call.
+// Same per-sender caps as text, plus the daily spend ceiling; checked before any paid call.
 async function turnAllowed(session: string): Promise<boolean> {
   if ((await sessionTurns(session)) >= CAPS.sessionTurns) return false;
+  if (await spendBlocked()) return false;
   return (await limitKey("chat", senderKey(session))).ok;
 }
 
@@ -152,8 +154,8 @@ async function agentReply(m: IncomingMessage, session: string, text: string, lan
   for (const u of out.units) {
     const image = u.image.startsWith("http") ? u.image : app ? `${app}${u.image}` : "";
     if (!image.startsWith("https://")) continue;
-    const price = u.daily_egp ? `${u.daily_egp} ${lang === "ar" ? "جنيه/اليوم" : "EGP/day"}` : `${u.rent_egp} ${lang === "ar" ? "جنيه/الشهر" : "EGP/month"}`;
-    const caption = `*${lang === "ar" ? u.title_ar : u.title_en}*\n${u.district} · ${price}${u.synthetic ? (lang === "ar" ? "\n(صور مولّدة بالذكاء الاصطناعي)" : "\n(AI-generated photos)") : ""}${app ? `\n${app}/${lang}/units/${u.slug}` : ""}`;
+    const price = u.daily_egp ? `${egpLabel(u.daily_egp, lang)}${lang === "ar" ? " في اليوم" : "/day"}` : `${egpLabel(u.rent_egp, lang)}${lang === "ar" ? " في الشهر" : "/month"}`;
+    const caption = `*${lang === "ar" ? u.title_ar : u.title_en}*\n${districtLabel(lang, u.district)} · ${price}${u.synthetic ? (lang === "ar" ? "\n(صور مولّدة بالذكاء الاصطناعي)" : "\n(AI-generated photos)") : ""}${app ? `\n${app}/${lang}/units/${u.slug}` : ""}`;
     await sendImage(m.from, image, caption).catch((e) => console.error("[whatsapp] image failed", u.slug, (e as Error).message.match(/^WHATSAPP_SEND_\d+/)?.[0] ?? "WHATSAPP_SEND")); // fixed code only: the Graph body may echo the recipient
   }
 }

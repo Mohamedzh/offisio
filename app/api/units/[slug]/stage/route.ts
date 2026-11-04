@@ -6,7 +6,7 @@ import { getUnit, stagedOf, unitRef } from "@/lib/db/store";
 import { isCurrent, planStaging, stageOne } from "@/lib/pipeline/staging";
 import type { Survey } from "@/lib/pipeline/survey";
 import type { UseVerdict } from "@/lib/pipeline/rubric";
-import { deny, limit, spendBlocked } from "@/lib/guard";
+import { deny, limit, safeErrorCode, spendBlocked } from "@/lib/guard";
 import { isDemoUnit } from "@/lib/demo-units";
 import { editMode } from "@/lib/owner";
 
@@ -42,6 +42,9 @@ export async function POST(req: Request, { params }: { params: Promise<{ slug: s
     const url = await stageOne(x.ref, job);
     return Response.json({ ok: true, url });
   } catch (e) {
-    return Response.json({ error: (e as Error).message }, { status: 502 });
+    // Fixed code only: Meta/provider error text stays server-side (code + slug logged, no PII).
+    const code = safeErrorCode((e as Error).message);
+    console.error("[stage] render failed", x.ref.slug, code);
+    return Response.json({ error: "STAGE_FAILED" }, { status: 502 });
   }
 }

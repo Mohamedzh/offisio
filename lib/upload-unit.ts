@@ -12,16 +12,18 @@ export interface OwnerUploadFields {
   rent_egp: number; daily_egp: number | null;
 }
 
-// First failing rule as the upload route's error text, or null when all fields are valid.
-export function ownerFieldsError(f: OwnerUploadFields): string | null {
-  if (!f.district) return "district is required";
-  if (!f.floor_text) return "floor_text is required";
+// First failing rule as a fixed error code (error.<CODE> in lib/i18n), or null when all fields are valid.
+export type OwnerFieldsError = "DISTRICT_REQUIRED" | "FLOOR_REQUIRED" | "CONTACT_INFO_NOT_ALLOWED" | "AVAILABLE_FROM_INVALID"
+  | "KIND_INVALID" | "RENT_INVALID" | "DAILY_RENT_INVALID";
+export function ownerFieldsError(f: OwnerUploadFields): OwnerFieldsError | null {
+  if (!f.district) return "DISTRICT_REQUIRED";
+  if (!f.floor_text) return "FLOOR_REQUIRED";
   // Owner fields are shown to renters and fed to the listing: no contact details.
   if (hasContactInfo(f.district) || hasContactInfo(f.floor_text)) return "CONTACT_INFO_NOT_ALLOWED";
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(f.available_from) || Number.isNaN(Date.parse(f.available_from))) return "available_from must be YYYY-MM-DD";
-  if (f.kind !== "furnished" && f.kind !== "semifinished") return "kind must be furnished|semifinished";
-  if (!Number.isInteger(f.rent_egp) || f.rent_egp <= 0) return "rent_egp must be a positive integer";
-  if (f.daily_egp !== null && (!Number.isInteger(f.daily_egp) || f.daily_egp <= 0)) return "daily_egp must be a positive integer";
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(f.available_from) || Number.isNaN(Date.parse(f.available_from))) return "AVAILABLE_FROM_INVALID";
+  if (f.kind !== "furnished" && f.kind !== "semifinished") return "KIND_INVALID";
+  if (!Number.isInteger(f.rent_egp) || f.rent_egp <= 0) return "RENT_INVALID";
+  if (f.daily_egp !== null && (!Number.isInteger(f.daily_egp) || f.daily_egp <= 0)) return "DAILY_RENT_INVALID";
   return null;
 }
 

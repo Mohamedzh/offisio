@@ -3,16 +3,27 @@
 // Local media fallback (plan/07 7.1): with no BLOB_READ_WRITE_TOKEN and not on
 // Vercel, files go to gitignored public/uploads/<slug>/... and are served by Next
 // from /uploads/<slug>/...; never active on Vercel.
-import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { mkdir, readFile, rm, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { del, list, put } from "@vercel/blob";
 
 export const BLOB_HOST_SUFFIX = ".public.blob.vercel-storage.com";
 
+// Our own store's public host, derived from BLOB_READ_WRITE_TOKEN
+// (vercel_blob_rw_<storeId>_<secret>; only the store id is read). Null without a token.
+export function blobStoreHost(): string | null {
+  const id = process.env.BLOB_READ_WRITE_TOKEN?.split("_")[3];
+  return id && /^[A-Za-z0-9]{1,64}$/.test(id) ? `${id.toLowerCase()}${BLOB_HOST_SUFFIX}` : null;
+}
+
+// A public URL in OUR Blob store only: another store's URL (anyone can create one) is refused,
+// so uploads can't skip the /api/blob/upload token checks. No token -> always false.
 export function isBlobUrl(url: string): boolean {
+  const host = blobStoreHost();
+  if (!host) return false;
   try {
     const u = new URL(url);
-    return u.protocol === "https:" && u.hostname.endsWith(BLOB_HOST_SUFFIX);
+    return u.protocol === "https:" && u.hostname.toLowerCase() === host && !u.port && !u.username && !u.password;
   } catch {
     return false;
   }
@@ -55,13 +66,32 @@ export function mediaSource(url: string): string {
   if (url.startsWith("https://")) return url;
   throw new Error("BAD_MEDIA_URL");
 }
-/** Bytes of a media URL: local file in fallback mode, else fetched over https (Blob or provider URL). */
-export async function mediaBytes(url: string): Promise<Buffer> {
+// Default byte cap for mediaBytes: images only (upload frames are <= CAPS.frameBytes; generated
+// renders and seed frames can be a few MB). Nothing reads a video through mediaBytes.
+export const MEDIA_IMAGE_MAX_BYTES = 16 * 1024 * 1024;
+/** Bytes of a media URL: local file in fallback mode, else fetched over https (Blob or provider URL).
+ * Over maxBytes (by Content-Length or by the bytes actually streamed) throws MEDIA_TOO_LARGE. */
+export async function mediaBytes(url: string, maxBytes: number = MEDIA_IMAGE_MAX_BYTES): Promise<Buffer> {
   const src = mediaSource(url);
-  if (!src.startsWith("https://")) return readFile(src);
+  if (!src.startsWith("https://")) {
+    if ((await stat(src)).size > maxBytes) throw new Error("MEDIA_TOO_LARGE");
+    return readFile(src);
+  }
   const r = await fetch(src);
-  if (!r.ok) throw new Error(`fetch media failed: ${r.status}`);
-  return Buffer.from(await r.arrayBuffer());
+  if (!r.ok) throw new Error(`MEDIA_FETCH_${r.status}`);
+  const declared = Number(r.headers.get("content-length"));
+  if (Number.isFinite(declared) && declared > maxBytes) { await r.body?.cancel(); throw new Error("MEDIA_TOO_LARGE"); }
+  if (!r.body) return Buffer.alloc(0);
+  const chunks: Uint8Array[] = []; let total = 0;
+  const reader = r.body.getReader();
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    total += value.byteLength;
+    if (total > maxBytes) { await reader.cancel(); throw new Error("MEDIA_TOO_LARGE"); }
+    chunks.push(value);
+  }
+  return Buffer.concat(chunks, total);
 }
 
 /** Delete every file under uploads/<slug>/ (Blob, or public/uploads/<slug> in local mode). Throws on failure; callers treat it as best effort. */

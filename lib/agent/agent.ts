@@ -6,7 +6,8 @@ import { meta } from "../meta/client";
 import { AGENT_CHANNEL_WEB, AGENT_CHANNEL_WHATSAPP, AGENT_PROMPT_V10, NEAR_ME_ASK_WEB, NEAR_ME_ASK_WHATSAPP, NEAR_ME_MARKER } from "../meta/prompts";
 import { pool } from "../db/pg";
 import { listUnits, getUnit, unitId, freeDays, availabilityByDay, todayCairo, bookingsForRenter, hiddenHoldsForRenter, type Booking, type Unit } from "../db/store";
-import { phoneFromWaId } from "../whatsapp";
+import { phoneFromWaId, senderKey } from "../whatsapp";
+import { limitKey } from "../guard";
 import { createBooking } from "../booking";
 import { bookingBrief, refLabel, replyLang, selectMyBookings, type Lang, type UnitTitles } from "../booking-labels";
 import { HOUSE_ADDONS, VENUE_ADDONS, type AddonCatalogItem } from "../addons/catalog";
@@ -17,6 +18,8 @@ import type { LatLng } from "../geo";
 import { USES, type UseVerdict } from "../pipeline/rubric";
 
 const MAX_ROUNDS = 6;
+// Empty model answer: a fixed line in the page (web) or message (WhatsApp) language.
+const FALLBACK_REPLY = { ar: "معلش، حصلت مشكلة صغيرة. ممكن تعيد اللي كنت بتقوله؟", en: "Sorry, something went wrong. Could you say that again?" } as const;
 export type Channel = "chat" | "whatsapp";
 // WhatsApp only: the verified sender (wa_id from the signed webhook) and their profile name.
 export interface Sender { waId: string; name: string | null }
@@ -24,7 +27,8 @@ export interface Sender { waId: string; name: string | null }
 export interface UnitCard { slug: string; title_en: string; title_ar: string; district: string; rent_egp: number; daily_egp: number | null; image: string; synthetic: boolean }
 // lang: default reply language; pageLang: language of booking-page links (follows the message on WhatsApp).
 // location: the renter's near-me point (rounded; set by the server from 📍 or a WhatsApp pin, never by the model).
-type Ctx = { bookingId?: string; total?: number; channel: Channel; sender?: Sender; cards: Map<string, UnitCard>; lang: "ar" | "en"; pageLang: "ar" | "en"; location: LatLng | null };
+// bookingKey: the caller's limit key for create_booking (hashed IP on the web, the sender on WhatsApp).
+type Ctx = { bookingId?: string; total?: number; bookingKey: string; channel: Channel; sender?: Sender; cards: Map<string, UnitCard>; lang: "ar" | "en"; pageLang: "ar" | "en"; location: LatLng | null };
 const cardOf = (u: Unit): UnitCard | null => {
   const image = u.images.real || u.images.staged[0]?.url || "";
   return image ? { slug: u.slug, title_en: u.title_en, title_ar: u.title_ar, district: u.district, rent_egp: u.rent_egp, daily_egp: u.daily_egp, image, synthetic: u.synthetic } : null;
@@ -174,6 +178,10 @@ async function runTool(name: string, rawArgs: string, ctx: Ctx): Promise<unknown
     return { date, free: day?.day_free ?? false, daily_egp: u.daily_egp, next_free_days: await freeDays(slug, 5) };
   }
   if (name === "create_booking") {
+    // One booking per turn, and the same daily booking cap as /api/bookings, before any write.
+    if (ctx.bookingId) return { error: "BOOKING_LIMIT_PER_TURN", note: "one booking was already created this turn; give the renter its link and ask them to pay or confirm before booking another" };
+    const allowed = await limitKey("booking", ctx.bookingKey);
+    if (!allowed.ok) return { error: allowed.code, note: "booking limit reached for today; tell the renter they can't make more bookings now and should try again tomorrow" };
     try {
       const b = await createBooking({
         unit_slug: String(a.slug ?? ""), date: String(a.date ?? ""), track: ["daily", "monthly", "long_term"].find((x) => x === a.track) as Unit["rent_periods"][number] | undefined,
@@ -255,13 +263,15 @@ export async function sessionTurns(sessionKey: string): Promise<number> {
 // lang: the page language for web chat (default reply language); WhatsApp starts in Arabic.
 // location: a near-me point already validated and rounded by the route (lib/geo renterLocation);
 // it becomes the session's location. An empty message with a location turns into a neutral 📍 marker.
-export async function chatTurn(sessionId: string, message: string, channel: Channel = "chat", sender?: Sender, lang: "ar" | "en" = "ar", location?: LatLng): Promise<{ reply: string; lang: "ar" | "en"; booking_id?: string; total_egp?: number; units: UnitCard[] }> {
+// bookingKey: the web caller's limit key (lib/web-chat: hashed IP); WhatsApp uses the sender's key.
+export async function chatTurn(sessionId: string, message: string, channel: Channel = "chat", sender?: Sender, lang: "ar" | "en" = "ar", location?: LatLng, bookingKey?: string): Promise<{ reply: string; lang: "ar" | "en"; booking_id?: string; total_egp?: number; units: UnitCard[] }> {
   const stored = await loadHistory(sessionId);
   const history = stored.slice(-10).map(({ role, content }) => ({ role, content }));
   if (location && !message.trim()) message = NEAR_ME_MARKER[replyLang("", history, channel === "whatsapp" ? "ar" : lang)];
   // WhatsApp: follow the renter's message; "ok" or a bare email keeps the session's language.
   const pageLang = channel === "whatsapp" ? replyLang(message, history, "ar") : lang;
-  const ctx: Ctx = { channel, cards: new Map(), lang: channel === "whatsapp" ? "ar" : lang, pageLang, location: location ?? sessionLocation(stored),
+  const key = channel === "whatsapp" ? senderKey(sessionId) : bookingKey ?? `session:${sessionId}`;
+  const ctx: Ctx = { channel, bookingKey: key, cards: new Map(), lang: channel === "whatsapp" ? "ar" : lang, pageLang, location: location ?? sessionLocation(stored),
     ...(channel === "whatsapp" && sender ? { sender } : {}) };
   const msgs: Msg[] = [{ role: "system", content: await systemPrompt(ctx) }, ...history, { role: "user", content: message }];
   const trace: unknown[] = [];
@@ -284,7 +294,7 @@ export async function chatTurn(sessionId: string, message: string, channel: Chan
     reply = (m?.content ?? "").trim();
     break;
   }
-  if (!reply) reply = "معلش، حصلت مشكلة صغيرة. ممكن تعيد اللي كنت بتقوله؟";
+  if (!reply) reply = FALLBACK_REPLY[pageLang];
   await saveHistory(sessionId, [...history, { role: "user", content: message, ...(ctx.location ? { loc: ctx.location } : {}) }, { role: "assistant", content: reply }], trace);
   // No cards once a booking is made: the reply is about payment then.
   const units = ctx.bookingId ? [] : cardsFor(reply, [...ctx.cards.values()]);

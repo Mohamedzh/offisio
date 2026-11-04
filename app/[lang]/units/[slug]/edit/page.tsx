@@ -12,6 +12,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { isDemoUnit, readSpecsPreview } from "@/lib/demo-units";
 import OwnerBar from "@/components/OwnerBar";
 import { currentOwner, draftPublishMode, editMode, maskWaId } from "@/lib/owner";
+import { safeErrorCode } from "@/lib/guard";
 import DraftBanner, { PublishedNotice } from "@/components/DraftBanner";
 import ListingReview from "@/components/ListingReview";
 
@@ -33,7 +34,9 @@ export default async function EditUnitPage({ params, searchParams }: PageProps<"
   if (!unit || !ref) notFound();
   const owner = await currentOwner();
   const mode = await editMode(slug, owner);
-  const [jobs, preview] = await Promise.all([jobsOf(ref.id), readSpecsPreview(slug, mode)]);
+  const [rawJobs, preview] = await Promise.all([jobsOf(ref.id), readSpecsPreview(slug, mode)]);
+  // Same rule as GET /api/units/[slug]/pipeline: last_error only for the owner, only as a fixed code.
+  const jobs = rawJobs.map((j) => ({ ...j, last_error: mode === "owner" && j.last_error ? safeErrorCode(j.last_error) : null }));
   const publish = unit.draft ? draftPublishMode(slug, mode, owner) : null;
   // Post-publish notice (?published=...): only for the unit's own owner.
   const published = unit.draft || mode !== "owner" ? undefined : (await searchParams).published;

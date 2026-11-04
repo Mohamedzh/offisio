@@ -1,5 +1,5 @@
 import { pool } from "./db/pg";
-import { getUnit, unitId, getBooking, releaseStaleHolds, todayCairo, type Booking, type RentPeriod } from "./db/store";
+import { getUnit, unitId, getBooking, releaseStaleHolds, firstBookableDay, type Booking, type RentPeriod } from "./db/store";
 import { addonsFor, isDailyOnlyAddon } from "./addons/catalog";
 import { phoneFromWaId } from "./whatsapp";
 
@@ -12,6 +12,7 @@ export interface CreateBookingInput {
 }
 
 const DELIVER_AT = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?(Z|[+-]\d{2}:\d{2})?$/;
+const MAX_ADDON_QTY = 20;
 const EMAIL = /^[^\s@]{1,64}@[^\s@]{1,190}\.[a-z]{2,24}$/i;
 
 export async function createBooking(input: CreateBookingInput): Promise<Booking> {
@@ -27,11 +28,13 @@ export async function createBooking(input: CreateBookingInput): Promise<Booking>
 async function insertBooking(input: CreateBookingInput & { renter_phone: string }): Promise<Booking> {
   if (!input.renter_name?.trim()) throw new Error("NAME_REQUIRED");
   if (!/^\d{4}-\d{2}-\d{2}$/.test(input.date ?? "")) throw new Error("INVALID_DATE");
-  if (input.date < todayCairo()) throw new Error("DATE_IN_PAST");
+  // Today counts as past once its day pass can no longer be used (after the cutoff hour).
+  if (input.date < firstBookableDay()) throw new Error("DATE_IN_PAST");
   await releaseStaleHolds();
   const unit = await getUnit(input.unit_slug);
   // Guest drafts are private until published: never bookable.
-  if (!unit || unit.draft) throw new Error("UNIT_NOT_FOUND");
+  // Units still processing (or failed) aren't listed either.
+  if (!unit || unit.draft || unit.status !== "ready") throw new Error("UNIT_NOT_FOUND");
   const track: RentPeriod = input.track ?? unit.rent_periods[0];
   if (!unit.rent_periods.includes(track)) throw new Error("TRACK_NOT_AVAILABLE");
   const uId = await unitId(unit.slug);
@@ -57,8 +60,10 @@ async function insertBooking(input: CreateBookingInput & { renter_phone: string 
     }
     const addons = (input.addons ?? []).map((a) => {
       const item = catalog.find((i) => i.id === a.item_id);
+      const qty = Number(a.qty);
+      if (!Number.isInteger(qty) || qty < 1 || qty > MAX_ADDON_QTY) throw new Error("ADDON_QTY_INVALID");
       if (!item) throw new Error(isDailyOnlyAddon(String(a.item_id)) && track !== "daily" ? "ADDON_DAILY_ONLY" : "ADDON_NOT_FOUND");
-      return { item_id: item.id, name_en: item.name_en, name_ar: item.name_ar, qty: Math.min(20, Math.max(1, a.qty || 1)), unit_price_egp: item.price_egp, deliver_at: typeof a.deliver_at === "string" && DELIVER_AT.test(a.deliver_at) && !Number.isNaN(Date.parse(a.deliver_at)) ? a.deliver_at : null };
+      return { item_id: item.id, name_en: item.name_en, name_ar: item.name_ar, qty, unit_price_egp: item.price_egp, deliver_at: typeof a.deliver_at === "string" && DELIVER_AT.test(a.deliver_at) && !Number.isNaN(Date.parse(a.deliver_at)) ? a.deliver_at : null };
     });
     const total = rent + addons.reduce((s, a) => s + a.qty * a.unit_price_egp, 0);
     const ins = await client.query<{ id: string; created_at: string }>(

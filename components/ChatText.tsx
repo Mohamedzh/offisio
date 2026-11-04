@@ -20,7 +20,7 @@ export const textDir = (text: string): "rtl" | "ltr" =>
 export default function ChatText({ text }: { text: string }) {
   const lines = text.replace(/^#{1,6}\s+/gm, "").split("\n");
   return (
-    <div dir={textDir(text)} className="space-y-1">
+    <div dir={textDir(text)} className="space-y-1 wrap-break-word">
       {lines.map((line, i) => {
         const t = line.trim();
         if (!t) return null;

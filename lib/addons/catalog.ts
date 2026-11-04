@@ -9,8 +9,8 @@ export interface AddonCatalogItem {
 
 export const VENUE_ADDONS: AddonCatalogItem[] = [
   { id: "extra-chair", name_ar: "كرسي إضافي", name_en: "Extra chair", price_egp: 50, note_en: "Venue inventory, per day" },
-  { id: "whiteboard", name_ar: "سبورة بيضاء", name_en: "Whiteboard + markers", price_egp: 100, note_en: "Venue inventory, per day" },
-  { id: "printing-20", name_ar: "طباعة ٢٠ ورقة", name_en: "Printing (20 pages)", price_egp: 40, note_en: "Venue service, per booking" },
+  { id: "whiteboard", name_ar: "سبورة وأقلام", name_en: "Whiteboard + markers", price_egp: 100, note_en: "Venue inventory, per day" },
+  { id: "printing-20", name_ar: "طباعة 20 ورقة", name_en: "Printing (20 pages)", price_egp: 40, note_en: "Venue service, per booking" },
 ];
 
 export const HOUSE_ADDONS: AddonCatalogItem[] = [

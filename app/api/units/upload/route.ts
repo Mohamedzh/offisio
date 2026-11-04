@@ -8,25 +8,29 @@ import { resolveLocation } from "@/lib/geo";
 import { CAPS, deny, limit, spendBlocked } from "@/lib/guard";
 import { currentOwner, issueGuest } from "@/lib/owner";
 import { ownerFieldsError, startUploadedUnit } from "@/lib/upload-unit";
+import { UPLOAD_PATH_RE } from "@/lib/upload-names";
 
+// Fixed codes only (error.<CODE> in lib/i18n); never validation prose or exception text.
 const bad = (error: string) => Response.json({ error }, { status: 400 });
 const SLUG_RE = /^[A-Za-z0-9_-]{1,64}$/;
 
-function isUploadsUrl(url: string, slug: string): boolean {
-  // Local media fallback (no Blob token, never on Vercel): /uploads/<slug>/<file>.
-  if (isLocalMediaUrl(url)) return url.startsWith(`/uploads/${slug}/`) && !url.slice(`/uploads/${slug}/`.length).includes("/");
-  if (!isBlobUrl(url)) return false;
-  try {
-    return new URL(url).pathname.startsWith(`/uploads/${slug}/`);
-  } catch {
-    return false;
-  }
+// Exactly a file /api/blob/upload (or /api/blob/local) would issue for this slug: uploads/<slug>/frame-<i>.jpg
+// or uploads/<slug>/source.<mp4|mov|webm> (lib/upload-names), in our own Blob store or local media.
+function uploadsFile(url: string, slug: string): string | null {
+  let pathname: string;
+  if (isLocalMediaUrl(url)) pathname = url.slice(1);
+  else if (isBlobUrl(url)) { try { const u = new URL(url); if (u.search || u.hash) return null; pathname = u.pathname.slice(1); } catch { return null; } }
+  else return null;
+  const m = pathname.match(UPLOAD_PATH_RE);
+  return m && m[1] === slug ? m[2] : null;
 }
+const isFrameUrl = (url: string, slug: string) => uploadsFile(url, slug)?.startsWith("frame-") ?? false;
+const isVideoUrl = (url: string, slug: string) => uploadsFile(url, slug)?.startsWith("source.") ?? false;
 
 export async function POST(req: Request) {
   const owner = await currentOwner();
   let body: Record<string, unknown>;
-  try { body = (await req.json()) as Record<string, unknown>; } catch { return bad("expected JSON body"); }
+  try { body = (await req.json()) as Record<string, unknown>; } catch { return bad("BAD_REQUEST"); }
   if (await spendBlocked()) return deny("DEMO_QUOTA");
   const allowed = await limit("upload", req);
   if (!allowed.ok) return deny(allowed.code);
@@ -46,15 +50,15 @@ export async function POST(req: Request) {
   const videoUrl = body.videoUrl === undefined || body.videoUrl === null ? null : String(body.videoUrl);
   const locationText = String(body.location ?? "");
 
-  if (!SLUG_RE.test(slug)) return bad("slug is invalid");
+  if (!SLUG_RE.test(slug)) return bad("BAD_REQUEST");
   const fields = { district, floor_text, available_from, kind, rent_egp, daily_egp };
   const fieldError = ownerFieldsError(fields);
   if (fieldError) return bad(fieldError);
   if (!Array.isArray(frameUrls) || frameUrls.length < CAPS.framesMin || frameUrls.length > CAPS.framesMax || !frameUrls.every((u) => typeof u === "string"))
-    return bad(`expected ${CAPS.framesMin}-${CAPS.framesMax} frame URLs`);
-  if (frameTimes && (frameTimes.length !== frameUrls.length || !frameTimes.every((t) => Number.isFinite(t) && t >= 0))) return bad("frameTimes must match frameUrls");
-  for (const u of frameUrls as string[]) if (!isUploadsUrl(u, slug) || !u.endsWith(".jpg")) return bad("frame URL must be a .jpg Blob URL under uploads/<slug>/");
-  if (videoUrl !== null && !isUploadsUrl(videoUrl, slug)) return bad("video URL must be a Blob URL under uploads/<slug>/");
+    return bad("FRAMES_INVALID");
+  if (frameTimes && (frameTimes.length !== frameUrls.length || !frameTimes.every((t) => Number.isFinite(t) && t >= 0))) return bad("FRAMES_INVALID");
+  for (const u of frameUrls as string[]) if (!isFrameUrl(u, slug)) return bad("MEDIA_URL_INVALID");
+  if (videoUrl !== null && !isVideoUrl(videoUrl, slug)) return bad("MEDIA_URL_INVALID");
   const location = await resolveLocation(locationText);
   if (!location) return bad("LOCATION_INVALID");
 
@@ -63,6 +67,8 @@ export async function POST(req: Request) {
     await startUploadedUnit({ slug, fields, location, ownership, frames, videoUrl });
     return Response.json({ slug }, { status: 202 });
   } catch (e) {
-    return Response.json({ error: `ingest: ${(e as Error).message}` }, { status: 502 });
+    // Code + slug only (slugs are random upload ids, not PII); the exception text stays server-side.
+    console.error("[upload] start failed", slug, (e as Error).name);
+    return Response.json({ error: "UPLOAD_FAILED" }, { status: 502 });
   }
 }

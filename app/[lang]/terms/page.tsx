@@ -5,23 +5,23 @@ import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/metadata";
 
 // Terms of service: the Meta app's Terms of Service URL (docs/plan/06 6.8).
-const UPDATED = "2026-11-02";
 const COPY: Record<Locale, LegalCopy> = {
   en: {
     title: "Terms of service",
     updated: "Last updated",
-    intro: "Offisio is a hackathon demo for listing and booking office space in Egypt, offered free and as is. By using the website or messaging our WhatsApp number you agree to these terms.",
+    intro: "Offisio is a demo for listing and booking office space in Egypt, offered free and as is. By using the website or messaging our WhatsApp number you agree to these terms.",
     sections: [
       { h: "A demo, not a live marketplace", p: [
-        "Payments run in XPay test mode only: no real money is charged and a booking here does not reserve a real office. Some listings and photos are synthetic or AI-restyled and are labelled as such.",
-        "Nearby places come from Google Maps; order from them directly. Add-on prices are the venue's own demo prices.",
+        "Payments run in XPay test mode only: no real money is charged and a booking here does not reserve a real office. Some listings and photos are synthetic or AI-generated fit concepts and are labelled as such.",
+        "Nearby places come from Google Maps; order from them directly. Add-on prices are demo prices set by Offisio.",
       ] },
       { h: "The booking assistant", p: [
-        "Our assistant uses AI and can make mistakes. Check the unit page, dates and total before you pay. Unpaid bookings are held for 30 minutes and then released.",
+        "Our assistant uses AI and can make mistakes. Check the listing, dates and total before you pay. Unpaid bookings are held for 30 minutes and then released.",
         "Fair-use limits apply to chats, uploads and bookings, on the website and on WhatsApp. Don't use the service to send spam, abuse, or other people's personal data.",
       ] },
       { h: "Owners' content", p: [
-        "Only upload videos and photos of spaces you own or manage and have the right to share. You keep your rights; you let us process the media to produce specs, listing text and restyled photos shown on Offisio.",
+        "Only upload or send videos and photos of spaces you own or manage and have the right to share. This covers walkthrough videos you send on WhatsApp as well as web uploads. You keep your rights; you let us process the media to produce specs, listing text and fit concepts shown on Offisio.",
+        "When you publish, the office is listed under the WhatsApp number you signed in with.",
       ] },
       { h: "Liability and changes", p: [
         "The service is provided without warranties, and to the extent the law allows we are not liable for losses from using it. We may change or stop the demo, or update these terms, at any time.",
@@ -32,18 +32,19 @@ const COPY: Record<Locale, LegalCopy> = {
   ar: {
     title: "شروط الاستخدام",
     updated: "آخر تحديث",
-    intro: "أوفيسيو نسخة تجريبية لهاكاثون لعرض وحجز المكاتب في مصر، مجانية وزي ما هي. لما تستخدم الموقع أو تراسل رقم الواتساب بتاعنا، إنت موافق على الشروط دي.",
+    intro: "أوفيسيو نسخة تجريبية لعرض وحجز المكاتب في مصر، مجانية وزي ما هي. لما تستخدم الموقع أو تراسل رقم الواتساب بتاعنا، إنت موافق على الشروط دي.",
     sections: [
       { h: "نسخة تجريبية، مش سوق حقيقي", p: [
-        "الدفع شغال على وضع XPay التجريبي بس: مفيش فلوس حقيقية بتتخصم، والحجز هنا مش بيحجز مكتب حقيقي. بعض الإعلانات والصور اصطناعية أو متعدّلة بالذكاء الاصطناعي ومكتوب عليها كده.",
-        "الأماكن القريبة من Google Maps، والطلب منها بيكون مباشرة. أسعار الإضافات أسعار تجريبية بتاعة المكان نفسه.",
+        "الدفع شغال على وضع XPay التجريبي بس: مفيش فلوس حقيقية بتتخصم، والحجز هنا مش بيحجز مكتب حقيقي. بعض الإعلانات والصور اصطناعية أو تصورات تجهيز بالذكاء الاصطناعي ومكتوب عليها كده.",
+        "الأماكن القريبة من Google Maps، والطلب منها بيكون مباشرة. أسعار الإضافات أسعار تجريبية حطّيناها إحنا.",
       ] },
       { h: "مساعد الحجز", p: [
-        "المساعد بيستخدم الذكاء الاصطناعي وممكن يغلط. راجع صفحة المكتب والتواريخ والإجمالي قبل ما تدفع. الحجز اللي مش مدفوع بيفضل محجوز ٣٠ دقيقة وبعدين بيتلغي.",
-        "فيه حدود استخدام عادل للشات والرفع والحجوزات، على الموقع وعلى الواتساب. متستخدمش الخدمة في سبام أو إساءة أو بيانات شخصية لناس تانية.",
+        "المساعد بيستخدم الذكاء الاصطناعي وممكن يغلط. راجع الإعلان والتواريخ والإجمالي قبل ما تدفع. الحجز اللي مش مدفوع بيفضل محجوز 30 دقيقة وبعدين بيتلغي.",
+        "فيه حدود استخدام عادل للمحادثة والرفع والحجوزات، على الموقع وعلى الواتساب. متستخدمش الخدمة في سبام أو إساءة أو بيانات شخصية لناس تانية.",
       ] },
       { h: "محتوى الملاك", p: [
-        "ارفع بس فيديوهات وصور لأماكن إنت مالكها أو بتديرها ومن حقك تنشرها. حقوقك بتفضل ليك، وإنت بتسمحلنا نعالج الميديا علشان نطلع المواصفات ونص الإعلان والصور بالتصميمات الجديدة اللي بتظهر على أوفيسيو.",
+        "ارفع أو ابعت بس فيديوهات وصور لأماكن إنت مالكها أو بتديرها ومن حقك تنشرها، وده يشمل فيديوهات الجولة اللي بتبعتها على واتساب زي اللي بترفعها على الموقع. حقوقك بتفضل ليك، وإنت بتسمحلنا نعالج الميديا علشان نطلع المواصفات ونص الإعلان وتصورات التجهيز اللي بتظهر على أوفيسيو.",
+        "لما تنشر، المكتب بيتنشر على حسابك، يعني رقم الواتساب اللي سجّلت دخول بيه.",
       ] },
       { h: "المسؤولية والتعديلات", p: [
         "الخدمة متقدمة من غير أي ضمانات، وفي حدود القانون مش بنكون مسؤولين عن أي خسارة من استخدامها. ممكن نغيّر أو نوقف النسخة التجريبية أو نعدّل الشروط دي في أي وقت.",
@@ -60,5 +61,5 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/terms">): 
 
 export default async function TermsPage({ params }: PageProps<"/[lang]/terms">) {
   const locale = localeFromParam((await params).lang);
-  return <LegalPage locale={locale} copy={COPY[locale]} updated={UPDATED} />;
+  return <LegalPage locale={locale} copy={COPY[locale]} />;
 }

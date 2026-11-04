@@ -7,9 +7,10 @@ export type Lang = "ar" | "en";
 export interface UnitTitles { title_ar: string; title_en: string; district: string }
 
 const TZ = "Africa/Cairo";
-const LOCALE: Record<Lang, string> = { ar: "ar-EG", en: "en-GB" };
+// Western digits in Arabic too ("u-nu-latn"), matching the web UI and AI-written copy.
+const LOCALE: Record<Lang, string> = { ar: "ar-EG-u-nu-latn", en: "en-GB" };
 
-// "2026-11-01" -> EN "Sun 1 Nov", AR "الأحد ١ نوفمبر". The year is added only when it is not the current Cairo year.
+// "2026-11-01" -> EN "Sun 1 Nov", AR "الأحد 1 نوفمبر". The year is added only when it is not the current Cairo year.
 export function dateLabel(day: string, lang: Lang, now = new Date()): string {
   const at = new Date(`${day}T12:00:00Z`); // midday UTC is the same calendar day in Cairo
   if (Number.isNaN(at.getTime())) return day;
@@ -41,7 +42,7 @@ const STATUS: Record<Lang, Record<BookingStatus, string>> = {
 export const statusLabel = (s: BookingStatus, lang: Lang) => STATUS[lang][s] ?? s;
 export const refLabel = (id: string) => id.slice(0, 8).toUpperCase();
 export const egpLabel = (n: number, lang: Lang) =>
-  lang === "ar" ? `${new Intl.NumberFormat("ar-EG").format(n)} جنيه` : `EGP ${new Intl.NumberFormat("en-GB").format(n)}`;
+  lang === "ar" ? `${new Intl.NumberFormat(LOCALE.ar).format(n)} جنيه` : `EGP ${new Intl.NumberFormat("en-GB").format(n)}`;
 export function unitTitle(u: UnitTitles | null, lang: Lang): string {
   const t = u ? (lang === "ar" ? u.title_ar || u.title_en : u.title_en || u.title_ar) : "";
   return t || (lang === "ar" ? "مكتب" : "Office");

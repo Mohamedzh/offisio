@@ -17,6 +17,7 @@ import ListingReview from "@/components/ListingReview";
 import { enumLabel } from "@/lib/specs-edit";
 import LangToggle from "@/components/LangToggle";
 import WhatsAppButton, { renterWaUrl } from "@/components/WhatsAppButton";
+import UnitBookBar from "@/components/UnitBookBar";
 import { districtLabel, floorLabel, formatEgp, getT, localeHref, type TranslationKey } from "@/lib/i18n";
 import type { UseVerdict } from "@/lib/pipeline/rubric";
 import { localeFromParam } from "@/lib/i18n/server";
@@ -74,28 +75,36 @@ export default async function UnitPage({ params, searchParams }: PageProps<"/[la
   // Rows this visitor changed in a demo preview are marked (lib/demo-units).
   const edited = (k: string) => !!preview && k in preview && String(specs[k] ?? "") !== String(unit.specs[k] ?? "");
   const specRows: [string, string, boolean][] = [
-    [t("spec.area"), specs.area_m2_estimate ? `~${specs.area_m2_estimate} m²` : "—", edited("area_m2_estimate")],
+    [t("spec.area"), specs.area_m2_estimate ? t("spec.areaValue", { n: String(specs.area_m2_estimate) }) : "—", edited("area_m2_estimate")],
     ...(specs.rooms_count != null ? [[t("spec.rooms"), String(specs.rooms_count), false], [t("spec.bathrooms"), String(specs.bathrooms_count ?? 0), false]] as [string, string, boolean][] : []),
     [t("spec.deskCapacity"), specs.desk_capacity != null ? String(specs.desk_capacity) : "—", edited("desk_capacity")],
     [t("spec.condition"), enumLabel(t, "condition", specs.condition), edited("condition")],
     [t("spec.naturalLight"), enumLabel(t, "natural_light", specs.natural_light), edited("natural_light")],
     [t("spec.flooring"), enumLabel(t, "flooring", specs.flooring), edited("flooring")],
   ];
+  // Daily units book a day in the form; long-term ones arrange in chat (same #book box).
+  const bookPrice = unit.rent_periods.includes("daily") && unit.daily_egp ? `${formatEgp(locale, unit.daily_egp)}${t("unit.perDay")}` : `${formatEgp(locale, unit.rent_egp)}${t("unit.perMonth")}`;
   return (
-    <main className="mx-auto w-full max-w-5xl px-4 py-8">
+    <main className={`mx-auto w-full max-w-5xl px-4 py-8 ${unit.draft ? "" : "max-sm:pb-24"}`}>
       <div className="flex items-center justify-between">
         <Link href={localeHref("/", locale)} className="link-back"><span className="arr" aria-hidden>←</span>{t("nav.allOffices")}</Link>
         <LangToggle locale={locale} />
       </div>
       <h1 className="font-display text-4xl sm:text-5xl font-black mt-4 leading-[1.02] tracking-[-0.02em]">{locale === "en" ? unit.title_en : unit.title_ar}</h1>
-      <p className="mt-3 flex flex-wrap items-center gap-2 text-ink/75"><span className="w-full sm:w-auto">{districtLabel(locale, unit.district)} · {floorLabel(locale, unit.floor_text)}</span>{unit.location && <a href={mapsUrl(unit.location)} target="_blank" rel="noopener noreferrer" className="link text-sm">{t("unit.openInMaps")}{unit.location.approx && ` (${t("unit.approxArea")})`}</a>}<span className="tnum bg-brick text-white font-display font-black px-3 py-1 ink-offset-sm">{formatEgp(locale, unit.rent_egp)}{t("unit.perMonth")}</span></p>
+      <p className="mt-3 flex flex-wrap items-center gap-2 text-ink/75"><span className="w-full sm:w-auto"><bdi>{districtLabel(locale, unit.district)}</bdi> · <bdi>{floorLabel(locale, unit.floor_text)}</bdi></span>{unit.location && <a href={mapsUrl(unit.location)} target="_blank" rel="noopener noreferrer" className="link text-sm">{t("unit.openInMaps")}{unit.location.approx && ` (${t("unit.approxArea")})`}</a>}</p>
+      {/* Price + booking entry points right under the title (the form itself is far below). */}
+      <div id="unit-cta" className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-3">
+        <span className="tnum bg-brick text-white font-display font-black text-lg px-3 py-1 ink-offset-sm"><bdi>{formatEgp(locale, unit.rent_egp)}{t("unit.perMonth")}</bdi>{unit.daily_egp ? <> · <bdi>{formatEgp(locale, unit.daily_egp)}{t("unit.perDay")}</bdi></> : null}</span>
+        {!unit.draft && <a href="#book" className="btn btn-ink btn-md">{t("unit.bookCta")}</a>}
+        {!unit.draft && <Link href={localeHref("/chat", locale)} className="link text-sm font-bold">{t("unit.chatCta")}</Link>}
+      </div>
       {unit.draft && <DraftBanner slug={unit.slug} locale={locale} publish={publish} loginHref={`${localeHref("/login", locale)}?next=${encodeURIComponent(unitPath)}`} className="mt-3">{mode === "owner" && <ListingReview slug={unit.slug} locale={locale} className="mt-3" />}</DraftBanner>}
       <PublishedNotice locale={locale} state={published} className="mt-3" />
       {/* AI listing review: the owner only (never demo units, which are always preview). */}
       {!unit.draft && mode === "owner" && <ListingReview slug={unit.slug} locale={locale} className="mt-3" />}
       {preview && <SpecsPreviewBar slug={unit.slug} locale={locale} demo={isDemoUnit(unit.slug)} />}
       {unit.synthetic && <p className="mt-3"><span className="bg-mustard text-ink border border-ink text-[11px] font-bold px-2 py-0.5">{t("unit.synthetic")}</span></p>}
-      <div className="mt-5 border border-ink bg-sheet p-3 ink-offset"><UnitViewer images={unit.images} locale={locale} synthetic={unit.synthetic} processing={unit.status === "processing"} /><StageButtons slug={unit.slug} styles={missingStyles} locale={locale} /></div>
+      <div data-wa-avoid className="mt-5 border border-ink bg-sheet p-3 ink-offset"><UnitViewer images={unit.images} locale={locale} synthetic={unit.synthetic} processing={unit.status === "processing"} /><StageButtons slug={unit.slug} styles={missingStyles} locale={locale} /></div>
       {unit.video && (
         <div className="mt-5 border border-ink bg-sheet p-3 ink-offset">
           <video controls playsInline preload="metadata" poster={unit.images.real || undefined} src={unit.video} className="w-full aspect-video bg-ink" />
@@ -133,7 +142,7 @@ export default async function UnitPage({ params, searchParams }: PageProps<"/[la
             </div>
           </div>
         </section>
-        <aside data-wa-avoid>
+        <aside id="book" data-wa-avoid className="scroll-mt-6">
           {unit.draft ? (
             <div className="border border-ink bg-sheet p-5 ink-offset-sm">
               <h3 className="font-display font-black text-lg">{t("draft.badge")}</h3>
@@ -149,6 +158,7 @@ export default async function UnitPage({ params, searchParams }: PageProps<"/[la
         </aside>
       </div>
       {unit.location && <NearbyPlaces places={nearby} locale={locale} />}
+      {!unit.draft && <UnitBookBar price={bookPrice} label={t("unit.bookCta")} targets={["unit-cta", "book"]} />}
       {!unit.draft && <WhatsAppButton href={renterWaUrl(locale, locale === "en" ? unit.title_en : unit.title_ar)} locale={locale} />}
     </main>
   );

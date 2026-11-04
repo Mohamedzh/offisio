@@ -14,12 +14,14 @@
 // A turn killed anyway leaves a draft without video: after 3 min it is treated as dead.
 import { randomBytes } from "node:crypto";
 import { deleteUploads, putPublic } from "./blob";
-import { egpLabel } from "./booking-labels";
+import { dateLabel, egpLabel } from "./booking-labels";
+import { districtLabel, floorLabel } from "./i18n";
 import { publishDraft, unitOwnerWaId } from "./db/auth";
 import { todayCairo } from "./db/store";
-import { activeDraft, createDraft, draftBySlug, draftUnitStatus, expireStaleDrafts, mergeDraftFields, setDraftMedia, setDraftStatus, type DraftFields, type WaDraft } from "./db/wa-drafts";
+import { activeDraft, createDraft, draftBySlug, draftUnitStatus, expireStaleDrafts, mergeDraftFields, otherDraft, setDraftMedia, setDraftStatus, type DraftFields, type WaDraft } from "./db/wa-drafts";
 import { ownerLocation, resolveLocationDetailed, SHORT_HOSTS } from "./geo";
 import { CAPS, limitKey, spendBlocked } from "./guard";
+import { QSTASH_MAX_DELIVERIES, qstashEnabled } from "./qstash";
 import { toTranscribableWav } from "./audio";
 import { MetaError, meta } from "./meta/client";
 import { OWNER_DETAILS_PROMPT_V1 } from "./meta/prompts";
@@ -48,18 +50,20 @@ const T = {
   understood: { ar: "فهمت:", en: "Got it:" },
   stillNeed: { ar: "لسه محتاج:", en: "Still need:" },
   stopHint: { ar: "(ابعت «إلغاء» لو عايز توقف)", en: "(Send \"cancel\" to stop.)" },
-  analyzing: { ar: "تمام، كده عندي كل حاجة 👌 بجهز إعلانك دلوقتي: بحلل المكتب من الفيديو، بكتب الإعلان بالعربي والإنجليزي، وبعمل صور للمكتب بعد التجهيز. ده بياخد حوالي ٣ لـ ٥ دقايق، وهبعتلك الرابط أول ما يخلص.", en: "All set 👌 Making your listing now: analyzing the space from your video, writing the Arabic and English listing, and creating the staged photos. This takes about 3 to 5 minutes; I'll send the link as soon as it's done." },
+  analyzing: { ar: "تمام، كده عندي كل حاجة 👌 بجهز إعلانك دلوقتي: بحلل المكتب من الفيديو، بكتب الإعلان بالعربي والإنجليزي، وبعمل صور للمكتب بعد التجهيز. ده بياخد حوالي 3 لـ 5 دقايق، وهبعتلك الرابط أول ما يخلص.", en: "All set 👌 Making your listing now: analyzing the space from your video, writing the Arabic and English listing, and creating the staged photos. This takes about 3 to 5 minutes; I'll send the link as soon as it's done." },
   stillAnalyzing: { ar: "لسه شغال على إعلانك والصور، شوية كمان وهبعتلك الرابط.", en: "Still working on your listing and photos. I'll send the link as soon as it's done." },
-  ready: { ar: "إعلانك والصور جاهزين 👈 {link}\nافتح الرابط عشان تراجعه وتعدّله (بيشتغل مرة واحدة خلال ٣٠ دقيقة)، أو رد بـ «انشر» وهننشره على رقمك. عايز رابط جديد؟ ابعت «رابط».", en: "Your listing and photos are ready 👉 {link}\nOpen it to review and edit (works once, for 30 minutes), or reply \"publish\" to list it under your number. Need a new link? Send \"link\"." },
+  publishTooEarly: { ar: "لسه شغال على إعلانك والصور ⏳ هبعتلك الرابط أول ما يخلص، وبعدها تقدر ترد بـ «انشر».", en: "Still working on your listing and photos ⏳ I'll send the link as soon as it's ready; then you can reply \"publish\"." },
+  cancelTooLate: { ar: "إعلانك بيتجهز دلوقتي ومقدرش أوقفه. مش هيتنشر غير لو رديت بـ «انشر»، فلو مش عايزه سيبه بس.", en: "Your listing is already being made, so I can't stop it now. It won't be listed unless you reply \"publish\", so you can just leave it." },
+  ready: { ar: "إعلانك والصور جاهزين 👈 {link}\nافتح الرابط عشان تراجعه وتعدّله (بيشتغل مرة واحدة خلال 30 دقيقة)، أو رد بـ «انشر» وهننشره على رقمك. عايز رابط جديد؟ ابعت «رابط».", en: "Your listing and photos are ready 👉 {link}\nOpen it to review and edit (works once, for 30 minutes), or reply \"publish\" to list it under your number. Need a new link? Send \"link\"." },
   readyNoLink: { ar: "إعلانك جاهز ✅ رد بـ «انشر» وهننشره على رقمك.", en: "Your listing is ready ✅ Reply \"publish\" to list it under your number." },
   published: { ar: "✅ اتنشر على رقمك", en: "✅ Listed under your number" },
   publishFailed: { ar: "مقدرتش أنشر الإعلان ده. ابعت «رابط» وجرب من الصفحة.", en: "I couldn't publish this listing. Send \"link\" and try from the page." },
   cancelled: { ar: "تمام، لغيت الإعلان ده. ابعت فيديو جديد في أي وقت.", en: "OK, I dropped this listing. Send a new video any time." },
-  pipelineFailed: { ar: "معلش، مقدرناش نحلل الفيديو ده. ابعت فيديو تاني بيلف على المكتب (لحد ٤٥ ثانية).", en: "Sorry, we couldn't analyze that video. Please send another walkthrough (up to 45 seconds)." },
+  pipelineFailed: { ar: "معلش، مقدرناش نحلل الفيديو ده. ابعت فيديو تاني بيلف على المكتب (لحد 45 ثانية).", en: "Sorry, we couldn't analyze that video. Please send another walkthrough (up to 45 seconds)." },
   createFailed: { ar: "معلش، حصلت مشكلة وإحنا بنجهز الإعلان. ابعت الفيديو تاني.", en: "Sorry, something went wrong preparing the listing. Please send the video again." },
-  videoTooLong: { ar: "الفيديو أطول من ٤٥ ثانية. ابعت فيديو أقصر بيلف على المكتب.", en: "That video is over 45 seconds. Please send a shorter walkthrough." },
-  videoTooBig: { ar: "الفيديو كبير أوي (أكتر من ١٦ ميجا). ابعته تاني من غير HD، أو صوّر فيديو أقصر (٢٠ لـ ٤٥ ثانية كفاية).", en: "That video is too large (over 16 MB). Send it again without HD, or a shorter clip (20 to 45 seconds is plenty)." },
-  videoTooBigDoc: { ar: "الملف ده أكبر من ١٦ ميجا. ابعته كفيديو من الجاليري (مش كملف)، وواتساب هيصغّره لوحده.", en: "That file is over 16 MB. Send it as a video from your gallery (not as a document) and WhatsApp will compress it." },
+  videoTooLong: { ar: "الفيديو أطول من 45 ثانية. ابعت فيديو أقصر بيلف على المكتب.", en: "That video is over 45 seconds. Please send a shorter walkthrough." },
+  videoTooBig: { ar: "الفيديو كبير أوي (أكتر من 16 ميجا). ابعته تاني من غير HD، أو صوّر فيديو أقصر (20 لـ 45 ثانية كفاية).", en: "That video is too large (over 16 MB). Send it again without HD, or a shorter clip (20 to 45 seconds is plenty)." },
+  videoTooBigDoc: { ar: "الملف ده أكبر من 16 ميجا. ابعته كفيديو من الجاليري (مش كملف)، وواتساب هيصغّره لوحده.", en: "That file is over 16 MB. Send it as a video from your gallery (not as a document) and WhatsApp will compress it." },
   videoLost: { ar: "معلش، الفيديو مكملش معايا. ابعته تاني لو سمحت.", en: "Sorry, that video didn't finish processing. Please send it again." },
   shortLink: { ar: "اللينك المختصر مش بيفتح هنا: ابعت موقع المكتب 📍 أو اللينك الكامل من جوجل ماب.", en: "Short links don't open here: send the office location pin 📍 or the full Google Maps link." },
   videoBad: { ar: "مقدرتش أقرا الفيديو ده. ابعته تاني كفيديو (مش كملف).", en: "I couldn't read that video. Please send it again as a video (not a document)." },
@@ -70,7 +74,7 @@ const T = {
   noContact: { ar: "من غير أرقام تليفون أو لينكات في اسم المنطقة أو الدور لو سمحت.", en: "Please leave phone numbers and links out of the district and floor." },
   tooLong: { ar: "الرسالة طويلة شوية، ممكن تختصرها؟", en: "That message is a bit long. Could you shorten it?" },
   voiceFailed: { ar: "معلش، مقدرتش أسمع الفويس كويس. ممكن تبعته تاني أو تكتبه؟", en: "Sorry, I couldn't make out that voice note. Could you resend it or type it?" },
-  notUnderstood: { ar: "مفهمتش التفاصيل. اكتبلي مثلاً: الزمالك، الدور التاني، ١٥ ألف في الشهر، ٨٠٠ في اليوم. (ابعت «إلغاء» لو عايز توقف)", en: "I couldn't find the details. For example: Zamalek, 2nd floor, 15,000 a month, 800 a day. (Send \"cancel\" to stop.)" },
+  notUnderstood: { ar: "مفهمتش التفاصيل. اكتبلي مثلاً: الزمالك، الدور التاني، 15 ألف في الشهر، 800 في اليوم. (ابعت «إلغاء» لو عايز توقف)", en: "I couldn't find the details. For example: Zamalek, 2nd floor, 15,000 a month, 800 a day. (Send \"cancel\" to stop.)" },
 } as const;
 type Key = keyof typeof T;
 const say = (key: Key, lang: Lang | null, vars: Record<string, string> = {}) => {
@@ -146,14 +150,21 @@ export function missingFields(f: DraftFields): (keyof typeof NEED)[] {
   if (!f.district) out.push("district");
   return out;
 }
+// Floor as the web shows it ("2nd floor" / "الدور التاني"); text that already names the
+// floor ("الدور التاني", "3rd floor") is kept as typed instead of doubling the word.
+const floorText = (s: string, lang: Lang) => (/(^|\s)(ال)?دور|floor/i.test(s) ? s : floorLabel(lang, s));
+const KIND: Record<Lang, Record<"furnished" | "semifinished", string>> = {
+  ar: { furnished: "مفروش", semifinished: "نصف تشطيب" },
+  en: { furnished: "Furnished", semifinished: "Semi-finished" },
+};
 function summaryLine(f: DraftFields, lang: Lang): string {
   const parts: string[] = [];
-  if (f.district) parts.push(f.district);
-  if (f.floor_text) parts.push(lang === "ar" ? `الدور: ${f.floor_text}` : `floor: ${f.floor_text}`);
+  if (f.district) parts.push(districtLabel(lang, f.district));
+  if (f.floor_text) parts.push(floorText(f.floor_text, lang));
   if (f.rent_egp) parts.push(`${egpLabel(f.rent_egp, lang)}${lang === "ar" ? " في الشهر" : "/month"}`);
   if (f.daily_egp) parts.push(`${egpLabel(f.daily_egp, lang)}${lang === "ar" ? " في اليوم" : "/day"}`);
-  if (f.kind) parts.push(lang === "ar" ? (f.kind === "furnished" ? "مفروش" : "نص تشطيب") : f.kind);
-  if (f.available_from) parts.push(lang === "ar" ? `متاح من ${f.available_from}` : `from ${f.available_from}`);
+  if (f.kind) parts.push(KIND[lang][f.kind]);
+  if (f.available_from) parts.push(lang === "ar" ? `متاح من ${dateLabel(f.available_from, lang)}` : `from ${dateLabel(f.available_from, lang)}`);
   if (typeof f.lat === "number") parts.push(f.place_label ? `📍 ${f.place_label} ✓` : "📍 ✓");
   return parts.join(" · ");
 }
@@ -253,13 +264,25 @@ export async function handleOwnerVideo(m: IncomingMessage): Promise<void> {
   return reply(m, known ? `${say("videoStored", l)}\n${progressText(stored.fields, l)}` : say("gotVideo", lang));
 }
 
-// Text / voice / pin while a draft is collecting; "link"/"status" while processing;
-// publish / link while it is ready. False = not part of this flow (the renter agent handles it).
+// Text / voice / pin while a draft is collecting; "link"/"status"/"publish"/"cancel" while
+// processing; publish / link while it is ready. False = not part of this flow (the renter
+// agent handles it). "publish" always means a ready listing: when the active draft is a newer
+// video (collecting or processing), the sender's newest ready draft is published instead.
+// While collecting, "link"/"status" likewise go to the newest processing/ready draft (a
+// collecting draft has no link yet); "cancel" stays with the collecting one.
 export async function handleDraftMessage(m: IncomingMessage, draft: WaDraft): Promise<boolean> {
   const text = m.text?.trim() ?? "";
   if (draft.status === "processing") {
-    if (!text || !(isLinkRequest(text) || isStatusRequest(text))) return false;
-    await processingStatus(m, draft, langOf(text) ?? draft.lang);
+    if (!text) return false;
+    const lang = langOf(text) ?? draft.lang;
+    if (isPublish(text)) {
+      const ready = await otherDraft(m.from, draft.id, ["ready"]);
+      if (ready) { await publishFromChat(m, ready, langOf(text) ?? ready.lang); return true; }
+    }
+    if (isCancel(text)) { await reply(m, say("cancelTooLate", lang)); return true; }
+    const asked = isPublish(text) ? "publishTooEarly" : isLinkRequest(text) || isStatusRequest(text) ? "stillAnalyzing" : null;
+    if (!asked) return false;
+    await processingStatus(m, draft, lang, asked);
     return true;
   }
   if (draft.status === "ready") {
@@ -289,6 +312,15 @@ export async function handleDraftMessage(m: IncomingMessage, draft: WaDraft): Pr
   if (!text) { await reply(m, say("gotVideo", draft.lang)); return true; }
   const lang = langOf(text);
   if (isCancel(text)) { await expireCollecting(draft); await reply(m, say("cancelled", lang)); return true; }
+  if (isPublish(text) || isLinkRequest(text) || isStatusRequest(text)) {
+    const other = await otherDraft(m.from, draft.id, ["processing", "ready"]);
+    if (other && (await handleDraftMessage(m, other))) return true; // one level only: other is never collecting
+    // Nothing to publish or link yet: start if complete, else say what is still needed (no model call).
+    const l = lang ?? draft.lang;
+    if (draft.video_url && !missingFields(draft.fields).length) { await startDraftUnit(m, draft, l, ""); return true; }
+    await reply(m, draft.video_url ? progressText(draft.fields, l) : `${say("stillProcessing", l)}\n${progressText(draft.fields, l)}`);
+    return true;
+  }
   await applyText(m, draft, text, lang, "", false);
   return true;
 }
@@ -298,9 +330,10 @@ export async function handleDraftMessage(m: IncomingMessage, draft: WaDraft): Pr
 // one gets its link now; anything else is still analyzing.
 const FAILED_FOR_GOOD_S = 10 * 60;
 const RENDERS_STUCK_S = 10 * 60;
-async function processingStatus(m: IncomingMessage, draft: WaDraft, lang: Lang | null): Promise<void> {
+// `waiting`: the reply while still analyzing ("publish" gets a "then you can publish" hint).
+async function processingStatus(m: IncomingMessage, draft: WaDraft, lang: Lang | null, waiting: "stillAnalyzing" | "publishTooEarly" = "stillAnalyzing"): Promise<void> {
   if (!(await linkAllowed(m.from))) return reply(m, say("limited", lang));
-  const unit = await draftUnitStatus(draft.slug);
+  const unit = await draftUnitStatus(draft.slug, qstashEnabled() ? QSTASH_MAX_DELIVERIES : 0);
   const status = unit?.status ?? null;
   if (status === "failed" && unit!.failedForS >= FAILED_FOR_GOOD_S) {
     if (await setDraftStatus(draft.id, "expired", ["processing"])) return reply(m, say("pipelineFailed", lang));
@@ -310,7 +343,7 @@ async function processingStatus(m: IncomingMessage, draft: WaDraft, lang: Lang |
   // went live if a render is stuck: the owner is never left without a link.
   const linkDue = status === "ready" && (unit!.settled || unit!.listingDoneForS >= RENDERS_STUCK_S);
   if (linkDue && (await setDraftStatus(draft.id, "ready", ["processing"]))) return sendReadyLink(m, draft, lang);
-  return reply(m, say("stillAnalyzing", lang));
+  return reply(m, say(waiting, lang));
 }
 
 async function applyVoice(m: IncomingMessage, draft: WaDraft, audio: NonNullable<IncomingMessage["audio"]>): Promise<void> {

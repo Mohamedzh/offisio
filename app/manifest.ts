@@ -1,10 +1,11 @@
 import type { MetadataRoute } from "next";
+import { getT } from "@/lib/i18n";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Offisio — أوفيسيو",
     short_name: "Offisio",
-    description: "Turn any office into a bookable, furnished-looking listing from a short video.",
+    description: getT("en")("meta.siteDescription"),
     start_url: "/",
     display: "standalone",
     background_color: "#D8D3C6",

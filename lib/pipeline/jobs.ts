@@ -12,7 +12,7 @@ import { reviewInputOf, reviewListing, ReviewInvalidError } from "./review";
 import type { Survey } from "./survey";
 import type { UseVerdict } from "./rubric";
 import { spendBlocked } from "../guard";
-import { publish, qstashEnabled } from "../qstash";
+import { publish, QSTASH_MAX_DELIVERIES, qstashEnabled } from "../qstash";
 import { placesConfigured, refreshPlaces } from "../places";
 
 // A failure that retrying cannot fix (quota, missing input): marked failed, no QStash retry.
@@ -80,15 +80,16 @@ async function execute(u: UploadInputs, step: string): Promise<string[]> {
 export type RunResult = "done" | "skipped" | "failed" | "failed_permanent";
 
 // WhatsApp listing drafts (plan/08 8.1): tell the owner once everything is in (listing live
-// and every step, incl. review and the staged renders, finished: done or failed), or when
-// analyze/listing failed for good (permanent, or no QStash retry locally). Checked after the
+// and every step, incl. review and the staged renders, finished: done or failed for good), or when
+// analyze/listing failed for good (permanent, no QStash retry locally, or QStash's last
+// delivery). A failure with a retry still coming notifies nothing. Checked after the
 // follow-up steps are queued, so "nothing pending" really means the end. Best effort; never
 // throws here; the draft's compare-and-set status makes it one message even if two steps race.
 async function notifyOwner(slug: string, outcome: "ready" | "failed"): Promise<void> {
   try { await (await import("../wa-listing")).notifyDraftPipeline(slug, outcome); } catch { /* best effort */ }
 }
 async function notifyIfSettled(unitId: string, slug: string): Promise<void> {
-  try { if (await pipelineSettled(unitId)) await notifyOwner(slug, "ready"); } catch { /* best effort */ }
+  try { if (await pipelineSettled(unitId, qstashEnabled() ? QSTASH_MAX_DELIVERIES : 0)) await notifyOwner(slug, "ready"); } catch { /* best effort */ }
 }
 
 // Claim -> execute -> record. Throws nothing: the route maps "failed" to a 500
@@ -96,7 +97,8 @@ async function notifyIfSettled(unitId: string, slug: string): Promise<void> {
 export async function runStep(slug: string, step: string): Promise<RunResult> {
   const u = await uploadInputs(slug);
   if (!u) return "failed_permanent";
-  if ((await claimJob(u.id, step)) === null) return "skipped";
+  const attempts = await claimJob(u.id, step);
+  if (attempts === null) return "skipped";
   try {
     const next = await execute(u, step);
     await finishJob(u.id, step);
@@ -106,11 +108,14 @@ export async function runStep(slug: string, step: string): Promise<RunResult> {
   } catch (e) {
     const msg = (e as Error).message || "error";
     console.error(`[pipeline] ${slug} ${step}: ${msg}`);
-    await finishJob(u.id, step, msg);
-    if (step === "analyze" || step === "listing") await setUnitStatus(slug, "failed").catch(() => {});
     const permanent = e instanceof PermanentError;
-    if ((step === "analyze" || step === "listing") && (permanent || !qstashEnabled())) await notifyOwner(slug, "failed");
-    else await notifyIfSettled(u.id, slug);
+    await finishJob(u.id, step, msg, permanent && qstashEnabled() ? QSTASH_MAX_DELIVERIES : 0); // permanent: no retry to wait for
+    if (step === "analyze" || step === "listing") await setUnitStatus(slug, "failed").catch(() => {});
+    // Final: no retry follows (permanent, local in-process run, or QStash's last delivery).
+    // attempts counts every claim of this row, so a stuck-run reclaim also counts as one.
+    const final = permanent || !qstashEnabled() || attempts >= QSTASH_MAX_DELIVERIES;
+    if (final && (step === "analyze" || step === "listing")) await notifyOwner(slug, "failed");
+    else if (final) await notifyIfSettled(u.id, slug); // a failed review/render still ends in one "ready" notice
     return permanent ? "failed_permanent" : "failed";
   }
 }

@@ -42,8 +42,9 @@ export default function UnitViewer({ images, locale, synthetic = false, processi
             <p className="px-1 pb-1 text-[11px] font-bold text-white">{t("viewer.rooms", { n: view.shots.length })}</p>
             <div className="flex flex-wrap gap-1">
               {view.shots.map((s, i) => (
+                // Same convention as the tab row below: selected = dark (aria-pressed), others paper.
                 <button key={s.src} onClick={() => pick(active.view, i)} aria-pressed={active.shot === i}
-                  className={`btn px-2.5 py-1 text-xs normal-case tracking-normal ${active.shot === i ? "bg-sheet text-ink" : "bg-ink text-sheet hover:bg-sheet! hover:text-ink!"}`}>
+                  className="btn btn-paper px-2.5 py-1 text-xs">
                   {i + 1}. {s.part}
                 </button>
               ))}

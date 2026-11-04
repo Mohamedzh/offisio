@@ -6,12 +6,13 @@ import { pool } from "./db/pg";
 import { todayCairo } from "./db/store";
 import { guardSalt } from "./salt";
 
-export type LimitKind = "chat" | "upload" | "image_edit" | "booking" | "blob_token" | "wa_link" | "spec_edit" | "login" | "wa_login" | "wa_logout" | "voice" | "blob_video" | "wa_video" | "wa_listing_link";
+export type LimitKind = "chat" | "upload" | "image_edit" | "booking" | "blob_token" | "wa_link" | "spec_edit" | "login" | "wa_login" | "wa_logout" | "voice" | "blob_video" | "wa_video" | "wa_listing_link" | "checkout";
 const DEFAULTS: Record<LimitKind, { ip: number; global: number }> = {
   chat: { ip: 40, global: 1000 },
   upload: { ip: 3, global: 20 },
   image_edit: { ip: 4, global: 40 },
   booking: { ip: 5, global: 100 },
+  checkout: { ip: 20, global: 300 }, // XPay test-mode payment intents per IP (POST /api/payments/checkout; retries of held bookings)
   blob_token: { ip: 100, global: 1000 }, // up to 31 tokens per upload (frames + video)
   wa_link: { ip: 5, global: 200 }, // "Offisio <ref>-<code>" attempts per WhatsApp sender
   spec_edit: { ip: 30, global: 500 }, // owner spec saves (demo units: preview only)
@@ -50,7 +51,11 @@ function limitsFor(kind: LimitKind) {
 
 // Hashed client IP: counters never store a raw address.
 export function clientKey(req: Request): string {
-  const ip = req.headers.get("x-real-ip") ?? req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "local";
+  return clientKeyFrom(req.headers);
+}
+// Same hash from a Headers object (e.g. next/headers inside a route handler).
+export function clientKeyFrom(h: Pick<Headers, "get">): string {
+  const ip = h.get("x-real-ip") ?? h.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "local";
   return createHash("sha256").update(`${guardSalt()}:${ip}`).digest("hex").slice(0, 16);
 }
 
@@ -82,6 +87,10 @@ export async function firstSeen(kind: string, key: string): Promise<boolean> {
   return (await bump(kind, key)) === 1;
 }
 export const deny = (code: string, status = 429) => Response.json({ error: code }, { status });
+// A stored error (pipeline last_error, thrown message) as a fixed code for clients:
+// an UPPER_SNAKE code passes through, anything else (provider text, stack bits) becomes STEP_FAILED.
+export const safeErrorCode = (raw: unknown): string =>
+  typeof raw === "string" && /^[A-Z][A-Z0-9_]{2,47}$/.test(raw) ? raw : "STEP_FAILED";
 
 // --- Spend: Meta list prices (developer console, captured 2026-10-30) ------
 // Chat: USD per 1M tokens (cached input billed separately). Image: USD per
@@ -120,8 +129,9 @@ export async function recordUsage(model: string, usage: Usage | undefined, image
 }
 
 // True when today's estimated spend is over DEMO_DAILY_SPEND_USD (default $15).
-// Blocks uploads, staging and web voice turns (paid transcription); browsing,
-// booking, payment and cached units keep working. Typed chat has its own caps.
+// Blocks uploads, staging and every agent turn (web typed chat and voice via
+// lib/web-chat chatGate, WhatsApp via the webhook's turnAllowed); browsing,
+// booking pages, payment and cached units keep working.
 export async function spendBlocked(): Promise<boolean> {
   const { rows } = await pool().query<{ n: string }>(
     "select coalesce(sum(n),0)::text n from usage_counters where day = $1 and kind = 'spend_micro_usd'", [todayCairo()]);

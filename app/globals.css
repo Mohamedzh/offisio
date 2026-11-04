@@ -50,7 +50,9 @@ body {
   /* Paper tabs/toggles: sentence case; aria-pressed marks the selected one. */
   .btn-paper { background: var(--color-sheet); color: var(--color-ink); text-transform: none; letter-spacing: 0; }
   .btn-paper:hover:not(:disabled) { background: var(--color-torn); }
+  /* Selected stays dark on hover too (it must out-rank .btn-paper:hover above). */
   .btn-paper[aria-pressed="true"] { background: var(--color-ink); color: var(--color-sheet); }
+  .btn-paper[aria-pressed="true"]:hover:not(:disabled) { background: #3A342B; color: var(--color-sheet); }
   .btn-sm { padding: 0.375rem 0.75rem; font-size: 0.875rem; }
   .btn-md { padding: 0.625rem 1.25rem; }
   .btn-lg { padding: 0.75rem 1.25rem; }

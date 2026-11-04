@@ -153,6 +153,21 @@ export const AVAILABILITY_UNTIL = "2026-12-15";
 export function todayCairo(): string {
   return new Intl.DateTimeFormat("en-CA", { timeZone: "Africa/Cairo", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
 }
+// Current hour (0-23) in Cairo.
+export function cairoHour(now = new Date()): number {
+  return Number(new Intl.DateTimeFormat("en-GB", { timeZone: "Africa/Cairo", hour: "2-digit", hourCycle: "h23" }).format(now));
+}
+// Daily slots run 10:00-17:00; after 16:00 today's day pass can't be used, so it is not offered or bookable.
+export const DAY_CUTOFF_HOUR = 16;
+// First Cairo day still bookable: today, or tomorrow once today's cutoff has passed.
+export function firstBookableDay(now = new Date()): string {
+  // Day and hour from the same instant, so a call at Cairo midnight can't mix two days.
+  const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Africa/Cairo", year: "numeric", month: "2-digit", day: "2-digit" }).format(now);
+  if (cairoHour(now) < DAY_CUTOFF_HOUR) return today;
+  const d = new Date(`${today}T00:00:00Z`);
+  d.setUTCDate(d.getUTCDate() + 1);
+  return d.toISOString().slice(0, 10);
+}
 // Last generated day: AVAILABILITY_UNTIL, or AVAILABILITY_HORIZON_DAYS from today if later
 // (uploads after the demo window still get slots).
 export const AVAILABILITY_HORIZON_DAYS = 60;
@@ -211,7 +226,7 @@ export async function unitId(slug: string): Promise<string | null> {
   return rows[0]?.id ?? null;
 }
 
-// Days from today (Cairo) on; past days are never offered.
+// Days from today (Cairo) on; past days, and today after the cutoff hour, are never offered.
 export async function availabilityByDay(unitSlug: string, limit = 45): Promise<{ date: string; total: number; free: number; day_free: boolean }[]> {
   await releaseStaleHolds();
   const { rows } = await pool().query<{ date: string; total: string; free: string }>(
@@ -219,7 +234,7 @@ export async function availabilityByDay(unitSlug: string, limit = 45): Promise<{
             count(*) filter (where not is_booked)::text as free
      from availability a join units u on u.id = a.unit_id
      where u.slug = $1 and (starts_at at time zone 'Africa/Cairo')::date >= $2::date
-     group by 1 order by 1 limit $3`, [unitSlug, todayCairo(), limit]);
+     group by 1 order by 1 limit $3`, [unitSlug, firstBookableDay(), limit]);
   return rows.map((r) => ({ date: r.date, total: Number(r.total), free: Number(r.free), day_free: Number(r.free) === Number(r.total) && Number(r.total) > 0 }));
 }
 
@@ -232,7 +247,7 @@ export async function freeDates(): Promise<string[]> {
   await releaseStaleHolds();
   const { rows } = await pool().query<{ date: string }>(
     `select distinct (starts_at at time zone 'Africa/Cairo')::date::text as date from availability
-     where not is_booked and (starts_at at time zone 'Africa/Cairo')::date >= $1::date order by 1 limit 7`, [todayCairo()]);
+     where not is_booked and (starts_at at time zone 'Africa/Cairo')::date >= $1::date order by 1 limit 7`, [firstBookableDay()]);
   return rows.map((r) => r.date);
 }
 
@@ -306,7 +321,7 @@ export async function queueJobs(unitId: string, steps: string[]): Promise<void> 
   if (!steps.length) return;
   await pool().query(
     `insert into pipeline_jobs (unit_id, step) select $1, unnest($2::text[])
-     on conflict (unit_id, step) do update set status = 'queued', last_error = null, updated_at = now()`, [unitId, steps]);
+     on conflict (unit_id, step) do update set status = 'queued', attempts = 0, last_error = null, updated_at = now()`, [unitId, steps]);
 }
 // Atomic claim: queued, failed (a QStash retry) or stuck running. Null = already done or in progress.
 const STUCK_MINUTES = 6;
@@ -318,17 +333,21 @@ export async function claimJob(unitId: string, step: string): Promise<number | n
      returning attempts`, [unitId, step, STUCK_MINUTES]);
   return rows[0]?.attempts ?? null;
 }
-export async function finishJob(unitId: string, step: string, error: string | null = null): Promise<void> {
+// `finalAt` > 0 marks a failure no retry follows (permanent): attempts is raised to it so
+// pipelineSettled does not wait for a QStash retry that never comes.
+export async function finishJob(unitId: string, step: string, error: string | null = null, finalAt = 0): Promise<void> {
   await pool().query(
-    "update pipeline_jobs set status = $3, last_error = $4, updated_at = now() where unit_id = $1 and step = $2",
-    [unitId, step, error === null ? "done" : "failed", error === null ? null : error.slice(0, 500)]);
+    "update pipeline_jobs set status = $3, last_error = $4, attempts = greatest(attempts, $5::int), updated_at = now() where unit_id = $1 and step = $2",
+    [unitId, step, error === null ? "done" : "failed", error === null ? null : error.slice(0, 500), finalAt]);
 }
-// Listing live (unit ready) and no step left queued or running: review, renders and places
-// have all finished (done or failed). Used to tell a WhatsApp owner once everything is in.
-export async function pipelineSettled(unitId: string): Promise<boolean> {
+// Listing live (unit ready) and no step left queued or running, nor failed with a QStash
+// retry still coming (attempts below `maxDeliveries`; 0 locally, where a failure is final).
+// Used to tell a WhatsApp owner once everything is in.
+export async function pipelineSettled(unitId: string, maxDeliveries = 0): Promise<boolean> {
   const { rows } = await pool().query<{ ok: boolean }>(
-    `select u.status = 'ready' and not exists (select 1 from pipeline_jobs j where j.unit_id = u.id and j.status in ('queued','running')) as ok
-     from units u where u.id = $1`, [unitId]);
+    `select u.status = 'ready' and not exists (select 1 from pipeline_jobs j where j.unit_id = u.id
+       and (j.status in ('queued','running') or (j.status = 'failed' and j.attempts < $2::int))) as ok
+     from units u where u.id = $1`, [unitId, maxDeliveries]);
   return rows[0]?.ok === true;
 }
 export async function jobsOf(unitId: string): Promise<Job[]> {

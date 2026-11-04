@@ -74,7 +74,7 @@ export function floorLabel(locale: Locale, text: string): string {
 // Districts are stored as typed (mostly English). Arabic pages translate the known
 // names; anything with English left over is shown as typed, never half-translated.
 const AR_PLACES: [string, string][] = [
-  ["New Administrative Capital", "العاصمة الإدارية الجديدة"], ["Bibliotheca Alexandrina", "مكتبة إسكندرية"],
+  ["New Administrative Capital", "العاصمة الإدارية الجديدة"], ["Bibliotheca Alexandrina", "مكتبة الإسكندرية"],
   ["6th of October", "6 أكتوبر"], ["5th Settlement", "التجمع الخامس"], ["Smart Village", "القرية الذكية"],
   ["Pioneer Plaza", "بايونير بلازا"], ["Talaat Harb", "طلعت حرب"], ["Sheikh Zayed", "الشيخ زايد"],
   ["Heliopolis", "مصر الجديدة"], ["Nasr City", "مدينة نصر"], ["New Cairo", "القاهرة الجديدة"],
@@ -95,6 +95,15 @@ function ordinalEn(n: number): string {
   return `${n}${tail}`;
 }
 
+// Display numbers use Western digits in both locales (owner decision 2026-11-04): AI-written
+// copy already does, and mixing ١٨٬٥٠٠ with 18,500 on one page reads as two prices.
+export function numberLocale(locale: Locale): string {
+  return locale === "ar" ? "ar-EG-u-nu-latn" : "en-US";
+}
+export function formatNumber(locale: Locale, n: number): string {
+  return n.toLocaleString(numberLocale(locale));
+}
+// AR: "18,500 جنيه" (amount first), EN: "EGP 18,500".
 export function formatEgp(locale: Locale, amount: number): string {
-  return getT(locale)("money.egp", { amount: amount.toLocaleString(locale === "ar" ? "ar-EG" : "en-US") });
+  return getT(locale)("money.egp", { amount: formatNumber(locale, amount) });
 }

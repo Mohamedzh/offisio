@@ -46,6 +46,11 @@ export default function PipelineStatus({ slug, initial, locale }: { slug: string
   const label = (step: string) => step.startsWith("stage:")
     ? t(`viewer.style.${step.slice(6).replace(/_s\d+$/, "")}` as TranslationKey)
     : t(`pipeline.step.${step}` as TranslationKey);
+  // Known codes get their error.* text; anything else (provider text, PLACES_403, ffmpeg codes) the generic line.
+  const stepError = (code: string | null) => {
+    const key = `error.${code}` as TranslationKey; const s = code ? t(key) : key;
+    return s === key ? t("pipeline.stepFailed") : s;
+  };
   const badge: Record<Job["status"], string> = { queued: "bg-sheet text-ink/70", running: "bg-mustard text-ink", done: "bg-ink text-sheet", failed: "bg-brick text-white" };
   return (
     <section className="mb-6 border border-ink bg-sheet p-3">
@@ -62,7 +67,7 @@ export default function PipelineStatus({ slug, initial, locale }: { slug: string
                 {(j.status === "failed" || (now > 0 && j.status !== "done" && now - Date.parse(j.updated_at) > STUCK_MS)) && <button disabled={!!busy} onClick={() => retry(j.step)} className="btn btn-brick btn-sm">{t("pipeline.retry")}</button>}
               </span>
             </div>
-            {j.status === "failed" && j.last_error && <p className="text-xs text-ink/75 mt-1 break-words">{errorText(t, j.last_error)}</p>}
+            {j.status === "failed" && <p className="text-xs text-ink/75 mt-1 break-words">{stepError(j.last_error)}</p>}
           </li>
         ))}
       </ul>
